@@ -1,0 +1,107 @@
+---
+const products = [
+  { label: 'Industrial profiles', href: '/products/industrial' },
+  { label: 'Architectural range', href: '/products/architectural' },
+  { label: 'Cast products — billets', href: '/products/cast-products' },
+  { label: 'Standard sections', href: '/products/standard-sections' },
+  { label: 'Custom profiles', href: '/products/custom-profiles' },
+];
+const capabilities = [
+  { label: 'Foundry & alloys', href: '/capabilities/foundry' },
+  { label: 'Die shop', href: '/capabilities/die-shop' },
+  { label: 'Extrusion', href: '/capabilities/extrusion' },
+  { label: 'Heat treatment', href: '/capabilities/heat-treatment' },
+  { label: 'Machining & fabrication', href: '/capabilities/machining' },
+  { label: 'Cold drawing', href: '/capabilities/cold-drawing' },
+  { label: 'Surface finishing', href: '/capabilities/surface-finishing' },
+];
+const company = [
+  { label: 'About Banco', href: '/about' },
+  { label: 'Quality & certifications', href: '/about/quality' },
+  { label: 'Global reach', href: '/about/global-reach' },
+  { label: 'Sustainability', href: '/sustainability' },
+  { label: 'Careers', href: '/about/careers' },
+  { label: 'Downloads', href: '/downloads' },
+];
+const contact = [
+  { label: 'Request a quote', href: '/contact#quote' },
+  { label: 'Contact us', href: '/contact' },
+  { label: 'Schedule a plant visit', href: '/contact#visit' },
+  { label: 'Find us on map', href: '/contact#map' },
+];
+const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 'BIS'];
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="/" aria-label="Banco Aluminium — home">
+          <img
+            src="/banco-logo-light.png"
+            alt="Banco Aluminium"
+            width="160"
+            height="36"
+            loading="lazy"
+          />
+        </a>
+        <p>
+          Integrated aluminium extrusion solutions since 1967. From billet to finished
+          profile — under one roof in Vadodara, Gujarat, India.
+        </p>
+        <div class="footer-certs">
+          {certs.map((c) => (
+            <span class="pill on-dark">{c}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          {products.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+
+      <!-- Capabilities -->
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          {capabilities.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          {company.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          {contact.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        </ul>
+        <div style="margin-top:24px;font-size:13px;color:var(--color-stone-400);line-height:1.7">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-bottom:8px">Registered office</div>
+          Vadodara, Gujarat, India
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} Banco Aluminium Private Limited. All rights reserved.</span>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms of use</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

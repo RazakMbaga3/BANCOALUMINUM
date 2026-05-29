@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact Banco Aluminium — request a quote"
+  description="Request a quote, download brochure, or schedule a plant visit. Banco Aluminium Pvt. Ltd., Vadodara, Gujarat, India. Exporting to Europe, North America, Asia-Pacific, Middle East."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div class="eyebrow on-dark">Get in touch</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px">
+        Start with your<br/><em class="accent">drawing.</em>
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:20px;max-width:52ch">
+        Send us a drawing, a sample, or a specification. Our technical team will respond
+        within one business day with material options, tooling feasibility, and lead-time
+        indication.
+      </p>
+    </div>
+  </section>
+
+  <!-- Forms + info -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:80px;align-items:start">
+
+        <!-- Quote form -->
+        <div id="quote">
+          <div class="eyebrow">Request a quote</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+            Tell us about your<br/><em class="accent">requirement.</em>
+          </h2>
+
+          <form
+            name="quote-request"
+            method="POST"
+            enctype="multipart/form-data"
+            style="display:flex;flex-direction:column;gap:20px"
+          >
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+              <div>
+                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                  Company name *
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;transition:border-color 0.18s"
+                  onfocus="this.style.borderColor='var(--color-navy)'"
+                  onblur="this.style.borderColor='var(--color-stone-200)'"
+                />
+              </div>
+              <div>
+                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                  Contact name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;transition:border-color 0.18s"
+                  onfocus="this.style.borderColor='var(--color-navy)'"
+                  onblur="this.style.borderColor='var(--color-stone-200)'"
+                />
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+              <div>
+                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                  Email address *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none"
+                  onfocus="this.style.borderColor='var(--color-navy)'"
+                  onblur="this.style.borderColor='var(--color-stone-200)'"
+                />
+              </div>
+              <div>
+                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                  Country
+                </label>
+                <input
+                  type="text"
+                  name="country"
+                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none"
+                  onfocus="this.style.borderColor='var(--color-navy)'"
+                  onblur="this.style.borderColor='var(--color-stone-200)'"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                Product / application *
+              </label>
+              <select
+                name="product_type"
+                required
+                style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;appearance:none"
+              >
+                <option value="">Select a product family</option>
+                <option value="industrial">Industrial profiles — OEM</option>
+                <option value="architectural">Architectural systems</option>
+                <option value="cast">Cast products — billets</option>
+                <option value="standard">Standard sections</option>
+                <option value="custom">Custom profiles</option>
+                <option value="other">Other / not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                Requirement details
+              </label>
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Alloy, profile dimensions, annual volume, end application, certifications required…"
+                style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);resize:vertical;outline:none"
+                onfocus="this.style.borderColor='var(--color-navy)'"
+                onblur="this.style.borderColor='var(--color-stone-200)'"
+              ></textarea>
+            </div>
+
+            <div>
+              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
+                Attach drawing / DXF (optional)
+              </label>
+              <input
+                type="file"
+                name="drawing"
+                accept=".pdf,.dxf,.dwg,.step,.stp,.png,.jpg"
+                style="width:100%;font-family:var(--font-mono);font-size:11px;color:var(--color-stone-700)"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start">
+              Send enquiry
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact info -->
+        <div style="display:flex;flex-direction:column;gap:40px">
+          <div>
+            <div class="eyebrow">Our location</div>
+            <div style="margin-top:16px;font-family:var(--font-display);font-size:20px;color:var(--color-navy);line-height:1.4" id="map">
+              Banco Aluminium Private Limited<br/>
+              Vadodara, Gujarat, India
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--color-stone-200)">
+            {[
+              ['Extrusion capacity', '35,000 MT / yr'],
+              ['Foundry capacity', '55,000 MT / yr'],
+              ['Export regions', 'Europe · North America · APAC · Middle East'],
+              ['Lead time', 'New tool: 4–6 weeks · Repeat: as agreed'],
+              ['Response time', '≤ 1 business day'],
+            ].map(([label, value]) => (
+              <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:12px;padding:14px 16px;border-bottom:1px solid var(--color-stone-200);background:var(--color-stone-50)">
+                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400)">{label}</div>
+                <div style="font-size:13px;color:var(--color-navy)">{value}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style="padding:28px;background:var(--color-navy)" id="visit">
+            <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:12px">Plant visit</div>
+            <p style="color:var(--color-stone-400);font-size:14px;line-height:1.65;margin-bottom:20px">
+              We welcome customers and prospective partners to visit our Vadodara facility
+              — foundry, die shop, extrusion, and finishing under one roof.
+            </p>
+            <a href="mailto:info@bancoaluminium.com?subject=Plant%20visit%20request" class="btn btn-secondary-dark" style="font-size:12px;padding:12px 20px">
+              Schedule a visit
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

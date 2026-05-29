@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const presses = [
+  { id: 'P1', ton: '1,100 MT', dia: 'Ø 5" & 6" (127 / 152 mm)' },
+  { id: 'P2', ton: '1,460 MT', dia: 'Ø 6" (152 mm)' },
+  { id: 'P3', ton: '1,800 MT', dia: 'Ø 7" (178 mm)' },
+  { id: 'P4', ton: '2,500 MT', dia: 'Ø 9" – 10" (229 / 254 mm)' },
+  { id: 'P5', ton: '3,300 MT', dia: 'Ø 9" & 10" (229 / 254 mm)' },
+];
+
+const specs = [
+  ['Annual foundry capacity', '55,000 MT'],
+  ['Billet diameters', '127 – 254 mm (5" – 10")'],
+  ['Standard length', '5,800 mm'],
+  ['Alloy series', '1xxx · 2xxx · 3xxx · 5xxx · 6xxx · 7xxx'],
+  ['Recycled content', 'Up to 50% pre and post-consumer scrap'],
+  ['Melting furnaces', '1 × 40 MT + 2 × 12 MT'],
+  ['Casters', '3 cylinder-guided casters'],
+  ['Homogenisation', '2 furnaces'],
+  ['Quality verification', 'Spectro-OES chemical analysis'],
+  ['Process monitoring', 'SCADA online traceability'],
+  ['Lead-free alloys', 'Available on request'],
+  ['Custom chemistry', 'Available — full alloy development'],
+];
+---
+
+<Layout
+  title="Cast products — aluminium billets — Banco Aluminium"
+  description="Foundry-grade aluminium billets. 55,000 MT annual capacity, 127–254 mm diameters, alloys 1xxx–7xxx, SCADA-traceable, Spectro-OES verified, up to 50% recycled scrap. CBAM-certified. Export-ready."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center">
+        <div>
+          <div class="eyebrow on-dark">Products / Cast products</div>
+          <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px">
+            Foundry-grade <em class="accent">billets</em> for reliable extrusion.
+          </h1>
+          <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:52ch">
+            55,000 MT annual capacity. Alloy series 1xxx through 7xxx. SCADA-traceable,
+            Spectro-OES verified, and CBAM-certified — for extruders who need consistent
+            quality and reliable supply.
+          </p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+            <a href="/contact#quote" class="btn btn-primary-dark">Request billet supply</a>
+            <a href="/capabilities/foundry" class="btn btn-secondary-dark">Foundry capabilities</a>
+          </div>
+        </div>
+
+        <!-- Billet SVG drawing -->
+        <div aria-hidden="true">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.9">
+            <defs>
+              <pattern id="bg4" width="16" height="16" patternUnits="userSpaceOnUse">
+                <path d="M16 0L0 0 0 16" fill="none" stroke="#243F60" stroke-width="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#bg4)" opacity="0.5"/>
+
+            <!-- Billet cylinder — perspective-ish top view -->
+            <ellipse cx="200" cy="80" rx="100" ry="28" stroke="#9CA3AE" stroke-width="1.25" fill="#1A3454"/>
+            <rect x="100" y="80" width="200" height="140" stroke="#9CA3AE" stroke-width="1.25" fill="#0C2340"/>
+            <ellipse cx="200" cy="220" rx="100" ry="28" stroke="#9CA3AE" stroke-width="1.25" fill="#1A3454"/>
+
+            <!-- End face lines -->
+            <ellipse cx="200" cy="80" rx="100" ry="28" stroke="#9CA3AE" stroke-width="1" fill="#061525"/>
+            <ellipse cx="200" cy="80" rx="90" ry="25" stroke="#243F60" stroke-width="0.5" fill="none"/>
+            <!-- Grain texture on cylinder body -->
+            <line x1="100" y1="110" x2="300" y2="110" stroke="#1A3454" stroke-width="0.5"/>
+            <line x1="100" y1="140" x2="300" y2="140" stroke="#1A3454" stroke-width="0.5"/>
+            <line x1="100" y1="170" x2="300" y2="170" stroke="#1A3454" stroke-width="0.5"/>
+            <line x1="100" y1="200" x2="300" y2="200" stroke="#1A3454" stroke-width="0.5"/>
+
+            <!-- Diameter dimension on face -->
+            <line x1="110" y1="80" x2="290" y2="80" stroke="#009746" stroke-width="0.7"/>
+            <line x1="110" y1="75" x2="110" y2="85" stroke="#009746" stroke-width="0.7"/>
+            <line x1="290" y1="75" x2="290" y2="85" stroke="#009746" stroke-width="0.7"/>
+            <text x="200" y="73" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#009746" letter-spacing="0.1em">Ø UP TO 254 MM (10")</text>
+
+            <!-- Length dimension -->
+            <line x1="310" y1="80" x2="310" y2="220" stroke="#009746" stroke-width="0.6"/>
+            <line x1="305" y1="80" x2="315" y2="80" stroke="#009746" stroke-width="0.6"/>
+            <line x1="305" y1="220" x2="315" y2="220" stroke="#009746" stroke-width="0.6"/>
+            <text x="350" y="152" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#009746" letter-spacing="0.1em" transform="rotate(90,350,152)">5800 MM STD</text>
+
+            <!-- Alloy label -->
+            <text x="200" y="15" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A5260" letter-spacing="0.14em">ALUMINIUM BILLET — BANCO FOUNDRY</text>
+            <text x="200" y="285" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#4A5260" letter-spacing="0.12em">SCADA TRACED · SPECTRO-OES VERIFIED · CBAM CERTIFIED</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spec sheet -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div>
+          <div class="eyebrow">Product specifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:32px">
+            Billet <em class="accent">specifications.</em>
+          </h2>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--color-stone-200)">
+            {specs.map(([label, value]) => (
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--color-stone-200);background:var(--color-stone-50)">
+                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400)">{label}</div>
+                <div style="font-family:var(--font-display);font-size:16px;font-weight:400;color:var(--color-navy)">{value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="eyebrow">Press portfolio</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:32px">
+            Five direct <em class="accent">presses.</em>
+          </h2>
+          <div style="display:flex;flex-direction:column;gap:1px;background:var(--color-stone-200)">
+            {presses.map((p) => (
+              <div style="background:var(--color-stone-50);padding:20px 24px;display:grid;grid-template-columns:auto 1fr 1.2fr;gap:24px;align-items:center">
+                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green)">{p.id}</div>
+                <div style="font-family:var(--font-display);font-size:22px;color:var(--color-navy)">{p.ton}</div>
+                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-stone-400)">{p.dia}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style="margin-top:32px;padding:24px;background:var(--color-navy);display:flex;flex-direction:column;gap:8px">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green)">Annual extrusion capacity</div>
+            <div style="font-family:var(--font-display);font-size:40px;color:var(--color-stone-50)">35,000 <span style="font-size:20px;color:var(--color-green)">MT</span></div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400)">Profile weight 0.29 – 35 kg/m</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Green billets -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div>
+          <div class="eyebrow on-dark">Sustainability</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            Green billets.<br/><em class="accent">CBAM-ready</em> supply.
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:20px;font-size:16px;line-height:1.65">
+            Banco's green billets are produced using up to 50% pre and post-consumer scrap,
+            natural gas in melting furnaces, and solar and wind power — reducing the embodied
+            carbon to 0.763 kg CO₂e per kilogram of aluminium. Full CBAM documentation
+            available for European imports.
+          </p>
+          <a href="/sustainability" class="btn btn-secondary-dark" style="margin-top:32px">Sustainability data</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-navy-line)">
+          {[
+            ['0.763', 'kg CO₂e / kg', 'CBAM certified footprint'],
+            ['Up to 50%', '', 'Recycled scrap input'],
+            ['100%', '', 'Natural gas in melting'],
+            ['960 kW', '', 'Captive solar generation'],
+          ].map(([num, unit, label]) => (
+            <div style="background:var(--color-navy-soft);padding:28px 20px">
+              <div>
+                <span style="font-family:var(--font-display);font-size:32px;color:var(--color-stone-50)">{num}</span>
+                {unit && <span style="font-family:var(--font-display);font-size:16px;color:var(--color-green);margin-left:4px">{unit}</span>}
+              </div>
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-top:6px">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality -->
+  <section class="section-alt" style="padding:48px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Quality:</span>
+          {['Spectro-OES verified', 'SCADA-traceable', 'Ultrasonic testing', 'CBAM certified', 'ISO 9001:2015'].map((c) => (
+            <span class="pill">{c}</span>
+          ))}
+        </div>
+        <a href="/contact#quote" class="btn btn-primary">Request billet supply</a>
+      </div>
+    </div>
+  </section>
+</Layout>

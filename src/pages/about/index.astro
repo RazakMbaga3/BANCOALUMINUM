@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const milestones = [
+  { year: '1967', event: 'Founded in Vadodara, Gujarat' },
+  { year: '1970s', event: 'First extrusion press commissioned' },
+  { year: '1980s', event: 'In-house foundry and die shop established' },
+  { year: '1990s', event: 'Export operations begin' },
+  { year: '2000s', event: 'Capacity expansion to 5 presses; IATF 16949 certification' },
+  { year: '2010s', event: 'Cold drawing, machining and surface finishing integrated' },
+  { year: '2020s', event: 'CBAM certification; 960 kW solar; 35,000 MT capacity milestone' },
+];
+
+const reasons = [
+  ['End-to-end capability', 'From billet to finished profile under one integrated manufacturing platform.'],
+  ['In-house core platform', 'Foundry, die shop and extrusion for tighter control and faster development.'],
+  ['Wide profile coverage', 'Standard, industrial, architectural and custom profiles across all major alloys.'],
+  ['Special alloy capability', 'Alloy development for specialised applications including 2xxx and 7xxx series.'],
+  ['Value-added processing', 'Machining, fabrication, cold drawing and surface finishing under one roof.'],
+  ['Quality & traceability', 'Strong systems, certifications and SCADA process traceability.'],
+  ['Customer experience', '58 years and 1,100+ customers across diverse sectors and four export regions.'],
+];
+---
+
+<Layout
+  title="About Banco Aluminium — established 1967"
+  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 1,100+ customers worldwide. ISO 9001 · IATF 16949 · CE."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div class="eyebrow on-dark">About Banco</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
+        Engineering <em class="accent">aluminium</em> since 1967.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
+        Banco Aluminium Private Limited is an integrated aluminium extrusion company
+        established in Vadodara, Gujarat, India — still family-owned after 58 years.
+        We own the full value chain from billet casting to finished profile, serving
+        1,100+ customers across four export regions.
+      </p>
+
+      <!-- Key stats -->
+      <div style="display:flex;gap:48px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['58+', 'years', 'Years in extrusion'],
+          ['35,000', 'MT', 'Annual extrusion capacity'],
+          ['55,000', 'MT', 'Annual foundry capacity'],
+          ['1,100+', '', 'Customers worldwide'],
+        ].map(([num, unit, label]) => (
+          <div>
+            <div>
+              <span style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px);color:var(--color-stone-50)">{num}</span>
+              {unit && <span style="font-family:var(--font-display);font-size:18px;color:var(--color-green);margin-left:4px">{unit}</span>}
+            </div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Company description -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start">
+        <div style="position:sticky;top:120px">
+          <div class="eyebrow">Our story</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Integrated.<br/><em class="accent">Independent.</em><br/>Dependable.
+          </h2>
+        </div>
+        <div>
+          <p style="color:var(--color-stone-700);font-size:17px;line-height:1.7;margin-bottom:20px">
+            Banco Aluminium delivers the control of an integrated manufacturer with the
+            flexibility of a customer-focused aluminium solutions partner. In an industry
+            where most suppliers are either pure extruders or pure traders, Banco owns
+            the complete production chain — from melting and billet casting through
+            extrusion, heat treatment, machining, cold drawing, and surface finishing.
+          </p>
+          <p style="color:var(--color-stone-700);font-size:16px;line-height:1.65;margin-bottom:20px">
+            This integration is not just a manufacturing advantage — it is a quality and
+            responsiveness advantage. When a customer requests an alloy modification, a
+            die correction, or a downstream value-add, the answer does not depend on a
+            third party. It happens in-house, on our schedule, under our quality systems.
+          </p>
+          <p style="color:var(--color-stone-700);font-size:16px;line-height:1.65">
+            With five extrusion presses ranging from 1,100 MT to 3,300 MT, 35,000 MT
+            of annual extrusion capacity, and a 55,000 MT foundry, Banco operates at a
+            scale that supports both high-volume OEM supply and specialised low-volume
+            development — making us a credible single source for industrial, architectural,
+            and cast product requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">Heritage</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:48px">
+        58 years of <em class="accent">aluminium</em> experience.
+      </h2>
+      <div style="display:flex;flex-direction:column;gap:0;max-width:800px">
+        {milestones.map((m) => (
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--color-stone-200);align-items:start">
+            <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-green);padding-top:2px">{m.year}</div>
+            <div style="font-family:var(--font-display);font-size:20px;color:var(--color-navy)">{m.event}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Banco -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">Why customers choose Banco</div>
+      <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:48px">
+        Seven reasons.<br/><em class="accent">One partner.</em>
+      </h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-navy-line)">
+        {reasons.map(([heading, desc], i) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-green);margin-bottom:8px">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <div style="font-family:var(--font-display);font-size:20px;color:var(--color-stone-50);margin-bottom:8px">{heading}</div>
+            <div style="font-size:14px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+        <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
+        <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pillars = [
+  {
+    index: '01',
+    name: 'Scrap utilisation',
+    desc: 'Up to 50% pre and post-consumer scrap input — saves up to 95% of the energy required to extract and smelt primary aluminium. Green billet certification available.',
+    stats: [['Up to 50%', 'Recycled scrap input'], ['95%', 'Energy saving vs primary']],
+  },
+  {
+    index: '02',
+    name: 'Energy efficiency',
+    desc: '100% natural gas in melting furnaces, 960 kW captive solar generation, and 1 MW hybrid power consumption — reducing grid dependency and carbon intensity.',
+    stats: [['960 kW', 'Captive solar'], ['1 MW', 'Hybrid power']],
+  },
+  {
+    index: '03',
+    name: 'Waste reduction',
+    desc: 'SCADA-based process monitoring, stage-wise quality control, and MES-ERP integration minimise scrap generation at every step of the manufacturing chain.',
+    stats: [['8 steps', 'Quality gates'], ['SCADA', 'Online monitoring']],
+  },
+  {
+    index: '04',
+    name: 'Certified systems',
+    desc: 'Three ISO management systems covering quality, environment, and occupational health and safety — audited annually by accredited third-party bodies.',
+    stats: [['ISO 14001', 'Environmental'], ['ISO 45001', 'Safety']],
+  },
+];
+---
+
+<Layout
+  title="Sustainability — Banco Aluminium"
+  description="Banco Aluminium CBAM-certified carbon footprint: 0.763 kg CO₂e per kg aluminium. 960 kW solar, 50% recycled scrap, 100% natural gas melting. ISO 14001, 45001, 9001 certified."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div class="eyebrow on-dark">Responsible aluminium</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:20ch">
+        Lower carbon.<br/>
+        <em class="accent">CBAM-ready.</em><br/>
+        Verified.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
+        Banco is committed to responsible aluminium manufacturing through lower-carbon
+        operations, clean energy, recycling, process control, and certified management
+        systems — fully documented for European import compliance under CBAM.
+      </p>
+
+      <!-- Key metric -->
+      <div style="display:flex;align-items:baseline;gap:8px;margin-top:48px">
+        <span style="font-family:var(--font-display);font-size:clamp(48px,6vw,80px);color:var(--color-stone-50);letter-spacing:-0.03em;line-height:1">0.763</span>
+        <span style="font-family:var(--font-display);font-size:28px;color:var(--color-green)">kg CO₂e / kg</span>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-stone-400);margin-top:8px">CBAM Certified Carbon Footprint</div>
+    </div>
+  </section>
+
+  <!-- Four pillars -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">Four pillars</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:60px">
+        Our approach to <em class="accent">responsible</em> aluminium.
+      </h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-stone-200)">
+        {pillars.map((p) => (
+          <div style="background:var(--color-stone-50);padding:40px">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);margin-bottom:12px">{p.index}</div>
+            <h3 class="t-h3" style="color:var(--color-navy);margin-bottom:16px">{p.name}</h3>
+            <p style="color:var(--color-stone-700);line-height:1.65;font-size:15px;margin-bottom:28px">{p.desc}</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-stone-200)">
+              {p.stats.map(([num, label]) => (
+                <div style="background:var(--color-stone-100);padding:16px">
+                  <div style="font-family:var(--font-display);font-size:24px;color:var(--color-navy)">{num}</div>
+                  <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400);margin-top:4px">{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CBAM section -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div>
+          <div class="eyebrow on-dark">European import compliance</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            CBAM <em class="accent">documentation</em> available.
+          </h2>
+          <p style="color:var(--color-stone-400);font-size:16px;line-height:1.65;margin-top:20px">
+            The EU Carbon Border Adjustment Mechanism (CBAM) requires importers to declare
+            the embedded carbon in aluminium products from January 2026. Banco's CBAM-certified
+            footprint of 0.763 kg CO₂e per kilogram is fully documented and available to
+            support compliance for our European customers.
+          </p>
+          <p style="color:var(--color-stone-400);font-size:16px;line-height:1.65;margin-top:16px">
+            Our documentation covers the full production scope: foundry, extrusion, heat
+            treatment, machining and surface finishing — calculated to EN 15804 methodology.
+          </p>
+          <a href="/contact" class="btn btn-secondary-dark" style="margin-top:32px">Request CBAM documentation</a>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--color-navy-line)">
+          {[
+            ['Certified footprint', '0.763 kg CO₂e / kg aluminium'],
+            ['Methodology', 'EN 15804 / GHG Protocol'],
+            ['Scope', 'Cradle to gate — foundry through finishing'],
+            ['Recycled content', 'Up to 50% declared'],
+            ['Verification', 'Third-party audited'],
+            ['Documentation', 'Available on request'],
+          ].map(([label, value]) => (
+            <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--color-navy-line)">
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400)">{label}</div>
+              <div style="font-family:var(--font-display);font-size:16px;color:var(--color-stone-50)">{value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section-alt" style="padding:48px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Certified management systems:</span>
+        {['ISO 9001:2015 — Quality', 'ISO 14001:2015 — Environment', 'ISO 45001:2018 — Safety', 'CBAM Certified'].map((c) => (
+          <span class="pill">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

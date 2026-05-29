@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const applications = [
+  { name: 'Electrical & power transmission', desc: 'Switchgear, busways, busbars, control panel frames, cable management systems.' },
+  { name: 'Automotive & commercial vehicles', desc: 'Structural body profiles, trim sections, heat management, door sills, roof rails.' },
+  { name: 'Machinery & automation', desc: 'Machine frames, linear profiles, conveyor components, structural assemblies.' },
+  { name: 'Heat sinks & heat exchangers', desc: 'Precision fin profiles for thermal management — LEDs, power electronics, HVAC.' },
+  { name: 'Aerospace & defence', desc: 'High-performance sections in 2xxx and 7xxx alloys. Tight tolerances, traceability.' },
+  { name: 'Hydraulics & pneumatics', desc: 'Actuator cylinders, valve housings, manifolds — drawn and extruded.' },
+  { name: 'Railways & shipbuilding', desc: 'IRS Works Approval. Structural and decorative sections for rail and marine.' },
+  { name: 'Solar & alternative energy', desc: 'Module frames, mounting rails, tracker arms, racking systems.' },
+  { name: 'Pumps, motors & general engineering', desc: 'Housings, motor frame sections, pump bodies, general engineering profiles.' },
+  { name: 'Forging & precision machining', desc: 'Machinable sections and preforms in 6xxx and 2xxx alloys.' },
+  { name: 'Material handling & structural', desc: 'Rails, ladders, scaffolding, conveyor frames, structural support hardware.' },
+  { name: 'Marine', desc: 'IRS-approved aluminium profiles for shipbuilding and offshore applications.' },
+];
+
+const capabilities = [
+  { label: 'Drawing-led development', desc: 'Customer drawing → 3D model → Q-Form simulation → die trial → approved sample.' },
+  { label: '5 presses · 1,100–3,300 MT', desc: '35,000 MT annual extrusion capacity. Profile weight 0.29 – 35 kg/m.' },
+  { label: 'In-house die shop', desc: '5-axis CNC, EDM, wire EDM, CMM. Trial and correction in-house.' },
+  { label: 'Full downstream', desc: 'Heat treatment, machining, cold drawing, surface finishing — single source.' },
+  { label: 'Alloy 1xxx–7xxx', desc: 'Including lead-free, high-strength 2xxx/7xxx and automotive 6xxx alloys.' },
+  { label: 'IATF 16949 · ISO 9001 · CE', desc: 'Automotive quality system. SCADA traceability from billet to dispatch.' },
+];
+---
+
+<Layout
+  title="Industrial profiles — Banco Aluminium"
+  description="Application-led aluminium extrusions for OEM repeat production. Drawing-driven, full downstream processing, IATF 16949 certified. Serving electrical, automotive, aerospace, railways, solar and 12 other sectors."
+>
+  <!-- Page hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div class="eyebrow on-dark">Products / Industrial profiles</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
+        Industrial <em class="accent">profiles</em> for demanding OEM applications.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
+        Drawing-driven extrusions for repeat production — from concept drawing through
+        die design, extrusion, heat treatment, machining, and surface finishing, under
+        one roof in Vadodara.
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+        <a href="/capabilities" class="btn btn-secondary-dark">View all capabilities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capability strip -->
+  <section class="section-alt" style="padding:48px 0">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
+        {capabilities.map((c) => (
+          <div style="background:var(--color-stone-50);padding:28px 24px">
+            <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:8px">{c.label}</div>
+            <div style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{c.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application areas -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="max-width:52ch;margin-bottom:60px">
+        <div class="eyebrow">Application areas</div>
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          12 industry sectors.<br/>
+          <em class="accent">One extrusion partner.</em>
+        </h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
+        {applications.map((app, i) => (
+          <div style="background:var(--color-stone-50);padding:28px 24px;border-top:none">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);margin-bottom:10px">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <h3 class="t-h3" style="color:var(--color-navy);font-size:18px;margin-bottom:10px">{app.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{app.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Development workflow -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">Custom profile workflow</div>
+      <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:48px">
+        From drawing to<br/><em class="accent">repeat supply.</em>
+      </h2>
+
+      <div style="display:flex;flex-direction:column;gap:0">
+        {[
+          ['01', 'Customer drawing / sample development', 'Alloy & temper selection. Feasibility review. Tooling cost indication.'],
+          ['02', 'Die design & Q-Form simulation', '3D solid model. Velocity, weld-line, die deflection simulation before cutting steel.'],
+          ['03', 'Die manufacturing', '5-axis CNC, EDM, wire EDM, heat treatment. In-house metrology and CMM.'],
+          ['04', 'Trial, correction & sample approval', 'First-off trial, dimensional check, mechanical property test. Correction cycles in-house.'],
+          ['05', 'Value-added processing', 'Heat treatment, machining, fabrication, cold drawing, surface finishing as required.'],
+          ['06', 'Repeat supply control', 'SCADA process traceability, stage-wise inspection, customer-specific packing, export documentation.'],
+        ].map(([idx, step, desc]) => (
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-navy-line);align-items:start">
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-green);padding-top:3px">{idx}</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--color-stone-50);margin-bottom:6px">{step}</div>
+              <div style="font-size:14px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+        <a href="/capabilities/die-shop" class="btn btn-secondary-dark">Die shop capabilities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section-alt" style="padding:48px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Certifications:</span>
+        {['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:2016', 'CE', 'IRS Works Approval', 'BIS IS 733 · IS 1285 · IS 5082'].map((c) => (
+          <span class="pill">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

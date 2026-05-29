@@ -1,0 +1,182 @@
+---
+const nav = [
+  {
+    label: 'Products',
+    children: [
+      { label: 'Industrial profiles', href: '/products/industrial' },
+      { label: 'Architectural range', href: '/products/architectural' },
+      { label: 'Cast products — billets', href: '/products/cast-products' },
+      { label: 'Standard sections', href: '/products/standard-sections' },
+      { label: 'Custom profiles', href: '/products/custom-profiles' },
+    ],
+  },
+  {
+    label: 'Capabilities',
+    children: [
+      { label: 'Foundry & alloys', href: '/capabilities/foundry' },
+      { label: 'Die shop', href: '/capabilities/die-shop' },
+      { label: 'Extrusion', href: '/capabilities/extrusion' },
+      { label: 'Heat treatment', href: '/capabilities/heat-treatment' },
+      { label: 'Machining & fabrication', href: '/capabilities/machining' },
+      { label: 'Cold drawing', href: '/capabilities/cold-drawing' },
+      { label: 'Surface finishing', href: '/capabilities/surface-finishing' },
+    ],
+  },
+  { label: 'Industries', href: '/industries' },
+  { label: 'Sustainability', href: '/sustainability' },
+  {
+    label: 'About',
+    children: [
+      { label: 'Company', href: '/about' },
+      { label: 'Quality & certifications', href: '/about/quality' },
+      { label: 'Global reach', href: '/about/global-reach' },
+      { label: 'Careers', href: '/about/careers' },
+    ],
+  },
+];
+---
+
+<header class="site-nav" id="site-nav">
+  <!-- Utility bar -->
+  <div class="utility-bar">
+    <div class="container">
+      <div class="utility-bar-inner">
+        <div class="left">
+          <span>Vadodara, Gujarat, India</span>
+          <span style="color:var(--color-navy-line)">|</span>
+          <span>Europe · North America · APAC · Middle East</span>
+        </div>
+        <div class="right">
+          <a href="/downloads">Downloads</a>
+          <a href="/contact">Reach us</a>
+          <span style="color:var(--color-stone-50); font-weight:500">EN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="main-nav-inner">
+        <!-- Logo -->
+        <a href="/" class="nav-logo" aria-label="Banco Aluminium — home">
+          <img
+            src="/banco-logo-light.png"
+            alt="Banco Aluminium"
+            width="160"
+            height="36"
+            loading="eager"
+          />
+        </a>
+
+        <!-- Links -->
+        <ul class="nav-links" role="list">
+          {nav.map((item) => (
+            <li>
+              {item.children ? (
+                <>
+                  <button type="button" aria-haspopup="true" aria-expanded="false">
+                    {item.label}
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                      <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  <div class="nav-dropdown" role="menu">
+                    {item.children.map((child) => (
+                      <a href={child.href} role="menuitem">{child.label}</a>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <a href={item.href}>{item.label}</a>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        <!-- CTA -->
+        <a href="/contact#quote" class="btn btn-primary-dark nav-cta">
+          Request a quote
+        </a>
+
+        <!-- Mobile toggle -->
+        <button
+          class="nav-hamburger"
+          id="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile menu (offcanvas) -->
+<div id="mobile-menu" style="
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:var(--color-navy);
+  z-index:200;
+  display:none;
+  flex-direction:column;
+  overflow-y:auto;
+  padding:24px;
+">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px">
+    <img src="/banco-logo-light.png" alt="Banco Aluminium" height="32" />
+    <button id="mobile-close" style="background:none;border:none;color:var(--color-stone-50);cursor:pointer;font-size:24px;" aria-label="Close menu">✕</button>
+  </div>
+  <nav style="flex:1">
+    {nav.map((item) => (
+      <div style="border-bottom:1px solid var(--color-navy-line);padding:4px 0">
+        {item.children ? (
+          <>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);padding:12px 0 8px">{item.label}</div>
+            {item.children.map((child) => (
+              <a href={child.href} style="display:block;padding:10px 0;font-size:15px;color:var(--color-stone-400)">{child.label}</a>
+            ))}
+          </>
+        ) : (
+          <a href={item.href} style="display:block;padding:16px 0;font-size:16px;color:var(--color-stone-50);font-weight:500">{item.label}</a>
+        )}
+      </div>
+    ))}
+  </nav>
+  <a href="/contact#quote" class="btn btn-primary-dark" style="margin-top:32px;justify-content:center">Request a quote</a>
+</div>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const close  = document.getElementById('mobile-close');
+  const menu   = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    if (!menu) return;
+    menu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    toggle?.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    if (!menu) return;
+    menu.style.display = 'none';
+    document.body.style.overflow = '';
+    toggle?.setAttribute('aria-expanded', 'false');
+  }
+
+  toggle?.addEventListener('click', openMenu);
+  close?.addEventListener('click', closeMenu);
+
+  // Close on nav link click
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Scroll-aware nav background (already dark, just ensure it stays opaque)
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    if (!nav) return;
+    nav.style.boxShadow = window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.35)' : '';
+  }, { passive: true });
+</script>

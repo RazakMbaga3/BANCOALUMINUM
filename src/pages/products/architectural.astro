@@ -1,0 +1,261 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const systems = [
+  {
+    name: 'Window systems',
+    series: ['40mm Series — casement window system', '25mm Euro Series — sliding window system'],
+    desc: 'Precision-engineered casement and sliding window profiles for residential, commercial, and high-rise applications. Thermal performance, slim sightlines, and durable surface finishes.',
+    features: ['Thermally broken profiles', 'Multi-chamber sections', 'Compatible with double and triple glazing', 'Powder coated, anodised or mill finish', 'Tested to EN 12211 wind resistance'],
+  },
+  {
+    name: 'Door profiles',
+    series: ['Single and double leaf door systems', 'Pivot and hinged configurations'],
+    desc: 'Architectural door profiles engineered for precision alignment, durability, and aesthetics in commercial entrance systems, residential folding doors, and partition openings.',
+    features: ['Flush and rebated sightlines', 'Concealed hinge integration', 'Surface finishing to RAL/NCS specification', 'High-traffic tested hardware compatibility', 'Custom glass pocket depths'],
+  },
+  {
+    name: 'Slim partition systems',
+    series: ['Modern partition profiles for interior applications'],
+    desc: 'Minimalist aluminium partition systems for commercial interiors — featuring ultra-slim vertical sections, integrated acoustic performance, and full-height glazing capability.',
+    features: ['Sightlines from 40mm', 'Floor-to-ceiling glazing', 'Acoustic glazed panels', 'Demountable / relocatable', 'Integrated electrical raceway option'],
+  },
+  {
+    name: 'Curtain wall & façade',
+    series: ['Stick curtain wall', 'Unitised façade profiles'],
+    desc: 'High-performance curtain wall and façade profiles for commercial and high-rise buildings. Engineered for structural integrity, weathertightness, thermal efficiency, and long-term durability.',
+    features: ['Pressure-equalised drainage', 'Structural silicone compatible', 'Integrated sun-shading louvre profiles', 'Tested to AAMA 2605 coating specification', 'Custom slab cover and mullion depths'],
+  },
+];
+
+const finishes = [
+  { name: 'Powder coating', desc: 'QUALICOAT-class durable coatings in any RAL or NCS colour. 60–80 μm standard coating.' },
+  { name: 'Anodising', desc: 'Class 20 anodising standard. Natural, champagne, bronze, black. Controlled bath process.' },
+  { name: 'Brushed finish', desc: 'Directional brushed surface for contemporary aesthetic. Interior and exterior.' },
+  { name: 'Sand-blast', desc: 'Uniform matte texture for architectural applications requiring diffused reflection.' },
+  { name: 'Mill finish', desc: 'As-extruded, for downstream fabricators and specialist coating applicators.' },
+];
+
+const architecturalImages = [
+  '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
+  '/assets/architectural/10763b613df21d191d0c3bd40ad9926a.jpg',
+  '/assets/architectural/128b984100c3b740d5f9d382a67b3de3.jpg',
+  '/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg',
+  '/assets/architectural/31fb5ee618906c778bc0ed433a7b5757.jpg',
+  '/assets/architectural/41f468e4f12973012f865d065f5f3b44.jpg',
+  '/assets/architectural/45f8373ce3619411f301b794325c9ca5.jpg',
+  '/assets/architectural/5974d8840b94d09843822186b59c527e.jpg',
+  '/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg',
+  '/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg',
+  '/assets/architectural/89a06dd9b7f65108e3bc376404f17998.jpg',
+  '/assets/architectural/95cdec405d6955cb06255832ff203365.jpg',
+  '/assets/architectural/9908256f57e8df7b37302e330865c1b4.jpg',
+  '/assets/architectural/9a30d7b0cacc131a0e0771ea36141d5b.jpg',
+  '/assets/architectural/f664f77f50d42d2087d86bdaced9f248.jpg',
+];
+---
+
+<Layout
+  title="Architectural aluminium systems — Banco Aluminium"
+  description="Precision-engineered aluminium systems for modern architecture — windows, doors, slim partitions, curtain wall and façade profiles. 40mm casement series, 25mm Euro sliding. Anodised, powder-coated and mill finishes."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:0;overflow:hidden">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end">
+        <div style="padding-bottom:80px">
+          <div class="eyebrow on-dark">Products / Architectural range</div>
+          <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px">
+            Aluminium <em class="accent">systems</em> for modern architecture.
+          </h1>
+          <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:52ch">
+            Precision-engineered window systems, door profiles, slim partitions, and curtain
+            wall solutions — combining advanced profile manufacturing, refined aesthetics,
+            and long-term durability for residential, commercial, and high-rise developments.
+          </p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+            <a href="/contact#quote" class="btn btn-primary-dark">Specify a system</a>
+            <a href="/downloads" class="btn btn-secondary-dark">Download technical data</a>
+          </div>
+        </div>
+
+        <!-- Façade line drawing -->
+        <div aria-hidden="true" style="display:flex;align-items:flex-end;justify-content:center">
+          <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;opacity:0.85">
+            <defs>
+              <pattern id="archgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M20 0L0 0 0 20" fill="none" stroke="#243F60" stroke-width="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="500" fill="url(#archgrid)" opacity="0.4"/>
+
+            <!-- Building façade outline -->
+            <rect x="40" y="40" width="320" height="420" stroke="#9CA3AE" stroke-width="1" fill="none"/>
+
+            <!-- Horizontal floor lines -->
+            <line x1="40" y1="145" x2="360" y2="145" stroke="#243F60" stroke-width="0.75"/>
+            <line x1="40" y1="250" x2="360" y2="250" stroke="#243F60" stroke-width="0.75"/>
+            <line x1="40" y1="355" x2="360" y2="355" stroke="#243F60" stroke-width="0.75"/>
+
+            <!-- Vertical mullions -->
+            <line x1="145" y1="40" x2="145" y2="460" stroke="#9CA3AE" stroke-width="1"/>
+            <line x1="255" y1="40" x2="255" y2="460" stroke="#9CA3AE" stroke-width="1"/>
+
+            <!-- Glazing panels (dark) -->
+            {[40, 145, 250, 355].map((y, yi) => (
+              [[40, 145], [145, 255], [255, 360]].map((x, xi) => (
+                `<rect x="${x[0] + 2}" y="${y + 2}" width="${x[1] - x[0] - 4}" height="101" fill="#061525" fill-opacity="0.7" stroke="#1A3454" stroke-width="0.5"/>`
+              )).join('')
+            )).join('')}
+
+            <!-- Mullion details (green highlight) -->
+            <rect x="143" y="40" width="4" height="420" fill="#009746" fill-opacity="0.4"/>
+            <rect x="253" y="40" width="4" height="420" fill="#009746" fill-opacity="0.4"/>
+
+            <!-- Dimension annotations -->
+            <line x1="40" y1="480" x2="360" y2="480" stroke="#009746" stroke-width="0.6"/>
+            <line x1="40" y1="475" x2="40" y2="485" stroke="#009746" stroke-width="0.6"/>
+            <line x1="360" y1="475" x2="360" y2="485" stroke="#009746" stroke-width="0.6"/>
+            <text x="200" y="496" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#009746" letter-spacing="0.1em">MODULE WIDTH 3600 MM</text>
+
+            <text x="200" y="28" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A5260" letter-spacing="0.14em">CURTAIN WALL FAÇADE — ELEVATION</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architectural showcase gallery -->
+  <section class="section-light" style="padding:60px 0">
+    <div class="container">
+      <div class="eyebrow">Visual showcase</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:48px">
+        Modern <em class="accent">architecture</em> in practice.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+        {architecturalImages.map((img, i) => (
+          <div style="position:relative;width:100%;padding-top:100%;overflow:hidden;background:var(--color-stone-200);border:1px solid var(--color-stone-200)">
+            <img 
+              src={img}
+              alt={`Banco architectural system application ${i + 1}`}
+              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:48px;text-align:center">
+        <p class="t-body" style="color:var(--color-stone-700);max-width:60ch;margin:0 auto;margin-bottom:24px">
+          From residential casement windows to commercial façade systems, Banco's architectural
+          profiles deliver precision engineering and contemporary aesthetics across diverse
+          architectural typologies.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">System families</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:60px">
+        Four <em class="accent">architectural</em> product families.
+      </h2>
+
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--color-stone-200)">
+        {systems.map((sys, i) => (
+          <div style="background:var(--color-stone-50);display:grid;grid-template-columns:1fr 1.4fr;gap:60px;padding:40px">
+            <div>
+              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);margin-bottom:12px">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 class="t-h3" style="color:var(--color-navy)">{sys.name}</h3>
+              <div style="margin-top:12px;display:flex;flex-direction:column;gap:4px">
+                {sys.series.map((s) => (
+                  <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400)">{s}</div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p style="color:var(--color-stone-700);line-height:1.65;font-size:15px;margin-bottom:20px">{sys.desc}</p>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:0">
+                {sys.features.map((f) => (
+                  <li style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-stone-700);padding:8px 0;border-top:1px solid var(--color-stone-200);display:flex;align-items:center;gap:10px">
+                    <span style="width:4px;height:4px;background:var(--color-green);border-radius:50%;flex-shrink:0;display:inline-block"></span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Surface finishes -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">Surface finishing</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:48px">
+        Five finish <em class="accent">options.</em>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--color-stone-200)">
+        {finishes.map((f) => (
+          <div style="background:var(--color-stone-50);padding:28px 20px">
+            <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-navy);margin-bottom:10px">{f.name}</div>
+            <p style="font-size:13px;color:var(--color-stone-700);line-height:1.6">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div>
+          <div class="eyebrow on-dark">In-house platform</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            End-to-end <em class="accent">control.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:20px;font-size:16px;line-height:1.65;max-width:44ch">
+            Every architectural profile starts in our in-house foundry with custom alloy
+            development, moves through precision die design with Q-Form simulation, and is
+            extruded on one of five direct presses — then heat-treated, finished, and
+            quality-verified under one roof.
+          </p>
+          <div style="margin-top:40px;display:flex;gap:16px;flex-wrap:wrap">
+            <a href="/contact#quote" class="btn btn-primary-dark">Specify a system</a>
+            <a href="/capabilities" class="btn btn-secondary-dark">All capabilities</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          {[
+            ['In-house billet casting', 'Alloy 6063, 6060, 6005 — controlled chemistry for architectural surface quality.'],
+            ['Precision die design', 'Q-Form simulation, full-stack 3D assembly model, 5-axis CNC machining.'],
+            ['Advanced profile manufacturing', '5 presses · 0.29–35 kg/m · 35,000 MT/yr.'],
+            ['Anodising & powder coating', 'Class 20 anodising. QUALICOAT powder coating. Full RAL/NCS colour range.'],
+            ['Quality control & testing', 'Dimensional inspection, mechanical property testing, ASCONA optical systems.'],
+          ].map(([cap, desc]) => (
+            <div style="padding:20px 0;border-bottom:1px solid var(--color-navy-line);display:grid;grid-template-columns:1fr;gap:4px">
+              <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green)">{cap}</div>
+              <div style="font-size:13px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section-alt" style="padding:40px 0">
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Certifications:</span>
+        {['ISO 9001:2015', 'ISO 14001:2015', 'CE', 'CBAM Certified'].map((c) => (
+          <span class="pill">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

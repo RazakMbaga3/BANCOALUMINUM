@@ -12,6 +12,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.3.7"
+    "@astrojs/react": "^5.0.5",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
+    "framer-motion": "^12.40.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
   }
 }

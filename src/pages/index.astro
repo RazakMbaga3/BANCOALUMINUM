@@ -1,17 +1,25 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
+import CertTicker from '../components/sections/CertTicker.astro';
+import Intro from '../components/sections/Intro.astro';
+import ProductPillars from '../components/sections/ProductPillars.astro';
+import Process from '../components/sections/Process.astro';
+import Industries from '../components/sections/Industries.astro';
+import Sustainability from '../components/sections/Sustainability.astro';
+import CtaStrip from '../components/sections/CtaStrip.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Banco Aluminium — Integrated Aluminium Extrusion Since 1967"
+  description="Banco Aluminium Private Limited — integrated aluminium extrusion company. 35,000 MT capacity, full value chain from billet to finished profile. Industrial profiles, architectural systems, cast products. ISO 9001 · IATF 16949 · CE · CBAM certified. Exports to Europe, North America, APAC & Middle East."
+>
+  <Hero />
+  <CertTicker />
+  <Intro />
+  <ProductPillars />
+  <Process />
+  <Industries />
+  <Sustainability />
+  <CtaStrip />
+</Layout>

@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const industries = [
+  { index: '01', name: 'Electrical & power transmission', href: '/industries/electrical', desc: 'Switchgear, busways, busbars, control panel profiles, cable management systems.' },
+  { index: '02', name: 'Automotive & commercial vehicles', href: '/industries/automotive', desc: 'Structural body, trim, thermal management, door sills, roof rails — IATF 16949.' },
+  { index: '03', name: 'Machinery & automation', href: '/industries/machinery', desc: 'Machine frames, linear profiles, T-slot structures, conveyor systems.' },
+  { index: '04', name: 'Heat sinks & heat exchangers', href: '/industries/heat-management', desc: 'Precision fin profiles for LEDs, power electronics, EV battery management, HVAC.' },
+  { index: '05', name: 'Aerospace & defence', href: '/industries/aerospace', desc: 'High-performance 2xxx and 7xxx alloy sections. Tight tolerances and full traceability.' },
+  { index: '06', name: 'Hydraulics & pneumatics', href: '/industries/hydraulics', desc: 'Actuator cylinders, valve housings, manifold profiles — extruded and cold-drawn.' },
+  { index: '07', name: 'Railways & shipbuilding', href: '/industries/railways', desc: 'IRS Works Approval. Structural and decorative sections for rail coaches and marine.' },
+  { index: '08', name: 'Solar & alternative energy', href: '/industries/solar', desc: 'Module frames, mounting rails, tracker arms, racking and ballast systems.' },
+  { index: '09', name: 'Architecture & construction', href: '/products/architectural', desc: 'Window systems, door profiles, slim partitions, curtain wall and façade profiles.' },
+  { index: '10', name: 'Material handling & structural', href: '/industries/material-handling', desc: 'Rails, ladders, scaffolding components, conveyor frames, structural supports.' },
+  { index: '11', name: 'Pumps, motors & general engineering', href: '/industries/pumps-motors', desc: 'Motor frame sections, pump housings, general engineering profiles in 6xxx alloys.' },
+  { index: '12', name: 'Forging & precision machining', href: '/industries/forging', desc: 'Machinable sections and preforms in 6xxx and 2xxx alloys for downstream machining.' },
+];
+---
+
+<Layout
+  title="Industries served — Banco Aluminium"
+  description="Banco Aluminium serves 12 industry sectors — electrical, automotive, aerospace, railways, solar, architecture, heat management, hydraulics, material handling and more. IATF 16949, IRS Works Approval, ISO 9001."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
+    <div class="container">
+      <div class="eyebrow on-dark">Market coverage</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px">
+        12 industries.<br/><em class="accent">One source.</em>
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
+        From electrical switchgear profiles to architectural curtain wall systems — Banco's
+        integrated manufacturing platform serves diverse and demanding sectors with
+        application-led extrusions and certified quality.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mosaic -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
+        {industries.map((ind) => (
+          <a href={ind.href} style="background:var(--color-stone-50);padding:36px 28px;display:flex;flex-direction:column;gap:12px;text-decoration:none;transition:background 0.2s;border:none">
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green)">{ind.index}</div>
+            <h2 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-navy);line-height:1.2">{ind.name}</h2>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{ind.desc}</p>
+            <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--color-navy);margin-top:auto;padding-top:16px;border-top:1px solid var(--color-stone-200)">
+              Explore
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-stone-50)">
+            Don't see your <em class="accent">sector?</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px">
+            We work across many more applications. Send us your drawing or specification.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+      </div>
+    </div>
+  </section>
+</Layout>

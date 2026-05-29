@@ -1,0 +1,186 @@
+---
+---
+<section class="hero-section hero-video-hero" aria-label="Hero">
+
+  <!-- ── Video background ── -->
+  <div class="hvid-wrap" aria-hidden="true">
+    <video
+      class="hvid-el"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="/assets/Innovation_video_-_no_soundtrack_no_logo_j9ieao.mp4" type="video/mp4" />
+    </video>
+    <!-- Layer 1: uniform dark scrim for base legibility -->
+    <div class="hvid-scrim"></div>
+    <!-- Layer 2: directional vignette — heavier on left where copy lives -->
+    <div class="hvid-vignette"></div>
+    <!-- Layer 3: bottom fade into next section -->
+    <div class="hvid-bottom-fade"></div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="container hvid-content">
+    <div class="hvid-copy">
+
+      <div class="eyebrow" style="color:var(--color-stone-400)">
+        Established 1967 · Vadodara, Gujarat
+      </div>
+
+      <h1 class="t-h1 hero-h1">
+        Engineering <em class="accent">aluminium</em><br/>
+        with precision, at scale.
+      </h1>
+
+      <p class="t-lead hero-lede">
+        Integrated aluminium extrusion — from billet casting through extrusion,
+        die-making, heat treatment, machining and surface finishing, under one roof.
+        Serving 1,100+ customers across 4 continents.
+      </p>
+
+      <!-- Three key stats -->
+      <div class="hero-stats hvid-stats">
+        <div class="hero-stat">
+          <div class="hs-number">58<em>+</em></div>
+          <div class="hs-label">Years in extrusion</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-number">35,000<em> MT</em></div>
+          <div class="hs-label">Annual capacity</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hs-number">1,100<em>+</em></div>
+          <div class="hs-label">Customers worldwide</div>
+        </div>
+      </div>
+
+      <!-- Segment CTAs -->
+      <div class="hero-actions">
+        <a href="/products/industrial" class="btn btn-primary-dark">Explore industrial profiles</a>
+        <a href="/products/architectural" class="btn btn-secondary-dark">Architectural systems</a>
+        <a href="/products/cast-products" class="btn btn-secondary-dark">Cast products</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="hvid-scroll-cue" aria-hidden="true">
+    <span class="hvid-scroll-line"></span>
+  </div>
+
+</section>
+
+<style>
+  /* ── Video wrapper fills section ── */
+  .hvid-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .hvid-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* ── Overlays ── */
+  .hvid-scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 21, 37, 0.60); /* navy-deep at 60% — base legibility */
+  }
+  .hvid-vignette {
+    position: absolute;
+    inset: 0;
+    /* Left reads copy (heavier), right shows video (lighter) */
+    background: linear-gradient(
+      100deg,
+      rgba(6, 21, 37, 0.55) 0%,
+      rgba(6, 21, 37, 0.30) 50%,
+      rgba(6, 21, 37, 0.05) 100%
+    );
+  }
+  .hvid-bottom-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--color-navy));
+    pointer-events: none;
+  }
+
+  /* ── Content positioning ── */
+  .hvid-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 100px;
+  }
+  .hvid-copy {
+    max-width: 720px;
+  }
+
+  /* Override stats border for video context */
+  .hvid-stats {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  /* ── Scroll cue ── */
+  .hvid-scroll-cue {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hvid-scroll-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--color-green), transparent);
+    animation: scroll-cue-drop 1.8s ease-in-out infinite;
+  }
+  @keyframes scroll-cue-drop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    51%  { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ── Accessibility: respect reduced-motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .hvid-el { animation: none; }
+    .hvid-scroll-line { animation: none; opacity: 0.4; }
+  }
+
+  /* ── Mobile: hide video on narrow screens, fall back to navy ── */
+  @media (max-width: 640px) {
+    .hvid-el { display: none; }
+    .hvid-vignette { display: none; }
+    .hvid-bottom-fade { display: none; }
+    .hvid-scroll-cue { display: none; }
+  }
+</style>
+
+<script>
+  /* Pause video when tab is hidden — saves battery / bandwidth */
+  const vid = document.querySelector('.hvid-el') as HTMLVideoElement | null;
+  if (vid) {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) vid.pause();
+      else vid.play().catch(() => {});
+    });
+  }
+</script>

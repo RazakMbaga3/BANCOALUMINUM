@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'Coach structural sections', desc: 'Underframe, side wall, and roof structural extrusions for Indian Railway coach bodywork — certified to IRS Works Order specifications and IS 733.' },
+  { name: 'Floor panel extrusions', desc: 'Wide hollow floor panel profiles in 6082 for passenger coach and wagon flooring — anti-slip surface textures available, weld-compatible cross-sections.' },
+  { name: 'Grab rail profiles', desc: 'Round, oval, and shaped grab rail extrusions for passenger coach interiors and platform equipment — anodised or powder coated to IRS colour standards.' },
+  { name: 'Door frame sections', desc: 'Extruded door frame, sill, and surround profiles for sliding and hinged coach doors — integral weatherstrip grooves and tight corner radii for direct gasket fitment.' },
+  { name: 'Partition panel extrusions', desc: 'Hollow and ribbed partition wall panel profiles for coach interior dividers, toilet modules, and crew compartment separation — lightweight and fire-compliant.' },
+  { name: 'Marine structural profiles', desc: 'Weldable 5083 structural sections for ship superstructure, bulkhead framing, and deck structures — marine-grade corrosion resistance in salt water environments.' },
+];
+
+const alloys = [
+  { name: '6082', temper: 'T6', why: 'Primary rail structural alloy — high strength-to-weight ratio for coach underframes, roof sections, and side wall extrusions. Certified to IS 733 and IRS specifications.' },
+  { name: '5083', temper: 'H111', why: 'Marine-grade weldable alloy with exceptional saltwater corrosion resistance. Used for shipbuilding structural sections, weld-assembled hull components, and offshore structures.' },
+  { name: '6063', temper: 'T6', why: 'Interior trim and decorative profile alloy for grab rails, partition trims, and passenger-facing extrusions — anodises and powder coats to excellent quality.' },
+];
+---
+
+<Layout
+  title="Railways & shipbuilding — Banco Aluminium"
+  description="IRS Works Approval holder. Structural sections, interior panelling, floor profiles, and grab rail extrusions for Indian Railway rolling stock — plus marine-grade sections for shipbuilding."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Railways</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
+        Railways &amp; shipbuilding profiles.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        IRS Works Approval holder. Structural sections, interior panelling, floor profiles, and grab rail extrusions for Indian Railway rolling stock — plus marine-grade sections for shipbuilding.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['IRS Works Approval', 'Indian Railways certified'],
+          ['Marine grade available', '5083 H111 in stock'],
+          ['6082 · 5083 alloys', 'Structural & marine grades'],
+          ['IS 733 certified', 'Bureau of Indian Standards'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(13px,1.7vw,20px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            IRS approved and <em class="accent">IS certified supply.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Banco holds IRS Works Approval for the manufacture and supply of aluminium extrusion
+            profiles to Indian Railways, covering structural coach sections, interior profiles,
+            and floor panel extrusions. Our profiles comply with IS 733 and IS 1285 — the Bureau
+            of Indian Standards specifications for wrought aluminium alloy extrusions.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            For shipbuilding applications, we supply 5083-H111 structural extrusions with
+            full weldability qualification. Marine-grade profiles are supplied with full
+            chemical and mechanical test certificates, and our foundry can cast custom 5083
+            billet compositions to specific marine specification requirements.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['Indian Railways', 'Metro rail', 'Light rail', 'Freight wagons', 'Shipbuilding', 'Offshore structures', 'Marine equipment'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Melting%203.JPG"
+            alt="Aluminium melting furnace at Banco Aluminium"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              In-house melt shop — IRS and marine-grade billet produced under controlled conditions
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for rail and marine.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for rail and marine applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Works approvals for <em class="accent">regulated sectors.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            IRS Works Approval requires Banco to maintain documented quality systems, traceable
+            material supply chains, and in-process inspection records for all IRS-destined profiles.
+            IS 733 and IS 1285 compliance is verified by BIS-licensed testing. CE marking covers
+            structural profiles exported to European markets.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['IRS Works Approval', 'Indian Railways certification'],
+            ['IS 733 / IS 1285', 'Bureau of Indian Standards'],
+            ['ISO 9001:2015', 'Quality management system'],
+            ['CE marked', 'EN 15088 structural profiles'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Share your rail or marine profile drawings and we'll confirm IRS approval scope, IS certification, and lead time.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

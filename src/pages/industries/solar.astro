@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'Solar module frame profiles', desc: 'Four-sided module frame extrusions in 6063-T5 for standard 60, 72, and 144-cell panels — anodised Class 20 for 25-year outdoor durability without maintenance.' },
+  { name: 'Ground mount racking sections', desc: 'Purlin, torque tube, and cross-member extrusions for fixed-tilt ground mount solar arrays — designed for direct in-ground post driving or ballasted base systems.' },
+  { name: 'Roof mount rail profiles', desc: 'Roof rail and clamp extrusions for residential and commercial rooftop installations — pre-drilled slot patterns for rapid installer assembly without custom tooling.' },
+  { name: 'Single-axis tracker arms', desc: 'Tracker arm and drive shaft extrusions in 6082-T6 for horizontal single-axis tracker (HSAT) systems — high stiffness-to-weight ratio minimises tracker drive torque requirements.' },
+  { name: 'Junction box extrusions', desc: 'IP67-rated junction box housing extrusions for photovoltaic string combiner and DC distribution boxes — heat dissipation fins integrated into the extrusion cross-section.' },
+  { name: 'Ballast tray sections', desc: 'Wide flat-bottom tray extrusions for ballasted flat-roof solar installations — perforated to reduce wind uplift and minimise tray weight for structural loading calculations.' },
+];
+
+const alloys = [
+  { name: '6063', temper: 'T5', why: 'Standard solar frame and racking alloy — excellent extrudability allows complex multi-chamber cross-sections, and the alloy anodises to consistent Class 20 oxide thickness for 25-year corrosion protection.' },
+  { name: '6082', temper: 'T6', why: 'Higher-strength alloy for tracker arms, structural ground mount purlins, and large-span racking members where deflection under wind and snow load must be minimised.' },
+  { name: '6061', temper: 'T6', why: 'Engineering alloy for precision tracker components — drive arm brackets, bearing housings, and rotation stop extrusions that require close dimensional tolerances after machining.' },
+];
+---
+
+<Layout
+  title="Solar & alternative energy — Banco Aluminium"
+  description="Module frames, mounting rails, tracker arms, junction box housings, and racking systems — anodised or powder coated for 25-year outdoor durability. 0.480 kgCO₂e/kg carbon-verified supply."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Solar</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
+        Solar &amp; alternative energy profiles.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        Module frames, mounting rails, tracker arms, junction box housings, and racking systems — anodised or powder coated for 25-year outdoor durability. 0.480 kgCO₂e/kg carbon-verified supply.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['0.480 kgCO₂e/kg', 'Carbon-verified supply'],
+          ['6063 · 6082 alloys', 'Frame & structural grades'],
+          ['Class 20 anodising', '25-year outdoor durability'],
+          ['35,000 MT', 'Annual capacity'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(13px,1.7vw,20px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Low-carbon aluminium for <em class="accent">clean energy.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Solar energy developers and EPC contractors increasingly require documented carbon
+            footprint data from materials suppliers as part of project sustainability commitments
+            and CBAM compliance. Banco's ISO 14064-1 verified specific emissions of 0.480
+            kgCO₂e/kg of aluminium — powered by 960 kW of on-site solar — position us as a
+            preferred low-carbon supply partner for utility-scale and commercial solar projects.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            Our solar profile range covers the complete BOM — from module frame to tracker arm
+            to junction box housing — with consistent alloy quality and surface treatment in a
+            single supply relationship. Class 20 anodising with sealed oxide layer is verified
+            to QUALICOAT and Qualanod standards for outdoor service life.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['Utility-scale solar', 'Commercial rooftop', 'Residential PV', 'Single-axis trackers', 'Dual-axis trackers', 'Floating solar', 'Agrivoltaics'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Labeling.png"
+            alt="Labeling and quality control at Banco Aluminium"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              Every shipment labelled with heat number and carbon certificate reference
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for solar and energy.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for solar applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Carbon-verified and <em class="accent">sustainability certified.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Banco holds ISO 14064-1 verification for greenhouse gas emissions, providing solar
+            EPCs and developers with certified carbon data for project documentation, CBAM
+            pre-compliance, and ESG reporting. ISO 14001 environmental management certification
+            covers our entire manufacturing operation.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['ISO 9001:2015', 'Quality management system'],
+            ['ISO 14001:2015', 'Environmental management'],
+            ['ISO 14064-1', 'GHG emissions verification'],
+            ['CE marked', 'EN 15088 structural profiles'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Share your module frame or racking cross-sections and we'll provide carbon certificate, volume pricing, and anodising specification.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

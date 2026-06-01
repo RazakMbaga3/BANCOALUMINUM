@@ -115,8 +115,9 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
-/* Green accent — weight only, no italic per Heritage rules */
+/* Green accent — no italic per Heritage rules */
 em.accent {
+  font-style: normal;
   font-weight: 300;
   color: var(--color-green);
 }

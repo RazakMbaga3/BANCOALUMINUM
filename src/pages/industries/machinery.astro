@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'T-slot machine frame profiles', desc: 'Standard 20, 30, 40, 45, and 80 series T-slot profiles compatible with off-the-shelf T-nut hardware — for modular machine frame and jig construction.' },
+  { name: 'Linear guide rails', desc: 'Precision linear rail extrusions with ground or milled bearing surfaces — used in CNC machines, pick-and-place systems, and gantry structures.' },
+  { name: 'Conveyor frame sections', desc: 'Side frame, cross-brace, and roller bed extrusions for belt and roller conveyor systems in food, pharmaceutical, and industrial processing.' },
+  { name: 'Automation housing profiles', desc: 'Panel housing, control enclosure, and cable duct extrusions for robotic cells and PLC cabinet integration.' },
+  { name: 'Motor mount extrusions', desc: 'Servo and stepper motor mounting profiles with integral cooling fins and pre-drilled attachment geometry for rapid machine assembly.' },
+  { name: 'Enclosure panels', desc: 'Flat and ribbed panel extrusions with tongue-and-groove edges for fast, screw-less machine guard and safety enclosure assembly.' },
+];
+
+const alloys = [
+  { name: '6063', temper: 'T6', why: 'Smooth surface quality, consistent dimensional tolerance, and excellent machinability — the standard alloy for T-slot profiles and enclosure sections.' },
+  { name: '6082', temper: 'T6', why: 'Higher structural strength for load-bearing machine frames, gantry beams, and conveyor side frames where deflection under load must be minimised.' },
+  { name: '6061', temper: 'T6', why: 'Engineering alloy for precision-machined motor mounts, guide rail carriages, and components requiring close bore and thread tolerances.' },
+];
+---
+
+<Layout
+  title="Machinery & automation — Banco Aluminium"
+  description="Machine frames, linear guides, T-slot profiles, conveyor sections, and automation housings — lightweight, dimensionally precise, compatible with standard T-nut hardware."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Machinery</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
+        Machinery &amp; automation profiles.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        Machine frames, linear guides, T-slot profiles, conveyor sections, and automation housings — lightweight, dimensionally precise, and compatible with standard T-nut hardware.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['T-slot compatible', '20 · 30 · 40 · 45 · 80 series'],
+          ['6063 · 6082', 'Primary alloys'],
+          ['0.29–35 kg/m', 'Weight range'],
+          ['35,000 MT', 'Annual capacity'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(14px,1.8vw,22px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Precision profiles for <em class="accent">machine builders.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Banco's machinery and automation profile range spans from lightweight T-slot frames
+            for modular jig construction through to heavy structural extrusions for industrial
+            conveyor systems and automated manufacturing cells. Our die shop designs and
+            manufactures tooling in-house, enabling custom cross-sections to be developed
+            quickly for OEM machine builders.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            Dimensional consistency is particularly important in machine-build applications —
+            our presses maintain cross-section tolerances to EN 755-9 class A, and profiles
+            destined for precision linear guide applications receive additional straightness
+            correction and surface inspection before despatch.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['CNC machine frames', 'Robotics', 'Conveyor systems', 'Assembly automation', 'Packaging machinery', 'Food processing equipment', 'Pharmaceutical equipment'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Homo%203.JPG"
+            alt="Aluminium billet homogenisation at Banco Aluminium"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              Homogenisation furnace — consistent billet structure for precise extrusion
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for machinery and automation.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for machinery applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Quality systems that <em class="accent">machine builders trust.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Every profile is measured against drawing at our in-house metrology lab before
+            release. We can provide EN 755-9 dimensional compliance certificates, material
+            test certificates, and hardness reports on request. SCADA-monitored extrusion
+            parameters ensure process consistency across production runs.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['ISO 9001:2015', 'Quality management system'],
+            ['CE marked', 'EN 15088 structural'],
+            ['EN 755-9', 'Dimensional tolerance class'],
+            ['SCADA traceability', 'Full production logging'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Send your T-slot or custom frame cross-section and we'll quote tooling, lead time, and price per metre.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

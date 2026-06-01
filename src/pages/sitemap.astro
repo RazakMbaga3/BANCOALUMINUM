@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: 'Products & solutions',
+    links: [
+      { label: 'Industrial & OEM profiles',    href: '/products/industrial' },
+      { label: 'Architectural systems',         href: '/products/architectural' },
+      { label: 'Extrusion billets',             href: '/products/cast-products' },
+      { label: 'Standard sections',             href: '/products/standard-sections' },
+    ],
+  },
+  {
+    title: 'Industries',
+    links: [
+      { label: 'Electrical & power transmission', href: '/industries/electrical' },
+      { label: 'Automotive & commercial vehicles', href: '/industries/automotive' },
+      { label: 'Machinery & automation',           href: '/industries/machinery' },
+      { label: 'Heat sinks & heat exchangers',     href: '/industries/heat-management' },
+      { label: 'Aerospace & defence',              href: '/industries/aerospace' },
+      { label: 'Hydraulics & pneumatics',          href: '/industries/hydraulics' },
+      { label: 'Railways & shipbuilding',          href: '/industries/railways' },
+      { label: 'Solar & alternative energy',       href: '/industries/solar' },
+      { label: 'Material handling & structural',   href: '/industries/material-handling' },
+      { label: 'Pumps, motors & engineering',      href: '/industries/pumps-motors' },
+      { label: 'Forging & precision machining',    href: '/industries/forging' },
+      { label: 'Building & construction',          href: '/industries/building' },
+    ],
+  },
+  {
+    title: 'Capabilities',
+    links: [
+      { label: 'Alloys & foundry',    href: '/capabilities/foundry' },
+      { label: 'Die shop',            href: '/capabilities/die-shop' },
+      { label: 'Extrusion',          href: '/capabilities/extrusion' },
+      { label: 'Heat treatment',     href: '/capabilities/heat-treatment' },
+      { label: 'Fabrication',        href: '/capabilities/machining' },
+      { label: 'Cold drawing',       href: '/capabilities/cold-drawing' },
+      { label: 'Surface finishing',  href: '/capabilities/surface-finishing' },
+      { label: 'Packing options',    href: '/capabilities/packing' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Banco',              href: '/about' },
+      { label: 'Quality & certifications', href: '/about/quality' },
+      { label: 'Global reach',             href: '/about/global-reach' },
+      { label: 'Sustainability',           href: '/sustainability' },
+      { label: 'Careers',                  href: '/about/careers' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Downloads & catalogues',       href: '/downloads' },
+      { label: 'Industrial catalogue',          href: '/catalog/industrial' },
+      { label: 'Architectural catalogue',       href: '/catalog/architectural' },
+      { label: 'Cast products catalogue',       href: '/catalog/cast-products' },
+      { label: 'Contact & quote request',       href: '/contact' },
+      { label: 'Privacy policy',               href: '/privacy' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Sitemap — Banco Aluminium"
+  description="All pages on bancoaluminium.com — products, capabilities, industries, company information, and resources."
+>
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:72px">
+    <div class="container">
+      <div class="eyebrow on-dark">Navigation</div>
+      <h1 class="t-h1" style="color:var(--color-platinum);margin-top:20px">Sitemap.</h1>
+      <p class="t-lead" style="color:var(--color-silver);margin-top:16px;max-width:50ch">
+        All pages on bancoaluminium.com.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="sm-grid">
+        {sections.map((sec) => (
+          <div class="sm-section">
+            <div class="sm-title">{sec.title}</div>
+            <ul class="sm-list">
+              {sec.links.map((l) => (
+                <li><a href={l.href}>{l.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(32px, 4vw, 64px);
+  }
+  .sm-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-stone-200);
+  }
+  .sm-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sm-list a {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-stone-700);
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--color-stone-100);
+    transition: color 0.15s, padding-left 0.15s;
+  }
+  .sm-list a:hover { color: var(--color-navy); padding-left: 8px; }
+  @media (max-width: 900px) { .sm-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .sm-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'Busbar profiles', desc: 'Flat, hollow, and shaped busbars for LV/MV switchgear assemblies — supplied to tight dimensional tolerances in 6101 and 1100 alloys.' },
+  { name: 'Cable tray sections', desc: 'Perforated and solid-bottom cable tray extrusions for industrial cable management systems.' },
+  { name: 'Switchgear housing profiles', desc: 'Panel enclosure extrusions, door frame sections, and base channel profiles for switchgear cabinets.' },
+  { name: 'Transformer spacer profiles', desc: 'Precision spacer and winding support sections for dry-type and oil-cooled transformer assemblies.' },
+  { name: 'Control panel extrusions', desc: 'Mounting rail, DIN rail carrier, and panel frame sections for control and automation cabinet construction.' },
+  { name: 'Cable management channels', desc: 'Open-slot and closed cable ducting profiles for overhead and floor-level electrical distribution runs.' },
+];
+
+const alloys = [
+  { name: '6101', temper: 'T6 / T61', why: 'High electrical conductivity (≥52.5% IACS) with sufficient mechanical strength — the primary alloy for busbar and T&D conductors to IEC 60889.' },
+  { name: '6063', temper: 'T5 / T6', why: 'General-purpose architectural-grade alloy for housings, frames, and secondary structural components where conductivity is not the primary requirement.' },
+  { name: '1100', temper: 'O / H14', why: 'Near-pure aluminium for applications demanding maximum conductivity. Used for transformer windings and specialist conductor profiles.' },
+];
+---
+
+<Layout
+  title="Electrical & power transmission — Banco Aluminium"
+  description="Busbars, cable management, switchgear housings, transformer sections, and T&D profiles in 6101 and 6063 alloys. CE certified, ISO 9001:2015, 35,000 MT annual capacity."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Electrical</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:20ch">
+        Electrical &amp; power transmission profiles.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        Busbars, cable management, switchgear housings, transformer sections, and T&amp;D profiles — in high-conductivity 6101 and 6063 alloys, manufactured to EN and IEC standards.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['6101 alloy', 'Electrical conductor grade'],
+          ['CE certified', 'EN 15088 compliant'],
+          ['ISO 9001:2015', 'Quality management'],
+          ['35,000 MT', 'Annual capacity'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(18px,2vw,26px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Profiles engineered for <em class="accent">power distribution.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Banco supplies a comprehensive range of extruded aluminium profiles to the electrical
+            and power transmission sector. Our 6101-T6 busbars are manufactured to IEC 60889 and
+            EN 12020 standards, with conductivity verified by in-house spectrometric analysis
+            on every cast.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            Whether your application is low-voltage switchgear, medium-voltage T&amp;D, transformer
+            construction, or industrial cable management, our dedicated electrical profiles team
+            can assist with alloy selection, temper optimisation, and surface finish specification.
+          </p>
+
+          <!-- Application chips -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['LV Switchgear', 'MV Switchgear', 'T&D infrastructure', 'Transformer construction', 'Industrial cable management', 'Control panel assembly', 'Substation equipment'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Casting%204.JPG"
+            alt="Aluminium casting at Banco Aluminium foundry"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              In-house foundry — billet to busbar under one roof
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for the electrical sector.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for electrical applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality & certifications -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Certified for <em class="accent">electrical applications.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Every batch of electrical-grade aluminium profiles leaves our facility with a full
+            material test certificate covering chemical composition, mechanical properties, and
+            electrical conductivity where applicable. Our SCADA-monitored production system
+            provides full traceability from billet cast to despatch.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['CE', 'EN 15088 structural profiles'],
+            ['ISO 9001:2015', 'Quality management system'],
+            ['BIS IS 5082', 'Electrical conductor alloys'],
+            ['IEC 60889', 'Hard-drawn aluminium wire'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Upload your DXF or PDF and our electrical profiles team will respond with alloy
+            recommendation, feasibility assessment, and indicative pricing.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

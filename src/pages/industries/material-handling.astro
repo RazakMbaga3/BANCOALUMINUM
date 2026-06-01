@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'Conveyor frame extrusions', desc: 'Side rail, cross-brace, and leg extrusions for belt and roller conveyor systems — lightweight 6082 profiles reduce total conveyor dead weight and simplify installation.' },
+  { name: 'Ladder side profiles', desc: 'C-channel and I-beam ladder side rail extrusions for access ladders and cage ladder assemblies — pre-punched rung attachment slots available.' },
+  { name: 'Modular racking sections', desc: 'Upright column, beam, and brace extrusions for bolted modular racking systems — standard cross-section families compatible with off-the-shelf connectors.' },
+  { name: 'Scaffolding tube profiles', desc: 'Circular and oval hollow tube extrusions for scaffolding systems — certified to IS 733 and EN 39 dimensional standards.' },
+  { name: 'Structural angle sections', desc: 'Equal and unequal leg angle extrusions for bracket fabrication, cable tray support, and general structural use — IS 733 certified.' },
+  { name: 'Platform grating profiles', desc: 'Open-mesh and solid platform profiles for access flooring, mezzanine decks, and equipment platforms — anti-slip surface textures available.' },
+];
+
+const alloys = [
+  { name: '6082', temper: 'T6', why: 'Primary structural alloy — high strength for load-bearing conveyor frames, racking uprights, and platform structural members. Meets IS 733 requirements.' },
+  { name: '6063', temper: 'T6', why: 'Standard conveyor guide rail and secondary structural alloy — cost-effective for lower-load applications and profiles where surface quality is important.' },
+  { name: '6061', temper: 'T6', why: 'Engineering alloy for precision conveyor components, machined roller saddles, and structural brackets where close tolerances are required after drilling and tapping.' },
+];
+---
+
+<Layout
+  title="Material handling & structural — Banco Aluminium"
+  description="Conveyor frames, ladder sections, modular rack profiles, scaffolding components, and structural supports — lightweight and weldable in 6082 and 6063 alloys."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Material handling</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
+        Material handling &amp; structural profiles.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        Conveyor frames, ladder sections, modular rack profiles, scaffolding components, and structural supports — lightweight and weldable in 6082 and 6063 alloys.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['6082 · 6063 alloys', 'Structural & standard grades'],
+          ['Weldable grades', 'MIG & TIG compatible'],
+          ['IS 733 certified', 'Bureau of Indian Standards'],
+          ['35,000 MT', 'Annual capacity'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(13px,1.7vw,20px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Lightweight structures for <em class="accent">heavy-duty handling.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Aluminium has displaced steel in a broad range of material handling and structural
+            applications where weight reduction, corrosion resistance, and assembly speed
+            are priorities. Banco's structural profile range covers the standard sections used
+            in conveyor, racking, ladder, and platform construction — all IS 733 certified
+            and available in standard lengths or cut-to-length.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            Our 6082-T6 structural profiles deliver weld-compatible high-strength sections
+            for conveyor frame construction, mezzanine structures, and industrial racking
+            uprights — at approximately one-third the weight of equivalent steel sections.
+            In-house machining allows complex fitting profiles and pre-drilled components to
+            be supplied ready for assembly.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['Warehouse racking', 'Conveyor systems', 'Mezzanine floors', 'Industrial access', 'Scaffolding', 'Equipment platforms', 'Lean manufacturing cells'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Billet%204.JPG"
+            alt="Aluminium billet at Banco Aluminium"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              IS 733 certified billet — consistent chemistry for predictable weld performance
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for material handling.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for structural applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            IS certified and <em class="accent">CE marked structural profiles.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Structural profiles for material handling applications are supplied with IS 733
+            compliance certificates and, for export, CE marking under EN 15088. Dimensional
+            inspection reports are available on request. Our ISO 9001:2015 quality system covers
+            the full production chain from billet receipt through extrusion, straightening, and
+            cut-to-length despatch.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['ISO 9001:2015', 'Quality management system'],
+            ['IS 733 / IS 1285', 'Bureau of Indian Standards'],
+            ['CE marked', 'EN 15088 structural profiles'],
+            ['Weld qualified', 'MIG/TIG compatible alloys'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Share your structural section requirements and we'll provide IS 733 compliance data, standard stock availability, and cut-to-length pricing.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

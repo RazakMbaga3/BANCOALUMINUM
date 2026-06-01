@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const profiles = [
+  { name: 'Motor frame extrusions', desc: 'Finned motor frame profiles for fractional and integral horsepower AC and DC motors — integrated cooling fins, accurate bore centreline, and standardised foot dimensions.' },
+  { name: 'Pump body profiles', desc: 'Flanged and unflanged pump housing extrusions for centrifugal and displacement pump assemblies — machinable from extruded stock to reduce material wastage versus solid billet.' },
+  { name: 'Impeller blank sections', desc: 'Solid and semi-hollow impeller blank extrusions for CNC turning and milling into pump impellers — consistent grain structure and balanced alloy chemistry for predictable machining behaviour.' },
+  { name: 'Bearing housing profiles', desc: 'Cylindrical and rectangular bearing housing extrusions with integral mounting flanges — boring from extruded profile is significantly faster than from solid bar.' },
+  { name: 'Gearbox cover extrusions', desc: 'Flat and ribbed cover panel extrusions for gearbox and motor terminal box enclosures — integral sealing groove and bolt boss geometry available.' },
+  { name: 'General engineering sections', desc: 'Angle, channel, T-section, and flat bar profiles for general engineering fabrication, bracket manufacture, and mechanical assembly.' },
+];
+
+const alloys = [
+  { name: '6082', temper: 'T6', why: 'Primary pump and motor alloy — UTS 310 MPa, consistent hardness for thread tapping and close bore tolerances in motor frames and pump housings.' },
+  { name: '6061', temper: 'T6', why: 'Versatile engineering alloy for pump impellers, bearing housings, and general engineering profiles — good balance of strength, machinability, and corrosion resistance.' },
+  { name: '6026', temper: 'T9', why: 'Free-machining alloy with bismuth-tin chip-breaking additives — significantly improves CNC cycle time and tool life for high-volume pump and motor component production.' },
+  { name: '6026 LF', temper: 'T9', why: 'Lead-free RoHS compliant free-machining alloy — same machinability benefits as 6026 without lead or bismuth, meeting EN 13595 and customer RoHS requirements.' },
+];
+---
+
+<Layout
+  title="Pumps, motors & general engineering — Banco Aluminium"
+  description="Motor frame sections, pump body housings, impeller blanks, and general engineering profiles in 6xxx alloys — machined to close tolerances from extruded or cold-drawn stock."
+>
+  <!-- Hero -->
+  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
+    <div class="container">
+      <div class="eyebrow on-dark">Industries / Pumps &amp; motors</div>
+      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
+        Pumps, motors &amp; general engineering.
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
+        Motor frame sections, pump body housings, impeller blanks, and general engineering profiles in 6xxx alloys — machined to close tolerances from extruded or cold-drawn stock.
+      </p>
+
+      <!-- Stats strip -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
+        {[
+          ['10,000 parts/day', 'Machined component output'],
+          ['6082 · 6061 alloys', 'Primary engineering grades'],
+          ['Cold drawing available', 'Tight bore tolerances'],
+          ['CNC machined', 'In-house machining centre'],
+        ].map(([val, label]) => (
+          <div style="background:var(--color-navy-soft);padding:28px 24px">
+            <div style="font-family:var(--font-display);font-size:clamp(13px,1.7vw,20px);font-weight:700;color:var(--color-stone-50)">{val}</div>
+            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Application overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">01 — Application overview</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Extruded profiles for <em class="accent">precision engineering.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Aluminium extrusion offers pump and motor manufacturers a compelling advantage over
+            sand casting for housing production: consistent dimensional accuracy, predictable
+            grain structure, and significantly faster machining cycle times from near-net-shape
+            extruded stock. Banco's pump and motor profile range is designed to put the minimum
+            possible machining stock on the critical bore and mating surfaces.
+          </p>
+          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
+            Our free-machining 6026 and 6026 LF alloys are formulated for high-speed CNC
+            turning and milling — delivering consistent chip breaking, extended tool life,
+            and fine surface finish in a lead-free, RoHS-compliant alloy chemistry that meets
+            both European and Indian export market requirements.
+          </p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+            {['Electric motors', 'Centrifugal pumps', 'Gear pumps', 'Compressors', 'Gearboxes', 'Actuators', 'General engineering'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div style="position:relative">
+          <img
+            src="/assets/manufacturing/Casting%203.JPG"
+            alt="Aluminium casting at Banco Aluminium"
+            loading="lazy"
+            style="width:100%;aspect-ratio:4/3;object-fit:cover"
+          />
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
+            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+              In-house foundry — free-machining alloy billets cast to controlled composition
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Profile types -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">02 — Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Six profile families for pumps and motors.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+        {profiles.map(p => (
+          <div style="background:var(--color-stone-50);padding:32px 28px">
+            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
+            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Alloys -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">03 — Alloys</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
+        Alloy selection for engineering applications.
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px">
+        {alloys.map(a => (
+          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
+            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
+            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
+            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 04: Quality -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+        <div>
+          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            IATF-backed quality for <em class="accent">engineering-grade supply.</em>
+          </h2>
+          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
+            Banco's IATF 16949 certification extends across engineering and pump-motor profiles,
+            providing customers with automotive-grade quality documentation — PPAP, dimensional
+            reports, material test certificates, and first article inspection — for demanding
+            engineering applications. In-house CNC machining enables complex finished or
+            semi-finished components to be supplied with inspection records.
+          </p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          {[
+            ['IATF 16949:2016', 'Automotive quality system'],
+            ['ISO 9001:2015', 'Quality management system'],
+            ['CE marked', 'EN 15088 structural profiles'],
+            ['RoHS compliant grades', '6026 LF lead-free supply'],
+          ].map(([cert, scope]) => (
+            <div style="border-left:2px solid var(--color-green);padding-left:16px">
+              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
+              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Get started</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
+            Submit a <em class="accent">drawing.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
+            Share your pump or motor housing drawing and we'll recommend alloy, near-net-shape extrusion cross-section, and machined component pricing.
+          </p>
+        </div>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>

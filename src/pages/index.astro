@@ -49,6 +49,22 @@ const certs = [
 
   <!-- ── Brand statement ────────────────────────────────────── -->
   <section class="router-intro">
+
+    <!-- Hero video background -->
+    <video
+      class="ri-video"
+      src="/herovideo.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    ></video>
+
+    <!-- Navy overlay — keeps text legible over video -->
+    <div class="ri-overlay" aria-hidden="true"></div>
+
     <div class="container ri-inner">
       <div class="ri-eyebrow">
         <span class="ri-spark" aria-hidden="true"></span>
@@ -59,11 +75,6 @@ const certs = [
         Specialists in high-strength and lead-free machining alloys.
         58&thinsp;+ years of experience in extrusion and foundry.
       </p>
-      <div class="ri-valuminium">
-        <span class="ri-val-spark" aria-hidden="true"></span>
-        <span class="ri-val-text">Valuminium</span>
-        <span class="ri-val-em">— our ethos driving customer value</span>
-      </div>
     </div>
   </section>
 
@@ -296,14 +307,41 @@ const certs = [
 <style>
   /* ── Brand statement intro ──────────────────────────────── */
   .router-intro {
-    background: var(--color-navy);
+    background: var(--color-navy-deep);
     border-bottom: 1px solid var(--color-navy-line);
-    padding: 32px 0 28px;
+    padding: 52px 0 44px;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
   }
-  /* Pinstripe texture — matches reference */
+
+  /* Video background */
+  .ri-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Navy overlay — dims video so text is always readable */
+  .ri-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(8, 27, 48, 0.82) 0%,
+      rgba(14, 42, 71, 0.68) 60%,
+      rgba(8, 27, 48, 0.78) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Pinstripe texture — sits above overlay */
   .router-intro::before {
     content: '';
     position: absolute;
@@ -312,14 +350,17 @@ const certs = [
       90deg,
       transparent 0,
       transparent 3px,
-      rgba(255,255,255,0.012) 3px,
-      rgba(255,255,255,0.012) 4px
+      rgba(255,255,255,0.014) 3px,
+      rgba(255,255,255,0.014) 4px
     );
+    z-index: 2;
     pointer-events: none;
   }
+
+  /* Content above everything */
   .ri-inner {
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
   .ri-eyebrow {
     display: inline-flex;

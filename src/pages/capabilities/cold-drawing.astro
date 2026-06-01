@@ -1,0 +1,285 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const toleranceComparison = [
+  { param: 'OD tolerance (25 mm dia.)', extrusion: '±0.20 mm', cold: '±0.05 mm', note: '4× improvement' },
+  { param: 'Wall thickness (tube)',     extrusion: '±0.30 mm', cold: '±0.08 mm', note: '3.5× improvement' },
+  { param: 'Straightness',             extrusion: '1 mm / m',  cold: '0.2 mm / m', note: '5× improvement' },
+  { param: 'Surface finish (Ra)',       extrusion: '1.5–3 μm', cold: '0.4–0.8 μm', note: 'Scale-free, bright' },
+  { param: 'Roundness (round bar)',    extrusion: '±0.15 mm', cold: '±0.03 mm', note: 'Suitable for direct turning' },
+];
+
+const products = [
+  {
+    cat: 'Rods & bars',
+    shapes: ['Round rod', 'Hexagonal bar', 'Square bar', 'Rectangular bar', 'Flat bar'],
+    odRange: '6–120 mm',
+    tol: 'h9 / h11 (ISO)',
+    alloys: ['6061', '6082', '2011', '2017A'],
+    use: 'CNC machining blanks, turned parts, fasteners',
+  },
+  {
+    cat: 'Tubes',
+    shapes: ['Round tube', 'Square hollow section', 'Rectangular hollow section'],
+    odRange: '10–160 mm OD',
+    tol: '±0.05 mm OD / ±0.08 mm wall',
+    alloys: ['6063', '6082', '6061'],
+    use: 'Hydraulic cylinders, precision structural, mechanical tubes',
+  },
+];
+---
+
+<Layout
+  title="Cold drawing — Banco Aluminium"
+  description="Cold drawn aluminium rods, bars, and tubes beyond extrusion tolerances. Tighter OD tolerances, scale-free surface, direct machining. Rods 6–120 mm, tubes to 160 mm OD."
+>
+
+  <section class="cd-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Cold drawing</div>
+      <h1 class="cd-h1">
+        Beyond extrusion<br>tolerances.
+      </h1>
+      <p class="cd-lead">
+        Cold drawing reduces extruded rod, bar, and tube through a precision die under
+        tension. The result: tighter dimensional tolerances, improved surface finish,
+        increased straightness, and a bright scale-free surface suitable for direct
+        CNC machining without further preparation.
+      </p>
+      <div class="cd-stats">
+        {[
+          { n: '±0.05 mm', l: 'OD tolerance on round rod' },
+          { n: '6–120 mm', l: 'Rod & bar diameter range' },
+          { n: 'Ra 0.4–0.8', l: 'Surface finish μm' },
+          { n: 'Direct CNC', l: 'No pre-machining required' },
+        ].map(({ n, l }) => (
+          <div class="cd-stat">
+            <div class="cd-stat-n">{n}</div>
+            <div class="cd-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="cd-overview-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            What cold drawing<br>achieves.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            Extrusion produces profiles within standard tolerances defined in EN 755-9
+            for extruded rod and bar — typically ±0.15 to ±0.25 mm on diameter depending
+            on size. For many precision engineering and machining applications, this is
+            insufficient: every profile must be turned to dimension before use, adding
+            cost and waste.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Cold drawing pulls the extruded rod or tube through a carbide die at controlled
+            speed and tension. Material is reduced in section by 5–20%. This work-hardening
+            operation simultaneously improves dimensional accuracy, straightness, and surface
+            finish — producing a product that can go directly to the CNC turning centre
+            without prior facing or diameter turning.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Cold drawing also slightly increases tensile and yield strength through work hardening —
+            useful where a modest strength increase over T6 temper is required without further
+            heat treatment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Product range</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Rods, bars, and tubes.
+      </h2>
+      <div class="cd-products-grid">
+        {products.map((p) => (
+          <div class="cd-prod-card">
+            <div class="cd-prod-cat">{p.cat}</div>
+            <div class="cd-prod-shapes">
+              {p.shapes.map(s => <span class="cd-shape-tag">{s}</span>)}
+            </div>
+            <div class="cd-prod-specs">
+              <div class="cd-spec-row">
+                <span class="cd-spec-key">Size range</span>
+                <span class="cd-spec-val">{p.odRange}</span>
+              </div>
+              <div class="cd-spec-row">
+                <span class="cd-spec-key">Tolerance</span>
+                <span class="cd-spec-val">{p.tol}</span>
+              </div>
+              <div class="cd-spec-row">
+                <span class="cd-spec-key">Typical alloys</span>
+                <span class="cd-spec-val">{p.alloys.join(' · ')}</span>
+              </div>
+              <div class="cd-spec-row">
+                <span class="cd-spec-key">Applications</span>
+                <span class="cd-spec-val">{p.use}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tolerance comparison -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Tolerance comparison</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Extrusion vs cold drawing.
+      </h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Extruded</th>
+              <th>Cold drawn</th>
+              <th>Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {toleranceComparison.map((r, i) => (
+              <tr class={i % 2 === 0 ? 'cd-row-even' : 'cd-row-odd'}>
+                <td class="cd-cell-param">{r.param}</td>
+                <td class="cd-cell-ext">{r.extrusion}</td>
+                <td class="cd-cell-cd">{r.cold}</td>
+                <td class="cd-cell-note">{r.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="cd-footnote">
+        Values for 6082 alloy, 25 mm nominal diameter. Actual achievable tolerances depend on alloy, size, and reduction ratio. Full tolerance tables available in technical data sheet.
+      </p>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Applications</div>
+      <div class="cd-apps-grid">
+        {[
+          { num: '01', title: 'CNC machining blanks',       desc: 'Close-tolerance rod fed directly to turning centre. Eliminates pre-turn, reduces per-part cycle time and material waste.' },
+          { num: '02', title: 'Hydraulic cylinder rods',    desc: 'Consistent OD and straightness required for seal performance. Cold drawn rod to h9 tolerance, surface finish Ra 0.8 μm.' },
+          { num: '03', title: 'Precision structural',       desc: 'Structural pins, shafts, and axles requiring interference fit or close-clearance assembly. Cold drawn to h8/h9.' },
+          { num: '04', title: 'Turned parts',               desc: 'Bright bar supplied to subcontract turning shops. Material certified, diameter verified, straightness within 0.2 mm/m.' },
+          { num: '05', title: 'Pneumatic components',       desc: 'Cylinder barrels and piston rods. Tube drawn to precise ID and OD for pneumatic seal housings.' },
+          { num: '06', title: 'Fasteners & hardware',       desc: 'Hexagonal bar for aluminium fastener manufacture — bolts, nuts, threaded rod. Close-tolerance hex for wrench engagement.' },
+        ].map(({ num, title, desc }) => (
+          <div class="cd-app-card">
+            <div class="cd-app-num">{num}</div>
+            <h3 class="cd-app-title">{title}</h3>
+            <p class="cd-app-desc">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Cold drawing enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Specify diameter, tolerance,<br>and alloy.
+          </h2>
+          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:48ch">
+            Technical enquiry form for cold drawing. Include nominal OD, tolerance class,
+            alloy, temper, and required length or weight per order.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
+          <a href="/capabilities/extrusion" class="btn btn-secondary-dark">Extrusion capability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .cd-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cd-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .cd-hero > .container { position: relative; z-index: 1; }
+  .cd-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .cd-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .cd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .cd-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .cd-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .cd-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .cd-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  .cd-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .cd-prod-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 14px; }
+  .cd-prod-cat { font-family: var(--font-sans); font-size: 22px; font-weight: 700; color: var(--color-platinum); }
+  .cd-prod-shapes { display: flex; flex-wrap: wrap; gap: 5px; }
+  .cd-shape-tag { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-silver); border: 1px solid var(--color-navy-line); padding: 3px 8px; }
+  .cd-prod-specs { border-top: 1px solid var(--color-navy-line); padding-top: 12px; display: flex; flex-direction: column; gap: 0; }
+  .cd-spec-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cd-spec-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); flex-shrink: 0; }
+  .cd-spec-val { font-family: var(--font-sans); font-size: 12px; color: var(--color-silver); text-align: right; }
+
+  .cd-table-wrap { overflow-x: auto; border: 1px solid var(--color-stone-200); }
+  .cd-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; white-space: nowrap; }
+  .cd-table thead tr { background: var(--color-stone-100); }
+  .cd-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-700); border-right: 1px solid var(--color-stone-200); }
+  .cd-table th:last-child { border-right: none; }
+  .cd-row-even { background: var(--color-stone-50); }
+  .cd-row-odd  { background: white; }
+  .cd-table td { padding: 12px 16px; border-right: 1px solid var(--color-stone-200); border-bottom: 1px solid var(--color-stone-200); vertical-align: middle; }
+  .cd-table td:last-child { border-right: none; }
+  .cd-cell-param { font-family: var(--font-sans); font-size: 13px; color: var(--color-navy); font-weight: 500; white-space: normal; min-width: 180px; }
+  .cd-cell-ext  { color: var(--color-stone-400); }
+  .cd-cell-cd   { color: var(--color-green); font-weight: 500; }
+  .cd-cell-note { color: var(--color-stone-700); font-family: var(--font-sans); font-size: 12px; white-space: normal; min-width: 120px; }
+  .cd-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-stone-400); line-height: 1.6; }
+
+  .cd-apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); margin-top: 32px; }
+  .cd-app-card  { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
+  .cd-app-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .cd-app-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
+  .cd-app-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+
+  @media (max-width: 1024px) {
+    .cd-stats { grid-template-columns: repeat(2, 1fr); }
+    .cd-overview-grid { grid-template-columns: 1fr; }
+    .cd-products-grid { grid-template-columns: 1fr; }
+    .cd-apps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .cd-stats { grid-template-columns: 1fr 1fr; }
+    .cd-apps-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

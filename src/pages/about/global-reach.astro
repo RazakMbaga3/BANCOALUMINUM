@@ -1,0 +1,317 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const regions = [
+  {
+    id: '01',
+    name: 'Europe',
+    markets: 'Germany · Netherlands · France · Italy · Poland · Nordics',
+    demand: 'Structural, architectural, automotive, renewable energy',
+    standards: 'EN 755 · EN 12020 · EN 15088',
+    cert: 'CE marked · CBAM-ready · ISO 14064-1 carbon data',
+    desc: 'Europe is Banco\'s primary export region. CE Declaration of Performance issued under EN 15088 for structural aluminium. CBAM carbon data supplied with all EU-bound shipments — required from January 2026. 6082-T6 structural and 6063-T6 architectural are primary export grades.',
+  },
+  {
+    id: '02',
+    name: 'North America',
+    markets: 'USA · Canada · Mexico',
+    demand: 'Engineering, automotive, structural fabrication',
+    standards: 'ASTM B221 · ASTM B241 · AA specification system',
+    cert: 'ASTM certified · ISO 9001 · IATF 16949',
+    desc: 'Banco exports to North American customers requiring ASTM-documented aluminium for engineering and structural applications. Material test certificates issued to ASTM B221 and B241. Alloy designations converted to AA nomenclature. Hard alloys 2xxx and 6xxx series for automotive and precision engineering.',
+  },
+  {
+    id: '03',
+    name: 'Asia-Pacific',
+    markets: 'Japan · South Korea · Australia · Singapore · Vietnam',
+    demand: 'Architectural, industrial, automotive supply chain',
+    standards: 'JIS H4100 · AS/NZS 1734 · market-specific',
+    cert: 'ISO 9001 · IATF 16949 · customer-specific audit',
+    desc: 'APAC markets cover a wide range of applications — from Japanese automotive supply chain (IATF 16949 environment) to Australian construction and South-East Asian architectural projects. Banco supplies 1xxx through 7xxx alloys to APAC customers. Documentation and test methods matched to market-specific requirements.',
+  },
+  {
+    id: '04',
+    name: 'Middle East',
+    markets: 'UAE · Saudi Arabia · Qatar · Kuwait · Oman',
+    demand: 'Structural and architectural. High-volume construction.',
+    standards: 'ASTM B221 · EN standards · client specification',
+    cert: 'ISO 9001 · CE available · material certificates',
+    desc: 'Middle East demand is driven by large-scale infrastructure and construction projects requiring structural and architectural aluminium profiles. Banco supplies standard and custom section to UAE and KSA fabricators and systems suppliers. Volume orders with ASTM or EN documentation. Packing specified for road freight.',
+  },
+];
+
+const exportDocs = [
+  { doc: 'Commercial invoice',          req: 'All markets', note: 'HS code, Incoterms, country of origin, unit price' },
+  { doc: 'Packing list',               req: 'All markets', note: 'Bundle-level detail: profile reference, quantity, length, weight, packing type' },
+  { doc: 'Material test certificate',  req: 'All markets', note: 'EN 10204 Type 3.1 — composition + mechanical properties per lot' },
+  { doc: 'Mill / works certificate',   req: 'All markets', note: 'Banco works certificate — extrusion date, die, press, lot number' },
+  { doc: 'CBAM carbon data',           req: 'EU (mandatory from Jan 2026)', note: 'tCO₂e/t per EN ISO 14064-1, direct and indirect emissions' },
+  { doc: 'CE Declaration of Performance', req: 'EU structural (EN 15088)', note: 'Performance declared against load-bearing application class' },
+  { doc: 'ASTM test report',           req: 'North America', note: 'B221 / B241 tensile, yield, elongation — on request' },
+  { doc: 'IATF 16949 documentation',   req: 'Automotive supply chain', note: 'PPAP documents, dimensional reports, process audit records' },
+];
+
+const certs = [
+  { code: 'CE', std: 'EN 15088', scope: 'Structural aluminium alloy products for use in structures' },
+  { code: 'ISO 14064-1', std: 'GHG Protocol', scope: 'Carbon inventory and carbon data for CBAM declarations' },
+  { code: 'IATF 16949', std: 'Automotive QMS', scope: 'Quality management system for automotive production supply chain' },
+  { code: 'ISO 9001:2015', std: 'Quality management', scope: 'Quality management system for all manufacturing and export operations' },
+];
+---
+
+<Layout
+  title="Global reach — Banco Aluminium"
+  description="Exporting to Europe, North America, Asia-Pacific, and the Middle East. CE certified, CBAM-ready, IATF 16949. 900+ customers. Full export documentation including carbon data."
+>
+
+  <section class="gr-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">About / Global reach</div>
+      <h1 class="gr-h1">
+        Exporting to<br>four regions.
+      </h1>
+      <p class="gr-lead">
+        Banco Aluminium exports aluminium extrusions to over 900 customers across Europe,
+        North America, Asia-Pacific, and the Middle East. CE certified, CBAM-ready,
+        IATF 16949 qualified. Full export documentation — from packing list to carbon data.
+      </p>
+      <div class="gr-stats">
+        {[
+          { n: '4',          l: 'Export regions' },
+          { n: '900+',       l: 'Customers worldwide' },
+          { n: 'CBAM-ready', l: 'Carbon data for EU' },
+          { n: 'CE + IATF',  l: 'Certified for export' },
+        ].map(({ n, l }) => (
+          <div class="gr-stat">
+            <div class="gr-stat-n">{n}</div>
+            <div class="gr-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Four regions -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Export regions</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Four regions.<br>Market-specific documentation.
+      </h2>
+      <div class="gr-regions-grid">
+        {regions.map((r) => (
+          <div class="gr-region-card">
+            <div class="gr-region-id">{r.id}</div>
+            <h3 class="gr-region-name">{r.name}</h3>
+            <div class="gr-region-markets">{r.markets}</div>
+            <p class="gr-region-desc">{r.desc}</p>
+            <div class="gr-region-meta">
+              <div class="gr-meta-row">
+                <span class="gr-meta-key">Applications</span>
+                <span class="gr-meta-val">{r.demand}</span>
+              </div>
+              <div class="gr-meta-row">
+                <span class="gr-meta-key">Standards</span>
+                <span class="gr-meta-val">{r.standards}</span>
+              </div>
+              <div class="gr-meta-row">
+                <span class="gr-meta-key">Certifications</span>
+                <span class="gr-meta-val">{r.cert}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Export documentation -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Export documentation</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Complete document<br>package with every shipment.
+      </h2>
+      <div class="gr-doc-table-wrap">
+        <table class="gr-doc-table">
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Required for</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {exportDocs.map((d, i) => (
+              <tr class={i % 2 === 0 ? 'gr-row-even' : 'gr-row-odd'}>
+                <td class="gr-cell-doc">{d.doc}</td>
+                <td class="gr-cell-req">{d.req}</td>
+                <td class="gr-cell-note">{d.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="gr-doc-footnote">
+        Documents are issued electronically (PDF) before loading and transmitted to buyer, freight forwarder, or bank per the agreed commercial terms.
+        CBAM carbon data is calculated per ISO 14064-1 and attached to the material certificate for EU-bound shipments.
+      </p>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Key export certifications</div>
+      <div class="gr-cert-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Certified for regulated<br>markets worldwide.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Banco's certification portfolio covers the major regulated import markets.
+            CE marking under EN 15088 allows structural aluminium to be used in
+            CE-marked construction projects in Europe. IATF 16949 qualification
+            allows Banco to supply into automotive OEM supply chains globally.
+            ISO 14064-1 carbon accounting supports CBAM declarations for EU customers.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Banco's quality management system is ISO 9001:2015 certified — the foundation
+            for all other certifications. Audit trails, process documentation, and
+            measurement system analysis are maintained at the facility and available
+            for customer or third-party audit.
+          </p>
+        </div>
+        <div class="gr-certs-list">
+          {certs.map((c) => (
+            <div class="gr-cert-card">
+              <div class="gr-cert-code">{c.code}</div>
+              <div class="gr-cert-std">{c.std}</div>
+              <div class="gr-cert-scope">{c.scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CBAM callout -->
+  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="gr-cbam-grid">
+        <div>
+          <div class="eyebrow">CBAM — Carbon Border Adjustment Mechanism</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            CBAM-ready<br>for EU importers.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            From January 2026, all aluminium imported into the EU requires embedded carbon
+            emission data under the CBAM regulation. Banco Aluminium has implemented
+            ISO 14064-1 carbon accounting across its foundry and extrusion operations.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Carbon intensity data (tCO₂e per tonne of aluminium) is calculated per
+            production lot — covering direct emissions (Scope 1 — energy for melting,
+            extrusion, heat treatment) and indirect emissions (Scope 2 — electricity).
+            The data is reported on a supplementary CBAM declaration document attached
+            to the material certificate for all EU-bound shipments.
+          </p>
+          <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:8px">
+            {['ISO 14064-1 verified', 'Direct emissions (Scope 1)', 'Indirect emissions (Scope 2)', 'Per-lot reporting', 'CBAM declaration support'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Export enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Export enquiries welcome.<br>Documentation confirmed before order.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#export" class="btn btn-primary-dark">Contact for export</a>
+          <a href="/capabilities/packing" class="btn btn-secondary-dark">Packing options</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .gr-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .gr-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .gr-hero > .container { position: relative; z-index: 1; }
+  .gr-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .gr-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .gr-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .gr-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .gr-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .gr-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .gr-regions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .gr-region-card { background: var(--color-stone-50); padding: 32px 28px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 12px; }
+  .gr-region-id      { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .gr-region-name    { font-family: var(--font-sans); font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-navy); }
+  .gr-region-markets { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .gr-region-desc    { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
+  .gr-region-meta    { border-top: 1px solid var(--color-stone-200); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .gr-meta-row  { display: flex; flex-direction: column; gap: 2px; }
+  .gr-meta-key  { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
+  .gr-meta-val  { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); }
+
+  .gr-doc-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
+  .gr-doc-table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 13px; }
+  .gr-doc-table thead tr { background: var(--color-navy-soft); }
+  .gr-doc-table th { padding: 10px 18px; text-align: left; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .gr-doc-table th:last-child { border-right: none; }
+  .gr-row-even { background: rgba(255,255,255,0.04); }
+  .gr-row-odd  { background: rgba(255,255,255,0.02); }
+  .gr-doc-table td { padding: 12px 18px; border-right: 1px solid var(--color-navy-line); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  .gr-doc-table td:last-child { border-right: none; }
+  .gr-cell-doc  { font-weight: 500; color: var(--color-platinum); min-width: 200px; }
+  .gr-cell-req  { font-family: var(--font-mono); font-size: 11px; color: var(--color-silver); min-width: 180px; white-space: normal; }
+  .gr-cell-note { color: var(--color-stone-400); font-size: 12px; white-space: normal; min-width: 200px; }
+  .gr-doc-footnote { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
+
+  .gr-cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .gr-certs-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); align-self: start; }
+  .gr-cert-card  { background: var(--color-stone-50); padding: 22px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 4px; }
+  .gr-cert-code  { font-family: var(--font-sans); font-size: 20px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-navy); line-height: 1; }
+  .gr-cert-std   { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .gr-cert-scope { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-700); margin-top: 4px; }
+
+  .gr-cbam-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+
+  @media (max-width: 1024px) {
+    .gr-stats { grid-template-columns: repeat(2, 1fr); }
+    .gr-regions-grid { grid-template-columns: 1fr; }
+    .gr-cert-grid { grid-template-columns: 1fr; }
+    .gr-cbam-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .gr-stats { grid-template-columns: 1fr 1fr; }
+    .gr-certs-list { grid-template-columns: 1fr; }
+  }
+</style>

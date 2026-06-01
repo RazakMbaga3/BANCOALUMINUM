@@ -1,0 +1,310 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const alloyFamilies = [
+  {
+    num: '01',
+    title: 'Hard alloys',
+    sub: 'Structural · automotive · aerospace',
+    desc: 'High-strength alloys engineered for demanding structural and mechanical applications. More flexible and corrosion-resistant than steel, suited to safety-critical and load-bearing profiles where alloy chemistry and dimensional consistency are non-negotiable.',
+    grades: ['2011', '2014', '2017A', '5083', '5754', '6026', '6061', '6066', '6082', '6262'],
+    series: '2xxx · 5xxx · 6xxx',
+    applications: ['Automotive structural', 'Aerospace profiles', 'Hydraulic cylinders', 'Defence sections'],
+  },
+  {
+    num: '02',
+    title: 'Lead-free machining alloys',
+    sub: 'RoHS · automated CNC machining',
+    desc: 'Specifically formulated machining grades compliant with the RoHS directive. Designed for automated CNC machining operations where lead-containing alloys cannot be specified. Consistent chip-breaking characteristics and superior machinability.',
+    grades: ['2111 LF', '2033 LF', '6026 LF'],
+    series: 'RoHS compliant · custom compositions',
+    applications: ['Precision turned parts', 'CNC machined components', 'Automotive sub-assemblies', 'Electrical fittings'],
+  },
+  {
+    num: '03',
+    title: 'Soft and medium alloys',
+    sub: 'General · architectural · electrical',
+    desc: 'The 1xxx, 3xxx, and 6xxx series for architectural, electrical, and general engineering. From food-grade packaging and utensils to building profiles, transport, and renewable energy structures — versatile and weldable.',
+    grades: ['1050', '1070', '1100', '3003', '3103', '6060', '6063'],
+    series: '1xxx · 3xxx · 6xxx',
+    applications: ['Architectural windows', 'Electrical conductors', 'Heat exchangers', 'Solar racking'],
+  },
+];
+
+const alloyData = [
+  { alloy: '1070A', si: '≤ 0.10', mg: '≤ 0.03', fe: '≤ 0.25', cu: '≤ 0.03', note: 'Pure aluminium' },
+  { alloy: '3003',  si: '≤ 0.10', mg: '≤ 0.05', fe: '≤ 0.25', cu: '0.05–0.09', note: 'Heat exchanger · automotive' },
+  { alloy: '6060',  si: '≤ 0.10', mg: '0.48–0.54', fe: '0.10–0.25', cu: '≤ 0.07', note: 'Architectural profiles' },
+  { alloy: '6063',  si: '≤ 0.10', mg: '0.48–0.55', fe: '≤ 0.30', cu: '≤ 0.10', note: 'Windows · doors · general' },
+  { alloy: '6082',  si: '≤ 0.10', mg: '0.72–0.79', fe: '≤ 0.30', cu: '≤ 0.10', note: 'High strength structural' },
+  { alloy: '6061',  si: '≤ 0.10', mg: '0.90–0.98', fe: '≤ 0.35', cu: '0.18–0.25', note: 'Engineering · aerospace' },
+  { alloy: '6066',  si: '≤ 0.10', mg: '1.00–1.10', fe: '≤ 0.30', cu: '0.80–0.90', note: 'High-strength forgings' },
+];
+---
+
+<Layout
+  title="Alloys — Foundry & alloy development — Banco Aluminium"
+  description="In-house foundry producing 55,000 MT/year. Hard alloys, lead-free machining grades, and soft/medium alloys across 1xxx–7xxx series. Custom alloy development and special compositions available."
+>
+
+  <section class="fnd-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Alloys</div>
+      <h1 class="fnd-h1">
+        Hard alloys.<br>Lead-free grades.<br>Custom compositions.
+      </h1>
+      <p class="fnd-lead">
+        Banco's in-house foundry produces 55,000 MT of extrusion billets per year
+        across three distinct alloy families — giving downstream extrusion complete
+        control over alloy chemistry, temper, and metallurgical structure.
+      </p>
+      <div class="fnd-stats">
+        {[
+          { n: '55,000 MT', l: 'Annual foundry capacity' },
+          { n: '12+',       l: 'Standard alloy grades' },
+          { n: '1xxx–7xxx', l: 'Alloy series range' },
+          { n: '100%',      l: 'Spectro-OES verified' },
+        ].map(({ n, l }) => (
+          <div class="fnd-stat">
+            <div class="fnd-stat-n">{n}</div>
+            <div class="fnd-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Three alloy families -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Alloy families</div>
+      <div class="fnd-section-head">
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          Three families covering every<br>extrusion application.
+        </h2>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:52ch">
+          From soft architectural alloys to complex hard-alloy sections and RoHS-compliant
+          machining grades — Banco's in-house alloy capability removes third-party dependency
+          for chemistry and billet quality.
+        </p>
+      </div>
+      <div class="fnd-family-grid">
+        {alloyFamilies.map((fam) => (
+          <div class="fnd-family-card">
+            <div class="fnd-fam-num">{fam.num}</div>
+            <h3 class="fnd-fam-title">{fam.title}</h3>
+            <div class="fnd-fam-sub">{fam.sub}</div>
+            <p class="fnd-fam-desc">{fam.desc}</p>
+            <div class="fnd-fam-grades">
+              {fam.grades.map(g => <span class="fnd-grade">{g}</span>)}
+            </div>
+            <div class="fnd-fam-series">{fam.series}</div>
+            <div class="fnd-fam-apps">
+              {fam.applications.map(a => <span class="fnd-app">{a}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Composition table -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Chemical compositions — key grades</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Controlled chemistry.<br>Cast to specification.
+      </h2>
+      <div class="fnd-table-wrap">
+        <table class="fnd-table">
+          <thead>
+            <tr>
+              <th>Alloy</th>
+              <th>Si (wt%)</th>
+              <th>Mg (wt%)</th>
+              <th>Fe (wt%)</th>
+              <th>Cu (wt%)</th>
+              <th>Primary application</th>
+            </tr>
+          </thead>
+          <tbody>
+            {alloyData.map((a, i) => (
+              <tr class={i % 2 === 0 ? 'fnd-row-even' : 'fnd-row-odd'}>
+                <td class="fnd-cell-alloy">{a.alloy}</td>
+                <td class="fnd-cell-val">{a.si}</td>
+                <td class="fnd-cell-val">{a.mg}</td>
+                <td class="fnd-cell-val">{a.fe}</td>
+                <td class="fnd-cell-val">{a.cu}</td>
+                <td class="fnd-cell-note">{a.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="fnd-footnote">
+        Full compositions including Mn, Zn, Cr, Ti available in alloy data sheets.
+        Additional grades — 2011, 2017A, 2014, 5083, 6005A, 6101, 6361 — produced on request.
+      </p>
+    </div>
+  </section>
+
+  <!-- Foundry process -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Foundry process</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Four controlled stages<br>from scrap to billet.
+      </h2>
+      <div class="fnd-process-grid">
+        {[
+          ['/ 01', 'Metal filtration',   '/assets/manufacturing/Melting%201.JPG',  'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station — improving metal cleanliness and reducing inclusion count.'],
+          ['/ 02', 'Nitrogen degassing', '/assets/manufacturing/Melting%203.JPG',  'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
+          ['/ 03', 'Hot-Top casting',    '/assets/manufacturing/Casting%201.JPG',  'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
+          ['/ 04', 'Homogenising',       '/assets/manufacturing/Homo%201.JPG',     'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
+        ].map(([num, name, photo, desc]) => (
+          <div class="fnd-proc-cell">
+            <div class="fnd-proc-img">
+              <img src={photo} alt={name} loading="lazy" />
+            </div>
+            <div class="fnd-proc-num">{num}</div>
+            <h3 class="fnd-proc-name">{name}</h3>
+            <p class="fnd-proc-desc">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom alloy development -->
+  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="fnd-custom-grid">
+        <div>
+          <div class="eyebrow">/ 04 · Custom alloy development</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Need a specific composition?
+          </h2>
+          <p class="t-lead" style="color:var(--color-stone-700);margin-top:16px;max-width:48ch">
+            Banco's in-house foundry team develops custom alloy compositions to
+            customer specification — including specific Mg/Si ratios for anodising quality,
+            lead-free conversions, and enhanced-machinability formulations.
+          </p>
+          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+            <a href="/contact#technical" class="btn btn-primary">Discuss your alloy requirement</a>
+            <a href="/downloads" class="btn btn-secondary">Download alloy data sheet</a>
+          </div>
+        </div>
+        <div class="fnd-custom-list">
+          {[
+            ['Specific Mg/Si ratios', 'Controlled ratio for anodising-grade architectural alloys (6060, 6063).'],
+            ['Lead-free conversions', 'RoHS-compliant alternatives to 2011, 2031 and other lead-bearing machining grades.'],
+            ['Enhanced machinability', 'Modified compositions for automated high-speed CNC machining operations.'],
+            ['Carbon-verified grades', 'Recycled-scrap billets with ISO 14064-1 carbon traceability for CBAM compliance.'],
+          ].map(([cap, desc]) => (
+            <div class="fnd-custom-row">
+              <div class="fnd-custom-cap">{cap}</div>
+              <div class="fnd-custom-desc">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Alloy enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Alloy data sheets and<br>sample billets on request.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
+          <a href="/products/cast-products" class="btn btn-secondary-dark">View extrusion billets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .fnd-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fnd-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .fnd-hero > .container { position: relative; z-index: 1; }
+  .fnd-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .fnd-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .fnd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .fnd-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .fnd-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .fnd-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .fnd-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-bottom: 48px; }
+
+  .fnd-family-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .fnd-family-card { background: var(--color-stone-50); padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
+  .fnd-fam-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .fnd-fam-title { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-navy); }
+  .fnd-fam-sub   { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
+  .fnd-fam-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+  .fnd-fam-grades { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 12px; border-top: 1px solid var(--color-stone-200); }
+  .fnd-grade { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-navy); background: white; border: 1px solid var(--color-stone-200); padding: 3px 8px; }
+  .fnd-fam-series { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .fnd-fam-apps { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .fnd-app { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 2px 7px; }
+
+  .fnd-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
+  .fnd-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; white-space: nowrap; }
+  .fnd-table thead tr { background: var(--color-navy-soft); }
+  .fnd-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .fnd-table th:last-child { border-right: none; }
+  .fnd-row-even { background: rgba(255,255,255,0.04); }
+  .fnd-row-odd  { background: rgba(255,255,255,0.02); }
+  .fnd-table td { padding: 10px 16px; border-right: 1px solid var(--color-navy-line); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  .fnd-table td:last-child { border-right: none; }
+  .fnd-cell-alloy { font-weight: 500; font-size: 12px; color: var(--color-platinum); }
+  .fnd-cell-val   { color: var(--color-silver); }
+  .fnd-cell-note  { color: var(--color-nickel); white-space: normal; min-width: 180px; font-size: 10px; }
+  .fnd-footnote   { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+
+  .fnd-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .fnd-proc-cell { background: var(--color-stone-50); display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
+  .fnd-proc-img { aspect-ratio: 16/9; overflow: hidden; }
+  .fnd-proc-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.4s ease, filter 0.3s ease; }
+  .fnd-proc-cell:hover .fnd-proc-img img { transform: scale(1.05); filter: brightness(1); }
+  .fnd-proc-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); padding: 0 20px; }
+  .fnd-proc-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); padding: 0 20px; }
+  .fnd-proc-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); padding: 0 20px 24px; }
+
+  .fnd-custom-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .fnd-custom-list { display: flex; flex-direction: column; gap: 0; }
+  .fnd-custom-row { padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .fnd-custom-cap  { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+  .fnd-custom-desc { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); line-height: 1.55; }
+
+  @media (max-width: 1024px) {
+    .fnd-stats { grid-template-columns: repeat(2, 1fr); }
+    .fnd-section-head { grid-template-columns: 1fr; }
+    .fnd-family-grid { grid-template-columns: 1fr; }
+    .fnd-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .fnd-custom-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .fnd-stats { grid-template-columns: 1fr 1fr; }
+    .fnd-process-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

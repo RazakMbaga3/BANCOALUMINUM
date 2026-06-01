@@ -1,0 +1,303 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const sections = [
+  { id: '01', type: 'Equal angle',              desc: 'Equal legs — 20×20 to 100×100 mm. Structural and fabrication use.',    alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+  { id: '02', type: 'Unequal angle',             desc: 'Unequal legs for specific structural configurations.',                  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+  { id: '03', type: 'Parallel flange channel',   desc: 'C-section channel — standard and heavy duty. Wide flange versions.',   alloy: '6082-T6',           std: 'IS 1285' },
+  { id: '04', type: 'T-section',                 desc: 'Equal and unequal T-sections. Track, extrusion guide, structural T.',  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+  { id: '05', type: 'Flat bar',                  desc: '10–200 mm wide, 2–20 mm thick. Plate strip, fabrication flat.',        alloy: '6061-T6 · 6082-T6', std: 'IS 733'  },
+  { id: '06', type: 'Square bar',                desc: '10×10 to 80×80 mm. Structural and machining stock.',                   alloy: '6082-T6 · 6061-T6', std: 'IS 733'  },
+  { id: '07', type: 'Round bar',                 desc: '6–150 mm diameter. Extruded and cold drawn grades available.',         alloy: '6061-T6 · 6082-T6 · 2011', std: 'IS 733'  },
+  { id: '08', type: 'Rectangular hollow section',desc: 'RHS for structural frames, guard rails, and support structures.',      alloy: '6082-T6 · 6063-T6', std: 'IS 1285' },
+  { id: '09', type: 'Square hollow section',     desc: 'SHS in standard wall thickness. Equal sides for symmetric loading.',  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+  { id: '10', type: 'Round tube',                desc: '12–200 mm OD. Structural, mechanical, and architectural tube.',       alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+];
+
+const alloys = [
+  {
+    grade: '6063-T6',
+    name: 'Architectural',
+    tensile: '185 MPa',
+    yield: '145 MPa',
+    uses: 'Window systems, curtain wall, fascia, shopfront, solar racking, architectural trim.',
+    anodise: 'Excellent',
+    weld: 'Good',
+  },
+  {
+    grade: '6082-T6',
+    name: 'Structural',
+    tensile: '310 MPa',
+    yield: '290 MPa',
+    uses: 'Load-bearing structures, beams, columns, racking, transport, marine.',
+    anodise: 'Good',
+    weld: 'Good',
+  },
+  {
+    grade: '6061-T6',
+    name: 'Engineering',
+    tensile: '260 MPa',
+    yield: '240 MPa',
+    uses: 'Precision engineering, aerospace sub-structure, CNC machining stock, automotive.',
+    anodise: 'Good',
+    weld: 'Excellent',
+  },
+];
+---
+
+<Layout
+  title="Standard sections — Banco Aluminium"
+  description="Standard aluminium sections to IS 733 and IS 1285. Equal angles, channels, T-sections, flat bar, round bar, RHS, SHS, and round tube in 6063-T6, 6082-T6, and 6061-T6. Mill finish or anodised."
+>
+
+  <section class="ss-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Products / Standard sections</div>
+      <h1 class="ss-h1">
+        Standard profiles.<br>Ready to specify.
+      </h1>
+      <p class="ss-lead">
+        Banco's standard section range covers ten profile types across structural and
+        architectural categories — to IS 733 and IS 1285 specifications. In-stock in
+        6063-T6, 6082-T6, and 6061-T6 in mill finish. Anodised and powder coated
+        versions available to order.
+      </p>
+      <div class="ss-stats">
+        {[
+          { n: 'IS 733',      l: 'Wrought aluminium bars & rods' },
+          { n: 'IS 1285',     l: 'Extruded sections standard' },
+          { n: '6063 / 6082', l: 'Primary alloys stocked' },
+          { n: 'CE available',l: 'Structural export orders' },
+        ].map(({ n, l }) => (
+          <div class="ss-stat">
+            <div class="ss-stat-n">{n}</div>
+            <div class="ss-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section types -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Section types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Ten standard section<br>types in stock.
+      </h2>
+      <div class="ss-sections-grid">
+        {sections.map((s) => (
+          <div class="ss-section-card">
+            <div class="ss-sec-id">{s.id}</div>
+            <h3 class="ss-sec-type">{s.type}</h3>
+            <p class="ss-sec-desc">{s.desc}</p>
+            <div class="ss-sec-footer">
+              <div class="ss-sec-alloy">{s.alloy}</div>
+              <div class="ss-sec-std">{s.std}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Alloys -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Available alloys</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Three grades.<br>Architectural to structural.
+      </h2>
+      <div class="ss-alloy-grid">
+        {alloys.map((a) => (
+          <div class="ss-alloy-card">
+            <div class="ss-alloy-grade">{a.grade}</div>
+            <div class="ss-alloy-name">{a.name}</div>
+            <div class="ss-alloy-props">
+              <div class="ss-prop">
+                <span class="ss-prop-val">{a.tensile}</span>
+                <span class="ss-prop-label">Tensile strength</span>
+              </div>
+              <div class="ss-prop">
+                <span class="ss-prop-val">{a.yield}</span>
+                <span class="ss-prop-label">0.2% Proof stress</span>
+              </div>
+            </div>
+            <p class="ss-alloy-uses">{a.uses}</p>
+            <div class="ss-alloy-attrs">
+              <div class="ss-attr">
+                <span class="ss-attr-key">Anodise quality</span>
+                <span class="ss-attr-val">{a.anodise}</span>
+              </div>
+              <div class="ss-attr">
+                <span class="ss-attr-key">Weldability</span>
+                <span class="ss-attr-val">{a.weld}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Specifications -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Specifications & standards</div>
+      <div class="ss-spec-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            IS 733 · IS 1285.<br>CE for export.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Banco's standard section range is manufactured and supplied to the Bureau of
+            Indian Standards specifications IS 733 (aluminium alloy wrought products —
+            bars, rods, and sections) and IS 1285 (wrought aluminium and aluminium alloys —
+            extruded sections). Material test certificates conforming to EN 10204 Type 3.1
+            are available for all stock items.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            For export orders to the European Union, a CE Declaration of Performance
+            under EN 15088 (aluminium structures — technical conditions for inspection
+            and delivery) can be issued for structural section grades. This is required
+            for load-bearing applications in CE-marked structures.
+          </p>
+        </div>
+        <div class="ss-std-list">
+          {[
+            { std: 'IS 733',        scope: 'Wrought aluminium bars, rods, and sections. Dimensional and mechanical tolerances for flat bars, square bars, and round bars.' },
+            { std: 'IS 1285',       scope: 'Extruded aluminium and aluminium alloy round tubes, hollow and solid sections. Dimensional tolerances, straightness, and twist.' },
+            { std: 'EN 755-2',      scope: 'Extruded rod/bar and tube — mechanical properties. Reference standard for export orders and CE marking.' },
+            { std: 'EN 12020-2',    scope: 'Precision profiles — tighter dimensional tolerances than EN 755-9 for precision engineering applications.' },
+            { std: 'EN 15088',      scope: 'Aluminium structures — technical conditions for inspection and delivery. CE marking for structural load-bearing applications.' },
+            { std: 'EN 10204 3.1',  scope: 'Material test certificate. Inspection by manufacturer, test results certified and traceable to production lot.' },
+          ].map(({ std, scope }) => (
+            <div class="ss-std-row">
+              <div class="ss-std-code">{std}</div>
+              <div class="ss-std-scope">{scope}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom die service -->
+  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Custom die service</div>
+      <div class="ss-custom-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Standard section<br>doesn't fit? We'll<br>design the die.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            If no standard section matches your application, Banco's in-house die shop
+            will design and manufacture a custom die — typically in 2–3 weeks. Custom
+            profiles are extruded, heat treated, and finished to the same specification
+            and quality standard as standard sections.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Submit a DXF or PDF drawing with critical dimensions indicated. The die shop
+            team will review for extrudability, propose any necessary modifications, and
+            return a tooling quotation and lead time within 3 working days.
+          </p>
+          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
+            <a href="/contact#drawing" class="btn btn-primary">Submit a drawing</a>
+            <a href="/capabilities/die-shop" class="btn btn-secondary">Die shop capability</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Standard sections</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Download the catalogue.<br>Or request a quote now.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/downloads" class="btn btn-primary-dark">Download catalogue</a>
+          <a href="/contact#quote" class="btn btn-secondary-dark">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .ss-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ss-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .ss-hero > .container { position: relative; z-index: 1; }
+  .ss-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .ss-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .ss-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .ss-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .ss-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .ss-sections-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ss-section-card  { background: var(--color-stone-50); padding: 22px 18px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 6px; }
+  .ss-sec-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .ss-sec-type { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); line-height: 1.2; }
+  .ss-sec-desc { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-700); flex: 1; }
+  .ss-sec-footer { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; border-top: 1px solid var(--color-stone-200); padding-top: 8px; }
+  .ss-sec-alloy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-stone-400); }
+  .ss-sec-std   { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); }
+
+  .ss-alloy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .ss-alloy-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 12px; }
+  .ss-alloy-grade { font-family: var(--font-sans); font-size: 26px; font-weight: 800; letter-spacing: -0.04em; color: var(--color-platinum); line-height: 1; }
+  .ss-alloy-name  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); }
+  .ss-alloy-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .ss-prop { background: rgba(255,255,255,0.04); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  .ss-prop-val   { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--color-platinum); }
+  .ss-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ss-alloy-uses { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-silver); }
+  .ss-alloy-attrs { border-top: 1px solid var(--color-navy-line); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+  .ss-attr { display: flex; justify-content: space-between; gap: 8px; }
+  .ss-attr-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ss-attr-val { font-family: var(--font-sans); font-size: 12px; color: var(--color-silver); }
+
+  .ss-spec-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .ss-std-list { border-top: 1px solid var(--color-stone-200); }
+  .ss-std-row  { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .ss-std-code { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--color-green); margin-bottom: 3px; }
+  .ss-std-scope { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+
+  .ss-custom-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+
+  @media (max-width: 1280px) {
+    .ss-sections-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .ss-stats { grid-template-columns: repeat(2, 1fr); }
+    .ss-sections-grid { grid-template-columns: repeat(3, 1fr); }
+    .ss-alloy-grid { grid-template-columns: 1fr; }
+    .ss-spec-grid { grid-template-columns: 1fr; }
+    .ss-custom-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ss-stats { grid-template-columns: 1fr 1fr; }
+    .ss-sections-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

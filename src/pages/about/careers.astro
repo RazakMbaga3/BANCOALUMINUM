@@ -1,0 +1,304 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const departments = [
+  { id: '01', name: 'Manufacturing',  desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
+  { id: '02', name: 'Engineering',    desc: 'Mechanical and metallurgical engineers for process improvement, die design, capital projects, and equipment maintenance.' },
+  { id: '03', name: 'Quality',        desc: 'Quality engineers, CMM operators, lab technicians, and QA managers. ISO 9001 and IATF 16949 environment.' },
+  { id: '04', name: 'Sales',          desc: 'Technical sales executives and account managers for domestic and export markets. Customer-facing and CRM-driven.' },
+  { id: '05', name: 'Finance',        desc: 'Commercial finance, cost accounting, management accounts, and export documentation for a large manufacturing business.' },
+  { id: '06', name: 'IT',             desc: 'ERP implementation, manufacturing systems, network infrastructure, and digital transformation projects.' },
+  { id: '07', name: 'HR',             desc: 'Talent acquisition, learning & development, compliance, and employee engagement for a workforce of 900+.' },
+  { id: '08', name: 'Logistics',      desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
+];
+---
+
+<Layout
+  title="Careers at Banco Aluminium"
+  description="Build your career in aluminium at Banco Aluminium. 58 years of manufacturing excellence, family-owned, integrated platform from foundry to finished profile. Open roles in manufacturing, engineering, quality, sales, finance, IT, HR, and logistics."
+>
+
+  <section class="car-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">About / Careers</div>
+      <h1 class="car-h1">
+        Build your career<br>in aluminium.
+      </h1>
+      <p class="car-lead">
+        Banco Aluminium has been manufacturing since 1967. Family-owned, fully integrated —
+        from foundry to finished profile. We hire people who want to build something:
+        careers, capability, and a manufacturing business that lasts.
+      </p>
+      <div class="car-stats">
+        {[
+          { n: '58 yrs',  l: 'Manufacturing since 1967' },
+          { n: '900+',    l: 'Team members' },
+          { n: 'Integrated', l: 'Full value chain' },
+          { n: 'Family',  l: 'Owner-managed' },
+        ].map(({ n, l }) => (
+          <div class="car-stat">
+            <div class="car-stat-n">{n}</div>
+            <div class="car-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Banco -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Why Banco</div>
+      <div class="car-why-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Integrated. Growing.<br>Genuinely manufacturing.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            Most aluminium companies are traders. Banco is a manufacturer — with its own
+            foundry, die shop, five extrusion presses, heat treatment, surface finishing,
+            and machining. If you join Banco, you work in a place where things are actually
+            made, where process improvement has real consequences, and where technical
+            skill is genuinely valued.
+          </p>
+          <div class="car-why-points">
+            {[
+              ['58 years', 'One of India\'s oldest aluminium extrusion manufacturers. Established 1967.'],
+              ['Family-owned', 'Owner-managed business. Decisions made on-site by people who understand manufacturing.'],
+              ['Integrated platform', 'Foundry, die shop, extrusion, heat treatment, machining, and finishing — all in-house. Every discipline has depth.'],
+              ['Export markets', 'Europe, North America, Asia-Pacific, Middle East. International experience from day one.'],
+              ['Growth track', 'Capacity expansion and digitalisation underway. Roles being created, not just replaced.'],
+            ].map(([title, desc]) => (
+              <div class="car-why-row">
+                <div class="car-why-title">{title}</div>
+                <div class="car-why-desc">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departments -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Departments we hire for</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Eight departments.<br>Every level.
+      </h2>
+      <div class="car-dept-grid">
+        {departments.map((d) => (
+          <div class="car-dept-card">
+            <div class="car-dept-id">{d.id}</div>
+            <h3 class="car-dept-name">{d.name}</h3>
+            <p class="car-dept-desc">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application form -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Apply</div>
+      <div class="car-form-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Apply for a role<br>at Banco.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Complete the application form. Our HR team reviews all applications and
+            responds within 10 working days. For manufacturing and technical roles,
+            shortlisted candidates will be invited for a plant visit and technical
+            interview at our facility.
+          </p>
+          <div class="car-form-notes">
+            <div class="car-note-row">
+              <div class="car-note-dot"></div>
+              <span>Applications are reviewed within 10 working days.</span>
+            </div>
+            <div class="car-note-row">
+              <div class="car-note-dot"></div>
+              <span>We do not use recruitment agents. Apply directly only.</span>
+            </div>
+            <div class="car-note-row">
+              <div class="car-note-dot"></div>
+              <span>CV should be PDF format. Maximum 5 MB.</span>
+            </div>
+            <div class="car-note-row">
+              <div class="car-note-dot"></div>
+              <span>We hire for all levels — graduate, experienced, and senior management.</span>
+            </div>
+          </div>
+        </div>
+        <form class="car-form" action="/contact#careers" method="post" enctype="multipart/form-data">
+          <div class="car-field">
+            <label class="car-label" for="full-name">Full name <span class="car-req">*</span></label>
+            <input class="car-input" type="text" id="full-name" name="full_name" required autocomplete="name" placeholder="Your full name" />
+          </div>
+          <div class="car-field-row">
+            <div class="car-field">
+              <label class="car-label" for="email">Email address <span class="car-req">*</span></label>
+              <input class="car-input" type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com" />
+            </div>
+            <div class="car-field">
+              <label class="car-label" for="phone">Phone number <span class="car-req">*</span></label>
+              <input class="car-input" type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+91 00000 00000" />
+            </div>
+          </div>
+          <div class="car-field-row">
+            <div class="car-field">
+              <label class="car-label" for="department">Department <span class="car-req">*</span></label>
+              <select class="car-select" id="department" name="department" required>
+                <option value="" disabled selected>Select department</option>
+                {departments.map(d => <option value={d.name}>{d.name}</option>)}
+              </select>
+            </div>
+            <div class="car-field">
+              <label class="car-label" for="experience">Total experience (years) <span class="car-req">*</span></label>
+              <select class="car-select" id="experience" name="experience" required>
+                <option value="" disabled selected>Select range</option>
+                <option>0–1 years (Fresher)</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5–10 years</option>
+                <option>10–15 years</option>
+                <option>15+ years</option>
+              </select>
+            </div>
+          </div>
+          <div class="car-field">
+            <label class="car-label" for="position">Position applied for <span class="car-req">*</span></label>
+            <input class="car-input" type="text" id="position" name="position" required placeholder="e.g. Metallurgical Engineer, Quality Manager, Press Operator" />
+          </div>
+          <div class="car-field-row">
+            <div class="car-field">
+              <label class="car-label" for="organisation">Current / last organisation</label>
+              <input class="car-input" type="text" id="organisation" name="organisation" autocomplete="organization" placeholder="Company name" />
+            </div>
+            <div class="car-field">
+              <label class="car-label" for="education">Education qualification <span class="car-req">*</span></label>
+              <input class="car-input" type="text" id="education" name="education" placeholder="e.g. B.Tech Metallurgy, MBA, Diploma" />
+            </div>
+          </div>
+          <div class="car-field">
+            <label class="car-label" for="reason">Why Banco? <span class="car-req">*</span></label>
+            <textarea class="car-textarea" id="reason" name="reason" required rows="4" placeholder="Tell us why you want to join Banco and what you'd bring to the role."></textarea>
+          </div>
+          <div class="car-field">
+            <label class="car-label" for="cv">Upload CV (PDF) <span class="car-req">*</span></label>
+            <input class="car-file" type="file" id="cv" name="cv" accept=".pdf" required />
+            <div class="car-file-hint">PDF only · Maximum 5 MB</div>
+          </div>
+          <button type="submit" class="btn btn-primary car-submit">Submit application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom note CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Hiring</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            We respond to every<br>application within 10 working days.
+          </h2>
+          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:52ch">
+            Questions about a specific role or department? Contact our HR team directly
+            at <a href="mailto:careers@bancoaluminium.com" style="color:var(--color-silver);text-decoration:underline;text-underline-offset:3px">careers@bancoaluminium.com</a>
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="#department" class="btn btn-primary-dark">Browse departments</a>
+          <a href="/about" class="btn btn-secondary-dark">About Banco</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .car-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .car-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .car-hero > .container { position: relative; z-index: 1; }
+  .car-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .car-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .car-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .car-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .car-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .car-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .car-why-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .car-why-points { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  .car-why-row    { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .car-why-title  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
+  .car-why-desc   { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+
+  .car-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .car-dept-card { background: var(--color-navy-soft); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
+  .car-dept-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .car-dept-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-platinum); }
+  .car-dept-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-silver); }
+
+  .car-form-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .car-form-notes { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .car-note-row { display: flex; align-items: flex-start; gap: 10px; }
+  .car-note-dot { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .car-note-row span { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+
+  .car-form { display: flex; flex-direction: column; gap: 18px; }
+  .car-field { display: flex; flex-direction: column; gap: 6px; }
+  .car-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .car-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
+  .car-req { color: var(--color-green); }
+  .car-input, .car-select, .car-textarea {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--color-navy);
+    background: white;
+    border: 1px solid var(--color-stone-200);
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.18s ease;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .car-input:focus, .car-select:focus, .car-textarea:focus { border-color: var(--color-navy); }
+  .car-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%234A5260' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+  .car-textarea { resize: vertical; min-height: 100px; }
+  .car-file { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 10px 14px; background: white; cursor: pointer; width: 100%; }
+  .car-file::-webkit-file-upload-button { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.05em; background: var(--color-navy); color: white; border: none; padding: 6px 14px; cursor: pointer; margin-right: 12px; }
+  .car-file-hint { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-stone-400); margin-top: 4px; }
+  .car-submit { margin-top: 8px; align-self: flex-start; }
+
+  @media (max-width: 1024px) {
+    .car-stats { grid-template-columns: repeat(2, 1fr); }
+    .car-why-grid { grid-template-columns: 1fr; }
+    .car-dept-grid { grid-template-columns: repeat(2, 1fr); }
+    .car-form-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .car-stats { grid-template-columns: 1fr 1fr; }
+    .car-field-row { grid-template-columns: 1fr; }
+    .car-dept-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

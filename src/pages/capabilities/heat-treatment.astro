@@ -1,0 +1,325 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const tempers = [
+  {
+    code: 'T5',
+    name: 'Air quench + artificial age',
+    process: 'Quenched at press exit by forced-air cooling. Directly artificially aged in batch oven.',
+    tensile: '160–190 MPa',
+    yield: '110–150 MPa',
+    elongation: '8–12%',
+    hardness: '55–65 HBW',
+    notes: '6063-T5 standard architectural. Suitable for anodising and powder coating.',
+    alloys: ['6060', '6063'],
+  },
+  {
+    code: 'T6',
+    name: 'Solution + artificial age',
+    process: 'Solution heat treated at 520°C, water or forced-air quenched, then artificially aged at 175°C for 8 h.',
+    tensile: '260–310 MPa',
+    yield: '240–290 MPa',
+    elongation: '8–12%',
+    hardness: '85–95 HBW',
+    notes: '6082-T6 for structural applications. 6061-T6 for engineering and aerospace profiles.',
+    alloys: ['6082', '6061', '6066'],
+  },
+  {
+    code: 'T73',
+    name: 'Overaged',
+    process: 'Two-stage artificial ageing to overaged condition. Reduces residual stress and susceptibility to stress corrosion cracking.',
+    tensile: '440–475 MPa',
+    yield: '390–435 MPa',
+    elongation: '10–13%',
+    hardness: '130–140 HBW',
+    notes: '7xxx series for aerospace and defence. Sacrifices some strength for superior SCC resistance.',
+    alloys: ['7075', '7050'],
+  },
+];
+---
+
+<Layout
+  title="Heat treatment — Banco Aluminium"
+  description="T5, T6, and T73 tempers. In-line and batch ageing furnaces. Mechanical property verification with tensile testing and Brinell hardness. Controlled temperature-time profiles."
+>
+
+  <section class="ht-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Heat treatment</div>
+      <h1 class="ht-h1">
+        Controlled ageing.<br>Certified tempers.
+      </h1>
+      <p class="ht-lead">
+        Heat treatment transforms extruded aluminium profiles from as-extruded condition
+        to certified mechanical properties. Banco operates dedicated ageing furnaces with
+        continuous temperature logging, full traceability, and mechanical property verification
+        on every production lot.
+      </p>
+      <div class="ht-stats">
+        {[
+          { n: 'T5 / T6 / T73', l: 'Available temper designations' },
+          { n: 'In-line + batch', l: 'Ageing furnace types' },
+          { n: '±3°C',           l: 'Furnace temperature uniformity' },
+          { n: '100%',           l: 'Lots with tensile/hardness cert.' },
+        ].map(({ n, l }) => (
+          <div class="ht-stat">
+            <div class="ht-stat-n">{n}</div>
+            <div class="ht-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="ht-overview-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Why heat treatment<br>matters for aluminium.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            Aluminium alloys in the 6xxx and 7xxx series are heat-treatable — their mechanical
+            properties are determined not just by alloy composition but by the thermal history
+            applied after extrusion. Heat treatment exploits precipitation hardening: fine intermetallic
+            precipitates are formed within the aluminium matrix, blocking dislocation movement and
+            dramatically increasing strength.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            The same 6082 alloy extruded without heat treatment yields approximately 130 MPa tensile
+            strength. In the T6 temper — solution treated and artificially aged — the same alloy
+            achieves 280–310 MPa. The temper designation is therefore a critical specification
+            parameter, not an optional addition.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Banco's in-house heat treatment capability means temper is verified and certified
+            against each production lot — not assumed from nominal alloy chemistry.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temper table -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Temper designations</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:48px">
+        Three tempers.<br>Full mechanical data.
+      </h2>
+      <div class="ht-temper-grid">
+        {tempers.map((t) => (
+          <div class="ht-temper-card">
+            <div class="ht-temper-header">
+              <div class="ht-temper-code">{t.code}</div>
+              <div class="ht-temper-alloys">
+                {t.alloys.map(a => <span class="ht-alloy-tag">{a}</span>)}
+              </div>
+            </div>
+            <div class="ht-temper-name">{t.name}</div>
+            <p class="ht-temper-process">{t.process}</p>
+            <div class="ht-props">
+              <div class="ht-prop">
+                <span class="ht-prop-val">{t.tensile}</span>
+                <span class="ht-prop-label">Tensile strength</span>
+              </div>
+              <div class="ht-prop">
+                <span class="ht-prop-val">{t.yield}</span>
+                <span class="ht-prop-label">Yield strength (0.2%)</span>
+              </div>
+              <div class="ht-prop">
+                <span class="ht-prop-val">{t.elongation}</span>
+                <span class="ht-prop-label">Elongation A50</span>
+              </div>
+              <div class="ht-prop">
+                <span class="ht-prop-val">{t.hardness}</span>
+                <span class="ht-prop-label">Brinell hardness</span>
+              </div>
+            </div>
+            <p class="ht-temper-notes">{t.notes}</p>
+          </div>
+        ))}
+      </div>
+      <p class="ht-footnote">
+        Properties shown are indicative values for standard profiles per EN 755-2 / EN 12020-2. Actual certificates issued per lot from tensile specimens cut from each production run.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Ageing furnace process</div>
+      <div class="ht-proc-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Temperature control<br>to ±3°C.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Ageing furnaces are equipped with multi-zone temperature control, circulating
+            fans for temperature uniformity, and continuous data logging. Temperature uniformity
+            within the furnace chamber is maintained to ±3°C throughout the holding period —
+            a requirement of EN 2903 for class 3 heat treatment furnaces.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Time-temperature profiles for every production lot are stored and retrievable.
+            Temperature surveys are conducted quarterly using calibrated data loggers positioned
+            at multiple points across the charge. Furnace calibration records are available
+            for customer audit.
+          </p>
+        </div>
+        <div class="ht-stages">
+          {[
+            { n: '01', title: 'Charge loading',          desc: 'Profiles racked on purpose-built ageing frames. Maximum load density checked to ensure air circulation path is maintained for temperature uniformity.' },
+            { n: '02', title: 'Ramp to soak temperature', desc: 'Furnace temperature raised to specified ageing temperature (165–200°C depending on alloy and temper). Ramp rate controlled to prevent thermal shock.' },
+            { n: '03', title: 'Hold at temperature',      desc: 'Charge held at target temperature for specified period — 4 to 12 hours depending on alloy and temper. Time logged automatically against charge record.' },
+            { n: '04', title: 'Force cooling',            desc: 'Forced-air cooling applied after hold period for T5 and T6. Cooling rate above 200°C is controlled to avoid quench distortion on thin-wall profiles.' },
+            { n: '05', title: 'Temper verification',      desc: 'Tensile specimen and Brinell hardness sample cut from each lot. Results recorded and checked against specification limits before lot is released.' },
+          ].map(({ n, title, desc }) => (
+            <div class="ht-stage-row">
+              <div class="ht-stage-num">{n}</div>
+              <div>
+                <div class="ht-stage-title">{title}</div>
+                <div class="ht-stage-desc">{desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality & photos -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Quality & certification</div>
+      <div class="ht-qual-grid">
+        <div class="ht-qual-photos">
+          <div class="ht-qual-photo-main">
+            <img src="/assets/manufacturing/Quality%201.JPG" alt="Mechanical testing laboratory" loading="lazy" />
+          </div>
+          <div class="ht-qual-photo-sub">
+            <img src="/assets/manufacturing/Quality%202.JPG" alt="Tensile test specimen" loading="lazy" />
+          </div>
+        </div>
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Every lot tested.<br>Certificate with every shipment.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Mechanical property verification is standard for all heat-treated lots.
+            A tensile specimen is machined from a representative profile from each
+            ageing charge. Tensile strength, yield strength (Rp0.2), and elongation
+            are measured and recorded. Brinell hardness is measured as a process check.
+          </p>
+          <div class="ht-cert-list">
+            {[
+              ['Material test certificate', 'Chemical composition + mechanical properties per EN 10204 Type 3.1'],
+              ['Furnace load record',       'Time-temperature profile for each ageing charge, traceable to lot number'],
+              ['Tensile test report',       'Individual specimen results per lot — UTS, Rp0.2, A50'],
+              ['Brinell hardness record',   'Hardness values per lot against EN 755-2 specification range'],
+              ['CE Declaration',            'Available for EN 15088 structural aluminium export orders'],
+            ].map(([label, desc]) => (
+              <div class="ht-cert-row">
+                <div class="ht-cert-label">{label}</div>
+                <div class="ht-cert-desc">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Heat treatment enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Specify your temper.<br>We'll certify every lot.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
+          <a href="/about/quality" class="btn btn-secondary-dark">Quality & testing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .ht-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ht-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .ht-hero > .container { position: relative; z-index: 1; }
+  .ht-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .ht-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .ht-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .ht-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .ht-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .ht-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .ht-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  .ht-temper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .ht-temper-card { background: var(--color-navy-soft); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; border-top: 2px solid var(--color-green); }
+  .ht-temper-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .ht-temper-code { font-family: var(--font-sans); font-size: 36px; font-weight: 800; letter-spacing: -0.04em; color: var(--color-platinum); line-height: 1; }
+  .ht-temper-alloys { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; }
+  .ht-alloy-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-green); border: 1px solid var(--color-green); padding: 2px 6px; }
+  .ht-temper-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); }
+  .ht-temper-process { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-silver); }
+  .ht-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); margin-top: 4px; }
+  .ht-prop { background: rgba(255,255,255,0.04); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
+  .ht-prop-val { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--color-platinum); }
+  .ht-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ht-temper-notes { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-400); border-top: 1px solid var(--color-navy-line); padding-top: 12px; }
+  .ht-footnote { margin-top: 16px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+
+  .ht-proc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .ht-stages { display: flex; flex-direction: column; gap: 0; }
+  .ht-stage-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
+  .ht-stage-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
+  .ht-stage-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
+  .ht-stage-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
+
+  .ht-qual-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .ht-qual-photos { display: flex; flex-direction: column; gap: 4px; }
+  .ht-qual-photo-main { aspect-ratio: 4/3; overflow: hidden; }
+  .ht-qual-photo-sub  { aspect-ratio: 16/6; overflow: hidden; }
+  .ht-qual-photo-main img, .ht-qual-photo-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .ht-qual-photo-main:hover img, .ht-qual-photo-sub:hover img { filter: brightness(1); }
+  .ht-cert-list { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  .ht-cert-row  { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .ht-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
+  .ht-cert-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+
+  @media (max-width: 1024px) {
+    .ht-stats { grid-template-columns: repeat(2, 1fr); }
+    .ht-overview-grid { grid-template-columns: 1fr; }
+    .ht-temper-grid { grid-template-columns: 1fr; }
+    .ht-proc-grid { grid-template-columns: 1fr; }
+    .ht-qual-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ht-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>

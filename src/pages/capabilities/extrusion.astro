@@ -1,0 +1,279 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const presses = [
+  { id: '01', name: 'Press 1', capacity: '1,100 MT', circle: '138 mm', weight: '0.29–2.5 kg/m', profiles: 'Light architectural, slender sections, fine-wall profiles', size: 48 },
+  { id: '02', name: 'Press 2', capacity: '1,650 MT', circle: '152 mm', weight: '0.5–5 kg/m',   profiles: 'Window & door systems, standard architectural', size: 60 },
+  { id: '03', name: 'Press 3', capacity: '2,200 MT', circle: '178 mm', weight: '1.0–12 kg/m',  profiles: 'Industrial structural, general engineering', size: 72 },
+  { id: '04', name: 'Press 4', capacity: '2,750 MT', circle: '203 mm', weight: '2.5–22 kg/m',  profiles: 'Heavy structural, racking, solar, transport', size: 84 },
+  { id: '05', name: 'Press 5', capacity: '3,300 MT', circle: '254 mm', weight: '5.0–35 kg/m',  profiles: 'Large structural sections, heat sinks, complex hollows', size: 96 },
+];
+
+const processStages = [
+  { num: '01', name: 'Billet preheating', desc: 'Billets preheated in gas-fired log furnace to 460–520°C depending on alloy and profile geometry. Temperature profile logged continuously for process traceability.' },
+  { num: '02', name: 'Container loading', desc: 'Heated billet loaded into press container. Container held at 420–450°C to minimise thermal gradient at billet interface. Shear confirms billet-to-container seal before pressing.' },
+  { num: '03', name: 'Extrusion stroke', desc: 'Ram advances at controlled speed — 2–18 mm/s depending on alloy, die complexity, and target surface finish. Speed PID-controlled throughout the stroke for consistent exit temperature.' },
+  { num: '04', name: 'Run-out table & stretching', desc: 'Profile exits die at 480–540°C. Run-out table with driven rollers and quench system receives the extrudate. Profiles are stretcher-straightened after cooling to eliminate bow and twist.' },
+  { num: '05', name: 'Saw cutting', desc: 'Cut-to-length saw sections profiles to customer specified lengths ±1 mm. Butt end discarded. Cut lengths staged in racks for heat treatment, machining, or direct packing.' },
+];
+---
+
+<Layout
+  title="Extrusion — Banco Aluminium"
+  description="Five direct-drive extrusion presses from 1,100 to 3,300 MT. 35,000 MT annual capacity. Profile weight range 0.29–35 kg/m across 1xxx–7xxx alloys."
+>
+
+  <section class="ext-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Extrusion</div>
+      <h1 class="ext-h1">
+        Five presses.<br>35,000 MT capacity.
+      </h1>
+      <p class="ext-lead">
+        Five direct-drive extrusion presses spanning 1,100 to 3,300 MT. Profile weights
+        from 0.29 to 35 kg/m. Custom and standard sections across 1xxx to 7xxx alloy series.
+        Fully in-house — billet, die, press, finishing, packing.
+      </p>
+      <div class="ext-stats">
+        {[
+          { n: '5',           l: 'Extrusion presses' },
+          { n: '35,000 MT',   l: 'Annual capacity' },
+          { n: '0.29–35',     l: 'Profile weight kg/m' },
+          { n: '1,100–3,300', l: 'Press capacity MT' },
+        ].map(({ n, l }) => (
+          <div class="ext-stat">
+            <div class="ext-stat-n">{n}</div>
+            <div class="ext-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="ext-overview-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Direct-drive presses.<br>Full billet-to-profile<br>control.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            All five presses are direct-drive hydraulic extrusion presses operating in the
+            conventional direct extrusion mode. Billets produced in Banco's own foundry
+            are preheated in dedicated log furnaces, then loaded directly into the press
+            container for single-stroke extrusion.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            Die temperature is controlled via induction die heater prior to mounting on
+            the press. Exit temperature is monitored by pyrometer and feedback-controlled
+            through ram speed adjustment. This direct-drive architecture — rather than
+            accumulator-driven — provides superior speed control for surface-critical and
+            hard-alloy profiles.
+          </p>
+          <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:8px">
+            {['Direct hydraulic drive', 'Induction die heating', 'Exit temp. monitoring', 'PID speed control', 'In-line quench', 'Stretcher straightening'].map(tag => (
+              <span class="pill">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press range -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Press range</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:48px">
+        Five presses.<br>138 mm to 254 mm circle.
+      </h2>
+      <div class="ext-press-grid">
+        {presses.map((p) => (
+          <div class="ext-press-card">
+            <div class="ext-press-header">
+              <div class="ext-press-id">{p.id}</div>
+              <div class="ext-press-circle-wrap">
+                <div class="ext-press-circle" style={`width:${p.size}px;height:${p.size}px`}></div>
+              </div>
+            </div>
+            <div class="ext-press-name">{p.name}</div>
+            <div class="ext-press-cap">{p.capacity}</div>
+            <div class="ext-press-meta">
+              <div class="ext-press-row">
+                <span class="ext-press-key">Circle</span>
+                <span class="ext-press-val">{p.circle}</span>
+              </div>
+              <div class="ext-press-row">
+                <span class="ext-press-key">Weight range</span>
+                <span class="ext-press-val">{p.weight}</span>
+              </div>
+            </div>
+            <div class="ext-press-profiles">{p.profiles}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Process sequence</div>
+      <div class="ext-proc-head">
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          Five controlled stages<br>billet to cut length.
+        </h2>
+      </div>
+      <div class="ext-proc-grid">
+        {processStages.map(({ num, name, desc }) => (
+          <div class="ext-proc-cell">
+            <div class="ext-proc-num">/ {num}</div>
+            <h3 class="ext-proc-name">{name}</h3>
+            <p class="ext-proc-desc">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile range photos -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Profile range</div>
+      <div class="ext-range-grid">
+        <div class="ext-range-content">
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            0.29 to 35 kg/m.<br>Solid to complex hollow.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Profile complexity ranges from simple solid bars and angles through multi-hollow
+            structural sections. Standard and custom cross-sections manufactured — from
+            architectural window profiles to heat sink extrusions, racking beams, and
+            automotive structural components.
+          </p>
+          <div class="ext-range-table">
+            {[
+              ['Weight range',   '0.29–35 kg/m'],
+              ['Alloy range',    '1xxx · 3xxx · 5xxx · 6xxx · 7xxx'],
+              ['Standard alloys','6060 · 6063 · 6082 · 6061 · 1050 · 3003'],
+              ['Min. wall',      '0.8 mm (architectural); 1.2 mm (structural)'],
+              ['Max. circle',    '254 mm (Press 5)'],
+              ['Tempers',        'T4 · T5 · T6 · T73'],
+              ['Finishes',       'Mill · anodised · powder coated · brushed'],
+            ].map(([k, v]) => (
+              <div class="ext-rrow">
+                <span class="ext-rkey">{k}</span>
+                <span class="ext-rval">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="ext-range-photos">
+          <div class="ext-photo-top">
+            <img src="/assets/manufacturing/Billet%201.JPG" alt="Extrusion billets ready for press" loading="lazy" />
+          </div>
+          <div class="ext-photo-bot">
+            <img src="/assets/manufacturing/Billet%203.JPG" alt="Aluminium billet preheating" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Extrusion enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Submit a drawing.<br>We'll confirm press, alloy and lead time.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#drawing" class="btn btn-primary-dark">Submit a drawing</a>
+          <a href="/capabilities/die-shop" class="btn btn-secondary-dark">Die shop</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .ext-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ext-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .ext-hero > .container { position: relative; z-index: 1; }
+  .ext-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .ext-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .ext-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .ext-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .ext-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .ext-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .ext-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  .ext-press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .ext-press-card { background: var(--color-navy-soft); padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--color-green); }
+  .ext-press-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+  .ext-press-id { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--color-green); }
+  .ext-press-circle-wrap { display: flex; align-items: center; justify-content: flex-end; }
+  .ext-press-circle { border: 1px solid var(--color-navy-line); border-radius: 50%; background: rgba(255,255,255,0.04); flex-shrink: 0; }
+  .ext-press-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); }
+  .ext-press-cap  { font-family: var(--font-sans); font-size: clamp(20px, 2vw, 26px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .ext-press-meta { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-navy-line); padding-top: 10px; margin-top: 4px; }
+  .ext-press-row  { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .ext-press-key  { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ext-press-val  { font-family: var(--font-mono); font-size: 9px; color: var(--color-silver); }
+  .ext-press-profiles { font-family: var(--font-sans); font-size: 11.5px; line-height: 1.55; color: var(--color-stone-400); margin-top: 4px; }
+
+  .ext-proc-head  { margin-bottom: 40px; }
+  .ext-proc-grid  { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ext-proc-cell  { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
+  .ext-proc-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .ext-proc-name  { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); }
+  .ext-proc-desc  { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); }
+
+  .ext-range-grid    { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .ext-range-table   { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  .ext-rrow  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .ext-rkey  { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); flex-shrink: 0; }
+  .ext-rval  { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
+  .ext-range-photos { display: flex; flex-direction: column; gap: 4px; }
+  .ext-photo-top, .ext-photo-bot { overflow: hidden; }
+  .ext-photo-top { aspect-ratio: 4/3; }
+  .ext-photo-bot  { aspect-ratio: 16/6; }
+  .ext-photo-top img, .ext-photo-bot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .ext-photo-top:hover img, .ext-photo-bot:hover img { filter: brightness(1); }
+
+  @media (max-width: 1280px) {
+    .ext-press-grid { grid-template-columns: repeat(3, 1fr); }
+    .ext-proc-grid  { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .ext-stats { grid-template-columns: repeat(2, 1fr); }
+    .ext-overview-grid { grid-template-columns: 1fr; }
+    .ext-press-grid { grid-template-columns: repeat(2, 1fr); }
+    .ext-proc-grid  { grid-template-columns: repeat(2, 1fr); }
+    .ext-range-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .ext-stats { grid-template-columns: 1fr 1fr; }
+    .ext-press-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

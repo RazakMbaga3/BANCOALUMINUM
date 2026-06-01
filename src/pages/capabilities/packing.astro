@@ -1,0 +1,242 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const internalOptions = [
+  { id: '01', name: 'Bare', desc: 'Profile-on-profile with no interleaving. Standard for structural sections, cut lengths for immediate machining, and profiles with anodised or powder coated surface where finish is not a priority.' },
+  { id: '02', name: 'Paper layer', desc: 'Single layer of interleaving paper between every profile. Protects against contact marks and minor surface damage. Suitable for most architectural and standard finishes.' },
+  { id: '03', name: 'Paper interleave', desc: 'Continuous paper interleaving wrap around each individual profile. Full surface protection. Standard for powder coated and anodised profiles going to premium applications.' },
+  { id: '04', name: 'Cardboard strip', desc: 'Longitudinal corrugated cardboard strips placed between profiles at contact points. Prevents pressure marks and surface deformation on soft-temper or thin-wall sections.' },
+  { id: '05', name: 'Wrapped profiles', desc: 'Individual profile fully wrapped in polyethylene film or paper wrap. Maximum protection for premium finished profiles, long-distance transport, or customer-specified requirements.' },
+];
+
+const externalOptions = [
+  { id: '01', name: 'Wooden bundle', desc: 'Profiles banded into 8×10 cm nominal cross-section wooden base bundle. Standard export packing for structural sections and long profiles.' },
+  { id: '02', name: 'Cardboard box', desc: 'Custom-sized cardboard carton for finished components, short profiles, and fabricated parts. Customer branding or neutral packing available.' },
+  { id: '03', name: 'Wooden pallet', desc: 'Profiles loaded onto heat-treated ISPM 15 export pallets. Pallet banded and corner-protected. Standard for container loading and multiple SKU orders.' },
+  { id: '04', name: 'Stretch film (4-side)', desc: 'Full 4-side stretch film wrap applied to bundle on pallet. Provides weathering protection and bundle integrity for port storage and sea freight.' },
+  { id: '05', name: 'Plastic wrap / nylon', desc: 'Nylon or LDPE full bundle wrap heat-sealed at both ends. Highest weather and moisture protection. Standard for long sea voyages and humid-climate destinations.' },
+];
+---
+
+<Layout
+  title="Packing options — Banco Aluminium"
+  description="Customer-specified packing. Export-ready. Five internal protection options and five external bundle packing options. Full export documentation including CBAM carbon data."
+>
+
+  <section class="pk-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Packing</div>
+      <h1 class="pk-h1">
+        Customer-specified<br>packing.<br>Export-ready.
+      </h1>
+      <p class="pk-lead">
+        Packing specification is part of every order, not an afterthought. Banco
+        maintains five internal protection options and five external bundle packing
+        configurations — individually specified per product, per destination, and
+        per customer requirement.
+      </p>
+      <div class="pk-stats">
+        {[
+          { n: '5',         l: 'Internal protection options' },
+          { n: '5',         l: 'External bundle options' },
+          { n: 'ISPM 15',   l: 'Heat-treated export timber' },
+          { n: 'CBAM-ready',l: 'Carbon data for EU imports' },
+        ].map(({ n, l }) => (
+          <div class="pk-stat">
+            <div class="pk-stat-n">{n}</div>
+            <div class="pk-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Internal protection -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Internal protection</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Profile-to-profile protection.<br>Five options.
+      </h2>
+      <div class="pk-options-grid">
+        {internalOptions.map((o) => (
+          <div class="pk-option-card">
+            <div class="pk-option-id">{o.id}</div>
+            <h3 class="pk-option-name">{o.name}</h3>
+            <p class="pk-option-desc">{o.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="pk-note">
+        <div class="pk-note-icon"></div>
+        <p>Internal protection is specified per SKU and recorded in the production order. Mixed internal packing within a single bundle is possible where profile surface finish varies by layer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- External bundle packing -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · External bundle packing</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Five bundle configurations.<br>Port-to-site protection.
+      </h2>
+      <div class="pk-ext-grid">
+        {externalOptions.map((o) => (
+          <div class="pk-ext-card">
+            <div class="pk-ext-id">{o.id}</div>
+            <h3 class="pk-ext-name">{o.name}</h3>
+            <p class="pk-ext-desc">{o.desc}</p>
+          </div>
+        ))}
+      </div>
+      <p class="pk-ext-note">
+        All wooden packing components are manufactured from ISPM 15 heat-treated timber and bear the HT mark for unrestricted import into regulated markets.
+        Pallet dimensions match 20-foot and 40-foot container floor dimensions for optimum container utilisation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Export documentation -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Export documentation</div>
+      <div class="pk-doc-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Every shipment.<br>Complete documentation.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Banco prepares a complete export documentation package with every shipment.
+            Documents are issued before loading and transmitted electronically to buyer's
+            freight forwarder, bank, or inspection agent as required. All documents
+            are available in PDF format and co-ordinated with courier release.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            For EU-bound shipments, CBAM (Carbon Border Adjustment Mechanism) carbon data
+            is supplied as standard with the material certificate. Carbon content per tonne
+            of aluminium is calculated per EN ISO 14064-1 and reported on the
+            CBAM declaration supplementary document.
+          </p>
+        </div>
+        <div class="pk-docs-list">
+          {[
+            {
+              doc: 'Commercial invoice',
+              desc: 'HS code, unit price, quantity, country of origin, Incoterms, and shipping marks.',
+            },
+            {
+              doc: 'Packing list',
+              desc: 'Bundle-by-bundle breakdown: profile reference, quantity, length, weight, packing type, and marks.',
+            },
+            {
+              doc: 'Material test certificate',
+              desc: 'EN 10204 Type 3.1: chemical composition, mechanical properties, lot number, alloy, and temper.',
+            },
+            {
+              doc: 'Mill certificate',
+              desc: 'Banco Aluminium works certificate — extrusion date, press, die number, temper, and production lot.',
+            },
+            {
+              doc: 'CBAM carbon data',
+              desc: 'Direct and indirect emission intensity per tonne (tCO₂e/t) per EN ISO 14064-1. Required for EU imports from January 2026.',
+            },
+            {
+              doc: 'CE Declaration of Performance',
+              desc: 'For EN 15088 structural aluminium. Performance declared against load-bearing application requirements. Available on request.',
+            },
+          ].map(({ doc, desc }) => (
+            <div class="pk-doc-row">
+              <div class="pk-doc-name">{doc}</div>
+              <div class="pk-doc-desc">{desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Packing & shipping</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Specify your packing<br>requirement with your enquiry.
+          </h2>
+          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:52ch">
+            Packing options and export documentation requirements should be confirmed at
+            the time of order placement. We will prepare a complete export package.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#quote" class="btn btn-primary-dark">Request a quotation</a>
+          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .pk-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .pk-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .pk-hero > .container { position: relative; z-index: 1; }
+  .pk-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .pk-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .pk-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .pk-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .pk-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .pk-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .pk-options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .pk-option-card { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
+  .pk-option-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .pk-option-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
+  .pk-option-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); }
+  .pk-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; padding: 16px 20px; border: 1px solid var(--color-stone-200); background: var(--color-stone-100); }
+  .pk-note-icon { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .pk-note p { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); }
+
+  .pk-ext-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .pk-ext-card { background: var(--color-navy-soft); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
+  .pk-ext-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .pk-ext-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-platinum); }
+  .pk-ext-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-silver); }
+  .pk-ext-note { margin-top: 20px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
+
+  .pk-doc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .pk-docs-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
+  .pk-doc-row  { padding: 14px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .pk-doc-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+  .pk-doc-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+
+  @media (max-width: 1280px) {
+    .pk-options-grid { grid-template-columns: repeat(3, 1fr); }
+    .pk-ext-grid     { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .pk-stats { grid-template-columns: repeat(2, 1fr); }
+    .pk-options-grid { grid-template-columns: repeat(2, 1fr); }
+    .pk-ext-grid     { grid-template-columns: repeat(2, 1fr); }
+    .pk-doc-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .pk-stats { grid-template-columns: 1fr 1fr; }
+    .pk-options-grid { grid-template-columns: 1fr 1fr; }
+    .pk-ext-grid     { grid-template-columns: 1fr 1fr; }
+  }
+</style>

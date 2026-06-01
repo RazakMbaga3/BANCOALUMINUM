@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const dieTypes = [
+  { type: 'Flat die', profiles: 'Solid profiles — angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
+  { type: 'Semi-hollow', profiles: 'Profiles with bridges, legs, partial enclosures', alloys: '6xxx, 2xxx', complexity: 'Medium' },
+  { type: 'Hollow (porthole)', profiles: 'Closed hollow sections — tubes, rectangular hollows', alloys: '6060, 6063, 6082', complexity: 'High' },
+  { type: 'Bridge die', profiles: 'Complex multi-void sections, multi-hollow profiles', alloys: '6060, 6063', complexity: 'High' },
+];
+
+const processSteps = [
+  { num: '/ 01', name: 'Drawing review', desc: 'Customer CAD files reviewed for extrudability — wall thickness, tongue ratio, circumscribed circle diameter. Modifications suggested where needed to improve die life and surface finish.' },
+  { num: '/ 02', name: 'Q-Form simulation', desc: 'Q-Form 3D flow simulation models metal behaviour through die bearing. Predicts flow balance, temperature distribution, and weld seam locations before any steel is cut.' },
+  { num: '/ 03', name: '3D assembly model', desc: 'Full 3D CAD model of die assembly — die, backer, bolster. Checks bearing relief, pocket geometry, and dimensional clearances across the complete tooling stack.' },
+  { num: '/ 04', name: 'CNC machining', desc: '5-axis CNC machining of H13 tool steel. Profiles machined to ±0.01 mm tolerance. Critical bearing surfaces finish-ground. Nitride hardening applied to increase surface hardness to 1000+ HV.' },
+  { num: '/ 05', name: 'Dimensional inspection', desc: 'CMM inspection of finished die. Bearing dimensions, pocket depth, and relief angles verified against design model. Inspection report issued before die is released to production.' },
+  { num: '/ 06', name: 'Trial extrusion', desc: 'Trial run on press. First-off profile measured against customer drawing. Dimensional report issued. Customer sample approval gate before die enters production rotation.' },
+];
+---
+
+<Layout
+  title="Die shop & tooling — Banco Aluminium"
+  description="In-house die shop converting customer drawings into production tooling. 5-axis CNC machining, Q-Form flow simulation, flat/semi-hollow/hollow/porthole dies. 2–3 week tooling lead time."
+>
+
+  <section class="die-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Die shop</div>
+      <h1 class="die-h1">
+        Customer drawings<br>into production<br>tooling.
+      </h1>
+      <p class="die-lead">
+        Banco's in-house die shop designs and manufactures every extrusion die
+        used across five presses. From Q-Form flow simulation to trial extrusion
+        and sample approval — full tooling control, 2–3 week lead time.
+      </p>
+      <div class="die-stats">
+        {[
+          { n: '5-axis', l: 'CNC machining centre' },
+          { n: 'Q-Form', l: 'Flow simulation' },
+          { n: '4 types', l: 'Flat · semi-hollow · hollow · porthole' },
+          { n: '2–3 wk', l: 'Standard tooling lead time' },
+        ].map(({ n, l }) => (
+          <div class="die-stat">
+            <div class="die-stat-n">{n}</div>
+            <div class="die-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Die design process -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Die design process</div>
+      <div class="die-section-head">
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          Six stages from<br>drawing to trial.
+        </h2>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:52ch">
+          Every die goes through a structured design and validation process before
+          a single billet is loaded. Q-Form simulation eliminates the majority of
+          first-off failures and reduces sampling iterations.
+        </p>
+      </div>
+      <div class="die-process-grid">
+        {processSteps.map(({ num, name, desc }) => (
+          <div class="die-proc-cell">
+            <div class="die-proc-num">{num}</div>
+            <h3 class="die-proc-name">{name}</h3>
+            <p class="die-proc-desc">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Die types -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Die types</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+        Four die types.<br>Solid to multi-hollow.
+      </h2>
+      <div class="die-table-wrap">
+        <table class="die-table">
+          <thead>
+            <tr>
+              <th>Die type</th>
+              <th>Profile capability</th>
+              <th>Typical alloys</th>
+              <th>Complexity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dieTypes.map((d, i) => (
+              <tr class={i % 2 === 0 ? 'die-row-even' : 'die-row-odd'}>
+                <td class="die-cell-type">{d.type}</td>
+                <td class="die-cell-text">{d.profiles}</td>
+                <td class="die-cell-mono">{d.alloys}</td>
+                <td class="die-cell-mono">{d.complexity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="die-footnote">
+        All die types manufactured in H13 hot-work tool steel. Salt-bath or gas nitride hardening to 1000–1100 HV case hardness.
+      </p>
+    </div>
+  </section>
+
+  <!-- Die machining -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Die machining</div>
+      <div class="die-mach-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            5-axis CNC.<br>H13 tool steel.<br>Nitride hardened.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Die pockets, bearing surfaces, and relief angles are machined on a 5-axis CNC
+            machining centre capable of complex 3D geometry in a single setup. Critical
+            bearing surfaces are finish-ground to Ra 0.4 μm. Weld chambers and pocket
+            profiles are polished to reduce extrusion pressure and improve surface quality.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            All dies are manufactured from H13 hot-work tool steel. Salt-bath nitride
+            hardening deposits a 0.1–0.15 mm nitride case at 1000–1100 HV, resisting
+            thermal fatigue and abrasion at extrusion temperatures of 480–520°C.
+          </p>
+          <div class="die-spec-list">
+            {[
+              ['Machining tolerance', '±0.01 mm on bearing dimensions'],
+              ['Steel grade', 'H13 / 1.2344 hot-work tool steel'],
+              ['Hardening', 'Salt-bath or gas nitride — 1000–1100 HV'],
+              ['Bearing surface finish', 'Ra 0.4 μm (finish ground)'],
+              ['Reconditioning', 'In-house re-nitride and bearing correction'],
+            ].map(([label, value]) => (
+              <div class="die-spec-row">
+                <span class="die-spec-label">{label}</span>
+                <span class="die-spec-val">{value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="die-img-stack">
+          <div class="die-img-main">
+            <img src="/assets/manufacturing/Casting%205.JPG" alt="Die machining process" loading="lazy" />
+          </div>
+          <div class="die-img-sub">
+            <img src="/assets/manufacturing/Casting%207.JPG" alt="Extrusion tooling detail" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trial & approval -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Trial extrusion & approval</div>
+      <div class="die-trial-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            No production without<br>sample approval.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Every new die undergoes a controlled trial extrusion before entering production
+            rotation. Trial billets are extruded at nominal parameters. First-off profiles
+            are cut and dimensionally inspected against the approved customer drawing using
+            CMM and optical measurement.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            A formal dimensional report is issued to the customer. Production begins only
+            after written sample approval is received. Die corrections — bearing adjustments,
+            flow balance modifications — are made in-house if required, with repeat trial
+            at no additional charge for drawing-compliant specifications.
+          </p>
+        </div>
+        <div class="die-approval-steps">
+          {[
+            { step: '01', title: 'Trial billet loaded', desc: 'Dedicated trial billet run at nominal extrusion parameters on the appropriate press.' },
+            { step: '02', title: 'First-off cut', desc: '500 mm section cut from steady-state run. Extrudate marked and traced to die number.' },
+            { step: '03', title: 'Dimensional report', desc: 'CMM and optical measurement against customer drawing. Report issued within 48 hours.' },
+            { step: '04', title: 'Customer approval', desc: 'Customer reviews report and physical sample. Written approval received before production.' },
+            { step: '05', title: 'Production released', desc: 'Die enters active rotation. Production planning proceeds against approved order quantity.' },
+          ].map(({ step, title, desc }) => (
+            <div class="die-approval-row">
+              <div class="die-approval-step">{step}</div>
+              <div>
+                <div class="die-approval-title">{title}</div>
+                <div class="die-approval-desc">{desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Die shop enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Submit a drawing.<br>We'll quote tooling and lead time.
+          </h2>
+          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:48ch">
+            DXF, DWG, or PDF accepted. Quotation includes tooling cost, estimated lead time,
+            and Q-Form simulation where geometry requires it.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#drawing" class="btn btn-primary-dark">Submit a drawing</a>
+          <a href="/capabilities/extrusion" class="btn btn-secondary-dark">Extrusion capability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .die-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .die-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .die-hero > .container { position: relative; z-index: 1; }
+  .die-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .die-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .die-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .die-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .die-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .die-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .die-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-bottom: 48px; }
+
+  .die-process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .die-proc-cell { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
+  .die-proc-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .die-proc-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
+  .die-proc-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+
+  .die-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
+  .die-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; }
+  .die-table thead tr { background: var(--color-navy-soft); }
+  .die-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .die-table th:last-child { border-right: none; }
+  .die-row-even { background: rgba(255,255,255,0.04); }
+  .die-row-odd  { background: rgba(255,255,255,0.02); }
+  .die-table td { padding: 12px 16px; border-right: 1px solid var(--color-navy-line); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+  .die-table td:last-child { border-right: none; }
+  .die-cell-type { font-weight: 600; font-size: 12px; color: var(--color-platinum); white-space: nowrap; }
+  .die-cell-text { color: var(--color-silver); font-family: var(--font-sans); font-size: 12px; line-height: 1.55; }
+  .die-cell-mono { color: var(--color-nickel); }
+  .die-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+
+  .die-mach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .die-spec-list { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
+  .die-spec-row  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .die-spec-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); flex-shrink: 0; }
+  .die-spec-val   { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
+  .die-img-stack  { display: flex; flex-direction: column; gap: 4px; }
+  .die-img-main   { aspect-ratio: 4/3; overflow: hidden; }
+  .die-img-main img, .die-img-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .die-img-main:hover img, .die-img-sub:hover img { filter: brightness(1); }
+  .die-img-sub    { aspect-ratio: 16/6; overflow: hidden; }
+
+  .die-trial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .die-approval-steps { display: flex; flex-direction: column; gap: 0; }
+  .die-approval-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
+  .die-approval-step { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
+  .die-approval-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
+  .die-approval-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
+
+  @media (max-width: 1024px) {
+    .die-stats { grid-template-columns: repeat(2, 1fr); }
+    .die-section-head { grid-template-columns: 1fr; }
+    .die-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .die-mach-grid { grid-template-columns: 1fr; }
+    .die-trial-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .die-stats { grid-template-columns: 1fr 1fr; }
+    .die-process-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

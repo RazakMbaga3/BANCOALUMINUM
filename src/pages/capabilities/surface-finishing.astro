@@ -1,0 +1,336 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const finishes = [
+  {
+    id: '01',
+    name: 'Powder coating',
+    spec: 'QUALICOAT certified · interior & exterior · 60–80 μm',
+    desc: 'Electrostatic application of polyester or polyurethane powder, oven-cured at 180–200°C. Available in all RAL and NCS colours. Interior and exterior grades, including QUALICOAT Class 1 and Class 2 for harsh environments.',
+    apps: 'Window & door systems, architectural cladding, solar racking, commercial fitout',
+    colour: 'Full RAL / NCS range',
+  },
+  {
+    id: '02',
+    name: 'Anodising',
+    spec: 'Class 20 · EN 12373 · natural / champagne / bronze / black',
+    desc: 'Sulphuric acid anodising to 20 μm minimum film thickness per EN 12373. Controlled bath chemistry and temperature for colour consistency across multi-batch orders. Sealing compliant with EN 12373-5.',
+    apps: 'Architectural facades, curtain wall, interior design, marine, premium hardware',
+    colour: 'Natural · champagne · bronze · black (EV1, EV2, EV3, EV6)',
+  },
+  {
+    id: '03',
+    name: 'Brushed',
+    spec: 'Mechanical brush finish · 120–180 grit · longitudinal grain',
+    desc: 'Abrasive belt brushing creates a consistent longitudinal grain finish. Grain direction parallel to extrusion axis. Available on standard and anodised profiles. Eliminates die lines and surface oxide from mill finish.',
+    apps: 'Interior design, shop fit-out, premium consumer products, appliance trim',
+    colour: 'Natural aluminium / combined with anodising',
+  },
+  {
+    id: '04',
+    name: 'Sand blast',
+    spec: 'Glass bead or corundum blast · fine to coarse texture',
+    desc: 'Air blast with glass bead (fine matte) or corundum (coarser texture). Creates uniform diffuse surface. Eliminates glare. Applied before anodising for anodised matte finish. Profile profile cleaned and degreased before application.',
+    apps: 'Architectural, interior, display, combined with anodising for deep matte effect',
+    colour: 'Natural aluminium / combined with anodising',
+  },
+  {
+    id: '05',
+    name: 'Mill finish',
+    spec: 'As-extruded · no surface treatment',
+    desc: 'Profile delivered in as-extruded condition. Die lines visible. Suitable for structural applications, hidden components, and customers applying their own surface treatment post-delivery. Nominal Ra 1.5–3.0 μm.',
+    apps: 'Structural sections, hidden components, machined parts, customer-treated products',
+    colour: 'Aluminium natural only',
+  },
+];
+---
+
+<Layout
+  title="Surface finishing — Banco Aluminium"
+  description="Five surface finishes. QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish. Full RAL and NCS colour range. In-house from extrusion to finished profile."
+>
+
+  <section class="sf-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Capabilities / Surface finishing</div>
+      <h1 class="sf-h1">
+        Five finishes.<br>Full RAL and<br>NCS range.
+      </h1>
+      <p class="sf-lead">
+        In-house surface finishing from extrusion to completed profile — QUALICOAT
+        powder coating, Class 20 anodising, brushed, sand blast, and mill finish.
+        No external handling. Colour consistency across multi-batch orders.
+      </p>
+      <div class="sf-stats">
+        {[
+          { n: 'QUALICOAT', l: 'Powder coating certification' },
+          { n: 'Class 20',  l: 'Anodising to EN 12373' },
+          { n: '60–80 μm',  l: 'Standard powder coat film' },
+          { n: 'RAL / NCS', l: 'Full colour range' },
+        ].map(({ n, l }) => (
+          <div class="sf-stat">
+            <div class="sf-stat-n">{n}</div>
+            <div class="sf-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Finish options -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 01 · Finish options</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Five finishes for every<br>specification.
+      </h2>
+      <div class="sf-finish-grid">
+        {finishes.map((f) => (
+          <div class="sf-finish-card">
+            <div class="sf-finish-id">{f.id}</div>
+            <h3 class="sf-finish-name">{f.name}</h3>
+            <div class="sf-finish-spec">{f.spec}</div>
+            <p class="sf-finish-desc">{f.desc}</p>
+            <div class="sf-finish-meta">
+              <div class="sf-meta-row">
+                <span class="sf-meta-key">Applications</span>
+                <span class="sf-meta-val">{f.apps}</span>
+              </div>
+              <div class="sf-meta-row">
+                <span class="sf-meta-key">Colour</span>
+                <span class="sf-meta-val">{f.colour}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Anodising detail -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 02 · Anodising</div>
+      <div class="sf-anod-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
+            Class 20 to EN 12373.<br>Colour-controlled bath.
+          </h2>
+          <p class="t-body" style="color:var(--color-silver);margin-top:20px;line-height:1.7">
+            Banco's in-house anodising line operates to EN 12373 Class 20 — 20 μm minimum
+            anodic oxide film. Bath chemistry, temperature, and current density are monitored
+            continuously. Colour shade is checked against reference panels at the start of
+            each production run.
+          </p>
+          <p class="t-body" style="color:var(--color-silver);margin-top:16px;line-height:1.7">
+            Integral colour anodising (EV1 champagne through EV6 black) uses electrolytic
+            colouring to deposit metal salts within the oxide pores before sealing — producing
+            a colour that is within the oxide layer, not on top of it. This gives superior
+            fade resistance and abrasion resistance versus organic coatings.
+          </p>
+          <div class="sf-anod-specs">
+            {[
+              ['Standard',   'EN 12373 Class 20 (20 μm min.)'],
+              ['Natural',    'EV0 — natural aluminium'],
+              ['Champagne',  'EV1 — light bronze'],
+              ['Medium bronze','EV2'],
+              ['Dark bronze', 'EV3'],
+              ['Black',      'EV6 — anodised black'],
+              ['Sealing',    'Hot DI water seal per EN 12373-5'],
+            ].map(([k, v]) => (
+              <div class="sf-anod-row">
+                <span class="sf-anod-key">{k}</span>
+                <span class="sf-anod-val">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="sf-anod-image">
+          <img src="/assets/manufacturing/Labeling.png" alt="Surface finished aluminium profiles" loading="lazy" />
+          <div class="sf-anod-caption">Finished profiles awaiting packing after anodising</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Powder coating detail -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 03 · Powder coating</div>
+      <div class="sf-pc-grid">
+        <div class="sf-pc-process">
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            QUALICOAT certified.<br>Interior and exterior.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            Banco's powder coating line is QUALICOAT certified — the international quality
+            label for powder coating of aluminium for architectural applications. Pre-treatment
+            includes chromate-free conversion coating for corrosion resistance and adhesion.
+            Film thickness is measured on every run — minimum 60 μm, standard 70–80 μm.
+          </p>
+          <div class="sf-pc-steps">
+            {[
+              ['Pre-treatment',  'Chromate-free conversion coat (Cr-VI free). Degrease, etch, rinse, seal.'],
+              ['Colour change',  'Automated spray booth changeover. Hose-down between colours. No cross-contamination.'],
+              ['Electrostatic',  'Electrostatic application — even wrap around complex hollow profiles.'],
+              ['Oven cure',      '180–200°C cure. Continuous conveyor or batch. Temperature logged.'],
+              ['Film check',     '100% film thickness measurement per batch. Minimum 60 μm guaranteed.'],
+              ['Adhesion test',  'Cross-cut adhesion test per EN ISO 2409 per colour/batch.'],
+            ].map(([title, desc]) => (
+              <div class="sf-pc-step">
+                <div class="sf-pc-step-title">{title}</div>
+                <div class="sf-pc-step-desc">{desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="sf-pc-info">
+          <div class="sf-pc-card">
+            <div class="sf-pc-card-head">Specification</div>
+            {[
+              ['Certification',    'QUALICOAT Class 1 & Class 2'],
+              ['Film thickness',   '60–80 μm standard; 80–100 μm Class 2'],
+              ['Powder type',      'Polyester & polyurethane'],
+              ['Colour range',     'Full RAL Classic, RAL Design, NCS'],
+              ['Surface texture',  'Gloss · semi-matt · matt · structured'],
+              ['Pre-treatment',    'Chrome-VI free conversion coating'],
+              ['Salt spray',       '1,000 h per EN ISO 9227 (Class 2)'],
+            ].map(([k, v]) => (
+              <div class="sf-pc-row">
+                <span class="sf-pc-key">{k}</span>
+                <span class="sf-pc-val">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In-house advantage -->
+  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="eyebrow">/ 04 · In-house advantage</div>
+      <div class="sf-adv-grid">
+        <div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Quality continuity<br>from billet to<br>finished profile.
+          </h2>
+        </div>
+        <div>
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            When surface finishing leaves the same facility as extrusion, the quality chain
+            remains unbroken. Profile dimensions, surface condition, and coating performance
+            are all tracked under one traceability system — from alloy cast number through
+            to finished-goods packing list.
+          </p>
+          <div class="sf-adv-points">
+            {[
+              'Single point of responsibility — extrusion, treatment, and packing under one roof.',
+              'No transport damage between extrusion and surface treatment.',
+              'Alloy chemistry and temper matched to finish requirement before production starts.',
+              'Single certificate for profile: dimensions, mechanical properties, and coating spec.',
+              'Colour consistency maintained across multi-batch orders using reference panels.',
+            ].map(pt => (
+              <div class="sf-adv-point">
+                <div class="sf-adv-dot"></div>
+                <span>{pt}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+        <div>
+          <div class="eyebrow on-dark">Surface finishing enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
+            Specify a finish.<br>RAL, NCS, or custom.
+          </h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="/contact#technical" class="btn btn-primary-dark">Specify a system</a>
+          <a href="/products/architectural" class="btn btn-secondary-dark">Architectural profiles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .sf-hero {
+    background: var(--color-navy);
+    padding: 148px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .sf-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+    pointer-events: none;
+  }
+  .sf-hero > .container { position: relative; z-index: 1; }
+  .sf-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
+  .sf-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
+  .sf-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
+  .sf-stat { background: var(--color-navy-deep); padding: 22px 24px; }
+  .sf-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
+  .sf-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  .sf-finish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .sf-finish-card { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
+  .sf-finish-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .sf-finish-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-navy); }
+  .sf-finish-spec { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .sf-finish-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+  .sf-finish-meta { border-top: 1px solid var(--color-stone-200); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+  .sf-meta-row { display: flex; flex-direction: column; gap: 2px; }
+  .sf-meta-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
+  .sf-meta-val { font-family: var(--font-sans); font-size: 12.5px; color: var(--color-stone-700); }
+
+  .sf-anod-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .sf-anod-specs { margin-top: 24px; border-top: 1px solid var(--color-navy-line); }
+  .sf-anod-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .sf-anod-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); flex-shrink: 0; }
+  .sf-anod-val { font-family: var(--font-sans); font-size: 12px; color: var(--color-silver); text-align: right; }
+  .sf-anod-image { display: flex; flex-direction: column; gap: 8px; }
+  .sf-anod-image img { width: 100%; height: 340px; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .sf-anod-image:hover img { filter: brightness(1); }
+  .sf-anod-caption { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+
+  .sf-pc-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .sf-pc-steps { margin-top: 24px; border-top: 1px solid var(--color-stone-200); }
+  .sf-pc-step { padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .sf-pc-step-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
+  .sf-pc-step-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+  .sf-pc-card { background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 24px; border-top: 2px solid var(--color-green); }
+  .sf-pc-card-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-400); margin-bottom: 14px; }
+  .sf-pc-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .sf-pc-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); flex-shrink: 0; }
+  .sf-pc-val { font-family: var(--font-sans); font-size: 12px; color: var(--color-stone-700); text-align: right; }
+
+  .sf-adv-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .sf-adv-points { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .sf-adv-point { display: flex; align-items: flex-start; gap: 12px; font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--color-stone-700); }
+  .sf-adv-dot { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+
+  @media (max-width: 1024px) {
+    .sf-stats { grid-template-columns: repeat(2, 1fr); }
+    .sf-finish-grid { grid-template-columns: repeat(2, 1fr); }
+    .sf-anod-grid { grid-template-columns: 1fr; }
+    .sf-pc-grid { grid-template-columns: 1fr; }
+    .sf-adv-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .sf-stats { grid-template-columns: 1fr 1fr; }
+    .sf-finish-grid { grid-template-columns: 1fr; }
+  }
+</style>

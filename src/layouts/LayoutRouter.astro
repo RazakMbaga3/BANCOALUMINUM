@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
 
 interface Props {
   title?: string;
@@ -11,7 +10,7 @@ interface Props {
 
 const {
   title = 'Banco Aluminium — Integrated Aluminium Extrusion Solutions',
-  description = 'Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967. 35,000 MT annual capacity, 5 presses, full value chain from billet to finished profile. ISO 9001 · IATF 16949 · CE certified. Exports to Europe, North America, Asia-Pacific & Middle East.',
+  description = 'Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967. 35,000 MT annual capacity, full value chain from billet to finished profile. ISO 9001 · IATF 16949 · CE certified.',
   image = '/og-image.jpg',
 } = Astro.props;
 
@@ -26,14 +25,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
 
-  <!-- OG -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={image} />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts: preconnect first, then load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -41,16 +38,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
     rel="stylesheet"
   />
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
   <title>{title}</title>
 </head>
 <body>
   <Nav />
-  <main>
+  <main id="router-main">
     <slot />
   </main>
-  <Footer />
 </body>
 </html>
+
+<style is:global>
+  body {
+    background: var(--color-navy-deep);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  #router-main {
+    padding-top: 108px; /* utility-bar ~36px + main-nav 72px */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+</style>

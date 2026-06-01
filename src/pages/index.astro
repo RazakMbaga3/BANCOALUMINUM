@@ -1,25 +1,678 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/sections/Hero.astro';
-import CertTicker from '../components/sections/CertTicker.astro';
-import Intro from '../components/sections/Intro.astro';
-import ProductPillars from '../components/sections/ProductPillars.astro';
-import Process from '../components/sections/Process.astro';
-import Industries from '../components/sections/Industries.astro';
-import Sustainability from '../components/sections/Sustainability.astro';
-import CtaStrip from '../components/sections/CtaStrip.astro';
+import LayoutRouter from '../layouts/LayoutRouter.astro';
+
+const segments = [
+  {
+    num: '/ 01',
+    tag: 'OEM · Drawing-led',
+    name: 'Industrial & OEMs',
+    desc: 'Application-led profiles manufactured to drawing — repeat-production controlled, with heat treatment, machining and surface finishing built into the same integrated platform.',
+    chips: ['Electrical & T&D', 'Automotive', 'Heat sinks', 'Aerospace', 'Hydraulics'],
+    href: '/products/industrial',
+    svgId: 'industrial',
+  },
+  {
+    num: '/ 02',
+    tag: 'Windows · Doors · Façades',
+    name: 'Architectural',
+    desc: 'Precision-engineered aluminium systems for modern architecture — combining advanced profile manufacturing, refined aesthetics and long-term durability for any scale of project.',
+    chips: ['Casement windows', 'Sliding doors', 'Partitions', 'Curtain wall', 'Façades'],
+    href: '/products/architectural',
+    svgId: 'architectural',
+  },
+  {
+    num: '/ 03',
+    tag: 'Foundry · Billet',
+    name: 'Casting / Billets',
+    desc: 'Foundry-grade aluminium billets — cylinder-guided casting, controlled homogenisation, customer-specific alloy chemistry and up to 50% recycled scrap input.',
+    chips: ['Ø 127–254 mm', '1xxx–7xxx alloys', 'Lead-free', 'Green billet', 'CBAM'],
+    href: '/products/cast-products',
+    svgId: 'casting',
+  },
+] as const;
+
+const certs = [
+  'ISO 9001:2015',
+  'ISO 14001:2015',
+  'ISO 45001:2018',
+  'IATF 16949:2016',
+  'CE',
+  'IRS Works Approval',
+  'BIS',
+];
 ---
 
-<Layout
+<LayoutRouter
   title="Banco Aluminium — Integrated Aluminium Extrusion Since 1967"
-  description="Banco Aluminium Private Limited — integrated aluminium extrusion company. 35,000 MT capacity, full value chain from billet to finished profile. Industrial profiles, architectural systems, cast products. ISO 9001 · IATF 16949 · CE · CBAM certified. Exports to Europe, North America, APAC & Middle East."
+  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967. Industrial profiles, architectural systems, cast products. 35,000 MT capacity. Exports to Europe, North America, APAC & Middle East."
 >
-  <Hero />
-  <CertTicker />
-  <Intro />
-  <ProductPillars />
-  <Process />
-  <Industries />
-  <Sustainability />
-  <CtaStrip />
-</Layout>
+
+  <!-- ── Brand statement ────────────────────────────────────── -->
+  <section class="router-intro">
+    <div class="container ri-inner">
+      <div class="ri-eyebrow">
+        <span class="ri-spark" aria-hidden="true"></span>
+        EST. 1967 · VADODARA, GUJARAT · INDIA
+      </div>
+      <h1 class="ri-h1">End-to-end solutions —<br>from high quality<br>extrusions to engineered<br>products.</h1>
+      <p class="ri-sub">
+        Specialists in high-strength and lead-free machining alloys.
+        58&thinsp;+ years of experience in extrusion and foundry.
+      </p>
+      <div class="ri-valuminium">
+        <span class="ri-val-spark" aria-hidden="true"></span>
+        <span class="ri-val-text">Valuminium</span>
+        <span class="ri-val-em">— our ethos driving customer value</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Three segment panels ───────────────────────────────── -->
+  <nav class="router-panels" aria-label="Product segments">
+    {segments.map((seg) => (
+      <a
+        href={seg.href}
+        class="rp"
+        aria-label={`Enter the ${seg.name} segment`}
+      >
+
+        <!-- SVG line-drawing background — all colours via CSS vars, no hex -->
+        <div class="rp-bg" aria-hidden="true">
+
+          {seg.svgId === 'industrial' && (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 800" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+              <defs>
+                <pattern id="pg-ind" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="520" height="800" fill="url(#pg-ind)"/>
+              <!-- Heat-sink profile: base + 14 fins — navy-soft strokes -->
+              <g transform="translate(260,370)" style="stroke:var(--color-navy-soft);fill:none" stroke-width="1.2">
+                <rect x="-160" y="68" width="320" height="22"/>
+                <rect x="-155" y="-62" width="10" height="130"/>
+                <rect x="-132" y="-62" width="10" height="130"/>
+                <rect x="-109" y="-62" width="10" height="130"/>
+                <rect x="-86"  y="-62" width="10" height="130"/>
+                <rect x="-63"  y="-62" width="10" height="130"/>
+                <rect x="-40"  y="-62" width="10" height="130"/>
+                <rect x="-17"  y="-62" width="10" height="130"/>
+                <rect x="7"    y="-62" width="10" height="130"/>
+                <rect x="30"   y="-62" width="10" height="130"/>
+                <rect x="53"   y="-62" width="10" height="130"/>
+                <rect x="76"   y="-62" width="10" height="130"/>
+                <rect x="99"   y="-62" width="10" height="130"/>
+                <rect x="122"  y="-62" width="10" height="130"/>
+                <rect x="145"  y="-62" width="10" height="130"/>
+                <!-- Dimension lines — green spark -->
+                <line x1="-160" y1="-94" x2="160" y2="-94" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="-160" y1="-100" x2="-160" y2="-88" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="160"  y1="-100" x2="160"  y2="-88" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <text x="0" y="-106" font-family="JetBrains Mono" font-size="8.5" style="fill:var(--color-green);stroke:none" text-anchor="middle" letter-spacing="1.8">320 MM · HEAT SINK PROFILE</text>
+              </g>
+              <!-- Ghost profile top — navy-line strokes -->
+              <g transform="translate(260,190)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.8" opacity="0.35">
+                <rect x="-90" y="-28" width="180" height="56" rx="1"/>
+                <rect x="-75" y="-18" width="150" height="36" rx="0.5"/>
+                <line x1="-75" y1="0" x2="75" y2="0"/>
+                <line x1="-22" y1="-18" x2="-22" y2="18"/>
+                <line x1="22"  y1="-18" x2="22"  y2="18"/>
+              </g>
+              <!-- Ghost profile bottom -->
+              <g transform="translate(260,600)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.8" opacity="0.18">
+                <rect x="-90" y="-28" width="180" height="56" rx="1"/>
+                <rect x="-75" y="-18" width="150" height="36" rx="0.5"/>
+              </g>
+            </svg>
+          )}
+
+          {seg.svgId === 'architectural' && (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 800" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+              <defs>
+                <pattern id="pg-arc" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="520" height="800" fill="url(#pg-arc)"/>
+              <!-- Casement window cross-section — navy-soft outer, navy-line inner -->
+              <g transform="translate(260,380)" style="stroke:var(--color-navy-soft);fill:none" stroke-width="1.2">
+                <!-- Outer frame -->
+                <rect x="-145" y="-185" width="290" height="370"/>
+                <!-- Inner frame rebate -->
+                <rect x="-132" y="-172" width="264" height="344" style="stroke:var(--color-navy-line)" stroke-width="0.8"/>
+                <!-- Horizontal transom -->
+                <line x1="-145" y1="18" x2="145" y2="18" stroke-width="1.2"/>
+                <!-- Vertical mullion -->
+                <line x1="0" y1="-185" x2="0" y2="185" stroke-width="1.2"/>
+                <!-- Glass panes — navy-soft tinted fill -->
+                <rect x="-132" y="-172" width="121" height="179"
+                  style="fill:color-mix(in srgb, var(--color-navy-soft) 18%, transparent);stroke:var(--color-navy-line)" stroke-width="0.6"/>
+                <rect x="11"   y="-172" width="121" height="179"
+                  style="fill:color-mix(in srgb, var(--color-navy-soft) 18%, transparent);stroke:var(--color-navy-line)" stroke-width="0.6"/>
+                <rect x="-132" y="29"   width="121" height="143"
+                  style="fill:color-mix(in srgb, var(--color-navy-soft) 12%, transparent);stroke:var(--color-navy-line)" stroke-width="0.6"/>
+                <rect x="11"   y="29"   width="121" height="143"
+                  style="fill:color-mix(in srgb, var(--color-navy-soft) 12%, transparent);stroke:var(--color-navy-line)" stroke-width="0.6"/>
+                <!-- Gasket marker dots — green spark -->
+                <circle cx="-145" cy="18"   r="3.5" style="stroke:var(--color-green);fill:none" stroke-width="0.8"/>
+                <circle cx="145"  cy="18"   r="3.5" style="stroke:var(--color-green);fill:none" stroke-width="0.8"/>
+                <circle cx="0"    cy="-185" r="3.5" style="stroke:var(--color-green);fill:none" stroke-width="0.8"/>
+                <circle cx="0"    cy="185"  r="3.5" style="stroke:var(--color-green);fill:none" stroke-width="0.8"/>
+                <!-- Dimension lines — green spark -->
+                <line x1="-170" y1="-185" x2="-170" y2="185"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="-176" y1="-185" x2="-164" y2="-185" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="-176" y1="185"  x2="-164" y2="185"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <text x="-183" y="4" font-family="JetBrains Mono" font-size="8.5"
+                  style="fill:var(--color-green);stroke:none" text-anchor="end" letter-spacing="1.5">370 MM</text>
+                <!-- Series label -->
+                <text x="0" y="214" font-family="JetBrains Mono" font-size="8.5"
+                  style="fill:var(--color-green);stroke:none" text-anchor="middle" letter-spacing="1.8">CASEMENT · 40 SERIES</text>
+              </g>
+              <!-- Ghost window top -->
+              <g transform="translate(260,115)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.7" opacity="0.3">
+                <rect x="-80" y="-55" width="160" height="110"/>
+                <line x1="-80" y1="0" x2="80" y2="0"/>
+                <line x1="0"   y1="-55" x2="0"  y2="55"/>
+              </g>
+              <!-- Ghost window bottom -->
+              <g transform="translate(260,680)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.7" opacity="0.16">
+                <rect x="-80" y="-55" width="160" height="110"/>
+                <line x1="-80" y1="0" x2="80" y2="0"/>
+                <line x1="0"   y1="-55" x2="0"  y2="55"/>
+              </g>
+            </svg>
+          )}
+
+          {seg.svgId === 'casting' && (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 800" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+              <defs>
+                <pattern id="pg-cast" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="520" height="800" fill="url(#pg-cast)"/>
+              <!-- Main billet — navy-soft outer, navy-line inner shading -->
+              <g transform="translate(260,380)" style="stroke:var(--color-navy-soft);fill:none" stroke-width="1.2">
+                <ellipse cx="0" cy="-125" rx="130" ry="30"/>
+                <ellipse cx="0" cy="-125" rx="98"  ry="22" style="stroke:var(--color-navy-line)" stroke-width="0.8"/>
+                <line x1="-130" y1="-125" x2="-130" y2="125"/>
+                <line x1="130"  y1="-125" x2="130"  y2="125"/>
+                <ellipse cx="0" cy="125" rx="130" ry="30"/>
+                <!-- Interior shading — cylindrical form -->
+                <line x1="-98" y1="-117" x2="-98" y2="117" style="stroke:var(--color-navy-line)" stroke-dasharray="2,4" stroke-width="0.8"/>
+                <line x1="-58" y1="-125" x2="-58" y2="125" style="stroke:var(--color-navy-line)" stroke-dasharray="2,4" stroke-width="0.8"/>
+                <line x1="58"  y1="-125" x2="58"  y2="125" style="stroke:var(--color-navy-line)" stroke-dasharray="2,4" stroke-width="0.8"/>
+                <line x1="98"  y1="-117" x2="98"  y2="117" style="stroke:var(--color-navy-line)" stroke-dasharray="2,4" stroke-width="0.8"/>
+                <!-- Diameter dimension — green spark -->
+                <line x1="-130" y1="162" x2="130" y2="162"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="-130" y1="156" x2="-130" y2="168" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="130"  y1="156" x2="130"  y2="168" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <text x="0" y="182" font-family="JetBrains Mono" font-size="8.5"
+                  style="fill:var(--color-green);stroke:none" text-anchor="middle" letter-spacing="1.8">Ø 127–254 MM · BILLET</text>
+                <!-- Length dimension -->
+                <line x1="155" y1="-125" x2="155" y2="125"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="149" y1="-125" x2="161" y2="-125" style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <line x1="149" y1="125"  x2="161" y2="125"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+                <text x="168" y="4" font-family="JetBrains Mono" font-size="8.5"
+                  style="fill:var(--color-green);stroke:none" text-anchor="start" letter-spacing="1.2">5800 MM</text>
+              </g>
+              <!-- Ghost billet top -->
+              <g transform="translate(260,168)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.8" opacity="0.32">
+                <ellipse cx="0" cy="-42" rx="75" ry="17"/>
+                <line x1="-75" y1="-42" x2="-75" y2="42"/>
+                <line x1="75"  y1="-42" x2="75"  y2="42"/>
+                <ellipse cx="0" cy="42" rx="75" ry="17"/>
+              </g>
+              <!-- Ghost billet bottom -->
+              <g transform="translate(260,638)" style="stroke:var(--color-navy-line);fill:none" stroke-width="0.8" opacity="0.18">
+                <ellipse cx="0" cy="-42" rx="75" ry="17"/>
+                <line x1="-75" y1="-42" x2="-75" y2="42"/>
+                <line x1="75"  y1="-42" x2="75"  y2="42"/>
+                <ellipse cx="0" cy="42" rx="75" ry="17"/>
+              </g>
+            </svg>
+          )}
+
+        </div>
+
+        <!-- Bottom-to-top gradient overlay -->
+        <div class="rp-overlay" aria-hidden="true"></div>
+
+        <!-- Segment number — decorative index, aria-hidden: content covered by aria-label -->
+        <div class="rp-num" aria-hidden="true">{seg.num}</div>
+
+        <!-- Main content — anchored to bottom -->
+        <div class="rp-content">
+          <span class="rp-tag">{seg.tag}</span>
+          <h2 class="rp-name">{seg.name}</h2>
+
+          <!-- Description — reveals on hover -->
+          <p class="rp-desc">{seg.desc}</p>
+
+          <!-- Tag chips — reveal on hover -->
+          <div class="rp-chips" aria-hidden="true">
+            {seg.chips.map((chip) => (
+              <span class="rp-chip">{chip}</span>
+            ))}
+          </div>
+
+          <!-- Enter link — mono uppercase per Heritage rule 5 -->
+          <div class="rp-enter">
+            <span>Enter</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 2px green bottom rule -->
+        <div class="rp-line" aria-hidden="true"></div>
+
+      </a>
+    ))}
+  </nav>
+
+  <!-- ── Cert strip ──────────────────────────────────────────── -->
+  <footer class="router-certs">
+    <div class="container rc-inner">
+      <div class="rc-certs">
+        {certs.map((cert) => (
+          <span class="rc-cert">
+            <span class="rc-dot" aria-hidden="true"></span>
+            {cert}
+          </span>
+        ))}
+      </div>
+      <div class="rc-location">
+        <span>Vadodara, Gujarat · India</span>
+        <span aria-hidden="true" class="rc-sep">·</span>
+        <span>Est. 1967</span>
+      </div>
+    </div>
+  </footer>
+
+</LayoutRouter>
+
+<style>
+  /* ── Brand statement intro ──────────────────────────────── */
+  .router-intro {
+    background: var(--color-navy);
+    border-bottom: 1px solid var(--color-navy-line);
+    padding: 32px 0 28px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  /* Pinstripe texture — matches reference */
+  .router-intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 3px,
+      rgba(255,255,255,0.012) 3px,
+      rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .ri-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .ri-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    margin-bottom: 16px;
+  }
+  .ri-spark {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--color-green);
+    flex-shrink: 0;
+  }
+  .ri-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(28px, 3.8vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.96;
+    color: var(--color-platinum);
+  }
+  .ri-sub {
+    font-family: var(--font-sans);
+    font-size: clamp(13px, 1.2vw, 15px);
+    line-height: 1.6;
+    color: var(--color-nickel);
+    margin-top: 16px;
+    max-width: 56ch;
+  }
+  .ri-valuminium {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 7px 14px;
+    border: 1px solid var(--color-navy-line);
+    background: rgba(255,255,255,0.03);
+  }
+  .ri-val-spark {
+    width: 16px;
+    height: 2px;
+    background: var(--color-green);
+    flex-shrink: 0;
+  }
+  .ri-val-text {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-platinum);
+  }
+  .ri-val-em {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-stone-400);
+  }
+
+  /* ── Panel container ────────────────────────────────────── */
+  .router-panels {
+    display: flex;
+    flex: 1;
+    min-height: 520px;
+    background: var(--color-navy-line); /* 1px gap colour between panels */
+    gap: 1px;
+  }
+
+  /* ── Individual panel ───────────────────────────────────── */
+  .rp {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-decoration: none;
+    background: var(--color-navy-deep);
+    transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    outline: none;
+  }
+  .rp:hover,
+  .rp:focus-visible {
+    flex: 3.5;
+  }
+  /* Rule 3 fix: outline replaces box-shadow for focus indicator */
+  .rp:focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: -2px;
+  }
+
+  /* SVG fills the panel */
+  .rp-bg {
+    position: absolute;
+    inset: 0;
+  }
+  .rp-bg svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Rule 4 fix: gradient uses color-mix tokens, not rgba hex */
+  .rp-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent                                              0%,
+      color-mix(in srgb, var(--color-navy-deep) 30%, transparent) 38%,
+      color-mix(in srgb, var(--color-navy-deep) 80%, transparent) 68%,
+      color-mix(in srgb, var(--color-navy-deep) 97%, transparent) 100%
+    );
+    transition: background 0.55s ease;
+  }
+  .rp:hover .rp-overlay,
+  .rp:focus-visible .rp-overlay {
+    background: linear-gradient(
+      180deg,
+      transparent                                              0%,
+      color-mix(in srgb, var(--color-navy-deep) 18%, transparent) 30%,
+      color-mix(in srgb, var(--color-navy-deep) 72%, transparent) 62%,
+      color-mix(in srgb, var(--color-navy-deep) 97%, transparent) 100%
+    );
+  }
+
+  /* Segment number — top-left */
+  .rp-num {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--color-green);
+  }
+
+  /* Content block — bottom of panel */
+  .rp-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0 28px 28px;
+    border-top: 1px solid var(--color-navy-line);
+  }
+
+  .rp-tag {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+
+  .rp-name {
+    font-family: var(--font-sans);
+    font-size: clamp(20px, 2.2vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--color-platinum);
+  }
+
+  /* Description — hidden, reveals on hover */
+  .rp-desc {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-silver);
+    margin-top: 12px;
+    max-width: 54ch;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.12s, transform 0.3s ease 0.12s;
+  }
+  .rp:hover .rp-desc,
+  .rp:focus-visible .rp-desc {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Chips — hidden, reveal on hover */
+  .rp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.20s, transform 0.3s ease 0.20s;
+  }
+  .rp:hover .rp-chips,
+  .rp:focus-visible .rp-chips {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .rp-chip {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    border: 1px solid var(--color-navy-line);
+    padding: 5px 10px;
+  }
+
+  /* Rule 5 fix: uppercase "Enter" label uses font-mono, not font-sans */
+  .rp-enter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-platinum);
+    transition: gap 0.25s ease;
+  }
+  .rp-enter svg {
+    color: var(--color-green);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .rp:hover .rp-enter,
+  .rp:focus-visible .rp-enter {
+    gap: 14px;
+  }
+  .rp:hover .rp-enter svg,
+  .rp:focus-visible .rp-enter svg {
+    transform: translateX(3px);
+  }
+
+  /* 2px green bottom rule */
+  .rp-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-green);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .rp:hover .rp-line,
+  .rp:focus-visible .rp-line {
+    transform: scaleX(1);
+  }
+
+  /* ── Cert strip ─────────────────────────────────────────── */
+  .router-certs {
+    background: var(--color-navy-deep);
+    border-top: 1px solid var(--color-navy-line);
+    padding: 13px 0;
+    flex-shrink: 0;
+  }
+  .rc-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .rc-certs {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .rc-cert {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    white-space: nowrap;
+  }
+  .rc-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-green);
+    flex-shrink: 0;
+  }
+  .rc-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    white-space: nowrap;
+  }
+  .rc-sep {
+    color: var(--color-navy-line);
+  }
+
+  /* ── Below 900 px — panels stack vertically ─────────────── */
+  @media (max-width: 900px) {
+    .ri-h1 { font-size: clamp(28px, 7vw, 42px); }
+    .router-panels { flex-direction: column; min-height: auto; flex: none; }
+    .rp { flex: none; min-height: 320px; transition: none; }
+    .rp:hover, .rp:focus-visible { flex: none; }
+    .rp-desc  { opacity: 1; transform: none; }
+    .rp-chips { display: none; }
+    .rp-name  { font-size: 22px; }
+    .rp-line  { transform: scaleX(1); }
+    .rc-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .rc-certs { gap: 10px; }
+  }
+
+  @media (max-width: 480px) {
+    .router-intro { padding: 24px 0 20px; }
+    .rp { min-height: 300px; }
+    .rp-content { padding: 0 20px 22px; }
+    .rp-num { top: 20px; left: 20px; }
+    .rc-cert:nth-child(n+5) { display: none; }
+  }
+
+  /* ── Touch devices — desc always visible, no hover dependency */
+  @media (hover: none) {
+    .rp-desc { opacity: 1; transform: none; }
+    .rp-line { transform: scaleX(1); }
+  }
+
+  /* ── Reduced motion — kill all transitions, show all content */
+  @media (prefers-reduced-motion: reduce) {
+    .rp         { transition: none; }
+    .rp-overlay { transition: none; }
+    .rp-desc,
+    .rp-chips {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+    .rp-enter     { transition: none; }
+    .rp-enter svg { transition: none; }
+    .rp-line      { transition: none; transform: scaleX(1); }
+  }
+</style>

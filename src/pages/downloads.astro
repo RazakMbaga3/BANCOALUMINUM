@@ -1,0 +1,395 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const catalogs = [
+  {
+    ref: 'BAP-IND-2026',
+    title: 'Industrial & OEM Profiles',
+    desc: 'Drawing-led aluminium profiles for OEM applications. Hard alloys, lead-free machining grades, cold drawing capability. Die design through extrusion, fabrication, and surface finishing under one roof.',
+    href: '/catalog/industrial',
+    stats: [
+      { n: '35,000 MT', l: 'Annual extrusion capacity' },
+      { n: '12',        l: 'Industry sectors served' },
+      { n: '1,100+',   l: 'Customers worldwide' },
+    ],
+    certs: ['ISO 9001', 'IATF 16949', 'CE', 'IRS Approval'],
+    tag: 'Industrial',
+  },
+  {
+    ref: 'BAP-ARCH-2026',
+    title: 'Architectural Fenestration Systems',
+    desc: 'Ten aluminium series for modern construction — sliding windows from 18 mm to 35×75 mm, openable casement windows, entrance doors, and sliding-folding systems. EN 14351-1 tested.',
+    href: '/catalog/architectural',
+    stats: [
+      { n: '10',          l: 'Fenestration series' },
+      { n: '5',           l: 'Surface finish options' },
+      { n: 'EN 14351-1',  l: 'Test standard — all series' },
+    ],
+    certs: ['ISO 9001', 'CE', 'IS 733', 'QUALICOAT'],
+    tag: 'Architectural',
+  },
+  {
+    ref: 'BAP-CAST-2026',
+    title: 'Aluminium Extrusion Billets',
+    desc: 'Foundry-grade aluminium extrusion billets. Cylinder-guided Hot-Top casting, four-stage metallurgical control, 12 standard alloys plus custom compositions. 0.480 kgCO₂e/kg, ISO 14064-1 verified.',
+    href: '/catalog/cast-products',
+    stats: [
+      { n: '55,000 MT', l: 'Annual foundry capacity' },
+      { n: '12+',       l: 'Standard alloys' },
+      { n: '0.480',     l: 'kgCO₂e / kg carbon footprint' },
+    ],
+    certs: ['ISO 9001', 'ISO 14064-1', 'CE', 'IS 733'],
+    tag: 'Cast Products',
+  },
+];
+---
+
+<Layout
+  title="Product Catalogues — Download — Banco Aluminium"
+  description="Download Banco Aluminium product catalogues. Industrial & OEM profiles, architectural fenestration systems, aluminium extrusion billets. Print-ready technical catalogues with alloy data, dimensions, and certification information."
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <section class="dl-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">Downloads</div>
+      <h1 class="dl-h1">Product catalogues.</h1>
+      <p class="dl-lead">
+        Technical catalogues for all three product ranges — open any catalogue,
+        then use <strong>Save as PDF</strong> (or Ctrl + P) to download a
+        print-ready copy.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Catalogue cards ───────────────────────────────────────────────── -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="dl-grid">
+        {catalogs.map((cat) => (
+          <div class="dl-card">
+            <div class="dl-card-top">
+              <div class="dl-card-ref">{cat.ref}</div>
+              <span class="pill">{cat.tag}</span>
+            </div>
+
+            <h2 class="dl-card-title">{cat.title}</h2>
+            <p class="dl-card-desc">{cat.desc}</p>
+
+            <div class="dl-card-stats">
+              {cat.stats.map((s) => (
+                <div class="dl-stat">
+                  <div class="dl-stat-n">{s.n}</div>
+                  <div class="dl-stat-l">{s.l}</div>
+                </div>
+              ))}
+            </div>
+
+            <div class="dl-card-certs">
+              {cat.certs.map((c) => (
+                <span class="dl-cert">{c}</span>
+              ))}
+            </div>
+
+            <div class="dl-card-actions">
+              <a href={cat.href} class="btn btn-primary dl-btn-main">
+                Open catalogue
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2.5 7h9M7 2.5L11.5 7 7 11.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href={cat.href} class="btn btn-secondary dl-btn-pdf" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M3 3h5.5L11 5.5V11H3V3z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.5 3v3H11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  <path d="M5.5 7.5h3M5.5 9.5h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                Print / PDF
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How to download ──────────────────────────────────────────────── -->
+  <section class="section-alt" style="padding:48px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="dl-how">
+        <div class="dl-how-label">How to save a PDF</div>
+        <div class="dl-how-steps">
+          {[
+            ['01', 'Open the catalogue', 'Click "Open catalogue" for the range you need.'],
+            ['02', 'Click Save as PDF', 'Use the green button in the toolbar at the top of the page.'],
+            ['03', 'Choose PDF destination', 'In the print dialog, set destination to "Save as PDF" and confirm.'],
+          ].map(([n, step, note]) => (
+            <div class="dl-how-step">
+              <div class="dl-how-num">{n}</div>
+              <div>
+                <div class="dl-how-name">{step}</div>
+                <div class="dl-how-note">{note}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ──────────────────────────────────────────────────────── -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="dl-cta">
+        <div>
+          <div class="eyebrow on-dark">Technical enquiries</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
+            Need a custom data sheet<br>or technical specification?
+          </h2>
+          <p class="t-body" style="color:var(--color-silver);margin-top:12px;max-width:52ch;line-height:1.65">
+            Alloy composition sheets, dimensional tolerances, performance data,
+            and CBAM carbon documentation are available from our technical team.
+          </p>
+        </div>
+        <div class="dl-cta-actions">
+          <a href="/contact#technical" class="btn btn-primary-dark">Contact technical team</a>
+          <a href="/contact#quote"     class="btn btn-secondary-dark">Request a quotation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .dl-hero {
+    background: var(--color-navy);
+    padding: 148px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .dl-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0, transparent 3px,
+      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .dl-hero > .container { position: relative; z-index: 1; }
+  .dl-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--color-platinum);
+    margin-top: 20px;
+  }
+  .dl-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.65;
+    color: var(--color-silver);
+    margin-top: 20px;
+    max-width: 58ch;
+  }
+  .dl-lead strong { color: var(--color-platinum); font-weight: 600; }
+
+  /* ── Grid ──────────────────────────────────────────────────────────── */
+  .dl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+
+  /* ── Card ──────────────────────────────────────────────────────────── */
+  .dl-card {
+    background: white;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 2px solid var(--color-green);
+  }
+  .dl-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dl-card-ref {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+  }
+  .dl-card-title {
+    font-family: var(--font-sans);
+    font-size: clamp(16px, 1.4vw, 20px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .dl-card-desc {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--color-stone-700);
+    flex: 1;
+  }
+
+  /* Stats inside card */
+  .dl-card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--color-stone-200);
+    border-bottom: 1px solid var(--color-stone-200);
+    padding: 4px 0;
+  }
+  .dl-stat {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-stone-100);
+    align-items: baseline;
+  }
+  .dl-stat:last-child { border-bottom: none; }
+  .dl-stat-n {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+  }
+  .dl-stat-l {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    line-height: 1.4;
+  }
+
+  /* Cert chips */
+  .dl-card-certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .dl-cert {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    border: 1px solid var(--color-stone-200);
+    padding: 3px 8px;
+    background: var(--color-stone-50);
+  }
+
+  /* Actions */
+  .dl-card-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .dl-btn-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+  .dl-btn-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── How to download strip ─────────────────────────────────────────── */
+  .dl-how {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: clamp(24px, 4vw, 60px);
+    align-items: start;
+  }
+  .dl-how-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    padding-top: 2px;
+  }
+  .dl-how-steps {
+    display: flex;
+    gap: clamp(16px, 3vw, 48px);
+    flex-wrap: wrap;
+  }
+  .dl-how-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 180px;
+  }
+  .dl-how-num {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-green);
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .dl-how-name {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-navy);
+  }
+  .dl-how-note {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--color-stone-400);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* ── CTA ───────────────────────────────────────────────────────────── */
+  .dl-cta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+  }
+  .dl-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .dl-grid { grid-template-columns: 1fr; }
+    .dl-cta  { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .dl-how { grid-template-columns: 1fr; }
+    .dl-how-steps { flex-direction: column; }
+  }
+</style>

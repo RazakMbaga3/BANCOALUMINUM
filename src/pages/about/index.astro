@@ -12,23 +12,38 @@ const milestones = [
 ];
 
 const reasons = [
-  ['End-to-end capability', 'From billet to finished profile under one integrated manufacturing platform.'],
-  ['In-house core platform', 'Foundry, die shop and extrusion for tighter control and faster development.'],
-  ['Wide profile coverage', 'Standard, industrial, architectural and custom profiles across all major alloys.'],
-  ['Special alloy capability', 'Alloy development for specialised applications including 2xxx and 7xxx series.'],
-  ['Value-added processing', 'Machining, fabrication, cold drawing and surface finishing under one roof.'],
-  ['Quality & traceability', 'Strong systems, certifications and SCADA process traceability.'],
-  ['Customer experience', '58 years and 1,100+ customers across diverse sectors and four export regions.'],
+  ['Complete solution provider',     'In-house product development, die design and manufacturing — end to end, under one roof.'],
+  ['900+ customers served',          'Customised product development and experience of servicing 900+ clients across diverse industries.'],
+  ['High-strength alloy specialist', 'In-house foundry development and supply of special high-strength and lead-free machining alloys.'],
+  ['Certified to global standards',  'ISO 14001:2015, ISO 9001:2015, IATF 16949 and CE certified — quality assured at every stage.'],
+  ['Value-added processing',         'Machining & fabrication facilities for assemblies, customised products, and cold drawing.'],
+  ['Quickest response time',         'Extremely responsive team with short lead times and direct customer communication at all levels.'],
+  ['58 years of experience',         'Established 1967 in Vadodara, Gujarat. Family-owned. Exporting to Europe, North America, APAC, and the Middle East.'],
+];
+
+const testimonials = [
+  { client: 'Aavid Metalalloys', location: 'India',       quote: 'Reliable supply partner with consistent quality across hard alloy specifications.' },
+  { client: 'Schneider Electric', location: 'Bangalore',  quote: 'Dependable extrusion partner for our busbar and T&D profile requirements.' },
+  { client: 'Truetzschler',       location: 'India',       quote: 'Long-standing relationship built on technical competence and delivery reliability.' },
+  { client: 'IMS Netherlands',    location: 'Netherlands', quote: 'Banco\'s lead-free machining alloys meet our RoHS requirements with consistent dimensional quality.' },
+  { client: 'INOX India',         location: 'India',       quote: 'Strong quality systems and traceability — key for our engineering applications.' },
 ];
 ---
 
 <Layout
   title="About Banco Aluminium — established 1967"
-  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 1,100+ customers worldwide. ISO 9001 · IATF 16949 · CE."
+  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 900+ customers worldwide. ISO 9001 · IATF 16949 · CE."
 >
-  <!-- Hero -->
-  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
-    <div class="container">
+  <!-- Hero — casting photo background with navy overlay -->
+  <section class="about-hero">
+    <div class="about-hero-bg" aria-hidden="true">
+      <img
+        src="/assets/manufacturing/Casting%209.JPG"
+        alt=""
+        loading="eager"
+      />
+    </div>
+    <div class="container" style="position:relative;z-index:2">
       <div class="eyebrow on-dark">About Banco</div>
       <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
         Engineering <em class="accent">aluminium</em> since 1967.
@@ -37,7 +52,7 @@ const reasons = [
         Banco Aluminium Private Limited is an integrated aluminium extrusion company
         established in Vadodara, Gujarat, India — still family-owned after 58 years.
         We own the full value chain from billet casting to finished profile, serving
-        1,100+ customers across four export regions.
+        900+ customers across four export regions.
       </p>
 
       <!-- Key stats -->
@@ -46,7 +61,7 @@ const reasons = [
           ['58+', 'years', 'Years in extrusion'],
           ['35,000', 'MT', 'Annual extrusion capacity'],
           ['55,000', 'MT', 'Annual foundry capacity'],
-          ['1,100+', '', 'Customers worldwide'],
+          ['900+', '', 'Customers worldwide'],
         ].map(([num, unit, label]) => (
           <div>
             <div>
@@ -56,6 +71,26 @@ const reasons = [
             <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-top:6px">{label}</div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Valuminium — narrow dark band -->
+  <section style="background:var(--color-navy-deep);padding:40px 0;border-top:2px solid var(--color-green);border-bottom:1px solid var(--color-navy-line)">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-nickel);margin-bottom:10px">Our ethos</div>
+          <div style="font-family:var(--font-sans);font-size:32px;font-weight:800;letter-spacing:-0.03em;color:var(--color-platinum);line-height:1">Valuminium</div>
+          <div style="width:32px;height:2px;background:var(--color-green);margin-top:12px"></div>
+        </div>
+        <div style="font-family:var(--font-sans);font-size:15px;line-height:1.7;color:var(--color-silver);max-width:68ch">
+          At Banco, we live by our ethos of <strong style="color:var(--color-platinum);font-weight:600">Valuminium</strong> — a commitment to delivering
+          genuine value through aluminium. It pushes each of our team members to think beyond the
+          profile and consider the downstream impact of every decision: on cost, on lead time, on quality,
+          and on the customer's end application. Valuminium is the standard by which we measure
+          every engagement, every shipment, and every relationship.
+        </div>
       </div>
     </div>
   </section>
@@ -91,7 +126,68 @@ const reasons = [
             development — making us a credible single source for industrial, architectural,
             and cast product requirements.
           </p>
+
+          <!-- Feature photos — 2-up grid -->
+          <div class="about-story-photos" style="margin-top:36px">
+            <div class="about-story-photo">
+              <img
+                src="/assets/manufacturing/Melting%202.JPG"
+                alt="Liquid aluminium — Banco foundry melting operations"
+                loading="lazy"
+              />
+              <div class="about-sp-caption">Melting · Foundry floor · Vadodara</div>
+            </div>
+            <div class="about-story-photo">
+              <img
+                src="/assets/manufacturing/Homo%202.JPG"
+                alt="Batch homogenising furnace — Banco Aluminium"
+                loading="lazy"
+              />
+              <div class="about-sp-caption">Homogenising · Controlled atmosphere furnace</div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facility — curated 6-photo feature grid -->
+  <section class="section-alt" style="padding:64px 0 72px">
+    <div class="container">
+      <div class="about-fac-head">
+        <div>
+          <div class="eyebrow">/ Vadodara, Gujarat · Est. 1967</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            The integrated<br>manufacturing facility.
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
+          From liquid aluminium to finished profile — every stage under one roof.
+          35,000 MT annual extrusion capacity. 55,000 MT foundry.
+        </p>
+      </div>
+      <div class="about-fac-grid">
+        <!-- Large feature photo -->
+        <div class="about-fac-feature">
+          <img
+            src="/assets/manufacturing/Casting%201.JPG"
+            alt="Cylinder-guided Hot-Top billet casting — Banco Aluminium foundry, Vadodara"
+            loading="lazy"
+          />
+          <div class="about-fac-label">Hot-Top casting · Banco foundry</div>
+        </div>
+        <!-- 4 supporting photos -->
+        {[
+          ['/assets/manufacturing/Melting%204.JPG',  'Metal tapping — melting furnace operations'],
+          ['/assets/manufacturing/Casting%205.JPG',  'Casting pit — controlled cooling zone'],
+          ['/assets/manufacturing/Billet%201.JPG',   'Finished extrusion billets — ready for press'],
+          ['/assets/manufacturing/Quality%201.JPG',  'Spectromax OES — 100% chemical analysis'],
+        ].map(([src, alt]) => (
+          <div class="about-fac-thumb">
+            <img src={src} alt={alt} loading="lazy" />
+            <div class="about-fac-label">{alt}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -108,6 +204,35 @@ const reasons = [
           <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--color-stone-200);align-items:start">
             <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-green);padding-top:2px">{m.year}</div>
             <div style="font-family:var(--font-display);font-size:20px;color:var(--color-navy)">{m.event}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Better Relationships | Better Solutions -->
+  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="about-testi-head">
+        <div>
+          <div class="eyebrow">Client portfolio</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Better relationships.<br>Better solutions.
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
+          900+ customers across industrial, automotive, electrical, and architectural
+          sectors in India and four export regions.
+        </p>
+      </div>
+      <div class="about-testi-grid">
+        {testimonials.map((t) => (
+          <div class="about-testi-card">
+            <p class="about-testi-quote">"{t.quote}"</p>
+            <div class="about-testi-foot">
+              <div class="about-testi-client">{t.client}</div>
+              <div class="about-testi-loc">{t.location}</div>
+            </div>
           </div>
         ))}
       </div>
@@ -140,3 +265,206 @@ const reasons = [
     </div>
   </section>
 </Layout>
+
+<style>
+  /* ── Hero with photo background ────────────────────────────────────────── */
+  .about-hero {
+    position: relative;
+    background: var(--color-navy);
+    padding-top: 140px;
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+  .about-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .about-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.14;
+    filter: grayscale(60%);
+  }
+  .about-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, var(--color-navy) 45%, transparent 100%);
+  }
+
+  /* ── Company description — feature photos ──────────────────────────────── */
+  .about-story-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .about-story-photo {
+    overflow: hidden;
+    border: 1px solid var(--color-stone-200);
+  }
+  .about-story-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .about-story-photo:hover img { transform: scale(1.04); }
+  .about-sp-caption {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    padding: 7px 10px;
+    border-top: 1px solid var(--color-stone-200);
+    background: var(--color-stone-50);
+  }
+
+  /* ── Facility feature grid ──────────────────────────────────────────────── */
+  .about-fac-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4vw, 80px);
+    align-items: start;
+    margin-bottom: 32px;
+  }
+  .about-fac-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px;
+  }
+  .about-fac-feature {
+    grid-row: 1 / 3;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-stone-200);
+  }
+  .about-fac-feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    min-height: 320px;
+  }
+  .about-fac-feature:hover img { transform: scale(1.04); }
+  .about-fac-thumb {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-stone-200);
+  }
+  .about-fac-thumb img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+  .about-fac-thumb:hover img { transform: scale(1.05); }
+  .about-fac-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    padding: 7px 10px;
+    border-top: 1px solid var(--color-stone-200);
+    background: var(--color-stone-50);
+  }
+
+  /* Testimonials */
+  .about-testi-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 4vw, 80px);
+    align-items: start;
+    margin-bottom: 40px;
+  }
+  .about-testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+  .about-testi-card {
+    background: var(--color-stone-50);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .about-testi-card:hover {
+    border-top-color: var(--color-green);
+    background: white;
+  }
+  .about-testi-quote {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-stone-700);
+    font-style: normal;
+    flex: 1;
+  }
+  .about-testi-foot {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-stone-200);
+  }
+  .about-testi-client {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-navy);
+    letter-spacing: -0.01em;
+  }
+  .about-testi-loc {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    margin-top: 3px;
+  }
+
+  .about-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .about-photo {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .about-photo:hover img { transform: scale(1.04); }
+
+  @media (max-width: 1024px) {
+    .about-testi-grid  { grid-template-columns: repeat(2, 1fr); }
+    .about-testi-head  { grid-template-columns: 1fr; }
+    .about-fac-head    { grid-template-columns: 1fr; }
+    .about-fac-grid    { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .about-fac-feature { grid-row: auto; }
+    .about-fac-feature img { min-height: auto; }
+    .about-story-photos { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .about-testi-grid  { grid-template-columns: 1fr; }
+    .about-fac-grid    { grid-template-columns: 1fr 1fr; }
+    .about-story-photos { grid-template-columns: 1fr; }
+  }
+</style>

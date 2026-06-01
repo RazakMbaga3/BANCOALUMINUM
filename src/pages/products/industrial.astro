@@ -1,136 +1,727 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const applications = [
-  { name: 'Electrical & power transmission', desc: 'Switchgear, busways, busbars, control panel frames, cable management systems.' },
-  { name: 'Automotive & commercial vehicles', desc: 'Structural body profiles, trim sections, heat management, door sills, roof rails.' },
-  { name: 'Machinery & automation', desc: 'Machine frames, linear profiles, conveyor components, structural assemblies.' },
-  { name: 'Heat sinks & heat exchangers', desc: 'Precision fin profiles for thermal management — LEDs, power electronics, HVAC.' },
-  { name: 'Aerospace & defence', desc: 'High-performance sections in 2xxx and 7xxx alloys. Tight tolerances, traceability.' },
-  { name: 'Hydraulics & pneumatics', desc: 'Actuator cylinders, valve housings, manifolds — drawn and extruded.' },
-  { name: 'Railways & shipbuilding', desc: 'IRS Works Approval. Structural and decorative sections for rail and marine.' },
-  { name: 'Solar & alternative energy', desc: 'Module frames, mounting rails, tracker arms, racking systems.' },
-  { name: 'Pumps, motors & general engineering', desc: 'Housings, motor frame sections, pump bodies, general engineering profiles.' },
-  { name: 'Forging & precision machining', desc: 'Machinable sections and preforms in 6xxx and 2xxx alloys.' },
-  { name: 'Material handling & structural', desc: 'Rails, ladders, scaffolding, conveyor frames, structural support hardware.' },
-  { name: 'Marine', desc: 'IRS-approved aluminium profiles for shipbuilding and offshore applications.' },
+// ── Industries served — 12 sectors ────────────────────────────────────────────
+const industries = [
+  { num: '/ 01', name: 'Electrical & power transmission',      note: 'Busbar · T&D profiles · cable management' },
+  { num: '/ 02', name: 'Automotive & commercial vehicles',     note: 'Structural · trim · thermal management' },
+  { num: '/ 03', name: 'Machinery & automation',               note: 'Machine frames · linear guides · housings' },
+  { num: '/ 04', name: 'Heat sinks & heat exchangers',         note: 'Extruded fin · skived · bonded assemblies' },
+  { num: '/ 05', name: 'Aerospace & defence',                  note: 'Cryogenic · structural · precision sections' },
+  { num: '/ 06', name: 'Hydraulics & pneumatics',              note: 'Cylinder tubes · manifold bodies · rods' },
+  { num: '/ 07', name: 'Railways & shipbuilding',              note: 'Structural · floor panels · marine profiles' },
+  { num: '/ 08', name: 'Solar & alternative energy',           note: 'Mounting frames · tracker rails · inverter housings' },
+  { num: '/ 09', name: 'Material handling & structural',       note: 'Modular rack · conveyor · frame sections' },
+  { num: '/ 10', name: 'Pumps, motors & general engineering',  note: 'Motor bodies · pump housings · shafts' },
+  { num: '/ 11', name: 'Forging & precision machining',        note: 'Machining billets · forging stock · turned parts' },
+  { num: '/ 12', name: 'Transport & elevator systems',         note: 'Vehicle profiles · elevator guide rails · enclosures' },
 ];
 
+// ── Alloy families — source: bancoaluminium.com/capabilities/alloys ───────────
+const alloyFamilies = [
+  {
+    title: 'Hard alloys',
+    sub: 'Structural, automotive, aerospace',
+    desc: 'High-strength alloys engineered for demanding structural and mechanical applications. More flexible and corrosion-resistant than steel, suited to safety-critical and load-bearing profiles.',
+    grades: ['2011', '2014', '2017A', '5083', '5754', '6026', '6061', '6066', '6082', '6262'],
+    note: 'Series 2xxx · 5xxx · 6xxx',
+  },
+  {
+    title: 'Lead-free machining alloys',
+    sub: 'RoHS · automated CNC machining',
+    desc: 'Specifically formulated machining grades that comply with the RoHS directive. Designed for automated CNC machining operations where lead-containing alloys cannot be specified.',
+    grades: ['2111 LF', '2033 LF', '6026 LF'],
+    note: 'RoHS compliant · custom compositions available',
+  },
+  {
+    title: 'Soft and medium alloys',
+    sub: 'General, architectural, electrical',
+    desc: 'The 1xxx, 3xxx, and 6xxx series for architectural, electrical, and general engineering applications — from food-grade packaging and utensils to building profiles, transport, and renewable energy structures.',
+    grades: ['1050', '1070', '1100', '3003', '3103', '6060', '6063'],
+    note: 'Series 1xxx · 3xxx · 6xxx',
+  },
+];
+
+// ── Capability chain — 6 stages ────────────────────────────────────────────────
 const capabilities = [
-  { label: 'Drawing-led development', desc: 'Customer drawing → 3D model → Q-Form simulation → die trial → approved sample.' },
-  { label: '5 presses · 1,100–3,300 MT', desc: '35,000 MT annual extrusion capacity. Profile weight 0.29 – 35 kg/m.' },
-  { label: 'In-house die shop', desc: '5-axis CNC, EDM, wire EDM, CMM. Trial and correction in-house.' },
-  { label: 'Full downstream', desc: 'Heat treatment, machining, cold drawing, surface finishing — single source.' },
-  { label: 'Alloy 1xxx–7xxx', desc: 'Including lead-free, high-strength 2xxx/7xxx and automotive 6xxx alloys.' },
-  { label: 'IATF 16949 · ISO 9001 · CE', desc: 'Automotive quality system. SCADA traceability from billet to dispatch.' },
+  {
+    num: '/ 01',
+    name: 'Die design and development',
+    desc: 'Customer drawings translated into production tooling using Q-Form flow simulation and 3D assembly models. 5-axis CNC die machining. Trial extrusions and sample approval before production release.',
+  },
+  {
+    num: '/ 02',
+    name: 'Extrusion',
+    desc: 'Five direct-drive presses from 1,100 to 3,300 MT. Profile weight 0.29–35 kg/m. 35,000 MT annual capacity. Alloys 1xxx through 7xxx. Minimum order quantities suited to OEM repeat supply.',
+  },
+  {
+    num: '/ 03',
+    name: 'Heat treatment',
+    desc: 'In-line and batch heat treatment to T5, T6, and T73 tempers. Controlled ageing ensures consistent tensile properties and hardness across production runs — critical for automotive and aerospace applications.',
+  },
+  {
+    num: '/ 04',
+    name: 'Fabrication and machining',
+    desc: 'Cutting, drilling, milling, punching, and bending to dimensional specifications. Assembly of aluminium profiles with plastic or steel hardware components. 10,000 parts per day throughput. Custom packaging per customer specification.',
+  },
+  {
+    num: '/ 05',
+    name: 'Cold drawing',
+    desc: 'Precision rods, bars, and tubes produced by drawing through single or series of dies. Achieves final outside diameter and wall thickness beyond the limits of direct extrusion. Consistent dimensional tolerance, superior surface finish, and scale-free surface for direct machining.',
+  },
+  {
+    num: '/ 06',
+    name: 'Surface finishing',
+    desc: 'Mill finish, anodising (Class 20, EN 12373), powder coating (QUALICOAT), and mechanical finishes. Full RAL and NCS colour range. In-house operations ensure quality continuity from extrusion to finished profile.',
+  },
+];
+
+// ── How to order — 6 steps ─────────────────────────────────────────────────────
+const workflow = [
+  { num: '01', step: 'Customer drawing or sample submission',   note: 'DXF, DWG, STEP, PDF, or physical sample accepted' },
+  { num: '02', step: 'Die design and Q-Form simulation',         note: 'Flow analysis, weld seam prediction, dimensional review' },
+  { num: '03', step: 'Die manufacture and trial extrusion',      note: '5-axis CNC die machining · trial run · dimensional report' },
+  { num: '04', step: 'Sample approval',                          note: 'Dimensional certificate · mechanical properties · surface report' },
+  { num: '05', step: 'Value-added processing',                   note: 'Heat treatment · fabrication · cold drawing · finishing' },
+  { num: '06', step: 'Repeat supply and quality control',        note: 'SCADA traceability · customer-specific packing · export documentation' },
+];
+
+// ── Packing options — source: bancoaluminium.com/capabilities/packing-options ──
+const packingInternal = [
+  { name: 'Bare',                desc: 'Profiles stacked without separation — standard for immediate processing.' },
+  { name: 'Paper layer',         desc: 'Thin paper between rows prevents surface friction during transport.' },
+  { name: 'Paper interleave',    desc: 'Paper interleaved between individual bars for additional surface protection.' },
+  { name: 'Cardboard strip',     desc: 'Horizontal cardboard between layers. Spacing determined per profile specification.' },
+  { name: 'Wrapped profiles',    desc: 'Individual bars wrapped in crepe paper, bubble wrap, or nylon.' },
+];
+
+const packingExternal = [
+  { name: 'Wooden bundle',       desc: '8 × 10 cm base blocks, 2 × 9 cm side lumber, 2 × 18 cm upper lumber. Plastic strapped.' },
+  { name: 'Cardboard box',       desc: 'Cardboard wrapped around the package. Protection for surface-sensitive profiles.' },
+  { name: 'Wooden pallet',       desc: '2 × 9 × 300 cm boards at package base. Forklift handling compatibility.' },
+  { name: 'Stretch film',        desc: 'Four-side stretch film wrap. Protection from moisture and dust in transit.' },
+  { name: 'Plastic wrap',        desc: 'Nylon wrapping on four sides and edges. Protection from moisture and contamination.' },
+];
+
+const certs = [
+  'ISO 9001:2015',
+  'ISO 14001:2015',
+  'ISO 45001:2018',
+  'IATF 16949:2016',
+  'CE (EN 15088)',
+  'IRS Works Approval',
+  'IS 733 · IS 1285 · IS 5082',
 ];
 ---
 
 <Layout
-  title="Industrial profiles — Banco Aluminium"
-  description="Application-led aluminium extrusions for OEM repeat production. Drawing-driven, full downstream processing, IATF 16949 certified. Serving electrical, automotive, aerospace, railways, solar and 12 other sectors."
+  title="Industrial profiles and engineered aluminium for OEM applications — Banco Aluminium"
+  description="Drawing-led aluminium profiles for OEM applications. Hard alloys, lead-free machining grades, cold drawing. Die design, extrusion, fabrication, 10,000 parts/day. 12 industry sectors. IATF 16949 · ISO 9001 · CE certified. Exports to Europe, North America, APAC."
 >
-  <!-- Page hero -->
-  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
-    <div class="container">
-      <div class="eyebrow on-dark">Products / Industrial profiles</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
-        Industrial <em class="accent">profiles</em> for demanding OEM applications.
-      </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
-        Drawing-driven extrusions for repeat production — from concept drawing through
-        die design, extrusion, heat treatment, machining, and surface finishing, under
-        one roof in Vadodara.
-      </p>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
-        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
-        <a href="/capabilities" class="btn btn-secondary-dark">View all capabilities</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- Capability strip -->
-  <section class="section-alt" style="padding:48px 0">
+  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <section class="i-hero">
     <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
-        {capabilities.map((c) => (
-          <div style="background:var(--color-stone-50);padding:28px 24px">
-            <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:8px">{c.label}</div>
-            <div style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{c.desc}</div>
+      <div class="i-hero-grid">
+
+        <div>
+          <div class="eyebrow on-dark">Products / Industrial &amp; OEMs</div>
+          <h1 class="i-h1">
+            Industrial profiles<br>for demanding OEM<br>applications.
+          </h1>
+          <p class="i-lead">
+            Drawing-led profile development from die design through extrusion,
+            heat treatment, fabrication, and cold drawing — under one roof.
+            Specialists in hard alloys, high-strength sections, and
+            RoHS-compliant lead-free machining grades.
+          </p>
+          <div class="i-hero-actions">
+            <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+            <a href="/capabilities" class="btn btn-secondary-dark">View capabilities</a>
+          </div>
+        </div>
+
+        <!-- Heat-sink technical drawing — all colours via CSS vars -->
+        <div aria-hidden="true">
+          <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" class="i-hero-svg">
+            <defs>
+              <pattern id="ind-grid" width="18" height="18" patternUnits="userSpaceOnUse">
+                <path d="M18 0L0 0 0 18" fill="none" style="stroke:var(--color-navy-line)" stroke-width="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="420" height="340" fill="url(#ind-grid)" opacity="0.6"/>
+            <!-- Heat-sink profile cross-section -->
+            <g transform="translate(210,165)" style="stroke:var(--color-navy-soft);fill:none" stroke-width="1.2">
+              <rect x="-160" y="60" width="320" height="22"/>
+              <rect x="-150" y="-60" width="10" height="120"/>
+              <rect x="-128" y="-60" width="10" height="120"/>
+              <rect x="-106" y="-60" width="10" height="120"/>
+              <rect x="-84"  y="-60" width="10" height="120"/>
+              <rect x="-62"  y="-60" width="10" height="120"/>
+              <rect x="-40"  y="-60" width="10" height="120"/>
+              <rect x="-18"  y="-60" width="10" height="120"/>
+              <rect x="4"    y="-60" width="10" height="120"/>
+              <rect x="26"   y="-60" width="10" height="120"/>
+              <rect x="48"   y="-60" width="10" height="120"/>
+              <rect x="70"   y="-60" width="10" height="120"/>
+              <rect x="92"   y="-60" width="10" height="120"/>
+              <rect x="114"  y="-60" width="10" height="120"/>
+              <rect x="136"  y="-60" width="10" height="120"/>
+              <line x1="-160" y1="-88" x2="160" y2="-88" style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <line x1="-160" y1="-94" x2="-160" y2="-82" style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <line x1="160"  y1="-94" x2="160"  y2="-82" style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <text x="0" y="-100" font-family="'JetBrains Mono', monospace" font-size="8.5" style="fill:var(--color-green);stroke:none" text-anchor="middle" letter-spacing="1.8">320 MM · HEAT SINK PROFILE</text>
+              <line x1="178" y1="-60" x2="178" y2="82" style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <line x1="172" y1="-60" x2="184" y2="-60" style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <line x1="172" y1="82"  x2="184" y2="82"  style="stroke:var(--color-green)" stroke-width="0.6"/>
+              <text x="196" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" style="fill:var(--color-green);stroke:none" text-anchor="start" letter-spacing="1.2">142 MM</text>
+            </g>
+            <text x="210" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" style="fill:var(--color-stone-400);stroke:none" letter-spacing="0.14em">EXTRUSION PROFILE CROSS-SECTION — BANCO DIE</text>
+            <text x="210" y="324" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="7.5" style="fill:var(--color-stone-400);stroke:none" letter-spacing="0.12em">ALLOY 6082-T6 · Q-FORM VERIFIED · IATF 16949</text>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Stats strip -->
+      <div class="i-stats">
+        {[
+          { n: '35,000', u: 'MT',   l: 'Annual extrusion capacity' },
+          { n: '900+', u: '',     l: 'Customers worldwide' },
+          { n: '10,000', u: '/day', l: 'Parts — fabrication throughput' },
+          { n: '12',     u: '',     l: 'Industry sectors served' },
+        ].map(({ n, u, l }) => (
+          <div class="i-stat">
+            <div class="i-stat-num">
+              {n}{u && <span class="i-stat-unit">{u}</span>}
+            </div>
+            <div class="i-stat-label">{l}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Application areas -->
+  <!-- ── Overview ──────────────────────────────────────────────────────────── -->
   <section class="section-light section-pad">
     <div class="container">
-      <div style="max-width:52ch;margin-bottom:60px">
-        <div class="eyebrow">Application areas</div>
-        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-          12 industry sectors.<br/>
-          <em class="accent">One extrusion partner.</em>
-        </h2>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
-        {applications.map((app, i) => (
-          <div style="background:var(--color-stone-50);padding:28px 24px;border-top:none">
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);margin-bottom:10px">
-              {String(i + 1).padStart(2, '0')}
-            </div>
-            <h3 class="t-h3" style="color:var(--color-navy);font-size:18px;margin-bottom:10px">{app.name}</h3>
-            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{app.desc}</p>
+      <div class="i-overview-grid">
+        <!-- Left: heading + feature photo -->
+        <div class="i-overview-lead">
+          <div class="eyebrow">/ 01 · Industrial overview</div>
+          <h2 class="t-h2 i-h2-navy">From drawing<br>to repeat supply.</h2>
+          <div class="i-feat-photo" style="margin-top:28px">
+            <img
+              src="/assets/manufacturing/Casting%201.JPG"
+              alt="Banco Aluminium foundry floor — billet casting, Vadodara"
+              loading="eager"
+            />
+            <div class="i-feat-caption">Banco Aluminium · Vadodara manufacturing facility</div>
           </div>
-        ))}
+        </div>
+
+        <!-- Right: body text + chips -->
+        <div>
+          <p class="t-lead i-body-text" style="margin-bottom:24px">
+            Banco Aluminium operates as an integrated OEM extrusion partner —
+            taking customer drawings into production with die design, trial,
+            and approval managed in-house before a single production kilogram
+            is extruded.
+          </p>
+          <p class="t-body i-body-text" style="margin-bottom:24px">
+            The scope spans standard to complex cross-sections in alloys
+            across the 1xxx to 7xxx series. Downstream from the press, profiles
+            move directly into heat treatment, precision machining and fabrication,
+            cold drawing, and surface finishing — all on the same site, eliminating
+            logistics cost and lead-time uncertainty from a multi-supplier chain.
+          </p>
+          <p class="t-body i-body-text">
+            The hard alloy and lead-free machining grade specialisation makes
+            Banco a preferred source for automotive, aerospace, precision
+            engineering, and hydraulic cylinder applications where alloy
+            chemistry, dimensional consistency, and traceability are
+            non-negotiable supply requirements.
+          </p>
+          <div class="i-chip-row" style="margin-top:32px">
+            {['Drawing-led die development', 'Hard alloy specialisation', 'Lead-free RoHS grades', 'Cold drawing capability', 'IATF 16949 certified', 'Valuminium — customer value driven', 'CBAM-ready export documentation'].map(c => (
+              <span class="pill">{c}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Development workflow -->
+  <!-- ── Industries ────────────────────────────────────────────────────────── -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">Custom profile workflow</div>
-      <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:48px">
-        From drawing to<br/><em class="accent">repeat supply.</em>
-      </h2>
-
-      <div style="display:flex;flex-direction:column;gap:0">
-        {[
-          ['01', 'Customer drawing / sample development', 'Alloy & temper selection. Feasibility review. Tooling cost indication.'],
-          ['02', 'Die design & Q-Form simulation', '3D solid model. Velocity, weld-line, die deflection simulation before cutting steel.'],
-          ['03', 'Die manufacturing', '5-axis CNC, EDM, wire EDM, heat treatment. In-house metrology and CMM.'],
-          ['04', 'Trial, correction & sample approval', 'First-off trial, dimensional check, mechanical property test. Correction cycles in-house.'],
-          ['05', 'Value-added processing', 'Heat treatment, machining, fabrication, cold drawing, surface finishing as required.'],
-          ['06', 'Repeat supply control', 'SCADA process traceability, stage-wise inspection, customer-specific packing, export documentation.'],
-        ].map(([idx, step, desc]) => (
-          <div style="display:grid;grid-template-columns:64px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--color-navy-line);align-items:start">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-green);padding-top:3px">{idx}</div>
-            <div>
-              <div style="font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--color-stone-50);margin-bottom:6px">{step}</div>
-              <div style="font-size:14px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
-            </div>
+      <div class="eyebrow on-dark">/ 02 · Industries served</div>
+      <div class="i-section-head">
+        <h2 class="t-h2" style="color:var(--color-platinum)">
+          12 industry sectors.<br>One extrusion partner.
+        </h2>
+        <p class="t-lead" style="color:var(--color-silver);max-width:52ch">
+          Banco supplies OEM profiles across industries where dimensional
+          control, alloy consistency, and downstream fabrication accuracy
+          are competitive requirements — not just specifications on a drawing.
+        </p>
+      </div>
+      <div class="i-industry-grid">
+        {industries.map((ind) => (
+          <div class="i-industry-cell">
+            <div class="i-ind-num">{ind.num}</div>
+            <div class="i-ind-name">{ind.name}</div>
+            <div class="i-ind-note">{ind.note}</div>
           </div>
         ))}
       </div>
-
-      <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap">
-        <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
-        <a href="/capabilities/die-shop" class="btn btn-secondary-dark">Die shop capabilities</a>
-      </div>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="section-alt" style="padding:48px 0">
+  <!-- ── Alloy range ────────────────────────────────────────────────────────── -->
+  <section class="section-alt section-pad">
     <div class="container">
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Certifications:</span>
-        {['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:2016', 'CE', 'IRS Works Approval', 'BIS IS 733 · IS 1285 · IS 5082'].map((c) => (
-          <span class="pill">{c}</span>
+      <div class="eyebrow">/ 03 · Alloy range</div>
+      <div class="i-section-head">
+        <h2 class="t-h2 i-h2-navy">
+          Hard alloys. Lead-free grades.<br>Standard 6xxx series.
+        </h2>
+        <p class="t-lead i-body-text" style="max-width:52ch">
+          Three distinct alloy families covering every OEM extrusion requirement
+          from high-strength structural sections to precision CNC machining
+          blanks and general architectural profiles.
+        </p>
+      </div>
+      <div class="i-alloy-grid">
+        {alloyFamilies.map((fam, i) => (
+          <div class="i-alloy-card">
+            <div class="i-alloy-num">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="i-alloy-title">{fam.title}</h3>
+            <div class="i-alloy-sub">{fam.sub}</div>
+            <p class="i-alloy-desc">{fam.desc}</p>
+            <div class="i-alloy-grades">
+              {fam.grades.map(g => <span class="i-grade">{g}</span>)}
+            </div>
+            <div class="i-alloy-note">{fam.note}</div>
+          </div>
+        ))}
+      </div>
+      <p class="i-alloy-footnote">
+        Custom alloy development available — including customer-specified Mg/Si ratios,
+        lead-free conversions, and enhanced-machinability compositions.
+        Alloy data sheets available on request.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Capability chain ──────────────────────────────────────────────────── -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark">/ 04 · Capability chain</div>
+      <div class="i-section-head">
+        <h2 class="t-h2" style="color:var(--color-platinum)">
+          Six integrated stages<br>under one roof.
+        </h2>
+        <p class="t-lead" style="color:var(--color-silver);max-width:52ch">
+          Every stage of the OEM extrusion value chain is owned and operated
+          in-house. No sub-contracting of critical operations. Full traceability
+          from die design to finished shipment.
+        </p>
+      </div>
+      <div class="i-cap-grid">
+        {capabilities.map((cap) => (
+          <div class="i-cap-cell">
+            <div class="i-cap-num">{cap.num}</div>
+            <h3 class="i-cap-name">{cap.name}</h3>
+            <p class="i-cap-desc">{cap.desc}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
+
+  <!-- ── Facility photo strip ─────────────────────────────────────────────── -->
+  <div class="i-fac-strip">
+    {[
+      ['/assets/manufacturing/Melting%201.JPG',  'Melting furnace — alloy preparation, Banco foundry'],
+      ['/assets/manufacturing/Casting%205.JPG',  'Casting pit — cylinder-guided Hot-Top casting'],
+      ['/assets/manufacturing/Quality%201.JPG',  'Spectromax OES — 100% chemical verification'],
+      ['/assets/manufacturing/Billet%201.JPG',   'Finished extrusion billets — despatch-ready'],
+    ].map(([src, alt]) => (
+      <div class="i-fac-tile">
+        <img src={src} alt={alt} loading="lazy" />
+        <div class="i-fac-tile-caption">{alt}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ── How to order ───────────────────────────────────────────────────────── -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 05 · How to order</div>
+      <div class="i-section-head">
+        <h2 class="t-h2 i-h2-navy">Submit a drawing.<br>We handle the rest.</h2>
+        <p class="t-lead i-body-text" style="max-width:52ch">
+          New profile development follows a defined six-step process from
+          drawing submission to approved repeat production. Customer approval
+          is required at each gate before the process advances.
+        </p>
+      </div>
+      <div class="i-workflow">
+        {workflow.map((w) => (
+          <div class="i-workflow-step">
+            <div class="i-wf-num">{w.num}</div>
+            <div class="i-wf-step">{w.step}</div>
+            <div class="i-wf-note">{w.note}</div>
+          </div>
+        ))}
+      </div>
+      <div class="i-workflow-cta">
+        <a href="/contact#quote" class="btn btn-primary">Submit a drawing</a>
+        <a href="/contact#technical" class="btn btn-secondary">Talk to our die team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Packing ────────────────────────────────────────────────────────────── -->
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">/ 06 · Packing options</div>
+      <div class="i-section-head">
+        <h2 class="t-h2 i-h2-navy">
+          Customer-specified packing.<br>Export-ready from despatch.
+        </h2>
+        <p class="t-lead i-body-text" style="max-width:52ch">
+          Internal profile protection and external bundle packing are both
+          specified per customer requirement. All export orders include standard
+          documentation — packing lists, material certificates, and CBAM
+          data for EU imports.
+        </p>
+      </div>
+      <div class="i-pack-grid">
+        <div>
+          <div class="i-pack-label">Internal protection</div>
+          <div class="i-pack-table">
+            {packingInternal.map((p, i) => (
+              <div class={`i-pack-row ${i < packingInternal.length - 1 ? 'i-pack-border' : ''}`}>
+                <div class="i-pack-name">{p.name}</div>
+                <div class="i-pack-desc">{p.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="i-pack-label">External bundle packing</div>
+          <div class="i-pack-table">
+            {packingExternal.map((p, i) => (
+              <div class={`i-pack-row ${i < packingExternal.length - 1 ? 'i-pack-border' : ''}`}>
+                <div class="i-pack-name">{p.name}</div>
+                <div class="i-pack-desc">{p.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Certifications ────────────────────────────────────────────────────── -->
+  <section class="section-light" style="padding:40px 0;border-bottom:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="i-cert-row">
+        <div class="i-cert-label">Certified to:</div>
+        <div class="i-cert-chips">
+          {certs.map(c => <span class="pill">{c}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────────────────── -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="i-cta-grid">
+        <div>
+          <div class="eyebrow on-dark">New profile development</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
+            Have a drawing, a sample,<br>or a profile in mind?
+          </h2>
+          <p class="t-body" style="color:var(--color-silver);margin-top:16px;max-width:52ch;line-height:1.65">
+            Our commercial and technical teams support new profile development
+            end-to-end — from drawing review and die quotation through sample
+            approval and into repeat production supply. Export enquiries
+            and OEM supply framework discussions welcome.
+          </p>
+        </div>
+        <div class="i-cta-actions">
+          <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+          <a href="/contact#quote" class="btn btn-secondary-dark">Request a quotation</a>
+          <a href="/downloads" class="btn btn-secondary-dark">Download capability brochure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  .i-hero {
+    background: var(--color-navy);
+    padding-top: 148px;
+    padding-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .i-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0, transparent 3px,
+      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+    );
+    pointer-events: none;
+  }
+  .i-hero > .container { position: relative; z-index: 1; }
+  .i-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+    padding-bottom: 60px;
+  }
+  .i-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(38px, 5.2vw, 68px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: var(--color-platinum);
+    margin-top: 20px;
+  }
+  .i-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.65;
+    color: var(--color-silver);
+    margin-top: 24px;
+    max-width: 54ch;
+  }
+  .i-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+  .i-hero-svg { width: 100%; opacity: 0.9; }
+
+  .i-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-navy-line);
+    border-top: 1px solid var(--color-navy-line);
+  }
+  .i-stat { background: var(--color-navy-deep); padding: 24px 28px; }
+  .i-stat-num {
+    font-family: var(--font-sans);
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-platinum);
+    line-height: 1;
+  }
+  .i-stat-unit {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--color-green);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .i-stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    margin-top: 8px;
+  }
+
+  /* ── Overview split (heading + photo left, text right) ─────────────────── */
+  .i-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: start;
+  }
+  .i-feat-photo {
+    border: 1px solid var(--color-stone-200);
+    overflow: hidden;
+  }
+  .i-feat-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .i-feat-photo:hover img { transform: scale(1.03); }
+  .i-feat-caption {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    padding: 8px 12px;
+    border-top: 1px solid var(--color-stone-200);
+    background: var(--color-stone-50);
+  }
+
+  /* ── Facility photo strip (full-bleed, 4 tiles) ─────────────────────────── */
+  .i-fac-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .i-fac-tile {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+  .i-fac-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+    transition: transform 0.5s ease, filter 0.3s ease;
+  }
+  .i-fac-tile:hover img { transform: scale(1.05); filter: brightness(0.9); }
+  .i-fac-tile-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 14px 12px;
+    background: linear-gradient(transparent, rgba(8,27,48,0.82));
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .i-fac-tile:hover .i-fac-tile-caption { opacity: 1; }
+
+  .i-two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .i-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-top: 32px; margin-bottom: 48px; }
+  .i-h2-navy { color: var(--color-navy); margin-top: 16px; }
+  .i-body-text { color: var(--color-stone-700); }
+  .i-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .i-industry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-navy-line);
+    border: 1px solid var(--color-navy-line);
+  }
+  .i-industry-cell {
+    background: var(--color-navy);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.2s ease;
+  }
+  .i-industry-cell:hover { background: var(--color-navy-soft); }
+  .i-ind-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .i-ind-name { font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-platinum); line-height: 1.25; }
+  .i-ind-note { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
+
+  .i-alloy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .i-alloy-card { background: var(--color-stone-50); padding: 36px 28px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
+  .i-alloy-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; color: var(--color-green); }
+  .i-alloy-title { font-family: var(--font-sans); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); }
+  .i-alloy-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-400); }
+  .i-alloy-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+  .i-alloy-grades { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px solid var(--color-stone-200); margin-top: auto; }
+  .i-grade { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--color-navy); background: white; border: 1px solid var(--color-stone-200); padding: 4px 10px; }
+  .i-alloy-note { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .i-alloy-footnote { margin-top: 20px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--color-stone-400); line-height: 1.65; }
+
+  .i-cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .i-cap-cell { background: var(--color-navy); padding: 32px 24px; display: flex; flex-direction: column; gap: 12px; border-top: 2px solid transparent; transition: background 0.2s ease, border-top-color 0.2s ease; }
+  .i-cap-cell:hover { background: var(--color-navy-soft); border-top-color: var(--color-green); }
+  .i-cap-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; color: var(--color-green); }
+  .i-cap-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-platinum); line-height: 1.2; }
+  .i-cap-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-silver); margin-top: auto; }
+
+  .i-workflow { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--color-stone-200); }
+  .i-workflow-step { display: grid; grid-template-columns: 48px 1fr 1fr; gap: 24px; padding: 20px 24px; border-bottom: 1px solid var(--color-stone-200); align-items: center; background: var(--color-stone-50); transition: background 0.2s ease; }
+  .i-workflow-step:last-child { border-bottom: none; }
+  .i-workflow-step:hover { background: white; }
+  .i-wf-num { font-family: var(--font-mono); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; color: var(--color-green); }
+  .i-wf-step { font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--color-navy); }
+  .i-wf-note { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .i-workflow-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+
+  .i-pack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 60px); margin-top: 48px; }
+  .i-pack-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-green); margin-bottom: 12px; }
+  .i-pack-table { border: 1px solid var(--color-stone-200); }
+  .i-pack-row { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 14px 18px; align-items: start; background: var(--color-stone-50); }
+  .i-pack-border { border-bottom: 1px solid var(--color-stone-200); }
+  .i-pack-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); padding-top: 2px; }
+  .i-pack-desc { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); line-height: 1.6; }
+
+  .i-cert-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .i-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-400); white-space: nowrap; }
+  .i-cert-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .i-cta-grid { display: grid; grid-template-columns: 1fr auto; gap: clamp(40px, 6vw, 100px); align-items: center; }
+  .i-cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; flex-shrink: 0; }
+
+  /* ── Facility gallery ──────────────────────────────────────────────────── */
+  .i-fac-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .i-fac-photo {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+  .i-fac-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .i-fac-photo:hover img { transform: scale(1.04); }
+
+  @media (max-width: 1024px) {
+    .i-hero-grid      { grid-template-columns: 1fr; }
+    .i-hero-svg       { display: none; }
+    .i-stats          { grid-template-columns: repeat(2, 1fr); }
+    .i-two-col        { grid-template-columns: 1fr; }
+    .i-overview-grid  { grid-template-columns: 1fr; }
+    .i-section-head   { grid-template-columns: 1fr; }
+    .i-industry-grid  { grid-template-columns: repeat(3, 1fr); }
+    .i-alloy-grid     { grid-template-columns: 1fr; }
+    .i-cap-grid       { grid-template-columns: repeat(2, 1fr); }
+    .i-pack-grid      { grid-template-columns: 1fr; }
+    .i-cta-grid       { grid-template-columns: 1fr; }
+    .i-workflow-step  { grid-template-columns: 48px 1fr; }
+    .i-wf-note        { display: none; }
+    .i-fac-strip      { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .i-industry-grid  { grid-template-columns: repeat(2, 1fr); }
+    .i-cap-grid       { grid-template-columns: 1fr; }
+    .i-pack-row       { grid-template-columns: 1fr; gap: 4px; }
+    .i-stats          { grid-template-columns: 1fr 1fr; }
+    .i-fac-strip      { grid-template-columns: 1fr 1fr; }
+  }
+</style>

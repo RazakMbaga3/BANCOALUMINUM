@@ -117,6 +117,50 @@ const finishes = [
   { name: 'Mill finish',     desc: 'As-extruded aluminium surface for downstream fabricators and specialist coating applicators. Supplied without additional treatment.' },
 ];
 
+// ── Hero slideshow ────────────────────────────────────────────────────────────
+const slides = [
+  {
+    img:      '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
+    alt:      'Modern residential aluminium sliding windows — Banco Aluminium',
+    eyebrow:  '/ Architectural systems · Banco Aluminium',
+    headline: 'Aluminium that <span class="highlight">opens</span> spaces.',
+    sub:      'Sliding, casement and folding systems for contemporary architecture.',
+    cta:      true,
+  },
+  {
+    img:      '/assets/architectural/31fb5ee618906c778bc0ed433a7b5757.jpg',
+    alt:      'Floor-to-ceiling glazed façade — Banco Aluminium fenestration',
+    eyebrow:  '/ Modern fenestration',
+    headline: 'Where light becomes <span class="highlight">architecture</span>.',
+    sub:      'Ten fenestration series. Five finishes. One integrated source.',
+    cta:      false,
+  },
+  {
+    img:      '/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg',
+    alt:      'Commercial aluminium curtain wall façade — Banco Aluminium',
+    eyebrow:  '/ From bungalow to high-rise',
+    headline: 'Precision profiles for every <span class="highlight">elevation</span>.',
+    sub:      '18mm slim residential to 75mm heavy-duty commercial systems.',
+    cta:      false,
+  },
+  {
+    img:      '/assets/architectural/9908256f57e8df7b37302e330865c1b4.jpg',
+    alt:      'Powder coated and anodised aluminium window finish — Banco Aluminium',
+    eyebrow:  '/ Surface & finish',
+    headline: 'Colour. Texture. <span class="highlight">Character.</span>',
+    sub:      'Powder coated, anodised, brushed — any RAL or NCS colour.',
+    cta:      false,
+  },
+  {
+    img:      '/assets/architectural/f664f77f50d42d2087d86bdaced9f248.jpg',
+    alt:      'EN 14351-1 tested aluminium fenestration — Banco Aluminium',
+    eyebrow:  '/ EN 14351-1 · ISO certified',
+    headline: 'Built to perform. <span class="highlight">Tested</span> to prove it.',
+    sub:      'In-house extrusion. EN 14351-1 performance tested. Export-ready.',
+    cta:      false,
+  },
+];
+
 // ── Real project photos from public/assets/architectural ─────────────────────
 const photos = [
   '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
@@ -142,100 +186,76 @@ const photos = [
   description="10 aluminium fenestration series for modern construction — sliding windows 18–75mm, casement windows and doors, sliding-folding. Powder coated, anodised, brushed and mill finishes. EN 14351-1 tested. In-house extrusion, Vadodara."
 >
 
-  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
-  <section class="a-hero">
-    <div class="container">
-      <div class="a-hero-grid">
+  <!-- ── Hero slideshow ──────────────────────────────────────────────────── -->
+  <section class="a-hero-wrap">
 
-        <div>
-          <div class="eyebrow on-dark">Products / Architectural range</div>
-          <h1 class="a-h1">
-            Aluminium fenestration<br>systems for modern<br>construction.
-          </h1>
-          <p class="a-lead">
-            Ten series spanning sliding windows, openable casement windows,
-            entrance doors, and sliding-folding systems. In-house alloy
-            development, precision die design, and full surface finishing
-            under one roof in Vadodara, Gujarat.
-          </p>
-          <div class="a-hero-actions">
-            <a href="/contact#quote" class="btn btn-primary-dark">Specify a system</a>
-            <a href="/downloads" class="btn btn-secondary-dark">Technical data sheets</a>
+    <div class="a-slideshow" id="arch-slideshow">
+
+      {slides.map((slide, i) => (
+        <div class={`a-slide${i === 0 ? ' is-active' : ''}`} data-index={i}>
+          <img
+            src={slide.img}
+            alt={slide.alt}
+            class="a-slide-img"
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+          <div class="a-slide-overlay" />
+          <div class="a-slide-content">
+            <div class="a-slide-inner container">
+              <div class="eyebrow on-dark">{slide.eyebrow}</div>
+              <h1 class="a-slide-h1" set:html={slide.headline} />
+              <p class="a-slide-sub">{slide.sub}</p>
+              {slide.cta && (
+                <div class="a-slide-actions">
+                  <a href="/contact#quote" class="btn btn-primary-dark">Specify a system</a>
+                  <a href="/downloads" class="btn btn-secondary-dark">Technical data sheets</a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
+      ))}
 
-        <!-- Curtain wall façade technical drawing — all colours via CSS vars -->
-        <div aria-hidden="true" class="a-hero-svg-wrap">
-          <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="a-hero-svg">
-            <defs>
-              <pattern id="archgrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M20 0L0 0 0 20" fill="none" style="stroke:var(--color-navy-line)" stroke-width="0.4"/>
-              </pattern>
-            </defs>
-            <rect width="400" height="500" fill="url(#archgrid)" opacity="0.45"/>
-
-            <!-- Building façade outline -->
-            <rect x="40" y="40" width="320" height="420" style="stroke:var(--color-nickel)" stroke-width="1" fill="none"/>
-
-            <!-- Horizontal floor lines -->
-            <line x1="40" y1="145" x2="360" y2="145" style="stroke:var(--color-navy-line)" stroke-width="0.75"/>
-            <line x1="40" y1="250" x2="360" y2="250" style="stroke:var(--color-navy-line)" stroke-width="0.75"/>
-            <line x1="40" y1="355" x2="360" y2="355" style="stroke:var(--color-navy-line)" stroke-width="0.75"/>
-
-            <!-- Vertical mullions -->
-            <line x1="145" y1="40" x2="145" y2="460" style="stroke:var(--color-nickel)" stroke-width="1"/>
-            <line x1="255" y1="40" x2="255" y2="460" style="stroke:var(--color-nickel)" stroke-width="1"/>
-
-            <!-- Glazing panels — navy-soft tinted -->
-            {[40, 145, 250, 355].map((y) =>
-              ([[40, 145], [145, 255], [255, 360]] as [number,number][]).map(([x0, x1]) => (
-                <rect
-                  x={x0 + 2} y={y + 2}
-                  width={x1 - x0 - 4} height={101}
-                  style="fill:var(--color-navy-soft);opacity:0.55;stroke:var(--color-navy-line)"
-                  stroke-width="0.5"
-                />
-              ))
-            )}
-
-            <!-- Mullion highlight — green spark -->
-            <rect x="143" y="40" width="4" height="420" style="fill:var(--color-green);opacity:0.35"/>
-            <rect x="253" y="40" width="4" height="420" style="fill:var(--color-green);opacity:0.35"/>
-
-            <!-- Gasket dots — green spark -->
-            <circle cx="145" cy="145" r="3" style="fill:var(--color-green);opacity:0.7"/>
-            <circle cx="145" cy="250" r="3" style="fill:var(--color-green);opacity:0.7"/>
-            <circle cx="145" cy="355" r="3" style="fill:var(--color-green);opacity:0.7"/>
-            <circle cx="255" cy="145" r="3" style="fill:var(--color-green);opacity:0.7"/>
-            <circle cx="255" cy="250" r="3" style="fill:var(--color-green);opacity:0.7"/>
-            <circle cx="255" cy="355" r="3" style="fill:var(--color-green);opacity:0.7"/>
-
-            <!-- Dimension annotations — green spark -->
-            <line x1="40" y1="480" x2="360" y2="480" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <line x1="40" y1="474" x2="40" y2="486" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <line x1="360" y1="474" x2="360" y2="486" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <text x="200" y="497" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" style="fill:var(--color-green)" letter-spacing="0.1em">MODULE WIDTH 3600 MM</text>
-            <text x="200" y="26" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" style="fill:var(--color-stone-400)" letter-spacing="0.14em">CURTAIN WALL FAÇADE — ELEVATION</text>
-          </svg>
-        </div>
-
-      </div>
-
-      <!-- Stats strip -->
-      <div class="a-stats">
-        {[
-          { n: '10',  l: 'Fenestration series — sliding and casement' },
-          { n: '5',   l: 'Surface finishes — powder, anodise, brushed, blast, mill' },
-          { n: 'EN 14351-1', l: 'Test standard — all series' },
-          { n: '1967', l: 'Established — Vadodara, Gujarat, India' },
-        ].map(({ n, l }) => (
-          <div class="a-stat">
-            <div class="a-stat-num">{n}</div>
-            <div class="a-stat-label">{l}</div>
-          </div>
+      <!-- Slide indicators -->
+      <div class="a-slide-nav" id="arch-nav">
+        {slides.map((_, i) => (
+          <button
+            class={`a-dot${i === 0 ? ' is-active' : ''}`}
+            data-target={String(i)}
+            aria-label={`Slide ${i + 1}`}
+          />
         ))}
       </div>
+
+      <!-- Arrow controls -->
+      <button class="a-arrow a-arrow-prev" id="arch-prev" aria-label="Previous slide">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M11 3L5 9L11 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="a-arrow a-arrow-next" id="arch-next" aria-label="Next slide">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M7 3L13 9L7 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
     </div>
+
+    <!-- Stats strip — flush below slideshow -->
+    <div class="a-stats">
+      {[
+        { n: '10',         l: 'Fenestration series — sliding and casement' },
+        { n: '5',          l: 'Surface finishes — powder, anodise, brushed, blast, mill' },
+        { n: 'EN 14351-1', l: 'Test standard — all series' },
+        { n: '1967',       l: 'Established — Vadodara, Gujarat, India' },
+      ].map(({ n, l }) => (
+        <div class="a-stat">
+          <div class="a-stat-num">{n}</div>
+          <div class="a-stat-label">{l}</div>
+        </div>
+      ))}
+    </div>
+
   </section>
 
   <!-- ── Photo gallery ─────────────────────────────────────────────────────── -->
@@ -471,78 +491,213 @@ const photos = [
     </div>
   </section>
 
+<script>
+  const ss     = document.getElementById('arch-slideshow');
+  const slides = ss?.querySelectorAll('.a-slide');
+  const dots   = document.querySelectorAll('#arch-nav .a-dot');
+  const prev   = document.getElementById('arch-prev');
+  const next   = document.getElementById('arch-next');
+
+  if (slides && slides.length) {
+    let current = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('is-active');
+      dots[current]?.classList.remove('is-active');
+      current = ((n % slides.length) + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current]?.classList.add('is-active');
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 6000);
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    prev?.addEventListener('click', () => goTo(current - 1));
+    next?.addEventListener('click', () => goTo(current + 1));
+
+    ss.addEventListener('mouseenter', () => clearInterval(timer));
+    ss.addEventListener('mouseleave', resetTimer);
+
+    resetTimer();
+  }
+</script>
+
 </Layout>
 
 <style>
-  /* ── Hero ──────────────────────────────────────────────────────────────── */
-  .a-hero {
-    background: var(--color-navy);
-    padding-top: 148px;
-    padding-bottom: 0;
+  /* ── Hero slideshow ─────────────────────────────────────────────────────── */
+  .a-hero-wrap {
     position: relative;
-    overflow: hidden;
   }
-  .a-hero::before {
-    content: '';
+
+  .a-slideshow {
+    position: relative;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
+    background: var(--color-navy-deep);
+  }
+
+  /* Individual slides */
+  .a-slide {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent 0, transparent 3px,
-      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
-    );
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    z-index: 0;
   }
-  .a-hero > .container { position: relative; z-index: 1; }
+  .a-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+  .a-slide.is-active .a-slide-img {
+    animation: a-kb 9s ease forwards;
+  }
+  @keyframes a-kb {
+    from { transform: scale(1.0); }
+    to   { transform: scale(1.07); }
+  }
 
-  .a-hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(40px, 6vw, 100px);
-    align-items: end;
-    padding-bottom: 60px;
+  .a-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    will-change: transform;
   }
-  .a-h1 {
+
+  /* Gradient overlay — dark at bottom-left for text, light at top-right */
+  .a-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top,
+        rgba(8, 27, 48, 0.96) 0%,
+        rgba(8, 27, 48, 0.68) 28%,
+        rgba(8, 27, 48, 0.22) 58%,
+        transparent 100%),
+      linear-gradient(to right,
+        rgba(8, 27, 48, 0.52) 0%,
+        transparent 55%);
+  }
+
+  /* Text content — anchored to bottom-left */
+  .a-slide-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .a-slide-inner {
+    padding-bottom: 96px;
+  }
+
+  /* Headline */
+  .a-slide-h1 {
     font-family: var(--font-sans);
-    font-size: clamp(38px, 5.2vw, 68px);
+    font-size: clamp(52px, 6.8vw, 96px);
     font-weight: 800;
     letter-spacing: -0.04em;
-    line-height: 0.95;
+    line-height: 0.93;
     color: var(--color-platinum);
-    margin-top: 20px;
+    margin-top: 18px;
+    max-width: 14ch;
   }
-  .a-lead {
+
+  /* Green word-level highlight — same pattern as billets page */
+  .highlight {
+    display: inline;
+    background: var(--color-green);
+    color: #fff;
+    padding: 0.04em 0.18em 0.1em;
+    font-style: normal;
+  }
+
+  .a-slide-sub {
     font-family: var(--font-sans);
     font-size: clamp(15px, 1.4vw, 17px);
-    line-height: 1.65;
     color: var(--color-silver);
-    margin-top: 24px;
-    max-width: 54ch;
+    line-height: 1.65;
+    margin-top: 20px;
+    max-width: 50ch;
   }
-  .a-hero-actions {
+
+  .a-slide-actions {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    margin-top: 36px;
-  }
-  .a-hero-svg-wrap {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  .a-hero-svg {
-    width: 100%;
-    max-width: 400px;
-    opacity: 0.85;
+    margin-top: 32px;
   }
 
-  /* Stats strip */
+  /* Dot navigation — pill-shaped, active becomes green + wider */
+  .a-slide-nav {
+    position: absolute;
+    bottom: 36px;
+    right: clamp(20px, 4vw, 60px);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 10;
+  }
+  .a-dot {
+    width: 28px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.28);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, width 0.35s ease;
+    border-radius: 0;
+  }
+  .a-dot.is-active {
+    background: var(--color-green);
+    width: 52px;
+  }
+  .a-dot:hover:not(.is-active) {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Arrow controls */
+  .a-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 52px;
+    height: 52px;
+    background: rgba(8, 27, 48, 0.48);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--color-platinum);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    border-radius: 0;
+  }
+  .a-arrow:hover {
+    background: rgba(8, 27, 48, 0.85);
+    border-color: var(--color-green);
+    color: #fff;
+  }
+  .a-arrow-prev { left: 28px; }
+  .a-arrow-next { right: 28px; }
+
+  /* Stats strip — flush below slideshow */
   .a-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--color-navy-line);
-    border-top: 1px solid var(--color-navy-line);
+    border-top: 2px solid var(--color-green);
   }
   .a-stat {
     background: var(--color-navy-deep);
@@ -872,8 +1027,6 @@ const photos = [
     .a-series-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 1024px) {
-    .a-hero-grid     { grid-template-columns: 1fr; padding-bottom: 40px; }
-    .a-hero-svg-wrap { display: none; }
     .a-stats         { grid-template-columns: repeat(2, 1fr); }
     .a-section-head  { grid-template-columns: 1fr; }
     .a-gallery       { grid-template-columns: repeat(3, 1fr); }
@@ -882,18 +1035,22 @@ const photos = [
     .a-cap-grid      { grid-template-columns: 1fr; }
     .a-cta-grid      { grid-template-columns: 1fr; }
     .a-perf-note-strip { flex-direction: column; align-items: flex-start; }
+    .a-arrow         { display: none; }
   }
   @media (max-width: 768px) {
+    .a-slide-h1      { font-size: clamp(40px, 9vw, 64px); }
     .a-series-grid   { grid-template-columns: 1fr; }
     .a-casement-grid { grid-template-columns: 1fr; }
     .a-gallery       { grid-template-columns: repeat(2, 1fr); }
     .a-perf-grid     { grid-template-columns: repeat(2, 1fr); }
     .a-finish-grid   { grid-template-columns: repeat(2, 1fr); }
     .a-stats         { grid-template-columns: 1fr 1fr; }
+    .a-slide-nav     { right: 50%; transform: translateX(50%); }
   }
   @media (max-width: 480px) {
     .a-gallery       { grid-template-columns: 1fr 1fr; }
     .a-perf-grid     { grid-template-columns: 1fr; }
     .a-finish-grid   { grid-template-columns: 1fr; }
+    .a-slide-inner   { padding-bottom: 72px; }
   }
 </style>

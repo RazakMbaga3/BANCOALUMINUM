@@ -96,7 +96,7 @@ const certs = [
         <div>
           <div class="eyebrow on-dark">Products / Casting &amp; billets</div>
           <h1 class="c-h1">
-            Foundry-grade<br>aluminium extrusion<br>billets.
+            Foundry-grade aluminium<br><span class="highlight">extrusion</span> billets.
           </h1>
           <p class="c-lead">
             Cylinder-guided Hot-Top casting. Four-stage metallurgical control.
@@ -174,8 +174,8 @@ const certs = [
       <div class="c-overview-grid">
         <div class="c-overview-text">
           <div class="eyebrow">/ 01 · Product overview</div>
-          <h2 class="t-h2 c-h2-navy">
-            Consistent metallurgical quality,<br>cast to cast.
+          <h2 class="t-h2 c-h2-navy" style="font-weight:800">
+            Consistent metallurgical <span class="highlight">quality</span>,<br>cast to cast.
           </h2>
           <p class="t-lead c-body-text" style="margin-top:20px;margin-bottom:20px">
             Banco Aluminium manufactures aluminium extrusion billets to the metallurgical
@@ -231,8 +231,8 @@ const certs = [
     <div class="container">
       <div class="eyebrow">/ 02 · Alloy range</div>
       <div class="c-section-head">
-        <h2 class="t-h2 c-h2-navy">
-          12 standard alloys.<br>Custom compositions on request.
+        <h2 class="t-h2 c-h2-navy" style="font-weight:800">
+          12 standard alloys.<br><span class="highlight">Custom</span> compositions on request.
         </h2>
         <p class="t-lead c-body-text" style="max-width:52ch">
           Standard alloys span the 1xxx, 3xxx, and 6xxx series covering
@@ -286,8 +286,8 @@ const certs = [
     <div class="container">
       <div class="eyebrow on-dark">/ 03 · Dimensions &amp; tolerances</div>
       <div class="c-section-head">
-        <h2 class="t-h2" style="color:var(--color-platinum)">
-          Five diameters.<br>5,800 mm standard length.
+        <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
+          Five <span class="highlight">diameters</span>.<br>5,800 mm standard length.
         </h2>
         <p class="t-lead" style="color:var(--color-silver);max-width:50ch">
           All diameters are available at 5,800 mm standard length.
@@ -331,8 +331,8 @@ const certs = [
     <div class="container">
       <div class="eyebrow">/ 04 · Production process</div>
       <div class="c-section-head">
-        <h2 class="t-h2 c-h2-navy">
-          Four controlled stages<br>from melt to billet.
+        <h2 class="t-h2 c-h2-navy" style="font-weight:800">
+          Four <span class="highlight">controlled</span> stages<br>from melt to billet.
         </h2>
         <p class="t-lead c-body-text" style="max-width:52ch">
           The sequence is fixed and monitored at every transition point.
@@ -377,8 +377,8 @@ const certs = [
     <div class="container">
       <div class="eyebrow on-dark">/ 05 · Quality assurance</div>
       <div class="c-section-head">
-        <h2 class="t-h2" style="color:var(--color-platinum)">
-          100% inspection at every stage.
+        <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
+          <span class="highlight">100%</span> inspection at every stage.
         </h2>
         <p class="t-lead" style="color:var(--color-silver);max-width:52ch">
           Statistical sampling is not sufficient for extrusion-critical supply.
@@ -427,8 +427,8 @@ const certs = [
       <div class="eyebrow on-dark">/ 06 · Sustainability</div>
       <div class="c-two-col" style="align-items:start">
         <div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:20px">
-            0.480 kgCO₂e per kg.<br>Verified quarterly.
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:20px;font-weight:800">
+            <span class="highlight">0.480</span> kgCO₂e per kg.<br>Verified quarterly.
           </h2>
           <p class="t-body" style="color:var(--color-silver);margin-top:20px;line-height:1.65">
             Banco's carbon footprint for aluminium extrusion billets is independently
@@ -486,8 +486,8 @@ const certs = [
       <div class="c-cta-grid">
         <div>
           <div class="eyebrow on-dark">Enquiries welcome</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
-            Supply discussions, technical<br>specifications, sample orders.
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;font-weight:800">
+            Supply discussions,<br><span class="highlight">technical</span> enquiries, sample orders.
           </h2>
           <p class="t-body" style="color:var(--color-silver);margin-top:16px;max-width:52ch;line-height:1.65">
             Our commercial and technical teams support alloy selection,
@@ -1001,6 +1001,15 @@ const certs = [
     gap: 12px;
     align-items: flex-start;
     flex-shrink: 0;
+  }
+
+  /* ── Inline word-level highlight (green box, white text — client direction) */
+  .highlight {
+    display: inline;
+    background: var(--color-green);
+    color: #ffffff;
+    padding: 0.04em 0.18em 0.1em;
+    font-style: normal;
   }
 
   /* ── Process photography ──────────────────────────────────────────────── */

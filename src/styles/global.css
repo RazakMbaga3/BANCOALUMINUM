@@ -20,6 +20,9 @@
   --color-anthracite:  #33373B;  /* dark neutral surface             */
   --color-paper:       #F2F1EC;  /* warm light-mode background       */
 
+  /* ── Silver-white — cool aluminium section background ──────────── */
+  --color-silver-white: #EDEEF1; /* cool blue-grey white · industrial sections */
+
   /* ── Accent spark — ≤ 5 % of any view ──────────────────────────── */
   --color-green:       #009746;  /* 2 px rules, dots, numbers, arrows only */
 
@@ -145,6 +148,14 @@ em.accent {
 .section-alt {
   background: var(--color-stone-100);
   border-bottom: 1px solid var(--color-stone-200);
+}
+.section-white {
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-stone-200);
+}
+.section-silver {
+  background: var(--color-silver-white);
+  border-bottom: 1px solid #D8DADD;
 }
 .section-dark {
   background: var(--color-navy);

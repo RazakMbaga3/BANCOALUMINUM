@@ -307,17 +307,17 @@ const certs = [
 <style>
   /* ── Brand statement intro ──────────────────────────────── */
   .router-intro {
-    background: var(--color-navy-deep);
-    border-bottom: 1px solid var(--color-navy-line);
+    background: transparent;
+    border-bottom: 1px solid rgba(40, 69, 106, 0.45);
     padding: 52px 0 44px;
     position: relative;
-    overflow: hidden;
+    z-index: 2;
     flex-shrink: 0;
   }
 
-  /* Video background */
+  /* Video — fixed, covers entire page behind all content */
   .ri-video {
-    position: absolute;
+    position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
@@ -327,37 +327,21 @@ const certs = [
     pointer-events: none;
   }
 
-  /* Navy overlay — dims video so text is always readable */
+  /* Navy vignette — fixed, tones footage into Heritage palette across whole page */
   .ri-overlay {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background: linear-gradient(
-      135deg,
-      rgba(8, 27, 48, 0.82) 0%,
-      rgba(14, 42, 71, 0.68) 60%,
-      rgba(8, 27, 48, 0.78) 100%
+      145deg,
+      rgba(8, 27, 48, 0.80) 0%,
+      rgba(14, 42, 71, 0.58) 55%,
+      rgba(8, 27, 48, 0.76) 100%
     );
     z-index: 1;
     pointer-events: none;
   }
 
-  /* Pinstripe texture — sits above overlay */
-  .router-intro::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 3px,
-      rgba(255,255,255,0.014) 3px,
-      rgba(255,255,255,0.014) 4px
-    );
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  /* Content above everything */
+  /* Content above the fixed layers */
   .ri-inner {
     position: relative;
     z-index: 3;
@@ -431,8 +415,10 @@ const certs = [
     display: flex;
     flex: 1;
     min-height: 520px;
-    background: var(--color-navy-line); /* 1px gap colour between panels */
+    background: rgba(40, 69, 106, 0.32); /* translucent gap line between panels */
     gap: 1px;
+    position: relative;
+    z-index: 2;
   }
 
   /* ── Individual panel ───────────────────────────────────── */
@@ -441,14 +427,23 @@ const certs = [
     flex: 1;
     overflow: hidden;
     text-decoration: none;
-    background: var(--color-navy-deep);
-    transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Frosted navy glass — video bleeds through */
+    background: rgba(8, 27, 48, 0.52);
+    backdrop-filter: blur(3px) brightness(0.82);
+    -webkit-backdrop-filter: blur(3px) brightness(0.82);
+    transition:
+      flex 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.45s ease,
+      backdrop-filter 0.45s ease;
     display: block;
     outline: none;
   }
   .rp:hover,
   .rp:focus-visible {
     flex: 3.5;
+    background: rgba(14, 42, 71, 0.70);
+    backdrop-filter: blur(7px) brightness(0.76);
+    -webkit-backdrop-filter: blur(7px) brightness(0.76);
   }
   /* Rule 3 fix: outline replaces box-shadow for focus indicator */
   .rp:focus-visible {
@@ -465,18 +460,25 @@ const certs = [
     width: 100%;
     height: 100%;
     display: block;
+    /* Drawings visible but video shows through behind them */
+    opacity: 0.52;
+    transition: opacity 0.55s ease;
+  }
+  .rp:hover .rp-bg svg,
+  .rp:focus-visible .rp-bg svg {
+    opacity: 0.88;
   }
 
-  /* Rule 4 fix: gradient uses color-mix tokens, not rgba hex */
+  /* Gradient fades bottom of panel — lighter so video shows through */
   .rp-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       180deg,
-      transparent                                              0%,
-      color-mix(in srgb, var(--color-navy-deep) 30%, transparent) 38%,
-      color-mix(in srgb, var(--color-navy-deep) 80%, transparent) 68%,
-      color-mix(in srgb, var(--color-navy-deep) 97%, transparent) 100%
+      transparent          0%,
+      rgba(8,27,48,0.18)   35%,
+      rgba(8,27,48,0.62)   65%,
+      rgba(8,27,48,0.90)   100%
     );
     transition: background 0.55s ease;
   }
@@ -484,10 +486,10 @@ const certs = [
   .rp:focus-visible .rp-overlay {
     background: linear-gradient(
       180deg,
-      transparent                                              0%,
-      color-mix(in srgb, var(--color-navy-deep) 18%, transparent) 30%,
-      color-mix(in srgb, var(--color-navy-deep) 72%, transparent) 62%,
-      color-mix(in srgb, var(--color-navy-deep) 97%, transparent) 100%
+      transparent          0%,
+      rgba(8,27,48,0.10)   28%,
+      rgba(8,27,48,0.52)   60%,
+      rgba(8,27,48,0.88)   100%
     );
   }
 
@@ -621,12 +623,16 @@ const certs = [
     transform: scaleX(1);
   }
 
-  /* ── Cert strip ─────────────────────────────────────────── */
+  /* ── Cert strip — frosted glass ─────────────────────────── */
   .router-certs {
-    background: var(--color-navy-deep);
-    border-top: 1px solid var(--color-navy-line);
+    background: rgba(8, 27, 48, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(40, 69, 106, 0.45);
     padding: 13px 0;
     flex-shrink: 0;
+    position: relative;
+    z-index: 2;
   }
   .rc-inner {
     display: flex;

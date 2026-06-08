@@ -36,112 +36,72 @@ import Layout from '../layouts/Layout.astro';
           <form
             name="quote-request"
             method="POST"
+            action="/contact/success"
             enctype="multipart/form-data"
-            style="display:flex;flex-direction:column;gap:20px"
+            class="cform"
+            novalidate
           >
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-              <div>
-                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                  Company name *
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  required
-                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;transition:border-color 0.18s"
-                  onfocus="this.style.borderColor='var(--color-navy)'"
-                  onblur="this.style.borderColor='var(--color-stone-200)'"
-                />
+            <!-- Netlify / static host honeypot field -->
+            <input type="hidden" name="form-name" value="quote-request" />
+            <p style="display:none"><input name="bot-field" /></p>
+
+            <div class="cform-row">
+              <div class="cform-field">
+                <label for="f-company" class="cform-label">Company name *</label>
+                <input id="f-company" type="text" name="company" required class="cform-input" autocomplete="organization" />
               </div>
-              <div>
-                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                  Contact name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;transition:border-color 0.18s"
-                  onfocus="this.style.borderColor='var(--color-navy)'"
-                  onblur="this.style.borderColor='var(--color-stone-200)'"
-                />
+              <div class="cform-field">
+                <label for="f-name" class="cform-label">Contact name *</label>
+                <input id="f-name" type="text" name="name" required class="cform-input" autocomplete="name" />
               </div>
             </div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-              <div>
-                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                  Email address *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none"
-                  onfocus="this.style.borderColor='var(--color-navy)'"
-                  onblur="this.style.borderColor='var(--color-stone-200)'"
-                />
+            <div class="cform-row">
+              <div class="cform-field">
+                <label for="f-email" class="cform-label">Email address *</label>
+                <input id="f-email" type="email" name="email" required class="cform-input" autocomplete="email" />
               </div>
-              <div>
-                <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                  Country
-                </label>
-                <input
-                  type="text"
-                  name="country"
-                  style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none"
-                  onfocus="this.style.borderColor='var(--color-navy)'"
-                  onblur="this.style.borderColor='var(--color-stone-200)'"
-                />
+              <div class="cform-field">
+                <label for="f-country" class="cform-label">Country</label>
+                <input id="f-country" type="text" name="country" class="cform-input" autocomplete="country-name" />
               </div>
             </div>
 
-            <div>
-              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                Product / application *
-              </label>
-              <select
-                name="product_type"
-                required
-                style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);outline:none;appearance:none"
-              >
-                <option value="">Select a product family</option>
-                <option value="industrial">Industrial profiles — OEM</option>
-                <option value="architectural">Architectural systems</option>
-                <option value="cast">Cast products — billets</option>
-                <option value="standard">Standard sections</option>
-                <option value="custom">Custom profiles</option>
-                <option value="other">Other / not sure</option>
-              </select>
+            <div class="cform-field">
+              <label for="f-product" class="cform-label">Product / application *</label>
+              <div class="cform-select-wrap">
+                <select id="f-product" name="product_type" required class="cform-input cform-select">
+                  <option value="">Select a product family</option>
+                  <option value="industrial">Industrial profiles — OEM</option>
+                  <option value="architectural">Architectural systems</option>
+                  <option value="cast">Cast products — billets</option>
+                  <option value="standard">Standard sections</option>
+                  <option value="custom">Custom profiles</option>
+                  <option value="other">Other / not sure</option>
+                </select>
+                <svg class="cform-chevron" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                  <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
             </div>
 
-            <div>
-              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                Requirement details
-              </label>
+            <div class="cform-field">
+              <label for="f-message" class="cform-label">Requirement details</label>
               <textarea
+                id="f-message"
                 name="message"
                 rows="5"
+                class="cform-input cform-textarea"
                 placeholder="Alloy, profile dimensions, annual volume, end application, certifications required…"
-                style="width:100%;padding:14px 16px;border:1px solid var(--color-stone-200);background:white;font-family:var(--font-sans);font-size:15px;color:var(--color-ink);resize:vertical;outline:none"
-                onfocus="this.style.borderColor='var(--color-navy)'"
-                onblur="this.style.borderColor='var(--color-stone-200)'"
               ></textarea>
             </div>
 
-            <div>
-              <label style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-700);display:block;margin-bottom:8px">
-                Attach drawing / DXF (optional)
-              </label>
-              <input
-                type="file"
-                name="drawing"
-                accept=".pdf,.dxf,.dwg,.step,.stp,.png,.jpg"
-                style="width:100%;font-family:var(--font-mono);font-size:11px;color:var(--color-stone-700)"
-              />
+            <div class="cform-field">
+              <label for="f-drawing" class="cform-label">Attach drawing / DXF (optional)</label>
+              <input id="f-drawing" type="file" name="drawing" accept=".pdf,.dxf,.dwg,.step,.stp,.png,.jpg" class="cform-file" />
             </div>
 
-            <button type="submit" class="btn btn-primary" style="align-self:flex-start">
+            <button type="submit" class="btn btn-primary cform-submit">
               Send enquiry
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>

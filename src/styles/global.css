@@ -66,7 +66,34 @@ body {
 }
 
 img, svg { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; cursor: pointer; }
+button { cursor: pointer; }
+
+/* Skip to main content — visually hidden until focused */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: var(--color-green);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.18s ease;
+}
+.skip-link:focus { top: 16px; outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Focus-visible ring for keyboard nav */
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
 
 /* ============================================================
    TYPE SCALE — fluid with clamp()
@@ -556,6 +583,25 @@ em.accent {
   background: var(--color-navy);
   border-bottom: 1px solid var(--color-navy-line);
   padding: 0;
+  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+/* Transparent hero variant — used on pages with full-bleed dark hero */
+.site-nav.nav-hero .main-nav {
+  background: linear-gradient(180deg, rgba(8,27,48,0.62) 0%, rgba(8,27,48,0.18) 100%);
+  backdrop-filter: blur(6px) saturate(1.1);
+  -webkit-backdrop-filter: blur(6px) saturate(1.1);
+  border-bottom-color: rgba(40,69,106,0.22);
+}
+.site-nav.nav-hero:not(.is-scrolled) .nav-links > li > a,
+.site-nav.nav-hero:not(.is-scrolled) .nav-links > li > button {
+  color: var(--color-stone-200);
+}
+.site-nav.nav-hero.is-scrolled .main-nav {
+  background: var(--color-navy);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: var(--color-navy-line);
 }
 .main-nav-inner {
   display: flex;
@@ -992,4 +1038,125 @@ em.accent {
   .industries-grid { grid-template-columns: 1fr 1fr !important; }
   .hero-actions { flex-direction: column; }
   .cta-actions { flex-direction: column; }
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.cform {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cform-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cform-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-stone-700);
+}
+.cform-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--color-stone-200);
+  background: white;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 0.18s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.cform-input:focus {
+  border-color: var(--color-navy);
+}
+.cform-input:invalid:not(:placeholder-shown) {
+  border-color: #c0392b;
+}
+.cform-textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+.cform-select-wrap {
+  position: relative;
+}
+.cform-select {
+  cursor: pointer;
+}
+.cform-chevron {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-stone-400);
+  pointer-events: none;
+}
+.cform-file {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-stone-700);
+  cursor: pointer;
+}
+.cform-submit { align-self: flex-start; }
+
+@media (max-width: 640px) {
+  .cform-row { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   Elements with [data-reveal] start hidden;
+   JS adds .is-visible when they enter the viewport.
+   Respects prefers-reduced-motion automatically.
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal="fade"] {
+  transform: none;
+}
+[data-reveal="left"] {
+  transform: translateX(-24px);
+}
+[data-reveal="left"].is-visible {
+  transform: translateX(0);
+}
+[data-reveal="right"] {
+  transform: translateX(24px);
+}
+[data-reveal="right"].is-visible {
+  transform: translateX(0);
+}
+/* Stagger siblings via CSS custom property */
+[data-reveal-delay="1"] { transition-delay: 0.08s; }
+[data-reveal-delay="2"] { transition-delay: 0.16s; }
+[data-reveal-delay="3"] { transition-delay: 0.24s; }
+[data-reveal-delay="4"] { transition-delay: 0.32s; }
+[data-reveal-delay="5"] { transition-delay: 0.40s; }
+[data-reveal-delay="6"] { transition-delay: 0.48s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

@@ -26,39 +26,39 @@
   <div class="container hvid-content">
     <div class="hvid-copy">
 
-      <div class="eyebrow" style="color:var(--color-stone-400)">
+      <div class="eyebrow" style="color:var(--color-stone-400)" data-reveal="fade">
         Established 1967 · Vadodara, Gujarat
       </div>
 
-      <h1 class="t-h1 hero-h1">
+      <h1 class="t-h1 hero-h1" data-reveal data-reveal-delay="1">
         Engineering <em class="accent">aluminium</em><br/>
         with precision, at scale.
       </h1>
 
-      <p class="t-lead hero-lede">
+      <p class="t-lead hero-lede" data-reveal data-reveal-delay="2">
         Integrated aluminium extrusion — from billet casting through extrusion,
         die-making, heat treatment, machining and surface finishing, under one roof.
-        Serving 900+ customers across 4 continents.
+        Serving 1,100+ customers across 4 continents.
       </p>
 
-      <!-- Three key stats -->
-      <div class="hero-stats hvid-stats">
+      <!-- Three key stats — count-up on load -->
+      <div class="hero-stats hvid-stats" data-reveal data-reveal-delay="3">
         <div class="hero-stat">
-          <div class="hs-number">58<em>+</em></div>
+          <div class="hs-number" data-countup="58" data-suffix="+">58<em>+</em></div>
           <div class="hs-label">Years in extrusion</div>
         </div>
         <div class="hero-stat">
-          <div class="hs-number">35,000<em> MT</em></div>
+          <div class="hs-number" data-countup="35000" data-suffix=" MT" data-separator=",">35,000<em> MT</em></div>
           <div class="hs-label">Annual capacity</div>
         </div>
         <div class="hero-stat">
-          <div class="hs-number">1,100<em>+</em></div>
+          <div class="hs-number" data-countup="1100" data-suffix="+" data-separator=",">1,100<em>+</em></div>
           <div class="hs-label">Customers worldwide</div>
         </div>
       </div>
 
       <!-- Segment CTAs -->
-      <div class="hero-actions">
+      <div class="hero-actions" data-reveal data-reveal-delay="4">
         <a href="/products/industrial" class="btn btn-primary-dark">Explore industrial profiles</a>
         <a href="/products/architectural" class="btn btn-secondary-dark">Architectural systems</a>
         <a href="/products/cast-products" class="btn btn-secondary-dark">Cast products</a>
@@ -165,12 +165,21 @@
     .hvid-scroll-line { animation: none; opacity: 0.4; }
   }
 
-  /* ── Mobile: hide video on narrow screens, fall back to navy ── */
+  /* ── Mobile: hide video, show static fallback image ── */
   @media (max-width: 640px) {
     .hvid-el { display: none; }
     .hvid-vignette { display: none; }
     .hvid-bottom-fade { display: none; }
     .hvid-scroll-cue { display: none; }
+    .hvid-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/assets/manufacturing/industrialOEMS.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
   }
 </style>
 
@@ -182,5 +191,52 @@
       if (document.hidden) vid.pause();
       else vid.play().catch(() => {});
     });
+  }
+
+  /* Count-up animation for hero stats */
+  function easeOut(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCountUp(el: HTMLElement) {
+    const target = parseInt(el.dataset.countup ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const useSep = el.dataset.separator === ',';
+    const duration = 1400;
+    const start = performance.now();
+
+    function fmt(n: number): string {
+      const s = Math.round(n).toString();
+      return useSep ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : s;
+    }
+
+    function tick(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = easeOut(progress) * target;
+      el.innerHTML = `${fmt(value)}<em>${suffix}</em>`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  /* Trigger count-up when stats enter the viewport */
+  const statEls = document.querySelectorAll<HTMLElement>('[data-countup]');
+  if (statEls.length) {
+    const mo = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mo.matches) {
+      // Leave static values as-is for reduced-motion users
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animateCountUp(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      statEls.forEach(el => io.observe(el));
+    }
   }
 </script>

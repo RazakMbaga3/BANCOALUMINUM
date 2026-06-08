@@ -7,12 +7,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  transparentNav?: boolean;
 }
 
 const {
   title = 'Banco Aluminium — Integrated Aluminium Extrusion Solutions',
   description = 'Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967. 35,000 MT annual capacity, 5 presses, full value chain from billet to finished profile. ISO 9001 · IATF 16949 · CE certified. Exports to Europe, North America, Asia-Pacific & Middle East.',
   image = '/og-image.jpg',
+  transparentNav = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoaluminium.com');
@@ -44,13 +46,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+  <!-- Preload hero video for faster LCP on homepage -->
+  <link rel="preload" as="video" href="/herovideo.mp4" type="video/mp4" fetchpriority="low" />
+
   <title>{title}</title>
 </head>
 <body>
-  <Nav />
-  <main>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <Nav transparent={transparentNav} />
+  <main id="main-content">
     <slot />
   </main>
   <Footer />
+
+<script>
+  // Scroll-reveal via IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        observer.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>

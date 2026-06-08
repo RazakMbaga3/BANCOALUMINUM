@@ -1,4 +1,9 @@
 ---
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+
 const nav = [
   {
     label: 'Solutions',
@@ -32,37 +37,17 @@ const nav = [
   {
     label: 'About us',
     children: [
-      { label: 'Company',                href: '/about' },
-      { label: 'Robust infrastructure', href: '/about' },
-      { label: 'Quality & certifications', href: '/about/quality' },
-      { label: 'Meet the team',          href: '/about' },
-      { label: 'Careers',               href: '/about/careers' },
-      { label: 'Global reach',          href: '/about/global-reach' },
+      { label: 'Company',                   href: '/about' },
+      { label: 'Quality & certifications',  href: '/about/quality' },
+      { label: 'Global reach',              href: '/about/global-reach' },
+      { label: 'Sustainability',            href: '/sustainability' },
+      { label: 'Careers',                   href: '/about/careers' },
     ],
   },
 ];
 ---
 
-<header class="site-nav" id="site-nav">
-  <!-- Utility bar -->
-  <div class="utility-bar">
-    <div class="container">
-      <div class="utility-bar-inner">
-        <div class="left">
-          <span>Vadodara, Gujarat, India</span>
-          <span style="color:var(--color-navy-line)">|</span>
-          <span>Europe · North America · APAC · Middle East</span>
-        </div>
-        <div class="right">
-          <a href="/downloads">Downloads</a>
-          <a href="/about/careers">Careers</a>
-          <a href="/contact">Reach us</a>
-          <span style="color:var(--color-stone-50); font-weight:500">EN</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<header class:list={['site-nav', transparent && 'nav-hero']} id="site-nav">
   <!-- Main nav -->
   <nav class="main-nav" role="navigation" aria-label="Main navigation">
     <div class="container">
@@ -158,6 +143,7 @@ const nav = [
 </div>
 
 <script>
+  // ── Mobile menu ──────────────────────────────────────────────
   const toggle = document.getElementById('nav-toggle');
   const close  = document.getElementById('mobile-close');
   const menu   = document.getElementById('mobile-menu');
@@ -177,14 +163,65 @@ const nav = [
 
   toggle?.addEventListener('click', openMenu);
   close?.addEventListener('click', closeMenu);
-
-  // Close on nav link click
   menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-  // Scroll-aware nav background (already dark, just ensure it stays opaque)
+  // ── Scroll shadow + transparent-nav scroll class ─────────────
   const nav = document.getElementById('site-nav');
+  const isHero = nav?.classList.contains('nav-hero');
+
   window.addEventListener('scroll', () => {
     if (!nav) return;
     nav.style.boxShadow = window.scrollY > 20 ? '0 2px 24px rgba(0,0,0,0.35)' : '';
+    if (isHero) nav.classList.toggle('is-scrolled', window.scrollY > 72);
   }, { passive: true });
+
+  // ── Desktop dropdown: toggle aria-expanded on click/keyboard ─
+  document.querySelectorAll<HTMLButtonElement>('.nav-links > li > button[aria-haspopup]').forEach(btn => {
+    const li = btn.closest('li');
+    const dropdown = li?.querySelector('.nav-dropdown');
+    if (!dropdown) return;
+
+    // Update aria-expanded when hover state changes (CSS-driven)
+    li?.addEventListener('mouseenter', () => btn.setAttribute('aria-expanded', 'true'));
+    li?.addEventListener('mouseleave', () => btn.setAttribute('aria-expanded', 'false'));
+
+    // Allow keyboard Enter/Space to open
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        if (!isOpen) {
+          // Move focus to first menu item
+          (dropdown.querySelector('a') as HTMLElement | null)?.focus();
+        }
+      }
+      if (e.key === 'Escape') {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+
+    // Close with Escape from inside the dropdown
+    dropdown.querySelectorAll('a').forEach(a => {
+      a.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key === 'Escape') {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        }
+      });
+    });
+  });
+
+  // ── Active nav state: mark link matching current pathname ────
+  const path = window.location.pathname;
+  document.querySelectorAll<HTMLAnchorElement>('.nav-links a, .nav-dropdown a').forEach(a => {
+    const href = a.getAttribute('href') ?? '';
+    // Exact match, or prefix match for sub-pages (not root)
+    const isActive = href !== '/' ? path.startsWith(href) : path === '/';
+    if (isActive) {
+      a.closest('li')?.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
 </script>

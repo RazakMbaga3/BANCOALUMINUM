@@ -84,86 +84,39 @@ const certs = [
 
 <Layout
   title="Aluminium extrusion billets — casting & cast products — Banco Aluminium"
-  description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 12 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready. Export to Europe, North America, APAC."
+  description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 12 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready."
+  transparentNav={true}
 >
 
-  <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+  <!-- ── Hero — full-bleed photo ───────────────────────────────────────────── -->
   <section class="c-hero">
-    <div class="container">
-      <div class="c-hero-grid">
-
-        <!-- Copy -->
-        <div>
-          <div class="eyebrow on-dark">Products / Casting &amp; billets</div>
-          <h1 class="c-h1">
-            Foundry-grade aluminium<br><span class="highlight">extrusion</span> billets.
-          </h1>
-          <p class="c-lead">
-            Cylinder-guided Hot-Top casting. Four-stage metallurgical control.
-            Twelve standard alloys — and custom compositions to order.
-            Every cast is 100% ultrasonically tested, 100% Spectromax OES
-            verified, and SCADA-traceable from furnace to despatch.
-          </p>
-          <div class="c-hero-actions">
-            <a href="/contact#quote" class="btn btn-primary-dark">Request quotation</a>
-            <a href="/contact#technical" class="btn btn-secondary-dark">Technical enquiry</a>
-          </div>
-        </div>
-
-        <!-- Billet technical drawing — all colours via CSS vars -->
-        <div aria-hidden="true">
-          <svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="c-hero-svg">
-            <defs>
-              <pattern id="bg-cast-hero" width="18" height="18" patternUnits="userSpaceOnUse">
-                <path d="M18 0L0 0 0 18" fill="none" style="stroke:var(--color-navy-line)" stroke-width="0.4"/>
-              </pattern>
-            </defs>
-            <rect width="420" height="320" fill="url(#bg-cast-hero)" opacity="0.6"/>
-            <!-- Main billet body -->
-            <ellipse cx="210" cy="82" rx="108" ry="30" style="stroke:var(--color-nickel)" stroke-width="1.25" fill="none"/>
-            <rect x="102" y="82" width="216" height="148" style="stroke:var(--color-nickel)" stroke-width="1.25" fill="none"/>
-            <ellipse cx="210" cy="230" rx="108" ry="30" style="stroke:var(--color-nickel)" stroke-width="1.25" fill="none"/>
-            <!-- End face inner ring -->
-            <ellipse cx="210" cy="82" rx="98" ry="27" style="stroke:var(--color-navy-line)" stroke-width="0.6" fill="none"/>
-            <!-- Grain shading lines -->
-            <line x1="102" y1="112" x2="318" y2="112" style="stroke:var(--color-navy-soft)" stroke-width="0.5"/>
-            <line x1="102" y1="143" x2="318" y2="143" style="stroke:var(--color-navy-soft)" stroke-width="0.5"/>
-            <line x1="102" y1="174" x2="318" y2="174" style="stroke:var(--color-navy-soft)" stroke-width="0.5"/>
-            <line x1="102" y1="205" x2="318" y2="205" style="stroke:var(--color-navy-soft)" stroke-width="0.5"/>
-            <!-- Diameter dimension -->
-            <line x1="112" y1="82" x2="308" y2="82" style="stroke:var(--color-green)" stroke-width="0.7"/>
-            <line x1="112" y1="76" x2="112" y2="88" style="stroke:var(--color-green)" stroke-width="0.7"/>
-            <line x1="308" y1="76" x2="308" y2="88" style="stroke:var(--color-green)" stroke-width="0.7"/>
-            <text x="210" y="72" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" style="fill:var(--color-green)" letter-spacing="0.12em">Ø 127 – 254 MM</text>
-            <!-- Length dimension -->
-            <line x1="334" y1="82" x2="334" y2="230" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <line x1="328" y1="82" x2="340" y2="82" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <line x1="328" y1="230" x2="340" y2="230" style="stroke:var(--color-green)" stroke-width="0.6"/>
-            <text x="376" y="158" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" style="fill:var(--color-green)" letter-spacing="0.1em" transform="rotate(90,376,158)">5800 MM STD</text>
-            <!-- Labels -->
-            <text x="210" y="16" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" style="fill:var(--color-stone-400)" letter-spacing="0.14em">ALUMINIUM EXTRUSION BILLET — BANCO FOUNDRY</text>
-            <text x="210" y="305" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="7.5" style="fill:var(--color-stone-400)" letter-spacing="0.12em">SCADA TRACED · 100% OES · CYLINDER-GUIDED HOT-TOP</text>
-          </svg>
-        </div>
-
-      </div>
-
-      <!-- Stats strip -->
+    <img
+      src="/assets/manufacturing/aluminumbillets.avif"
+      alt="Aluminium extrusion billets — Banco Aluminium foundry"
+      class="c-hero-img"
+      loading="eager"
+    />
+    <div class="c-hero-overlay" aria-hidden="true"></div>
+    <div class="c-hero-content">
+      <h1 class="c-h1">
+        Extrusion billets.<br>Cast to spec.
+      </h1>
       <div class="c-stats">
         {[
-          { n: '55,000', u: 'MT', l: 'Annual foundry capacity' },
-          { n: '5',      u: '',   l: 'Billet diameters — 5" to 10"' },
-          { n: '12+',    u: '',   l: 'Standard alloys · custom on request' },
-          { n: '0.480',  u: 'kgCO₂e/kg', l: 'Carbon footprint — ISO 14064-1' },
+          { n: '55,000', u: 'MT/yr',       l: 'Foundry capacity' },
+          { n: '5',      u: 'diameters',   l: '5" to 10"' },
+          { n: '12+',    u: 'alloys',      l: 'Custom on request' },
+          { n: '0.480',  u: 'kgCO₂e/kg',  l: 'ISO 14064-1 verified' },
         ].map(({ n, u, l }) => (
           <div class="c-stat">
-            <div class="c-stat-num">
-              {n}
-              {u && <span class="c-stat-unit">{u}</span>}
-            </div>
+            <div class="c-stat-num">{n} <span class="c-stat-unit">{u}</span></div>
             <div class="c-stat-label">{l}</div>
           </div>
         ))}
+      </div>
+      <div class="c-hero-actions">
+        <a href="/contact#quote" class="btn btn-primary-dark">Request quotation</a>
+        <a href="/contact#technical" class="btn btn-secondary-dark">Technical enquiry</a>
       </div>
     </div>
   </section>
@@ -173,25 +126,11 @@ const certs = [
     <div class="container">
       <div class="c-overview-grid">
         <div class="c-overview-text">
-          <div class="eyebrow">/ 01 · Product overview</div>
           <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-            Consistent metallurgical <span class="highlight">quality</span>,<br>cast to cast.
+            Consistent metallurgical quality,<br>cast to cast.
           </h2>
-          <p class="t-lead c-body-text" style="margin-top:20px;margin-bottom:20px">
-            Banco Aluminium manufactures aluminium extrusion billets to the metallurgical
-            specifications required by precision extrusion operations worldwide. Our integrated
-            facility — casting, homogenising, and quality verification under one roof — gives
-            downstream extruders a single, accountable source of supply.
-          </p>
-          <p class="t-body c-body-text" style="margin-bottom:20px">
-            The production sequence is engineered for consistency: ceramic foam filtration
-            removes inclusions before the melt reaches the caster; nitrogen degassing drives
-            dissolved hydrogen to below the threshold for porosity in the finished billet;
-            cylinder-guided Hot-Top casting controls skin thickness and surface roughness;
-            and batch homogenising completes the microstructural preparation for extrusion.
-          </p>
           <div class="c-chip-row" style="margin-top:24px">
-            {['Cylinder-guided Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready documentation', 'Export-certified supply'].map(c => (
+            {['Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready', 'Export-certified'].map(c => (
               <span class="pill">{c}</span>
             ))}
           </div>
@@ -229,17 +168,10 @@ const certs = [
   <!-- ── 02 · Alloy range ──────────────────────────────────────────────────── -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 02 · Alloy range</div>
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          12 standard alloys.<br><span class="highlight">Custom</span> compositions on request.
+          12 standard alloys.<br>Custom compositions on request.
         </h2>
-        <p class="t-lead c-body-text" style="max-width:52ch">
-          Standard alloys span the 1xxx, 3xxx, and 6xxx series covering
-          architectural, structural, electrical, and engineering applications.
-          Custom alloy development — including lead-free formulations and
-          specific Mg/Si ratios — is available on enquiry.
-        </p>
       </div>
 
       <!-- Alloy composition table -->
@@ -284,15 +216,10 @@ const certs = [
   <!-- ── 03 · Dimensions & tolerances ─────────────────────────────────────── -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 03 · Dimensions &amp; tolerances</div>
       <div class="c-section-head">
         <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
-          Five <span class="highlight">diameters</span>.<br>5,800 mm standard length.
+          Five diameters.<br>5,800 mm standard length.
         </h2>
-        <p class="t-lead" style="color:var(--color-silver);max-width:50ch">
-          All diameters are available at 5,800 mm standard length.
-          Non-standard lengths are available on request subject to minimum order quantities.
-        </p>
       </div>
 
       <div class="c-dim-grid">
@@ -329,16 +256,10 @@ const certs = [
   <!-- ── 04 · Production process ──────────────────────────────────────────── -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 04 · Production process</div>
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          Four <span class="highlight">controlled</span> stages<br>from melt to billet.
+          Four stages<br>from melt to billet.
         </h2>
-        <p class="t-lead c-body-text" style="max-width:52ch">
-          The sequence is fixed and monitored at every transition point.
-          No stage is skipped, and no billet advances to the next step
-          without passing the preceding quality gate.
-        </p>
       </div>
 
       <div class="c-process-grid">
@@ -349,7 +270,6 @@ const certs = [
             </div>
             <div class="c-process-num">{step.num}</div>
             <h3 class="c-process-name">{step.name}</h3>
-            <p class="c-process-body">{step.body}</p>
           </div>
         ))}
       </div>
@@ -375,16 +295,10 @@ const certs = [
   <!-- ── 05 · Quality assurance ────────────────────────────────────────────── -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 05 · Quality assurance</div>
       <div class="c-section-head">
         <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
-          <span class="highlight">100%</span> inspection at every stage.
+          100% inspection<br>at every stage.
         </h2>
-        <p class="t-lead" style="color:var(--color-silver);max-width:52ch">
-          Statistical sampling is not sufficient for extrusion-critical supply.
-          Every billet is individually inspected, tested, and linked to its cast record
-          before it leaves the Banco facility.
-        </p>
       </div>
 
       <div class="c-qc-grid">
@@ -402,12 +316,6 @@ const certs = [
         <div class="c-packing-inner">
           <div>
             <div class="c-table-label">Packing &amp; identification</div>
-            <p class="c-packing-text">
-              Billets are despatched in plastic-strapped bundles on runners, dimensioned
-              for forklift handling. Each billet carries the alloy designation and cast number
-              in a durable marking that survives transport and storage. Full traceability
-              to furnace batch, scrap inputs, and chemical certificate is available on request.
-            </p>
           </div>
           <div class="c-packing-tags">
             <span class="pill on-dark">Plastic-strapped bundles</span>
@@ -424,29 +332,16 @@ const certs = [
   <!-- ── 06 · Green aluminium ──────────────────────────────────────────────── -->
   <section class="section-deep section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 06 · Sustainability</div>
       <div class="c-two-col" style="align-items:start">
         <div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:20px;font-weight:800">
-            <span class="highlight">0.480</span> kgCO₂e per kg.<br>Verified quarterly.
+            0.480 kgCO₂e per kg.<br>Verified quarterly.
           </h2>
-          <p class="t-body" style="color:var(--color-silver);margin-top:20px;line-height:1.65">
-            Banco's carbon footprint for aluminium extrusion billets is independently
-            measured and verified quarterly by MITCON Consultancy Services under
-            ISO 14064-1:2018 protocols. The figure of 0.480 kgCO₂e per kilogram
-            represents Banco's emission intensity at full production capacity —
-            among the lowest in the Indian aluminium extrusion sector.
-          </p>
-          <p class="t-body" style="color:var(--color-silver);margin-top:16px;line-height:1.65">
-            Green billets — produced with up to 95% recycled scrap input — are
-            available on request with full traceability of scrap origin and recycled
-            content fraction. CBAM (Carbon Border Adjustment Mechanism) documentation
-            for EU imports is provided as standard on all export orders.
-          </p>
-          <p class="t-body" style="color:var(--color-silver);margin-top:16px;line-height:1.65">
-            Energy inputs: natural gas in all melting furnaces; 960 kW of captive
-            solar generation contributing to extrusion press operations.
-          </p>
+          <div class="c-chip-row" style="margin-top:28px">
+            {['ISO 14064-1 verified', 'CBAM documentation', 'Up to 95% recycled input', '960 kW captive solar', 'Natural gas melting'].map(c => (
+              <span class="pill on-dark">{c}</span>
+            ))}
+          </div>
         </div>
         <div class="c-green-stats">
           {[
@@ -487,13 +382,8 @@ const certs = [
         <div>
           <div class="eyebrow on-dark">Enquiries welcome</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;font-weight:800">
-            Supply discussions,<br><span class="highlight">technical</span> enquiries, sample orders.
+            Supply discussions,<br>technical enquiries, sample orders.
           </h2>
-          <p class="t-body" style="color:var(--color-silver);margin-top:16px;max-width:52ch;line-height:1.65">
-            Our commercial and technical teams support alloy selection,
-            dimensional specification, and export documentation for
-            European and North American customers. Trial orders welcome.
-          </p>
         </div>
         <div class="c-cta-actions">
           <a href="/contact#quote" class="btn btn-primary-dark">Request a quotation</a>
@@ -509,33 +399,38 @@ const certs = [
 <style>
   /* ── Hero ──────────────────────────────────────────────────────────────── */
   .c-hero {
-    background: var(--color-navy);
-    padding-top: 148px;
-    padding-bottom: 0;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
     overflow: hidden;
   }
-  .c-hero::before {
-    content: '';
+  .c-hero-img {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent 0, transparent 3px,
-      rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .c-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(8,27,48,0.72) 0%,
+      rgba(8,27,48,0.45) 50%,
+      rgba(8,27,48,0.78) 100%
     );
-    pointer-events: none;
   }
-  .c-hero > .container { position: relative; z-index: 1; }
-
-  .c-hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(40px, 6vw, 100px);
-    align-items: center;
-    padding-bottom: 60px;
+  .c-hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 0 0 64px;
   }
-
+  .c-hero-content > .eyebrow { padding: 0 clamp(24px, 5vw, 80px); margin-bottom: 20px; }
   .c-h1 {
     font-family: var(--font-sans);
     font-size: clamp(40px, 5.5vw, 72px);
@@ -543,38 +438,31 @@ const certs = [
     letter-spacing: -0.04em;
     line-height: 0.95;
     color: var(--color-platinum);
-    margin-top: 20px;
-  }
-  .c-lead {
-    font-family: var(--font-sans);
-    font-size: clamp(15px, 1.4vw, 17px);
-    line-height: 1.65;
-    color: var(--color-silver);
-    margin-top: 24px;
-    max-width: 54ch;
+    padding: 0 clamp(24px, 5vw, 80px);
+    margin-bottom: 48px;
   }
   .c-hero-actions {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    padding: 0 clamp(24px, 5vw, 80px);
     margin-top: 36px;
   }
-  .c-hero-svg {
-    width: 100%;
-    opacity: 0.92;
-  }
 
-  /* Stats strip — sits flush at bottom of hero, 1px hairline separates it */
+  /* Stats strip */
   .c-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
-    background: var(--color-navy-line);
-    border-top: 1px solid var(--color-navy-line);
+    background: rgba(40,69,106,0.4);
+    border-top: 1px solid rgba(40,69,106,0.4);
+    border-bottom: 1px solid rgba(40,69,106,0.4);
+    margin-bottom: 0;
   }
   .c-stat {
-    background: var(--color-navy-deep);
-    padding: 24px 28px;
+    background: rgba(8,27,48,0.7);
+    backdrop-filter: blur(4px);
+    padding: 20px clamp(24px, 5vw, 80px);
   }
   .c-stat-num {
     font-family: var(--font-sans);
@@ -586,16 +474,16 @@ const certs = [
   }
   .c-stat-unit {
     font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    font-size: clamp(11px, 1.1vw, 14px);
+    letter-spacing: 0.08em;
     color: var(--color-green);
-    margin-left: 6px;
+    margin-left: 4px;
     font-weight: 400;
   }
   .c-stat-label {
     font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
+    font-size: clamp(11px, 1vw, 13px);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-nickel);
     margin-top: 8px;
@@ -1044,8 +932,6 @@ const certs = [
 
   /* ── Responsive ────────────────────────────────────────────────────────── */
   @media (max-width: 1024px) {
-    .c-hero-grid      { grid-template-columns: 1fr; }
-    .c-hero-svg       { display: none; }
     .c-stats          { grid-template-columns: repeat(2, 1fr); }
     .c-two-col        { grid-template-columns: 1fr; }
     .c-overview-grid  { grid-template-columns: 1fr; }

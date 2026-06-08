@@ -1,0 +1,175 @@
+---
+interface Props {
+  current: 'industrial' | 'architectural' | 'cast-products' | 'standard-sections';
+}
+const { current } = Astro.props;
+
+const links = [
+  { id: 'industrial',        label: 'Industrial & OEM',   tag: 'Drawing-led profiles',     href: '/products/industrial' },
+  { id: 'architectural',     label: 'Architectural',      tag: 'Windows · Doors · Façades', href: '/products/architectural' },
+  { id: 'cast-products',     label: 'Cast Products',      tag: 'Billets · Foundry',         href: '/products/cast-products' },
+  { id: 'standard-sections', label: 'Standard Sections',  tag: 'Angles · Channels · T-bar', href: '/products/standard-sections' },
+];
+---
+
+<nav class="psn" aria-label="Product family navigation">
+  <div class="container psn-inner">
+    <div class="psn-label" aria-hidden="true">Products</div>
+    <ul class="psn-list" role="list">
+      {links.map((link) => (
+        <li class:list={['psn-item', link.id === current && 'psn-item--active']}>
+          <a
+            href={link.href}
+            class="psn-link"
+            aria-current={link.id === current ? 'page' : undefined}
+          >
+            <span class="psn-link-label">{link.label}</span>
+            <span class="psn-link-tag" aria-hidden="true">{link.tag}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/contact#quote" class="psn-cta">
+      Get a quote
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .psn {
+    position: sticky;
+    top: 72px; /* height of nav */
+    z-index: 40;
+    background: var(--color-navy-deep);
+    border-bottom: 1px solid var(--color-navy-line);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .psn-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 48px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .psn-inner::-webkit-scrollbar { display: none; }
+
+  .psn-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    white-space: nowrap;
+    padding-right: 20px;
+    border-right: 1px solid var(--color-navy-line);
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+
+  .psn-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    height: 100%;
+  }
+
+  .psn-item {
+    position: relative;
+    height: 100%;
+  }
+  .psn-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--color-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s ease;
+  }
+  .psn-item--active::after,
+  .psn-item:hover::after {
+    transform: scaleX(1);
+  }
+
+  .psn-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 18px;
+    height: 100%;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s ease;
+  }
+  .psn-item--active .psn-link {
+    background: rgba(255,255,255,0.04);
+  }
+  .psn-link:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .psn-link-label {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-platinum);
+    line-height: 1;
+  }
+  .psn-item--active .psn-link-label {
+    color: #fff;
+  }
+
+  .psn-link-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    margin-top: 3px;
+    line-height: 1;
+  }
+  .psn-item--active .psn-link-tag {
+    color: var(--color-green);
+  }
+
+  .psn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border: 1px solid var(--color-green);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease;
+    white-space: nowrap;
+  }
+  .psn-cta:hover {
+    background: var(--color-green);
+    color: #fff;
+  }
+
+  @media (max-width: 640px) {
+    .psn-label  { display: none; }
+    .psn-link   { padding: 0 12px; }
+    .psn-cta    { display: none; }
+    .psn-link-tag { display: none; }
+    .psn-link-label { font-size: 12px; }
+  }
+</style>

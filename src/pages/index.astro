@@ -112,6 +112,25 @@ const certs = [
   <!-- Equal space below panels — mirrors ri-spacer above -->
   <div class="ri-spacer" aria-hidden="true"></div>
 
+  <!-- ── Stats band ─────────────────────────────────────── -->
+  <div class="ri-stats-band" role="region" aria-label="Key figures">
+    <div class="container ri-stats-inner">
+      {([
+        { value: '58+',    unit: 'years',    label: 'In extrusion since 1967' },
+        { value: '35,000', unit: 'MT / yr',  label: 'Extrusion capacity' },
+        { value: '5',      unit: 'presses',  label: '1,100–3,300 MT' },
+        { value: '900+',   unit: 'customers', label: 'Across 4 continents' },
+      ] as const).map(({ value, unit, label }) => (
+        <div class="ri-stat">
+          <div class="ri-stat-num">
+            {value}<span class="ri-stat-unit">{unit}</span>
+          </div>
+          <div class="ri-stat-label">{label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
   <!-- ── Hero statement — minimal, at bottom ──────────────── -->
   <section class="router-hero" aria-label="Brand statement">
     <div class="container rhi">
@@ -313,6 +332,63 @@ const certs = [
   .rp:focus-visible .rp-enter { gap: 12px; }
   .rp:hover .rp-enter svg,
   .rp:focus-visible .rp-enter svg { transform: translateX(3px); }
+
+  /* ── Stats band ─────────────────────────────────────────── */
+  .ri-stats-band {
+    background: rgba(8, 27, 48, 0.90);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(40, 69, 106, 0.45);
+    border-bottom: 1px solid rgba(40, 69, 106, 0.45);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .ri-stats-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .ri-stat {
+    padding: 14px 20px;
+    border-right: 1px solid rgba(40, 69, 106, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ri-stat:last-child { border-right: none; }
+  .ri-stat-num {
+    font-family: var(--font-sans);
+    font-size: clamp(16px, 1.8vw, 22px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    color: var(--color-platinum);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  .ri-stat-unit {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    font-weight: 400;
+  }
+  .ri-stat-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+  }
+  @media (max-width: 640px) {
+    .ri-stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .ri-stat:nth-child(2) { border-right: none; }
+    .ri-stat:nth-child(3) { border-top: 1px solid rgba(40, 69, 106, 0.45); }
+    .ri-stat:nth-child(4) { border-top: 1px solid rgba(40, 69, 106, 0.45); }
+  }
 
   /* ── Hero statement — compact bottom strip ───────────────── */
   .router-hero {

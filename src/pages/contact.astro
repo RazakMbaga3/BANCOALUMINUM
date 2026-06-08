@@ -7,8 +7,12 @@ import Layout from '../layouts/Layout.astro';
   description="Request a quote, download brochure, or schedule a plant visit. Banco Aluminium Pvt. Ltd., Vadodara, Gujarat, India. Exporting to Europe, North America, Asia-Pacific, Middle East."
 >
   <!-- Hero -->
-  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
-    <div class="container">
+  <section class="ct-hero">
+    <div class="ct-hero-bg" aria-hidden="true">
+      <img src="/assets/manufacturing/industrialOEMS.webp" alt="" loading="eager" />
+    </div>
+    <div class="ct-hero-overlay" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:2">
       <div class="eyebrow on-dark">Get in touch</div>
       <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px">
         Start with your<br/><em class="accent">drawing.</em>
@@ -18,8 +22,34 @@ import Layout from '../layouts/Layout.astro';
         within one business day with material options, tooling feasibility, and lead-time
         indication.
       </p>
+      <!-- Process: 3 steps inline -->
+      <div class="ct-steps">
+        {([
+          { n: '01', step: 'Submit a drawing or requirement', note: 'DXF, DWG, STEP, PDF, or specification sheet' },
+          { n: '02', step: 'Our team reviews feasibility',    note: 'Material options · tooling · lead time — within 1 business day' },
+          { n: '03', step: 'Receive a detailed quotation',    note: 'Price, delivery schedule, and sample plan' },
+        ] as const).map(({ n, step, note }) => (
+          <div class="ct-step">
+            <div class="ct-step-n">{n}</div>
+            <div class="ct-step-body">
+              <div class="ct-step-title">{step}</div>
+              <div class="ct-step-note">{note}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- Trust strip: certifications -->
+  <div class="ct-cert-strip">
+    <div class="container ct-cert-inner">
+      <span class="ct-cert-label">Certified to:</span>
+      {(['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:2016', 'CE (EN 15088)', 'IRS Works Approval'] as const).map((c) => (
+        <span class="ct-cert">{c}</span>
+      ))}
+    </div>
+  </div>
 
   <!-- Forms + info -->
   <section class="section-light section-pad">
@@ -150,3 +180,113 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<style>
+  /* ── Hero with photo ── */
+  .ct-hero {
+    position: relative;
+    background: var(--color-navy);
+    padding-top: 140px;
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+  .ct-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .ct-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.14;
+    filter: grayscale(70%);
+  }
+  .ct-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(8,27,48,0.96) 50%, rgba(8,27,48,0.70) 100%);
+  }
+
+  /* ── 3-step process inside hero ── */
+  .ct-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(40,69,106,0.45);
+    border: 1px solid rgba(40,69,106,0.45);
+    margin-top: 40px;
+    max-width: 820px;
+  }
+  .ct-step {
+    display: flex;
+    gap: 16px;
+    padding: 20px 20px;
+    background: rgba(8,27,48,0.60);
+    align-items: flex-start;
+  }
+  .ct-step-n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--color-green);
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .ct-step-title {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-platinum);
+    line-height: 1.35;
+    margin-bottom: 5px;
+  }
+  .ct-step-note {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--color-stone-400);
+  }
+
+  /* ── Cert strip ── */
+  .ct-cert-strip {
+    background: var(--color-navy-deep);
+    border-bottom: 1px solid var(--color-navy-line);
+    padding: 12px 0;
+  }
+  .ct-cert-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .ct-cert-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    white-space: nowrap;
+  }
+  .ct-cert {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    white-space: nowrap;
+    padding: 3px 10px;
+    border: 1px solid var(--color-navy-line);
+  }
+
+  /* ── Form padding override ── */
+  .section-pad { padding: clamp(48px, 7vw, 80px) 0; }
+
+  @media (max-width: 900px) {
+    .ct-steps { grid-template-columns: 1fr; max-width: 420px; }
+  }
+  @media (max-width: 640px) {
+    .ct-cert-inner { gap: 10px; }
+    .ct-cert:nth-child(n+5) { display: none; }
+  }
+</style>

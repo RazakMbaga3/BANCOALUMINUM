@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Banco — Direction A · Heritage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DIRECTION A — HERITAGE
+     Deep Oxford navy · platinum & warm nickel aluminium tones
+     European authority. Reynaers territory. Spacious, confident.
+     ============================================================ */
+  :root {
+    --navy:       #0E2A47;
+    --navy-deep:  #081B30;
+    --navy-soft:  #1C3A5C;
+    --navy-line:  #28456A;
+    --platinum:   #E4E5E3;
+    --silver:     #C5C7C9;
+    --nickel:     #A8A9A6;
+    --anthracite: #33373B;
+    --paper:      #F2F1EC;
+    --paper-2:    #E9E7DF;
+    --line:       #D6D3CB;
+    --ink:        #1A1C1E;
+    --green:      #009746;   /* spark only */
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+  .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  /* COVER */
+  .cover { background: var(--navy); color: var(--platinum); padding: 56px 0 90px; position: relative; overflow: hidden; }
+  .cover::before {
+    content:''; position:absolute; inset:0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
+  }
+  .cover .wrap { position: relative; z-index: 2; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 80px; border-bottom: 1px solid var(--navy-line); margin-bottom: 70px; }
+  .cover-top img { height: 30px; filter: brightness(0) invert(1); }
+  .cover-top .mono { color: var(--nickel); }
+  .dir-tag { display: inline-flex; align-items: center; gap: 10px; color: var(--nickel); margin-bottom: 32px; }
+  .dir-tag .spark { width: 20px; height: 2px; background: var(--green); }
+  .cover h1 { font-size: clamp(56px, 8vw, 116px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.92; color: var(--platinum); }
+  .cover h1 em { font-style: normal; color: var(--silver); font-weight: 300; }
+  .cover .lede { margin-top: 36px; max-width: 54ch; font-size: 19px; line-height: 1.55; color: var(--silver); font-weight: 400; }
+  .cover-meta { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--navy-line); border: 1px solid var(--navy-line); }
+  .cover-meta > div { background: var(--navy); padding: 24px 28px; }
+  .cover-meta .k { color: var(--nickel); margin-bottom: 10px; }
+  .cover-meta .v { font-size: 16px; color: var(--platinum); font-weight: 500; }
+
+  /* SECTION */
+  section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+  .sec-label { display: flex; align-items: center; gap: 12px; color: #6B7280; margin-bottom: 40px; }
+  .sec-label .spark { width: 24px; height: 2px; background: var(--green); }
+  h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0; color: var(--navy); margin-bottom: 20px; }
+  .sec-intro { font-size: 17px; line-height: 1.6; color: #4A5260; max-width: 56ch; }
+
+  /* BLUE STORY */
+  .blue-hero { aspect-ratio: 21/9; background: linear-gradient(135deg, #1C3A5C 0%, #0E2A47 45%, #081B30 100%); border-radius: 2px; position: relative; overflow: hidden; margin-bottom: 4px; display: flex; align-items: flex-end; padding: 40px; }
+  .blue-hero::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px); }
+  .blue-hero .bh-label { position: relative; z-index: 2; color: var(--platinum); }
+  .blue-hero .bh-label .big { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; }
+  .blue-hero .bh-label .mono { color: var(--silver); margin-top: 6px; }
+  .swatch-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .sw { padding: 22px 20px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 2px; }
+  .sw .nm { font-weight: 600; font-size: 15px; }
+  .sw .hx { font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; opacity: 0.8; margin-top: 4px; }
+  .sw .pt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; opacity: 0.6; }
+
+  /* ALUMINIUM TONES */
+  .alu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .alu { aspect-ratio: 1; border-radius: 2px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .alu.brushed::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(115deg, transparent 0, transparent 1px, rgba(255,255,255,0.25) 1px, rgba(255,255,255,0.25) 2px); opacity: 0.4; }
+  .alu .nm { font-weight: 600; font-size: 14px; position: relative; z-index: 2; }
+  .alu .hx { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.05em; opacity: 0.75; position: relative; z-index: 2; }
+
+  /* TYPE */
+  .type-demo { background: white; border: 1px solid var(--line); border-radius: 2px; padding: 56px; }
+  .type-row { padding: 26px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 130px 1fr; gap: 30px; align-items: baseline; }
+  .type-row:last-child { border-bottom: none; }
+  .type-row .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #8B919C; }
+  .t-display { font-size: 56px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--navy); }
+  .t-h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.03em; color: var(--navy); }
+  .t-body { font-size: 17px; font-weight: 400; line-height: 1.6; color: #4A5260; }
+  .t-mono { font-family: var(--mono); font-size: 14px; letter-spacing: 0.06em; color: var(--navy); }
+  .no-italic-note { margin-top: 24px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: #8B919C; display: flex; align-items: center; gap: 10px; }
+  .no-italic-note .x { color: #C0392B; font-weight: 700; }
+
+  /* CONTEXT PREVIEW */
+  .ctx { background: var(--navy); border-radius: 2px; overflow: hidden; }
+  .ctx-bar { display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid var(--navy-line); }
+  .ctx-bar img { height: 22px; filter: brightness(0) invert(1); }
+  .ctx-bar .mono { color: var(--nickel); }
+  .ctx-body { padding: 70px 40px 60px; position: relative; }
+  .ctx-body::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.01) 3px, rgba(255,255,255,0.01) 4px); }
+  .ctx-h { position: relative; z-index: 2; font-size: 44px; font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; color: var(--platinum); max-width: 16ch; }
+  .ctx-h em { font-style: normal; font-weight: 300; color: var(--silver); }
+  .ctx-seg { position: relative; z-index: 2; margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--navy-line); border: 1px solid var(--navy-line); }
+  .ctx-seg > div { background: var(--navy); padding: 28px 24px; transition: background .2s; cursor: pointer; }
+  .ctx-seg > div:hover { background: var(--navy-soft); }
+  .ctx-seg .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--green); }
+  .ctx-seg .t { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--platinum); margin-top: 40px; }
+  .ctx-seg .a { font-family: var(--mono); font-size: 14px; color: var(--nickel); margin-top: 6px; }
+
+  /* MOOD WORDS */
+  .moods { display: flex; flex-wrap: wrap; gap: 12px; }
+  .moods span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 20px; border: 1px solid var(--line); border-radius: 2px; color: var(--navy); }
+  .moods span.fill { background: var(--navy); color: var(--platinum); border-color: var(--navy); }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+    .swatch-strip, .alu-grid { grid-template-columns: 1fr 1fr; }
+    .cover-meta, .ctx-seg { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 10px; }
+    .t-display { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="wrap">
+    <div class="cover-top">
+      <img src="assets/banco-logo-light.png" alt="Banco">
+      <div class="mono">BRAND DIRECTION A · 01 / 03</div>
+    </div>
+    <div class="dir-tag mono"><span class="spark"></span>Direction A — Heritage</div>
+    <h1>Deep<br><em>Oxford</em> blue.</h1>
+    <p class="lede">The colour of European manufacturing authority. Banco as a 58-year institution — measured, trusted, premium. Aluminium rendered in platinum and warm nickel. The blue of a brand that has nothing to prove.</p>
+    <div class="cover-meta">
+      <div><div class="k mono">Territory</div><div class="v">Deep Oxford Navy</div></div>
+      <div><div class="k mono">Peer set</div><div class="v">Reynaers · Schüco</div></div>
+      <div><div class="k mono">Posture</div><div class="v">Spacious · Confident</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLUE STORY -->
+<section>
+  <div class="wrap">
+    <div class="sec-label mono"><span class="spark"></span>01 — The Blue</div>
+    <h2>Oxford navy, deepened.</h2>
+    <p class="sec-intro">A near-black navy with depth and warmth, evoking heritage and trust. It reads as established, European, and expensive. The brand's backbone — used across 60% of every surface.</p>
+    <div style="margin-top:48px;">
+      <div class="blue-hero">
+        <div class="bh-label">
+          <div class="big">Banco Oxford</div>
+          <div class="mono">#0E2A47 · PANTONE 540 C · RGB 14·42·71</div>
+        </div>
+      </div>
+      <div class="swatch-strip">
+        <div class="sw" style="background:#081B30; color:#E4E5E3;"><div></div><div><div class="nm">Oxford Deep</div><div class="hx">#081B30</div><div class="pt">PANTONE 5395 C</div></div></div>
+        <div class="sw" style="background:#0E2A47; color:#E4E5E3;"><div></div><div><div class="nm">Oxford Navy</div><div class="hx">#0E2A47</div><div class="pt">PANTONE 540 C</div></div></div>
+        <div class="sw" style="background:#1C3A5C; color:#E4E5E3;"><div></div><div><div class="nm">Navy Soft</div><div class="hx">#1C3A5C</div><div class="pt">PANTONE 539 C</div></div></div>
+        <div class="sw" style="background:#28456A; color:#E4E5E3;"><div></div><div><div class="nm">Navy Line</div><div class="hx">#28456A</div><div class="pt">Dividers</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMINIUM TONES -->
+<section>
+  <div class="wrap">
+    <div class="sec-label mono"><span class="spark"></span>02 — Aluminium Tones</div>
+    <h2>The metal, in platinum &amp; nickel.</h2>
+    <p class="sec-intro">The neutrals come from aluminium itself — warm, soft, premium metals. These carry the 30% of surfaces that aren't navy: backgrounds, text, surfaces, brushed textures.</p>
+    <div class="alu-grid" style="margin-top:48px;">
+      <div class="alu brushed" style="background:#E4E5E3; color:#1A1C1E;"><div class="nm">Platinum</div><div class="hx">#E4E5E3</div></div>
+      <div class="alu brushed" style="background:#C5C7C9; color:#1A1C1E;"><div class="nm">Brushed Silver</div><div class="hx">#C5C7C9</div></div>
+      <div class="alu brushed" style="background:#A8A9A6; color:#1A1C1E;"><div class="nm">Warm Nickel</div><div class="hx">#A8A9A6</div></div>
+      <div class="alu" style="background:#33373B; color:#E4E5E3;"><div class="nm">Anthracite</div><div class="hx">#33373B</div></div>
+    </div>
+    <div style="margin-top:4px; display:grid; grid-template-columns: 3fr 1fr; gap:4px;">
+      <div class="alu" style="aspect-ratio:auto; min-height:90px; background:#F2F1EC; color:#1A1C1E; border:1px solid var(--line);"><div class="nm">Paper — warm stone surface</div><div class="hx">#F2F1EC</div></div>
+      <div class="alu" style="aspect-ratio:auto; min-height:90px; background:#009746; color:#fff;"><div class="nm">Green spark</div><div class="hx">#009746</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section>
+  <div class="wrap">
+    <div class="sec-label mono"><span class="spark"></span>03 — Typography</div>
+    <h2>Inter. Clean, readable, no italic.</h2>
+    <p class="sec-intro">Inter carries everything — display through body — in a confident, contemporary register. JetBrains Mono handles technical data. No serif, no italic. Authority through weight and spacing, not ornament.</p>
+    <div class="type-demo" style="margin-top:48px;">
+      <div class="type-row"><div class="meta">Display · Inter 800</div><div class="t-display">Engineering aluminium</div></div>
+      <div class="type-row"><div class="meta">Heading · Inter 700</div><div class="t-h2">Three product worlds</div></div>
+      <div class="type-row"><div class="meta">Body · Inter 400</div><div class="t-body">An integrated extrusion platform — billet to finished profile, under one roof. Banco supplies industrial, architectural and custom aluminium profiles to over 1,100 customers across four continents.</div></div>
+      <div class="type-row"><div class="meta">Technical · Mono</div><div class="t-mono">ALLOY 6063-T6 · Ø 254 MM · PRESS-04</div></div>
+    </div>
+    <div class="no-italic-note"><span class="x">✕</span> NO ITALIC · NO SERIF · WEIGHT AND SPACE CARRY THE HIERARCHY</div>
+  </div>
+</section>
+
+<!-- CONTEXT PREVIEW -->
+<section>
+  <div class="wrap">
+    <div class="sec-label mono"><span class="spark"></span>04 — In Context · The Router</div>
+    <h2>How the landing page feels.</h2>
+    <p class="sec-intro">A preview of the one-pager router in this direction — spacious, calm, authoritative. Three segments, one clear choice.</p>
+    <div class="ctx" style="margin-top:48px;">
+      <div class="ctx-bar">
+        <img src="assets/banco-logo-light.png" alt="Banco">
+        <div class="mono">EST. 1967 · VADODARA</div>
+      </div>
+      <div class="ctx-body">
+        <div class="ctx-h">Aluminium, engineered for <em>every scale.</em></div>
+        <div class="ctx-seg">
+          <div><div class="n">/ 01</div><div class="t">Industrial &amp; OEMs</div><div class="a">Drawing-led profiles →</div></div>
+          <div><div class="n">/ 02</div><div class="t">Architectural</div><div class="a">Windows · doors · façades →</div></div>
+          <div><div class="n">/ 03</div><div class="t">Casting / Billets</div><div class="a">Foundry-grade alloy →</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOOD -->
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-label mono"><span class="spark"></span>05 — Mood</div>
+    <h2>What it says.</h2>
+    <div class="moods" style="margin-top:40px;">
+      <span class="fill">Heritage</span><span>Trusted</span><span>European</span><span class="fill">Premium</span><span>Established</span><span>Measured</span><span class="fill">Institutional</span><span>Confident</span><span>Timeless</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

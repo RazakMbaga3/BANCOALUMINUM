@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProductSubNav from '../../components/ProductSubNav.astro';
 
 // ── Alloy compositions — source: Banco Billets 2026 Product Catalogue ─────────
 const alloys = [
@@ -121,47 +122,59 @@ const certs = [
     </div>
   </section>
 
+  <ProductSubNav current="cast-products" />
+
   <!-- ── 01 · Overview ─────────────────────────────────────────────────────── -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="c-overview-grid">
-        <div class="c-overview-text">
-          <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-            Consistent metallurgical quality,<br>cast to cast.
-          </h2>
-          <div class="c-chip-row" style="margin-top:24px">
-            {['Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready', 'Export-certified'].map(c => (
-              <span class="pill">{c}</span>
-            ))}
+  <section class="section-light c-vp-section">
+    <div class="container c-overview-grid">
+
+      <!-- Left: rich content column -->
+      <div class="c-overview-left">
+        <div class="eyebrow">Foundry · Billet production</div>
+        <h2 class="t-h2 c-h2-navy" style="font-weight:800;margin-top:14px">
+          Consistent metallurgical<br/>quality, cast to cast.
+        </h2>
+        <p class="t-body c-body-text" style="margin-top:20px">
+          Banco's integrated foundry produces extrusion-grade aluminium billets using
+          cylinder-guided Hot-Top casting — delivering controlled microstructure,
+          measurable metal cleanliness and consistent extrudability, batch after batch.
+        </p>
+        <p class="t-body c-body-text" style="margin-top:12px">
+          Every billet undergoes 100% ultrasonic testing, spectroscopic chemical
+          verification and full SCADA traceability from furnace charge through despatch.
+        </p>
+        <div class="c-chip-row" style="margin-top:24px">
+          {['Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready', 'Export-certified'].map(c => (
+            <span class="pill">{c}</span>
+          ))}
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
+          <a href="/contact#quote" class="btn btn-primary">Request quotation</a>
+          <a href="/downloads" class="btn btn-secondary">Technical data sheet</a>
+        </div>
+      </div>
+
+      <!-- Right: image composition — 1 large + 2 small -->
+      <div class="c-overview-right">
+        <div class="c-ov-main">
+          <img src="/assets/manufacturing/Billet%201.JPG" alt="Finished aluminium extrusion billets — Banco Aluminium, Vadodara" loading="eager" />
+          <div class="c-ov-main-caption">
+            <span>Finished extrusion billets</span>
+            <span class="c-ov-cap-note">Alloy-marked · 5,800 mm · SCADA traced</span>
           </div>
         </div>
-
-        <!-- Feature photo — stacked billets -->
-        <div class="c-overview-photo">
-          <div class="c-overview-img">
-            <img
-              src="/assets/manufacturing/Billet%201.JPG"
-              alt="Aluminium extrusion billets — Banco Aluminium foundry, Vadodara"
-              loading="eager"
-            />
+        <div class="c-ov-pair">
+          <div class="c-ov-sm">
+            <img src="/assets/manufacturing/Casting%202.JPG" alt="Hot-Top casting station — Banco Aluminium" loading="lazy" />
+            <span class="c-ov-sm-lbl">Hot-Top casting</span>
           </div>
-          <div class="c-overview-caption">
-            <span class="c-ov-cap-label">Finished extrusion billets</span>
-            <span class="c-ov-cap-note">Alloy-marked · 5,800 mm standard length · SCADA traced</span>
-          </div>
-          <div class="c-overview-img" style="margin-top:4px">
-            <img
-              src="/assets/manufacturing/Casting%202.JPG"
-              alt="Cylinder-guided Hot-Top casting at Banco Aluminium foundry"
-              loading="lazy"
-            />
-          </div>
-          <div class="c-overview-caption">
-            <span class="c-ov-cap-label">Hot-Top casting station</span>
-            <span class="c-ov-cap-note">Cylinder-guided · controlled cooling rate</span>
+          <div class="c-ov-sm">
+            <img src="/assets/manufacturing/Homo%201.JPG" alt="Homogenising furnace — Banco Aluminium" loading="lazy" />
+            <span class="c-ov-sm-lbl">Homogenising</span>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -274,21 +287,6 @@ const certs = [
         ))}
       </div>
 
-      <!-- Secondary photo strip — casting floor evidence -->
-      <div class="c-proc-strip">
-        {[
-          ['/assets/manufacturing/Casting%203.JPG',  'Billet surface immediately post-cast'],
-          ['/assets/manufacturing/Casting%205.JPG',  'Casting pit — controlled cooling zone'],
-          ['/assets/manufacturing/Homo%202.JPG',     'Homogenising force-cooling stage'],
-          ['/assets/manufacturing/Billet%202.JPG',   'Finished billets — alloy-marked, cast-numbered'],
-          ['/assets/manufacturing/Quality%202.JPG',  'Dimensional verification — quality inspection'],
-          ['/assets/manufacturing/Scrap%201.jpeg',   'Recycled scrap input — up to 95% per green billet'],
-        ].map(([src, alt]) => (
-          <div class="c-strip-photo">
-            <img src={src} alt={alt} loading="lazy" />
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -489,35 +487,55 @@ const certs = [
     margin-top: 8px;
   }
 
-  /* ── Overview grid (text + photo stack) ───────────────────────────────── */
+  /* ── Viewport-height sections ─────────────────────────────────────────── */
+  .c-vp-section {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    padding: clamp(40px, 5vh, 64px) 0;
+    border-bottom: 1px solid var(--color-stone-200);
+  }
+
+  /* ── Overview grid — balanced 2-col ───────────────────────────────────── */
   .c-overview-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 5vw, 80px);
-    align-items: start;
+    align-items: center;
+    width: 100%;
   }
-  .c-overview-img {
-    aspect-ratio: 4 / 3;
+  .c-overview-left {
+    display: flex;
+    flex-direction: column;
+  }
+  .c-overview-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Main large image */
+  .c-ov-main {
     overflow: hidden;
     border: 1px solid var(--color-stone-200);
+    position: relative;
   }
-  .c-overview-img img {
+  .c-ov-main img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    filter: brightness(0.92) saturate(0.85);
+    transition: transform 0.55s ease, filter 0.4s ease;
   }
-  .c-overview-img:hover img { transform: scale(1.03); }
-  .c-overview-caption {
+  .c-ov-main:hover img { transform: scale(1.03); filter: brightness(1) saturate(1); }
+  .c-ov-main-caption {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--color-stone-200);
-    margin-bottom: 0;
-  }
-  .c-ov-cap-label {
+    padding: 8px 10px;
+    background: var(--color-stone-50);
+    border-top: 1px solid var(--color-stone-200);
     font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 600;
@@ -529,11 +547,44 @@ const certs = [
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-stone-400);
+    font-weight: 400;
+  }
+
+  /* Small image pair side-by-side */
+  .c-ov-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .c-ov-sm {
+    overflow: hidden;
+    border: 1px solid var(--color-stone-200);
+    position: relative;
+  }
+  .c-ov-sm img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.88) saturate(0.8);
+    transition: transform 0.45s, filter 0.3s;
+  }
+  .c-ov-sm:hover img { transform: scale(1.05); filter: brightness(0.96) saturate(1); }
+  .c-ov-sm-lbl {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    background: var(--color-stone-50);
+    padding: 5px 8px;
+    border-top: 1px solid var(--color-stone-200);
   }
 
   /* ── Process cell photo (bleeds to card edges) ─────────────────────────── */
   .c-proc-img {
-    margin: -32px -24px 20px;
+    margin: -22px -20px 16px;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-bottom: 2px solid var(--color-green);
@@ -573,6 +624,11 @@ const certs = [
   }
   .c-strip-photo:hover img { transform: scale(1.08); filter: brightness(1); }
 
+  /* ── Global page padding tighter ──────────────────────────────────────── */
+  .section-pad {
+    padding: clamp(36px, 5vw, 60px) 0;
+  }
+
   /* ── Shared section layout ─────────────────────────────────────────────── */
   .c-two-col {
     display: grid;
@@ -581,14 +637,9 @@ const certs = [
     align-items: start;
   }
   .c-section-head {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 4vw, 80px);
-    align-items: start;
-    margin-top: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
-  .c-h2-navy { color: var(--color-navy); margin-top: 16px; }
+  .c-h2-navy { color: var(--color-navy); margin-top: 12px; }
   .c-body-text { color: var(--color-stone-700); }
   .c-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -622,7 +673,7 @@ const certs = [
   .c-row-even { background: var(--color-stone-50); }
   .c-row-odd  { background: white; }
   .c-cell-alloy {
-    padding: 11px 16px;
+    padding: 8px 14px;
     font-weight: 500;
     font-size: 12px;
     color: var(--color-navy);
@@ -630,7 +681,7 @@ const certs = [
     border-bottom: 1px solid var(--color-stone-200);
   }
   .c-cell-val {
-    padding: 11px 16px;
+    padding: 8px 14px;
     color: var(--color-stone-700);
     border-right: 1px solid var(--color-stone-200);
     border-bottom: 1px solid var(--color-stone-200);
@@ -713,14 +764,14 @@ const certs = [
     gap: 1px;
     background: var(--color-stone-200);
     border: 1px solid var(--color-stone-200);
-    margin-top: 48px;
+    margin-top: 28px;
   }
   .c-process-cell {
     background: var(--color-stone-50);
-    padding: 32px 24px;
+    padding: 22px 20px 24px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     border-top: 2px solid var(--color-green);
   }
   .c-process-num {
@@ -752,11 +803,11 @@ const certs = [
     gap: 1px;
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
-    margin-top: 48px;
+    margin-top: 28px;
   }
   .c-qc-cell {
     background: var(--color-navy-soft);
-    padding: 28px 20px;
+    padding: 22px 18px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -935,7 +986,7 @@ const certs = [
     .c-stats          { grid-template-columns: repeat(2, 1fr); }
     .c-two-col        { grid-template-columns: 1fr; }
     .c-overview-grid  { grid-template-columns: 1fr; }
-    .c-section-head   { grid-template-columns: 1fr; }
+    .c-vp-section     { min-height: auto; padding: clamp(40px, 6vh, 64px) 0; }
     .c-process-grid   { grid-template-columns: repeat(2, 1fr); }
     .c-qc-grid        { grid-template-columns: repeat(3, 1fr); }
     .c-dim-grid       { grid-template-columns: 1fr; }
@@ -943,7 +994,6 @@ const certs = [
     .c-packing-inner  { grid-template-columns: 1fr; }
     .c-packing-tags   { flex-direction: row; flex-wrap: wrap; padding-top: 0; }
     .c-green-stats    { grid-template-columns: repeat(2, 1fr); }
-    .c-proc-strip     { grid-template-columns: repeat(3, 1fr); }
   }
 
   @media (max-width: 768px) {

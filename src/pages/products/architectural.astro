@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProductSubNav from '../../components/ProductSubNav.astro';
 
 // ── Sliding window series ─────────────────────────────────────────────────────
 const sliding = [
@@ -62,22 +63,42 @@ const featured = [
   {
     img:   '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
     title: 'Sliding Window Systems',
-    desc:  'Modern aluminium sliding solutions designed for seamless operation and contemporary living environments.',
+    desc:  '8 series from 18–75 mm frame width for residential to large commercial spans.',
+    bullets: [
+      'Single & double glaze from 18 mm to 35×75 mm frame width',
+      'Grill-track options · entry-level to premium residential',
+      'EN 12210 wind resistance · EN 12208 watertightness tested',
+    ],
   },
   {
     img:   '/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg',
     title: 'Casement Window Systems',
-    desc:  'Versatile openable systems designed for ventilation, functionality and architectural flexibility.',
+    desc:  '40 mm and 50 mm systems for inward/outward opening and high-ventilation applications.',
+    bullets: [
+      '40 mm slim face · 2-in-1 frame and standard frame configurations',
+      '50 mm series spans casement windows, entrance doors and bi-fold',
+      'Class 20 anodising and QUALICOAT powder coating available',
+    ],
   },
   {
     img:   '/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png',
-    title: 'Door Systems',
-    desc:  'Sliding, folding and partition systems created to support modern spatial design.',
+    title: 'Door & Bi-Fold Systems',
+    desc:  'Hinged, sliding, and folding door configurations for residential and commercial openings.',
+    bullets: [
+      'Sliding · hinged · bi-fold with multi-leaf configurations',
+      'Single or double glaze · suitable for large commercial entrances',
+      'In-house die development — custom sightlines available',
+    ],
   },
   {
     img:   '/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg',
-    title: 'Curtain Wall Systems',
-    desc:  'Façade and glazing solutions designed for contemporary elevations and commercial environments.',
+    title: 'Façade & Curtain Wall',
+    desc:  'Structural glazing and curtain wall systems for commercial and institutional elevations.',
+    bullets: [
+      'Curtain wall · structural glazing · louvre and shading systems',
+      'Clean room sections and ladder profiles for specialist use',
+      'Tested to EN 14351-1 · full performance data available',
+    ],
   },
 ];
 
@@ -246,6 +267,8 @@ const galleryPhotos = [
 
   </section>
 
+  <ProductSubNav current="architectural" />
+
   <!-- ══════════════════════════════════════════════════════════
        02 · INTRO — 2-COL SPLIT
   ══════════════════════════════════════════════════════════════ -->
@@ -346,6 +369,20 @@ const galleryPhotos = [
             <div class="arc-feat-body">
               <h3 class="arc-feat-title">{f.title}</h3>
               <p class="arc-feat-desc">{f.desc}</p>
+              <ul class="arc-feat-bullets">
+                {f.bullets.map((b) => (
+                  <li>
+                    <span class="arc-feat-dot" aria-hidden="true"></span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="/contact#quote" class="arc-feat-link">
+                Specify a system
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </a>
             </div>
           </div>
         ))}
@@ -452,6 +489,95 @@ const galleryPhotos = [
             loading="lazy"
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       06B · FOR ARCHITECTS & FOR FABRICATORS — SPLIT
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section-dark section-pad" style="border-bottom:1px solid var(--color-navy-line)">
+    <div class="container">
+      <div class="arc-af-head" data-reveal="fade">
+        <div class="eyebrow on-dark">Who we work with</div>
+        <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:12px">Architects, Fabricators & Developers</h2>
+      </div>
+      <div class="arc-af-grid">
+        <!-- For Architects -->
+        <div class="arc-af-col" data-reveal="left">
+          <div class="arc-af-num" aria-hidden="true">01</div>
+          <div class="arc-af-type">For Architects</div>
+          <h3 class="arc-af-h3">Design freedom with aluminium precision.</h3>
+          <ul class="arc-af-list">
+            <li>Wide range of system configurations to suit any façade design</li>
+            <li>Custom sightlines and profile dimensions on request</li>
+            <li>Full finish palette — any RAL / NCS colour, anodising classes</li>
+            <li>Performance data sheets and EN 14351-1 test certificates available</li>
+            <li>BIM object library available for supported systems</li>
+          </ul>
+          <a href="/contact#quote" class="btn btn-secondary-dark" style="margin-top:28px">Request system data</a>
+        </div>
+
+        <!-- Divider -->
+        <div class="arc-af-divider" aria-hidden="true"></div>
+
+        <!-- For Fabricators -->
+        <div class="arc-af-col" data-reveal="right">
+          <div class="arc-af-num" aria-hidden="true">02</div>
+          <div class="arc-af-type">For Fabricators</div>
+          <h3 class="arc-af-h3">Consistent extrusion. Reliable repeat supply.</h3>
+          <ul class="arc-af-list">
+            <li>Tight dimensional tolerances — ASCONA optical inspection on every batch</li>
+            <li>In-house die design and trial — new profiles in 4–6 weeks</li>
+            <li>Surface-matched finishing: anodising Class 20 · QUALICOAT powder</li>
+            <li>Export-ready packing — paper interleave, stretch wrap, wooden bundles</li>
+            <li>CBAM documentation · material test certificates · CE marked</li>
+          </ul>
+          <a href="/contact#quote" class="btn btn-secondary-dark" style="margin-top:28px">Submit a requirement</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       06C · INLINE TECHNICAL DOWNLOADS
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section-alt section-pad" style="border-bottom:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="arc-dl-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow">Technical resources</div>
+          <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Product Information & Downloads</h2>
+        </div>
+        <a href="/downloads" class="btn btn-secondary">View all downloads</a>
+      </div>
+      <div class="arc-dl-grid">
+        {[
+          { icon: 'brochure',   title: 'Architectural Systems Catalogue',   desc: 'Full product range — systems, finishes, configurations.',           tag: 'PDF · ~4 MB' },
+          { icon: 'datasheet',  title: 'Performance Data Sheets',           desc: 'EN 14351-1 test results, wind load and watertightness ratings.',    tag: 'PDF · Technical' },
+          { icon: 'finish',     title: 'Finish & Colour Guide',             desc: 'Powder coating RAL/NCS options, anodising classes.',                tag: 'PDF · Colours' },
+          { icon: 'alloy',      title: 'Alloy Specification Sheet',         desc: '6063 / 6060 / 6005 architectural alloy data and tolerances.',       tag: 'PDF · Materials' },
+        ].map((dl) => (
+          <a href="/downloads" class="arc-dl-card">
+            <div class="arc-dl-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M5 2h8l4 4v14H5V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M13 2v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="M11 10v6M8 13l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="arc-dl-body">
+              <div class="arc-dl-title">{dl.title}</div>
+              <div class="arc-dl-desc">{dl.desc}</div>
+              <div class="arc-dl-tag">{dl.tag}</div>
+            </div>
+            <div class="arc-dl-arrow" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M8 2v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -667,6 +793,190 @@ const galleryPhotos = [
 
 
 <style>
+  /* ══ TIGHTER SECTION RHYTHM — overrides global section-pad ═ */
+  .section-pad {
+    padding: clamp(40px, 5vw, 72px) 0;
+  }
+
+  /* ══ FEATURED CARD — BULLETS ══════════════════════════════ */
+  .arc-feat-bullets {
+    list-style: none;
+    margin: 14px 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .arc-feat-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12.5px;
+    line-height: 1.52;
+    color: var(--color-stone-700);
+  }
+  .arc-feat-dot {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-green);
+    margin-top: 5px;
+  }
+  .arc-feat-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    text-decoration: none;
+    transition: gap 0.18s ease;
+  }
+  .arc-feat-link:hover { gap: 8px; }
+
+  /* ══ ARCHITECT / FABRICATOR SPLIT ═════════════════════════ */
+  .arc-af-head {
+    margin-bottom: 40px;
+  }
+  .arc-af-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 48px;
+    align-items: start;
+  }
+  .arc-af-divider {
+    background: var(--color-navy-line);
+    align-self: stretch;
+  }
+  .arc-af-col {
+    padding: 0;
+  }
+  .arc-af-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-nickel);
+    margin-bottom: 8px;
+  }
+  .arc-af-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin-bottom: 14px;
+  }
+  .arc-af-h3 {
+    font-family: var(--font-sans);
+    font-size: clamp(19px, 2vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: var(--color-platinum);
+    margin-bottom: 20px;
+  }
+  .arc-af-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .arc-af-list li {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-silver);
+    padding-left: 18px;
+    position: relative;
+  }
+  .arc-af-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 1px;
+    background: var(--color-green);
+  }
+
+  /* ══ DOWNLOAD CARDS ════════════════════════════════════════ */
+  .arc-dl-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .arc-dl-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+  .arc-dl-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 22px;
+    background: var(--color-stone-50);
+    text-decoration: none;
+    transition: background 0.2s ease;
+    position: relative;
+  }
+  .arc-dl-card:hover {
+    background: #fff;
+  }
+  .arc-dl-card:hover .arc-dl-arrow { color: var(--color-green); }
+  .arc-dl-icon {
+    color: var(--color-navy);
+    margin-bottom: 14px;
+  }
+  .arc-dl-body {
+    flex: 1;
+  }
+  .arc-dl-title {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-navy);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .arc-dl-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--color-stone-700);
+    margin-bottom: 10px;
+  }
+  .arc-dl-tag {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+  }
+  .arc-dl-arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--color-stone-400);
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+  .arc-dl-card:hover .arc-dl-arrow { transform: translateY(2px); }
+
+  @media (max-width: 900px) {
+    .arc-af-grid { grid-template-columns: 1fr; gap: 40px; }
+    .arc-af-divider { display: none; }
+    .arc-dl-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .arc-dl-grid { grid-template-columns: 1fr; }
+  }
+
   /* ══ COMPACT SECTION HEADING — fits on one line ════════════ */
   .arc-sh {
     font-family: var(--font-sans);
@@ -975,10 +1285,10 @@ const galleryPhotos = [
   .arc-section-head {
     text-align: center;
     max-width: 680px;
-    margin: 0 auto clamp(40px, 6vw, 64px);
+    margin: 0 auto clamp(28px, 3.5vw, 44px);
   }
   .arc-sub {
-    margin-top: 16px;
+    margin-top: 12px;
     max-width: 58ch;
     margin-left: auto;
     margin-right: auto;

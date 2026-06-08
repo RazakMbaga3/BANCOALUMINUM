@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProductSubNav from '../../components/ProductSubNav.astro';
 
 const industries = [
   { num: '/ 01', name: 'Electrical & power transmission',      note: 'Busbar · T&D profiles · cable management' },
@@ -120,6 +121,8 @@ const certs = [
       </div>
     </div>
   </section>
+
+  <ProductSubNav current="industrial" />
 
   <!-- ── Overview — editorial split ───────────────────────────────────────── -->
   <section class="ih-split">

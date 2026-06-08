@@ -17,8 +17,6 @@
   --color-platinum:    #E4E5E3;  /* primary text / light UI on dark  */
   --color-silver:      #C5C7C9;  /* secondary on dark                */
   --color-nickel:      #A8A9A6;  /* labels, captions on dark         */
-  --color-anthracite:  #33373B;  /* dark neutral surface             */
-  --color-paper:       #F2F1EC;  /* warm light-mode background       */
 
   /* ── Silver-white — cool aluminium section background ──────────── */
   --color-silver-white: #EDEEF1; /* cool blue-grey white · industrial sections */
@@ -37,6 +35,8 @@
   /* ── Typography ─────────────────────────────────────────────────── */
   --font-sans:    'Inter', -apple-system, system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
+  --font-display: 'Inter', -apple-system, system-ui, sans-serif;
+  --nav-height:   72px;
 }
 
 /* ============================================================
@@ -101,7 +101,7 @@ button { cursor: pointer; }
 .t-h1 {
   font-family: var(--font-sans);
   font-size: clamp(56px, 7vw, 96px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.03em;
 }
@@ -189,11 +189,22 @@ em.accent {
   border-bottom: 1px solid var(--color-navy-line);
   color: var(--color-stone-50);
 }
+.section-dark + .section-dark,
+.section-dark + .section-deep { border-top: none; }
 .section-deep {
   background: var(--color-navy-deep);
   border-bottom: 1px solid var(--color-navy-line);
   color: var(--color-stone-50);
 }
+/* Prevent stone hairline bleeding onto dark sections */
+.section-light + .section-dark,
+.section-light + .section-deep,
+.section-alt + .section-dark,
+.section-alt + .section-deep,
+.section-white + .section-dark,
+.section-white + .section-deep,
+.section-silver + .section-dark,
+.section-silver + .section-deep { border-top: none; }
 
 /* ============================================================
    EYEBROW COMPONENT
@@ -683,6 +694,16 @@ em.accent {
   color: var(--color-stone-50);
   background: var(--color-navy-soft);
 }
+.nav-dd-group {
+  padding: 14px 20px 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-green);
+  border-top: 1px solid var(--color-navy-line);
+}
+.nav-dd-group:first-child { border-top: none; padding-top: 8px; }
 .nav-cta {
   margin-left: 12px;
   flex-shrink: 0;
@@ -1153,6 +1174,14 @@ em.accent {
 [data-reveal-delay="5"] { transition-delay: 0.40s; }
 [data-reveal-delay="6"] { transition-delay: 0.48s; }
 
+
+/* No-JS fallback: make reveal elements visible without JavaScript */
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1;

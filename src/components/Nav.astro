@@ -8,40 +8,39 @@ const nav = [
   {
     label: 'Solutions',
     children: [
-      { label: 'Industrial & OEM profiles',      href: '/products/industrial' },
-      { label: 'Architectural systems',           href: '/products/architectural' },
-      { label: 'Extrusion billets',               href: '/products/cast-products' },
-      { label: 'Standard sections',               href: '/products/standard-sections' },
-      { label: 'Automotive & commercial',         href: '/industries/automotive' },
-      { label: 'Electrical power & T&D',          href: '/industries/electrical' },
-      { label: 'Heat sinks & heat exchangers',    href: '/industries/heat-management' },
-      { label: 'Hydraulics & pneumatics',         href: '/industries/hydraulics' },
-      { label: 'Machining & forging',             href: '/industries/forging' },
-      { label: 'Building & construction',         href: '/industries/building' },
+      { label: 'Industrial & OEM profiles',   href: '/products/industrial',        group: 'Products' },
+      { label: 'Architectural systems',        href: '/products/architectural',     group: 'Products' },
+      { label: 'Extrusion billets',            href: '/products/cast-products',     group: 'Products' },
+      { label: 'Standard sections',            href: '/products/standard-sections', group: 'Products' },
+      { label: 'Automotive & commercial',      href: '/industries/automotive',      group: 'Industries' },
+      { label: 'Electrical power & T&D',       href: '/industries/electrical',      group: 'Industries' },
+      { label: 'Heat sinks & exchangers',      href: '/industries/heat-management', group: 'Industries' },
+      { label: 'Hydraulics & pneumatics',      href: '/industries/hydraulics',      group: 'Industries' },
+      { label: 'Machining & forging',          href: '/industries/forging',         group: 'Industries' },
+      { label: 'Building & construction',      href: '/industries/building',        group: 'Industries' },
     ],
   },
   {
     label: 'Capabilities',
     children: [
-      { label: 'Alloys',              href: '/capabilities/foundry' },
-      { label: 'Die shop',            href: '/capabilities/die-shop' },
-      { label: 'Extrusion',           href: '/capabilities/extrusion' },
-      { label: 'Heat treatment',      href: '/capabilities/heat-treatment' },
-      { label: 'Fabrication',         href: '/capabilities/machining' },
-      { label: 'Cold drawing',        href: '/capabilities/cold-drawing' },
-      { label: 'Surface finishes',    href: '/capabilities/surface-finishing' },
-      { label: 'Packing options',     href: '/capabilities/packing' },
+      { label: 'Alloys',              href: '/capabilities/foundry',          group: '' },
+      { label: 'Die shop',            href: '/capabilities/die-shop',         group: '' },
+      { label: 'Extrusion',           href: '/capabilities/extrusion',        group: '' },
+      { label: 'Heat treatment',      href: '/capabilities/heat-treatment',   group: '' },
+      { label: 'Fabrication',         href: '/capabilities/machining',        group: '' },
+      { label: 'Cold drawing',        href: '/capabilities/cold-drawing',     group: '' },
+      { label: 'Surface finishes',    href: '/capabilities/surface-finishing',group: '' },
+      { label: 'Packing options',     href: '/capabilities/packing',          group: '' },
     ],
   },
   { label: 'Sustainability', href: '/sustainability' },
   {
     label: 'About us',
     children: [
-      { label: 'Company',                   href: '/about' },
-      { label: 'Quality & certifications',  href: '/about/quality' },
-      { label: 'Global reach',              href: '/about/global-reach' },
-      { label: 'Sustainability',            href: '/sustainability' },
-      { label: 'Careers',                   href: '/about/careers' },
+      { label: 'Company',                   href: '/about',              group: '' },
+      { label: 'Quality & certifications',  href: '/about/quality',      group: '' },
+      { label: 'Global reach',              href: '/about/global-reach', group: '' },
+      { label: 'Careers',                   href: '/about/careers',      group: '' },
     ],
   },
 ];
@@ -76,9 +75,14 @@ const nav = [
                     </svg>
                   </button>
                   <div class="nav-dropdown" role="menu">
-                    {item.children.map((child) => (
-                      <a href={child.href} role="menuitem">{child.label}</a>
-                    ))}
+                    {item.children.reduce((acc: any[], child, i) => {
+                      const prev = item.children[i - 1];
+                      if (child.group && child.group !== prev?.group) {
+                        acc.push(<div class="nav-dd-group" aria-hidden="true">{child.group}</div>);
+                      }
+                      acc.push(<a href={child.href} role="menuitem">{child.label}</a>);
+                      return acc;
+                    }, [])}
                   </div>
                 </>
               ) : (
@@ -121,7 +125,11 @@ const nav = [
 ">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px">
     <img src="/banco-logo-light.png" alt="Banco Aluminium" height="32" />
-    <button id="mobile-close" style="background:none;border:none;color:var(--color-stone-50);cursor:pointer;font-size:24px;" aria-label="Close menu">✕</button>
+    <button id="mobile-close" style="background:none;border:none;color:var(--color-stone-50);cursor:pointer;padding:4px;display:flex;align-items:center;" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M3 3l14 14M17 3L3 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
   <nav style="flex:1">
     {nav.map((item) => (

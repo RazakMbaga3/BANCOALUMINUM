@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Enquiry received — Banco Aluminium"
+  description="Thank you for contacting Banco Aluminium. Your enquiry has been received and our technical team will respond within one business day."
+>
+  <section class="cs-hero">
+    <div class="container cs-inner">
+
+      <!-- Checkmark icon -->
+      <div class="cs-icon" aria-hidden="true">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="27" stroke="var(--color-green)" stroke-width="1.5"/>
+          <path d="M16 28l8 8 16-16" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="eyebrow on-dark" style="margin-top:28px">Enquiry received</div>
+      <h1 class="t-h1" style="color:var(--color-platinum);margin-top:16px;max-width:18ch">
+        We'll be in touch <em class="accent">within one business day.</em>
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:20px;max-width:52ch">
+        Your enquiry has been sent to our technical team. We will review your requirement and
+        respond with material options, tooling feasibility, and a lead-time indication.
+      </p>
+
+      <!-- Next steps -->
+      <div class="cs-steps">
+        {([
+          { n: '01', title: 'Review',    note: 'Our team reviews your drawing or specification' },
+          { n: '02', title: 'Response',  note: 'We reply within one business day with options and pricing' },
+          { n: '03', title: 'Agreement', note: 'Sample approval, timeline, and commercial terms confirmed' },
+        ] as const).map(({ n, title, note }) => (
+          <div class="cs-step">
+            <div class="cs-step-n">{n}</div>
+            <div>
+              <div class="cs-step-title">{title}</div>
+              <div class="cs-step-note">{note}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+        <a href="/" class="btn btn-primary-dark">Return home</a>
+        <a href="/products/industrial" class="btn btn-secondary-dark">Explore industrial profiles</a>
+        <a href="/downloads" class="btn btn-secondary-dark">Download catalogues</a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cs-hero {
+    background: var(--color-navy-deep);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  .cs-inner {
+    max-width: 780px;
+  }
+  .cs-icon {
+    display: flex;
+  }
+  .cs-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+    border: 1px solid var(--color-navy-line);
+    max-width: 560px;
+  }
+  .cs-step {
+    display: flex;
+    gap: 20px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--color-navy-line);
+    align-items: flex-start;
+  }
+  .cs-step:last-child { border-bottom: none; }
+  .cs-step-n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--color-green);
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .cs-step-title {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-platinum);
+    margin-bottom: 3px;
+  }
+  .cs-step-note {
+    font-size: 13px;
+    color: var(--color-stone-400);
+    line-height: 1.5;
+  }
+</style>

@@ -38,9 +38,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
   />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" href="/sitemap.xml" />
+
+  <!-- Preload hero video — critical for homepage LCP -->
+  <link rel="preload" as="video" href="/herovideo.mp4" type="video/mp4" fetchpriority="high" />
+
   <title>{title}</title>
 </head>
 <body>
+  <a href="#router-main" class="skip-link">Skip to content</a>
 
   <!-- Minimal transparent landing header — logo only, no nav menu -->
   <header class="router-header" id="router-header">

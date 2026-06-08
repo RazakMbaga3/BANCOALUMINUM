@@ -43,8 +43,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
     rel="stylesheet"
   />
 
-  <!-- Favicon -->
+  <!-- Favicon + sitemap -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" href="/sitemap.xml" />
 
   <!-- Preload hero video for faster LCP on homepage -->
   <link rel="preload" as="video" href="/herovideo.mp4" type="video/mp4" fetchpriority="low" />

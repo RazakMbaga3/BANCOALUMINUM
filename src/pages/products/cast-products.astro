@@ -105,8 +105,8 @@ const certs = [
       <div class="c-stats">
         {[
           { n: '55,000', u: 'MT/yr',       l: 'Foundry capacity' },
-          { n: '5',      u: 'diameters',   l: '5" to 10"' },
-          { n: '12+',    u: 'alloys',      l: 'Custom on request' },
+          { n: '5',      u: 'Diameters',   l: '5" to 10"' },
+          { n: '12+',    u: 'Alloys',      l: 'Custom on request' },
           { n: '0.480',  u: 'kgCO₂e/kg',  l: 'ISO 14064-1 verified' },
         ].map(({ n, u, l }) => (
           <div class="c-stat">
@@ -116,8 +116,7 @@ const certs = [
         ))}
       </div>
       <div class="c-hero-actions">
-        <a href="/contact#quote" class="btn btn-primary-dark">Request quotation</a>
-        <a href="/contact#technical" class="btn btn-secondary-dark">Technical enquiry</a>
+        <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
       </div>
     </div>
   </section>
@@ -147,10 +146,7 @@ const certs = [
             <span class="pill">{c}</span>
           ))}
         </div>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px">
-          <a href="/contact#quote" class="btn btn-primary">Request quotation</a>
-          <a href="/downloads" class="btn btn-secondary">Technical data sheet</a>
-        </div>
+
       </div>
 
       <!-- Right: image composition — 1 large + 2 small -->
@@ -218,9 +214,8 @@ const certs = [
         </table>
       </div>
       <p class="c-table-footnote">
-        Full chemical composition including Zn, Cr, Ti, and individual trace elements available
-        in the product data sheet. Additional alloys — 1050A, 2011, 2017A, 2014, 6262, 6026 —
-        produced to customer specification. Contact the technical team.
+        <span class="c-table-footnote-std">Full chemical composition including Zn, Cr, Ti, and individual trace elements available in the product data sheet.</span>
+        <span class="c-table-footnote-callout"><strong>Additional alloys:</strong> 1050A, 2011, 2017A, 2014, 6262, 6026 — available to customer specification. Please contact us for details.</span>
       </p>
     </div>
   </section>
@@ -427,7 +422,7 @@ const certs = [
     width: 100%;
     padding: 0 0 64px;
   }
-  .c-hero-content > .eyebrow { padding: 0 clamp(24px, 5vw, 80px); margin-bottom: 20px; }
+  .c-hero-content > .eyebrow { padding: 0 clamp(20px, 4vw, 60px); margin-bottom: 20px; }
   .c-h1 {
     font-family: var(--font-sans);
     font-size: clamp(40px, 5.5vw, 72px);
@@ -435,14 +430,14 @@ const certs = [
     letter-spacing: -0.04em;
     line-height: 0.95;
     color: var(--color-platinum);
-    padding: 0 clamp(24px, 5vw, 80px);
+    padding: 0 clamp(20px, 4vw, 60px);
     margin-bottom: 48px;
   }
   .c-hero-actions {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-    padding: 0 clamp(24px, 5vw, 80px);
+    padding: 0 clamp(20px, 4vw, 60px);
     margin-top: 36px;
   }
 
@@ -459,7 +454,7 @@ const certs = [
   .c-stat {
     background: rgba(8,27,48,0.7);
     backdrop-filter: blur(4px);
-    padding: 20px clamp(24px, 5vw, 80px);
+    padding: 20px clamp(20px, 4vw, 60px);
   }
   .c-stat-num {
     font-family: var(--font-sans);
@@ -471,11 +466,11 @@ const certs = [
   }
   .c-stat-unit {
     font-family: var(--font-mono);
-    font-size: clamp(11px, 1.1vw, 14px);
+    font-size: clamp(13px, 1.5vw, 18px);
     letter-spacing: 0.08em;
     color: var(--color-green);
     margin-left: 4px;
-    font-weight: 400;
+    font-weight: 700;
   }
   .c-stat-label {
     font-family: var(--font-mono);
@@ -678,12 +673,14 @@ const certs = [
     color: var(--color-navy);
     border-right: 1px solid var(--color-stone-200);
     border-bottom: 1px solid var(--color-stone-200);
+    text-align: center;
   }
   .c-cell-val {
     padding: 8px 14px;
     color: var(--color-stone-700);
     border-right: 1px solid var(--color-stone-200);
     border-bottom: 1px solid var(--color-stone-200);
+    text-align: center;
   }
   .c-cell-note {
     padding: 11px 16px;
@@ -693,6 +690,7 @@ const certs = [
     white-space: normal;
     border-bottom: 1px solid var(--color-stone-200);
     min-width: 200px;
+    text-align: left;
   }
   .c-table-footnote {
     margin-top: 16px;
@@ -701,6 +699,22 @@ const certs = [
     letter-spacing: 0.1em;
     color: var(--color-stone-400);
     line-height: 1.6;
+  }
+  .c-table-footnote-std {
+    display: block;
+    margin-bottom: 12px;
+  }
+  .c-table-footnote-callout {
+    display: block;
+    padding: 12px 14px;
+    background-color: var(--color-stone-50);
+    border-left: 3px solid var(--color-stone-300);
+    margin: 16px 0;
+    color: var(--color-stone-600);
+  }
+  .c-table-footnote-callout strong {
+    color: var(--color-stone-800);
+    font-weight: 600;
   }
 
   /* ── Dimensions ────────────────────────────────────────────────────────── */

@@ -214,18 +214,6 @@ const galleryPhotos = [
 
           <!-- Action buttons -->
           <div class="ah-actions">
-            <a href="/downloads" class="btn ah-btn-primary">
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M8 2v8M4 7l4 4 4-4M2 14h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Download catalogue
-            </a>
-            <a href="/contact#quote" class="btn ah-btn-outline">
-              Send enquiry
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </a>
           </div>
 
         </div>
@@ -1232,9 +1220,9 @@ const galleryPhotos = [
   }
   .ah-stat-val em {
     font-style: normal;
-    font-size: 12px;
+    font-size: clamp(14px, 1.5vw, 18px);
     color: var(--color-green);
-    font-weight: 400;
+    font-weight: 700;
     margin-left: 2px;
   }
   .ah-stat-lbl {

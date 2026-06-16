@@ -105,9 +105,9 @@ const certs = [
       <div class="ih-stats">
         {[
           { n: '35,000', u: 'MT/yr', l: 'Extrusion capacity' },
-          { n: '5',      u: 'presses', l: '1,100–3,300 MT' },
-          { n: '10,000', u: '/day',  l: 'Parts fabricated' },
-          { n: '12',     u: 'sectors', l: 'Industries served' },
+          { n: '5',      u: 'Presses', l: '1,100–3,300 MT' },
+          { n: '10,000', u: '/Day',  l: 'Parts fabricated' },
+          { n: '12',     u: 'Sectors', l: 'Industries served' },
         ].map(({ n, u, l }) => (
           <div class="ih-stat">
             <div class="ih-stat-num">{n} <span class="ih-stat-u">{u}</span></div>
@@ -117,7 +117,6 @@ const certs = [
       </div>
       <div class="ih-hero-actions">
         <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
-        <a href="/capabilities" class="btn btn-secondary-dark">View capabilities</a>
       </div>
     </div>
   </section>
@@ -380,11 +379,11 @@ const certs = [
   }
   .ih-stat-u {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: clamp(13px, 1.5vw, 18px);
     letter-spacing: 0.1em;
     color: var(--color-green);
     margin-left: 4px;
-    font-weight: 400;
+    font-weight: 700;
   }
   .ih-stat-l {
     font-family: var(--font-mono);

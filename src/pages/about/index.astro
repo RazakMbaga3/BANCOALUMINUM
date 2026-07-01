@@ -2,13 +2,22 @@
 import Layout from '../../layouts/Layout.astro';
 
 const milestones = [
-  { year: '1967', event: 'Founded in Vadodara, Gujarat' },
-  { year: '1970s', event: 'First extrusion press commissioned' },
+  { year: '1967', event: 'Founded in Vadodara, Gujarat by the Thakkar family' },
+  { year: '1970s', event: 'First hydraulic extrusion press commissioned' },
   { year: '1980s', event: 'In-house foundry and die shop established' },
-  { year: '1990s', event: 'Export operations begin' },
-  { year: '2000s', event: 'Capacity expansion to 5 presses; IATF 16949 certification' },
-  { year: '2010s', event: 'Cold drawing, machining and surface finishing integrated' },
-  { year: '2020s', event: 'CBAM certification; 960 kW solar; 35,000 MT capacity milestone' },
+  { year: '1990s', event: 'Export operations begin — first European customers' },
+  { year: '2000s', event: 'Capacity expanded to five presses; IATF 16949 certification' },
+  { year: '2010s', event: 'Cold drawing, CNC machining and surface finishing integrated' },
+  { year: '2020s', event: 'CBAM-ready; 960 kW solar commissioned; 35,000 MT milestone' },
+];
+
+const process = [
+  { n: '01', title: 'Foundry',       sub: 'Billet casting', desc: 'In-house melting and casting of standard and special alloys — 6xxx, 2xxx, 7xxx series.' },
+  { n: '02', title: 'Extrusion',     sub: '5 presses',      desc: '1,100–3,300 MT press force. Direct and indirect extrusion of complex hollow and solid profiles.' },
+  { n: '03', title: 'Die Shop',      sub: 'In-house',       desc: 'Full die design, manufacture and correction capability — no third-party dependency.' },
+  { n: '04', title: 'Heat Treatment',sub: 'Age & anneal',   desc: 'Controlled atmosphere ageing and annealing furnaces ensuring consistent T5/T6 properties.' },
+  { n: '05', title: 'Machining',     sub: 'CNC + cold draw', desc: 'Multi-axis CNC machining, cold drawing and fabrication for near-net-shape output.' },
+  { n: '06', title: 'Finishing',     sub: 'Surface & pack',  desc: 'Anodising, powder coating, chromating and precision packing for OEM and export shipments.' },
 ];
 
 const reasons = [
@@ -22,8 +31,8 @@ const reasons = [
 ];
 
 const testimonials = [
-  { client: 'Aavid Metalalloys', location: 'India',       quote: 'Reliable supply partner with consistent quality across hard alloy specifications.' },
-  { client: 'Schneider Electric', location: 'Bangalore',  quote: 'Dependable extrusion partner for our busbar and T&D profile requirements.' },
+  { client: 'Aavid Metalalloys',  location: 'India',       quote: 'Reliable supply partner with consistent quality across hard alloy specifications.' },
+  { client: 'Schneider Electric', location: 'Bangalore',   quote: 'Dependable extrusion partner for our busbar and T&D profile requirements.' },
   { client: 'Truetzschler',       location: 'India',       quote: 'Long-standing relationship built on technical competence and delivery reliability.' },
   { client: 'IMS Netherlands',    location: 'Netherlands', quote: 'Banco\'s lead-free machining alloys meet our RoHS requirements with consistent dimensional quality.' },
   { client: 'INOX India',         location: 'India',       quote: 'Strong quality systems and traceability — key for our engineering applications.' },
@@ -32,192 +41,351 @@ const testimonials = [
 
 <Layout
   title="About Banco Aluminium — established 1967"
-  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 900+ customers worldwide. ISO 9001 · IATF 16949 · CE."
+  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 900+ customers worldwide."
+  transparentNav={true}
 >
-  <!-- Hero — casting photo background with navy overlay -->
-  <section class="about-hero">
-    <div class="about-hero-bg" aria-hidden="true">
-      <img
-        src="/assets/manufacturing/casting-9.jpg"
-        alt=""
-        loading="eager"
-      />
-    </div>
-    <div class="container" style="position:relative;z-index:2">
-      <div class="eyebrow on-dark">About Banco</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
-        Engineering <em class="accent">aluminium</em> since 1967.
-      </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
-        Banco Aluminium Private Limited is an integrated aluminium extrusion company
-        established in Vadodara, Gujarat, India — still family-owned after 58 years.
-        We own the full value chain from billet casting to finished profile, serving
-        900+ customers across four export regions.
-      </p>
 
-      <!-- Key stats -->
-      <div style="display:flex;gap:48px;flex-wrap:wrap;margin-top:48px;padding-top:32px;border-top:1px solid var(--color-navy-line)">
-        {[
-          ['58+', 'years', 'Years in extrusion'],
-          ['35,000', 'MT', 'Annual extrusion capacity'],
-          ['55,000', 'MT', 'Annual foundry capacity'],
-          ['900+', '', 'Customers worldwide'],
-        ].map(([num, unit, label]) => (
-          <div>
-            <div>
-              <span style="font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px);color:var(--color-stone-50)">{num}</span>
-              {unit && <span style="font-family:var(--font-display);font-size:18px;color:var(--color-green);margin-left:4px">{unit}</span>}
+  <!-- ══════════════════════════════════════════════════════════
+       HERO — full-viewport video
+       ══════════════════════════════════════════════════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-media" aria-hidden="true">
+      <video class="ab-hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="ab-hero-scrim"></div>
+      <div class="ab-hero-grad"></div>
+    </div>
+
+    <div class="container ab-hero-body">
+      <div class="ab-hero-inner">
+        <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
+          About Banco · Est. 1967
+        </div>
+
+        <h1 class="t-h1 ab-hero-h1" data-reveal data-reveal-delay="2">
+          Engineering <em class="accent">aluminium</em><br/>
+          with precision,<br/>at scale.
+        </h1>
+
+        <p class="ab-hero-lede" data-reveal data-reveal-delay="3">
+          Integrated aluminium extrusion since 1967. Five presses. Full value chain.
+          Still family-owned. Serving 900+ customers across four export regions.
+        </p>
+
+        <!-- Stat row -->
+        <div class="ab-hero-stats" data-reveal data-reveal-delay="4">
+          {[
+            { n: 58,    s: '+',   sep: false, label: 'Years in extrusion' },
+            { n: 35000, s: ' MT', sep: true,  label: 'Annual capacity' },
+            { n: 900,   s: '+',   sep: false, label: 'Customers worldwide' },
+            { n: 5,     s: '',    sep: false, label: 'Extrusion presses' },
+          ].map(({ n, s, sep, label }) => (
+            <div class="ab-stat">
+              <div class="ab-stat-n" data-countup={n} data-suffix={s} data-separator={sep ? ',' : ''}>
+                {sep ? n.toLocaleString() : n}{s}
+              </div>
+              <div class="ab-stat-l">{label}</div>
             </div>
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-top:6px">{label}</div>
+          ))}
+        </div>
+
+        <div class="ab-hero-ctas" data-reveal data-reveal-delay="5">
+          <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+          <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-scroll-cue" aria-hidden="true">
+      <span class="ab-scroll-line"></span>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       VALUMINIUM — dark identity band
+       ══════════════════════════════════════════════════════════ -->
+  <section class="ab-ethos" data-reveal="fade">
+    <div class="container ab-ethos-inner">
+      <div class="ab-ethos-left">
+        <div class="eyebrow on-dark">Our ethos</div>
+        <div class="ab-ethos-word">Valuminium</div>
+        <div class="ab-ethos-rule"></div>
+      </div>
+      <blockquote class="ab-ethos-quote">
+        <p>
+          At Banco, we live by <strong>Valuminium</strong> — a commitment to delivering genuine
+          value through aluminium. It pushes each team member to think beyond the profile
+          and consider the downstream impact of every decision: on cost, on lead time,
+          on quality, and on the customer's end application.
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       STORY — sticky headline + editorial copy + photos
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="ab-story-grid">
+
+        <div class="ab-story-anchor" data-reveal="left">
+          <div class="eyebrow">Our story</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:20px">
+            Integrated.<br/>
+            <em class="accent">Independent.</em><br/>
+            Dependable.
+          </h2>
+          <div class="ab-story-rule"></div>
+          <div class="ab-story-meta">
+            <span>Vadodara, Gujarat</span>
+            <span>·</span>
+            <span>Est. 1967</span>
+            <span>·</span>
+            <span>Family-owned</span>
+          </div>
+        </div>
+
+        <div class="ab-story-body" data-reveal="right">
+          <p class="ab-story-lead">
+            Banco Aluminium delivers the control of an integrated manufacturer
+            with the flexibility of a customer-focused aluminium solutions partner.
+          </p>
+          <p class="ab-story-p">
+            In an industry where most suppliers are either pure extruders or pure traders,
+            Banco owns the complete production chain — from melting and billet casting
+            through extrusion, heat treatment, machining, cold drawing, and surface finishing.
+            This integration is not just a manufacturing advantage — it is a quality and
+            responsiveness advantage.
+          </p>
+          <p class="ab-story-p">
+            When a customer requests an alloy modification, a die correction, or a downstream
+            value-add, the answer does not depend on a third party. It happens in-house,
+            on our schedule, under our quality systems.
+          </p>
+          <p class="ab-story-p">
+            With five extrusion presses ranging from 1,100 MT to 3,300 MT and a 55,000 MT
+            foundry, Banco operates at a scale that supports both high-volume OEM supply
+            and specialised low-volume development programmes.
+          </p>
+
+          <!-- 2-up editorial photos -->
+          <div class="ab-story-photos">
+            <figure class="ab-story-fig">
+              <img src="/assets/manufacturing/melting-2.jpg" alt="Liquid aluminium at Banco foundry, Vadodara" loading="lazy" />
+              <figcaption>Melting · Foundry floor · Vadodara</figcaption>
+            </figure>
+            <figure class="ab-story-fig">
+              <img src="/assets/manufacturing/homo-2.jpg" alt="Controlled-atmosphere homogenising furnace" loading="lazy" />
+              <figcaption>Homogenising · Controlled atmosphere furnace</figcaption>
+            </figure>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       STATS STRIP — 4-cell on white
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-white" style="padding:0">
+    <div class="stat-strip ab-stats-strip" data-reveal="fade">
+      {[
+        { n: 35000, s: ' MT', sep: true,  u: '',   label: 'Annual extrusion capacity' },
+        { n: 55000, s: ' MT', sep: true,  u: '',   label: 'Annual foundry capacity' },
+        { n: 900,   s: '+',   sep: false, u: '',   label: 'Customers worldwide' },
+        { n: 58,    s: '+',   sep: false, u: 'yrs',label: 'Years of extrusion heritage' },
+      ].map(({ n, s, sep, u, label }) => (
+        <div class="stat-strip-cell">
+          <div style="display:flex;align-items:baseline;gap:4px">
+            <span class="ssn" data-countup={n} data-suffix={s} data-separator={sep ? ',' : ''}>
+              {sep ? n.toLocaleString() : n}{s}
+            </span>
+            {u && <span class="ssu">{u}</span>}
+          </div>
+          <div class="ssl">{label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       PROCESS CHAIN — 6-step integrated production
+       ══════════════════════════════════════════════════════════ -->
+  <section class="ab-process section-dark">
+    <div class="container">
+      <div class="ab-process-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">/ Integrated manufacturing</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            Six stages.<br/><em class="accent">One address.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
+          Every stage of aluminium production under one roof in Vadodara —
+          owned, operated and quality-controlled by Banco.
+        </p>
+      </div>
+
+      <div class="ab-process-grid">
+        {process.map((p, i) => (
+          <div class="ab-process-cell" data-reveal="fade" style={`--delay:${i * 55}ms`}>
+            <div class="ab-process-num">{p.n}</div>
+            <div class="ab-process-title">{p.title}</div>
+            <div class="ab-process-sub">{p.sub}</div>
+            <div class="ab-process-rule"></div>
+            <div class="ab-process-desc">{p.desc}</div>
           </div>
         ))}
       </div>
+
+      <div style="margin-top:40px;text-align:center" data-reveal="fade">
+        <a href="/capabilities/extrusion" class="btn btn-secondary-dark">
+          Explore all capabilities →
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Valuminium — narrow dark band -->
-  <section style="background:var(--color-navy-deep);padding:40px 0;border-top:2px solid var(--color-green);border-bottom:1px solid var(--color-navy-line)">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center">
-        <div>
-          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-nickel);margin-bottom:10px">Our ethos</div>
-          <div style="font-family:var(--font-sans);font-size:32px;font-weight:800;letter-spacing:-0.03em;color:var(--color-platinum);line-height:1">Valuminium</div>
-          <div style="width:32px;height:2px;background:var(--color-green);margin-top:12px"></div>
-        </div>
-        <div style="font-family:var(--font-sans);font-size:15px;line-height:1.7;color:var(--color-silver);max-width:68ch">
-          At Banco, we live by our ethos of <strong style="color:var(--color-platinum);font-weight:600">Valuminium</strong> — a commitment to delivering
-          genuine value through aluminium. It pushes each of our team members to think beyond the
-          profile and consider the downstream impact of every decision: on cost, on lead time, on quality,
-          and on the customer's end application. Valuminium is the standard by which we measure
-          every engagement, every shipment, and every relationship.
+
+  <!-- ══════════════════════════════════════════════════════════
+       VIDEO WINDOW — cinematic mid-page
+       ══════════════════════════════════════════════════════════ -->
+  <section class="ab-vwin">
+    <video class="ab-vwin-vid" autoplay muted loop playsinline preload="none">
+      <source src="/herovideo.mp4" type="video/mp4" />
+    </video>
+    <div class="ab-vwin-overlay"></div>
+    <div class="container ab-vwin-body">
+      <div class="ab-vwin-content" data-reveal="left">
+        <div class="eyebrow on-dark">Live operations</div>
+        <h2 class="t-h2 ab-vwin-h2">
+          From liquid metal<br/>to finished profile.
+        </h2>
+        <p class="ab-vwin-p">
+          Foundry. Extrusion. Die shop. Heat treatment.
+          Machining. Surface finishing. All in Vadodara.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px">
+          <a href="/capabilities/foundry" class="btn btn-primary-dark">Foundry & casting</a>
+          <a href="/capabilities/extrusion" class="btn btn-secondary-dark">Extrusion</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Company description -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start">
-        <div style="position:sticky;top:120px">
-          <div class="eyebrow">Our story</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Integrated.<br/><em class="accent">Independent.</em><br/>Dependable.
-          </h2>
-        </div>
-        <div>
-          <p style="color:var(--color-stone-700);font-size:17px;line-height:1.7;margin-bottom:20px">
-            Banco Aluminium delivers the control of an integrated manufacturer with the
-            flexibility of a customer-focused aluminium solutions partner. In an industry
-            where most suppliers are either pure extruders or pure traders, Banco owns
-            the complete production chain — from melting and billet casting through
-            extrusion, heat treatment, machining, cold drawing, and surface finishing.
-          </p>
-          <p style="color:var(--color-stone-700);font-size:16px;line-height:1.65;margin-bottom:20px">
-            This integration is not just a manufacturing advantage — it is a quality and
-            responsiveness advantage. When a customer requests an alloy modification, a
-            die correction, or a downstream value-add, the answer does not depend on a
-            third party. It happens in-house, on our schedule, under our quality systems.
-          </p>
-          <p style="color:var(--color-stone-700);font-size:16px;line-height:1.65">
-            With five extrusion presses ranging from 1,100 MT to 3,300 MT, 35,000 MT
-            of annual extrusion capacity, and a 55,000 MT foundry, Banco operates at a
-            scale that supports both high-volume OEM supply and specialised low-volume
-            development — making us a credible single source for industrial, architectural,
-            and cast product requirements.
-          </p>
 
-          <!-- Feature photos — 2-up grid -->
-          <div class="about-story-photos" style="margin-top:36px">
-            <div class="about-story-photo">
-              <img
-                src="/assets/manufacturing/melting-2.jpg"
-                alt="Liquid aluminium — Banco foundry melting operations"
-                loading="lazy"
-              />
-              <div class="about-sp-caption">Melting · Foundry floor · Vadodara</div>
-            </div>
-            <div class="about-story-photo">
-              <img
-                src="/assets/manufacturing/homo-2.jpg"
-                alt="Batch homogenising furnace — Banco Aluminium"
-                loading="lazy"
-              />
-              <div class="about-sp-caption">Homogenising · Controlled atmosphere furnace</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Facility — curated 6-photo feature grid -->
-  <section class="section-alt" style="padding:64px 0 72px">
+  <!-- ══════════════════════════════════════════════════════════
+       FACILITY — editorial photo grid
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-alt" style="padding:72px 0 80px">
     <div class="container">
-      <div class="about-fac-head">
+      <div class="ab-fac-head" data-reveal="fade">
         <div>
           <div class="eyebrow">/ Vadodara, Gujarat · Est. 1967</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            The integrated<br>manufacturing facility.
+            The integrated<br/>manufacturing facility.
           </h2>
         </div>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
-          From liquid aluminium to finished profile — every stage under one roof.
-          35,000 MT annual extrusion capacity. 55,000 MT foundry.
+          35,000 MT annual extrusion capacity across five presses.
+          55,000 MT in-house foundry. All under one roof.
         </p>
       </div>
-      <div class="about-fac-grid">
-        <!-- Large feature photo -->
-        <div class="about-fac-feature">
-          <img
-            src="/assets/manufacturing/casting-1.jpg"
-            alt="Cylinder-guided Hot-Top billet casting — Banco Aluminium foundry, Vadodara"
-            loading="lazy"
-          />
-          <div class="about-fac-label">Hot-Top casting · Banco foundry</div>
+
+      <!-- Editorial mosaic: 1 large + 4 supporting -->
+      <div class="ab-fac-mosaic" data-reveal="fade">
+        <div class="ab-fac-main">
+          <img src="/assets/manufacturing/casting-1.jpg" alt="Hot-Top billet casting at Banco foundry, Vadodara" loading="lazy" />
+          <div class="ab-fac-caption">Hot-Top casting · Banco foundry · Vadodara</div>
         </div>
-        <!-- 4 supporting photos -->
         {[
           ['/assets/manufacturing/melting-4.jpg',  'Metal tapping — melting furnace operations'],
           ['/assets/manufacturing/casting-5.jpg',  'Casting pit — controlled cooling zone'],
-          ['/assets/manufacturing/billet-1.jpg',   'Finished extrusion billets — ready for press'],
+          ['/assets/manufacturing/billet-1.jpg',   'Finished extrusion billets — press-ready'],
           ['/assets/manufacturing/quality-1.jpg',  'Spectromax OES — 100% chemical analysis'],
         ].map(([src, alt]) => (
-          <div class="about-fac-thumb">
+          <div class="ab-fac-thumb">
             <img src={src} alt={alt} loading="lazy" />
-            <div class="about-fac-label">{alt}</div>
+            <div class="ab-fac-caption">{alt}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Timeline -->
-  <section class="section-alt section-pad">
-    <div class="container">
-      <div class="eyebrow">Heritage</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:48px">
-        58 years of <em class="accent">aluminium</em> experience.
-      </h2>
-      <div style="display:flex;flex-direction:column;gap:0;max-width:800px">
-        {milestones.map((m) => (
-          <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--color-stone-200);align-items:start">
-            <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-green);padding-top:2px">{m.year}</div>
-            <div style="font-family:var(--font-display);font-size:20px;color:var(--color-navy)">{m.event}</div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TIMELINE — heritage vertical
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-alt section-pad" style="border-top:1px solid var(--color-stone-200)">
+    <div class="container ab-timeline-wrap">
+      <div class="ab-timeline-head" data-reveal="left">
+        <div class="eyebrow">Heritage</div>
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          58 years of<br/><em class="accent">aluminium</em> experience.
+        </h2>
+      </div>
+
+      <div class="ab-timeline">
+        <div class="ab-timeline-line" aria-hidden="true"></div>
+        {milestones.map((m, i) => (
+          <div class="ab-timeline-row" data-reveal="fade" style={`--delay:${i * 70}ms`}>
+            <div class="ab-timeline-dot" aria-hidden="true"></div>
+            <div class="ab-timeline-year">{m.year}</div>
+            <div class="ab-timeline-event">{m.event}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Better Relationships | Better Solutions -->
-  <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
+
+  <!-- ══════════════════════════════════════════════════════════
+       CLIENT LOGOS — animated marquee
+       ══════════════════════════════════════════════════════════ -->
+  <section class="ab-logos-section" data-reveal="fade">
+    <div class="ab-logos-label">
+      <span class="eyebrow">Trusted by industry leaders</span>
+    </div>
+    <div class="ab-logos-track-wrap" aria-label="Notable clients">
+      <div class="ab-logos-track">
+        {/* Duplicated for seamless loop */}
+        {[...Array(2)].map(() =>
+          [
+            { src: '/assets/logos/reliance.svg',  alt: 'Reliance Industries',  h: 30 },
+            { src: '/assets/logos/lt.svg',         alt: 'Larsen & Toubro',      h: 38 },
+            { src: '/assets/logos/siemens.svg',    alt: 'Siemens',              h: 28 },
+            { src: '/assets/logos/abb.svg',        alt: 'ABB',                  h: 34 },
+            { src: '/assets/logos/schneider.svg',  alt: 'Schneider Electric',   h: 40 },
+            { src: '/assets/logos/alstom.svg',     alt: 'Alstom',               h: 32 },
+          ].map(({ src, alt, h }) => (
+            <div class="ab-logo-item">
+              <img src={src} alt={alt} style={`height:${h}px;width:auto`} loading="lazy" />
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       TESTIMONIALS — client voices
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-light" style="padding:80px 0">
     <div class="container">
-      <div class="about-testi-head">
+      <div class="ab-testi-head" data-reveal="fade">
         <div>
           <div class="eyebrow">Client portfolio</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Better relationships.<br>Better solutions.
+            Better relationships.<br/>Better solutions.
           </h2>
         </div>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
@@ -225,13 +393,15 @@ const testimonials = [
           sectors in India and four export regions.
         </p>
       </div>
-      <div class="about-testi-grid">
-        {testimonials.map((t) => (
-          <div class="about-testi-card">
-            <p class="about-testi-quote">"{t.quote}"</p>
-            <div class="about-testi-foot">
-              <div class="about-testi-client">{t.client}</div>
-              <div class="about-testi-loc">{t.location}</div>
+
+      <div class="ab-testi-grid" data-reveal="fade">
+        {testimonials.map((t, i) => (
+          <div class="ab-testi-card" style={`--delay:${i * 60}ms`}>
+            <div class="ab-testi-open-quote" aria-hidden="true">"</div>
+            <p class="ab-testi-quote">{t.quote}</p>
+            <div class="ab-testi-foot">
+              <div class="ab-testi-client">{t.client}</div>
+              <div class="ab-testi-loc">{t.location}</div>
             </div>
           </div>
         ))}
@@ -239,81 +409,255 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Why Banco -->
+
+  <!-- ══════════════════════════════════════════════════════════
+       WHY BANCO — 7 reasons, alternating hover
+       ══════════════════════════════════════════════════════════ -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">Why customers choose Banco</div>
-      <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:48px">
-        Seven reasons.<br/><em class="accent">One partner.</em>
-      </h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-navy-line)">
+      <div data-reveal="left">
+        <div class="eyebrow on-dark">Why customers choose Banco</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:56px">
+          Seven reasons.<br/><em class="accent">One partner.</em>
+        </h2>
+      </div>
+
+      <div class="ab-why-grid" data-reveal="fade">
         {reasons.map(([heading, desc], i) => (
-          <div style="background:var(--color-navy-soft);padding:28px 24px">
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-green);margin-bottom:8px">
-              {String(i + 1).padStart(2, '0')}
-            </div>
-            <div style="font-family:var(--font-display);font-size:20px;color:var(--color-stone-50);margin-bottom:8px">{heading}</div>
-            <div style="font-size:14px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
+          <div class="ab-why-card">
+            <div class="ab-why-n">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="ab-why-h">{heading}</h3>
+            <p class="ab-why-d">{desc}</p>
           </div>
         ))}
       </div>
-      <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap">
+
+      <div class="ab-why-ctas" data-reveal="fade">
         <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
         <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
         <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
       </div>
     </div>
   </section>
+
 </Layout>
 
+<!-- ═══════════════════════════════════════════════════════════ -->
 <style>
-  /* ── Hero with photo background ────────────────────────────────────────── */
-  .about-hero {
+  /* ── HERO ──────────────────────────────────────────────────── */
+  .ab-hero {
     position: relative;
-    background: var(--color-navy);
-    padding-top: 140px;
-    padding-bottom: 80px;
+    background: var(--color-navy-deep);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
     overflow: hidden;
   }
-  .about-hero-bg {
+  .ab-hero-media {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
-  .about-hero-bg img {
+  .ab-hero-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.14;
-    filter: grayscale(60%);
+    object-position: center 30%;
   }
-  .about-hero::after {
-    content: '';
+  .ab-hero-scrim {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    background: linear-gradient(135deg, var(--color-navy) 45%, transparent 100%);
+    background: rgba(6, 21, 37, 0.58);
+  }
+  .ab-hero-grad {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(110deg, rgba(6,21,37,0.72) 0%, rgba(6,21,37,0.18) 60%),
+      linear-gradient(to bottom, transparent 55%, var(--color-navy-deep) 100%);
+  }
+  .ab-hero-body {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 140px;
+    padding-bottom: 120px;
+  }
+  .ab-hero-inner { max-width: 680px; }
+  .ab-hero-h1 {
+    color: var(--color-stone-50);
+    margin-top: 20px;
+  }
+  .ab-hero-lede {
+    color: var(--color-stone-400);
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1.65;
+    max-width: 52ch;
+    margin-top: 24px;
+  }
+  .ab-hero-stats {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    margin-top: 52px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .ab-stat {
+    padding-right: 40px;
+    margin-right: 40px;
+    border-right: 1px solid rgba(255,255,255,0.10);
+  }
+  .ab-stat:last-child { border-right: none; }
+  .ab-stat-n {
+    font-family: var(--font-sans);
+    font-size: clamp(30px, 3.6vw, 46px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-stone-50);
+    line-height: 1;
+  }
+  .ab-stat-l {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    margin-top: 8px;
+  }
+  .ab-hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 40px;
   }
 
-  /* ── Company description — feature photos ──────────────────────────────── */
-  .about-story-photos {
+  /* Scroll cue */
+  .ab-scroll-cue {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  .ab-scroll-line {
+    display: block;
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--color-green), transparent);
+    animation: ab-drop 2s ease-in-out infinite;
+  }
+  @keyframes ab-drop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ── ETHOS ─────────────────────────────────────────────────── */
+  .ab-ethos {
+    background: var(--color-navy-deep);
+    border-top: 2px solid var(--color-green);
+    border-bottom: 1px solid var(--color-navy-line);
+    padding: 52px 0;
+  }
+  .ab-ethos-inner {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .ab-ethos-left .eyebrow { margin-bottom: 12px; }
+  .ab-ethos-word {
+    font-family: var(--font-sans);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-platinum);
+    line-height: 1;
+  }
+  .ab-ethos-rule {
+    width: 36px;
+    height: 2px;
+    background: var(--color-green);
+    margin-top: 16px;
+  }
+  .ab-ethos-quote {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ab-ethos-quote p {
+    font-size: clamp(16px, 1.5vw, 18px);
+    line-height: 1.75;
+    color: var(--color-silver);
+    max-width: 68ch;
+  }
+  .ab-ethos-quote strong { color: var(--color-platinum); font-weight: 600; }
+
+  /* ── STORY ─────────────────────────────────────────────────── */
+  .ab-story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(48px, 7vw, 100px);
+    align-items: start;
+  }
+  .ab-story-anchor {
+    position: sticky;
+    top: 100px;
+  }
+  .ab-story-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--color-stone-400);
+    margin: 28px 0;
+  }
+  .ab-story-meta {
+    display: flex;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    flex-wrap: wrap;
+  }
+  .ab-story-lead {
+    font-size: clamp(18px, 1.8vw, 20px);
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--color-navy);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .ab-story-p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-stone-700);
+    margin-bottom: 18px;
+  }
+  .ab-story-photos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px;
+    gap: 3px;
+    margin-top: 40px;
   }
-  .about-story-photo {
+  .ab-story-fig {
     overflow: hidden;
     border: 1px solid var(--color-stone-200);
+    margin: 0;
   }
-  .about-story-photo img {
+  .ab-story-fig img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4/3;
     object-fit: cover;
     display: block;
-    transition: transform 0.45s ease;
+    transition: transform 0.5s ease;
   }
-  .about-story-photo:hover img { transform: scale(1.04); }
-  .about-sp-caption {
+  .ab-story-fig:hover img { transform: scale(1.05); }
+  .ab-story-fig figcaption {
     font-family: var(--font-mono);
     font-size: 9px;
     letter-spacing: 0.12em;
@@ -324,49 +668,180 @@ const testimonials = [
     background: var(--color-stone-50);
   }
 
-  /* ── Facility feature grid ──────────────────────────────────────────────── */
-  .about-fac-head {
+  /* ── STATS STRIP ───────────────────────────────────────────── */
+  .ab-stats-strip {
+    border: none;
+    background: var(--color-stone-200);
+  }
+  .ab-stats-strip .stat-strip-cell {
+    background: #fff;
+    padding: 36px 32px;
+  }
+  .ab-stats-strip .ssn {
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--color-navy);
+    letter-spacing: -0.03em;
+  }
+
+  /* ── PROCESS CHAIN ─────────────────────────────────────────── */
+  .ab-process { padding: 80px 0; }
+  .ab-process-head {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 4vw, 80px);
+    gap: clamp(32px, 5vw, 80px);
     align-items: start;
-    margin-bottom: 32px;
+    margin-bottom: 48px;
   }
-  .about-fac-grid {
+  .ab-process-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--color-navy-line);
+  }
+  .ab-process-cell {
+    background: var(--color-navy-soft);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: background 0.25s ease;
+    animation-delay: var(--delay, 0ms);
+    transition-delay: var(--delay, 0ms);
+  }
+  .ab-process-cell:hover { background: var(--color-navy); }
+  .ab-process-cell::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-green);
+    transition: width 0.35s ease;
+  }
+  .ab-process-cell:hover::after { width: 100%; }
+  .ab-process-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin-bottom: 16px;
+  }
+  .ab-process-title {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-stone-50);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .ab-process-sub {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    margin-top: 4px;
+    margin-bottom: 16px;
+  }
+  .ab-process-rule {
+    width: 24px;
+    height: 1px;
+    background: var(--color-navy-line);
+    margin-bottom: 16px;
+  }
+  .ab-process-desc {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--color-stone-400);
+    margin-top: auto;
+  }
+
+  /* ── VIDEO WINDOW ──────────────────────────────────────────── */
+  .ab-vwin {
+    position: relative;
+    height: clamp(440px, 62vh, 700px);
+    overflow: hidden;
+  }
+  .ab-vwin-vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  .ab-vwin-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(115deg, rgba(6,21,37,0.88) 0%, rgba(6,21,37,0.50) 50%, rgba(6,21,37,0.10) 100%),
+      linear-gradient(to bottom, transparent 50%, rgba(6,21,37,0.60) 100%);
+  }
+  .ab-vwin-body {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .ab-vwin-content { max-width: 560px; }
+  .ab-vwin-h2 {
+    color: var(--color-stone-50);
+    margin-top: 16px;
+  }
+  .ab-vwin-p {
+    color: var(--color-stone-400);
+    font-size: 16px;
+    line-height: 1.65;
+    max-width: 44ch;
+    margin-top: 18px;
+  }
+
+  /* ── FACILITY MOSAIC ───────────────────────────────────────── */
+  .ab-fac-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    margin-bottom: 28px;
+  }
+  .ab-fac-mosaic {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 4px;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
   }
-  .about-fac-feature {
+  .ab-fac-main {
     grid-row: 1 / 3;
-    position: relative;
     overflow: hidden;
     border: 1px solid var(--color-stone-200);
+    position: relative;
   }
-  .about-fac-feature img {
+  .ab-fac-main img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
-    min-height: 320px;
+    min-height: 340px;
+    transition: transform 0.6s ease;
   }
-  .about-fac-feature:hover img { transform: scale(1.04); }
-  .about-fac-thumb {
-    position: relative;
+  .ab-fac-main:hover img { transform: scale(1.03); }
+  .ab-fac-thumb {
     overflow: hidden;
     border: 1px solid var(--color-stone-200);
   }
-  .about-fac-thumb img {
+  .ab-fac-thumb img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4/3;
     object-fit: cover;
     display: block;
-    transition: transform 0.45s ease;
+    transition: transform 0.5s ease;
   }
-  .about-fac-thumb:hover img { transform: scale(1.05); }
-  .about-fac-label {
+  .ab-fac-thumb:hover img { transform: scale(1.05); }
+  .ab-fac-caption {
     font-family: var(--font-mono);
     font-size: 9px;
     letter-spacing: 0.1em;
@@ -377,54 +852,161 @@ const testimonials = [
     background: var(--color-stone-50);
   }
 
-  /* Testimonials */
-  .about-testi-head {
+  /* ── TIMELINE ──────────────────────────────────────────────── */
+  .ab-timeline-wrap {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .ab-timeline-head { position: sticky; top: 100px; }
+  .ab-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+  }
+  .ab-timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--color-green), var(--color-stone-200));
+  }
+  .ab-timeline-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-stone-200);
+    align-items: start;
+    transition-delay: var(--delay, 0ms);
+  }
+  .ab-timeline-row:last-child { border-bottom: none; }
+  .ab-timeline-dot {
+    position: absolute;
+    left: -32px;
+    top: 26px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-green);
+    background: var(--color-stone-100);
+    border-radius: 50%;
+  }
+  .ab-timeline-year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .ab-timeline-event {
+    font-family: var(--font-sans);
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 400;
+    color: var(--color-navy);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── LOGO MARQUEE ──────────────────────────────────────────── */
+  .ab-logos-section {
+    background: var(--color-stone-50);
+    border-top: 1px solid var(--color-stone-200);
+    border-bottom: 1px solid var(--color-stone-200);
+    padding: 40px 0;
+    overflow: hidden;
+  }
+  .ab-logos-label {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .ab-logos-track-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  .ab-logos-track {
+    display: flex;
+    width: max-content;
+    animation: logo-scroll 28s linear infinite;
+  }
+  .ab-logos-track:hover { animation-play-state: paused; }
+  @keyframes logo-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ab-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 56px;
+    filter: grayscale(100%);
+    opacity: 0.45;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+    flex-shrink: 0;
+  }
+  .ab-logo-item:hover { filter: grayscale(0%); opacity: 1; }
+
+  /* ── TESTIMONIALS ──────────────────────────────────────────── */
+  .ab-testi-head {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 4vw, 80px);
+    gap: clamp(32px, 5vw, 80px);
     align-items: start;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
-  .about-testi-grid {
+  .ab-testi-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--color-stone-200);
     border: 1px solid var(--color-stone-200);
   }
-  .about-testi-card {
+  .ab-testi-card {
     background: var(--color-stone-50);
-    padding: 28px 24px;
+    padding: 32px 28px 28px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     border-top: 2px solid transparent;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    transition: border-top-color 0.2s ease, background 0.2s ease;
+    transition-delay: var(--delay, 0ms);
   }
-  .about-testi-card:hover {
+  .ab-testi-card:hover {
     border-top-color: var(--color-green);
     background: white;
   }
-  .about-testi-quote {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--color-stone-700);
-    font-style: normal;
-    flex: 1;
+  .ab-testi-open-quote {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    line-height: 0.8;
+    color: var(--color-green);
+    margin-bottom: 16px;
+    opacity: 0.7;
   }
-  .about-testi-foot {
-    padding-top: 16px;
+  .ab-testi-quote {
+    font-size: 14.5px;
+    line-height: 1.72;
+    color: var(--color-stone-700);
+    flex: 1;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .ab-testi-foot {
+    padding-top: 18px;
     border-top: 1px solid var(--color-stone-200);
   }
-  .about-testi-client {
-    font-family: var(--font-sans);
+  .ab-testi-client {
     font-size: 13px;
     font-weight: 700;
     color: var(--color-navy);
     letter-spacing: -0.01em;
   }
-  .about-testi-loc {
+  .ab-testi-loc {
     font-family: var(--font-mono);
     font-size: 9.5px;
     letter-spacing: 0.14em;
@@ -433,38 +1015,141 @@ const testimonials = [
     margin-top: 3px;
   }
 
-  .about-gallery {
+  /* ── WHY BANCO ─────────────────────────────────────────────── */
+  .ab-why-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    gap: 1px;
+    background: var(--color-navy-line);
   }
-  .about-photo {
-    aspect-ratio: 4 / 3;
+  .ab-why-card {
+    background: var(--color-navy-soft);
+    padding: 32px 24px;
+    position: relative;
     overflow: hidden;
-    background: var(--color-stone-200);
-    border: 1px solid var(--color-stone-200);
+    transition: background 0.25s ease;
   }
-  .about-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
+  .ab-why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
   }
-  .about-photo:hover img { transform: scale(1.04); }
+  .ab-why-card:hover { background: var(--color-navy); }
+  .ab-why-card:hover::before { transform: scaleX(1); }
+  .ab-why-n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--color-green);
+    margin-bottom: 16px;
+  }
+  .ab-why-h {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.3vw, 18px);
+    font-weight: 600;
+    color: var(--color-stone-50);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .ab-why-d {
+    font-size: 13px;
+    color: var(--color-stone-400);
+    line-height: 1.6;
+  }
+  .ab-why-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+  }
 
-  @media (max-width: 1024px) {
-    .about-testi-grid  { grid-template-columns: repeat(2, 1fr); }
-    .about-testi-head  { grid-template-columns: 1fr; }
-    .about-fac-head    { grid-template-columns: 1fr; }
-    .about-fac-grid    { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .about-fac-feature { grid-row: auto; }
-    .about-fac-feature img { min-height: auto; }
-    .about-story-photos { grid-template-columns: 1fr 1fr; }
+  /* ── RESPONSIVE ────────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .ab-process-grid { grid-template-columns: repeat(3, 1fr); }
+    .ab-why-grid     { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .ab-ethos-inner   { grid-template-columns: 1fr; gap: 28px; }
+    .ab-story-grid    { grid-template-columns: 1fr; gap: 40px; }
+    .ab-story-anchor  { position: static; }
+    .ab-fac-head      { grid-template-columns: 1fr; }
+    .ab-fac-mosaic    { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .ab-fac-main      { grid-row: auto; }
+    .ab-fac-main img  { min-height: auto; }
+    .ab-testi-head    { grid-template-columns: 1fr; }
+    .ab-testi-grid    { grid-template-columns: repeat(2, 1fr); }
+    .ab-timeline-wrap { grid-template-columns: 1fr; }
+    .ab-timeline-head { position: static; }
+    .ab-process-head  { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .about-testi-grid  { grid-template-columns: 1fr; }
-    .about-fac-grid    { grid-template-columns: 1fr 1fr; }
-    .about-story-photos { grid-template-columns: 1fr; }
+    .ab-hero-stats    { gap: 0; }
+    .ab-stat          { padding-right: 24px; margin-right: 24px; }
+    .ab-process-grid  { grid-template-columns: repeat(2, 1fr); }
+    .ab-testi-grid    { grid-template-columns: 1fr; }
+    .ab-why-grid      { grid-template-columns: 1fr 1fr; }
+    .ab-story-photos  { grid-template-columns: 1fr; }
+    .ab-hero-body     { padding-top: 110px; }
+    .ab-hero-video    { display: none; }
+    .ab-hero-grad     { background: rgba(6,21,37,0.85); }
+    .ab-vwin-vid      { display: none; }
+    .ab-vwin-overlay  { background: var(--color-navy); }
+    .ab-scroll-cue    { display: none; }
+    .ab-timeline-wrap { display: block; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ab-hero-video, .ab-vwin-vid { display: none; }
+    .ab-scroll-line    { animation: none; opacity: 0.5; }
+    .ab-logos-track    { animation: none; }
   }
 </style>
+
+<script>
+  /* Pause videos on hidden tab */
+  const vids = document.querySelectorAll<HTMLVideoElement>('.ab-hero-video, .ab-vwin-vid');
+  document.addEventListener('visibilitychange', () => {
+    vids.forEach(v => document.hidden ? v.pause() : v.play().catch(() => {}));
+  });
+
+  /* Count-up animation (fires on first intersect) */
+  function easeOut(t: number) { return 1 - (1 - t) ** 3; }
+
+  function runCount(el: HTMLElement) {
+    const target = parseInt(el.dataset.countup ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const useSep = !!el.dataset.separator;
+    const dur = 1800;
+    const t0 = performance.now();
+    const fmt = (n: number) => {
+      const s = Math.round(n).toString();
+      return useSep ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : s;
+    };
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = fmt(easeOut(p) * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          runCount(e.target as HTMLElement);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll<HTMLElement>('[data-countup]').forEach(el => io.observe(el));
+  }
+</script>

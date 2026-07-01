@@ -21,44 +21,58 @@ const externalOptions = [
 <Layout
   title="Packing options — Banco Aluminium"
   description="Customer-specified packing. Export-ready. Five internal protection options and five external bundle packing options. Full export documentation including CBAM carbon data."
+  transparentNav={true}
 >
 
-  <section class="pk-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Packing</div>
-      <h1 class="pk-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Packing</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Customer-specified<br>packing.<br>Export-ready.
       </h1>
-      <p class="pk-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Packing specification is part of every order, not an afterthought. Banco
         maintains five internal protection options and five external bundle packing
         configurations — individually specified per product, per destination, and
         per customer requirement.
       </p>
-      <div class="pk-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '5',         l: 'Internal protection options' },
           { n: '5',         l: 'External bundle options' },
           { n: 'ISPM 15',   l: 'Heat-treated export timber' },
           { n: 'CBAM-ready',l: 'Carbon data for EU imports' },
         ].map(({ n, l }) => (
-          <div class="pk-stat">
-            <div class="pk-stat-n">{n}</div>
-            <div class="pk-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Internal protection -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Internal protection</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow" data-reveal="fade">/ 01 · Internal protection</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px" data-reveal>
         Profile-to-profile protection.<br>Five options.
       </h2>
-      <div class="pk-options-grid">
+      <div class="pk-options-grid" data-reveal="fade">
         {internalOptions.map((o) => (
           <div class="pk-option-card">
             <div class="pk-option-id">{o.id}</div>
@@ -67,7 +81,7 @@ const externalOptions = [
           </div>
         ))}
       </div>
-      <div class="pk-note">
+      <div class="pk-note" data-reveal="fade">
         <div class="pk-note-icon"></div>
         <p>Internal protection is specified per SKU and recorded in the production order. Mixed internal packing within a single bundle is possible where profile surface finish varies by layer.</p>
       </div>
@@ -77,11 +91,11 @@ const externalOptions = [
   <!-- External bundle packing -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · External bundle packing</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · External bundle packing</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
         Five bundle configurations.<br>Port-to-site protection.
       </h2>
-      <div class="pk-ext-grid">
+      <div class="pk-ext-grid" data-reveal="fade">
         {externalOptions.map((o) => (
           <div class="pk-ext-card">
             <div class="pk-ext-id">{o.id}</div>
@@ -90,7 +104,7 @@ const externalOptions = [
           </div>
         ))}
       </div>
-      <p class="pk-ext-note">
+      <p class="pk-ext-note" data-reveal="fade">
         All wooden packing components are manufactured from ISPM 15 heat-treated timber and bear the HT mark for unrestricted import into regulated markets.
         Pallet dimensions match 20-foot and 40-foot container floor dimensions for optimum container utilisation.
       </p>
@@ -100,9 +114,9 @@ const externalOptions = [
   <!-- Export documentation -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Export documentation</div>
+      <div class="eyebrow" data-reveal="fade">/ 03 · Export documentation</div>
       <div class="pk-doc-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Every shipment.<br>Complete documentation.
           </h2>
@@ -119,7 +133,7 @@ const externalOptions = [
             CBAM declaration supplementary document.
           </p>
         </div>
-        <div class="pk-docs-list">
+        <div class="pk-docs-list" data-reveal="right">
           {[
             {
               doc: 'Commercial invoice',
@@ -159,7 +173,7 @@ const externalOptions = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Packing & shipping</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -181,27 +195,6 @@ const externalOptions = [
 </Layout>
 
 <style>
-  .pk-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .pk-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .pk-hero > .container { position: relative; z-index: 1; }
-  .pk-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .pk-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .pk-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .pk-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .pk-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .pk-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .pk-options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .pk-option-card { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
   .pk-option-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
@@ -229,14 +222,17 @@ const externalOptions = [
     .pk-ext-grid     { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 1024px) {
-    .pk-stats { grid-template-columns: repeat(2, 1fr); }
     .pk-options-grid { grid-template-columns: repeat(2, 1fr); }
     .pk-ext-grid     { grid-template-columns: repeat(2, 1fr); }
     .pk-doc-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .pk-stats { grid-template-columns: 1fr 1fr; }
     .pk-options-grid { grid-template-columns: 1fr 1fr; }
     .pk-ext-grid     { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

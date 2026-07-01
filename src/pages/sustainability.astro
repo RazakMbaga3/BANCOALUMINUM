@@ -5,79 +5,176 @@ const pillars = [
   {
     index: '01',
     name: 'Scrap utilisation',
-    desc: 'Up to 50% pre and post-consumer scrap input — saves up to 95% of the energy required to extract and smelt primary aluminium. Green billet certification available.',
-    stats: [['Up to 50%', 'Recycled scrap input'], ['95%', 'Energy saving vs primary']],
+    img: '/assets/manufacturing/scrap-1.jpg',
+    imgAlt: 'Aluminium scrap at Banco foundry',
+    desc: 'Up to 50% pre and post-consumer scrap input — saves up to 95% of the energy required to extract and smelt primary aluminium. Green billet certification available on request.',
+    stats: [['50%', 'Recycled scrap input'], ['95%', 'Energy saving vs primary']],
   },
   {
     index: '02',
-    name: 'Energy efficiency',
-    desc: '100% natural gas in melting furnaces, 960 kW captive solar generation, and 1 MW hybrid power consumption — reducing grid dependency and carbon intensity.',
-    stats: [['960 kW', 'Captive solar'], ['1 MW', 'Hybrid power']],
+    name: 'Clean energy',
+    img: '/assets/manufacturing/melting-3.jpg',
+    imgAlt: 'Melting furnace operations at Banco Aluminium',
+    desc: '100% natural gas in melting furnaces, 960 kW captive solar generation, and 1 MW hybrid power consumption — reducing grid dependency and carbon intensity across operations.',
+    stats: [['960 kW', 'Captive solar installed'], ['1 MW', 'Hybrid power consumption']],
   },
   {
     index: '03',
     name: 'Waste reduction',
-    desc: 'SCADA-based process monitoring, stage-wise quality control, and MES-ERP integration minimise scrap generation at every step of the manufacturing chain.',
-    stats: [['8 steps', 'Quality gates'], ['SCADA', 'Online monitoring']],
+    img: '/assets/manufacturing/quality-2.jpg',
+    imgAlt: 'Quality control and process monitoring at Banco',
+    desc: 'SCADA-based process monitoring, stage-wise quality control, and MES-ERP integration minimise scrap generation at every step — from billet casting through to finished profile.',
+    stats: [['8 gates', 'Stage-wise quality holds'], ['SCADA', 'Live process monitoring']],
   },
   {
     index: '04',
     name: 'Certified systems',
-    desc: 'Three ISO management systems covering quality, environment, and occupational health and safety — audited annually by accredited third-party bodies.',
-    stats: [['ISO 14001', 'Environmental'], ['ISO 45001', 'Safety']],
+    img: '/assets/manufacturing/quality-1.jpg',
+    imgAlt: 'ISO certified quality and environmental management',
+    desc: 'Three ISO management systems covering quality, environment, and occupational health and safety — independently audited and renewed annually by accredited third-party bodies.',
+    stats: [['ISO 14001', 'Environmental mgmt'], ['ISO 45001', 'Safety mgmt']],
   },
+];
+
+const cbamData = [
+  ['Certified footprint',  '0.763 kg CO₂e / kg aluminium'],
+  ['Methodology',          'EN 15804 / GHG Protocol'],
+  ['Scope',                'Cradle to gate — foundry through finishing'],
+  ['Recycled content',     'Up to 50% declared per lot'],
+  ['Verification',         'Third-party audited — ISO 14064-1'],
+  ['Documentation',        'Available on request before order'],
+];
+
+const certs = [
+  { code: 'ISO 9001:2015',  label: 'Quality management' },
+  { code: 'ISO 14001:2015', label: 'Environmental management' },
+  { code: 'ISO 45001:2018', label: 'Occupational health & safety' },
+  { code: 'CBAM Certified', label: 'EU carbon border compliance' },
 ];
 ---
 
 <Layout
   title="Sustainability — Banco Aluminium"
-  description="Banco Aluminium CBAM-certified carbon footprint: 0.763 kg CO₂e per kg aluminium. 960 kW solar, 50% recycled scrap, 100% natural gas melting. ISO 14001, 45001, 9001 certified."
+  description="Banco Aluminium CBAM-certified carbon footprint: 0.763 kg CO₂e per kg aluminium. 960 kW solar, up to 50% recycled scrap, 100% natural gas melting. ISO 14001, ISO 45001, ISO 9001 certified."
+  transparentNav={true}
 >
-  <!-- Hero -->
-  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
-    <div class="container">
-      <div class="eyebrow on-dark">Responsible aluminium</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:20ch">
+
+  <!-- ══════════════════════════════════════════
+       HERO — video + carbon headline
+       ══════════════════════════════════════════ -->
+  <section class="su-hero">
+    <div class="su-hero-media" aria-hidden="true">
+      <video class="su-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="su-hero-scrim"></div>
+      <div class="su-hero-grad"></div>
+    </div>
+
+    <div class="container su-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
+        Responsible aluminium
+      </div>
+      <h1 class="t-h1 su-hero-h1" data-reveal data-reveal-delay="2">
         Lower carbon.<br/>
         <em class="accent">CBAM-ready.</em><br/>
         Verified.
       </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
-        Banco is committed to responsible aluminium manufacturing through lower-carbon
-        operations, clean energy, recycling, process control, and certified management
-        systems — fully documented for European import compliance under CBAM.
+      <p class="su-hero-lede" data-reveal data-reveal-delay="3">
+        Committed to responsible aluminium manufacturing through clean energy,
+        recycling, process control, and certified management systems —
+        fully documented for European CBAM compliance from January 2026.
       </p>
 
-      <!-- Key metric -->
-      <div style="display:flex;align-items:baseline;gap:8px;margin-top:48px">
-        <span style="font-family:var(--font-display);font-size:clamp(48px,6vw,80px);color:var(--color-stone-50);letter-spacing:-0.03em;line-height:1">0.763</span>
-        <span style="font-family:var(--font-display);font-size:28px;color:var(--color-green)">kg CO₂e / kg</span>
+      <!-- Hero carbon metric -->
+      <div class="su-hero-metric" data-reveal data-reveal-delay="4">
+        <div class="su-metric-main">
+          <span class="su-metric-val" data-countup-float="0.763" data-suffix="">0.763</span>
+          <span class="su-metric-unit">kg CO₂e<br/>per kg Al</span>
+        </div>
+        <div class="su-metric-label">CBAM-certified carbon footprint · ISO 14064-1 verified</div>
       </div>
-      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-stone-400);margin-top:8px">CBAM Certified Carbon Footprint</div>
+
+      <div class="su-hero-stats" data-reveal data-reveal-delay="5">
+        {[
+          { val: '960 kW', label: 'Captive solar installed' },
+          { val: '50%',    label: 'Max recycled scrap input' },
+          { val: '95%',    label: 'Energy saved vs primary Al' },
+          { val: '3',      label: 'ISO management systems' },
+        ].map(({ val, label }) => (
+          <div class="su-stat">
+            <div class="su-stat-n">{val}</div>
+            <div class="su-stat-l">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="su-scroll-cue" aria-hidden="true">
+      <span class="su-scroll-line"></span>
     </div>
   </section>
 
-  <!-- Four pillars -->
+
+  <!-- ══════════════════════════════════════════
+       ETHOS BAND — mission statement
+       ══════════════════════════════════════════ -->
+  <section class="su-ethos" data-reveal="fade">
+    <div class="container su-ethos-inner">
+      <div class="su-ethos-left">
+        <div class="eyebrow on-dark">Our commitment</div>
+        <div class="su-ethos-word">Responsible<br/>aluminium.</div>
+        <div class="su-ethos-rule"></div>
+      </div>
+      <blockquote class="su-ethos-quote">
+        <p>
+          Aluminium is one of the most recyclable materials on earth. Banco's responsibility
+          is to operate it that way — maximising recycled content, minimising energy intensity,
+          controlling every emission, and providing our customers with the carbon data they
+          need to meet their own sustainability commitments.
+        </p>
+      </blockquote>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOUR PILLARS — photo + stat cards
+       ══════════════════════════════════════════ -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">Four pillars</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:60px">
-        Our approach to <em class="accent">responsible</em> aluminium.
-      </h2>
+      <div class="su-pillars-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow">Four pillars</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Our approach to<br/><em class="accent">responsible</em> aluminium.
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
+          Four integrated commitments — measured, certified, and reported.
+          Not a policy document. An operating standard.
+        </p>
+      </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-stone-200)">
-        {pillars.map((p) => (
-          <div style="background:var(--color-stone-50);padding:40px">
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green);margin-bottom:12px">{p.index}</div>
-            <h3 class="t-h3" style="color:var(--color-navy);margin-bottom:16px">{p.name}</h3>
-            <p style="color:var(--color-stone-700);line-height:1.65;font-size:15px;margin-bottom:28px">{p.desc}</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-stone-200)">
-              {p.stats.map(([num, label]) => (
-                <div style="background:var(--color-stone-100);padding:16px">
-                  <div style="font-family:var(--font-display);font-size:24px;color:var(--color-navy)">{num}</div>
-                  <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400);margin-top:4px">{label}</div>
-                </div>
-              ))}
+      <div class="su-pillar-grid" data-reveal="fade">
+        {pillars.map((p, i) => (
+          <div class="su-pillar-card" style={`--delay:${i * 70}ms`}>
+            <div class="su-pillar-photo">
+              <img src={p.img} alt={p.imgAlt} loading="lazy" />
+              <div class="su-pillar-idx">{p.index}</div>
+            </div>
+            <div class="su-pillar-body">
+              <h3 class="su-pillar-name">{p.name}</h3>
+              <div class="su-pillar-rule"></div>
+              <p class="su-pillar-desc">{p.desc}</p>
+              <div class="su-pillar-stats">
+                {p.stats.map(([num, label]) => (
+                  <div class="su-pillar-stat">
+                    <div class="su-pillar-stat-n">{num}</div>
+                    <div class="su-pillar-stat-l">{label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -85,39 +182,134 @@ const pillars = [
     </div>
   </section>
 
-  <!-- CBAM section -->
-  <section class="section-dark section-pad">
+
+  <!-- ══════════════════════════════════════════
+       SOLAR + RECYCLING — split editorial
+       ══════════════════════════════════════════ -->
+  <section class="section-alt" style="padding:80px 0">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
-        <div>
-          <div class="eyebrow on-dark">European import compliance</div>
-          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
-            CBAM <em class="accent">documentation</em> available.
-          </h2>
-          <p style="color:var(--color-stone-400);font-size:16px;line-height:1.65;margin-top:20px">
-            The EU Carbon Border Adjustment Mechanism (CBAM) requires importers to declare
-            the embedded carbon in aluminium products from January 2026. Banco's CBAM-certified
-            footprint of 0.763 kg CO₂e per kilogram is fully documented and available to
-            support compliance for our European customers.
-          </p>
-          <p style="color:var(--color-stone-400);font-size:16px;line-height:1.65;margin-top:16px">
-            Our documentation covers the full production scope: foundry, extrusion, heat
-            treatment, machining and surface finishing — calculated to EN 15804 methodology.
-          </p>
-          <a href="/contact" class="btn btn-secondary-dark" style="margin-top:32px">Request CBAM documentation</a>
+
+      <!-- Solar -->
+      <div class="su-feature-split" data-reveal="fade">
+        <div class="su-feature-photo">
+          <img src="/assets/manufacturing/melting-5.jpg" alt="Clean energy operations at Banco Aluminium" loading="lazy" />
         </div>
-        <div style="display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--color-navy-line)">
-          {[
-            ['Certified footprint', '0.763 kg CO₂e / kg aluminium'],
-            ['Methodology', 'EN 15804 / GHG Protocol'],
-            ['Scope', 'Cradle to gate — foundry through finishing'],
-            ['Recycled content', 'Up to 50% declared'],
-            ['Verification', 'Third-party audited'],
-            ['Documentation', 'Available on request'],
-          ].map(([label, value]) => (
-            <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--color-navy-line)">
-              <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400)">{label}</div>
-              <div style="font-family:var(--font-display);font-size:16px;color:var(--color-stone-50)">{value}</div>
+        <div class="su-feature-copy" data-reveal="right">
+          <div class="eyebrow">Clean energy</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            960 kW of<br/><em class="accent">captive solar.</em>
+          </h2>
+          <p class="su-feature-p">
+            Banco operates 960 kW of captive rooftop solar generation at its Vadodara facility —
+            reducing grid electricity draw and cutting Scope 2 emissions directly. Combined with
+            100% natural gas melting furnaces (replacing heavier fuel oil), the energy mix
+            is continuously being optimised to lower the carbon intensity of every kilogram
+            we produce.
+          </p>
+          <div class="su-feature-stats">
+            <div class="su-fs">
+              <div class="su-fs-n">960 kW</div>
+              <div class="su-fs-l">Captive solar installed</div>
+            </div>
+            <div class="su-fs">
+              <div class="su-fs-n">100%</div>
+              <div class="su-fs-l">Natural gas melting furnaces</div>
+            </div>
+            <div class="su-fs">
+              <div class="su-fs-n">1 MW</div>
+              <div class="su-fs-l">Hybrid power consumption</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="su-split-divider"></div>
+
+      <!-- Recycling -->
+      <div class="su-feature-split su-feature-split--rev" data-reveal="fade">
+        <div class="su-feature-photo">
+          <img src="/assets/manufacturing/scrap-2.jpg" alt="Recycled aluminium scrap at Banco foundry" loading="lazy" />
+        </div>
+        <div class="su-feature-copy" data-reveal="left">
+          <div class="eyebrow">Circular aluminium</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Up to 50% recycled<br/><em class="accent">scrap input.</em>
+          </h2>
+          <p class="su-feature-p">
+            Aluminium is infinitely recyclable without loss of properties. Banco's in-house foundry
+            accepts up to 50% pre and post-consumer scrap as billet feedstock — validated by
+            Spectro-OES chemical analysis on every melt. Recycling aluminium uses 95% less
+            energy than primary smelting. Green billet certification is available for customers
+            requiring documented recycled content declarations.
+          </p>
+          <div class="su-feature-stats">
+            <div class="su-fs">
+              <div class="su-fs-n">50%</div>
+              <div class="su-fs-l">Max recycled scrap input</div>
+            </div>
+            <div class="su-fs">
+              <div class="su-fs-n">95%</div>
+              <div class="su-fs-l">Energy saving vs primary</div>
+            </div>
+            <div class="su-fs">
+              <div class="su-fs-n">∞</div>
+              <div class="su-fs-l">Recyclability of aluminium</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CBAM — dark deep section
+       ══════════════════════════════════════════ -->
+  <section class="su-cbam-section">
+    <div class="container">
+      <div class="su-cbam-head" data-reveal="left">
+        <div class="eyebrow on-dark">EU import compliance</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+          CBAM <em class="accent">documentation</em><br/>available.
+        </h2>
+      </div>
+
+      <div class="su-cbam-layout" data-reveal="fade">
+        <!-- Left: copy -->
+        <div class="su-cbam-copy">
+          <p class="su-cbam-p">
+            The EU Carbon Border Adjustment Mechanism requires importers to declare
+            the embedded carbon in aluminium products from January 2026. Banco's
+            CBAM-certified footprint of <strong>0.763 kg CO₂e per kilogram</strong> is
+            fully documented and available to support compliance for European customers.
+          </p>
+          <p class="su-cbam-p">
+            Documentation covers the full production scope: foundry, extrusion, heat
+            treatment, machining and surface finishing — calculated to EN 15804 methodology
+            and ISO 14064-1 verified by an accredited third-party auditor.
+          </p>
+
+          <!-- Big carbon number -->
+          <div class="su-cbam-big">
+            <span class="su-cbam-big-n">0.763</span>
+            <div class="su-cbam-big-meta">
+              <div class="su-cbam-big-unit">kg CO₂e / kg Al</div>
+              <div class="su-cbam-big-cert">ISO 14064-1 · Third-party verified</div>
+            </div>
+          </div>
+
+          <a href="/contact#cbam" class="btn btn-secondary-dark" style="margin-top:32px">
+            Request CBAM documentation →
+          </a>
+        </div>
+
+        <!-- Right: data table -->
+        <div class="su-cbam-table">
+          {cbamData.map(([label, value], i) => (
+            <div class="su-cbam-row" style={`--delay:${i * 50}ms`}>
+              <div class="su-cbam-key">{label}</div>
+              <div class="su-cbam-val">{value}</div>
             </div>
           ))}
         </div>
@@ -125,15 +317,449 @@ const pillars = [
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="section-alt" style="padding:48px 0">
+
+  <!-- ══════════════════════════════════════════
+       PROCESS PHOTO STRIP
+       ══════════════════════════════════════════ -->
+  <section class="su-photo-strip" data-reveal="fade">
+    {[
+      ['/assets/manufacturing/melting-1.jpg', 'Melting furnace — natural gas fired'],
+      ['/assets/manufacturing/scrap-1.jpg',   'Recycled scrap input — Banco foundry'],
+      ['/assets/manufacturing/billet-2.jpg',  'Homogenised billets — ready for extrusion'],
+      ['/assets/manufacturing/homo-3.jpg',    'Controlled atmosphere homogenising'],
+    ].map(([src, alt]) => (
+      <div class="su-strip-photo">
+        <img src={src} alt={alt} loading="lazy" />
+        <div class="su-strip-caption">{alt}</div>
+      </div>
+    ))}
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CERTIFICATIONS — 4-cell light grid
+       ══════════════════════════════════════════ -->
+  <section class="section-light" style="padding:72px 0">
     <div class="container">
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-        <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-stone-400)">Certified management systems:</span>
-        {['ISO 9001:2015 — Quality', 'ISO 14001:2015 — Environment', 'ISO 45001:2018 — Safety', 'CBAM Certified'].map((c) => (
-          <span class="pill">{c}</span>
+      <div class="su-cert-head" data-reveal="fade">
+        <div class="eyebrow">Management systems</div>
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+          Three ISO standards.<br/><em class="accent">One verified system.</em>
+        </h2>
+      </div>
+
+      <div class="su-cert-grid" data-reveal="fade">
+        {certs.map((c, i) => (
+          <div class="su-cert-card" style={`--delay:${i * 60}ms`}>
+            <div class="su-cert-check">✓</div>
+            <div class="su-cert-code">{c.code}</div>
+            <div class="su-cert-label">{c.label}</div>
+          </div>
         ))}
+      </div>
+
+      <div class="su-cert-note" data-reveal="fade">
+        All ISO certifications are independently audited by accredited third-party certification bodies
+        and renewed annually. Certificate copies available to customers on request.
       </div>
     </div>
   </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CTA CLOSE
+       ══════════════════════════════════════════ -->
+  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="su-cta-inner" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">Sustainability documentation</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
+            Carbon data. Cert copies.<br/><em class="accent">Available before every order.</em>
+          </h2>
+          <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;margin-top:16px;max-width:52ch">
+            CBAM carbon data, ISO certificates, and green billet declarations are
+            issued with shipment documentation or on request for pre-order qualification.
+          </p>
+        </div>
+        <div class="su-cta-btns">
+          <a href="/contact#cbam"    class="btn btn-primary-dark">Request CBAM documentation</a>
+          <a href="/about/quality"   class="btn btn-secondary-dark">Quality & certifications</a>
+          <a href="/contact#quote"   class="btn btn-secondary-dark">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  /* ── HERO ─────────────────────────────────────────────────── */
+  .su-hero {
+    position: relative;
+    background: var(--color-navy-deep);
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .su-hero-media { position: absolute; inset: 0; z-index: 0; }
+  .su-hero-vid {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 35%;
+  }
+  .su-hero-scrim  { position: absolute; inset: 0; background: rgba(6,21,37,0.68); }
+  .su-hero-grad   {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(110deg, rgba(6,21,37,0.80) 0%, rgba(6,21,37,0.25) 55%, rgba(6,21,37,0.05) 100%),
+      linear-gradient(to bottom, transparent 50%, var(--color-navy-deep) 100%);
+  }
+  .su-hero-body {
+    position: relative; z-index: 2; width: 100%;
+    padding-top: 160px; padding-bottom: 100px;
+  }
+  .su-hero-h1  { color: var(--color-stone-50); margin-top: 20px; }
+  .su-hero-lede {
+    color: var(--color-stone-400);
+    font-size: clamp(15px,1.4vw,18px);
+    line-height: 1.65; max-width: 54ch; margin-top: 24px;
+  }
+
+  /* Carbon metric */
+  .su-hero-metric {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-top: 52px; padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .su-metric-main { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .su-metric-val {
+    font-family: var(--font-sans);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300; letter-spacing: -0.04em;
+    color: var(--color-stone-50); line-height: 1;
+  }
+  .su-metric-unit {
+    font-family: var(--font-sans);
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 300; color: var(--color-green);
+    line-height: 1.2;
+  }
+  .su-metric-label {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-stone-400);
+  }
+
+  /* Stats row */
+  .su-hero-stats {
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-top: 40px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .su-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.10); }
+  .su-stat:last-child { border-right: none; }
+  .su-stat-n {
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 400; letter-spacing: -0.02em;
+    color: var(--color-stone-50); line-height: 1;
+  }
+  .su-stat-l {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 7px;
+  }
+
+  /* Scroll cue */
+  .su-scroll-cue { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .su-scroll-line {
+    display: block; width: 1px; height: 52px;
+    background: linear-gradient(to bottom, var(--color-green), transparent);
+    animation: su-drop 2s ease-in-out infinite;
+  }
+  @keyframes su-drop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ── ETHOS BAND ──────────────────────────────────────────── */
+  .su-ethos {
+    background: var(--color-navy-deep);
+    border-top: 2px solid var(--color-green);
+    border-bottom: 1px solid var(--color-navy-line);
+    padding: 52px 0;
+  }
+  .su-ethos-inner {
+    display: grid; grid-template-columns: 260px 1fr;
+    gap: 64px; align-items: center;
+  }
+  .su-ethos-word {
+    font-family: var(--font-sans);
+    font-size: clamp(24px,2.8vw,36px);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--color-platinum); line-height: 1.1; margin-top: 12px;
+  }
+  .su-ethos-rule { width: 36px; height: 2px; background: var(--color-green); margin-top: 16px; }
+  .su-ethos-quote { border: none; margin: 0; padding: 0; }
+  .su-ethos-quote p {
+    font-size: clamp(15px,1.5vw,18px);
+    line-height: 1.75; color: var(--color-silver); max-width: 68ch;
+  }
+
+  /* ── PILLARS ─────────────────────────────────────────────── */
+  .su-pillars-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px,5vw,80px); align-items: start; margin-bottom: 48px;
+  }
+  .su-pillar-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1px; background: var(--color-stone-200);
+  }
+  .su-pillar-card {
+    background: var(--color-stone-50);
+    display: flex; flex-direction: column;
+    border-top: 2px solid transparent;
+    transition: border-top-color 0.25s ease, background 0.25s ease;
+    transition-delay: var(--delay, 0ms);
+    overflow: hidden;
+  }
+  .su-pillar-card:hover { border-top-color: var(--color-green); background: white; }
+  .su-pillar-photo { position: relative; overflow: hidden; }
+  .su-pillar-photo img {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+    transition: transform 0.55s ease;
+  }
+  .su-pillar-card:hover .su-pillar-photo img { transform: scale(1.04); }
+  .su-pillar-idx {
+    position: absolute; top: 16px; left: 16px;
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: white; background: var(--color-green);
+    padding: 4px 10px;
+  }
+  .su-pillar-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+  .su-pillar-name {
+    font-size: clamp(18px,1.8vw,22px); font-weight: 600;
+    color: var(--color-navy); letter-spacing: -0.01em;
+  }
+  .su-pillar-rule { width: 28px; height: 1px; background: var(--color-stone-200); margin: 14px 0; }
+  .su-pillar-desc { font-size: 14px; line-height: 1.68; color: var(--color-stone-700); flex: 1; }
+  .su-pillar-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--color-stone-200);
+    margin-top: 24px;
+  }
+  .su-pillar-stat { background: var(--color-stone-100); padding: 14px 16px; }
+  .su-pillar-stat-n {
+    font-family: var(--font-sans); font-size: clamp(18px,2vw,24px);
+    font-weight: 400; letter-spacing: -0.02em; color: var(--color-navy);
+  }
+  .su-pillar-stat-l {
+    font-family: var(--font-mono); font-size: 9.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 4px;
+  }
+
+  /* ── EDITORIAL SPLITS ────────────────────────────────────── */
+  .su-feature-split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px,6vw,96px); align-items: center;
+  }
+  .su-feature-split--rev .su-feature-photo { order: 2; }
+  .su-feature-split--rev .su-feature-copy  { order: 1; }
+  .su-split-divider {
+    height: 1px; background: var(--color-stone-200);
+    margin: 72px 0;
+  }
+  .su-feature-photo { overflow: hidden; }
+  .su-feature-photo img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    transition: transform 0.55s ease;
+  }
+  .su-feature-photo:hover img { transform: scale(1.03); }
+  .su-feature-p {
+    color: var(--color-stone-700); font-size: 15px;
+    line-height: 1.72; max-width: 52ch; margin-top: 20px;
+  }
+  .su-feature-stats {
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-top: 32px; padding-top: 24px;
+    border-top: 1px solid var(--color-stone-200);
+  }
+  .su-fs { padding-right: 28px; margin-right: 28px; border-right: 1px solid var(--color-stone-200); }
+  .su-fs:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .su-fs-n {
+    font-family: var(--font-sans); font-size: clamp(22px,2.5vw,32px);
+    font-weight: 300; letter-spacing: -0.02em;
+    color: var(--color-navy); line-height: 1;
+  }
+  .su-fs-l {
+    font-family: var(--font-mono); font-size: 9.5px;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 5px;
+  }
+
+  /* ── CBAM SECTION ────────────────────────────────────────── */
+  .su-cbam-section {
+    background: var(--color-navy-deep);
+    border-top: 1px solid var(--color-navy-line);
+    padding: 80px 0;
+  }
+  .su-cbam-head { max-width: 560px; margin-bottom: 52px; }
+  .su-cbam-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px,6vw,96px); align-items: start;
+  }
+  .su-cbam-p {
+    color: var(--color-stone-400); font-size: 15px;
+    line-height: 1.7; margin-bottom: 16px;
+  }
+  .su-cbam-p strong { color: var(--color-platinum); font-weight: 500; }
+  .su-cbam-big {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    margin-top: 36px; padding-top: 28px;
+    border-top: 1px solid var(--color-navy-line);
+  }
+  .su-cbam-big-n {
+    font-family: var(--font-sans);
+    font-size: clamp(40px,5vw,72px);
+    font-weight: 300; letter-spacing: -0.04em;
+    color: var(--color-stone-50); line-height: 1;
+  }
+  .su-cbam-big-unit {
+    font-family: var(--font-sans); font-size: 18px;
+    font-weight: 400; color: var(--color-green); line-height: 1.3;
+  }
+  .su-cbam-big-cert {
+    font-family: var(--font-mono); font-size: 9.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 4px;
+  }
+  /* Data table */
+  .su-cbam-table {
+    border: 1px solid var(--color-navy-line);
+    align-self: start;
+  }
+  .su-cbam-row {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 16px; padding: 16px 20px;
+    border-bottom: 1px solid var(--color-navy-line);
+    transition: background 0.18s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .su-cbam-row:last-child { border-bottom: none; }
+  .su-cbam-row:hover { background: var(--color-navy-soft); }
+  .su-cbam-key {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400); align-self: center;
+  }
+  .su-cbam-val {
+    font-size: 15px; font-weight: 400;
+    color: var(--color-platinum); line-height: 1.4;
+  }
+
+  /* ── PHOTO STRIP ─────────────────────────────────────────── */
+  .su-photo-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+  .su-strip-photo { overflow: hidden; position: relative; }
+  .su-strip-photo img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .su-strip-photo:hover img { transform: scale(1.05); }
+  .su-strip-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(6,21,37,0.85), transparent);
+    padding: 20px 12px 10px;
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .su-strip-photo:hover .su-strip-caption { opacity: 1; }
+
+  /* ── CERTS GRID ──────────────────────────────────────────── */
+  .su-cert-head { max-width: 560px; margin-bottom: 40px; }
+  .su-cert-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--color-stone-200);
+  }
+  .su-cert-card {
+    background: var(--color-stone-50); padding: 32px 24px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    border-top: 2px solid transparent;
+    transition: border-top-color 0.2s ease, background 0.2s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .su-cert-card:hover { border-top-color: var(--color-green); background: white; }
+  .su-cert-check {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--color-green); color: white;
+    font-size: 13px; display: flex; align-items: center;
+    justify-content: center; margin-bottom: 16px; flex-shrink: 0;
+  }
+  .su-cert-code {
+    font-size: clamp(15px,1.6vw,20px); font-weight: 700;
+    color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.2;
+  }
+  .su-cert-label {
+    font-family: var(--font-mono); font-size: 9.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 6px;
+  }
+  .su-cert-note {
+    margin-top: 24px;
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.1em; color: var(--color-stone-400);
+    line-height: 1.65; max-width: 72ch;
+  }
+
+  /* ── CTA ─────────────────────────────────────────────────── */
+  .su-cta-inner {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; flex-wrap: wrap; gap: 48px;
+  }
+  .su-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .su-cert-grid { grid-template-columns: repeat(2, 1fr); }
+    .su-photo-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .su-ethos-inner    { grid-template-columns: 1fr; gap: 28px; }
+    .su-pillars-head   { grid-template-columns: 1fr; }
+    .su-feature-split  { grid-template-columns: 1fr; }
+    .su-feature-split--rev .su-feature-photo { order: 0; }
+    .su-feature-split--rev .su-feature-copy  { order: 0; }
+    .su-cbam-layout    { grid-template-columns: 1fr; }
+    .su-cta-inner      { flex-direction: column; }
+    .su-cta-btns       { flex-direction: row; flex-wrap: wrap; }
+  }
+  @media (max-width: 640px) {
+    .su-hero-vid       { display: none; }
+    .su-hero-grad      { background: rgba(6,21,37,0.88); }
+    .su-scroll-cue     { display: none; }
+    .su-pillar-grid    { grid-template-columns: 1fr; }
+    .su-cert-grid      { grid-template-columns: 1fr 1fr; }
+    .su-photo-strip    { grid-template-columns: 1fr 1fr; }
+    .su-hero-stats     { gap: 0; }
+    .su-stat           { padding-right: 20px; margin-right: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .su-hero-vid { display: none; }
+    .su-scroll-line { animation: none; opacity: 0.5; }
+  }
+</style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.su-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

@@ -2,81 +2,511 @@
 import Layout from '../../layouts/Layout.astro';
 
 const certs = [
-  { code: 'ISO 9001:2015', title: 'Quality Management System', desc: 'End-to-end quality management from billet casting to finished profile. Stage-wise inspection, MES-ERP integration, SCADA traceability.' },
-  { code: 'ISO 14001:2015', title: 'Environmental Management System', desc: 'Systematic management of environmental impact. CBAM-certified carbon footprint of 0.763 kg CO₂e / kg aluminium.' },
-  { code: 'ISO 45001:2018', title: 'Occupational Health & Safety', desc: 'Certified occupational health and safety management across all manufacturing operations.' },
-  { code: 'IATF 16949:2016', title: 'Automotive Quality Systems', desc: 'Automotive-grade quality system. Supports supply to Tier 1 and Tier 2 automotive OEMs.' },
-  { code: 'CE Certification', title: 'European Conformity', desc: 'CE marking for aluminium profiles supplied to European markets, confirming compliance with applicable EU directives.' },
-  { code: 'IRS Works Approval', title: 'Indian Register of Shipping', desc: 'Approved manufacturer of aluminium profiles for shipbuilding and marine applications.' },
-  { code: 'BIS IS 733', title: 'Wrought Aluminium — Bars, Rods', desc: 'Bureau of Indian Standards approval for wrought aluminium and aluminium alloy bars, rods and sections.' },
-  { code: 'BIS IS 1285', title: 'Wrought Aluminium — Extruded Sections', desc: 'BIS approval for wrought aluminium and aluminium alloy extruded round tubes and hollow sections.' },
-  { code: 'BIS IS 5082', title: 'Wrought Aluminium — Electrical', desc: 'BIS approval for wrought aluminium and aluminium alloy strips for electrical purposes.' },
+  { code: 'ISO 9001:2015',    title: 'Quality Management System',        desc: 'End-to-end quality management from billet casting to finished profile. Stage-wise inspection, MES-ERP integration, SCADA traceability.' },
+  { code: 'ISO 14001:2015',   title: 'Environmental Management System',  desc: 'Systematic management of environmental impact. CBAM-certified carbon footprint of 0.763 kg CO₂e / kg aluminium.' },
+  { code: 'ISO 45001:2018',   title: 'Occupational Health & Safety',     desc: 'Certified occupational health and safety management across all manufacturing operations.' },
+  { code: 'IATF 16949:2016',  title: 'Automotive Quality Systems',       desc: 'Automotive-grade quality system. Supports supply to Tier 1 and Tier 2 automotive OEMs globally.' },
+  { code: 'CE Certification', title: 'European Conformity',              desc: 'CE marking for aluminium profiles supplied to European markets, confirming compliance with applicable EU directives.' },
+  { code: 'IRS Works Approval', title: 'Indian Register of Shipping',   desc: 'Approved manufacturer of aluminium profiles for shipbuilding and marine applications.' },
+  { code: 'BIS IS 733',       title: 'Wrought Aluminium — Bars & Rods', desc: 'Bureau of Indian Standards approval for wrought aluminium and aluminium alloy bars, rods and sections.' },
+  { code: 'BIS IS 1285',      title: 'Wrought Aluminium — Extruded',    desc: 'BIS approval for wrought aluminium and aluminium alloy extruded round tubes and hollow sections.' },
+  { code: 'BIS IS 5082',      title: 'Wrought Aluminium — Electrical',  desc: 'BIS approval for wrought aluminium and aluminium alloy strips for electrical purposes.' },
 ];
 
 const qcTools = [
-  ['ASCONA optical measurement', 'Automated optical measurement system for dimensional inspection of complex profiles.'],
-  ['Spectro-OES analysis', 'Optical emission spectrometry for chemical composition verification of every melt.'],
-  ['SCADA online monitoring', 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number.'],
-  ['CMM inspection', 'Coordinate measuring machine for die verification and sample approval.'],
-  ['MES-ERP integration', 'Manufacturing execution system integrated with ERP for full order traceability.'],
-  ['Ultrasonic testing', 'Billet and profile ultrasonic inspection for internal defects.'],
-  ['Mechanical property testing', 'Tensile strength, hardness and flaring tests to national and customer standards.'],
-  ['Stage-wise quality gates', 'Quality hold points at every step: billet casting, extrusion, heat treatment, machining, packing.'],
+  { name: 'ASCONA Optical Measurement', desc: 'Automated optical measurement system for dimensional inspection of complex profiles. Full contour capture against nominal die geometry.' },
+  { name: 'Spectro-OES Analysis',       desc: 'Optical emission spectrometry for chemical composition verification of every melt. 100% chemical analysis — no shipment without cert.' },
+  { name: 'SCADA Online Monitoring',    desc: 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number — full lot traceability.' },
+  { name: 'CMM Inspection',             desc: 'Coordinate measuring machine for die verification and first-article sample approval before production release.' },
+  { name: 'MES-ERP Integration',        desc: 'Manufacturing execution system integrated with ERP for full order traceability. Dispatch linked to production lot and quality records.' },
+  { name: 'Ultrasonic Testing',         desc: 'Billet and profile ultrasonic inspection for internal defects. Mandatory for aerospace, marine, and critical structural applications.' },
+  { name: 'Mechanical Property Testing',desc: 'Tensile strength, hardness and flaring tests to national and customer standards. Results on every EN 10204 Type 3.1 certificate.' },
+  { name: 'Stage-wise Quality Gates',   desc: 'Quality hold points at every step: billet casting, extrusion, heat treatment, machining, packing. No bypass without supervisor release.' },
+];
+
+const pipeline = [
+  { step: '01', label: 'Incoming billet',      detail: 'Composition cert + visual inspection' },
+  { step: '02', label: 'Extrusion',            detail: 'SCADA process parameters logged live' },
+  { step: '03', label: 'Heat treatment',       detail: 'Time-temperature recorded per lot' },
+  { step: '04', label: 'Dimensional check',    detail: 'ASCONA optical — 100% key profiles' },
+  { step: '05', label: 'Mechanical testing',   detail: 'Tensile, hardness, elongation' },
+  { step: '06', label: 'Dispatch & cert',      detail: 'EN 10204 3.1 cert issued per lot' },
 ];
 ---
 
 <Layout
   title="Quality & certifications — Banco Aluminium"
-  description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS Works Approval, BIS certifications. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM inspection."
+  description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
+  transparentNav={true}
 >
-  <section style="background:var(--color-navy);padding-top:140px;padding-bottom:80px">
-    <div class="container">
-      <div class="eyebrow on-dark">Quality & certifications</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:18ch">
+
+  <!-- ══════════════════════════════════════════
+       HERO — video background
+       ══════════════════════════════════════════ -->
+  <section class="qp-hero">
+    <div class="qp-hero-media" aria-hidden="true">
+      <video class="qp-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="qp-hero-scrim"></div>
+      <div class="qp-hero-grad"></div>
+    </div>
+
+    <div class="container qp-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
+        Quality & certifications
+      </div>
+      <h1 class="t-h1 qp-hero-h1" data-reveal data-reveal-delay="2">
         Certified quality.<br/><em class="accent">Traceable</em> output.
       </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:56ch">
-        Nine certifications across quality, environmental, safety, automotive, marine, and
-        national standards. SCADA traceability from billet to dispatch. Controlled process.
-        Consistent performance.
+      <p class="qp-hero-lede" data-reveal data-reveal-delay="3">
+        Nine certifications. SCADA traceability from billet to dispatch.
+        EN 10204 Type 3.1 material certificates on every shipment.
+        Controlled process. Consistent performance.
       </p>
+
+      <!-- Stats -->
+      <div class="qp-hero-stats" data-reveal data-reveal-delay="4">
+        {[
+          { val: '9',      label: 'Active certifications' },
+          { val: '100%',   label: 'Chemical analysis per melt' },
+          { val: 'Type 3.1', label: 'EN 10204 material certs' },
+          { val: 'SCADA',  label: 'Live process traceability' },
+        ].map(({ val, label }) => (
+          <div class="qp-stat">
+            <div class="qp-stat-n">{val}</div>
+            <div class="qp-stat-l">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="qp-scroll-cue" aria-hidden="true">
+      <span class="qp-scroll-line"></span>
     </div>
   </section>
 
-  <!-- Certifications grid -->
+
+  <!-- ══════════════════════════════════════════
+       QUALITY PIPELINE — 6-stage traceability
+       ══════════════════════════════════════════ -->
+  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="qp-pipe-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">Traceability pipeline</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            Quality at<br/><em class="accent">every gate.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:48ch;align-self:end">
+          From incoming billet to dispatch certificate — six hold points, zero uncontrolled release.
+        </p>
+      </div>
+
+      <div class="qp-pipeline" data-reveal="fade">
+        {pipeline.map((p, i) => (
+          <div class="qp-pipe-cell" style={`--delay:${i * 60}ms`}>
+            <div class="qp-pipe-step">{p.step}</div>
+            <div class="qp-pipe-label">{p.label}</div>
+            <div class="qp-pipe-detail">{p.detail}</div>
+            {i < pipeline.length - 1 && (
+              <div class="qp-pipe-arrow" aria-hidden="true">›</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CERTIFICATIONS — 3-col grid
+       ══════════════════════════════════════════ -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">Certifications</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:48px">
-        Nine standards.<br/><em class="accent">One supplier.</em>
-      </h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200)">
-        {certs.map((c) => (
-          <div style="background:var(--color-stone-50);padding:32px 24px">
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:8px">{c.code}</div>
-            <div style="font-family:var(--font-display);font-size:20px;color:var(--color-navy);margin-bottom:12px">{c.title}</div>
-            <p style="font-size:13px;color:var(--color-stone-700);line-height:1.6">{c.desc}</p>
+      <div class="qp-certs-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow">Certifications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Nine standards.<br/><em class="accent">One supplier.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:48ch;align-self:end">
+          Quality, environmental, automotive, safety, marine and national standards —
+          maintained, audited and renewed annually.
+        </p>
+      </div>
+
+      <div class="qp-cert-grid" data-reveal="fade">
+        {certs.map((c, i) => (
+          <div class="qp-cert-card" style={`--delay:${i * 40}ms`}>
+            <div class="qp-cert-top">
+              <div class="qp-cert-code">{c.code}</div>
+              <div class="qp-cert-check" aria-label="Certified">✓</div>
+            </div>
+            <div class="qp-cert-title">{c.title}</div>
+            <div class="qp-cert-rule"></div>
+            <p class="qp-cert-desc">{c.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- QC tools -->
+
+  <!-- ══════════════════════════════════════════
+       QC TOOLS — dark measurement grid
+       ══════════════════════════════════════════ -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">Quality systems</div>
-      <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:48px">
-        Measurement at<br/><em class="accent">every step.</em>
-      </h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--color-navy-line)">
-        {qcTools.map(([name, desc]) => (
-          <div style="padding:24px;border-bottom:1px solid var(--color-navy-line);border-right:1px solid var(--color-navy-line)">
-            <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:6px">{name}</div>
-            <div style="font-size:14px;color:var(--color-stone-400);line-height:1.55">{desc}</div>
+      <div class="qp-tools-head" data-reveal="left">
+        <div class="eyebrow on-dark">Quality systems</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+          Measurement at<br/><em class="accent">every step.</em>
+        </h2>
+      </div>
+
+      <div class="qp-tools-grid" data-reveal="fade">
+        {qcTools.map((t, i) => (
+          <div class="qp-tool-card" style={`--delay:${i * 50}ms`}>
+            <div class="qp-tool-n">{String(i + 1).padStart(2, '0')}</div>
+            <div class="qp-tool-name">{t.name}</div>
+            <div class="qp-tool-rule"></div>
+            <p class="qp-tool-desc">{t.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CBAM CALLOUT — dark accent band
+       ══════════════════════════════════════════ -->
+  <section class="qp-cbam" data-reveal="fade">
+    <div class="container qp-cbam-inner">
+      <div class="qp-cbam-left">
+        <div class="qp-cbam-badge">CBAM-ready</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:20px">
+          Carbon data for<br/><em class="accent">every EU shipment.</em>
+        </h2>
+        <p class="qp-cbam-sub">
+          Mandatory from January 2026 — Banco issues tCO₂e/t per production lot,
+          calculated under ISO 14064-1, attached to every material certificate for
+          EU-bound shipments.
+        </p>
+        <div class="qp-cbam-num">
+          <span class="qp-cbam-val">0.763</span>
+          <span class="qp-cbam-unit">kg CO₂e / kg Al</span>
+        </div>
+      </div>
+      <div class="qp-cbam-tags">
+        {['ISO 14064-1 verified', 'Scope 1 — direct emissions', 'Scope 2 — indirect (electricity)', 'Per-lot production reporting', 'CBAM declaration document', 'Available from Jan 2026'].map(tag => (
+          <div class="qp-cbam-tag">{tag}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CTA CLOSE
+       ══════════════════════════════════════════ -->
+  <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="qp-cta-inner" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">Request documentation</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
+            Certificates available<br/>on request before order.
+          </h2>
+          <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;margin-top:14px;max-width:52ch">
+            Copies of all current certifications are available to customers and prospective buyers.
+            EN 10204 Type 3.1 material certificates issued with every shipment.
+          </p>
+        </div>
+        <div class="qp-cta-btns">
+          <a href="/contact#quality" class="btn btn-primary-dark">Request certificates</a>
+          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach & export</a>
+          <a href="/about" class="btn btn-secondary-dark">About Banco</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
+
+<style>
+  /* ── HERO ───────────────────────────────────────────────────── */
+  .qp-hero {
+    position: relative;
+    background: var(--color-navy-deep);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .qp-hero-media { position: absolute; inset: 0; z-index: 0; }
+  .qp-hero-vid {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 40%;
+  }
+  .qp-hero-scrim {
+    position: absolute; inset: 0;
+    background: rgba(6,21,37,0.70);
+  }
+  .qp-hero-grad {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(105deg, rgba(6,21,37,0.80) 0%, rgba(6,21,37,0.30) 55%, rgba(6,21,37,0.05) 100%),
+      linear-gradient(to bottom, transparent 55%, var(--color-navy-deep) 100%);
+  }
+  .qp-hero-body {
+    position: relative; z-index: 2;
+    width: 100%;
+    padding-top: 160px;
+    padding-bottom: 100px;
+  }
+  .qp-hero-h1 { color: var(--color-stone-50); margin-top: 20px; max-width: 20ch; }
+  .qp-hero-lede {
+    color: var(--color-stone-400);
+    font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.65; max-width: 52ch; margin-top: 24px;
+  }
+  .qp-hero-stats {
+    display: flex; gap: 0; flex-wrap: wrap;
+    margin-top: 48px; padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .qp-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.10); }
+  .qp-stat:last-child { border-right: none; }
+  .qp-stat-n {
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 2.8vw, 36px);
+    font-weight: 400; letter-spacing: -0.02em;
+    color: var(--color-stone-50); line-height: 1;
+  }
+  .qp-stat-l {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--color-stone-400); margin-top: 7px;
+  }
+  .qp-scroll-cue { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .qp-scroll-line {
+    display: block; width: 1px; height: 52px;
+    background: linear-gradient(to bottom, var(--color-green), transparent);
+    animation: qp-drop 2s ease-in-out infinite;
+  }
+  @keyframes qp-drop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ── PIPELINE ───────────────────────────────────────────────── */
+  .qp-pipe-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px,5vw,80px); align-items: start; margin-bottom: 40px;
+  }
+  .qp-pipeline {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 1px; background: var(--color-navy-line);
+  }
+  .qp-pipe-cell {
+    background: var(--color-navy-soft);
+    padding: 28px 20px;
+    position: relative;
+    transition: background 0.2s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .qp-pipe-cell:hover { background: var(--color-navy); }
+  .qp-pipe-step {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 12px;
+  }
+  .qp-pipe-label {
+    font-size: 15px; font-weight: 600;
+    color: var(--color-stone-50); line-height: 1.3; margin-bottom: 8px;
+  }
+  .qp-pipe-detail {
+    font-size: 12px; color: var(--color-stone-400); line-height: 1.5;
+  }
+  .qp-pipe-arrow {
+    position: absolute; right: -10px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; color: var(--color-green);
+    z-index: 1; opacity: 0.6;
+  }
+
+  /* ── CERT GRID ──────────────────────────────────────────────── */
+  .qp-certs-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px,5vw,80px); align-items: start; margin-bottom: 40px;
+  }
+  .qp-cert-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--color-stone-200);
+  }
+  .qp-cert-card {
+    background: var(--color-stone-50);
+    padding: 32px 24px;
+    border-top: 2px solid transparent;
+    transition: border-top-color 0.2s ease, background 0.2s ease;
+    transition-delay: var(--delay, 0ms);
+    display: flex; flex-direction: column;
+  }
+  .qp-cert-card:hover { border-top-color: var(--color-green); background: white; }
+  .qp-cert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .qp-cert-code {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-green);
+  }
+  .qp-cert-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--color-green); color: white;
+    font-size: 11px; display: flex; align-items: center;
+    justify-content: center; flex-shrink: 0;
+  }
+  .qp-cert-title {
+    font-size: 17px; font-weight: 600;
+    color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.25;
+  }
+  .qp-cert-rule {
+    width: 28px; height: 1px;
+    background: var(--color-stone-200); margin: 14px 0;
+  }
+  .qp-cert-desc { font-size: 13px; color: var(--color-stone-700); line-height: 1.65; }
+
+  /* ── QC TOOLS ───────────────────────────────────────────────── */
+  .qp-tools-head { max-width: 540px; margin-bottom: 40px; }
+  .qp-tools-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--color-navy-line);
+  }
+  .qp-tool-card {
+    background: var(--color-navy-soft); padding: 28px 20px;
+    display: flex; flex-direction: column;
+    transition: background 0.25s ease;
+    position: relative; overflow: hidden;
+    transition-delay: var(--delay, 0ms);
+  }
+  .qp-tool-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--color-green);
+    transition: width 0.35s ease;
+  }
+  .qp-tool-card:hover { background: var(--color-navy); }
+  .qp-tool-card:hover::after { width: 100%; }
+  .qp-tool-n {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 14px;
+  }
+  .qp-tool-name {
+    font-size: 15px; font-weight: 600;
+    color: var(--color-stone-50); line-height: 1.3; margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .qp-tool-rule {
+    width: 24px; height: 1px;
+    background: var(--color-navy-line); margin-bottom: 12px;
+  }
+  .qp-tool-desc { font-size: 12.5px; color: var(--color-stone-400); line-height: 1.6; }
+
+  /* ── CBAM BAND ──────────────────────────────────────────────── */
+  .qp-cbam {
+    background: var(--color-navy);
+    border-top: 1px solid var(--color-navy-line);
+    border-bottom: 1px solid var(--color-navy-line);
+    padding: 64px 0;
+  }
+  .qp-cbam-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px,6vw,100px); align-items: center;
+  }
+  .qp-cbam-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-green); border: 1px solid var(--color-green);
+    padding: 6px 14px;
+  }
+  .qp-cbam-sub {
+    color: var(--color-stone-400); font-size: 15px;
+    line-height: 1.65; max-width: 52ch; margin-top: 20px;
+  }
+  .qp-cbam-num {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid var(--color-navy-line);
+  }
+  .qp-cbam-val {
+    font-family: var(--font-sans); font-size: clamp(36px,4vw,56px);
+    font-weight: 300; letter-spacing: -0.03em; color: var(--color-stone-50);
+  }
+  .qp-cbam-unit {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400);
+  }
+  .qp-cbam-tags {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--color-navy-line);
+    align-self: start;
+  }
+  .qp-cbam-tag {
+    background: var(--color-navy-soft);
+    padding: 18px 16px;
+    font-family: var(--font-mono); font-size: 10.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400); line-height: 1.5;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .qp-cbam-tag:hover { background: var(--color-navy); color: var(--color-stone-50); }
+
+  /* ── CTA ────────────────────────────────────────────────────── */
+  .qp-cta-inner {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; flex-wrap: wrap; gap: 40px;
+  }
+  .qp-cta-btns {
+    display: flex; flex-direction: column;
+    gap: 12px; flex-shrink: 0;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .qp-pipeline   { grid-template-columns: repeat(3, 1fr); }
+    .qp-tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .qp-pipe-head  { grid-template-columns: 1fr; }
+    .qp-certs-head { grid-template-columns: 1fr; }
+    .qp-cert-grid  { grid-template-columns: repeat(2, 1fr); }
+    .qp-cbam-inner { grid-template-columns: 1fr; }
+    .qp-cta-inner  { flex-direction: column; }
+    .qp-cta-btns   { flex-direction: row; flex-wrap: wrap; }
+  }
+  @media (max-width: 640px) {
+    .qp-hero-vid   { display: none; }
+    .qp-hero-grad  { background: rgba(6,21,37,0.88); }
+    .qp-scroll-cue { display: none; }
+    .qp-pipeline   { grid-template-columns: repeat(2, 1fr); }
+    .qp-cert-grid  { grid-template-columns: 1fr; }
+    .qp-tools-grid { grid-template-columns: 1fr 1fr; }
+    .qp-cbam-tags  { grid-template-columns: 1fr; }
+    .qp-pipe-arrow { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .qp-hero-vid { display: none; }
+    .qp-scroll-line { animation: none; opacity: 0.5; }
+  }
+</style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.qp-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

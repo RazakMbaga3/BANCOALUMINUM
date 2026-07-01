@@ -21,46 +21,60 @@ const processStages = [
 <Layout
   title="Extrusion — Banco Aluminium"
   description="Five direct-drive extrusion presses from 1,100 to 3,300 MT. 35,000 MT annual capacity. Profile weight range 0.29–35 kg/m across 1xxx–7xxx alloys."
+  transparentNav={true}
 >
 
-  <section class="ext-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Extrusion</div>
-      <h1 class="ext-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Extrusion</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Five presses.<br>35,000 MT capacity.
       </h1>
-      <p class="ext-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Five direct-drive extrusion presses spanning 1,100 to 3,300 MT. Profile weights
         from 0.29 to 35 kg/m. Custom and standard sections across 1xxx to 7xxx alloy series.
         Fully in-house — billet, die, press, finishing, packing.
       </p>
-      <div class="ext-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '5',           l: 'Extrusion presses' },
           { n: '35,000 MT',   l: 'Annual capacity' },
           { n: '0.29–35',     l: 'Profile weight kg/m' },
           { n: '1,100–3,300', l: 'Press capacity MT' },
         ].map(({ n, l }) => (
-          <div class="ext-stat">
-            <div class="ext-stat-n">{n}</div>
-            <div class="ext-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Overview -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="eyebrow" data-reveal="fade">/ 01 · Overview</div>
       <div class="ext-overview-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Direct-drive presses.<br>Full billet-to-profile<br>control.
           </h2>
         </div>
-        <div>
+        <div data-reveal="right">
           <p class="t-lead" style="color:var(--color-stone-700)">
             All five presses are direct-drive hydraulic extrusion presses operating in the
             conventional direct extrusion mode. Billets produced in Banco's own foundry
@@ -87,11 +101,11 @@ const processStages = [
   <!-- Press range -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Press range</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:48px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Press range</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:48px" data-reveal>
         Five presses.<br>138 mm to 254 mm circle.
       </h2>
-      <div class="ext-press-grid">
+      <div class="ext-press-grid" data-reveal="fade">
         {presses.map((p) => (
           <div class="ext-press-card">
             <div class="ext-press-header">
@@ -122,13 +136,13 @@ const processStages = [
   <!-- Process -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Process sequence</div>
+      <div class="eyebrow" data-reveal="fade">/ 03 · Process sequence</div>
       <div class="ext-proc-head">
-        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+        <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px" data-reveal>
           Five controlled stages<br>billet to cut length.
         </h2>
       </div>
-      <div class="ext-proc-grid">
+      <div class="ext-proc-grid" data-reveal="fade">
         {processStages.map(({ num, name, desc }) => (
           <div class="ext-proc-cell">
             <div class="ext-proc-num">/ {num}</div>
@@ -143,9 +157,9 @@ const processStages = [
   <!-- Profile range photos -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 04 · Profile range</div>
+      <div class="eyebrow" data-reveal="fade">/ 04 · Profile range</div>
       <div class="ext-range-grid">
-        <div class="ext-range-content">
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             0.29 to 35 kg/m.<br>Solid to complex hollow.
           </h2>
@@ -172,7 +186,7 @@ const processStages = [
             ))}
           </div>
         </div>
-        <div class="ext-range-photos">
+        <div class="ext-range-photos" data-reveal="right">
           <div class="ext-photo-top">
             <img src="/assets/manufacturing/billet-1.jpg" alt="Extrusion billets ready for press" loading="lazy" />
           </div>
@@ -187,7 +201,7 @@ const processStages = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Extrusion enquiries</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -205,27 +219,6 @@ const processStages = [
 </Layout>
 
 <style>
-  .ext-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .ext-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .ext-hero > .container { position: relative; z-index: 1; }
-  .ext-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .ext-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .ext-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .ext-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .ext-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .ext-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .ext-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
 
   .ext-press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
@@ -266,14 +259,17 @@ const processStages = [
     .ext-proc-grid  { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 1024px) {
-    .ext-stats { grid-template-columns: repeat(2, 1fr); }
     .ext-overview-grid { grid-template-columns: 1fr; }
     .ext-press-grid { grid-template-columns: repeat(2, 1fr); }
     .ext-proc-grid  { grid-template-columns: repeat(2, 1fr); }
     .ext-range-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .ext-stats { grid-template-columns: 1fr 1fr; }
     .ext-press-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

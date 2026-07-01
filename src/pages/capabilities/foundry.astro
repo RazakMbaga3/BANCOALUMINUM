@@ -45,40 +45,54 @@ const alloyData = [
 <Layout
   title="Alloys — Foundry & alloy development — Banco Aluminium"
   description="In-house foundry producing 55,000 MT/year. Hard alloys, lead-free machining grades, and soft/medium alloys across 1xxx–7xxx series. Custom alloy development and special compositions available."
+  transparentNav={true}
 >
 
-  <section class="fnd-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Alloys</div>
-      <h1 class="fnd-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Alloys & foundry</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Hard alloys.<br>Lead-free grades.<br>Custom compositions.
       </h1>
-      <p class="fnd-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Banco's in-house foundry produces 55,000 MT of extrusion billets per year
         across three distinct alloy families — giving downstream extrusion complete
         control over alloy chemistry, temper, and metallurgical structure.
       </p>
-      <div class="fnd-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '55,000 MT', l: 'Annual foundry capacity' },
           { n: '12+',       l: 'Standard alloy grades' },
           { n: '1xxx–7xxx', l: 'Alloy series range' },
           { n: '100%',      l: 'Spectro-OES verified' },
         ].map(({ n, l }) => (
-          <div class="fnd-stat">
-            <div class="fnd-stat-n">{n}</div>
-            <div class="fnd-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Three alloy families -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Alloy families</div>
-      <div class="fnd-section-head">
+      <div class="eyebrow" data-reveal="fade">/ 01 · Alloy families</div>
+      <div class="fnd-section-head" data-reveal="fade">
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
           Three families covering every<br>extrusion application.
         </h2>
@@ -88,7 +102,7 @@ const alloyData = [
           for chemistry and billet quality.
         </p>
       </div>
-      <div class="fnd-family-grid">
+      <div class="fnd-family-grid" data-reveal="fade">
         {alloyFamilies.map((fam) => (
           <div class="fnd-family-card">
             <div class="fnd-fam-num">{fam.num}</div>
@@ -111,11 +125,11 @@ const alloyData = [
   <!-- Composition table -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Chemical compositions — key grades</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Chemical compositions — key grades</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
         Controlled chemistry.<br>Cast to specification.
       </h2>
-      <div class="fnd-table-wrap">
+      <div class="fnd-table-wrap" data-reveal="fade">
         <table class="fnd-table">
           <thead>
             <tr>
@@ -141,7 +155,7 @@ const alloyData = [
           </tbody>
         </table>
       </div>
-      <p class="fnd-footnote">
+      <p class="fnd-footnote" data-reveal="fade">
         Full compositions including Mn, Zn, Cr, Ti available in alloy data sheets.
         Additional grades — 2011, 2017A, 2014, 5083, 6005A, 6101, 6361 — produced on request.
       </p>
@@ -151,11 +165,11 @@ const alloyData = [
   <!-- Foundry process -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Foundry process</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow" data-reveal="fade">/ 03 · Foundry process</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px" data-reveal>
         Four controlled stages<br>from scrap to billet.
       </h2>
-      <div class="fnd-process-grid">
+      <div class="fnd-process-grid" data-reveal="fade">
         {[
           ['/ 01', 'Metal filtration',   '/assets/manufacturing/melting-1.jpg',  'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station — improving metal cleanliness and reducing inclusion count.'],
           ['/ 02', 'Nitrogen degassing', '/assets/manufacturing/melting-3.jpg',  'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
@@ -179,7 +193,7 @@ const alloyData = [
   <section class="section-light" style="padding:64px 0;border-top:1px solid var(--color-stone-200)">
     <div class="container">
       <div class="fnd-custom-grid">
-        <div>
+        <div data-reveal="left">
           <div class="eyebrow">/ 04 · Custom alloy development</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Need a specific composition?
@@ -194,7 +208,7 @@ const alloyData = [
             <a href="/downloads" class="btn btn-secondary">Download alloy data sheet</a>
           </div>
         </div>
-        <div class="fnd-custom-list">
+        <div class="fnd-custom-list" data-reveal="right">
           {[
             ['Specific Mg/Si ratios', 'Controlled ratio for anodising-grade architectural alloys (6060, 6063).'],
             ['Lead-free conversions', 'RoHS-compliant alternatives to 2011, 2031 and other lead-bearing machining grades.'],
@@ -214,7 +228,7 @@ const alloyData = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Alloy enquiries</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -232,27 +246,6 @@ const alloyData = [
 </Layout>
 
 <style>
-  .fnd-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .fnd-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .fnd-hero > .container { position: relative; z-index: 1; }
-  .fnd-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .fnd-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .fnd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .fnd-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .fnd-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .fnd-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .fnd-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-bottom: 48px; }
 
   .fnd-family-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
@@ -297,14 +290,17 @@ const alloyData = [
   .fnd-custom-desc { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); line-height: 1.55; }
 
   @media (max-width: 1024px) {
-    .fnd-stats { grid-template-columns: repeat(2, 1fr); }
     .fnd-section-head { grid-template-columns: 1fr; }
     .fnd-family-grid { grid-template-columns: 1fr; }
     .fnd-process-grid { grid-template-columns: repeat(2, 1fr); }
     .fnd-custom-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .fnd-stats { grid-template-columns: 1fr 1fr; }
     .fnd-process-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

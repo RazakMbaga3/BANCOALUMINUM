@@ -32,47 +32,61 @@ const products = [
 <Layout
   title="Cold drawing — Banco Aluminium"
   description="Cold drawn aluminium rods, bars, and tubes beyond extrusion tolerances. Tighter OD tolerances, scale-free surface, direct machining. Rods 6–120 mm, tubes to 160 mm OD."
+  transparentNav={true}
 >
 
-  <section class="cd-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Cold drawing</div>
-      <h1 class="cd-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Cold drawing</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Beyond extrusion<br>tolerances.
       </h1>
-      <p class="cd-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Cold drawing reduces extruded rod, bar, and tube through a precision die under
         tension. The result: tighter dimensional tolerances, improved surface finish,
         increased straightness, and a bright scale-free surface suitable for direct
         CNC machining without further preparation.
       </p>
-      <div class="cd-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '±0.05 mm', l: 'OD tolerance on round rod' },
           { n: '6–120 mm', l: 'Rod & bar diameter range' },
           { n: 'Ra 0.4–0.8', l: 'Surface finish μm' },
           { n: 'Direct CNC', l: 'No pre-machining required' },
         ].map(({ n, l }) => (
-          <div class="cd-stat">
-            <div class="cd-stat-n">{n}</div>
-            <div class="cd-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Overview -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="eyebrow" data-reveal="fade">/ 01 · Overview</div>
       <div class="cd-overview-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             What cold drawing<br>achieves.
           </h2>
         </div>
-        <div>
+        <div data-reveal="right">
           <p class="t-lead" style="color:var(--color-stone-700)">
             Extrusion produces profiles within standard tolerances defined in EN 755-9
             for extruded rod and bar — typically ±0.15 to ±0.25 mm on diameter depending
@@ -100,11 +114,11 @@ const products = [
   <!-- Products -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Product range</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Product range</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
         Rods, bars, and tubes.
       </h2>
-      <div class="cd-products-grid">
+      <div class="cd-products-grid" data-reveal="fade">
         {products.map((p) => (
           <div class="cd-prod-card">
             <div class="cd-prod-cat">{p.cat}</div>
@@ -138,11 +152,11 @@ const products = [
   <!-- Tolerance comparison -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Tolerance comparison</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow" data-reveal="fade">/ 03 · Tolerance comparison</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px" data-reveal>
         Extrusion vs cold drawing.
       </h2>
-      <div class="cd-table-wrap">
+      <div class="cd-table-wrap" data-reveal="fade">
         <table class="cd-table">
           <thead>
             <tr>
@@ -164,7 +178,7 @@ const products = [
           </tbody>
         </table>
       </div>
-      <p class="cd-footnote">
+      <p class="cd-footnote" data-reveal="fade">
         Values for 6082 alloy, 25 mm nominal diameter. Actual achievable tolerances depend on alloy, size, and reduction ratio. Full tolerance tables available in technical data sheet.
       </p>
     </div>
@@ -173,8 +187,8 @@ const products = [
   <!-- Applications -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 04 · Applications</div>
-      <div class="cd-apps-grid">
+      <div class="eyebrow" data-reveal="fade">/ 04 · Applications</div>
+      <div class="cd-apps-grid" data-reveal="fade">
         {[
           { num: '01', title: 'CNC machining blanks',       desc: 'Close-tolerance rod fed directly to turning centre. Eliminates pre-turn, reduces per-part cycle time and material waste.' },
           { num: '02', title: 'Hydraulic cylinder rods',    desc: 'Consistent OD and straightness required for seal performance. Cold drawn rod to h9 tolerance, surface finish Ra 0.8 μm.' },
@@ -196,7 +210,7 @@ const products = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Cold drawing enquiries</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -218,27 +232,6 @@ const products = [
 </Layout>
 
 <style>
-  .cd-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .cd-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .cd-hero > .container { position: relative; z-index: 1; }
-  .cd-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .cd-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .cd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .cd-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .cd-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .cd-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .cd-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
 
   .cd-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
@@ -273,13 +266,16 @@ const products = [
   .cd-app-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
 
   @media (max-width: 1024px) {
-    .cd-stats { grid-template-columns: repeat(2, 1fr); }
     .cd-overview-grid { grid-template-columns: 1fr; }
     .cd-products-grid { grid-template-columns: 1fr; }
     .cd-apps-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
-    .cd-stats { grid-template-columns: 1fr 1fr; }
     .cd-apps-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

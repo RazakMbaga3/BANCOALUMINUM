@@ -2,220 +2,293 @@
 import Layout from '../../layouts/Layout.astro';
 
 const departments = [
-  { id: '01', name: 'Manufacturing',  desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
-  { id: '02', name: 'Engineering',    desc: 'Mechanical and metallurgical engineers for process improvement, die design, capital projects, and equipment maintenance.' },
-  { id: '03', name: 'Quality',        desc: 'Quality engineers, CMM operators, lab technicians, and QA managers. ISO 9001 and IATF 16949 environment.' },
-  { id: '04', name: 'Sales',          desc: 'Technical sales executives and account managers for domestic and export markets. Customer-facing and CRM-driven.' },
-  { id: '05', name: 'Finance',        desc: 'Commercial finance, cost accounting, management accounts, and export documentation for a large manufacturing business.' },
-  { id: '06', name: 'IT',             desc: 'ERP implementation, manufacturing systems, network infrastructure, and digital transformation projects.' },
-  { id: '07', name: 'HR',             desc: 'Talent acquisition, learning & development, compliance, and employee engagement for a workforce of 900+.' },
-  { id: '08', name: 'Logistics',      desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
+  { id: '01', name: 'Manufacturing',  icon: '⚙', desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
+  { id: '02', name: 'Engineering',    icon: '◈', desc: 'Mechanical and metallurgical engineers for process improvement, die design, capital projects, and equipment maintenance.' },
+  { id: '03', name: 'Quality',        icon: '◎', desc: 'Quality engineers, CMM operators, lab technicians, and QA managers. ISO 9001 and IATF 16949 environment.' },
+  { id: '04', name: 'Sales',          icon: '↗', desc: 'Technical sales executives and account managers for domestic and export markets. Customer-facing and CRM-driven.' },
+  { id: '05', name: 'Finance',        icon: '◻', desc: 'Commercial finance, cost accounting, management accounts, and export documentation for a large manufacturing business.' },
+  { id: '06', name: 'IT',             icon: '◈', desc: 'ERP implementation, manufacturing systems, network infrastructure, and digital transformation projects.' },
+  { id: '07', name: 'HR',             icon: '◯', desc: 'Talent acquisition, learning & development, compliance, and employee engagement for a workforce of 900+.' },
+  { id: '08', name: 'Logistics',      icon: '▷', desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
+];
+
+const whyPoints = [
+  { title: '58 years of heritage', desc: 'One of India\'s oldest aluminium extrusion manufacturers. Established 1967 by the Thakkar family — still family-owned.' },
+  { title: 'Owner-managed',        desc: 'Decisions made on-site by people who understand manufacturing. Short chains. Clear accountability.' },
+  { title: 'Integrated platform',  desc: 'Foundry, die shop, extrusion, heat treatment, machining, and finishing — all in-house. Every discipline has real depth.' },
+  { title: 'Export markets',       desc: 'Europe, North America, Asia-Pacific, Middle East. International experience and market exposure from day one.' },
+  { title: 'Growth track',         desc: 'Capacity expansion and digitalisation underway. Roles being created — not just replaced.' },
 ];
 ---
 
 <Layout
   title="Careers at Banco Aluminium"
-  description="Build your career in aluminium at Banco Aluminium. 58 years of manufacturing excellence, family-owned, integrated platform from foundry to finished profile. Open roles in manufacturing, engineering, quality, sales, finance, IT, HR, and logistics."
+  description="Build your career in aluminium manufacturing at Banco Aluminium. 58 years of heritage, family-owned, integrated platform from foundry to finished profile. Roles in manufacturing, engineering, quality, sales, finance, IT, HR and logistics."
+  transparentNav={true}
 >
 
-  <section class="car-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">About / Careers</div>
-      <h1 class="car-h1">
-        Build your career<br>in aluminium.
+  <!-- ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ -->
+  <section class="ca-hero">
+    <div class="ca-hero-media" aria-hidden="true">
+      <video class="ca-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="ca-hero-scrim"></div>
+      <div class="ca-hero-grad"></div>
+    </div>
+
+    <div class="container ca-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
+        Careers
+      </div>
+      <h1 class="t-h1 ca-hero-h1" data-reveal data-reveal-delay="2">
+        Build your career<br/><em class="accent">in aluminium.</em>
       </h1>
-      <p class="car-lead">
-        Banco Aluminium has been manufacturing since 1967. Family-owned, fully integrated —
-        from foundry to finished profile. We hire people who want to build something:
-        careers, capability, and a manufacturing business that lasts.
+      <p class="ca-hero-lede" data-reveal data-reveal-delay="3">
+        Banco Aluminium has been manufacturing since 1967. Family-owned,
+        fully integrated — from foundry to finished profile. We hire people
+        who want to build something: careers, capability, and a manufacturing
+        business that lasts.
       </p>
-      <div class="car-stats">
+
+      <div class="ca-hero-stats" data-reveal data-reveal-delay="4">
         {[
-          { n: '58 yrs',  l: 'Manufacturing since 1967' },
-          { n: '6',       l: 'Manufacturing departments hiring' },
-          { n: 'Integrated', l: 'Full value chain' },
-          { n: 'Family',  l: 'Owner-managed' },
-        ].map(({ n, l }) => (
-          <div class="car-stat">
-            <div class="car-stat-n">{n}</div>
-            <div class="car-stat-l">{l}</div>
+          { val: '58 yrs',    label: 'Manufacturing since 1967' },
+          { val: '900+',      label: 'People on site' },
+          { val: '8',         label: 'Departments hiring' },
+          { val: 'Integrated',label: 'Full value chain' },
+        ].map(({ val, label }) => (
+          <div class="ca-stat">
+            <div class="ca-stat-n">{val}</div>
+            <div class="ca-stat-l">{label}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px" data-reveal data-reveal-delay="5">
+        <a href="#apply" class="btn btn-primary-dark">Apply now</a>
+        <a href="#departments" class="btn btn-secondary-dark">Browse departments</a>
+      </div>
+    </div>
+
+    <div class="ca-scroll-cue" aria-hidden="true">
+      <span class="ca-scroll-line"></span>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       WHY BANCO — sticky + 5 points
+       ══════════════════════════════════════════ -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="ca-why-layout">
+        <div class="ca-why-sticky" data-reveal="left">
+          <div class="eyebrow">/ 01 · Why Banco</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Integrated.<br/>Growing.<br/><em class="accent">Genuinely</em><br/>manufacturing.
+          </h2>
+          <div class="ca-why-rule"></div>
+          <p style="color:var(--color-stone-700);font-size:15px;line-height:1.7">
+            Most aluminium companies are traders. Banco is a manufacturer —
+            with its own foundry, die shop, five extrusion presses, heat
+            treatment, surface finishing, and machining. If you join Banco,
+            you work in a place where things are actually made.
+          </p>
+        </div>
+
+        <div class="ca-why-points" data-reveal="right">
+          {whyPoints.map((p, i) => (
+            <div class="ca-why-row" style={`--delay:${i * 60}ms`}>
+              <div class="ca-why-n">{String(i + 1).padStart(2, '0')}</div>
+              <div class="ca-why-body">
+                <div class="ca-why-title">{p.title}</div>
+                <div class="ca-why-desc">{p.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       DEPARTMENTS — 4×2 dark grid
+       ══════════════════════════════════════════ -->
+  <section class="section-dark section-pad" id="departments">
+    <div class="container">
+      <div class="ca-dept-head" data-reveal="left">
+        <div class="eyebrow on-dark">/ 02 · Departments we hire for</div>
+        <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
+          Eight departments.<br/><em class="accent">Every level.</em>
+        </h2>
+      </div>
+
+      <div class="ca-dept-grid" data-reveal="fade">
+        {departments.map((d, i) => (
+          <div class="ca-dept-card" style={`--delay:${i * 50}ms`}>
+            <div class="ca-dept-top">
+              <div class="ca-dept-id">{d.id}</div>
+            </div>
+            <h3 class="ca-dept-name">{d.name}</h3>
+            <div class="ca-dept-rule"></div>
+            <p class="ca-dept-desc">{d.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Why Banco -->
-  <section class="section-light section-pad">
+
+  <!-- ══════════════════════════════════════════
+       APPLICATION FORM
+       ══════════════════════════════════════════ -->
+  <section class="section-alt section-pad" id="apply">
     <div class="container">
-      <div class="eyebrow">/ 01 · Why Banco</div>
-      <div class="car-why-grid">
-        <div>
+      <div class="ca-form-layout">
+
+        <!-- Left: context -->
+        <div class="ca-form-context" data-reveal="left">
+          <div class="eyebrow">/ 03 · Apply</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Integrated. Growing.<br>Genuinely manufacturing.
+            Apply for a role<br/>at Banco.
           </h2>
-        </div>
-        <div>
-          <p class="t-lead" style="color:var(--color-stone-700)">
-            Most aluminium companies are traders. Banco is a manufacturer — with its own
-            foundry, die shop, five extrusion presses, heat treatment, surface finishing,
-            and machining. If you join Banco, you work in a place where things are actually
-            made, where process improvement has real consequences, and where technical
-            skill is genuinely valued.
+          <p style="color:var(--color-stone-700);font-size:15px;line-height:1.7;margin-top:20px">
+            Our HR team reviews all applications and responds within 10 working days.
+            For manufacturing and technical roles, shortlisted candidates are invited
+            for a plant visit and technical interview at our facility in Vadodara.
           </p>
-          <div class="car-why-points">
+
+          <div class="ca-notes">
             {[
-              ['58 years', 'One of India\'s oldest aluminium extrusion manufacturers. Established 1967.'],
-              ['Family-owned', 'Owner-managed business. Decisions made on-site by people who understand manufacturing.'],
-              ['Integrated platform', 'Foundry, die shop, extrusion, heat treatment, machining, and finishing — all in-house. Every discipline has depth.'],
-              ['Export markets', 'Europe, North America, Asia-Pacific, Middle East. International experience from day one.'],
-              ['Growth track', 'Capacity expansion and digitalisation underway. Roles being created, not just replaced.'],
-            ].map(([title, desc]) => (
-              <div class="car-why-row">
-                <div class="car-why-title">{title}</div>
-                <div class="car-why-desc">{desc}</div>
+              'Applications reviewed within 10 working days.',
+              'We do not use recruitment agents — apply directly only.',
+              'CV should be PDF format. Maximum 5 MB.',
+              'We hire at all levels — fresher, experienced, and senior management.',
+            ].map(note => (
+              <div class="ca-note">
+                <div class="ca-note-dot" aria-hidden="true"></div>
+                <span>{note}</span>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Departments -->
-  <section class="section-dark section-pad">
-    <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Departments we hire for</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
-        Eight departments.<br>Every level.
-      </h2>
-      <div class="car-dept-grid">
-        {departments.map((d) => (
-          <div class="car-dept-card">
-            <div class="car-dept-id">{d.id}</div>
-            <h3 class="car-dept-name">{d.name}</h3>
-            <p class="car-dept-desc">{d.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Application form -->
-  <section class="section-alt section-pad">
-    <div class="container">
-      <div class="eyebrow">/ 03 · Apply</div>
-      <div class="car-form-grid">
-        <div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Apply for a role<br>at Banco.
-          </h2>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
-            Complete the application form. Our HR team reviews all applications and
-            responds within 10 working days. For manufacturing and technical roles,
-            shortlisted candidates will be invited for a plant visit and technical
-            interview at our facility.
-          </p>
-          <div class="car-form-notes">
-            <div class="car-note-row">
-              <div class="car-note-dot"></div>
-              <span>Applications are reviewed within 10 working days.</span>
-            </div>
-            <div class="car-note-row">
-              <div class="car-note-dot"></div>
-              <span>We do not use recruitment agents. Apply directly only.</span>
-            </div>
-            <div class="car-note-row">
-              <div class="car-note-dot"></div>
-              <span>CV should be PDF format. Maximum 5 MB.</span>
-            </div>
-            <div class="car-note-row">
-              <div class="car-note-dot"></div>
-              <span>We hire for all levels — graduate, experienced, and senior management.</span>
-            </div>
+          <div class="ca-contact-block">
+            <div class="ca-contact-label">Direct enquiries</div>
+            <a href="mailto:careers@bancoaluminium.com" class="ca-contact-email">
+              careers@bancoaluminium.com
+            </a>
           </div>
         </div>
-        <form class="car-form" action="/contact#careers" method="post" enctype="multipart/form-data">
-          <div class="car-field">
-            <label class="car-label" for="full-name">Full name <span class="car-req">*</span></label>
-            <input class="car-input" type="text" id="full-name" name="full_name" required autocomplete="name" placeholder="Your full name" />
+
+        <!-- Right: form -->
+        <form class="ca-form" data-reveal="right" action="/contact/success" method="post" enctype="multipart/form-data">
+          <div class="ca-form-section-label">Personal details</div>
+
+          <div class="ca-field">
+            <label class="ca-label" for="full-name">Full name <span class="ca-req">*</span></label>
+            <input class="ca-input" type="text" id="full-name" name="full_name" required autocomplete="name" placeholder="Your full name" />
           </div>
-          <div class="car-field-row">
-            <div class="car-field">
-              <label class="car-label" for="email">Email address <span class="car-req">*</span></label>
-              <input class="car-input" type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com" />
+
+          <div class="ca-field-row">
+            <div class="ca-field">
+              <label class="ca-label" for="email">Email address <span class="ca-req">*</span></label>
+              <input class="ca-input" type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com" />
             </div>
-            <div class="car-field">
-              <label class="car-label" for="phone">Phone number <span class="car-req">*</span></label>
-              <input class="car-input" type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+91 00000 00000" />
-            </div>
-          </div>
-          <div class="car-field-row">
-            <div class="car-field">
-              <label class="car-label" for="department">Department <span class="car-req">*</span></label>
-              <select class="car-select" id="department" name="department" required>
-                <option value="" disabled selected>Select department</option>
-                {departments.map(d => <option value={d.name}>{d.name}</option>)}
-              </select>
-            </div>
-            <div class="car-field">
-              <label class="car-label" for="experience">Total experience (years) <span class="car-req">*</span></label>
-              <select class="car-select" id="experience" name="experience" required>
-                <option value="" disabled selected>Select range</option>
-                <option>0–1 years (Fresher)</option>
-                <option>1–3 years</option>
-                <option>3–5 years</option>
-                <option>5–10 years</option>
-                <option>10–15 years</option>
-                <option>15+ years</option>
-              </select>
+            <div class="ca-field">
+              <label class="ca-label" for="phone">Phone number <span class="ca-req">*</span></label>
+              <input class="ca-input" type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+91 00000 00000" />
             </div>
           </div>
-          <div class="car-field">
-            <label class="car-label" for="position">Position applied for <span class="car-req">*</span></label>
-            <input class="car-input" type="text" id="position" name="position" required placeholder="e.g. Metallurgical Engineer, Quality Manager, Press Operator" />
-          </div>
-          <div class="car-field-row">
-            <div class="car-field">
-              <label class="car-label" for="organisation">Current / last organisation</label>
-              <input class="car-input" type="text" id="organisation" name="organisation" autocomplete="organization" placeholder="Company name" />
+
+          <div class="ca-form-section-label" style="margin-top:8px">Role details</div>
+
+          <div class="ca-field-row">
+            <div class="ca-field">
+              <label class="ca-label" for="department">Department <span class="ca-req">*</span></label>
+              <div class="ca-select-wrap">
+                <select class="ca-select" id="department" name="department" required>
+                  <option value="" disabled selected>Select department</option>
+                  {departments.map(d => <option value={d.name}>{d.name}</option>)}
+                </select>
+              </div>
             </div>
-            <div class="car-field">
-              <label class="car-label" for="education">Education qualification <span class="car-req">*</span></label>
-              <input class="car-input" type="text" id="education" name="education" placeholder="e.g. B.Tech Metallurgy, MBA, Diploma" />
+            <div class="ca-field">
+              <label class="ca-label" for="experience">Total experience <span class="ca-req">*</span></label>
+              <div class="ca-select-wrap">
+                <select class="ca-select" id="experience" name="experience" required>
+                  <option value="" disabled selected>Select range</option>
+                  <option>0–1 years (Fresher)</option>
+                  <option>1–3 years</option>
+                  <option>3–5 years</option>
+                  <option>5–10 years</option>
+                  <option>10–15 years</option>
+                  <option>15+ years</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div class="car-field">
-            <label class="car-label" for="reason">Why Banco? <span class="car-req">*</span></label>
-            <textarea class="car-textarea" id="reason" name="reason" required rows="4" placeholder="Tell us why you want to join Banco and what you'd bring to the role."></textarea>
+
+          <div class="ca-field">
+            <label class="ca-label" for="position">Position applied for <span class="ca-req">*</span></label>
+            <input class="ca-input" type="text" id="position" name="position" required placeholder="e.g. Metallurgical Engineer, Quality Manager, Press Operator" />
           </div>
-          <div class="car-field">
-            <label class="car-label" for="cv">Upload CV (PDF) <span class="car-req">*</span></label>
-            <input class="car-file" type="file" id="cv" name="cv" accept=".pdf" required />
-            <div class="car-file-hint">PDF only · Maximum 5 MB</div>
+
+          <div class="ca-field-row">
+            <div class="ca-field">
+              <label class="ca-label" for="organisation">Current / last organisation</label>
+              <input class="ca-input" type="text" id="organisation" name="organisation" autocomplete="organization" placeholder="Company name" />
+            </div>
+            <div class="ca-field">
+              <label class="ca-label" for="education">Education <span class="ca-req">*</span></label>
+              <input class="ca-input" type="text" id="education" name="education" placeholder="e.g. B.Tech Metallurgy, Diploma" />
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary car-submit">Submit application</button>
+
+          <div class="ca-form-section-label" style="margin-top:8px">Your application</div>
+
+          <div class="ca-field">
+            <label class="ca-label" for="reason">Why Banco? <span class="ca-req">*</span></label>
+            <textarea class="ca-textarea" id="reason" name="reason" required rows="4" placeholder="Tell us why you want to join Banco and what you'd bring to the role."></textarea>
+          </div>
+
+          <div class="ca-field">
+            <label class="ca-label" for="cv">Upload CV (PDF) <span class="ca-req">*</span></label>
+            <input class="ca-file" type="file" id="cv" name="cv" accept=".pdf" required />
+            <div class="ca-file-hint">PDF only · Maximum 5 MB</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary ca-submit">Submit application →</button>
         </form>
+
       </div>
     </div>
   </section>
 
-  <!-- Bottom note CTA -->
-  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
+
+  <!-- ══════════════════════════════════════════
+       CTA CLOSE
+       ══════════════════════════════════════════ -->
+  <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div class="ca-cta-row" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Hiring</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
-            We respond to every<br>application within 10 working days.
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
+            We respond to every<br/>application within 10 working days.
           </h2>
-          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:52ch">
-            Questions about a specific role or department? Contact our HR team directly
-            at <a href="mailto:careers@bancoaluminium.com" style="color:var(--color-silver);text-decoration:underline;text-underline-offset:3px">careers@bancoaluminium.com</a>
+          <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;margin-top:14px;max-width:52ch">
+            Questions about a specific role or department? Contact our HR team directly.
           </p>
+          <a href="mailto:careers@bancoaluminium.com" style="color:var(--color-silver);font-size:15px;text-decoration:underline;text-underline-offset:4px;margin-top:12px;display:inline-block">
+            careers@bancoaluminium.com
+          </a>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <a href="#department" class="btn btn-primary-dark">Browse departments</a>
+        <div class="ca-cta-btns">
+          <a href="#apply" class="btn btn-primary-dark">Submit application</a>
           <a href="/about" class="btn btn-secondary-dark">About Banco</a>
         </div>
       </div>
@@ -225,80 +298,170 @@ const departments = [
 </Layout>
 
 <style>
-  .car-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
+  /* ── HERO ───────────────────────────────────────────────────── */
+  .ca-hero {
+    position: relative; background: var(--color-navy-deep);
+    min-height: 90vh; display: flex; align-items: center; overflow: hidden;
   }
-  .car-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
+  .ca-hero-media { position: absolute; inset: 0; z-index: 0; }
+  .ca-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  .ca-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.60); }
+  .ca-hero-grad {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(120deg, rgba(6,21,37,0.78) 0%, rgba(6,21,37,0.25) 55%, rgba(6,21,37,0.05) 100%),
+      linear-gradient(to bottom, transparent 55%, var(--color-navy-deep) 100%);
   }
-  .car-hero > .container { position: relative; z-index: 1; }
-  .car-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .car-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .car-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .car-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .car-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .car-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+  .ca-hero-body { position: relative; z-index: 2; width: 100%; padding-top: 160px; padding-bottom: 100px; }
+  .ca-hero-h1 { color: var(--color-stone-50); margin-top: 20px; }
+  .ca-hero-lede { color: var(--color-stone-400); font-size: clamp(15px,1.4vw,18px); line-height: 1.65; max-width: 54ch; margin-top: 24px; }
+  .ca-hero-stats { display: flex; gap: 0; flex-wrap: wrap; margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.10); }
+  .ca-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.10); }
+  .ca-stat:last-child { border-right: none; }
+  .ca-stat-n { font-family: var(--font-sans); font-size: clamp(20px,2.5vw,32px); font-weight: 400; letter-spacing: -0.02em; color: var(--color-stone-50); line-height: 1; }
+  .ca-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 7px; }
 
-  .car-why-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
-  .car-why-points { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
-  .car-why-row    { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .car-why-title  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
-  .car-why-desc   { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+  .ca-scroll-cue { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .ca-scroll-line { display: block; width: 1px; height: 52px; background: linear-gradient(to bottom, var(--color-green), transparent); animation: ca-drop 2s ease-in-out infinite; }
+  @keyframes ca-drop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50%  { transform: scaleY(1); transform-origin: top; }
+    51%  { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+  }
 
-  .car-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
-  .car-dept-card { background: var(--color-navy-soft); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
-  .car-dept-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
-  .car-dept-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-platinum); }
-  .car-dept-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-silver); }
+  /* ── WHY BANCO ──────────────────────────────────────────────── */
+  .ca-why-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(48px,7vw,100px); align-items: start; }
+  .ca-why-sticky { position: sticky; top: 100px; }
+  .ca-why-rule { width: 40px; height: 1px; background: var(--color-stone-400); margin: 28px 0; }
+  .ca-why-points { display: flex; flex-direction: column; }
+  .ca-why-row {
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 20px; padding: 22px 0;
+    border-bottom: 1px solid var(--color-stone-200);
+    align-items: start;
+    transition-delay: var(--delay, 0ms);
+  }
+  .ca-why-row:first-child { border-top: 1px solid var(--color-stone-200); }
+  .ca-why-n { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); padding-top: 4px; }
+  .ca-why-title { font-size: 16px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 6px; }
+  .ca-why-desc  { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
 
-  .car-form-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .car-form-notes { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
-  .car-note-row { display: flex; align-items: flex-start; gap: 10px; }
-  .car-note-dot { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
-  .car-note-row span { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
+  /* ── DEPARTMENTS ────────────────────────────────────────────── */
+  .ca-dept-head { max-width: 500px; margin-bottom: 40px; }
+  .ca-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); }
+  .ca-dept-card {
+    background: var(--color-navy-soft); padding: 28px 20px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    transition: background 0.25s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .ca-dept-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--color-green);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .ca-dept-card:hover { background: var(--color-navy); }
+  .ca-dept-card:hover::before { transform: scaleX(1); }
+  .ca-dept-top { margin-bottom: 12px; }
+  .ca-dept-id { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--color-green); }
+  .ca-dept-name { font-size: 18px; font-weight: 600; color: var(--color-platinum); letter-spacing: -0.01em; }
+  .ca-dept-rule { width: 24px; height: 1px; background: var(--color-navy-line); margin: 12px 0; }
+  .ca-dept-desc { font-size: 12.5px; line-height: 1.65; color: var(--color-stone-400); }
 
-  .car-form { display: flex; flex-direction: column; gap: 18px; }
-  .car-field { display: flex; flex-direction: column; gap: 6px; }
-  .car-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .car-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
-  .car-req { color: var(--color-green); }
-  .car-input, .car-select, .car-textarea {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    color: var(--color-navy);
-    background: white;
+  /* ── FORM LAYOUT ────────────────────────────────────────────── */
+  .ca-form-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(48px,7vw,96px); align-items: start; }
+  .ca-notes { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .ca-note { display: flex; align-items: flex-start; gap: 12px; }
+  .ca-note-dot { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .ca-note span { font-size: 13.5px; line-height: 1.55; color: var(--color-stone-700); }
+  .ca-contact-block { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  .ca-contact-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-400); margin-bottom: 6px; }
+  .ca-contact-email { font-size: 15px; color: var(--color-navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .ca-contact-email:hover { color: var(--color-green); }
+
+  /* ── FORM ───────────────────────────────────────────────────── */
+  .ca-form { display: flex; flex-direction: column; gap: 16px; }
+  .ca-form-section-label {
+    font-family: var(--font-mono); font-size: 9.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-stone-400);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-stone-200);
+    margin-top: 4px;
+  }
+  .ca-field { display: flex; flex-direction: column; gap: 6px; }
+  .ca-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ca-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
+  .ca-req { color: var(--color-green); }
+  .ca-input, .ca-textarea {
+    font-family: var(--font-sans); font-size: 14px;
+    color: var(--color-navy); background: white;
     border: 1px solid var(--color-stone-200);
-    padding: 11px 14px;
-    outline: none;
+    padding: 12px 14px; outline: none; width: 100%;
     transition: border-color 0.18s ease;
-    width: 100%;
-    appearance: none;
-    -webkit-appearance: none;
+    border-radius: 0; -webkit-appearance: none; appearance: none;
   }
-  .car-input:focus, .car-select:focus, .car-textarea:focus { border-color: var(--color-navy); }
-  .car-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%234A5260' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
-  .car-textarea { resize: vertical; min-height: 100px; }
-  .car-file { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 10px 14px; background: white; cursor: pointer; width: 100%; }
-  .car-file::-webkit-file-upload-button { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.05em; background: var(--color-navy); color: white; border: none; padding: 6px 14px; cursor: pointer; margin-right: 12px; }
-  .car-file-hint { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-stone-400); margin-top: 4px; }
-  .car-submit { margin-top: 8px; align-self: flex-start; }
+  .ca-input:focus, .ca-textarea:focus { border-color: var(--color-navy); }
+  .ca-textarea { resize: vertical; min-height: 110px; }
+  .ca-select-wrap { position: relative; }
+  .ca-select {
+    font-family: var(--font-sans); font-size: 14px;
+    color: var(--color-navy); background: white;
+    border: 1px solid var(--color-stone-200);
+    padding: 12px 40px 12px 14px; outline: none; width: 100%;
+    transition: border-color 0.18s ease;
+    border-radius: 0; -webkit-appearance: none; appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%234A5260' stroke-width='1.5' d='m1 1 5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+  }
+  .ca-select:focus { border-color: var(--color-navy); }
+  .ca-file {
+    font-family: var(--font-sans); font-size: 13px;
+    color: var(--color-stone-700);
+    border: 1px solid var(--color-stone-200);
+    padding: 10px 14px; background: white; cursor: pointer; width: 100%;
+  }
+  .ca-file::-webkit-file-upload-button {
+    font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.05em;
+    background: var(--color-navy); color: white;
+    border: none; padding: 6px 14px; cursor: pointer; margin-right: 12px;
+  }
+  .ca-file-hint { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-stone-400); margin-top: 4px; }
+  .ca-submit { margin-top: 8px; align-self: flex-start; }
 
-  @media (max-width: 1024px) {
-    .car-stats { grid-template-columns: repeat(2, 1fr); }
-    .car-why-grid { grid-template-columns: 1fr; }
-    .car-dept-grid { grid-template-columns: repeat(2, 1fr); }
-    .car-form-grid { grid-template-columns: 1fr; }
+  /* ── CTA ────────────────────────────────────────────────────── */
+  .ca-cta-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
+  .ca-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .ca-dept-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .ca-why-layout  { grid-template-columns: 1fr; gap: 40px; }
+    .ca-why-sticky  { position: static; }
+    .ca-form-layout { grid-template-columns: 1fr; }
+    .ca-cta-row     { flex-direction: column; }
+    .ca-cta-btns    { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .car-stats { grid-template-columns: 1fr 1fr; }
-    .car-field-row { grid-template-columns: 1fr; }
-    .car-dept-grid { grid-template-columns: 1fr 1fr; }
+    .ca-hero-vid    { display: none; }
+    .ca-hero-grad   { background: rgba(6,21,37,0.88); }
+    .ca-scroll-cue  { display: none; }
+    .ca-dept-grid   { grid-template-columns: 1fr 1fr; }
+    .ca-field-row   { grid-template-columns: 1fr; }
+    .ca-why-layout  { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ca-hero-vid { display: none; }
+    .ca-scroll-line { animation: none; opacity: 0.5; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.ca-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

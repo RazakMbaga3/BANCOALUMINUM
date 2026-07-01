@@ -21,40 +21,54 @@ const processSteps = [
 <Layout
   title="Die shop & tooling — Banco Aluminium"
   description="In-house die shop converting customer drawings into production tooling. 5-axis CNC machining, Q-Form flow simulation, flat/semi-hollow/hollow/porthole dies. 2–3 week tooling lead time."
+  transparentNav={true}
 >
 
-  <section class="die-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Die shop</div>
-      <h1 class="die-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Die shop</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Customer drawings<br>into production<br>tooling.
       </h1>
-      <p class="die-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Banco's in-house die shop designs and manufactures every extrusion die
         used across five presses. From Q-Form flow simulation to trial extrusion
         and sample approval — full tooling control, 2–3 week lead time.
       </p>
-      <div class="die-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '5-axis', l: 'CNC machining centre' },
           { n: 'Q-Form', l: 'Flow simulation' },
           { n: '4 types', l: 'Flat · semi-hollow · hollow · porthole' },
           { n: '2–3 wk', l: 'Standard tooling lead time' },
         ].map(({ n, l }) => (
-          <div class="die-stat">
-            <div class="die-stat-n">{n}</div>
-            <div class="die-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Die design process -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Die design process</div>
-      <div class="die-section-head">
+      <div class="eyebrow" data-reveal="fade">/ 01 · Die design process</div>
+      <div class="die-section-head" data-reveal="fade">
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
           Six stages from<br>drawing to trial.
         </h2>
@@ -64,7 +78,7 @@ const processSteps = [
           first-off failures and reduces sampling iterations.
         </p>
       </div>
-      <div class="die-process-grid">
+      <div class="die-process-grid" data-reveal="fade">
         {processSteps.map(({ num, name, desc }) => (
           <div class="die-proc-cell">
             <div class="die-proc-num">{num}</div>
@@ -79,11 +93,11 @@ const processSteps = [
   <!-- Die types -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Die types</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Die types</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
         Four die types.<br>Solid to multi-hollow.
       </h2>
-      <div class="die-table-wrap">
+      <div class="die-table-wrap" data-reveal="fade">
         <table class="die-table">
           <thead>
             <tr>
@@ -105,7 +119,7 @@ const processSteps = [
           </tbody>
         </table>
       </div>
-      <p class="die-footnote">
+      <p class="die-footnote" data-reveal="fade">
         All die types manufactured in H13 hot-work tool steel. Salt-bath or gas nitride hardening to 1000–1100 HV case hardness.
       </p>
     </div>
@@ -114,9 +128,9 @@ const processSteps = [
   <!-- Die machining -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Die machining</div>
+      <div class="eyebrow" data-reveal="fade">/ 03 · Die machining</div>
       <div class="die-mach-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             5-axis CNC.<br>H13 tool steel.<br>Nitride hardened.
           </h2>
@@ -146,7 +160,7 @@ const processSteps = [
             ))}
           </div>
         </div>
-        <div class="die-img-stack">
+        <div class="die-img-stack" data-reveal="right">
           <div class="die-img-main">
             <img src="/assets/manufacturing/casting-5.jpg" alt="Die machining process" loading="lazy" />
           </div>
@@ -161,9 +175,9 @@ const processSteps = [
   <!-- Trial & approval -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 04 · Trial extrusion & approval</div>
+      <div class="eyebrow" data-reveal="fade">/ 04 · Trial extrusion & approval</div>
       <div class="die-trial-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             No production without<br>sample approval.
           </h2>
@@ -180,7 +194,7 @@ const processSteps = [
             at no additional charge for drawing-compliant specifications.
           </p>
         </div>
-        <div class="die-approval-steps">
+        <div class="die-approval-steps" data-reveal="right">
           {[
             { step: '01', title: 'Trial billet loaded', desc: 'Dedicated trial billet run at nominal extrusion parameters on the appropriate press.' },
             { step: '02', title: 'First-off cut', desc: '500 mm section cut from steady-state run. Extrudate marked and traced to die number.' },
@@ -204,7 +218,7 @@ const processSteps = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Die shop enquiries</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -226,27 +240,6 @@ const processSteps = [
 </Layout>
 
 <style>
-  .die-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .die-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .die-hero > .container { position: relative; z-index: 1; }
-  .die-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .die-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .die-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .die-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .die-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .die-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .die-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-bottom: 48px; }
 
   .die-process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
@@ -288,14 +281,17 @@ const processSteps = [
   .die-approval-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
 
   @media (max-width: 1024px) {
-    .die-stats { grid-template-columns: repeat(2, 1fr); }
     .die-section-head { grid-template-columns: 1fr; }
     .die-process-grid { grid-template-columns: repeat(2, 1fr); }
     .die-mach-grid { grid-template-columns: 1fr; }
     .die-trial-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .die-stats { grid-template-columns: 1fr 1fr; }
     .die-process-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

@@ -14,46 +14,60 @@ const operations = [
 <Layout
   title="Fabrication & machining — Banco Aluminium"
   description="10,000 parts per day. CNC cutting, drilling, milling, punching, bending, and tapping. Custom assembly and export packing. Downstream from the extrusion press."
+  transparentNav={true}
 >
 
-  <section class="fab-hero">
-    <div class="container">
-      <div class="eyebrow on-dark">Capabilities / Fabrication & machining</div>
-      <h1 class="fab-h1">
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero">
+    <div class="cap-hero-media" aria-hidden="true">
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
+        <source src="/herovideo.mp4" type="video/mp4" />
+      </video>
+      <div class="cap-hero-scrim"></div>
+      <div class="cap-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Fabrication & machining</div>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         10,000 parts<br>per day.
       </h1>
-      <p class="fab-lead">
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
         Banco's fabrication and machining facility converts extruded profiles into finished
         components and sub-assemblies. Six machining operations, CNC precision, and throughput
         of 10,000 parts per day — direct from the press floor.
       </p>
-      <div class="fab-stats">
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '10,000', l: 'Parts per day throughput' },
           { n: '6',       l: 'CNC machining operations' },
           { n: 'OEM',     l: 'Sub-assembly capability' },
           { n: '±0.1 mm', l: 'Dimensional tolerance' },
         ].map(({ n, l }) => (
-          <div class="fab-stat">
-            <div class="fab-stat-n">{n}</div>
-            <div class="fab-stat-l">{l}</div>
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
     </div>
   </section>
 
   <!-- Overview -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 01 · Overview</div>
+      <div class="eyebrow" data-reveal="fade">/ 01 · Overview</div>
       <div class="fab-overview-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Profile into<br>finished component.
           </h2>
         </div>
-        <div>
+        <div data-reveal="right">
           <p class="t-lead" style="color:var(--color-stone-700)">
             Fabrication and machining sits directly downstream of the extrusion presses.
             Profiles move from cut-to-length saw, to heat treatment, to the fabrication
@@ -75,11 +89,11 @@ const operations = [
   <!-- Operations -->
   <section class="section-dark section-pad">
     <div class="container">
-      <div class="eyebrow on-dark">/ 02 · Machining operations</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Machining operations</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
         Six operations.<br>One facility.
       </h2>
-      <div class="fab-ops-grid">
+      <div class="fab-ops-grid" data-reveal="fade">
         {operations.map((o, i) => (
           <div class="fab-op-card">
             <div class="fab-op-num">/ {String(i+1).padStart(2,'0')}</div>
@@ -94,9 +108,9 @@ const operations = [
   <!-- Assembly -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">/ 03 · Assembly & sub-assembly</div>
+      <div class="eyebrow" data-reveal="fade">/ 03 · Assembly & sub-assembly</div>
       <div class="fab-asm-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Profiles combined<br>into finished products.
           </h2>
@@ -113,7 +127,7 @@ const operations = [
             finished assembly carton is maintained throughout.
           </p>
         </div>
-        <div class="fab-asm-list">
+        <div class="fab-asm-list" data-reveal="right">
           {[
             ['Plastic accessories',    'Corner keys, weather strips, gaskets, end caps — assembled to profile.'],
             ['Steel hardware',         'Brackets, hinges, anchors, and fasteners fitted to profile and torqued to specification.'],
@@ -134,9 +148,9 @@ const operations = [
   <!-- Throughput & tolerances -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">/ 04 · Throughput & tolerances</div>
+      <div class="eyebrow" data-reveal="fade">/ 04 · Throughput & tolerances</div>
       <div class="fab-tol-grid">
-        <div>
+        <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Volume and precision<br>on the same floor.
           </h2>
@@ -147,7 +161,7 @@ const operations = [
             verification.
           </p>
         </div>
-        <div class="fab-tol-table">
+        <div class="fab-tol-table" data-reveal="right">
           {[
             ['Daily throughput',     '10,000 parts / day (standard operations)'],
             ['Cut-to-length accuracy','±0.5 mm standard; ±0.2 mm precision'],
@@ -170,7 +184,7 @@ const operations = [
   <!-- CTA -->
   <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
         <div>
           <div class="eyebrow on-dark">Fabrication enquiries</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
@@ -188,27 +202,6 @@ const operations = [
 </Layout>
 
 <style>
-  .fab-hero {
-    background: var(--color-navy);
-    padding: 148px 0 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .fab-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
-    pointer-events: none;
-  }
-  .fab-hero > .container { position: relative; z-index: 1; }
-  .fab-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
-  .fab-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
-  .fab-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
-  .fab-stat { background: var(--color-navy-deep); padding: 22px 24px; }
-  .fab-stat-n { font-family: var(--font-sans); font-size: clamp(18px, 2.2vw, 28px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
-  .fab-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
-
   .fab-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
 
   .fab-ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
@@ -230,14 +223,17 @@ const operations = [
   .fab-tval { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
 
   @media (max-width: 1024px) {
-    .fab-stats { grid-template-columns: repeat(2, 1fr); }
     .fab-overview-grid { grid-template-columns: 1fr; }
     .fab-ops-grid { grid-template-columns: repeat(2, 1fr); }
     .fab-asm-grid { grid-template-columns: 1fr; }
     .fab-tol-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .fab-stats { grid-template-columns: 1fr 1fr; }
     .fab-ops-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>

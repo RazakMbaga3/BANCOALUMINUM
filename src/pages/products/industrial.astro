@@ -8,42 +8,55 @@ const industries = [
   { num: '/ 04', name: 'Heat sinks & heat exchangers',         note: 'Extruded fin · skived · bonded assemblies' },
   { num: '/ 05', name: 'Aerospace & defence',                  note: 'Cryogenic · structural · precision sections' },
   { num: '/ 06', name: 'Hydraulics & pneumatics',              note: 'Cylinder tubes · manifold bodies · rods' },
-  { num: '/ 07', name: 'Railways & shipbuilding',              note: 'Structural · floor panels · marine profiles' },
-  { num: '/ 08', name: 'Solar & alternative energy',           note: 'Mounting frames · tracker rails · inverter housings' },
-  { num: '/ 09', name: 'Material handling & structural',       note: 'Modular rack · conveyor · frame sections' },
-  { num: '/ 10', name: 'Pumps, motors & general engineering',  note: 'Motor bodies · pump housings · shafts' },
-  { num: '/ 11', name: 'Forging & precision machining',        note: 'Machining billets · forging stock · turned parts' },
-  { num: '/ 12', name: 'Transport & elevator systems',         note: 'Vehicle profiles · elevator guide rails · enclosures' },
+  { num: '/ 07', name: 'Railways',                             note: 'Structural · floor panels · coach body sections' },
+  { num: '/ 08', name: 'Shipbuilding',                         note: 'Marine profiles · deck fittings · hull structures' },
+  { num: '/ 09', name: 'Solar & alternative energy',           note: 'Mounting frames · tracker rails · inverter housings' },
+  { num: '/ 10', name: 'Material handling & structural',       note: 'Modular rack · conveyor · frame sections' },
+  { num: '/ 11', name: 'Pumps, motors & general engineering',  note: 'Motor bodies · pump housings · shafts' },
+  { num: '/ 12', name: 'Forging & precision machining',        note: 'Machining billets · forging stock · turned parts' },
+  { num: '/ 13', name: 'Transport & elevator systems',         note: 'Vehicle profiles · elevator guide rails · enclosures' },
 ];
 
 const alloyFamilies = [
   {
+    title: 'Soft alloys',
+    sub: 'Commercially pure aluminium',
+    grades: [{ g: '1050A' }, { g: '1060' }, { g: '1070A' }, { g: '1100' }, { g: '1200Z' }, { g: '1350' }],
+    note: 'Series 1xxx',
+  },
+  {
+    title: 'Normal alloys',
+    sub: 'General extrusion · electrical conductor',
+    grades: [{ g: '6060' }, { g: '6063' }, { g: '6063-AN', lf: true }, { g: '6063-HS', lf: true }, { g: '6101' }, { g: '6101B' }, { g: '6463' }],
+    note: 'Series 6xxx · bold = lead-free (RoHS/ELV/REACH)',
+  },
+  {
+    title: 'Medium hard alloys',
+    sub: 'Structural · transport · marine · engineering',
+    grades: [{ g: '3003' }, { g: '5083' }, { g: '5754' }, { g: '6005A' }, { g: '6026', lf: true }, { g: '6061' }, { g: '6082' }, { g: '6082-HS', lf: true }],
+    note: 'Series 3xxx · 5xxx · 6xxx · bold = lead-free',
+  },
+  {
     title: 'Hard alloys',
-    sub: 'Structural · automotive · aerospace',
-    grades: ['2011', '2014', '2017A', '5083', '5754', '6026', '6061', '6066', '6082', '6262'],
-    note: 'Series 2xxx · 5xxx · 6xxx',
+    sub: 'Structural · transport · defence · aerospace',
+    grades: [{ g: '2011' }, { g: '2014' }, { g: '2017A' }, { g: '2024' }, { g: '7005' }, { g: '7075' }],
+    note: 'Series 2xxx · 7xxx',
   },
-  {
-    title: 'Lead-free machining',
-    sub: 'RoHS · automated CNC',
-    grades: ['2111 LF', '2033 LF', '6026 LF'],
-    note: 'RoHS compliant · custom compositions',
-  },
-  {
-    title: 'Soft & medium alloys',
-    sub: 'Architectural · electrical · general',
-    grades: ['1050', '1070', '1100', '3003', '3103', '6060', '6063'],
-    note: 'Series 1xxx · 3xxx · 6xxx',
-  },
+];
+
+const alloySpecialities = [
+  'Hard and high-strength alloys for structural, transport, defence, aerospace and engineering applications',
+  'Lead-free free-machining alloys, including 6026, for automotive, medical, food processing and precision-machined components',
+  'Electrical conductivity alloys, including 6101 and 6201, for busbars, conductor profiles and renewable energy applications',
+  'Custom alloys and special chemistries developed as per customer specification',
 ];
 
 const capabilities = [
   { num: '/ 01', name: 'Die design & development',      tag: 'Q-Form simulation · 5-axis CNC · trial extrusion' },
-  { num: '/ 02', name: 'Extrusion',                     tag: '5 presses · 1,100–3,300 MT · 35,000 MT/yr' },
+  { num: '/ 02', name: 'Extrusion',                     tag: '5 presses · 1100–3300T · 35,000 MT/yr' },
   { num: '/ 03', name: 'Heat treatment',                tag: 'T5, T6, T73 tempers · in-line & batch' },
   { num: '/ 04', name: 'Fabrication & machining',       tag: 'Cut · drill · mill · bend · 10,000 parts/day' },
   { num: '/ 05', name: 'Cold drawing',                  tag: 'Rods · bars · tubes · tight OD tolerance' },
-  { num: '/ 06', name: 'Surface finishing',             tag: 'Mill finish · anodising · powder coat (QUALICOAT)' },
 ];
 
 const workflow = [
@@ -77,8 +90,8 @@ const certs = [
   'ISO 45001:2018',
   'IATF 16949:2016',
   'CE (EN 15088)',
-  'IRS Works Approval',
-  'IS 733 · IS 1285 · IS 5082',
+  'IR Class Work Approved',
+  'IS 733 · IS 5082',
 ];
 ---
 
@@ -105,9 +118,9 @@ const certs = [
       <div class="ih-stats">
         {[
           { n: '35,000', u: 'MT/yr', l: 'Extrusion capacity' },
-          { n: '5',      u: 'Presses', l: '1,100–3,300 MT' },
+          { n: '5',      u: 'Presses', l: '1100–3300T' },
           { n: '10,000', u: '/Day',  l: 'Parts fabricated' },
-          { n: '12',     u: 'Sectors', l: 'Industries served' },
+          { n: '13',     u: 'Sectors', l: 'Industries served' },
         ].map(({ n, u, l }) => (
           <div class="ih-stat">
             <div class="ih-stat-num">{n} <span class="ih-stat-u">{u}</span></div>
@@ -136,19 +149,19 @@ const certs = [
       <div class="ih-cap-list">
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
-          <span>Die design, trial, and approval managed in-house</span>
+          <span>In-House Die Design, Simulation, Trial & Approval</span>
         </div>
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
-          <span>Alloys 1xxx–7xxx · hard alloy specialists</span>
+          <span>Heat Treatment, Machining & Cold Drawing Under One Roof</span>
         </div>
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
-          <span>Heat treatment, machining, cold drawing — same site</span>
+          <span>Quality, Environmental, Health & Safety System Approved</span>
         </div>
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
-          <span>IATF 16949 · CBAM-ready export documentation</span>
+          <span>Automotive & Marine Class Approved</span>
         </div>
       </div>
       <a href="/contact#quote" class="btn btn-primary ih-split-cta">Start a new profile</a>
@@ -159,7 +172,7 @@ const certs = [
   <section class="section-dark" style="padding: 72px 0">
     <div class="container">
       <h2 class="ih-section-h2" style="color:var(--color-platinum)">
-        12 sectors.<br>One partner.
+        13 sectors.<br>One partner.
       </h2>
       <div class="i-industry-grid">
         {industries.map((ind) => (
@@ -191,8 +204,16 @@ const certs = [
             <div class="ih-alloy-title">{fam.title}</div>
             <div class="ih-alloy-sub">{fam.sub}</div>
             <div class="ih-alloy-grades">
-              {fam.grades.map(g => <span class="ih-grade">{g}</span>)}
+              {fam.grades.map(({ g, lf }) => <span class={`ih-grade${lf ? ' ih-grade-lf' : ''}`}>{g}</span>)}
             </div>
+          </div>
+        ))}
+      </div>
+      <div class="ih-cap-list" style="margin-top:28px">
+        {alloySpecialities.map((s) => (
+          <div class="ih-cap-item">
+            <span class="ih-cap-dot"></span>
+            <span>{s}</span>
           </div>
         ))}
       </div>
@@ -203,7 +224,7 @@ const certs = [
   <section class="section-dark" style="padding: 72px 0">
     <div class="container">
       <h2 class="ih-section-h2" style="color:var(--color-platinum)">
-        Six integrated stages<br>under one roof.
+        Five integrated stages<br>under one roof.
       </h2>
       <div class="ih-cap-grid">
         {capabilities.map((cap) => (
@@ -235,7 +256,7 @@ const certs = [
   <!-- ── How to order — compact workflow ───────────────────────────────────── -->
   <section class="section-white" style="padding: 72px 0">
     <div class="container">
-      <h2 class="ih-section-h2 ih-h2-navy">Submit a drawing.<br>We handle the rest.</h2>
+      <h2 class="ih-section-h2 ih-h2-navy">Submit Your Enquiry.<br>We Handle the Rest.</h2>
       <div class="ih-workflow">
         {workflow.map((w) => (
           <div class="ih-wf-row">
@@ -255,7 +276,7 @@ const certs = [
   <!-- ── Packing options ────────────────────────────────────────────────────── -->
   <section class="section-silver" style="padding: 72px 0">
     <div class="container">
-      <h2 class="ih-section-h2 ih-h2-navy">Customer-specified packing.<br>Export-ready.</h2>
+      <h2 class="ih-section-h2 ih-h2-navy">Customer-specified packing.</h2>
       <div class="ih-pack-grid">
         <div>
           <div class="ih-pack-label">Internal protection</div>
@@ -475,6 +496,7 @@ const certs = [
   .ih-alloy-sub { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
   .ih-alloy-grades { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 8px; border-top: 1px solid var(--color-stone-200); margin-top: 4px; }
   .ih-grade { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 3px 8px; }
+  .ih-grade-lf { font-weight: 700; color: var(--color-green); border-color: var(--color-green); }
 
   /* ── Section headings ────────────────────────────────────────────────────── */
   .ih-section-h2 {

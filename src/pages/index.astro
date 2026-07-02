@@ -6,7 +6,7 @@ const segments = [
     num: '/ 01',
     tag: 'OEM · Drawing-led',
     name: 'Industrial & OEMs',
-    desc: 'Application-led profiles manufactured to drawing — repeat-production controlled, with heat treatment, machining and surface finishing built into the same integrated platform.',
+    desc: 'Manufacturing high-quality aluminium profiles for Industrial, Marine, Transportation, and OEM applications using integrated state-of-the-art manufacturing, precision engineering, and advanced testing facilities to deliver superior performance, reliability, and customer satisfaction.',
     chips: ['Electrical & T&D', 'Automotive', 'Heat sinks', 'Aerospace', 'Hydraulics'],
     href: '/products/industrial',
     img: '/assets/manufacturing/industrialOEMS.webp',
@@ -16,7 +16,7 @@ const segments = [
     num: '/ 02',
     tag: 'Windows · Doors · Façades',
     name: 'Architectural',
-    desc: 'Precision-engineered aluminium systems for modern architecture — combining advanced profile manufacturing, refined aesthetics and long-term durability for any scale of project.',
+    desc: 'Precision-engineered aluminium systems for modern architecture, combining advanced profile manufacturing, refined aesthetics and long-term durability for any scale of project.',
     chips: ['Casement windows', 'Sliding doors', 'Partitions', 'Curtain wall', 'Façades'],
     href: '/products/architectural',
     img: '/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp',
@@ -26,7 +26,7 @@ const segments = [
     num: '/ 03',
     tag: 'Foundry · Billet',
     name: 'Billets',
-    desc: 'Foundry-grade aluminium billets — cylinder-guided casting, controlled homogenisation, customer-specific alloy chemistry and up to 50% recycled scrap input.',
+    desc: 'Foundry-grade aluminium billets: cylinder-guided casting, controlled homogenisation, customer-specific alloy chemistry and up to 50% recycled scrap input.',
     chips: ['Ø 127–254 mm', '1xxx–7xxx alloys', 'Lead-free', 'Green billet', 'CBAM'],
     href: '/products/cast-products',
     img: '/assets/manufacturing/aluminumbillets.avif',
@@ -40,8 +40,17 @@ const certs = [
   'ISO 45001:2018',
   'IATF 16949:2016',
   'CE',
-  'IRS Works Approval',
+  'IR Class Work Approved',
   'BIS',
+];
+
+const clientLogos = [
+  { name: 'Reliance',           src: '/assets/logos/reliance.svg' },
+  { name: 'Larsen & Toubro',    src: '/assets/logos/lt.svg' },
+  { name: 'Siemens',            src: '/assets/logos/siemens.svg' },
+  { name: 'ABB',                src: '/assets/logos/abb.svg' },
+  { name: 'Schneider Electric', src: '/assets/logos/schneider.svg' },
+  { name: 'Alstom',             src: '/assets/logos/alstom.svg' },
 ];
 ---
 
@@ -118,7 +127,8 @@ const certs = [
       {([
         { value: '58+',    unit: 'years',    label: 'In extrusion since 1967' },
         { value: '35,000', unit: 'MT / yr',  label: 'Extrusion capacity' },
-        { value: '5',      unit: 'presses',  label: '1,100–3,300 MT' },
+        { value: '55,000', unit: 'MT',       label: 'Foundry capacity' },
+        { value: '5',      unit: 'presses',  label: '1100–3300T' },
         { value: '900+',   unit: 'customers', label: 'Across 4 continents' },
       ] as const).map(({ value, unit, label }) => (
         <div class="ri-stat">
@@ -128,6 +138,18 @@ const certs = [
           <div class="ri-stat-label">{label}</div>
         </div>
       ))}
+    </div>
+  </div>
+
+  <!-- ── Trusted-by logo strip ─────────────────────────────── -->
+  <div class="ri-trusted" role="region" aria-label="Trusted by">
+    <div class="container ri-trusted-inner">
+      <span class="ri-trusted-label">Trusted by</span>
+      <div class="ri-trusted-logos">
+        {clientLogos.map((c) => (
+          <img src={c.src} alt={c.name} class="ri-trusted-logo" loading="lazy" width="88" height="24" />
+        ))}
+      </div>
     </div>
   </div>
 
@@ -310,7 +332,7 @@ const certs = [
   }
   .rp:hover .rp-desc,
   .rp:focus-visible .rp-desc {
-    max-height: 120px;
+    max-height: 150px;
     opacity: 1;
     margin-top: 9px;
   }
@@ -346,7 +368,7 @@ const certs = [
   }
   .ri-stats-inner {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0;
   }
   .ri-stat {
@@ -385,9 +407,52 @@ const certs = [
   }
   @media (max-width: 640px) {
     .ri-stats-inner { grid-template-columns: repeat(2, 1fr); }
-    .ri-stat:nth-child(2) { border-right: none; }
-    .ri-stat:nth-child(3) { border-top: 1px solid rgba(40, 69, 106, 0.45); }
-    .ri-stat:nth-child(4) { border-top: 1px solid rgba(40, 69, 106, 0.45); }
+    .ri-stat:nth-child(2n) { border-right: none; }
+    .ri-stat:nth-child(n+3) { border-top: 1px solid rgba(40, 69, 106, 0.45); }
+    .ri-stat:nth-child(5) { grid-column: 1 / -1; border-right: none; }
+  }
+
+  /* ── Trusted-by logo strip ────────────────────────────────── */
+  .ri-trusted {
+    background: rgba(8, 27, 48, 0.80);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(40, 69, 106, 0.45);
+    padding: 12px 0;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  .ri-trusted-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .ri-trusted-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    flex-shrink: 0;
+  }
+  .ri-trusted-logos {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 36px);
+    flex-wrap: wrap;
+  }
+  .ri-trusted-logo {
+    height: 22px;
+    width: auto;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+  .ri-trusted-logo:hover { opacity: 1; }
+  @media (max-width: 640px) {
+    .ri-trusted-logos { gap: 18px; }
+    .ri-trusted-logo { height: 15px; }
   }
 
   /* ── Hero statement — compact bottom strip ───────────────── */

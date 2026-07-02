@@ -14,6 +14,20 @@ const sections = [
   { id: '10', type: 'Round tube',                desc: '12–200 mm OD. Structural, mechanical, and architectural tube.',       alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
 ];
 
+// Simplified cross-section silhouettes — schematic, not to scale
+const sectionIcons: Record<string, string> = {
+  '01': `<path d="M5 4 L5 32 L11 32 L11 10 L32 10 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  '02': `<path d="M5 4 L5 32 L9 32 L9 8 L32 8 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  '03': `<path d="M6 4 L30 4 L30 10 L12 10 L12 26 L30 26 L30 32 L6 32 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  '04': `<path d="M4 4 L32 4 L32 10 L21 10 L21 32 L15 32 L15 10 L4 10 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  '05': `<rect x="4" y="13" width="28" height="8" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  '06': `<rect x="8" y="8" width="20" height="20" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  '07': `<circle cx="18" cy="18" r="13" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  '08': `<rect x="4" y="8" width="28" height="20" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8" y="12" width="20" height="12" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  '09': `<rect x="6" y="6" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="11" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  '10': `<circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+};
+
 const alloys = [
   {
     grade: '6063-T6',
@@ -51,6 +65,13 @@ const alloys = [
 >
 
   <section class="ss-hero">
+    <img
+      src="/assets/manufacturing/billet-1.jpg"
+      alt="Banco Aluminium finished extrusion billets and standard sections"
+      class="ss-hero-img"
+      loading="eager"
+    />
+    <div class="ss-hero-scrim" aria-hidden="true"></div>
     <div class="container">
       <div class="eyebrow on-dark">Products / Standard sections</div>
       <h1 class="ss-h1">
@@ -88,6 +109,9 @@ const alloys = [
       <div class="ss-sections-grid">
         {sections.map((s) => (
           <div class="ss-section-card">
+            <div class="ss-sec-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" set:html={sectionIcons[s.id]} />
+            </div>
             <div class="ss-sec-id">{s.id}</div>
             <h3 class="ss-sec-type">{s.type}</h3>
             <p class="ss-sec-desc">{s.desc}</p>
@@ -244,10 +268,26 @@ const alloys = [
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
     pointer-events: none;
   }
-  .ss-hero > .container { position: relative; z-index: 1; }
+  .ss-hero-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ss-hero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(8,27,48,0.88) 0%, rgba(14,42,71,0.90) 55%, rgba(8,27,48,0.96) 100%);
+  }
+  .ss-hero > .container { position: relative; z-index: 3; }
   .ss-h1 { font-family: var(--font-sans); font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-platinum); margin-top: 20px; }
   .ss-lead { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 17px); line-height: 1.65; color: var(--color-silver); margin-top: 24px; max-width: 56ch; }
   .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
@@ -257,6 +297,7 @@ const alloys = [
 
   .ss-sections-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .ss-section-card  { background: var(--color-stone-50); padding: 22px 18px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 6px; }
+  .ss-sec-icon { color: var(--color-navy); margin-bottom: 4px; }
   .ss-sec-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .ss-sec-type { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); line-height: 1.2; }
   .ss-sec-desc { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-700); flex: 1; }

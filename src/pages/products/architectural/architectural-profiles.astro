@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const profileTypes = [
+  { name: 'Standard Architectural Sections', desc: 'Angles, channels, T-sections, flat and hollow bar to IS 733 / IS 1285 — the same range detailed on our Standard Sections page, in architectural alloys and finishes.' },
+  { name: 'Clean Room Sections',             desc: 'Profiles for modular clean room wall and ceiling grid systems, finished for particulate control in pharmaceutical and electronics environments.' },
+  { name: 'Aluminium Ladder Sections',       desc: 'Structural rail and rung profiles for fixed access ladders, cable ladder systems, and industrial walkways.' },
+];
+---
+
+<Layout
+  title="Architectural profile sections — Banco Aluminium"
+  description="Standard architectural sections, clean room profiles and aluminium ladder sections. Extruded to IS 733 / IS 1285 in 6063-T6, 6082-T6 and 6061-T6. Banco Architectural Systems."
+>
+  <section class="ap-hero">
+    <img src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco aluminium architectural profile sections" class="ap-hero-img" loading="eager" />
+    <div class="ap-hero-scrim" aria-hidden="true"></div>
+    <div class="container ap-hero-body">
+      <div class="eyebrow on-dark">Architectural systems / Architectural profiles</div>
+      <h1 class="ap-h1">Structural & specialist<br>profile sections.</h1>
+      <p class="ap-lead">Standard architectural sections, clean room profiles, and ladder sections extruded in 6063-T6, 6082-T6 and 6061-T6, to IS 733 / IS 1285 specifications.</p>
+    </div>
+  </section>
+
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">Profile types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">Three specialist<br>profile ranges.</h2>
+      <div class="ap-grid">
+        {profileTypes.map((p) => (
+          <div class="ap-card">
+            <h3 class="ap-card-title">{p.name}</h3>
+            <p class="ap-card-desc">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/products/standard-sections" class="btn btn-primary">View standard sections</a>
+        <a href="/contact#drawing" class="btn btn-secondary">Submit a custom drawing</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ap-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
+  .ap-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ap-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.80) 0%, rgba(8,27,48,0.92) 100%); }
+  .ap-hero-body { position: relative; z-index: 1; }
+  .ap-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }
+  .ap-lead { font-size: 15px; line-height: 1.65; color: var(--color-silver); margin-top: 20px; max-width: 58ch; }
+
+  .ap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ap-card { background: #fff; padding: 26px 24px; border-top: 2px solid var(--color-green); }
+  .ap-card-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
+  .ap-card-desc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
+
+  @media (max-width: 900px) { .ap-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,91 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const doorTypes = [
+  { name: 'Sliding Doors',    desc: 'Two, three and four-panel sliding configurations. Suited to large residential and commercial openings requiring smooth, low-effort operation.' },
+  { name: 'Folding Doors',    desc: 'Multi-leaf bi-fold configurations stacking to one or both sides. Maximises clear opening width for indoor–outdoor living and hospitality frontages.' },
+  { name: 'Partition Systems',desc: 'Fixed and operable internal aluminium partitions for offices and institutional interiors, with matching glazing and finish options.' },
+  { name: 'Door Frames',      desc: 'Hinged single and double-leaf entrance door frames, sized to match façade and window sightlines for a consistent building elevation.' },
+];
+
+const fiftySeries = {
+  name: '50mm Casement Series',
+  width: '50 mm',
+  glazing: 'Single or double glaze',
+  tier: 'Residential and commercial — windows, entrance doors, bi-fold systems',
+  desc: 'Versatile 50mm frame system spanning casement windows, hinged entrance doors, and sliding-folding bi-fold configurations. Suited to larger openings, commercial entrances, and multi-leaf folding door applications.',
+};
+---
+
+<Layout
+  title="Door systems — sliding, folding and entrance doors — Banco Aluminium"
+  description="Sliding, folding, partition and entrance door systems in aluminium. 50mm multi-leaf frame series for residential and commercial openings. Banco Architectural Systems."
+>
+  <section class="ds-hero">
+    <img src="/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png" alt="Banco aluminium sliding glass door system" class="ds-hero-img" loading="eager" />
+    <div class="ds-hero-scrim" aria-hidden="true"></div>
+    <div class="container ds-hero-body">
+      <div class="eyebrow on-dark">Architectural systems / Door systems</div>
+      <h1 class="ds-h1">Sliding, folding &<br>entrance door systems.</h1>
+      <p class="ds-lead">Hinged, sliding and multi-leaf folding door configurations for residential and commercial openings, built on the same 50mm frame platform as our casement windows.</p>
+    </div>
+  </section>
+
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">Door system types</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">Four configurations.<br>One frame platform.</h2>
+      <div class="ds-grid">
+        {doorTypes.map((d) => (
+          <div class="ds-card">
+            <h3 class="ds-card-title">{d.name}</h3>
+            <p class="ds-card-desc">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-split">
+    <div class="ds-split-visual">
+      <img src="/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg" alt="Banco 50mm casement and bi-fold door series" loading="lazy" />
+    </div>
+    <div class="ds-split-body">
+      <div class="eyebrow">50mm series</div>
+      <h2 class="ds-split-h2">{fiftySeries.name}</h2>
+      <p style="font-size:14px;line-height:1.65;color:var(--color-stone-700);margin-top:16px">{fiftySeries.desc}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px">
+        <span class="pill">{fiftySeries.glazing}</span>
+        <span class="pill">{fiftySeries.tier}</span>
+      </div>
+      <a href="/contact#quote" class="btn btn-primary" style="margin-top:28px;align-self:flex-start">Specify a system</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ds-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
+  .ds-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ds-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.80) 0%, rgba(8,27,48,0.92) 100%); }
+  .ds-hero-body { position: relative; z-index: 1; }
+  .ds-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }
+  .ds-lead { font-size: 15px; line-height: 1.65; color: var(--color-silver); margin-top: 20px; max-width: 58ch; }
+
+  .ds-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ds-card { background: #fff; padding: 24px 22px; border-top: 2px solid var(--color-green); }
+  .ds-card-title { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); }
+  .ds-card-desc { font-size: 12.5px; line-height: 1.6; color: var(--color-stone-700); margin-top: 10px; }
+
+  .ds-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 60vh; }
+  .ds-split-visual { overflow: hidden; background: var(--color-stone-200); }
+  .ds-split-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ds-split-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px); background: var(--color-stone-100); }
+  .ds-split-h2 { font-family: var(--font-sans); font-size: clamp(24px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--color-navy); margin-top: 12px; }
+
+  @media (max-width: 900px) {
+    .ds-grid { grid-template-columns: 1fr 1fr; }
+    .ds-split { grid-template-columns: 1fr; min-height: auto; }
+    .ds-split-visual { min-height: 300px; }
+  }
+  @media (max-width: 540px) { .ds-grid { grid-template-columns: 1fr; } }
+</style>

@@ -12,9 +12,16 @@ const alloys = [
   { alloy: '6005',  si: '≤ 0.10', mg: '0.45–0.53', fe: '≤ 0.25', mn: '≤ 0.10', cu: '≤ 0.10', al: 'Rem.', note: 'Medium strength structural' },
   { alloy: '6005A', si: '≤ 0.10', mg: '0.50–0.58', fe: '≤ 0.25', mn: '0.20–0.28', cu: '≤ 0.10', al: 'Rem.', note: 'Transport · structural (Mn+Cr 0.12–0.50)' },
   { alloy: '6082',  si: '≤ 0.10', mg: '0.72–0.79', fe: '≤ 0.30', mn: '0.45–0.53', cu: '≤ 0.10', al: 'Rem.', note: 'High strength structural' },
-  { alloy: '6361',  si: '≤ 0.10', mg: '0.40–0.60', fe: '≤ 0.20', mn: '≤ 0.10', cu: '≤ 0.05', al: 'Rem.', note: 'Extruded structural (IS 733)' },
   { alloy: '6061',  si: '≤ 0.10', mg: '0.90–0.98', fe: '≤ 0.35', mn: '≤ 0.13', cu: '0.18–0.25', al: 'Rem.', note: 'Engineering · aerospace' },
   { alloy: '6066',  si: '≤ 0.10', mg: '1.00–1.10', fe: '≤ 0.30', mn: '0.70–0.80', cu: '0.80–0.90', al: 'Rem.', note: 'High-strength forgings' },
+];
+
+// ── Alloy specialities ──────────────────────────────────────────────────────
+const alloySpecialities = [
+  'Hard and high-strength alloys for structural, transport, defence, aerospace and engineering applications',
+  'Lead-free free-machining alloys, including 6026, for automotive, medical, food processing and precision-machined components',
+  'Electrical conductivity alloys, including 6101 and 6201, for busbars, conductor profiles and renewable energy applications',
+  'Custom alloys and special chemistries developed as per customer specification',
 ];
 
 // ── Available dimensions — source: Banco Billets 2026 ─────────────────────────
@@ -22,6 +29,7 @@ const sizes = [
   { dia: '127 mm', inch: '5"',   note: 'Standard residential extrusion' },
   { dia: '152 mm', inch: '6"',   note: 'Window · door systems' },
   { dia: '178 mm', inch: '7"',   note: 'Commercial structural profiles' },
+  { dia: '203 mm', inch: '8"',   note: 'Heavy-section industrial profiles' },
   { dia: '229 mm', inch: '9"',   note: 'Heavy-duty industrial sections' },
   { dia: '254 mm', inch: '10"',  note: 'Large-section · press 4 & 5' },
 ];
@@ -34,28 +42,34 @@ const tolerances = [
   { dim: 'Std. length',    tol: '5,800 mm (all diameters)' },
 ];
 
-// ── 4-stage production process ─────────────────────────────────────────────────
+// ── 5-stage production process ─────────────────────────────────────────────────
 const process = [
   {
     num: '/ 01',
-    name: 'Metal filtration',
+    name: 'Melting',
     photo: '/assets/manufacturing/melting-1.jpg',
-    body: 'Online liquid-metal filtration through ceramic foam filters removes non-metallic inclusions before the casting station, delivering measurably improved metal cleanliness and reduced inclusion count in the finished billet.',
+    body: 'Charge materials are melted in gas-fired furnaces to a controlled tapping temperature, the starting point for consistent alloy chemistry batch after batch.',
   },
   {
     num: '/ 02',
-    name: 'Nitrogen degassing',
+    name: 'Refining & degassing',
     photo: '/assets/manufacturing/melting-3.jpg',
     body: 'Advanced nitrogen-purged liquid-metal refining removes dissolved hydrogen from the melt. Eliminating this porosity-driving gas prevents surface blistering and voids that compromise extrudability in downstream presses.',
   },
   {
     num: '/ 03',
+    name: 'Ceramic foam filtration',
+    photo: '/assets/manufacturing/melting-4.jpg',
+    body: 'Online liquid-metal filtration through ceramic foam filters removes non-metallic inclusions before the casting station, delivering measurably improved metal cleanliness and reduced inclusion count in the finished billet.',
+  },
+  {
+    num: '/ 04',
     name: 'Hot-Top casting',
     photo: '/assets/manufacturing/casting-1.jpg',
     body: 'Billets are produced using cylinder-guided Hot-Top casting technology, which controls casting speed and cooling rate with precision. The result is a consistent surface finish, controlled skin thickness, and uniform metallurgical structure through the full cross-section.',
   },
   {
-    num: '/ 04',
+    num: '/ 05',
     name: 'Batch homogenising',
     photo: '/assets/manufacturing/homo-1.jpg',
     body: 'Billets are heat-treated in controlled-atmosphere furnaces to dissolve soluble phases and homogenise the microstructure, then force-cooled to a specified exit temperature. This step directly governs extrudability, surface finish, and dimensional consistency in downstream extrusion.',
@@ -64,8 +78,8 @@ const process = [
 
 // ── Quality assurance ──────────────────────────────────────────────────────────
 const qc = [
-  { stat: '100 %', label: 'Visual inspection', sub: 'External surface — every billet, every cast' },
-  { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects — laminations, inclusions, voids' },
+  { stat: '100 %', label: 'Visual inspection — external defects', sub: 'External surface — every billet, every cast' },
+  { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects — inclusions, voids' },
   { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES — verified against order specification' },
   { stat: 'SCADA', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
   { stat: 'Cast №', label: 'Alloy marking', sub: 'Designation + cast number on every individual billet' },
@@ -84,7 +98,7 @@ const certs = [
 
 <Layout
   title="Aluminium extrusion billets — casting & cast products — Banco Aluminium"
-  description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 12 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready."
+  description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 11 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready."
   image="/assets/manufacturing/aluminumbillets.avif"
   transparentNav={true}
 >
@@ -178,7 +192,7 @@ const certs = [
     <div class="container">
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          12 standard alloys.<br>Custom compositions on request.
+          11 standard alloys.<br>Custom compositions on request.
         </h2>
       </div>
 
@@ -217,6 +231,15 @@ const certs = [
         <span class="c-table-footnote-std">Full chemical composition including Zn, Cr, Ti, and individual trace elements available in the product data sheet.</span>
         <span class="c-table-footnote-callout"><strong>Additional alloys:</strong> 1050A, 2011, 2017A, 2014, 6262, 6026 — available to customer specification. Please contact us for details.</span>
       </p>
+
+      <div class="c-spec-list">
+        {alloySpecialities.map((s) => (
+          <div class="c-spec-item">
+            <span class="c-spec-dot" aria-hidden="true"></span>
+            <span>{s}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -225,7 +248,7 @@ const certs = [
     <div class="container">
       <div class="c-section-head">
         <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
-          Five diameters.<br>5,800 mm standard length.
+          Six diameters.<br>5,800 mm standard length.
         </h2>
       </div>
 
@@ -265,7 +288,7 @@ const certs = [
     <div class="container">
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          Four stages<br>from melt to billet.
+          Five stages<br>from melt to billet.
         </h2>
       </div>
 
@@ -306,6 +329,9 @@ const certs = [
       <!-- Packing note -->
       <div class="c-packing">
         <div class="c-packing-inner">
+          <div class="c-packing-img">
+            <img src="/assets/manufacturing/Labeling.png" alt="Banco billet alloy and cast number labelling" loading="lazy" />
+          </div>
           <div>
             <div class="c-table-label">Packing &amp; identification</div>
           </div>
@@ -379,7 +405,6 @@ const certs = [
         </div>
         <div class="c-cta-actions">
           <a href="/contact#quote" class="btn btn-primary-dark">Request a quotation</a>
-          <a href="/contact#technical" class="btn btn-secondary-dark">Technical specification</a>
           <a href="/sustainability" class="btn btn-secondary-dark">CBAM documentation</a>
         </div>
       </div>
@@ -717,6 +742,33 @@ const certs = [
     font-weight: 600;
   }
 
+  /* ── Alloy specialities ────────────────────────────────────────────────── */
+  .c-spec-list {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-stone-200);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .c-spec-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--color-stone-700);
+  }
+  .c-spec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-green);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
   /* ── Dimensions ────────────────────────────────────────────────────────── */
   .c-dim-grid {
     display: grid;
@@ -773,7 +825,7 @@ const certs = [
   /* ── Process ───────────────────────────────────────────────────────────── */
   .c-process-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1px;
     background: var(--color-stone-200);
     border: 1px solid var(--color-stone-200);
@@ -858,10 +910,23 @@ const certs = [
   }
   .c-packing-inner {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
+    grid-template-columns: 140px 1fr auto;
+    gap: 28px;
     padding: 28px 28px;
-    align-items: start;
+    align-items: center;
+  }
+  .c-packing-img {
+    width: 140px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--color-navy-line);
+    flex-shrink: 0;
+  }
+  .c-packing-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .c-packing-text {
     font-family: var(--font-sans);

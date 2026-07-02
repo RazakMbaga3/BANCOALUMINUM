@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const sliding = [
+  { num: '/ 01', name: '18mm Series',           width: '18 mm',      glazing: 'Single glaze',              tier: 'Entry-level residential' },
+  { num: '/ 02', name: '25mm Cardinal Series',   width: '25 mm',      glazing: 'Single or double glaze',    tier: 'Low-rise residential, up to 3 storeys' },
+  { num: '/ 03', name: '27mm Euro Series',        width: '27 mm',      glazing: 'Single / double · grill track', tier: 'Residential and light commercial' },
+  { num: '/ 04', name: '27mm Slim Series',        width: '27 mm slim', glazing: 'Single or double glaze',    tier: 'Premium residential, bungalows' },
+  { num: '/ 05', name: '29mm Cardinal Series',    width: '29 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial' },
+  { num: '/ 06', name: '31mm Gulf Series',        width: '31 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial' },
+  { num: '/ 07', name: '35mm Gulf Series',        width: '35 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial, larger openings' },
+  { num: '/ 08', name: '35 × 75mm Euro Series',   width: '35 × 75 mm', glazing: 'Single or double glaze',    tier: 'High-end residential, large-span' },
+];
+
+const casement = [
+  {
+    num: '/ 09', name: '40mm Casement Series', width: '40 mm', glazing: 'Single or double glaze',
+    tier: 'Residential and commercial, inward or outward opening',
+    desc: 'Inward or outward-opening single-sash casement window. Available in 2-in-1 frame, standard frame, and round-pipe mullion configurations. 40mm slim face width with high weather resistance.',
+  },
+];
+---
+
+<Layout
+  title="Window systems — sliding and casement aluminium windows — Banco Aluminium"
+  description="Eight sliding series from 18–75 mm and a 40 mm casement series. EN 12210 wind resistance, EN 12208 watertightness tested. Banco Architectural Systems."
+>
+  <section class="ws-hero">
+    <img src="/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg" alt="Banco aluminium sliding window system" class="ws-hero-img" loading="eager" />
+    <div class="ws-hero-scrim" aria-hidden="true"></div>
+    <div class="container ws-hero-body">
+      <div class="eyebrow on-dark">Architectural systems / Window systems</div>
+      <h1 class="ws-h1">Sliding & casement<br>window systems.</h1>
+      <p class="ws-lead">Eight sliding series from 18 mm to 35×75 mm frame width, plus a 40 mm inward/outward-opening casement series. Single or double glaze, EN 12210 / EN 12208 tested.</p>
+    </div>
+  </section>
+
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow">Sliding systems</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">Eight series. 18 – 75 mm.</h2>
+      <div class="ws-list">
+        {sliding.map((s) => (
+          <div class="ws-row">
+            <span class="ws-num">{s.num}</span>
+            <span class="ws-name">{s.name}</span>
+            <span class="ws-width">{s.width}</span>
+            <span class="ws-meta">
+              <span class="pill ws-pill">{s.glazing}</span>
+              <span class="ws-tier">{s.tier}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt section-pad">
+    <div class="container">
+      <div class="eyebrow">Casement systems</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">40 mm. Inward or outward opening.</h2>
+      <div class="ws-clist">
+        {casement.map((s) => (
+          <div class="ws-ccard">
+            <span class="ws-num">{s.num}</span>
+            <h3 class="ws-cname">{s.name}</h3>
+            <p class="ws-cdesc">{s.desc}</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+              <span class="pill">{s.glazing}</span>
+              <span class="pill">{s.tier}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/contact#quote" class="btn btn-primary">Specify a system</a>
+        <a href="/products/architectural" class="btn btn-secondary">All architectural systems</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .ws-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
+  .ws-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ws-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.82) 0%, rgba(8,27,48,0.92) 100%); }
+  .ws-hero-body { position: relative; z-index: 1; }
+  .ws-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }
+  .ws-lead { font-size: 15px; line-height: 1.65; color: var(--color-silver); margin-top: 20px; max-width: 58ch; }
+
+  .ws-list { display: flex; flex-direction: column; border: 1px solid var(--color-stone-200); }
+  .ws-row { display: grid; grid-template-columns: 44px 1fr 70px 260px; gap: 16px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--color-stone-200); background: #fff; }
+  .ws-row:last-child { border-bottom: none; }
+  .ws-num { font-family: var(--font-mono); font-size: 11px; color: var(--color-green); }
+  .ws-name { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
+  .ws-width { font-family: var(--font-mono); font-size: 12px; color: var(--color-stone-700); }
+  .ws-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .ws-pill { font-size: 9px !important; padding: 3px 8px !important; }
+  .ws-tier { font-family: var(--font-mono); font-size: 10px; color: var(--color-stone-400); }
+
+  .ws-clist { display: flex; flex-direction: column; border: 1px solid var(--color-stone-200); }
+  .ws-ccard { background: #fff; padding: 26px 24px; max-width: 64ch; }
+  .ws-cname { font-family: var(--font-sans); font-size: 19px; font-weight: 700; color: var(--color-navy); margin-top: 10px; }
+  .ws-cdesc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 10px; }
+
+  @media (max-width: 900px) {
+    .ws-row { grid-template-columns: 36px 1fr 60px; }
+    .ws-meta { display: none; }
+  }
+</style>

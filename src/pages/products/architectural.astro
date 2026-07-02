@@ -1,36 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-// ── Sliding window series ─────────────────────────────────────────────────────
-const sliding = [
-  { num: '/ 01', name: '18mm Series',           type: 'Sliding windows', width: '18 mm',      glazing: 'Single glaze',              tier: 'Entry-level residential' },
-  { num: '/ 02', name: '25mm Cardinal Series',   type: 'Sliding windows', width: '25 mm',      glazing: 'Single or double glaze',    tier: 'Low-rise residential, up to 3 storeys' },
-  { num: '/ 03', name: '27mm Euro Series',        type: 'Sliding windows', width: '27 mm',      glazing: 'Single / double · grill track', tier: 'Residential and light commercial' },
-  { num: '/ 04', name: '27mm Slim Series',        type: 'Sliding windows', width: '27 mm slim', glazing: 'Single or double glaze',    tier: 'Premium residential, bungalows' },
-  { num: '/ 05', name: '29mm Cardinal Series',    type: 'Sliding windows', width: '29 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial' },
-  { num: '/ 06', name: '31mm Gulf Series',        type: 'Sliding windows', width: '31 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial' },
-  { num: '/ 07', name: '35mm Gulf Series',        type: 'Sliding windows', width: '35 mm',      glazing: 'Single or double glaze',    tier: 'Residential and commercial, larger openings' },
-  { num: '/ 08', name: '35 × 75mm Euro Series',   type: 'Sliding windows', width: '35 × 75 mm', glazing: 'Single or double glaze',    tier: 'High-end residential, large-span' },
-];
-
-// ── Casement and folding series ───────────────────────────────────────────────
-const casement = [
-  {
-    num: '/ 09', name: '40mm Casement Series',
-    type: 'Openable casement windows', width: '40 mm',
-    glazing: 'Single or double glaze',
-    tier: 'Residential and commercial, inward or outward opening',
-    desc: 'Inward or outward-opening single-sash casement window. Available in 2-in-1 frame, standard frame, and round-pipe mullion configurations. 40mm slim face width with high weather resistance.',
-  },
-  {
-    num: '/ 10', name: '50mm Casement Series',
-    type: 'Casement · doors · sliding-folding', width: '50 mm',
-    glazing: 'Single or double glaze',
-    tier: 'Residential and commercial — windows, entrance doors, bi-fold systems',
-    desc: 'Versatile 50mm frame system spanning casement windows, hinged entrance doors, and sliding-folding bi-fold configurations. Suited to larger openings, commercial entrances, and multi-leaf folding door applications.',
-  },
-];
-
 // ── Performance categories ────────────────────────────────────────────────────
 const performance = [
   { cat: 'Wind resistance',  std: 'EN 12211 / EN 12210' },
@@ -57,71 +27,37 @@ const heroStats = [
   { value: 'EN 14351-1', unit: '', label: 'Tested & certified' },
 ];
 
-// ── Featured system cards ─────────────────────────────────────────────────────
-const featured = [
-  {
-    img:   '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
-    title: 'Sliding Window Systems',
-    desc:  '8 series from 18–75 mm frame width for residential to large commercial spans.',
-    bullets: [
-      'Single & double glaze from 18 mm to 35×75 mm frame width',
-      'Grill-track options · entry-level to premium residential',
-      'EN 12210 wind resistance · EN 12208 watertightness tested',
-    ],
-  },
-  {
-    img:   '/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg',
-    title: 'Casement Window Systems',
-    desc:  '40 mm and 50 mm systems for inward/outward opening and high-ventilation applications.',
-    bullets: [
-      '40 mm slim face · 2-in-1 frame and standard frame configurations',
-      '50 mm series spans casement windows, entrance doors and bi-fold',
-      'Class 20 anodising and QUALICOAT powder coating available',
-    ],
-  },
-  {
-    img:   '/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png',
-    title: 'Door & Bi-Fold Systems',
-    desc:  'Hinged, sliding, and folding door configurations for residential and commercial openings.',
-    bullets: [
-      'Sliding · hinged · bi-fold with multi-leaf configurations',
-      'Single or double glaze · suitable for large commercial entrances',
-      'In-house die development — custom sightlines available',
-    ],
-  },
-  {
-    img:   '/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg',
-    title: 'Façade & Curtain Wall',
-    desc:  'Structural glazing and curtain wall systems for commercial and institutional elevations.',
-    bullets: [
-      'Curtain wall · structural glazing · louvre and shading systems',
-      'Clean room sections and ladder profiles for specialist use',
-      'Tested to EN 14351-1 · full performance data available',
-    ],
-  },
-];
-
-// ── Comprehensive systems table ───────────────────────────────────────────────
+// ── Comprehensive systems — clickable cards linking to detail subpages ────────
 const systems = [
   {
     label: 'Window Systems',
     items: ['Sliding Window Systems', 'Casement Window Systems'],
+    href: '/products/architectural/window-systems',
+    img: '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
   },
   {
     label: 'Door Systems',
     items: ['Sliding Doors', 'Folding Doors', 'Partition Systems', 'Door Frames'],
+    href: '/products/architectural/door-systems',
+    img: '/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png',
   },
   {
     label: 'Façade Systems',
     items: ['Curtain Wall Systems', 'Glazing Solutions', 'Louvers'],
+    href: '/products/architectural/facade-systems',
+    img: '/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg',
   },
   {
     label: 'Architectural Profiles',
     items: ['Standard Architectural Sections', 'Clean Room Sections', 'Aluminium Ladder Sections'],
+    href: '/products/architectural/architectural-profiles',
+    img: '/assets/images/architectureheropage/Aluminum-Structure.jpg',
   },
   {
     label: 'Accessories',
     items: ['Hardware Systems', 'Surface Finish Options'],
+    href: '/products/architectural/accessories',
+    img: '/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg',
   },
 ];
 
@@ -298,87 +234,7 @@ const galleryPhotos = [
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       03 · FEATURED ARCHITECTURAL SOLUTIONS — 4-COL
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="arc-section-head" data-reveal="fade">
-        <div class="eyebrow">Our solutions</div>
-        <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Featured Architectural Solutions</h2>
-        <p class="t-body arc-sub" style="color:var(--color-stone-700)">
-          Performance, flexibility and refined aesthetics — designed for contemporary architecture.
-        </p>
-      </div>
-
-      <div class="arc-feat-grid">
-        {featured.map((f, i) => (
-          <div class="arc-feat-card" data-reveal data-reveal-delay={String(i + 1)}>
-            <div class="arc-feat-img">
-              <img src={f.img} alt={f.title} loading="lazy" />
-            </div>
-            <!-- System type icon -->
-            <div class="arc-feat-icon" aria-hidden="true">
-              {i === 0 && (
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <rect x="2" y="4" width="24" height="20" rx="0" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="14" y1="4" x2="14" y2="24" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="2" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="12" cy="14" r="1.2" fill="currentColor"/>
-                  <circle cx="16" cy="14" r="1.2" fill="currentColor"/>
-                </svg>
-              )}
-              {i === 1 && (
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <rect x="2" y="4" width="24" height="20" rx="0" stroke="currentColor" stroke-width="1.4"/>
-                  <path d="M14 4 L14 24" stroke="currentColor" stroke-width="1.4"/>
-                  <path d="M14 9 Q20 14 14 19" stroke="currentColor" stroke-width="1.4" fill="none"/>
-                  <circle cx="21" cy="14" r="1.2" fill="currentColor"/>
-                </svg>
-              )}
-              {i === 2 && (
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <rect x="5" y="2" width="18" height="24" rx="0" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="5" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.4"/>
-                  <circle cx="20" cy="14" r="1.4" fill="currentColor"/>
-                  <line x1="5" y1="26" x2="5" y2="26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              )}
-              {i === 3 && (
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <rect x="2" y="2" width="24" height="24" rx="0" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="2"  y1="10" x2="26" y2="10" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="2"  y1="18" x2="26" y2="18" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="10" y1="2"  x2="10" y2="26" stroke="currentColor" stroke-width="1.4"/>
-                  <line x1="18" y1="2"  x2="18" y2="26" stroke="currentColor" stroke-width="1.4"/>
-                </svg>
-              )}
-            </div>
-            <div class="arc-feat-body">
-              <h3 class="arc-feat-title">{f.title}</h3>
-              <p class="arc-feat-desc">{f.desc}</p>
-              <ul class="arc-feat-bullets">
-                {f.bullets.map((b) => (
-                  <li>
-                    <span class="arc-feat-dot" aria-hidden="true"></span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="/contact#quote" class="arc-feat-link">
-                Specify a system
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       04 · COMPREHENSIVE SYSTEMS TABLE — 5-COL
+       04 · COMPREHENSIVE SYSTEMS — 5 CLICKABLE IMAGE CARDS
   ══════════════════════════════════════════════════════════════ -->
   <section class="section-white section-pad" style="border-bottom:1px solid var(--color-stone-200)">
     <div class="container">
@@ -387,29 +243,32 @@ const galleryPhotos = [
         <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Comprehensive Architectural Systems</h2>
         <p class="t-body arc-sub" style="color:var(--color-stone-700)">
           A complete aluminium system range — from windows and doors to façades, profiles and accessories.
+          Select a category for full technical detail.
         </p>
       </div>
 
       <div class="arc-sys-grid" data-reveal>
-        {systems.map((sys, i) => (
-          <div class="arc-sys-col">
-            <div class="arc-sys-icon" aria-hidden="true">
-              <!-- Consistent square icon per column -->
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <rect x="1" y="1" width="20" height="20" stroke="currentColor" stroke-width="1.4"/>
-                <line x1="1"  y1="8"  x2="21" y2="8"  stroke="currentColor" stroke-width="1"/>
-                <line x1="1"  y1="14" x2="21" y2="14" stroke="currentColor" stroke-width="1"/>
-                <line x1="8"  y1="1"  x2="8"  y2="21" stroke="currentColor" stroke-width="1"/>
-                <line x1="14" y1="1"  x2="14" y2="21" stroke="currentColor" stroke-width="1"/>
-              </svg>
+        {systems.map((sys) => (
+          <a href={sys.href} class="arc-sys-card">
+            <div class="arc-sys-card-bg" aria-hidden="true">
+              <img src={sys.img} alt="" loading="lazy" />
             </div>
-            <h3 class="arc-sys-label">{sys.label}</h3>
-            <ul class="arc-sys-list">
-              {sys.items.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
-          </div>
+            <div class="arc-sys-card-scrim" aria-hidden="true"></div>
+            <div class="arc-sys-card-body">
+              <h3 class="arc-sys-label">{sys.label}</h3>
+              <ul class="arc-sys-list">
+                {sys.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <span class="arc-sys-cta">
+                View details
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+          </a>
         ))}
       </div>
     </div>
@@ -442,20 +301,20 @@ const galleryPhotos = [
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       06 · WHY BANCO — 2-COL WITH FEATURE CHIPS
+       06 · WHY BANCO + WHO WE WORK WITH — COMBINED
   ══════════════════════════════════════════════════════════════ -->
-  <section class="section-white section-pad" style="border-bottom:1px solid var(--color-stone-200)">
+  <section class="section-dark section-pad">
     <div class="container">
       <div class="arc-why-grid">
         <div data-reveal="left">
-          <div class="eyebrow">Why choose us</div>
-          <h2 class="arc-sh" style="color:var(--color-navy);margin-top:16px">Why Banco Architectural Systems</h2>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px">
+          <div class="eyebrow on-dark">Why choose us</div>
+          <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:16px">Why Banco Architectural Systems</h2>
+          <p class="t-body" style="color:var(--color-silver);margin-top:20px">
             Supported by advanced aluminium extrusion capabilities and profile development
             expertise, Banco delivers architectural systems engineered for consistency,
             precision and long-term performance.
           </p>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:14px">
+          <p class="t-body" style="color:var(--color-silver);margin-top:14px">
             Our manufacturing foundation enables the development of aluminium solutions
             suitable for modern architectural requirements across residential, commercial
             and institutional applications.
@@ -477,14 +336,9 @@ const galleryPhotos = [
           />
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ══════════════════════════════════════════════════════════
-       06B · FOR ARCHITECTS & FOR FABRICATORS — SPLIT
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="section-dark section-pad" style="border-bottom:1px solid var(--color-navy-line)">
-    <div class="container">
+      <div class="arc-af-sep" aria-hidden="true"></div>
+
       <div class="arc-af-head" data-reveal="fade">
         <div class="eyebrow on-dark">Who we work with</div>
         <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:12px">Architects, Fabricators & Developers</h2>
@@ -522,49 +376,6 @@ const galleryPhotos = [
           </ul>
           <a href="/contact#quote" class="btn btn-secondary-dark" style="margin-top:28px">Submit a requirement</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       06C · INLINE TECHNICAL DOWNLOADS
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="section-alt section-pad" style="border-bottom:1px solid var(--color-stone-200)">
-    <div class="container">
-      <div class="arc-dl-head" data-reveal="fade">
-        <div>
-          <div class="eyebrow">Technical resources</div>
-          <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Product Information & Downloads</h2>
-        </div>
-        <a href="/downloads" class="btn btn-secondary">View all downloads</a>
-      </div>
-      <div class="arc-dl-grid">
-        {[
-          { icon: 'brochure',   title: 'Architectural Systems Catalogue',   desc: 'Full product range — systems, finishes, configurations.',           tag: 'PDF · ~4 MB' },
-          { icon: 'datasheet',  title: 'Performance Data Sheets',           desc: 'EN 14351-1 test results, wind load and watertightness ratings.',    tag: 'PDF · Technical' },
-          { icon: 'finish',     title: 'Finish & Colour Guide',             desc: 'Powder coating RAL/NCS options, anodising classes.',                tag: 'PDF · Colours' },
-          { icon: 'alloy',      title: 'Alloy Specification Sheet',         desc: '6063 / 6060 / 6005 architectural alloy data and tolerances.',       tag: 'PDF · Materials' },
-        ].map((dl) => (
-          <a href="/downloads" class="arc-dl-card">
-            <div class="arc-dl-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M5 2h8l4 4v14H5V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M13 2v4h4" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                <path d="M11 10v6M8 13l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="arc-dl-body">
-              <div class="arc-dl-title">{dl.title}</div>
-              <div class="arc-dl-desc">{dl.desc}</div>
-              <div class="arc-dl-tag">{dl.tag}</div>
-            </div>
-            <div class="arc-dl-arrow" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M8 2v9M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </a>
-        ))}
       </div>
     </div>
   </section>
@@ -619,58 +430,6 @@ const galleryPhotos = [
   </div>
 
   <!-- ══════════════════════════════════════════════════════════
-       09 · SLIDING SERIES — TECHNICAL DETAIL
-  ══════════════════════════════════════════════════════════════ -->
-  <section id="sliding" class="a-split">
-    <div class="a-split-visual">
-      <img src="/assets/images/architectureheropage/blog_thumb_1760685500.webp" alt="Banco sliding aluminium window system" loading="lazy" />
-    </div>
-    <div class="a-split-body">
-      <div class="eyebrow">Sliding systems</div>
-      <h2 class="a-split-h2">Eight series.<br/>18 – 75 mm.</h2>
-      <div class="a-slist">
-        {sliding.map((s) => (
-          <div class="a-slist-row">
-            <span class="a-slist-num">{s.num}</span>
-            <span class="a-slist-name">{s.name}</span>
-            <span class="a-slist-width">{s.width}</span>
-            <span class="pill pill-xs">{s.glazing}</span>
-          </div>
-        ))}
-      </div>
-      <a href="/contact#quote" class="btn btn-primary a-split-cta">Specify a system</a>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       10 · CASEMENT & DOORS
-  ══════════════════════════════════════════════════════════════ -->
-  <section id="casement" class="a-split a-split-rev">
-    <div class="a-split-visual">
-      <img src="/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png" alt="Banco casement and bi-fold door system" loading="lazy" />
-    </div>
-    <div class="a-split-body" style="background:var(--color-stone-100)">
-      <div class="eyebrow">Casement & doors</div>
-      <h2 class="a-split-h2">40 – 50 mm.<br/>Windows, doors,<br/>bi-fold.</h2>
-      <div class="a-clist">
-        {casement.map((s) => (
-          <div class="a-clist-card">
-            <div class="a-clist-top">
-              <span class="a-slist-num">{s.num}</span>
-              <span class="a-clist-type">{s.type}</span>
-            </div>
-            <div class="a-clist-width">{s.width}</div>
-            <div class="a-clist-name">{s.name}</div>
-            <div class="a-clist-tier">{s.tier}</div>
-            <span class="pill" style="margin-top:4px">{s.glazing}</span>
-          </div>
-        ))}
-      </div>
-      <a href="/contact#quote" class="btn btn-primary a-split-cta">Specify a system</a>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
        11 · PERFORMANCE BAND
   ══════════════════════════════════════════════════════════════ -->
   <section class="a-perf-band section-dark">
@@ -696,7 +455,7 @@ const galleryPhotos = [
   <!-- ══════════════════════════════════════════════════════════
        12 · SURFACE FINISHES
   ══════════════════════════════════════════════════════════════ -->
-  <section class="a-finishes section-light">
+  <section id="surface-finishing" class="a-finishes section-light">
     <div class="container">
       <div class="eyebrow">Surface finishing</div>
       <h2 class="t-h2 a-h2-navy" style="margin-top:10px">Five finishes. In-house.</h2>
@@ -726,7 +485,7 @@ const galleryPhotos = [
         {[
           ['Billet casting',  '6063 · 6060 · 6005. Controlled Mg/Si for surface quality.'],
           ['Die design',      'Q-Form simulation · 5-axis CNC machined.'],
-          ['Five presses',    '1,100–3,300 MT · 35,000 MT/yr capacity.'],
+          ['Five presses',    '1100–3300T · 35,000 MT/yr capacity.'],
           ['Finishing',       'Class 20 anodising · QUALICOAT powder · Full RAL/NCS.'],
           ['Quality control', 'ASCONA optical measurement · full dimensional inspection.'],
         ].map(([cap, desc]) => (
@@ -784,44 +543,6 @@ const galleryPhotos = [
   .section-pad {
     padding: clamp(40px, 5vw, 72px) 0;
   }
-
-  /* ══ FEATURED CARD — BULLETS ══════════════════════════════ */
-  .arc-feat-bullets {
-    list-style: none;
-    margin: 14px 0 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .arc-feat-bullets li {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 12.5px;
-    line-height: 1.52;
-    color: var(--color-stone-700);
-  }
-  .arc-feat-dot {
-    flex-shrink: 0;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--color-green);
-    margin-top: 5px;
-  }
-  .arc-feat-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-green);
-    text-decoration: none;
-    transition: gap 0.18s ease;
-  }
-  .arc-feat-link:hover { gap: 8px; }
 
   /* ══ ARCHITECT / FABRICATOR SPLIT ═════════════════════════ */
   .arc-af-head {
@@ -887,81 +608,9 @@ const galleryPhotos = [
     background: var(--color-green);
   }
 
-  /* ══ DOWNLOAD CARDS ════════════════════════════════════════ */
-  .arc-dl-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .arc-dl-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--color-stone-200);
-    border: 1px solid var(--color-stone-200);
-  }
-  .arc-dl-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 24px 22px;
-    background: var(--color-stone-50);
-    text-decoration: none;
-    transition: background 0.2s ease;
-    position: relative;
-  }
-  .arc-dl-card:hover {
-    background: #fff;
-  }
-  .arc-dl-card:hover .arc-dl-arrow { color: var(--color-green); }
-  .arc-dl-icon {
-    color: var(--color-navy);
-    margin-bottom: 14px;
-  }
-  .arc-dl-body {
-    flex: 1;
-  }
-  .arc-dl-title {
-    font-family: var(--font-sans);
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--color-navy);
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
-  .arc-dl-desc {
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--color-stone-700);
-    margin-bottom: 10px;
-  }
-  .arc-dl-tag {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-nickel);
-  }
-  .arc-dl-arrow {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: var(--color-stone-400);
-    transition: color 0.18s ease, transform 0.18s ease;
-  }
-  .arc-dl-card:hover .arc-dl-arrow { transform: translateY(2px); }
-
   @media (max-width: 900px) {
     .arc-af-grid { grid-template-columns: 1fr; gap: 40px; }
     .arc-af-divider { display: none; }
-    .arc-dl-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 540px) {
-    .arc-dl-grid { grid-template-columns: 1fr; }
   }
 
   /* ══ COMPACT SECTION HEADING — fits on one line ════════════ */
@@ -1281,66 +930,7 @@ const galleryPhotos = [
     margin-right: auto;
   }
 
-  /* ══ FEATURED SOLUTIONS — 4-COL ════════════════════════════ */
-  .arc-feat-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--color-stone-200);
-    border: 1px solid var(--color-stone-200);
-  }
-
-  .arc-feat-card {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    border-top: 2px solid transparent;
-    transition: border-color 0.2s;
-    overflow: hidden;
-  }
-  .arc-feat-card:hover { border-top-color: var(--color-green); }
-
-  .arc-feat-img {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: var(--color-stone-100);
-  }
-  .arc-feat-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.88) saturate(0.85);
-    transition: transform 0.55s ease, filter 0.4s ease;
-  }
-  .arc-feat-card:hover .arc-feat-img img {
-    transform: scale(1.05);
-    filter: brightness(0.96) saturate(1.0);
-  }
-
-  .arc-feat-icon {
-    padding: 20px 20px 0;
-    color: var(--color-green);
-  }
-
-  .arc-feat-body { padding: 14px 20px 28px; flex: 1; }
-  .arc-feat-title {
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    color: var(--color-navy);
-    text-transform: uppercase;
-    line-height: 1.2;
-  }
-  .arc-feat-desc {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--color-stone-700);
-    margin-top: 8px;
-  }
-
-  /* ══ COMPREHENSIVE SYSTEMS — 5-COL ═════════════════════════ */
+  /* ══ COMPREHENSIVE SYSTEMS — 5 CLICKABLE IMAGE CARDS ═══════ */
   .arc-sys-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -1348,42 +938,66 @@ const galleryPhotos = [
     background: var(--color-stone-200);
     border: 1px solid var(--color-stone-200);
   }
-  .arc-sys-col {
-    background: white;
-    padding: 28px 22px 32px;
+  .arc-sys-card {
+    position: relative;
+    display: flex;
+    min-height: 340px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .arc-sys-card-bg { position: absolute; inset: 0; }
+  .arc-sys-card-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.62) saturate(0.85);
+    transition: transform 0.55s ease, filter 0.4s ease;
+  }
+  .arc-sys-card:hover .arc-sys-card-bg img {
+    transform: scale(1.06);
+    filter: brightness(0.5) saturate(0.9);
+  }
+  .arc-sys-card-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8,27,48,0.15) 0%, rgba(8,27,48,0.55) 55%, rgba(8,27,48,0.90) 100%);
+  }
+  .arc-sys-card-body {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 24px 20px;
+    margin-top: auto;
+    width: 100%;
     border-top: 2px solid transparent;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s;
   }
-  .arc-sys-col:hover { border-top-color: var(--color-green); background: var(--color-stone-50); }
-  .arc-sys-icon { color: var(--color-green); }
+  .arc-sys-card:hover .arc-sys-card-body { border-top-color: var(--color-green); }
   .arc-sys-label {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-navy);
-    font-weight: 500;
-    line-height: 1.3;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-platinum);
+    line-height: 1.25;
   }
   .arc-sys-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-top: 4px;
+    gap: 4px;
+    margin-top: 2px;
   }
   .arc-sys-list li {
-    font-size: 12.5px;
-    color: var(--color-stone-700);
+    font-size: 11.5px;
+    color: var(--color-silver);
     line-height: 1.5;
-    padding: 5px 0;
-    border-top: 1px solid var(--color-stone-200);
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 7px;
   }
   .arc-sys-list li::before {
     content: '';
@@ -1394,6 +1008,19 @@ const galleryPhotos = [
     flex-shrink: 0;
     margin-top: 6px;
   }
+  .arc-sys-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin-top: 10px;
+    transition: gap 0.2s ease;
+  }
+  .arc-sys-card:hover .arc-sys-cta { gap: 10px; }
 
   /* ══ ENVIRONMENTS — 8-COL ══════════════════════════════════ */
   .arc-env-grid {
@@ -1450,22 +1077,22 @@ const galleryPhotos = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
-    background: var(--color-stone-200);
-    border: 1px solid var(--color-stone-200);
+    background: var(--color-navy-line);
+    border: 1px solid var(--color-navy-line);
     margin-top: 32px;
   }
   .arc-why-chip {
-    background: var(--color-stone-50);
+    background: var(--color-navy-soft);
     padding: 14px 16px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
     font-size: 12.5px;
-    color: var(--color-navy);
+    color: var(--color-silver);
     line-height: 1.4;
     transition: background 0.2s;
   }
-  .arc-why-chip:hover { background: white; }
+  .arc-why-chip:hover { background: var(--color-navy); }
   .arc-chip-dot {
     width: 5px;
     height: 5px;
@@ -1474,10 +1101,15 @@ const galleryPhotos = [
     flex-shrink: 0;
     margin-top: 5px;
   }
+  .arc-af-sep {
+    height: 1px;
+    background: var(--color-navy-line);
+    margin: clamp(48px, 6vw, 72px) 0 clamp(40px, 5vw, 56px);
+  }
   .arc-why-visual {
     overflow: hidden;
     aspect-ratio: 4/3;
-    border: 1px solid var(--color-stone-200);
+    border: 1px solid var(--color-navy-line);
   }
   .arc-why-visual img {
     width: 100%;
@@ -1560,39 +1192,6 @@ const galleryPhotos = [
   }
   .a-split-cta { margin-top: 28px; align-self: flex-start; }
 
-  /* ══ SLIDING LIST ══════════════════════════════════════════ */
-  .a-slist { display: flex; flex-direction: column; border-top: 1px solid var(--color-stone-200); }
-  .a-slist-row {
-    display: grid;
-    grid-template-columns: 36px 1fr auto auto;
-    gap: 10px;
-    align-items: center;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--color-stone-200);
-    transition: background 0.15s, padding 0.15s;
-  }
-  .a-slist-row:hover { background: var(--color-stone-100); padding: 11px 8px; margin: 0 -8px; }
-  .a-slist-num { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; color: var(--color-green); }
-  .a-slist-name { font-size: 13px; font-weight: 500; color: var(--color-navy); }
-  .a-slist-width { font-family: var(--font-mono); font-size: 11px; color: var(--color-stone-400); }
-
-  /* ══ CASEMENT CARDS ════════════════════════════════════════ */
-  .a-clist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .a-clist-card {
-    background: white;
-    border: 1px solid var(--color-stone-200);
-    border-top: 2px solid var(--color-green);
-    padding: 22px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .a-clist-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-  .a-clist-type { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
-  .a-clist-width { font-size: clamp(22px, 2.5vw, 36px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-navy); line-height: 1; }
-  .a-clist-name { font-size: 14px; font-weight: 600; color: var(--color-navy); }
-  .a-clist-tier { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); line-height: 1.5; }
-
   /* ══ PERFORMANCE BAND ══════════════════════════════════════ */
   .a-perf-band { padding: clamp(40px, 5vh, 60px) 0; border-top: 2px solid var(--color-green); }
   .a-perf-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; gap: 16px; }
@@ -1661,7 +1260,6 @@ const galleryPhotos = [
   @media (max-width: 1024px) {
     .ah-thumbs           { display: none; }
     .ah-inner            { grid-template-columns: 1fr; }
-    .arc-feat-grid       { grid-template-columns: repeat(2, 1fr); }
     .arc-intro-grid, .arc-why-grid, .arc-contemp-grid { grid-template-columns: 1fr; }
     .arc-intro-visual, .arc-why-visual, .arc-contemp-visual { aspect-ratio: 16/7; }
     .a-split             { grid-template-columns: 1fr; min-height: auto; }
@@ -1678,13 +1276,11 @@ const galleryPhotos = [
     .ah-stats-inner      { gap: 0; overflow-x: auto; }
     .ah-stat             { padding: 0 20px 0 0; margin-right: 20px; }
     .ah-stat:nth-child(n+4) { display: none; }
-    .arc-feat-grid       { grid-template-columns: 1fr; }
     .arc-sys-grid        { grid-template-columns: repeat(2, 1fr); }
     .arc-env-grid        { grid-template-columns: repeat(4, 1fr); }
     .arc-why-chips       { grid-template-columns: 1fr; }
     .a-perf-cols         { grid-template-columns: repeat(2, 1fr); }
     .a-finish-strips     { grid-template-columns: repeat(2, 1fr); }
-    .a-clist             { grid-template-columns: 1fr; }
     .a-gallery-bleed     { grid-template-columns: repeat(3, 1fr); }
     .arc-cta-inner       { flex-direction: column; align-items: flex-start; }
   }
@@ -1699,7 +1295,7 @@ const galleryPhotos = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ah-bg-img, .ah-thumb, .arc-feat-img img, .a-photo img { animation: none; transition: none; }
+    .ah-bg-img, .ah-thumb, .arc-sys-card-bg img, .a-photo img { animation: none; transition: none; }
     .ah-thumb { opacity: 0.6; transform: none; }
   }
 </style>

@@ -73,14 +73,40 @@ const environments = [
   { label: 'Mixed-Use Projects',      img: '/assets/architectural/f664f77f50d42d2087d86bdaced9f248.jpg' },
 ];
 
-// ── Why Banco feature chips ───────────────────────────────────────────────────
-const whyFeatures = [
-  'Extensive Architectural Product Portfolio',
-  'Precision Aluminium Extrusion Expertise',
-  'Contemporary Design Compatibility',
-  'Multiple System Configurations',
-  'Reliable Manufacturing Processes',
-  'Support for Architects, Fabricators & Developers',
+// ── Why Banco / Architects / Fabricators — condensed 3-col partner grid ───────
+const partnerCols = [
+  {
+    type: 'Why Banco',
+    h3: 'Precision that scales with your project.',
+    items: [
+      'Extensive architectural product portfolio',
+      'Contemporary design compatibility',
+      'Multiple system configurations',
+      'Reliable, repeatable manufacturing',
+    ],
+  },
+  {
+    type: 'For Architects',
+    h3: 'Design freedom, precision engineered.',
+    items: [
+      'Wide system configurations for any façade',
+      'Custom sightlines & profile dimensions',
+      'Full RAL/NCS palette & anodising classes',
+      'EN 14351-1 test data · BIM library',
+    ],
+    cta: ['Request system data', '/contact#quote'],
+  },
+  {
+    type: 'For Fabricators',
+    h3: 'Consistent extrusion, reliable supply.',
+    items: [
+      'ASCONA optical inspection, every batch',
+      'New profiles in-house in 4–6 weeks',
+      'Anodising Class 20 · QUALICOAT powder',
+      'Export packing · CBAM & CE documentation',
+    ],
+    cta: ['Submit a requirement', '/contact#quote'],
+  },
 ];
 
 // ── Gallery photos ────────────────────────────────────────────────────────────
@@ -96,7 +122,7 @@ const galleryPhotos = [
 ---
 
 <Layout
-  title="Architectural aluminium systems — windows, doors, façades — Banco Aluminium"
+  title="Banco Aluminium: architectural aluminium systems for windows, doors and façades"
   description="Precision-engineered aluminium window, door, façade and architectural profile systems for residential, commercial and institutional projects. EN 14351-1 tested. In-house extrusion, Vadodara."
   image="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
   transparentNav={true}
@@ -193,48 +219,7 @@ const galleryPhotos = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       02 · INTRO — 2-COL SPLIT
-  ══════════════════════════════════════════════════════════════ -->
-  <section class="section-white section-pad" style="border-bottom:1px solid var(--color-stone-200)">
-    <div class="container">
-      <div class="arc-intro-grid">
-        <div class="arc-intro-body" data-reveal="left">
-          <div class="eyebrow">Banco Architectural Systems</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Precision extrusion.<br/><em class="accent">Architectural finish.</em>
-          </h2>
-          <p class="t-lead" style="color:var(--color-stone-700);margin-top:24px">
-            Every system starts on a Banco extrusion press. In-house die design, 6063/6060 alloys
-            formulated for surface quality, and Class 20 anodising — all under one roof in Vadodara.
-          </p>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px">
-            Designed to support residential, commercial and institutional developments,
-            our systems combine functionality, durability and clean aesthetics to meet
-            the demands of contemporary building design.
-          </p>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px">
-            Backed by decades of aluminium extrusion expertise, we provide architectural
-            solutions that support architects, fabricators, builders and developers
-            across diverse project requirements.
-          </p>
-          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px">
-            <a href="/contact#quote" class="btn btn-primary">Send enquiry</a>
-            <a href="/downloads" class="btn btn-secondary">Download catalogue</a>
-          </div>
-        </div>
-        <div class="arc-intro-visual" data-reveal="right">
-          <img
-            src="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
-            alt="Aluminium architectural profile cross-section — Banco"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       04 · COMPREHENSIVE SYSTEMS — 5 CLICKABLE IMAGE CARDS
+       02 · COMPREHENSIVE SYSTEMS — 5 CLICKABLE IMAGE CARDS
   ══════════════════════════════════════════════════════════════ -->
   <section class="section-white section-pad" style="border-bottom:1px solid var(--color-stone-200)">
     <div class="container">
@@ -242,7 +227,7 @@ const galleryPhotos = [
         <div class="eyebrow">Full range</div>
         <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Comprehensive Architectural Systems</h2>
         <p class="t-body arc-sub" style="color:var(--color-stone-700)">
-          A complete aluminium system range — from windows and doors to façades, profiles and accessories.
+          A complete aluminium system range spanning windows, doors, façades, profiles and accessories.
           Select a category for full technical detail.
         </p>
       </div>
@@ -275,7 +260,7 @@ const galleryPhotos = [
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       05 · ENVIRONMENTS — 8-COL THUMBNAIL GRID
+       03 · ENVIRONMENTS — 8-COL THUMBNAIL GRID
   ══════════════════════════════════════════════════════════════ -->
   <section class="section-alt section-pad" style="border-bottom:1px solid var(--color-stone-200)">
     <div class="container">
@@ -283,7 +268,7 @@ const galleryPhotos = [
         <div class="eyebrow">Applications</div>
         <h2 class="arc-sh" style="color:var(--color-navy);margin-top:12px">Diverse Architectural Environments</h2>
         <p class="t-body arc-sub" style="color:var(--color-stone-700)">
-          Supporting a wide range of building typologies — from residential to large-scale commercial.
+          Supporting a wide range of building typologies, from residential to large-scale commercial.
         </p>
       </div>
 
@@ -301,81 +286,71 @@ const galleryPhotos = [
   </section>
 
   <!-- ══════════════════════════════════════════════════════════
-       06 · WHY BANCO + WHO WE WORK WITH — COMBINED
+       04 · INTRO — 2-COL SPLIT
   ══════════════════════════════════════════════════════════════ -->
-  <section class="section-dark section-pad">
+  <section class="section-white section-pad" style="border-bottom:1px solid var(--color-stone-200)">
     <div class="container">
-      <div class="arc-why-grid">
-        <div data-reveal="left">
-          <div class="eyebrow on-dark">Why choose us</div>
-          <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:16px">Why Banco Architectural Systems</h2>
-          <p class="t-body" style="color:var(--color-silver);margin-top:20px">
-            Supported by advanced aluminium extrusion capabilities and profile development
-            expertise, Banco delivers architectural systems engineered for consistency,
-            precision and long-term performance.
+      <div class="arc-intro-grid">
+        <div class="arc-intro-body" data-reveal="left">
+          <div class="eyebrow">Banco Architectural Systems</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Precision extrusion.<br/><em class="accent">Architectural finish.</em>
+          </h2>
+          <p class="t-lead" style="color:var(--color-stone-700);margin-top:24px">
+            Every system starts on a Banco extrusion press, with in-house die design, 6063/6060 alloys
+            formulated for surface quality, and Class 20 anodising all under one roof in Vadodara.
           </p>
-          <p class="t-body" style="color:var(--color-silver);margin-top:14px">
-            Our manufacturing foundation enables the development of aluminium solutions
-            suitable for modern architectural requirements across residential, commercial
-            and institutional applications.
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px">
+            Designed to support residential, commercial and institutional developments,
+            our systems combine functionality, durability and clean aesthetics to meet
+            the demands of contemporary building design.
           </p>
-          <div class="arc-why-chips">
-            {whyFeatures.map((f) => (
-              <div class="arc-why-chip">
-                <span class="arc-chip-dot" aria-hidden="true"></span>
-                <span>{f}</span>
-              </div>
-            ))}
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px">
+            Backed by decades of aluminium extrusion expertise, we provide architectural
+            solutions that support architects, fabricators, builders and developers
+            across diverse project requirements.
+          </p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px">
+            <a href="/contact#quote" class="btn btn-primary">Send enquiry</a>
+            <a href="/downloads" class="btn btn-secondary">Download catalogue</a>
           </div>
         </div>
-        <div class="arc-why-visual" data-reveal="right">
+        <div class="arc-intro-visual" data-reveal="right">
           <img
-            src="/assets/manufacturing/industrialOEMS.webp"
-            alt="Banco aluminium extrusion manufacturing — Vadodara"
+            src="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
+            alt="Banco Aluminium architectural profile cross-section"
             loading="lazy"
           />
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="arc-af-sep" aria-hidden="true"></div>
-
-      <div class="arc-af-head" data-reveal="fade">
-        <div class="eyebrow on-dark">Who we work with</div>
-        <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:12px">Architects, Fabricators & Developers</h2>
+  <!-- ══════════════════════════════════════════════════════════
+       06 · WHY BANCO + WHO WE WORK WITH — CONDENSED 3-COL, ONE-SCREEN FIT
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section-dark arc-waf-sec">
+    <div class="container">
+      <div class="arc-waf-head" data-reveal="fade">
+        <h2 class="arc-sh" style="color:var(--color-platinum);margin-top:12px">Engineered for Architects, Fabricators &amp; Developers</h2>
       </div>
-      <div class="arc-af-grid">
-        <!-- For Architects -->
-        <div class="arc-af-col" data-reveal="left">
-          <div class="arc-af-num" aria-hidden="true">01</div>
-          <div class="arc-af-type">For Architects</div>
-          <h3 class="arc-af-h3">Design freedom with aluminium precision.</h3>
-          <ul class="arc-af-list">
-            <li>Wide range of system configurations to suit any façade design</li>
-            <li>Custom sightlines and profile dimensions on request</li>
-            <li>Full finish palette — any RAL / NCS colour, anodising classes</li>
-            <li>Performance data sheets and EN 14351-1 test certificates available</li>
-            <li>BIM object library available for supported systems</li>
-          </ul>
-          <a href="/contact#quote" class="btn btn-secondary-dark" style="margin-top:28px">Request system data</a>
-        </div>
 
-        <!-- Divider -->
-        <div class="arc-af-divider" aria-hidden="true"></div>
-
-        <!-- For Fabricators -->
-        <div class="arc-af-col" data-reveal="right">
-          <div class="arc-af-num" aria-hidden="true">02</div>
-          <div class="arc-af-type">For Fabricators</div>
-          <h3 class="arc-af-h3">Consistent extrusion. Reliable repeat supply.</h3>
-          <ul class="arc-af-list">
-            <li>Tight dimensional tolerances — ASCONA optical inspection on every batch</li>
-            <li>In-house die design and trial — new profiles in 4–6 weeks</li>
-            <li>Surface-matched finishing: anodising Class 20 · QUALICOAT powder</li>
-            <li>Export-ready packing — paper interleave, stretch wrap, wooden bundles</li>
-            <li>CBAM documentation · material test certificates · CE marked</li>
-          </ul>
-          <a href="/contact#quote" class="btn btn-secondary-dark" style="margin-top:28px">Submit a requirement</a>
-        </div>
+      <div class="arc-waf-grid" data-reveal>
+        {partnerCols.map((col, i) => (
+          <>
+            {i > 0 && <div class="arc-waf-divider" aria-hidden="true"></div>}
+            <div class="arc-waf-col">
+              <div class="arc-waf-type">{col.type}</div>
+              <h3 class="arc-waf-h3">{col.h3}</h3>
+              <ul class="arc-waf-list">
+                {col.items.map((item) => <li>{item}</li>)}
+              </ul>
+              {col.cta && (
+                <a href={col.cta[1]} class="btn btn-secondary-dark arc-waf-cta">{col.cta[0]}</a>
+              )}
+            </div>
+          </>
+        ))}
       </div>
     </div>
   </section>
@@ -410,7 +385,7 @@ const galleryPhotos = [
         <div class="arc-contemp-visual" data-reveal="right">
           <img
             src="/assets/images/architectureheropage/Large-apartment-louvres.jpg"
-            alt="Contemporary aluminium architectural building — Banco"
+            alt="Contemporary aluminium architectural building by Banco"
             loading="lazy"
           />
         </div>
@@ -424,7 +399,7 @@ const galleryPhotos = [
   <div class="a-gallery-bleed">
     {galleryPhotos.map((src, i) => (
       <div class="a-photo">
-        <img src={src} alt={`Banco architectural project — ${i + 1}`} loading="lazy" />
+        <img src={src} alt={`Banco architectural project ${i + 1}`} loading="lazy" />
       </div>
     ))}
   </div>
@@ -476,7 +451,7 @@ const galleryPhotos = [
   ══════════════════════════════════════════════════════════════ -->
   <section class="a-split">
     <div class="a-split-visual">
-      <img src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco in-house aluminium extrusion — Vadodara" loading="lazy" />
+      <img src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco in-house aluminium extrusion in Vadodara" loading="lazy" />
     </div>
     <div class="a-split-body" style="background:var(--color-navy)">
       <div class="eyebrow on-dark">Manufacturing platform</div>
@@ -544,73 +519,67 @@ const galleryPhotos = [
     padding: clamp(40px, 5vw, 72px) 0;
   }
 
-  /* ══ ARCHITECT / FABRICATOR SPLIT ═════════════════════════ */
-  .arc-af-head {
-    margin-bottom: 40px;
-  }
-  .arc-af-grid {
+  /* ══ WHY BANCO / ARCHITECTS / FABRICATORS — CONDENSED 3-COL ═ */
+  .arc-waf-sec { padding: clamp(40px, 5.5vh, 64px) 0; }
+  .arc-waf-head { margin-bottom: clamp(28px, 3.5vw, 40px); }
+  .arc-waf-grid {
     display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 0 48px;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0 40px;
     align-items: start;
   }
-  .arc-af-divider {
+  .arc-waf-divider {
     background: var(--color-navy-line);
     align-self: stretch;
   }
-  .arc-af-col {
+  .arc-waf-col {
     padding: 0;
   }
-  .arc-af-num {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--color-nickel);
-    margin-bottom: 8px;
-  }
-  .arc-af-type {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
+  .arc-waf-type {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.4vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     color: var(--color-green);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
-  .arc-af-h3 {
+  .arc-waf-h3 {
     font-family: var(--font-sans);
-    font-size: clamp(19px, 2vw, 26px);
+    font-size: clamp(16px, 1.5vw, 20px);
     font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
     color: var(--color-platinum);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  .arc-af-list {
+  .arc-waf-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
-  .arc-af-list li {
-    font-size: 14px;
-    line-height: 1.55;
+  .arc-waf-list li {
+    font-size: 12.5px;
+    line-height: 1.5;
     color: var(--color-silver);
-    padding-left: 18px;
+    padding-left: 16px;
     position: relative;
   }
-  .arc-af-list li::before {
+  .arc-waf-list li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
+    top: 7px;
     width: 6px;
     height: 1px;
     background: var(--color-green);
   }
+  .arc-waf-cta { margin-top: 22px; }
 
   @media (max-width: 900px) {
-    .arc-af-grid { grid-template-columns: 1fr; gap: 40px; }
-    .arc-af-divider { display: none; }
+    .arc-waf-grid { grid-template-columns: 1fr; gap: 32px; }
+    .arc-waf-divider { display: none; }
   }
 
   /* ══ COMPACT SECTION HEADING — fits on one line ════════════ */
@@ -1066,60 +1035,6 @@ const galleryPhotos = [
     line-height: 1.4;
   }
 
-  /* ══ WHY BANCO — 2-COL ══════════════════════════════════════ */
-  .arc-why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(48px, 7vw, 110px);
-    align-items: center;
-  }
-  .arc-why-chips {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--color-navy-line);
-    border: 1px solid var(--color-navy-line);
-    margin-top: 32px;
-  }
-  .arc-why-chip {
-    background: var(--color-navy-soft);
-    padding: 14px 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 12.5px;
-    color: var(--color-silver);
-    line-height: 1.4;
-    transition: background 0.2s;
-  }
-  .arc-why-chip:hover { background: var(--color-navy); }
-  .arc-chip-dot {
-    width: 5px;
-    height: 5px;
-    background: var(--color-green);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 5px;
-  }
-  .arc-af-sep {
-    height: 1px;
-    background: var(--color-navy-line);
-    margin: clamp(48px, 6vw, 72px) 0 clamp(40px, 5vw, 56px);
-  }
-  .arc-why-visual {
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    border: 1px solid var(--color-navy-line);
-  }
-  .arc-why-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.7s;
-  }
-  .arc-why-visual:hover img { transform: scale(1.04); }
-
   /* ══ CONTEMPORARY — 2-COL ══════════════════════════════════ */
   .arc-contemp-grid {
     display: grid;
@@ -1260,8 +1175,10 @@ const galleryPhotos = [
   @media (max-width: 1024px) {
     .ah-thumbs           { display: none; }
     .ah-inner            { grid-template-columns: 1fr; }
-    .arc-intro-grid, .arc-why-grid, .arc-contemp-grid { grid-template-columns: 1fr; }
-    .arc-intro-visual, .arc-why-visual, .arc-contemp-visual { aspect-ratio: 16/7; }
+    .arc-intro-grid, .arc-contemp-grid { grid-template-columns: 1fr; }
+    .arc-intro-visual, .arc-contemp-visual { aspect-ratio: 16/7; }
+    .arc-waf-grid { grid-template-columns: 1fr; gap: 32px; }
+    .arc-waf-divider { display: none; }
     .a-split             { grid-template-columns: 1fr; min-height: auto; }
     .a-split-rev .a-split-visual { order: 0; }
     .a-split-rev .a-split-body   { order: 0; }

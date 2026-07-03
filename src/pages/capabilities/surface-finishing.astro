@@ -15,7 +15,7 @@ const finishes = [
     id: '02',
     name: 'Anodising',
     spec: 'Class 20 · EN 12373 · 20 μm min.',
-    desc: 'Sulphuric acid anodising, 20 μm minimum film. Colour in the oxide layer — not on top. Superior fade and abrasion resistance.',
+    desc: 'Sulphuric acid anodising, 20 μm minimum film. Colour is worked into the oxide layer, not applied on top. Superior fade and abrasion resistance.',
     apps: ['Facades', 'Curtain wall', 'Marine', 'Premium hardware'],
     colour: 'EV0–EV6: natural · champagne · bronze · black',
     accent: false,
@@ -24,7 +24,7 @@ const finishes = [
     id: '03',
     name: 'Brushed',
     spec: '120–180 grit · longitudinal grain',
-    desc: 'Abrasive belt brushing — consistent grain parallel to extrusion axis. Eliminates die lines. Combinable with anodising.',
+    desc: 'Abrasive belt brushing produces a consistent grain parallel to the extrusion axis. Eliminates die lines. Combinable with anodising.',
     apps: ['Interior design', 'Shop fit-out', 'Appliance trim'],
     colour: 'Natural / combined with anodising',
     accent: false,
@@ -50,12 +50,12 @@ const finishes = [
 ];
 
 const anodSpecs = [
-  ['Standard',       'EN 12373 Class 20 — 20 μm min.'],
-  ['Natural',        'EV0 — as anodised'],
-  ['Champagne',      'EV1 — light bronze'],
+  ['Standard',       'EN 12373 Class 20, 20 μm min.'],
+  ['Natural',        'EV0 (as anodised)'],
+  ['Champagne',      'EV1: light bronze'],
   ['Bronze',         'EV2 / EV3'],
-  ['Black',          'EV6 — deep anodised black'],
-  ['Sealing',        'Hot DI water — EN 12373-5'],
+  ['Black',          'EV6, deep anodised black'],
+  ['Sealing',        'Hot DI water per EN 12373-5'],
   ['Colour check',   'Reference panels each run'],
 ];
 
@@ -70,7 +70,7 @@ const pcSpecs = [
 ];
 
 const advantages = [
-  'Single point of responsibility — extrusion, treatment, and packing under one roof',
+  'Single point of responsibility for extrusion, treatment, and packing under one roof',
   'No transport damage between extrusion and surface treatment',
   'Alloy chemistry and temper matched to finish requirement before production starts',
   'Single certificate covering dimensions, mechanical properties, and coating spec',
@@ -79,7 +79,7 @@ const advantages = [
 ---
 
 <Layout
-  title="Surface finishing — Banco Aluminium"
+  title="Surface finishing | Banco Aluminium"
   description="Five surface finishes. QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish. Full RAL and NCS colour range. In-house from extrusion to finished profile."
   transparentNav={true}
 >
@@ -102,14 +102,14 @@ const advantages = [
         Five finishes.<br>One facility.<br><em class="accent">Zero compromise.</em>
       </h1>
       <p class="sf-lede" data-reveal data-reveal-delay="3">
-        QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish —
-        all in-house, billet to finished profile. No external handling,
+        QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish.
+        All in-house, billet to finished profile. No external handling,
         no traceability gaps, no colour drift between batches.
       </p>
       <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: 'QUALICOAT',  l: 'Powder coating cert.' },
-          { n: 'Class 20',   l: 'Anodising — EN 12373' },
+          { n: 'Class 20',   l: 'Anodising to EN 12373' },
           { n: '60–80 μm',   l: 'Standard PC film' },
           { n: '5',          l: 'Finishes in-house' },
         ].map(({ n, l }) => (
@@ -160,14 +160,14 @@ const advantages = [
             Class 20.<br>Colour in the oxide.
           </h2>
           <p class="sf-tc-copy">
-            Integral colour anodising deposits metal salts within the oxide pores before sealing —
-            colour that lives inside the layer, not on top. Superior UV and abrasion resistance.
+            Integral colour anodising deposits metal salts within the oxide pores before sealing,
+            so colour lives inside the layer rather than on top. Superior UV and abrasion resistance.
             Controlled bath chemistry ensures shade consistency across multi-batch orders.
           </p>
         </div>
         <div class="sf-tc-photo">
-          <img src="/assets/manufacturing/surface-finishing.jpg"
-               alt="Anodised aluminium profiles — Banco surface finishing"
+          <img src="/assets/manufacturing/surface-finishing.webp"
+               alt="Anodised aluminium profiles at Banco surface finishing"
                loading="lazy" />
         </div>
         <div class="sf-tc-table">
@@ -192,7 +192,7 @@ const advantages = [
           </h2>
           <p class="sf-tc-copy">
             Chromate-free pre-treatment, electrostatic application, and 180–200°C oven cure.
-            Film thickness measured on every batch — minimum 60 μm guaranteed.
+            Film thickness measured on every batch; minimum 60 μm guaranteed.
             QUALICOAT Class 2 available for harsh coastal and industrial environments.
           </p>
         </div>
@@ -208,7 +208,7 @@ const advantages = [
         <div class="sf-pc-process-grid">
           {[
             ['Pre-treat',    'Cr-VI free conversion coat'],
-            ['Application',  'Electrostatic — full wrap coverage'],
+            ['Application',  'Electrostatic, full wrap coverage'],
             ['Cure',         '180–200°C batch or conveyor'],
             ['Film check',   '100% measurement per batch'],
             ['Adhesion',     'EN ISO 2409 per colour / batch'],

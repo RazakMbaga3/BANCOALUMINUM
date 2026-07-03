@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Contact Banco Aluminium — request a quote"
+  title="Request a Quote from Banco Aluminium"
   description="Request a quote, download brochure, or schedule a plant visit. Banco Aluminium Pvt. Ltd., Vadodara, Gujarat, India. Exporting to Europe, North America, Asia-Pacific, Middle East."
 >
   <!-- Hero -->
@@ -26,7 +26,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="ct-steps">
         {([
           { n: '01', step: 'Submit a drawing or requirement', note: 'DXF, DWG, STEP, PDF, or specification sheet' },
-          { n: '02', step: 'Our team reviews feasibility',    note: 'Material options · tooling · lead time — within 1 business day' },
+          { n: '02', step: 'Our team reviews feasibility',    note: 'Material options · tooling · lead time (within 1 business day)' },
           { n: '03', step: 'Receive a detailed quotation',    note: 'Price, delivery schedule, and sample plan' },
         ] as const).map(({ n, step, note }) => (
           <div class="ct-step">
@@ -102,9 +102,9 @@ import Layout from '../layouts/Layout.astro';
               <div class="cform-select-wrap">
                 <select id="f-product" name="product_type" required class="cform-input cform-select">
                   <option value="">Select a product family</option>
-                  <option value="industrial">Industrial profiles — OEM</option>
+                  <option value="industrial">Industrial profiles (OEM)</option>
                   <option value="architectural">Architectural systems</option>
-                  <option value="cast">Cast products — billets</option>
+                  <option value="cast">Cast products (billets)</option>
                   <option value="standard">Standard sections</option>
                   <option value="custom">Custom profiles</option>
                   <option value="other">Other / not sure</option>
@@ -166,7 +166,7 @@ import Layout from '../layouts/Layout.astro';
             <!-- Embedded map -->
             <div style="margin-top:20px;border:1px solid var(--color-stone-200);overflow:hidden;aspect-ratio:16/9;max-height:220px">
               <iframe
-                title="Banco Aluminium location — Vadodara, Gujarat"
+                title="Banco Aluminium location in Vadodara, Gujarat"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.41203679138!2d72.99581339701197!3d22.309424945278437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8ab91a3ddab%3A0xac39d3bfe1473fb8!2sVadodara%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1749900000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
@@ -196,8 +196,8 @@ import Layout from '../layouts/Layout.astro';
           <div style="padding:28px;background:var(--color-navy)" id="visit">
             <div style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-green);margin-bottom:12px">Plant visit</div>
             <p style="color:var(--color-stone-400);font-size:14px;line-height:1.65;margin-bottom:20px">
-              We welcome customers and prospective partners to visit our Vadodara facility
-              — foundry, die shop, extrusion, and finishing under one roof.
+              We welcome customers and prospective partners to visit our Vadodara facility:
+              foundry, die shop, extrusion, and finishing under one roof.
             </p>
             <a href="mailto:info@bancoaluminium.com?subject=Plant%20visit%20request" class="btn btn-secondary-dark" style="font-size:12px;padding:12px 20px">
               Schedule a visit

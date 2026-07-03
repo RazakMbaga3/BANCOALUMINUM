@@ -47,40 +47,40 @@ const process = [
   {
     num: '/ 01',
     name: 'Melting',
-    photo: '/assets/manufacturing/melting-1.jpg',
+    photo: '/assets/manufacturing/melting-1.webp',
     body: 'Charge materials are melted in gas-fired furnaces to a controlled tapping temperature, the starting point for consistent alloy chemistry batch after batch.',
   },
   {
     num: '/ 02',
     name: 'Refining & degassing',
-    photo: '/assets/manufacturing/melting-3.jpg',
+    photo: '/assets/manufacturing/melting-3.webp',
     body: 'Advanced nitrogen-purged liquid-metal refining removes dissolved hydrogen from the melt. Eliminating this porosity-driving gas prevents surface blistering and voids that compromise extrudability in downstream presses.',
   },
   {
     num: '/ 03',
     name: 'Ceramic foam filtration',
-    photo: '/assets/manufacturing/melting-4.jpg',
+    photo: '/assets/manufacturing/melting-4.webp',
     body: 'Online liquid-metal filtration through ceramic foam filters removes non-metallic inclusions before the casting station, delivering measurably improved metal cleanliness and reduced inclusion count in the finished billet.',
   },
   {
     num: '/ 04',
     name: 'Hot-Top casting',
-    photo: '/assets/manufacturing/casting-1.jpg',
+    photo: '/assets/manufacturing/casting-1.webp',
     body: 'Billets are produced using cylinder-guided Hot-Top casting technology, which controls casting speed and cooling rate with precision. The result is a consistent surface finish, controlled skin thickness, and uniform metallurgical structure through the full cross-section.',
   },
   {
     num: '/ 05',
     name: 'Batch homogenising',
-    photo: '/assets/manufacturing/homo-1.jpg',
+    photo: '/assets/manufacturing/homo-1.webp',
     body: 'Billets are heat-treated in controlled-atmosphere furnaces to dissolve soluble phases and homogenise the microstructure, then force-cooled to a specified exit temperature. This step directly governs extrudability, surface finish, and dimensional consistency in downstream extrusion.',
   },
 ];
 
 // ── Quality assurance ──────────────────────────────────────────────────────────
 const qc = [
-  { stat: '100 %', label: 'Visual inspection — external defects', sub: 'External surface — every billet, every cast' },
-  { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects — inclusions, voids' },
-  { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES — verified against order specification' },
+  { stat: '100 %', label: 'Visual inspection for external defects', sub: 'External surface; every billet, every cast' },
+  { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects: inclusions, voids' },
+  { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES, verified against order specification' },
   { stat: 'SCADA', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
   { stat: 'Cast №', label: 'Alloy marking', sub: 'Designation + cast number on every individual billet' },
 ];
@@ -97,7 +97,7 @@ const certs = [
 ---
 
 <Layout
-  title="Aluminium extrusion billets — casting & cast products — Banco Aluminium"
+  title="Banco Aluminium: aluminium extrusion billets and cast products"
   description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 11 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready."
   image="/assets/manufacturing/aluminumbillets.avif"
   transparentNav={true}
@@ -107,7 +107,7 @@ const certs = [
   <section class="c-hero">
     <img
       src="/assets/manufacturing/aluminumbillets.avif"
-      alt="Aluminium extrusion billets — Banco Aluminium foundry"
+      alt="Aluminium extrusion billets from the Banco Aluminium foundry"
       class="c-hero-img"
       loading="eager"
     />
@@ -119,7 +119,7 @@ const certs = [
       <div class="c-stats">
         {[
           { n: '55,000', u: 'MT/yr',       l: 'Foundry capacity' },
-          { n: '5',      u: 'Diameters',   l: '5" to 10"' },
+          { n: '6',      u: 'Diameters',   l: '5" to 10"' },
           { n: '12+',    u: 'Alloys',      l: 'Custom on request' },
           { n: '0.480',  u: 'kgCO₂e/kg',  l: 'ISO 14064-1 verified' },
         ].map(({ n, u, l }) => (
@@ -148,7 +148,7 @@ const certs = [
         </h2>
         <p class="t-body c-body-text" style="margin-top:20px">
           Banco's integrated foundry produces extrusion-grade aluminium billets using
-          cylinder-guided Hot-Top casting — delivering controlled microstructure,
+          cylinder-guided Hot-Top casting, delivering controlled microstructure,
           measurable metal cleanliness and consistent extrudability, batch after batch.
         </p>
         <p class="t-body c-body-text" style="margin-top:12px">
@@ -166,7 +166,7 @@ const certs = [
       <!-- Right: image composition — 1 large + 2 small -->
       <div class="c-overview-right">
         <div class="c-ov-main">
-          <img src="/assets/manufacturing/billet-1.jpg" alt="Finished aluminium extrusion billets — Banco Aluminium, Vadodara" loading="eager" />
+          <img src="/assets/manufacturing/billet-1.webp" alt="Finished aluminium extrusion billets from Banco Aluminium, Vadodara" loading="eager" />
           <div class="c-ov-main-caption">
             <span>Finished extrusion billets</span>
             <span class="c-ov-cap-note">Alloy-marked · 5,800 mm · SCADA traced</span>
@@ -174,11 +174,11 @@ const certs = [
         </div>
         <div class="c-ov-pair">
           <div class="c-ov-sm">
-            <img src="/assets/manufacturing/casting-2.jpg" alt="Hot-Top casting station — Banco Aluminium" loading="lazy" />
+            <img src="/assets/manufacturing/casting-2.webp" alt="Hot-Top casting station at Banco Aluminium" loading="lazy" />
             <span class="c-ov-sm-lbl">Hot-Top casting</span>
           </div>
           <div class="c-ov-sm">
-            <img src="/assets/manufacturing/homo-1.jpg" alt="Homogenising furnace — Banco Aluminium" loading="lazy" />
+            <img src="/assets/manufacturing/homo-1.webp" alt="Banco Aluminium homogenising furnace" loading="lazy" />
             <span class="c-ov-sm-lbl">Homogenising</span>
           </div>
         </div>
@@ -229,7 +229,7 @@ const certs = [
       </div>
       <p class="c-table-footnote">
         <span class="c-table-footnote-std">Full chemical composition including Zn, Cr, Ti, and individual trace elements available in the product data sheet.</span>
-        <span class="c-table-footnote-callout"><strong>Additional alloys:</strong> 1050A, 2011, 2017A, 2014, 6262, 6026 — available to customer specification. Please contact us for details.</span>
+        <span class="c-table-footnote-callout"><strong>Additional alloys:</strong> 1050A, 2011, 2017A, 2014, 6262 and 6026 are available to customer specification. Please contact us for details.</span>
       </p>
 
       <div class="c-spec-list">
@@ -288,7 +288,7 @@ const certs = [
     <div class="container">
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          Five stages<br>from melt to billet.
+          From melt to billet.
         </h2>
       </div>
 
@@ -330,7 +330,7 @@ const certs = [
       <div class="c-packing">
         <div class="c-packing-inner">
           <div class="c-packing-img">
-            <img src="/assets/manufacturing/Labeling.png" alt="Banco billet alloy and cast number labelling" loading="lazy" />
+            <img src="/assets/manufacturing/Labeling.webp" alt="Banco billet alloy and cast number labelling" loading="lazy" />
           </div>
           <div>
             <div class="c-table-label">Packing &amp; identification</div>
@@ -366,7 +366,7 @@ const certs = [
             { n: '0.480', u: 'kgCO₂e / kg', l: 'Carbon footprint at full capacity · ISO 14064-1' },
             { n: '≤ 5%',  u: '',             l: 'Verified primary aluminium in green billet grade' },
             { n: '960',   u: 'kW',           l: 'Captive solar generation on site' },
-            { n: '100%',  u: '',             l: 'Natural gas in melting — no coal energy input' },
+            { n: '100%',  u: '',             l: 'Natural gas in melting, with no coal energy input' },
           ].map(({ n, u, l }) => (
             <div class="c-green-cell">
               <div class="c-green-num">
@@ -910,13 +910,13 @@ const certs = [
   }
   .c-packing-inner {
     display: grid;
-    grid-template-columns: 140px 1fr auto;
+    grid-template-columns: 240px 1fr auto;
     gap: 28px;
     padding: 28px 28px;
     align-items: center;
   }
   .c-packing-img {
-    width: 140px;
+    width: 240px;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border: 1px solid var(--color-navy-line);

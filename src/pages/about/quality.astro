@@ -8,15 +8,15 @@ const certs = [
   { code: 'IATF 16949:2016',  title: 'Automotive Quality Systems',       desc: 'Automotive-grade quality system. Supports supply to Tier 1 and Tier 2 automotive OEMs globally.' },
   { code: 'CE Certification', title: 'European Conformity',              desc: 'CE marking for aluminium profiles supplied to European markets, confirming compliance with applicable EU directives.' },
   { code: 'IRS Works Approval', title: 'Indian Register of Shipping',   desc: 'Approved manufacturer of aluminium profiles for shipbuilding and marine applications.' },
-  { code: 'BIS IS 733',       title: 'Wrought Aluminium — Bars & Rods', desc: 'Bureau of Indian Standards approval for wrought aluminium and aluminium alloy bars, rods and sections.' },
-  { code: 'BIS IS 1285',      title: 'Wrought Aluminium — Extruded',    desc: 'BIS approval for wrought aluminium and aluminium alloy extruded round tubes and hollow sections.' },
-  { code: 'BIS IS 5082',      title: 'Wrought Aluminium — Electrical',  desc: 'BIS approval for wrought aluminium and aluminium alloy strips for electrical purposes.' },
+  { code: 'BIS IS 733',       title: 'Wrought Aluminium: Bars & Rods', desc: 'Bureau of Indian Standards approval for wrought aluminium and aluminium alloy bars, rods and sections.' },
+  { code: 'BIS IS 1285',      title: 'Wrought Aluminium: Extruded',    desc: 'BIS approval for wrought aluminium and aluminium alloy extruded round tubes and hollow sections.' },
+  { code: 'BIS IS 5082',      title: 'Wrought Aluminium: Electrical',  desc: 'BIS approval for wrought aluminium and aluminium alloy strips for electrical purposes.' },
 ];
 
 const qcTools = [
   { name: 'ASCONA Optical Measurement', desc: 'Automated optical measurement system for dimensional inspection of complex profiles. Full contour capture against nominal die geometry.' },
-  { name: 'Spectro-OES Analysis',       desc: 'Optical emission spectrometry for chemical composition verification of every melt. 100% chemical analysis — no shipment without cert.' },
-  { name: 'SCADA Online Monitoring',    desc: 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number — full lot traceability.' },
+  { name: 'Spectro-OES Analysis',       desc: 'Optical emission spectrometry for chemical composition verification of every melt. 100% chemical analysis ensures no shipment leaves without a certificate.' },
+  { name: 'SCADA Online Monitoring',    desc: 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number gives full lot traceability.' },
   { name: 'CMM Inspection',             desc: 'Coordinate measuring machine for die verification and first-article sample approval before production release.' },
   { name: 'MES-ERP Integration',        desc: 'Manufacturing execution system integrated with ERP for full order traceability. Dispatch linked to production lot and quality records.' },
   { name: 'Ultrasonic Testing',         desc: 'Billet and profile ultrasonic inspection for internal defects. Mandatory for aerospace, marine, and critical structural applications.' },
@@ -28,14 +28,14 @@ const pipeline = [
   { step: '01', label: 'Incoming billet',      detail: 'Composition cert + visual inspection' },
   { step: '02', label: 'Extrusion',            detail: 'SCADA process parameters logged live' },
   { step: '03', label: 'Heat treatment',       detail: 'Time-temperature recorded per lot' },
-  { step: '04', label: 'Dimensional check',    detail: 'ASCONA optical — 100% key profiles' },
+  { step: '04', label: 'Dimensional check',    detail: 'ASCONA optical, covering 100% of key profiles' },
   { step: '05', label: 'Mechanical testing',   detail: 'Tensile, hardness, elongation' },
   { step: '06', label: 'Dispatch & cert',      detail: 'EN 10204 3.1 cert issued per lot' },
 ];
 ---
 
 <Layout
-  title="Quality & certifications — Banco Aluminium"
+  title="Quality & certifications: Banco Aluminium"
   description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
   transparentNav={true}
 >
@@ -100,7 +100,7 @@ const pipeline = [
           </h2>
         </div>
         <p class="t-lead" style="color:var(--color-stone-400);max-width:48ch;align-self:end">
-          From incoming billet to dispatch certificate — six hold points, zero uncontrolled release.
+          From incoming billet to dispatch certificate: six hold points, zero uncontrolled release.
         </p>
       </div>
 
@@ -133,8 +133,8 @@ const pipeline = [
           </h2>
         </div>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:48ch;align-self:end">
-          Quality, environmental, automotive, safety, marine and national standards —
-          maintained, audited and renewed annually.
+          Quality, environmental, automotive, safety, marine and national standards
+          that are maintained, audited and renewed annually.
         </p>
       </div>
 
@@ -192,7 +192,7 @@ const pipeline = [
           Carbon data for<br/><em class="accent">every EU shipment.</em>
         </h2>
         <p class="qp-cbam-sub">
-          Mandatory from January 2026 — Banco issues tCO₂e/t per production lot,
+          Mandatory from January 2026. Banco issues tCO₂e/t per production lot,
           calculated under ISO 14064-1, attached to every material certificate for
           EU-bound shipments.
         </p>
@@ -202,7 +202,7 @@ const pipeline = [
         </div>
       </div>
       <div class="qp-cbam-tags">
-        {['ISO 14064-1 verified', 'Scope 1 — direct emissions', 'Scope 2 — indirect (electricity)', 'Per-lot production reporting', 'CBAM declaration document', 'Available from Jan 2026'].map(tag => (
+        {['ISO 14064-1 verified', 'Scope 1: direct emissions', 'Scope 2: indirect (electricity)', 'Per-lot production reporting', 'CBAM declaration document', 'Available from Jan 2026'].map(tag => (
           <div class="qp-cbam-tag">{tag}</div>
         ))}
       </div>

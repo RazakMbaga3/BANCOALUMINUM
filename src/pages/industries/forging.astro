@@ -2,27 +2,27 @@
 import Layout from '../../layouts/Layout.astro';
 
 const profiles = [
-  { name: 'CNC machining blanks', desc: 'Near-net-shape extruded blanks in 2011, 2111 LF, and 6082 for CNC turned and milled components — consistent grain flow from extrusion reduces machining-induced distortion.' },
-  { name: 'Forging preform sections', desc: 'Extruded preform profiles in 2014 and 6082 for closed-die forging operations — pre-shaped cross-section minimises flash waste and reduces die wear versus solid bar blanking.' },
-  { name: 'Turned part stock', desc: 'Round bar extrusions in free-machining 2011, 2111 LF, and 6026 for automatic screw machine and CNC turning centres — consistent diameter and straightness over full bar length.' },
+  { name: 'CNC machining blanks', desc: 'Near-net-shape extruded blanks in 2011, 2111 LF, and 6082 for CNC turned and milled components, with consistent grain flow from extrusion that reduces machining-induced distortion.' },
+  { name: 'Forging preform sections', desc: 'Extruded preform profiles in 2014 and 6082 for closed-die forging operations. The pre-shaped cross-section minimises flash waste and reduces die wear versus solid bar blanking.' },
+  { name: 'Turned part stock', desc: 'Round bar extrusions in free-machining 2011, 2111 LF, and 6026 for automatic screw machine and CNC turning centres, holding consistent diameter and straightness over full bar length.' },
   { name: 'Hexagonal bar profiles', desc: 'Hex bar extrusions in 6082, 2011, and 2017A for hex and Allen key fastener production, socket head blanks, and torque-application components.' },
-  { name: 'Round bar sections', desc: 'Solid round bar in 6082-T6, 2017A-T4, and 2014-T6 for structural fasteners, pin stocks, and precision-machined components — diameter range 10–200 mm.' },
-  { name: 'Rectangular machining stock', desc: 'Flat and rectangular bar extrusions for plate-type machined components — near-net cross-section reduces saw cutting and facing stock removal versus slab-cut plate.' },
+  { name: 'Round bar sections', desc: 'Solid round bar in 6082-T6, 2017A-T4, and 2014-T6 for structural fasteners, pin stocks, and precision-machined components (diameter range 10–200 mm).' },
+  { name: 'Rectangular machining stock', desc: 'Flat and rectangular bar extrusions for plate-type machined components; the near-net cross-section reduces saw cutting and facing stock removal versus slab-cut plate.' },
 ];
 
 const alloys = [
-  { name: '2011', temper: 'T3 / T8', why: 'The classic free-machining alloy — lead and bismuth additives produce small, brittle chips in CNC turning. High cutting speeds and excellent surface finish. For applications without RoHS constraints.' },
-  { name: '2111 LF', temper: 'T4 / T8', why: 'Lead-free free-machining alloy using tin and bismuth — RoHS and ELV compliant. Machinability approaches 2011, with full compliance for EU, Japan, and US regulatory requirements.' },
-  { name: '2017A', temper: 'T4', why: 'Aircraft-grade structural alloy with good machinability — preferred for aerospace fastener stock, precision structural blanks, and high-strength engineering components.' },
-  { name: '6082', temper: 'T6', why: 'High-strength structural alloy for forging preforms and machined structural components — reliable strength after artificial ageing, weldable, and good anodising quality.' },
-  { name: '6261', temper: 'T6', why: 'Special corrosion-resistant machining alloy for applications where 2xxx alloy corrosion performance is inadequate — excellent machining behaviour with improved marine service resistance.' },
-  { name: '6026 LF', temper: 'T9', why: 'Lead-free free-machining 6xxx alloy — good strength alongside excellent CNC machinability. Preferred for high-volume turning of pump, motor, and connector components.' },
+  { name: '2011', temper: 'T3 / T8', why: 'The classic free-machining alloy: lead and bismuth additives produce small, brittle chips in CNC turning. High cutting speeds and excellent surface finish. For applications without RoHS constraints.' },
+  { name: '2111 LF', temper: 'T4 / T8', why: 'Lead-free free-machining alloy using tin and bismuth, fully RoHS and ELV compliant. Machinability approaches 2011, with full compliance for EU, Japan, and US regulatory requirements.' },
+  { name: '2017A', temper: 'T4', why: 'Aircraft-grade structural alloy with good machinability, preferred for aerospace fastener stock, precision structural blanks, and high-strength engineering components.' },
+  { name: '6082', temper: 'T6', why: 'High-strength structural alloy for forging preforms and machined structural components, with reliable strength after artificial ageing, good weldability, and good anodising quality.' },
+  { name: '6261', temper: 'T6', why: 'Special corrosion-resistant machining alloy for applications where 2xxx alloy corrosion performance is inadequate. Excellent machining behaviour, with improved marine service resistance.' },
+  { name: '6026 LF', temper: 'T9', why: 'Lead-free free-machining 6xxx alloy that pairs good strength with excellent CNC machinability. Preferred for high-volume turning of pump, motor, and connector components.' },
 ];
 ---
 
 <Layout
-  title="Forging & precision machining — Banco Aluminium"
-  description="Machinable extrusion sections and preforms in 6xxx and 2xxx alloys — supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations."
+  title="Forging & precision machining: Banco Aluminium"
+  description="Machinable extrusion sections and preforms in 6xxx and 2xxx alloys, supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations."
 >
   <!-- Hero -->
   <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
@@ -32,7 +32,7 @@ const alloys = [
         Forging &amp; precision machining stock.
       </h1>
       <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
-        Machinable extrusion sections and preforms in 6xxx and 2xxx alloys — supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations.
+        Machinable extrusion sections and preforms in 6xxx and 2xxx alloys, supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations.
       </p>
 
       <!-- Stats strip -->
@@ -57,7 +57,7 @@ const alloys = [
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
         <div>
-          <div class="eyebrow">01 — Application overview</div>
+          <div class="eyebrow">01 · Application overview</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Alloy chemistry that <em class="accent">machines predictably.</em>
           </h2>
@@ -65,14 +65,14 @@ const alloys = [
             For automated CNC machining operations, alloy consistency is as critical as
             dimensional accuracy. Small variations in silicon, copper, or free-machining
             additive content between batches can result in chip-breaking failure, tool
-            wear acceleration, and surface finish variation — unacceptable in high-volume
+            wear acceleration, and surface finish variation: unacceptable in high-volume
             production of precision components.
           </p>
           <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
             Banco's in-house foundry allows chemistry to be tightly controlled at the
             melt stage, with spectrometric analysis on every cast before billet is
-            extruded. Our 2111 LF lead-free alloy is developed and cast in-house —
-            we are the source, not a reseller — providing direct control over the
+            extruded. Our 2111 LF lead-free alloy is developed and cast in-house
+            (we are the source, not a reseller), providing direct control over the
             additive balance that determines chip-breaking behaviour in your CNC machines.
           </p>
 
@@ -86,13 +86,13 @@ const alloys = [
         <div style="position:relative">
           <img
             src="/assets/industries/forging.jpg"
-            alt="Metal parts and engineering blueprints — precision machined aluminium components"
+            alt="Metal parts and engineering blueprints, showing precision machined aluminium components"
             loading="lazy"
             style="width:100%;aspect-ratio:4/3;object-fit:cover"
           />
           <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
             <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
-              In-house melt shop — spectrometric analysis on every cast for chemistry traceability
+              In-house melt shop: spectrometric analysis on every cast for chemistry traceability
             </span>
           </div>
         </div>
@@ -103,7 +103,7 @@ const alloys = [
   <!-- Section 02: Profile types -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow">02 — Profile types</div>
+      <div class="eyebrow">02 · Profile types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Six stock forms for forging and machining.
       </h2>
@@ -122,7 +122,7 @@ const alloys = [
   <!-- Section 03: Alloys -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow">03 — Alloys</div>
+      <div class="eyebrow">03 · Alloys</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Six alloys for forging and precision machining.
       </h2>
@@ -143,7 +143,7 @@ const alloys = [
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
         <div>
-          <div class="eyebrow">04 — Quality &amp; certifications</div>
+          <div class="eyebrow">04 · Quality &amp; certifications</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Chemistry cert on <em class="accent">every cast.</em>
           </h2>

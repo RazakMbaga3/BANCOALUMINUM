@@ -45,10 +45,10 @@ const alloyFamilies = [
 ];
 
 const alloySpecialities = [
-  'Hard and high-strength alloys for structural, transport, defence, aerospace and engineering applications',
-  'Lead-free free-machining alloys, including 6026, for automotive, medical, food processing and precision-machined components',
-  'Electrical conductivity alloys, including 6101 and 6201, for busbars, conductor profiles and renewable energy applications',
-  'Custom alloys and special chemistries developed as per customer specification',
+  'High-strength alloys: structural, transport, defence, aerospace',
+  'Lead-free machining alloys (incl. 6026), suited to automotive, medical and food-grade use',
+  'Conductivity alloys (6101, 6201), used in busbars, conductors and renewables',
+  'Custom alloys and chemistries, built to customer specification',
 ];
 
 const capabilities = [
@@ -96,7 +96,7 @@ const certs = [
 ---
 
 <Layout
-  title="Industrial profiles and engineered aluminium for OEM applications — Banco Aluminium"
+  title="Banco Aluminium: industrial profiles and engineered aluminium for OEM applications"
   description="Drawing-led aluminium profiles for OEM applications. Hard alloys, lead-free machining grades, cold drawing. Die design, extrusion, fabrication, 10,000 parts/day. IATF 16949 · ISO 9001 · CE certified."
   image="/assets/manufacturing/industrialOEMS.webp"
   transparentNav={true}
@@ -119,7 +119,7 @@ const certs = [
         {[
           { n: '35,000', u: 'MT/yr', l: 'Extrusion capacity' },
           { n: '5',      u: 'Presses', l: '1100–3300T' },
-          { n: '10,000', u: '/Day',  l: 'Parts fabricated' },
+          { n: '10,000+', u: '/Day',  l: 'Parts fabricated' },
           { n: '13',     u: 'Sectors', l: 'Industries served' },
         ].map(({ n, u, l }) => (
           <div class="ih-stat">
@@ -139,8 +139,8 @@ const certs = [
   <section class="ih-split">
     <div class="ih-split-visual">
       <img
-        src="/assets/manufacturing/casting-1.jpg"
-        alt="Banco Aluminium foundry — billet casting"
+        src="/assets/manufacturing/casting-1.webp"
+        alt="Banco Aluminium billet-casting foundry"
         loading="eager"
       />
     </div>
@@ -162,6 +162,10 @@ const certs = [
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
           <span>Automotive & Marine Class Approved</span>
+        </div>
+          <div class="ih-cap-item">
+          <span class="ih-cap-dot"></span>
+          <span>CBAM-ready</span>
         </div>
       </div>
       <a href="/contact#quote" class="btn btn-primary ih-split-cta">Start a new profile</a>
@@ -187,10 +191,10 @@ const certs = [
   </section>
 
   <!-- ── Alloys — editorial split (reversed) ───────────────────────────────── -->
-  <section class="ih-split ih-split-rev" style="background:var(--color-stone-50)">
+  <section class="ih-split ih-split-rev ih-split-compact" style="background:var(--color-stone-50)">
     <div class="ih-split-visual">
       <img
-        src="/assets/manufacturing/melting-1.jpg"
+        src="/assets/manufacturing/melting-1.webp"
         alt="Banco Aluminium alloy melting furnace"
         loading="lazy"
       />
@@ -209,7 +213,7 @@ const certs = [
           </div>
         ))}
       </div>
-      <div class="ih-cap-list" style="margin-top:28px">
+      <div class="ih-alloy-notes">
         {alloySpecialities.map((s) => (
           <div class="ih-cap-item">
             <span class="ih-cap-dot"></span>
@@ -241,10 +245,10 @@ const certs = [
   <!-- ── Facility photo strip ───────────────────────────────────────────────── -->
   <div class="ih-fac-strip">
     {[
-      ['/assets/manufacturing/casting-5.jpg',  'Casting pit — cylinder-guided Hot-Top casting'],
-      ['/assets/manufacturing/quality-1.jpg',  'Spectromax OES — 100% chemical verification'],
-      ['/assets/manufacturing/billet-1.jpg',   'Finished extrusion billets — despatch-ready'],
-      ['/assets/manufacturing/homo-1.jpg',     'Homogenisation furnace — billet conditioning'],
+      ['/assets/manufacturing/casting-5.webp',  'Casting pit: cylinder-guided Hot-Top casting'],
+      ['/assets/manufacturing/quality-1.webp',  'Spectromax OES for 100% chemical verification'],
+      ['/assets/manufacturing/billet-1.webp',   'Finished extrusion billets, despatch-ready'],
+      ['/assets/manufacturing/homo-1.webp',     'Homogenisation furnace, conditioning billets'],
     ].map(([src, alt]) => (
       <div class="ih-fac-tile">
         <img src={src} alt={alt} loading="lazy" />
@@ -430,6 +434,9 @@ const certs = [
   }
   .ih-split-rev .ih-split-visual { order: 2; }
   .ih-split-rev .ih-split-body   { order: 1; }
+  .ih-split-compact { min-height: 0; }
+  .ih-split-compact .ih-split-body { padding-top: clamp(28px, 4vw, 48px); padding-bottom: clamp(28px, 4vw, 48px); gap: 16px; }
+  .ih-split-compact .ih-split-h2 { font-size: clamp(24px, 2.6vw, 36px); }
   .ih-split-visual {
     overflow: hidden;
     background: var(--color-stone-200);
@@ -481,22 +488,26 @@ const certs = [
   }
 
   /* Alloy cards inside split */
-  .ih-alloy-cards { display: flex; flex-direction: column; gap: 12px; }
+  .ih-alloy-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
   .ih-alloy-card {
     border: 1px solid var(--color-stone-200);
     border-top: 2px solid var(--color-green);
-    padding: 16px 20px;
+    padding: 13px 16px;
     background: #fff;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
   .ih-alloy-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
-  .ih-alloy-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); }
-  .ih-alloy-sub { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
-  .ih-alloy-grades { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 8px; border-top: 1px solid var(--color-stone-200); margin-top: 4px; }
-  .ih-grade { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 3px 8px; }
+  .ih-alloy-title { font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); white-space: nowrap; }
+  .ih-alloy-sub { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-400); }
+  .ih-alloy-grades { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 6px; border-top: 1px solid var(--color-stone-200); margin-top: 2px; }
+  .ih-grade { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 2px 6px; }
   .ih-grade-lf { font-weight: 700; color: var(--color-green); border-color: var(--color-green); }
+
+  /* Compact speciality notes below alloy cards */
+  .ih-alloy-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-top: 18px; }
+  .ih-alloy-notes .ih-cap-item { font-size: 12px; line-height: 1.4; gap: 8px; }
 
   /* ── Section headings ────────────────────────────────────────────────────── */
   .ih-section-h2 {
@@ -526,6 +537,7 @@ const certs = [
     transition: background 0.2s ease;
   }
   .i-industry-cell:hover { background: var(--color-navy-soft); }
+  .i-industry-cell:last-child { grid-column: span 4; }
   .i-ind-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .i-ind-name { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-platinum); line-height: 1.25; }
   .i-ind-note { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
@@ -624,6 +636,7 @@ const certs = [
     .ih-split-rev .ih-split-body   { order: unset; }
     .ih-split-visual   { min-height: 40vh; }
     .i-industry-grid   { grid-template-columns: repeat(3, 1fr); }
+    .i-industry-cell:last-child { grid-column: span 3; }
     .ih-cap-grid       { grid-template-columns: repeat(2, 1fr); }
     .ih-pack-grid      { grid-template-columns: 1fr; }
     .ih-footer-grid    { grid-template-columns: 1fr; }
@@ -634,8 +647,11 @@ const certs = [
   @media (max-width: 640px) {
     .ih-stats          { grid-template-columns: 1fr 1fr; }
     .i-industry-grid   { grid-template-columns: repeat(2, 1fr); }
+    .i-industry-cell:last-child { grid-column: span 2; }
     .ih-cap-grid       { grid-template-columns: 1fr; }
     .ih-pack-row       { grid-template-columns: 1fr; gap: 4px; }
     .ih-fac-strip      { grid-template-columns: 1fr 1fr; }
+    .ih-alloy-cards    { grid-template-columns: 1fr; }
+    .ih-alloy-notes    { grid-template-columns: 1fr; }
   }
 </style>

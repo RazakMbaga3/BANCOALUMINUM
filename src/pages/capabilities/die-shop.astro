@@ -2,16 +2,16 @@
 import Layout from '../../layouts/Layout.astro';
 
 const dieTypes = [
-  { type: 'Flat die', profiles: 'Solid profiles — angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
+  { type: 'Flat die', profiles: 'Solid profiles: angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
   { type: 'Semi-hollow', profiles: 'Profiles with bridges, legs, partial enclosures', alloys: '6xxx, 2xxx', complexity: 'Medium' },
-  { type: 'Hollow (porthole)', profiles: 'Closed hollow sections — tubes, rectangular hollows', alloys: '6060, 6063, 6082', complexity: 'High' },
+  { type: 'Hollow (porthole)', profiles: 'Closed hollow sections: tubes, rectangular hollows', alloys: '6060, 6063, 6082', complexity: 'High' },
   { type: 'Bridge die', profiles: 'Complex multi-void sections, multi-hollow profiles', alloys: '6060, 6063', complexity: 'High' },
 ];
 
 const processSteps = [
-  { num: '/ 01', name: 'Drawing review', desc: 'Customer CAD files reviewed for extrudability — wall thickness, tongue ratio, circumscribed circle diameter. Modifications suggested where needed to improve die life and surface finish.' },
+  { num: '/ 01', name: 'Drawing review', desc: 'Customer CAD files reviewed for extrudability: wall thickness, tongue ratio, circumscribed circle diameter. Modifications suggested where needed to improve die life and surface finish.' },
   { num: '/ 02', name: 'Q-Form simulation', desc: 'Q-Form 3D flow simulation models metal behaviour through die bearing. Predicts flow balance, temperature distribution, and weld seam locations before any steel is cut.' },
-  { num: '/ 03', name: '3D assembly model', desc: 'Full 3D CAD model of die assembly — die, backer, bolster. Checks bearing relief, pocket geometry, and dimensional clearances across the complete tooling stack.' },
+  { num: '/ 03', name: '3D assembly model', desc: 'Full 3D CAD model of die assembly: die, backer, bolster. Checks bearing relief, pocket geometry, and dimensional clearances across the complete tooling stack.' },
   { num: '/ 04', name: 'CNC machining', desc: '5-axis CNC machining of H13 tool steel. Profiles machined to ±0.01 mm tolerance. Critical bearing surfaces finish-ground. Nitride hardening applied to increase surface hardness to 1000+ HV.' },
   { num: '/ 05', name: 'Dimensional inspection', desc: 'CMM inspection of finished die. Bearing dimensions, pocket depth, and relief angles verified against design model. Inspection report issued before die is released to production.' },
   { num: '/ 06', name: 'Trial extrusion', desc: 'Trial run on press. First-off profile measured against customer drawing. Dimensional report issued. Customer sample approval gate before die enters production rotation.' },
@@ -19,7 +19,7 @@ const processSteps = [
 ---
 
 <Layout
-  title="Die shop & tooling — Banco Aluminium"
+  title="Die shop & tooling: Banco Aluminium"
   description="In-house die shop converting customer drawings into production tooling. 5-axis CNC machining, Q-Form flow simulation, flat/semi-hollow/hollow/porthole dies. 2–3 week tooling lead time."
   transparentNav={true}
 >
@@ -42,7 +42,7 @@ const processSteps = [
       <p class="cap-lead" data-reveal data-reveal-delay="3">
         Banco's in-house die shop designs and manufactures every extrusion die
         used across five presses. From Q-Form flow simulation to trial extrusion
-        and sample approval — full tooling control, 2–3 week lead time.
+        and sample approval, we hold full tooling control with a 2–3 week lead time.
       </p>
       <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
@@ -149,7 +149,7 @@ const processSteps = [
             {[
               ['Machining tolerance', '±0.01 mm on bearing dimensions'],
               ['Steel grade', 'H13 / 1.2344 hot-work tool steel'],
-              ['Hardening', 'Salt-bath or gas nitride — 1000–1100 HV'],
+              ['Hardening', 'Salt-bath or gas nitride, 1000–1100 HV'],
               ['Bearing surface finish', 'Ra 0.4 μm (finish ground)'],
               ['Reconditioning', 'In-house re-nitride and bearing correction'],
             ].map(([label, value]) => (
@@ -162,10 +162,10 @@ const processSteps = [
         </div>
         <div class="die-img-stack" data-reveal="right">
           <div class="die-img-main">
-            <img src="/assets/manufacturing/casting-5.jpg" alt="Die machining process" loading="lazy" />
+            <img src="/assets/manufacturing/casting-5.webp" alt="Die machining process" loading="lazy" />
           </div>
           <div class="die-img-sub">
-            <img src="/assets/manufacturing/casting-7.jpg" alt="Extrusion tooling detail" loading="lazy" />
+            <img src="/assets/manufacturing/casting-7.webp" alt="Extrusion tooling detail" loading="lazy" />
           </div>
         </div>
       </div>
@@ -189,8 +189,8 @@ const processSteps = [
           </p>
           <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
             A formal dimensional report is issued to the customer. Production begins only
-            after written sample approval is received. Die corrections — bearing adjustments,
-            flow balance modifications — are made in-house if required, with repeat trial
+            after written sample approval is received. Die corrections (bearing adjustments,
+            flow balance modifications) are made in-house if required, with repeat trial
             at no additional charge for drawing-compliant specifications.
           </p>
         </div>

@@ -2,9 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 
 const sections = [
-  { id: '01', type: 'Equal angle',              desc: 'Equal legs — 20×20 to 100×100 mm. Structural and fabrication use.',    alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+  { id: '01', type: 'Equal angle',              desc: 'Equal legs, 20×20 to 100×100 mm. Structural and fabrication use.',    alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
   { id: '02', type: 'Unequal angle',             desc: 'Unequal legs for specific structural configurations.',                  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
-  { id: '03', type: 'Parallel flange channel',   desc: 'C-section channel — standard and heavy duty. Wide flange versions.',   alloy: '6082-T6',           std: 'IS 1285' },
+  { id: '03', type: 'Parallel flange channel',   desc: 'C-section channel, standard and heavy duty. Wide flange versions.',   alloy: '6082-T6',           std: 'IS 1285' },
   { id: '04', type: 'T-section',                 desc: 'Equal and unequal T-sections. Track, extrusion guide, structural T.',  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
   { id: '05', type: 'Flat bar',                  desc: '10–200 mm wide, 2–20 mm thick. Plate strip, fabrication flat.',        alloy: '6061-T6 · 6082-T6', std: 'IS 733'  },
   { id: '06', type: 'Square bar',                desc: '10×10 to 80×80 mm. Structural and machining stock.',                   alloy: '6082-T6 · 6061-T6', std: 'IS 733'  },
@@ -60,13 +60,13 @@ const alloys = [
 ---
 
 <Layout
-  title="Standard sections — Banco Aluminium"
+  title="Standard sections: Banco Aluminium"
   description="Standard aluminium sections to IS 733 and IS 1285. Equal angles, channels, T-sections, flat bar, round bar, RHS, SHS, and round tube in 6063-T6, 6082-T6, and 6061-T6. Mill finish or anodised."
 >
 
   <section class="ss-hero">
     <img
-      src="/assets/manufacturing/billet-1.jpg"
+      src="/assets/manufacturing/billet-1.webp"
       alt="Banco Aluminium finished extrusion billets and standard sections"
       class="ss-hero-img"
       loading="eager"
@@ -79,7 +79,7 @@ const alloys = [
       </h1>
       <p class="ss-lead">
         Banco's standard section range covers ten profile types across structural and
-        architectural categories — to IS 733 and IS 1285 specifications. In-stock in
+        architectural categories, to IS 733 and IS 1285 specifications. In-stock in
         6063-T6, 6082-T6, and 6061-T6 in mill finish. Anodised and powder coated
         versions available to order.
       </p>
@@ -175,14 +175,14 @@ const alloys = [
           </h2>
           <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
             Banco's standard section range is manufactured and supplied to the Bureau of
-            Indian Standards specifications IS 733 (aluminium alloy wrought products —
-            bars, rods, and sections) and IS 1285 (wrought aluminium and aluminium alloys —
+            Indian Standards specifications IS 733 (aluminium alloy wrought products:
+            bars, rods, and sections) and IS 1285 (wrought aluminium and aluminium alloys:
             extruded sections). Material test certificates conforming to EN 10204 Type 3.1
             are available for all stock items.
           </p>
           <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
             For export orders to the European Union, a CE Declaration of Performance
-            under EN 15088 (aluminium structures — technical conditions for inspection
+            under EN 15088 (aluminium structures: technical conditions for inspection
             and delivery) can be issued for structural section grades. This is required
             for load-bearing applications in CE-marked structures.
           </p>
@@ -191,9 +191,9 @@ const alloys = [
           {[
             { std: 'IS 733',        scope: 'Wrought aluminium bars, rods, and sections. Dimensional and mechanical tolerances for flat bars, square bars, and round bars.' },
             { std: 'IS 1285',       scope: 'Extruded aluminium and aluminium alloy round tubes, hollow and solid sections. Dimensional tolerances, straightness, and twist.' },
-            { std: 'EN 755-2',      scope: 'Extruded rod/bar and tube — mechanical properties. Reference standard for export orders and CE marking.' },
-            { std: 'EN 12020-2',    scope: 'Precision profiles — tighter dimensional tolerances than EN 755-9 for precision engineering applications.' },
-            { std: 'EN 15088',      scope: 'Aluminium structures — technical conditions for inspection and delivery. CE marking for structural load-bearing applications.' },
+            { std: 'EN 755-2',      scope: 'Extruded rod/bar and tube: mechanical properties. Reference standard for export orders and CE marking.' },
+            { std: 'EN 12020-2',    scope: 'Precision profiles, with tighter dimensional tolerances than EN 755-9 for precision engineering applications.' },
+            { std: 'EN 15088',      scope: 'Aluminium structures: technical conditions for inspection and delivery. CE marking for structural load-bearing applications.' },
             { std: 'EN 10204 3.1',  scope: 'Material test certificate. Inspection by manufacturer, test results certified and traceable to production lot.' },
           ].map(({ std, scope }) => (
             <div class="ss-std-row">
@@ -219,7 +219,7 @@ const alloys = [
         <div>
           <p class="t-lead" style="color:var(--color-stone-700)">
             If no standard section matches your application, Banco's in-house die shop
-            will design and manufacture a custom die — typically in 2–3 weeks. Custom
+            will design and manufacture a custom die, typically within 2–3 weeks. Custom
             profiles are extruded, heat treated, and finished to the same specification
             and quality standard as standard sections.
           </p>

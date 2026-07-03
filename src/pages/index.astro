@@ -55,8 +55,8 @@ const clientLogos = [
 ---
 
 <LayoutRouter
-  title="Banco Aluminium — Integrated Aluminium Extrusion Since 1967"
-  description="Banco Aluminium Private Limited — integrated aluminium extrusion company established 1967. Industrial profiles, architectural systems, cast products. 35,000 MT capacity. Exports to Europe, North America, APAC & Middle East."
+  title="Banco Aluminium: Integrated Aluminium Extrusion Since 1967"
+  description="Banco Aluminium Private Limited is an integrated aluminium extrusion company established in 1967. Industrial profiles, architectural systems, cast products. 35,000 MT capacity. Exports to Europe, North America, APAC & Middle East."
 >
 
   <!-- Fixed video background — covers entire viewport -->
@@ -141,6 +141,13 @@ const clientLogos = [
     </div>
   </div>
 
+  <!-- ── Hero statement — minimal, at bottom ──────────────── -->
+  <section class="router-hero" aria-label="Brand statement">
+    <div class="container rhi">
+      <h1 class="rhi-h1">Six decades shaping aluminium.</h1>
+    </div>
+  </section>
+
   <!-- ── Trusted-by logo strip ─────────────────────────────── -->
   <div class="ri-trusted" role="region" aria-label="Trusted by">
     <div class="container ri-trusted-inner">
@@ -152,13 +159,6 @@ const clientLogos = [
       </div>
     </div>
   </div>
-
-  <!-- ── Hero statement — minimal, at bottom ──────────────── -->
-  <section class="router-hero" aria-label="Brand statement">
-    <div class="container rhi">
-      <h1 class="rhi-h1">Six decades shaping aluminium.</h1>
-    </div>
-  </section>
 
   <!-- ── Cert strip ──────────────────────────────────────── -->
   <footer class="router-certs">
@@ -425,6 +425,7 @@ const clientLogos = [
   }
   .ri-trusted-inner {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 24px;
     flex-wrap: wrap;

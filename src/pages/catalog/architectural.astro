@@ -2,7 +2,7 @@
 import CatalogLayout from '../../layouts/CatalogLayout.astro';
 
 const sliding = [
-  { num: '01', name: '18mm Series',           width: '18 mm',       glazing: 'Single glaze',              tier: 'Entry-level residential',                              desc: 'Compact sliding window system for standard residential openings. Narrowest face width in the Banco sliding range — suited to minimal profile footprint and single-glaze specification.' },
+  { num: '01', name: '18mm Series',           width: '18 mm',       glazing: 'Single glaze',              tier: 'Entry-level residential',                              desc: 'Compact sliding window system for standard residential openings. Narrowest face width in the Banco sliding range, suited to minimal profile footprint and single-glaze specification.' },
   { num: '02', name: '25mm Cardinal Series',  width: '25 mm',       glazing: 'Single or double glaze',    tier: 'Low-rise residential, up to 3 storeys',                 desc: 'Slimline sliding system with single or double glazing compatibility. 2-track and 3-track frame configurations.' },
   { num: '03', name: '27mm Euro Series',       width: '27 mm',       glazing: 'Single/double · grill track', tier: 'Residential and light commercial',                  desc: 'Structural sliding system available in standard 2-track and grill-track configurations. Grill-track accepts integral aluminium grille profiles.' },
   { num: '04', name: '27mm Slim Series',       width: '27 mm slim',  glazing: 'Single or double glaze',    tier: 'Premium residential, bungalows and low-rise',          desc: 'Slim-profile variant of the 27mm family. Optimised for premium residential bungalows and low-floor developments where visual lightness is a design priority.' },
@@ -13,16 +13,16 @@ const sliding = [
 ];
 
 const casement = [
-  { num: '09', name: '40mm Casement Series',  width: '40 mm', type: 'Openable casement windows', glazing: 'Single or double glaze', tier: 'Residential and commercial — inward or outward opening', desc: 'Inward or outward-opening single-sash casement window. Available in 2-in-1 frame, standard frame, and round-pipe mullion configurations. 40mm slim face width with high weather resistance.' },
-  { num: '10', name: '50mm Casement Series',  width: '50 mm', type: 'Casement · doors · sliding-folding', glazing: 'Single or double glaze', tier: 'Residential and commercial — windows, entrance doors, bi-fold', desc: 'Versatile 50mm frame system spanning casement windows, hinged entrance doors, and sliding-folding bi-fold configurations. Suited to larger openings and commercial entrances.' },
+  { num: '09', name: '40mm Casement Series',  width: '40 mm', type: 'Openable casement windows', glazing: 'Single or double glaze', tier: 'Residential and commercial, inward or outward opening', desc: 'Inward or outward-opening single-sash casement window. Available in 2-in-1 frame, standard frame, and round-pipe mullion configurations. 40mm slim face width with high weather resistance.' },
+  { num: '10', name: '50mm Casement Series',  width: '50 mm', type: 'Casement · doors · sliding-folding', glazing: 'Single or double glaze', tier: 'Residential and commercial: windows, entrance doors, bi-fold', desc: 'Versatile 50mm frame system spanning casement windows, hinged entrance doors, and sliding-folding bi-fold configurations. Suited to larger openings and commercial entrances.' },
 ];
 
 const performance = [
-  { cat: 'Wind resistance', std: 'EN 12211 / EN 12210', note: 'Class 1–5 — rated values in data sheet' },
-  { cat: 'Watertightness',  std: 'EN 1027 / EN 12208',  note: 'Class 1A–9A — rated values in data sheet' },
-  { cat: 'Air permeability', std: 'EN 1026 / EN 12207', note: 'Class 1–4 — rated values in data sheet' },
-  { cat: 'Sound insulation', std: 'EN ISO 10140',        note: 'Rw values — configuration dependent' },
-  { cat: 'Impact resistance', std: 'EN 13049',           note: 'Soft and hard body impact — rated by series' },
+  { cat: 'Wind resistance', std: 'EN 12211 / EN 12210', note: 'Class 1–5 (rated values in data sheet)' },
+  { cat: 'Watertightness',  std: 'EN 1027 / EN 12208',  note: 'Class 1A–9A, rated values in data sheet' },
+  { cat: 'Air permeability', std: 'EN 1026 / EN 12207', note: 'Class 1–4 (rated values in data sheet)' },
+  { cat: 'Sound insulation', std: 'EN ISO 10140',        note: 'Rw values, configuration dependent' },
+  { cat: 'Impact resistance', std: 'EN 13049',           note: 'Soft and hard body impact, rated by series' },
 ];
 
 const finishes = [
@@ -34,7 +34,7 @@ const finishes = [
 ];
 
 const capability = [
-  { cap: 'In-house billet casting',     desc: 'Alloys 6063, 6060, 6005 — controlled Mg/Si ratio for architectural surface quality.' },
+  { cap: 'In-house billet casting',     desc: 'Alloys 6063, 6060, 6005, with controlled Mg/Si ratio for architectural surface quality.' },
   { cap: 'Precision die design',        desc: 'Q-Form flow simulation, full 3D assembly model, 5-axis CNC die machining.' },
   { cap: 'Five direct-drive presses',   desc: '1,100–3,300 MT. Profile weight 0.29–35 kg/m. 35,000 MT/yr extrusion capacity.' },
   { cap: 'Anodising and powder coating', desc: 'Class 20 anodising (EN 12373). QUALICOAT powder coating. Full RAL/NCS colour range.' },
@@ -55,8 +55,8 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
     {[
       { n: '10',          l: 'Fenestration series' },
       { n: '5',           l: 'Surface finishes' },
-      { n: 'EN 14351-1',  l: 'Test standard — all series' },
-      { n: '1967',        l: 'Established — Vadodara' },
+      { n: 'EN 14351-1',  l: 'Test standard for all series' },
+      { n: '1967',        l: 'Established in Vadodara' },
     ].map(({ n, l }) => (
       <div class="cat-stat">
         <div class="cat-stat-n">{n}</div>
@@ -68,7 +68,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <!-- Sliding window series -->
   <section class="cat-section">
     <div class="cat-section-label">/ 01 · Sliding window systems</div>
-    <h2 class="cat-h2">Eight sliding series — 18 mm to 35 × 75 mm.</h2>
+    <h2 class="cat-h2">Eight sliding series, 18 mm to 35 × 75 mm.</h2>
     <p class="cat-body">
       The sliding range spans entry-level residential windows through to heavy-duty commercial systems
       for large-span openings in tall buildings. All series are available in 2-track and 3-track frame
@@ -115,7 +115,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <!-- Casement & folding series -->
   <section class="cat-section cat-page-break">
     <div class="cat-section-label">/ 02 · Casement, door &amp; folding systems</div>
-    <h2 class="cat-h2">40mm and 50mm casement — windows, doors, bi-fold.</h2>
+    <h2 class="cat-h2">40mm and 50mm casement: windows, doors, bi-fold.</h2>
     <div class="cat-casement-grid">
       {casement.map((s) => (
         <div class="cat-casement-card">
@@ -141,8 +141,8 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
     <h2 class="cat-h2">Tested to EN 14351-1.</h2>
     <p class="cat-body">
       All Banco architectural series are manufactured and tested in accordance with EN 14351-1:2006+A2:2016
-      (Windows and doors — performance characteristics and classification). Rated values per series are
-      available in the product technical data sheets — contact the technical team.
+      (Windows and doors: performance characteristics and classification). Rated values per series are
+      available in the product technical data sheets. Contact the technical team.
     </p>
     <table class="cat-table">
       <thead>
@@ -169,7 +169,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <!-- Surface finishes -->
   <section class="cat-section">
     <div class="cat-section-label">/ 04 · Surface finishing</div>
-    <h2 class="cat-h2">Five finishes — full RAL and NCS range.</h2>
+    <h2 class="cat-h2">Five finishes, full RAL and NCS range.</h2>
     <table class="cat-table">
       <thead>
         <tr>
@@ -196,7 +196,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
     <h2 class="cat-h2">From alloy to finished profile, under one roof.</h2>
     <p class="cat-body">
       Every architectural profile starts in Banco's in-house foundry with controlled alloy chemistry for
-      anodising quality — typically 6063 or 6060. Custom dies are designed with Q-Form simulation and
+      anodising quality, typically 6063 or 6060. Custom dies are designed with Q-Form simulation and
       precision CNC machined. Profiles are extruded, heat-treated, and surface-finished without leaving
       the facility.
     </p>

@@ -40,9 +40,9 @@ const process = [
 ];
 
 const qc = [
-  { stat: '100 %', label: 'Visual inspection',    sub: 'External surface — every billet, every cast' },
-  { stat: '100 %', label: 'Ultrasonic testing',   sub: 'Internal defects — laminations, inclusions, voids' },
-  { stat: '100 %', label: 'Chemical analysis',    sub: 'Spectromax OES — verified against order specification' },
+  { stat: '100 %', label: 'Visual inspection',    sub: 'External surface, checked on every billet and every cast' },
+  { stat: '100 %', label: 'Ultrasonic testing',   sub: 'Internal defects: laminations, inclusions, voids' },
+  { stat: '100 %', label: 'Chemical analysis',    sub: 'Spectromax OES verified against order specification' },
   { stat: 'SCADA', label: 'Online traceability',  sub: 'Furnace conditions to despatch, batch-linked' },
   { stat: 'Cast №', label: 'Alloy marking',        sub: 'Designation + cast number on every individual billet' },
 ];
@@ -51,7 +51,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
 ---
 
 <CatalogLayout
-  title="Aluminium Extrusion Billets — Cast Products"
+  title="Aluminium Extrusion Billets: Cast Products"
   subtitle="Foundry-grade aluminium extrusion billets. Cylinder-guided Hot-Top casting. Four-stage metallurgical control. 12 standard alloys, 127–254 mm diameters, 5,800 mm standard length. SCADA-traced and 100% OES verified."
   catalogRef="BAP-CAST-2026"
 >
@@ -60,9 +60,9 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <div class="cat-stats">
     {[
       { n: '55,000 MT',    l: 'Annual foundry capacity' },
-      { n: '5',            l: 'Billet diameters — 5" to 10"' },
+      { n: '5',            l: 'Billet diameters (5" to 10")' },
       { n: '12+',          l: 'Standard alloys' },
-      { n: '0.480 kgCO₂e/kg', l: 'Carbon footprint — ISO 14064-1' },
+      { n: '0.480 kgCO₂e/kg', l: 'Carbon footprint per ISO 14064-1' },
     ].map(({ n, l }) => (
       <div class="cat-stat">
         <div class="cat-stat-n">{n}</div>
@@ -77,8 +77,8 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
     <h2 class="cat-h2">Consistent metallurgical quality, cast to cast.</h2>
     <p class="cat-body">
       Banco Aluminium manufactures aluminium extrusion billets to the metallurgical specifications required
-      by precision extrusion operations worldwide. Our integrated facility — casting, homogenising, and
-      quality verification under one roof — gives downstream extruders a single, accountable source of supply.
+      by precision extrusion operations worldwide. Our integrated facility (casting, homogenising, and
+      quality verification under one roof) gives downstream extruders a single, accountable source of supply.
     </p>
     <p class="cat-body">
       The production sequence is engineered for consistency: ceramic foam filtration removes inclusions before
@@ -96,7 +96,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
 
   <!-- Alloy composition table -->
   <section class="cat-section cat-page-break">
-    <div class="cat-section-label">/ 02 · Standard alloy range — chemical composition (wt%)</div>
+    <div class="cat-section-label">/ 02 · Standard alloy range: chemical composition (wt%)</div>
     <h2 class="cat-h2">12 standard alloys. Custom compositions on request.</h2>
     <div class="cat-table-scroll">
       <table class="cat-table cat-table-alloy">
@@ -130,7 +130,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
     </div>
     <p class="cat-footnote">
       Full composition including Zn, Cr, Ti, and individual trace elements available in the product data
-      sheet. Additional alloys — 1050A, 2011, 2017A, 2014, 6262, 6026 — produced to customer specification.
+      sheet. Additional alloys (1050A, 2011, 2017A, 2014, 6262, 6026) are produced to customer specification.
       Contact the technical team.
     </p>
   </section>
@@ -138,7 +138,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <!-- Dimensions & tolerances -->
   <section class="cat-section">
     <div class="cat-section-label">/ 03 · Dimensions &amp; tolerances</div>
-    <h2 class="cat-h2">Five diameters — 5,800 mm standard length.</h2>
+    <h2 class="cat-h2">Five diameters, 5,800 mm standard length.</h2>
     <div class="cat-two-col">
       <div>
         <div class="cat-col-label">Available diameters</div>
@@ -234,15 +234,15 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
   <!-- Sustainability -->
   <section class="cat-section cat-page-break">
     <div class="cat-section-label">/ 06 · Sustainability &amp; green aluminium</div>
-    <h2 class="cat-h2">0.480 kgCO₂e per kg — verified quarterly.</h2>
+    <h2 class="cat-h2">0.480 kgCO₂e per kg, verified quarterly.</h2>
     <p class="cat-body">
       Banco's carbon footprint for aluminium extrusion billets is independently measured and verified
       quarterly by MITCON Consultancy Services under ISO 14064-1:2018 protocols. The figure of
-      0.480 kgCO₂e per kilogram represents Banco's emission intensity at full production capacity —
-      among the lowest in the Indian aluminium extrusion sector.
+      0.480 kgCO₂e per kilogram represents Banco's emission intensity at full production capacity;
+      it ranks among the lowest in the Indian aluminium extrusion sector.
     </p>
     <p class="cat-body">
-      Green billets — produced with up to 95% recycled scrap input — are available on request with full
+      Green billets (produced with up to 95% recycled scrap input) are available on request with full
       traceability of scrap origin and recycled content fraction. CBAM documentation for EU imports is
       provided as standard on all export orders.
     </p>
@@ -251,7 +251,7 @@ const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:
         { n: '0.480', u: 'kgCO₂e/kg',  l: 'Carbon footprint at full capacity · ISO 14064-1' },
         { n: '≤ 5%',  u: '',            l: 'Verified primary aluminium in green billet grade' },
         { n: '960',   u: 'kW',          l: 'Captive solar generation on site' },
-        { n: '100%',  u: '',            l: 'Natural gas in melting — no coal energy input' },
+        { n: '100%',  u: '',            l: 'Natural gas in melting, no coal energy input' },
       ].map(({ n, u, l }) => (
         <div class="cat-green-cell">
           <div class="cat-green-n">{n}{u && <span class="cat-green-u"> {u}</span>}</div>

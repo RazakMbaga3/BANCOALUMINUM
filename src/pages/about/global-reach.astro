@@ -10,7 +10,7 @@ const regions = [
     demand: 'Structural, architectural, automotive, renewable energy',
     standards: 'EN 755 · EN 12020 · EN 15088',
     cert: 'CE marked · CBAM-ready · ISO 14064-1',
-    desc: 'Europe is Banco\'s primary export region. CE Declaration of Performance issued under EN 15088 for structural aluminium. CBAM carbon data supplied with all EU-bound shipments — required from January 2026. 6082-T6 structural and 6063-T6 architectural are primary export grades.',
+    desc: 'Europe is Banco\'s primary export region. CE Declaration of Performance issued under EN 15088 for structural aluminium. CBAM carbon data, required from January 2026, is supplied with all EU-bound shipments. 6082-T6 structural and 6063-T6 architectural are primary export grades.',
   },
   {
     id: '02',
@@ -30,7 +30,7 @@ const regions = [
     demand: 'Architectural, industrial, automotive supply chain',
     standards: 'JIS H4100 · AS/NZS 1734 · market-specific',
     cert: 'ISO 9001 · IATF 16949 · customer-specific audit',
-    desc: 'APAC markets cover a wide range of applications — from Japanese automotive supply chain (IATF 16949) to Australian construction and South-East Asian architectural projects. Banco supplies 1xxx through 7xxx alloys to APAC customers.',
+    desc: 'APAC markets cover a wide range of applications, from Japanese automotive supply chain (IATF 16949) to Australian construction and South-East Asian architectural projects. Banco supplies 1xxx through 7xxx alloys to APAC customers.',
   },
   {
     id: '04',
@@ -47,11 +47,11 @@ const regions = [
 const exportDocs = [
   { doc: 'Commercial invoice',            req: 'All markets',                   note: 'HS code, Incoterms, country of origin, unit price' },
   { doc: 'Packing list',                  req: 'All markets',                   note: 'Bundle-level: profile reference, quantity, length, weight, packing type' },
-  { doc: 'Material test certificate',     req: 'All markets',                   note: 'EN 10204 Type 3.1 — composition + mechanical properties per lot' },
-  { doc: 'Mill / works certificate',      req: 'All markets',                   note: 'Banco works cert — extrusion date, die, press, lot number' },
+  { doc: 'Material test certificate',     req: 'All markets',                   note: 'EN 10204 Type 3.1: composition + mechanical properties per lot' },
+  { doc: 'Mill / works certificate',      req: 'All markets',                   note: 'Banco works cert, with extrusion date, die, press, lot number' },
   { doc: 'CBAM carbon data',              req: 'EU (mandatory Jan 2026)',        note: 'tCO₂e/t per EN ISO 14064-1, direct and indirect emissions' },
   { doc: 'CE Declaration of Performance', req: 'EU structural (EN 15088)',       note: 'Performance declared against load-bearing application class' },
-  { doc: 'ASTM test report',              req: 'North America',                  note: 'B221 / B241 tensile, yield, elongation — on request' },
+  { doc: 'ASTM test report',              req: 'North America',                  note: 'B221 / B241 tensile, yield, elongation, on request' },
   { doc: 'IATF 16949 documentation',      req: 'Automotive supply chain',        note: 'PPAP documents, dimensional reports, process audit records' },
 ];
 
@@ -64,7 +64,7 @@ const keyCerts = [
 ---
 
 <Layout
-  title="Global reach — Banco Aluminium"
+  title="Global reach: Banco Aluminium"
   description="Exporting aluminium extrusions to Europe, North America, Asia-Pacific, and the Middle East. CE certified, CBAM-ready, IATF 16949. 900+ customers. Full export documentation including carbon data."
   transparentNav={true}
 >
@@ -91,7 +91,7 @@ const keyCerts = [
       <p class="gr-hero-lede" data-reveal data-reveal-delay="3">
         Banco Aluminium exports to 900+ customers across Europe, North America,
         Asia-Pacific, and the Middle East. CE certified, CBAM-ready, IATF 16949 qualified.
-        Full export documentation — from packing list to carbon data.
+        Full export documentation, from packing list to carbon data.
       </p>
 
       <!-- Region flags row -->
@@ -250,18 +250,18 @@ const keyCerts = [
   <section class="gr-cbam-band" data-reveal="fade">
     <div class="container gr-cbam-inner">
       <div>
-        <div class="gr-cbam-badge">CBAM — Carbon Border Adjustment Mechanism</div>
+        <div class="gr-cbam-badge">CBAM: Carbon Border Adjustment Mechanism</div>
         <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:20px">
           CBAM-ready<br/><em class="accent">for EU importers.</em>
         </h2>
         <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;max-width:52ch;margin-top:20px">
           From January 2026, all aluminium imported into the EU requires embedded carbon
           emission data under the CBAM regulation. Banco has implemented ISO 14064-1
-          carbon accounting across its foundry and extrusion operations — per lot, not per year.
+          carbon accounting across its foundry and extrusion operations, calculated per lot rather than per year.
         </p>
       </div>
       <div class="gr-cbam-tags">
-        {['ISO 14064-1 verified', 'Direct emissions — Scope 1', 'Indirect emissions — Scope 2', 'Per-lot production reporting', 'CBAM declaration document', '0.763 kg CO₂e / kg Al'].map(tag => (
+        {['ISO 14064-1 verified', 'Direct emissions: Scope 1', 'Indirect emissions: Scope 2', 'Per-lot production reporting', 'CBAM declaration document', '0.763 kg CO₂e / kg Al'].map(tag => (
           <div class="gr-cbam-tag">{tag}</div>
         ))}
       </div>

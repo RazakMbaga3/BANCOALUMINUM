@@ -4,22 +4,21 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Page not found: Banco Aluminium"
-  description="The page you are looking for has moved or never existed."
+  description="The page you are looking for has moved or never existed. Browse Banco Aluminium industrial profiles, architectural systems and cast billets instead."
 >
-  <section style="background:var(--color-navy);min-height:100vh;display:flex;align-items:center;padding-top:148px;padding-bottom:80px">
+  <section class="nf-section">
     <div class="container">
-      <div style="font-family:var(--font-sans);font-size:clamp(120px,20vw,240px);font-weight:800;letter-spacing:-0.05em;line-height:1;color:var(--color-platinum);user-select:none">
-        404
+      <div class="nf-code" aria-hidden="true">
+        <span class="nf-code-index">/ ERR</span>
+        <span class="nf-code-num">404</span>
       </div>
-      <div style="margin-top:32px">
+      <div class="nf-body">
         <div class="eyebrow on-dark">Page not found</div>
-        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;max-width:24ch">
-          This page doesn't exist.
-        </h2>
-        <p class="t-lead" style="color:var(--color-stone-400);margin-top:20px;max-width:52ch">
+        <h1 class="t-h2 nf-h1">This page doesn't exist.</h1>
+        <p class="t-lead nf-lead">
           The page you're looking for has moved or never existed. Try the navigation above or go back to the homepage.
         </p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+        <div class="nf-actions">
           <a href="/" class="btn btn-primary-dark">Go to homepage</a>
           <a href="/products/industrial" class="btn btn-secondary-dark">Browse solutions</a>
         </div>
@@ -27,3 +26,46 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 </Layout>
+
+<style>
+  .nf-section {
+    background: var(--color-navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 148px;
+    padding-bottom: 80px;
+  }
+  .nf-code {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--color-navy-line);
+    user-select: none;
+  }
+  .nf-code-index {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-green);
+  }
+  .nf-code-num {
+    font-family: var(--font-sans);
+    font-size: clamp(120px, 20vw, 240px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--color-platinum);
+  }
+  .nf-body { margin-top: 32px; }
+  .nf-h1 { color: var(--color-stone-50); margin-top: 16px; max-width: 24ch; }
+  .nf-lead { color: var(--color-stone-400); margin-top: 20px; max-width: 52ch; }
+  .nf-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+</style>

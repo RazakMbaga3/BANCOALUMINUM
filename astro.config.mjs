@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@astrojs/react';
 
 export default defineConfig({
-  integrations: [react()],
+  site: 'https://bancoaluminium.com',
+  // No client-side framework — the site ships zero framework JS
+  integrations: [],
   image: {
     // WebP conversion for all processed images
     format: 'webp',

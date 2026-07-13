@@ -7,6 +7,11 @@ const staticPages = [
   { url: '/',                              changefreq: 'weekly',  priority: '1.0' },
   { url: '/products/industrial',           changefreq: 'monthly', priority: '0.9' },
   { url: '/products/architectural',        changefreq: 'monthly', priority: '0.9' },
+  { url: '/products/architectural/window-systems',        changefreq: 'monthly', priority: '0.7' },
+  { url: '/products/architectural/door-systems',          changefreq: 'monthly', priority: '0.7' },
+  { url: '/products/architectural/facade-systems',        changefreq: 'monthly', priority: '0.7' },
+  { url: '/products/architectural/architectural-profiles',changefreq: 'monthly', priority: '0.7' },
+  { url: '/products/architectural/accessories',           changefreq: 'monthly', priority: '0.6' },
   { url: '/products/cast-products',        changefreq: 'monthly', priority: '0.9' },
   { url: '/products/standard-sections',    changefreq: 'monthly', priority: '0.8' },
   { url: '/capabilities/extrusion',        changefreq: 'monthly', priority: '0.8' },
@@ -45,7 +50,7 @@ const today = new Date().toISOString().split('T')[0];
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticPages.map(p => `  <url>
-    <loc>${BASE}${p.url}</loc>
+    <loc>${BASE}${p.url === '/' ? '/' : p.url + '/'}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>

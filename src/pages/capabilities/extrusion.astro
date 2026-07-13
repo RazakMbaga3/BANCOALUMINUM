@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const presses = [
   { id: '01', name: 'Press 1', capacity: '1100T', circle: '138 mm', weight: '0.29–2.5 kg/m', profiles: 'Light architectural, slender sections, fine-wall profiles', size: 48 },
@@ -27,8 +28,8 @@ const processStages = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
@@ -188,10 +189,10 @@ const processStages = [
         </div>
         <div class="ext-range-photos" data-reveal="right">
           <div class="ext-photo-top">
-            <img src="/assets/manufacturing/billet-1.webp" alt="Extrusion billets ready for press" loading="lazy" />
+            <Pic src="/assets/manufacturing/billet-1.webp" alt="Extrusion billets ready for press" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
           <div class="ext-photo-bot">
-            <img src="/assets/manufacturing/billet-3.webp" alt="Aluminium billet preheating" loading="lazy" />
+            <Pic src="/assets/manufacturing/billet-3.webp" alt="Aluminium billet preheating" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
         </div>
       </div>
@@ -245,7 +246,7 @@ const processStages = [
   .ext-range-grid    { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .ext-range-table   { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
   .ext-rrow  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .ext-rkey  { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); flex-shrink: 0; }
+  .ext-rkey  { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .ext-rval  { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
   .ext-range-photos { display: flex; flex-direction: column; gap: 4px; }
   .ext-photo-top, .ext-photo-bot { overflow: hidden; }

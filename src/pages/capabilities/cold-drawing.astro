@@ -31,15 +31,15 @@ const products = [
 
 <Layout
   title="Cold drawing | Banco Aluminium"
-  description="Cold drawn aluminium rods, bars, and tubes beyond extrusion tolerances. Tighter OD tolerances, scale-free surface, direct machining. Rods 6–120 mm, tubes to 160 mm OD."
+  description="Cold drawn aluminium rods, bars and tubes beyond extrusion tolerances: tighter OD control, scale-free surface, rods 6–120 mm and tubes to 160 mm OD."
   transparentNav={true}
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
@@ -254,10 +254,10 @@ const products = [
   .cd-table td { padding: 12px 16px; border-right: 1px solid var(--color-stone-200); border-bottom: 1px solid var(--color-stone-200); vertical-align: middle; }
   .cd-table td:last-child { border-right: none; }
   .cd-cell-param { font-family: var(--font-sans); font-size: 13px; color: var(--color-navy); font-weight: 500; white-space: normal; min-width: 180px; }
-  .cd-cell-ext  { color: var(--color-stone-400); }
+  .cd-cell-ext  { color: var(--color-stone-700); }
   .cd-cell-cd   { color: var(--color-green); font-weight: 500; }
   .cd-cell-note { color: var(--color-stone-700); font-family: var(--font-sans); font-size: 12px; white-space: normal; min-width: 120px; }
-  .cd-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-stone-400); line-height: 1.6; }
+  .cd-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-stone-700); line-height: 1.6; }
 
   .cd-apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); margin-top: 32px; }
   .cd-app-card  { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }

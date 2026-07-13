@@ -9,11 +9,34 @@ interface Props {
 
 const {
   title = 'Banco Aluminium: Integrated Aluminium Extrusion Solutions',
-  description = 'Banco Aluminium Private Limited is an integrated aluminium extrusion company established in 1967, with 35,000 MT annual capacity and a full value chain from billet to finished profile. ISO 9001 · IATF 16949 · CE certified.',
+  description = 'Banco Aluminium is an integrated aluminium extrusion company established in 1967. Industrial profiles, architectural systems and billets. 35,000 MT capacity.',
   image = '/og-image.jpg',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoaluminium.com');
+const SITE = Astro.site ?? new URL('https://bancoaluminium.com');
+const canonicalURL = new URL(Astro.url.pathname, SITE);
+const ogImageURL = new URL(image, SITE);
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Banco Aluminium Private Limited',
+  url: SITE.href,
+  logo: new URL('/banco-logo-light-480.webp', SITE).href,
+  foundingDate: '1967',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vadodara',
+    addressRegion: 'Gujarat',
+    addressCountry: 'IN',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'info@bancoaluminium.com',
+    availableLanguage: ['en'],
+  },
+};
 ---
 
 <!DOCTYPE html>
@@ -25,23 +48,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
   <link rel="canonical" href={canonicalURL} />
 
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Banco Aluminium" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Banco Aluminium wordmark on a navy field" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+  <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+
+  <!-- Fonts: self-hosted latin-subset variable woff2, declared in global.css -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-var-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-var-latin.woff2" crossorigin />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0E2A47" />
   <link rel="sitemap" href="/sitemap.xml" />
 
-  <!-- Preload hero video — critical for homepage LCP -->
-  <link rel="preload" as="video" href="/herovideo.mp4" type="video/mp4" fetchpriority="high" />
+  <!-- Poster paints the hero instantly; autoplay streams the 720p video on its own -->
+  <link rel="preload" as="image" href="/herovideo-poster.jpg" fetchpriority="high" />
 
   <title>{title}</title>
 </head>
@@ -53,7 +87,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
     <div class="container rh-nav">
       <a href="/" class="rh-logo" aria-label="Return to the Banco Aluminium homepage">
         <img
-          src="/banco-logo-light.png"
+          src="/banco-logo-light-480.webp"
           alt="Banco Aluminium"
           width="148"
           height="34"
@@ -151,6 +185,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
       min-height: 100dvh;
       overflow: auto;
     }
-    .rh-cta { display: none; }
+    /* Panels stack from the top on mobile — clear the fixed header so the
+       first panel's segment tag isn't clipped behind it */
+    #router-main { padding-top: 60px; }
+  }
+  /* Keep logo + quote CTA on one 60px line at the narrowest widths */
+  @media (max-width: 380px) {
+    .rh-logo img { height: 24px; }
+    .rh-cta { font-size: 9px; padding: 6px 10px; letter-spacing: 0.12em; gap: 6px; }
   }
 </style>

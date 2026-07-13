@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Pic from '../../../components/Pic.astro';
 
 const profileTypes = [
   { name: 'Standard Architectural Sections', desc: 'Angles, channels, T-sections, flat and hollow bar to IS 733 / IS 1285, the same range detailed on our Standard Sections page, in architectural alloys and finishes.' },
@@ -10,10 +11,10 @@ const profileTypes = [
 
 <Layout
   title="Architectural profile sections: Banco Aluminium"
-  description="Standard architectural sections, clean room profiles and aluminium ladder sections. Extruded to IS 733 / IS 1285 in 6063-T6, 6082-T6 and 6061-T6. Banco Architectural Systems."
+  description="Standard architectural sections, clean room profiles and ladder sections, extruded to IS 733 and IS 1285 in 6063-T6, 6082-T6 and 6061-T6 alloys."
 >
   <section class="ap-hero">
-    <img src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco aluminium architectural profile sections" class="ap-hero-img" loading="eager" />
+    <Pic src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco aluminium architectural profile sections" class="ap-hero-img" loading="eager" sizes="100vw" />
     <div class="ap-hero-scrim" aria-hidden="true"></div>
     <div class="container ap-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Architectural profiles</div>
@@ -44,7 +45,7 @@ const profileTypes = [
 
 <style>
   .ap-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
-  .ap-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  :global(.ap-hero-img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ap-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.80) 0%, rgba(8,27,48,0.92) 100%); }
   .ap-hero-body { position: relative; z-index: 1; }
   .ap-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }

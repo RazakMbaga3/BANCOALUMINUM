@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const industries = [
   { num: '/ 01', name: 'Electrical & power transmission',      note: 'Busbar · T&D profiles · cable management' },
@@ -96,20 +97,19 @@ const certs = [
 ---
 
 <Layout
-  title="Banco Aluminium: industrial profiles and engineered aluminium for OEM applications"
-  description="Drawing-led aluminium profiles for OEM applications. Hard alloys, lead-free machining grades, cold drawing. Die design, extrusion, fabrication, 10,000 parts/day. IATF 16949 · ISO 9001 · CE certified."
+  title="Industrial aluminium profiles for OEMs: Banco Aluminium"
+  description="Drawing-led aluminium profiles for OEM applications: hard alloys, lead-free machining grades, cold drawing and fabrication of 10,000 parts per day."
   image="/assets/manufacturing/industrialOEMS.webp"
   transparentNav={true}
 >
 
   <!-- ── Hero — full-bleed photo ───────────────────────────────────────────── -->
   <section class="ih-hero">
-    <img
+    <Pic
       src="/assets/manufacturing/industrialOEMS.webp"
       alt="Banco Aluminium industrial extrusion facility"
       class="ih-hero-img"
-      loading="eager"
-    />
+      loading="eager" sizes="100vw" />
     <div class="ih-hero-overlay" aria-hidden="true"></div>
     <div class="ih-hero-content">
       <h1 class="ih-h1">
@@ -138,11 +138,10 @@ const certs = [
   <!-- ── Overview — editorial split ───────────────────────────────────────── -->
   <section class="ih-split">
     <div class="ih-split-visual">
-      <img
+      <Pic
         src="/assets/manufacturing/casting-1.webp"
         alt="Banco Aluminium billet-casting foundry"
-        loading="eager"
-      />
+        loading="eager" sizes="100vw" />
     </div>
     <div class="ih-split-body">
       <h2 class="ih-split-h2">From drawing<br>to repeat supply.</h2>
@@ -193,11 +192,10 @@ const certs = [
   <!-- ── Alloys — editorial split (reversed) ───────────────────────────────── -->
   <section class="ih-split ih-split-rev ih-split-compact" style="background:var(--color-stone-50)">
     <div class="ih-split-visual">
-      <img
+      <Pic
         src="/assets/manufacturing/melting-1.webp"
         alt="Banco Aluminium alloy melting furnace"
-        loading="lazy"
-      />
+        loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
     </div>
     <div class="ih-split-body">
       <h2 class="ih-split-h2">Hard alloys.<br>Lead-free grades.</h2>
@@ -251,7 +249,7 @@ const certs = [
       ['/assets/manufacturing/homo-1.webp',     'Homogenisation furnace, conditioning billets'],
     ].map(([src, alt]) => (
       <div class="ih-fac-tile">
-        <img src={src} alt={alt} loading="lazy" />
+        <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 640px) 50vw, 25vw" maxW={768} />
         <div class="ih-fac-caption">{alt}</div>
       </div>
     ))}
@@ -344,7 +342,7 @@ const certs = [
     align-items: flex-end;
     overflow: hidden;
   }
-  .ih-hero-img {
+  :global(.ih-hero-img) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -441,14 +439,14 @@ const certs = [
     overflow: hidden;
     background: var(--color-stone-200);
   }
-  .ih-split-visual img {
+  .ih-split-visual :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
   }
-  .ih-split-visual:hover img { transform: scale(1.03); }
+  .ih-split-visual:hover :global(img) { transform: scale(1.03); }
   .ih-split-body {
     display: flex;
     flex-direction: column;
@@ -500,7 +498,7 @@ const certs = [
   }
   .ih-alloy-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .ih-alloy-title { font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); white-space: nowrap; }
-  .ih-alloy-sub { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-400); }
+  .ih-alloy-sub { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); }
   .ih-alloy-grades { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 6px; border-top: 1px solid var(--color-stone-200); margin-top: 2px; }
   .ih-grade { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 2px 6px; }
   .ih-grade-lf { font-weight: 700; color: var(--color-green); border-color: var(--color-green); }
@@ -540,7 +538,7 @@ const certs = [
   .i-industry-cell:last-child { grid-column: span 4; }
   .i-ind-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .i-ind-name { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-platinum); line-height: 1.25; }
-  .i-ind-note { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
+  .i-ind-note { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
 
   /* ── Capability grid ─────────────────────────────────────────────────────── */
   .ih-cap-grid {
@@ -571,8 +569,8 @@ const certs = [
     gap: 0;
   }
   .ih-fac-tile { position: relative; aspect-ratio: 3/2; overflow: hidden; }
-  .ih-fac-tile img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.72); transition: transform 0.5s ease, filter 0.3s ease; }
-  .ih-fac-tile:hover img { transform: scale(1.05); filter: brightness(0.88); }
+  .ih-fac-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.72); transition: transform 0.5s ease, filter 0.3s ease; }
+  .ih-fac-tile:hover :global(img) { transform: scale(1.05); filter: brightness(0.88); }
   .ih-fac-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 20px 12px 10px;
@@ -599,7 +597,7 @@ const certs = [
   .ih-wf-row:hover { background: white; }
   .ih-wf-num { font-family: var(--font-mono); font-size: 17px; font-weight: 500; color: var(--color-green); }
   .ih-wf-step { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
-  .ih-wf-note { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .ih-wf-note { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
   .ih-workflow-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px; }
 
   /* ── Packing ─────────────────────────────────────────────────────────────── */
@@ -642,7 +640,7 @@ const certs = [
     .ih-footer-grid    { grid-template-columns: 1fr; }
     .ih-fac-strip      { grid-template-columns: repeat(2, 1fr); }
     .ih-wf-row         { grid-template-columns: 48px 1fr; }
-    .ih-wf-note        { display: none; }
+    .ih-wf-note        { grid-column: 2; }
   }
   @media (max-width: 640px) {
     .ih-stats          { grid-template-columns: 1fr 1fr; }

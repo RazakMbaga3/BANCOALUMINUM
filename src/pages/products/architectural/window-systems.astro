@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Pic from '../../../components/Pic.astro';
 
 const sliding = [
   { num: '/ 01', name: '18mm Series',           width: '18 mm',      glazing: 'Single glaze',              tier: 'Entry-level residential' },
@@ -22,11 +23,11 @@ const casement = [
 ---
 
 <Layout
-  title="Sliding and casement aluminium window systems: Banco Aluminium"
+  title="Sliding & casement aluminium windows: Banco Aluminium"
   description="Eight sliding series from 18–75 mm and a 40 mm casement series. EN 12210 wind resistance, EN 12208 watertightness tested. Banco Architectural Systems."
 >
   <section class="ws-hero">
-    <img src="/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg" alt="Banco aluminium sliding window system" class="ws-hero-img" loading="eager" />
+    <Pic src="/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg" alt="Banco aluminium sliding window system" class="ws-hero-img" loading="eager" sizes="100vw" />
     <div class="ws-hero-scrim" aria-hidden="true"></div>
     <div class="container ws-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Window systems</div>
@@ -82,7 +83,7 @@ const casement = [
 
 <style>
   .ws-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
-  .ws-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  :global(.ws-hero-img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ws-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.82) 0%, rgba(8,27,48,0.92) 100%); }
   .ws-hero-body { position: relative; z-index: 1; }
   .ws-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }
@@ -96,7 +97,7 @@ const casement = [
   .ws-width { font-family: var(--font-mono); font-size: 12px; color: var(--color-stone-700); }
   .ws-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
   .ws-pill { font-size: 9px !important; padding: 3px 8px !important; }
-  .ws-tier { font-family: var(--font-mono); font-size: 10px; color: var(--color-stone-400); }
+  .ws-tier { font-family: var(--font-mono); font-size: 10px; color: var(--color-stone-700); }
 
   .ws-clist { display: flex; flex-direction: column; border: 1px solid var(--color-stone-200); }
   .ws-ccard { background: #fff; padding: 26px 24px; max-width: 64ch; }

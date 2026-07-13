@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Pic from '../components/Pic.astro';
 
 const pillars = [
   {
@@ -55,7 +56,7 @@ const certs = [
 
 <Layout
   title="Sustainability: Banco Aluminium"
-  description="Banco Aluminium CBAM-certified carbon footprint: 0.763 kg CO₂e per kg aluminium. 960 kW solar, up to 50% recycled scrap, 100% natural gas melting. ISO 14001, ISO 45001, ISO 9001 certified."
+  description="CBAM-certified carbon footprint of 0.763 kg CO₂e per kg aluminium, 960 kW solar, up to 50% recycled scrap and 100% natural gas melting at Banco."
   transparentNav={true}
 >
 
@@ -64,8 +65,8 @@ const certs = [
        ══════════════════════════════════════════ -->
   <section class="su-hero">
     <div class="su-hero-media" aria-hidden="true">
-      <video class="su-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="su-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="su-hero-scrim"></div>
       <div class="su-hero-grad"></div>
@@ -160,7 +161,7 @@ const certs = [
         {pillars.map((p, i) => (
           <div class="su-pillar-card" style={`--delay:${i * 70}ms`}>
             <div class="su-pillar-photo">
-              <img src={p.img} alt={p.imgAlt} loading="lazy" />
+              <Pic src={p.img} alt={p.imgAlt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
               <div class="su-pillar-idx">{p.index}</div>
             </div>
             <div class="su-pillar-body">
@@ -192,7 +193,7 @@ const certs = [
       <!-- Solar -->
       <div class="su-feature-split" data-reveal="fade">
         <div class="su-feature-photo">
-          <img src="/assets/manufacturing/melting-5.webp" alt="Clean energy operations at Banco Aluminium" loading="lazy" />
+          <Pic src="/assets/manufacturing/melting-5.webp" alt="Clean energy operations at Banco Aluminium" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
         <div class="su-feature-copy" data-reveal="right">
           <div class="eyebrow">Clean energy</div>
@@ -228,7 +229,7 @@ const certs = [
       <!-- Recycling -->
       <div class="su-feature-split su-feature-split--rev" data-reveal="fade">
         <div class="su-feature-photo">
-          <img src="/assets/manufacturing/scrap-2.webp" alt="Recycled aluminium scrap at Banco foundry" loading="lazy" />
+          <Pic src="/assets/manufacturing/scrap-2.webp" alt="Recycled aluminium scrap at Banco foundry" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
         <div class="su-feature-copy" data-reveal="left">
           <div class="eyebrow">Circular aluminium</div>
@@ -329,7 +330,7 @@ const certs = [
       ['/assets/manufacturing/homo-3.webp',    'Controlled atmosphere homogenising'],
     ].map(([src, alt]) => (
       <div class="su-strip-photo">
-        <img src={src} alt={alt} loading="lazy" />
+        <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
         <div class="su-strip-caption">{alt}</div>
       </div>
     ))}
@@ -538,7 +539,8 @@ const certs = [
     position: absolute; top: 16px; left: 16px;
     font-family: var(--font-mono); font-size: 10px;
     letter-spacing: 0.2em; text-transform: uppercase;
-    color: white; background: var(--color-green);
+    color: var(--color-stone-50); background: var(--color-navy-deep);
+    border-left: 2px solid var(--color-green);
     padding: 4px 10px;
   }
   .su-pillar-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
@@ -561,7 +563,7 @@ const certs = [
   .su-pillar-stat-l {
     font-family: var(--font-mono); font-size: 9.5px;
     letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--color-stone-400); margin-top: 4px;
+    color: var(--color-stone-700); margin-top: 4px;
   }
 
   /* ── EDITORIAL SPLITS ────────────────────────────────────── */
@@ -600,7 +602,7 @@ const certs = [
   .su-fs-l {
     font-family: var(--font-mono); font-size: 9.5px;
     letter-spacing: 0.13em; text-transform: uppercase;
-    color: var(--color-stone-400); margin-top: 5px;
+    color: var(--color-stone-700); margin-top: 5px;
   }
 
   /* ── CBAM SECTION ────────────────────────────────────────── */
@@ -712,12 +714,12 @@ const certs = [
   .su-cert-label {
     font-family: var(--font-mono); font-size: 9.5px;
     letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--color-stone-400); margin-top: 6px;
+    color: var(--color-stone-700); margin-top: 6px;
   }
   .su-cert-note {
     margin-top: 24px;
     font-family: var(--font-mono); font-size: 10px;
-    letter-spacing: 0.1em; color: var(--color-stone-400);
+    letter-spacing: 0.1em; color: var(--color-stone-700);
     line-height: 1.65; max-width: 72ch;
   }
 

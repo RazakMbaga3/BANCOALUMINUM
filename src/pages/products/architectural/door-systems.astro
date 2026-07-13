@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Pic from '../../../components/Pic.astro';
 
 const doorTypes = [
   { name: 'Sliding Doors',    desc: 'Two, three and four-panel sliding configurations. Suited to large residential and commercial openings requiring smooth, low-effort operation.' },
@@ -19,10 +20,10 @@ const fiftySeries = {
 
 <Layout
   title="Sliding, folding and entrance door systems: Banco Aluminium"
-  description="Sliding, folding, partition and entrance door systems in aluminium. 50mm multi-leaf frame series for residential and commercial openings. Banco Architectural Systems."
+  description="Sliding, folding, partition and entrance door systems in aluminium, including 50 mm multi-leaf frame series for residential and commercial openings."
 >
   <section class="ds-hero">
-    <img src="/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png" alt="Banco aluminium sliding glass door system" class="ds-hero-img" loading="eager" />
+    <Pic src="/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png" alt="Banco aluminium sliding glass door system" class="ds-hero-img" loading="eager" sizes="100vw" />
     <div class="ds-hero-scrim" aria-hidden="true"></div>
     <div class="container ds-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Door systems</div>
@@ -48,7 +49,7 @@ const fiftySeries = {
 
   <section class="ds-split">
     <div class="ds-split-visual">
-      <img src="/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg" alt="Banco 50mm casement and bi-fold door series" loading="lazy" />
+      <Pic src="/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg" alt="Banco 50mm casement and bi-fold door series" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
     </div>
     <div class="ds-split-body">
       <div class="eyebrow">50mm series</div>
@@ -65,7 +66,7 @@ const fiftySeries = {
 
 <style>
   .ds-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
-  .ds-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  :global(.ds-hero-img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ds-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.80) 0%, rgba(8,27,48,0.92) 100%); }
   .ds-hero-body { position: relative; z-index: 1; }
   .ds-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }
@@ -78,7 +79,7 @@ const fiftySeries = {
 
   .ds-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 60vh; }
   .ds-split-visual { overflow: hidden; background: var(--color-stone-200); }
-  .ds-split-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ds-split-visual :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
   .ds-split-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px); background: var(--color-stone-100); }
   .ds-split-h2 { font-family: var(--font-sans); font-size: clamp(24px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--color-navy); margin-top: 12px; }
 

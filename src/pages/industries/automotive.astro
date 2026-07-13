@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+import IndustryHero from '../../components/IndustryHero.astro';
 
 const profiles = [
   { name: 'Structural body sections', desc: 'Crash management, sill reinforcement, and B-pillar extrusions in 6082-T6, designed for controlled deformation and high specific strength.' },
@@ -20,40 +22,28 @@ const alloys = [
 
 <Layout
   title="Automotive & commercial vehicles: Banco Aluminium"
-  description="Structural body sections, thermal management profiles, door sills, roof rails, and seat track extrusions in IATF 16949 certified supply to Tier 1 and Tier 2 automotive OEMs."
+  description="Structural body sections, thermal management profiles, door sills, roof rails and seat track extrusions in IATF 16949 certified supply to automotive OEMs."
+  heroImage="/assets/industries/hero/automotive-hero.jpg"
 >
   <!-- Hero -->
-  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
-    <div class="container">
-      <div class="eyebrow on-dark">Industries / Automotive</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:22ch">
-        Automotive &amp; commercial vehicle profiles.
-      </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
-        Structural body sections, thermal management profiles, door sills, roof rails, and seat track extrusions, supplied under IATF 16949 certification to Tier 1 and Tier 2 automotive OEMs.
-      </p>
-
-      <!-- Stats strip -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
-        {[
-          ['IATF 16949:2016', 'Automotive quality system'],
-          ['Hard alloy specialist', '6082 · 6061 · 5083'],
-          ['Lead-free grades', 'RoHS & ELV compliant'],
-          ['35,000 MT', 'Annual capacity'],
-        ].map(([val, label]) => (
-          <div style="background:var(--color-navy-soft);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:clamp(14px,1.8vw,22px);font-weight:700;color:var(--color-stone-50)">{val}</div>
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <IndustryHero
+    image="/assets/industries/hero/automotive-hero.jpg"
+    eyebrow="Industries / Automotive"
+    stats={[
+    ['IATF 16949:2016', 'Automotive quality system'],
+    ['Hard alloy specialist', '6082 · 6061 · 5083'],
+    ['Lead-free grades', 'RoHS & ELV compliant'],
+    ['35,000 MT', 'Annual capacity'],
+    ]}
+  >
+    <Fragment slot="h1">Automotive &amp; commercial vehicle profiles.</Fragment>
+    <Fragment slot="lead">Structural body sections, thermal management profiles, door sills, roof rails, and seat track extrusions, supplied under IATF 16949 certification to Tier 1 and Tier 2 automotive OEMs.</Fragment>
+  </IndustryHero>
 
   <!-- Section 01: Application overview -->
   <section class="section-light section-pad">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div class="ind-split">
         <div>
           <div class="eyebrow">01 · Application overview</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
@@ -80,14 +70,13 @@ const alloys = [
         </div>
 
         <div style="position:relative">
-          <img
+          <Pic
             src="/assets/industries/automotive.jpg"
             alt="Automotive manufacturing plant: aluminium extrusions in vehicle production"
             loading="lazy"
-            style="width:100%;aspect-ratio:4/3;object-fit:cover"
-          />
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
-            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+            class="ind-photo" sizes="(max-width: 1024px) 100vw, 60vw" />
+          <div class="ind-caption">
+            <span class="ind-caption-t">
               IATF 16949:2016 automotive quality, from billet to despatch
             </span>
           </div>
@@ -103,12 +92,12 @@ const alloys = [
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Six profile families for the automotive sector.
       </h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+      <div class="ind-tiles mt-10">
         {profiles.map(p => (
-          <div style="background:var(--color-stone-50);padding:32px 28px">
-            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
-            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
-            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          <div class="ind-tile">
+            <div class="ind-tick"></div>
+            <h3 class="ind-tile-h">{p.name}</h3>
+            <p class="ind-tile-p">{p.desc}</p>
           </div>
         ))}
       </div>
@@ -122,12 +111,12 @@ const alloys = [
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Alloy selection for automotive applications.
       </h2>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px">
+      <div class="ind-cards cols-4 mt-10">
         {alloys.map(a => (
-          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
-            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
-            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          <div class="ind-card">
+            <div class="ind-card-n">{a.name}</div>
+            <div class="ind-card-t">{a.temper}</div>
+            <p class="ind-card-p">{a.why}</p>
           </div>
         ))}
       </div>
@@ -137,7 +126,7 @@ const alloys = [
   <!-- Section 04: Quality & certifications -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div class="ind-split">
         <div>
           <div class="eyebrow">04 · Quality &amp; certifications</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
@@ -150,16 +139,16 @@ const alloys = [
             giving OEM customers a single certified partner for structural and functional profiles.
           </p>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="ind-certs">
           {[
             ['IATF 16949:2016', 'Automotive quality management'],
             ['ISO 9001:2015', 'Quality management system'],
             ['ISO 14001:2015', 'Environmental management'],
             ['PPAP Capable', 'Level 1–3 documentation'],
           ].map(([cert, scope]) => (
-            <div style="border-left:2px solid var(--color-green);padding-left:16px">
-              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
-              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            <div class="ind-cert">
+              <div class="ind-cert-c">{cert}</div>
+              <div class="ind-cert-s">{scope}</div>
             </div>
           ))}
         </div>

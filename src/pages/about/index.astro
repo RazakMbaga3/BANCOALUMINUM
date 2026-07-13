@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const milestones = [
   { year: '1967', event: 'Founded in Vadodara, Gujarat by the Thakkar family' },
@@ -41,7 +42,7 @@ const testimonials = [
 
 <Layout
   title="About Banco Aluminium: established 1967"
-  description="Banco Aluminium Private Limited, an integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 58+ years experience. 35,000 MT capacity. 900+ customers worldwide."
+  description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT capacity, 900+ customers worldwide."
   transparentNav={true}
 >
 
@@ -50,8 +51,8 @@ const testimonials = [
        ══════════════════════════════════════════════════════════ -->
   <section class="ab-hero">
     <div class="ab-hero-media" aria-hidden="true">
-      <video class="ab-hero-video" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="ab-hero-video" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="ab-hero-scrim"></div>
       <div class="ab-hero-grad"></div>
@@ -175,11 +176,11 @@ const testimonials = [
           <!-- 2-up editorial photos -->
           <div class="ab-story-photos">
             <figure class="ab-story-fig">
-              <img src="/assets/manufacturing/melting-2.webp" alt="Liquid aluminium at Banco foundry, Vadodara" loading="lazy" />
+              <Pic src="/assets/manufacturing/melting-2.webp" alt="Liquid aluminium at Banco foundry, Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
               <figcaption>Melting · Foundry floor · Vadodara</figcaption>
             </figure>
             <figure class="ab-story-fig">
-              <img src="/assets/manufacturing/homo-2.webp" alt="Controlled-atmosphere homogenising furnace" loading="lazy" />
+              <Pic src="/assets/manufacturing/homo-2.webp" alt="Controlled-atmosphere homogenising furnace" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
               <figcaption>Homogenising · Controlled atmosphere furnace</figcaption>
             </figure>
           </div>
@@ -258,8 +259,8 @@ const testimonials = [
        VIDEO WINDOW — cinematic mid-page
        ══════════════════════════════════════════════════════════ -->
   <section class="ab-vwin">
-    <video class="ab-vwin-vid" autoplay muted loop playsinline preload="none">
-      <source src="/herovideo.mp4" type="video/mp4" />
+    <video class="ab-vwin-vid" autoplay muted loop playsinline preload="none" poster="/herovideo-poster.jpg">
+      <source src="/herovideo-720.mp4" type="video/mp4" />
     </video>
     <div class="ab-vwin-overlay"></div>
     <div class="container ab-vwin-body">
@@ -302,7 +303,7 @@ const testimonials = [
       <!-- Editorial mosaic: 1 large + 4 supporting -->
       <div class="ab-fac-mosaic" data-reveal="fade">
         <div class="ab-fac-main">
-          <img src="/assets/manufacturing/casting-1.webp" alt="Hot-Top billet casting at Banco foundry, Vadodara" loading="lazy" />
+          <Pic src="/assets/manufacturing/casting-1.webp" alt="Hot-Top billet casting at Banco foundry, Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           <div class="ab-fac-caption">Hot-Top casting · Banco foundry · Vadodara</div>
         </div>
         {[
@@ -312,7 +313,7 @@ const testimonials = [
           ['/assets/manufacturing/quality-1.webp',  'Spectromax OES for 100% chemical analysis'],
         ].map(([src, alt]) => (
           <div class="ab-fac-thumb">
-            <img src={src} alt={alt} loading="lazy" />
+            <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 640px) 100vw, 25vw" maxW={768} />
             <div class="ab-fac-caption">{alt}</div>
           </div>
         ))}
@@ -621,7 +622,7 @@ const testimonials = [
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     flex-wrap: wrap;
   }
   .ab-story-lead {
@@ -662,7 +663,7 @@ const testimonials = [
     font-size: 9px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     padding: 7px 10px;
     border-top: 1px solid var(--color-stone-200);
     background: var(--color-stone-50);
@@ -846,7 +847,7 @@ const testimonials = [
     font-size: 9px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     padding: 7px 10px;
     border-top: 1px solid var(--color-stone-200);
     background: var(--color-stone-50);
@@ -1011,7 +1012,7 @@ const testimonials = [
     font-size: 9.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     margin-top: 3px;
   }
 

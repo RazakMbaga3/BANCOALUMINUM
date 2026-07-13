@@ -1,0 +1,89 @@
+---
+---
+<section class="section-dark section-pad" aria-label="Sustainability">
+  <div class="container">
+    <div class="sustain-grid">
+      <!-- Left: visual -->
+      <div class="sustain-visual" aria-hidden="true">
+        <svg viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px">
+          <!-- Concentric rings — CBAM mark style -->
+          <circle cx="190" cy="190" r="160" stroke="#243F60" stroke-width="1"/>
+          <circle cx="190" cy="190" r="140" stroke="#243F60" stroke-width="1"/>
+          <circle cx="190" cy="190" r="120" stroke="#1A3454" stroke-width="1"/>
+          <circle cx="190" cy="190" r="100" stroke="#1A3454" stroke-width="1.5"/>
+
+          <!-- Arc segments — green for recycled portion -->
+          <!-- 50% recycled arc (180° = 50%) -->
+          <path d="M 190 90 A 100 100 0 0 1 290 190" stroke="#009746" stroke-width="3" fill="none"/>
+          <!-- Remaining arc -->
+          <path d="M 290 190 A 100 100 0 1 1 190 90" stroke="#243F60" stroke-width="1.5" fill="none"/>
+
+          <!-- Centre content -->
+          <text x="190" y="178" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#9CA3AE" letter-spacing="0.14em">CBAM CERTIFIED</text>
+          <text x="190" y="198" text-anchor="middle" font-family="'Fraunces', serif" font-size="32" font-weight="400" fill="#F7F6F2">0.763</text>
+          <text x="190" y="216" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" fill="#009746" letter-spacing="0.1em">KG CO₂E / KG</text>
+
+          <!-- Spoke tick marks -->
+          {Array.from({ length: 24 }, (_, i) => {
+            const angle = (i * 15 * Math.PI) / 180;
+            const x1 = 190 + 158 * Math.cos(angle);
+            const y1 = 190 + 158 * Math.sin(angle);
+            const x2 = 190 + 148 * Math.cos(angle);
+            const y2 = 190 + 148 * Math.sin(angle);
+            return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#243F60" stroke-width="0.75"/>`;
+          }).join('')}
+
+          <!-- Labels around ring -->
+          <text x="190" y="50" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A5260" letter-spacing="0.14em">SOLAR</text>
+          <text x="320" y="195" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="9" fill="#009746" letter-spacing="0.12em">50% SCRAP</text>
+          <text x="190" y="352" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A5260" letter-spacing="0.14em">NAT. GAS</text>
+          <text x="18" y="195" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="9" fill="#4A5260" letter-spacing="0.12em">ISO 14001</text>
+        </svg>
+      </div>
+
+      <!-- Right: copy + stats -->
+      <div>
+        <div class="eyebrow on-dark">Responsible aluminium</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:20px">
+          Lower carbon.<br/>
+          <em class="accent">CBAM-ready.</em>
+        </h2>
+        <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px">
+          Banco is committed to responsible aluminium manufacturing through lower-carbon
+          operations, clean energy usage, recycling, process control, and certified
+          management systems, all fully documented for European import compliance.
+        </p>
+        <p class="t-body" style="color:var(--color-stone-400);margin-top:16px">
+          Using up to 50% pre and post-consumer scrap saves up to 95% of the energy required
+          to extract and smelt primary aluminium. Our 960 kW captive solar and 1 MW hybrid
+          power system, combined with 100% natural gas in melting, give us a verified carbon
+          footprint of 0.763 kg CO₂e per kilogram (among the lowest in our class).
+        </p>
+
+        <!-- 4-up stats -->
+        <div class="sustain-stats">
+          <div class="sustain-stat">
+            <div class="ss-num">100<em>%</em></div>
+            <div class="ss-lbl">Natural gas in melting</div>
+          </div>
+          <div class="sustain-stat">
+            <div class="ss-num">960<em> kW</em></div>
+            <div class="ss-lbl">Captive solar generation</div>
+          </div>
+          <div class="sustain-stat">
+            <div class="ss-num">50<em>%</em></div>
+            <div class="ss-lbl">Recycled scrap input</div>
+          </div>
+          <div class="sustain-stat">
+            <div class="ss-num">3×<em></em></div>
+            <div class="ss-lbl">ISO certified systems</div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px">
+          <a href="/sustainability" class="btn btn-primary-dark">Sustainability report</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

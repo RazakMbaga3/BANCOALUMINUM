@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Pic from '../../../components/Pic.astro';
 
 const accessoryTypes = [
   { name: 'Hardware Systems',       desc: 'Handles, hinges, rollers, locks and multi-point locking systems matched to Banco window and door series, sourced and stocked for consistent supply.' },
@@ -12,7 +13,7 @@ const accessoryTypes = [
   description="Hardware systems and surface finish options for Banco architectural window, door and façade systems. Powder coating, anodising, and more, applied in-house."
 >
   <section class="ac-hero">
-    <img src="/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg" alt="Banco aluminium hardware and finish accessories" class="ac-hero-img" loading="eager" />
+    <Pic src="/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg" alt="Banco aluminium hardware and finish accessories" class="ac-hero-img" loading="eager" sizes="100vw" />
     <div class="ac-hero-scrim" aria-hidden="true"></div>
     <div class="container ac-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Accessories</div>
@@ -43,7 +44,7 @@ const accessoryTypes = [
 
 <style>
   .ac-hero { position: relative; padding: 168px 0 72px; overflow: hidden; }
-  .ac-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  :global(.ac-hero-img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ac-hero-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,27,48,0.80) 0%, rgba(8,27,48,0.92) 100%); }
   .ac-hero-body { position: relative; z-index: 1; }
   .ac-h1 { font-family: var(--font-sans); font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: var(--color-platinum); margin-top: 18px; }

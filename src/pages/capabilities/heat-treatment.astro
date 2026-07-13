@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const tempers = [
   {
@@ -40,15 +41,15 @@ const tempers = [
 
 <Layout
   title="Heat treatment: Banco Aluminium"
-  description="T5, T6, and T73 tempers. In-line and batch ageing furnaces. Mechanical property verification with tensile testing and Brinell hardness. Controlled temperature-time profiles."
+  description="T5, T6 and T73 tempers in in-line and batch ageing furnaces, with mechanical property verification by tensile testing and Brinell hardness checks."
   transparentNav={true}
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
@@ -214,10 +215,10 @@ const tempers = [
       <div class="ht-qual-grid">
         <div class="ht-qual-photos" data-reveal="left">
           <div class="ht-qual-photo-main">
-            <img src="/assets/manufacturing/quality-1.webp" alt="Mechanical testing laboratory" loading="lazy" />
+            <Pic src="/assets/manufacturing/quality-1.webp" alt="Mechanical testing laboratory" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
           <div class="ht-qual-photo-sub">
-            <img src="/assets/manufacturing/quality-2.webp" alt="Tensile test specimen" loading="lazy" />
+            <Pic src="/assets/manufacturing/quality-2.webp" alt="Tensile test specimen" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
         </div>
         <div data-reveal="right">
@@ -283,7 +284,7 @@ const tempers = [
   .ht-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); margin-top: 4px; }
   .ht-prop { background: rgba(255,255,255,0.04); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
   .ht-prop-val { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--color-platinum); }
-  .ht-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ht-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-silver); }
   .ht-temper-notes { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-400); border-top: 1px solid var(--color-navy-line); padding-top: 12px; }
   .ht-footnote { margin-top: 16px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 

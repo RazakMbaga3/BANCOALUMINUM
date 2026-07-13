@@ -1,0 +1,383 @@
+---
+import CatalogLayout from '../../layouts/CatalogLayout.astro';
+
+const alloys = [
+  { alloy: '1070A', si: '≤ 0.10',    mg: '≤ 0.03',      fe: '≤ 0.25',  mn: '≤ 0.03',      cu: '≤ 0.03',    al: '≥ 99.70', note: 'Pure aluminium' },
+  { alloy: '1100',  si: '≤ 0.95',    mg: '≤ 0.05',      fe: '≤ 0.30',  mn: '≤ 0.05',      cu: '0.05–0.10', al: '≥ 99.00', note: 'Si + Fe ≤ 0.95 combined' },
+  { alloy: '3003',  si: '≤ 0.10',    mg: '≤ 0.05',      fe: '≤ 0.25',  mn: '1.05–1.15',   cu: '0.05–0.09', al: 'Rem.',    note: 'Heat exchanger · automotive' },
+  { alloy: '6060',  si: '≤ 0.10',    mg: '0.48–0.54',   fe: '0.10–0.25', mn: '≤ 0.07',   cu: '≤ 0.07',    al: 'Rem.',    note: 'Architectural profiles' },
+  { alloy: '6063',  si: '≤ 0.10',    mg: '0.48–0.55',   fe: '≤ 0.30',  mn: '≤ 0.10',      cu: '≤ 0.10',    al: 'Rem.',    note: 'Windows · doors · general extrusion' },
+  { alloy: '6101',  si: '≤ 0.10',    mg: '0.48–0.55',   fe: '≤ 0.20',  mn: '≤ 0.03',      cu: '≤ 0.03',    al: 'Rem.',    note: 'Electrical conductor grade' },
+  { alloy: '6005',  si: '≤ 0.10',    mg: '0.45–0.53',   fe: '≤ 0.25',  mn: '≤ 0.10',      cu: '≤ 0.10',    al: 'Rem.',    note: 'Medium strength structural' },
+  { alloy: '6005A', si: '≤ 0.10',    mg: '0.50–0.58',   fe: '≤ 0.25',  mn: '0.20–0.28',   cu: '≤ 0.10',    al: 'Rem.',    note: 'Transport · structural (Mn+Cr 0.12–0.50)' },
+  { alloy: '6082',  si: '≤ 0.10',    mg: '0.72–0.79',   fe: '≤ 0.30',  mn: '0.45–0.53',   cu: '≤ 0.10',    al: 'Rem.',    note: 'High strength structural' },
+  { alloy: '6361',  si: '≤ 0.10',    mg: '0.40–0.60',   fe: '≤ 0.20',  mn: '≤ 0.10',      cu: '≤ 0.05',    al: 'Rem.',    note: 'Extruded structural (IS 733)' },
+  { alloy: '6061',  si: '≤ 0.10',    mg: '0.90–0.98',   fe: '≤ 0.35',  mn: '≤ 0.13',      cu: '0.18–0.25', al: 'Rem.',    note: 'Engineering · aerospace' },
+  { alloy: '6066',  si: '≤ 0.10',    mg: '1.00–1.10',   fe: '≤ 0.30',  mn: '0.70–0.80',   cu: '0.80–0.90', al: 'Rem.',    note: 'High-strength forgings' },
+];
+
+const sizes = [
+  { dia: '127 mm', inch: '5"',  note: 'Standard residential extrusion' },
+  { dia: '152 mm', inch: '6"',  note: 'Window · door systems' },
+  { dia: '178 mm', inch: '7"',  note: 'Commercial structural profiles' },
+  { dia: '229 mm', inch: '9"',  note: 'Heavy-duty industrial sections' },
+  { dia: '254 mm', inch: '10"', note: 'Large-section · press 4 & 5' },
+];
+
+const tolerances = [
+  { dim: 'Diameter',      tol: '± 1% of nominal diameter' },
+  { dim: 'Length',        tol: '± 5 mm' },
+  { dim: 'Bow / camber',  tol: '≤ 2 mm per metre · ≤ 10 mm full length' },
+  { dim: 'Cutting angle', tol: '90° ± 0.5°' },
+  { dim: 'Std. length',   tol: '5,800 mm (all diameters)' },
+];
+
+const process = [
+  { num: '01', name: 'Metal filtration',    body: 'Online liquid-metal filtration through ceramic foam filters removes non-metallic inclusions before the casting station, delivering measurably improved metal cleanliness and reduced inclusion count in the finished billet.' },
+  { num: '02', name: 'Nitrogen degassing',  body: 'Advanced nitrogen-purged liquid-metal refining removes dissolved hydrogen from the melt. Eliminating this porosity-driving gas prevents surface blistering and voids that compromise extrudability in downstream presses.' },
+  { num: '03', name: 'Hot-Top casting',     body: 'Cylinder-guided Hot-Top casting technology controls casting speed and cooling rate with precision. The result is a consistent surface finish, controlled skin thickness, and uniform metallurgical structure through the full cross-section.' },
+  { num: '04', name: 'Batch homogenising',  body: 'Billets are heat-treated in controlled-atmosphere furnaces to dissolve soluble phases and homogenise the microstructure, then force-cooled to a specified exit temperature. This step directly governs extrudability, surface finish, and dimensional consistency in downstream extrusion.' },
+];
+
+const qc = [
+  { stat: '100 %', label: 'Visual inspection',    sub: 'External surface, checked on every billet and every cast' },
+  { stat: '100 %', label: 'Ultrasonic testing',   sub: 'Internal defects: laminations, inclusions, voids' },
+  { stat: '100 %', label: 'Chemical analysis',    sub: 'Spectromax OES verified against order specification' },
+  { stat: 'SCADA', label: 'Online traceability',  sub: 'Furnace conditions to despatch, batch-linked' },
+  { stat: 'Cast №', label: 'Alloy marking',        sub: 'Designation + cast number on every individual billet' },
+];
+
+const certs = ['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:2016', 'CE (EN 15088:2005)', 'IS 733 · IS 1285 · IS 5082', 'ISO 14064-1'];
+---
+
+<CatalogLayout
+  title="Aluminium Extrusion Billets: Cast Products"
+  subtitle="Foundry-grade aluminium extrusion billets. Cylinder-guided Hot-Top casting. Four-stage metallurgical control. 12 standard alloys, 127–254 mm diameters, 5,800 mm standard length. SCADA-traced and 100% OES verified."
+  catalogRef="BAP-CAST-2026"
+>
+
+  <!-- Stats strip -->
+  <div class="cat-stats">
+    {[
+      { n: '55,000 MT',    l: 'Annual foundry capacity' },
+      { n: '5',            l: 'Billet diameters (5" to 10")' },
+      { n: '12+',          l: 'Standard alloys' },
+      { n: '0.480 kgCO₂e/kg', l: 'Carbon footprint per ISO 14064-1' },
+    ].map(({ n, l }) => (
+      <div class="cat-stat">
+        <div class="cat-stat-n">{n}</div>
+        <div class="cat-stat-l">{l}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Product overview -->
+  <section class="cat-section">
+    <div class="cat-section-label">/ 01 · Product overview</div>
+    <h2 class="cat-h2">Consistent metallurgical quality, cast to cast.</h2>
+    <p class="cat-body">
+      Banco Aluminium manufactures aluminium extrusion billets to the metallurgical specifications required
+      by precision extrusion operations worldwide. Our integrated facility (casting, homogenising, and
+      quality verification under one roof) gives downstream extruders a single, accountable source of supply.
+    </p>
+    <p class="cat-body">
+      The production sequence is engineered for consistency: ceramic foam filtration removes inclusions before
+      the melt reaches the caster; nitrogen degassing drives dissolved hydrogen to below the porosity threshold;
+      cylinder-guided Hot-Top casting controls skin thickness and surface roughness; and batch homogenising
+      completes the microstructural preparation for extrusion. Every step is monitored continuously under
+      SCADA, and every cast is verified by 100% Spectromax optical emission spectrometry.
+    </p>
+    <div class="cat-chips">
+      {['Cylinder-guided Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready documentation', 'Export-certified supply'].map(c => (
+        <span class="cat-chip">{c}</span>
+      ))}
+    </div>
+  </section>
+
+  <!-- Alloy composition table -->
+  <section class="cat-section cat-page-break">
+    <div class="cat-section-label">/ 02 · Standard alloy range: chemical composition (wt%)</div>
+    <h2 class="cat-h2">12 standard alloys. Custom compositions on request.</h2>
+    <div class="cat-table-scroll">
+      <table class="cat-table cat-table-alloy">
+        <thead>
+          <tr>
+            <th>Alloy</th>
+            <th>Si</th>
+            <th>Mg</th>
+            <th>Fe</th>
+            <th>Mn</th>
+            <th>Cu</th>
+            <th>Al</th>
+            <th>Primary application</th>
+          </tr>
+        </thead>
+        <tbody>
+          {alloys.map((a, i) => (
+            <tr class={i % 2 === 0 ? 'cat-row-even' : 'cat-row-odd'}>
+              <td class="cat-td-alloy">{a.alloy}</td>
+              <td class="cat-td-val">{a.si}</td>
+              <td class="cat-td-val">{a.mg}</td>
+              <td class="cat-td-val">{a.fe}</td>
+              <td class="cat-td-val">{a.mn}</td>
+              <td class="cat-td-val">{a.cu}</td>
+              <td class="cat-td-val">{a.al}</td>
+              <td class="cat-td-note-wide">{a.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="cat-footnote">
+      Full composition including Zn, Cr, Ti, and individual trace elements available in the product data
+      sheet. Additional alloys (1050A, 2011, 2017A, 2014, 6262, 6026) are produced to customer specification.
+      Contact the technical team.
+    </p>
+  </section>
+
+  <!-- Dimensions & tolerances -->
+  <section class="cat-section">
+    <div class="cat-section-label">/ 03 · Dimensions &amp; tolerances</div>
+    <h2 class="cat-h2">Five diameters, 5,800 mm standard length.</h2>
+    <div class="cat-two-col">
+      <div>
+        <div class="cat-col-label">Available diameters</div>
+        <table class="cat-table">
+          <thead>
+            <tr>
+              <th>Diameter</th>
+              <th>Inch</th>
+              <th>Typical application</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sizes.map((s, i) => (
+              <tr class={i % 2 === 0 ? 'cat-row-even' : 'cat-row-odd'}>
+                <td class="cat-td-dia">{s.dia}</td>
+                <td class="cat-td-green">{s.inch}</td>
+                <td class="cat-td-note">{s.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="cat-col-label">Dimensional tolerances</div>
+        <table class="cat-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Tolerance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tolerances.map((t, i) => (
+              <tr class={i % 2 === 0 ? 'cat-row-even' : 'cat-row-odd'}>
+                <td class="cat-td-key">{t.dim}</td>
+                <td class="cat-td-tol">{t.tol}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Production process -->
+  <section class="cat-section cat-page-break">
+    <div class="cat-section-label">/ 04 · Production process</div>
+    <h2 class="cat-h2">Four controlled stages from melt to billet.</h2>
+    <div class="cat-process-grid">
+      {process.map((step) => (
+        <div class="cat-process-cell">
+          <div class="cat-process-num">{step.num}</div>
+          <div class="cat-process-name">{step.name}</div>
+          <p class="cat-process-body">{step.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Quality assurance -->
+  <section class="cat-section">
+    <div class="cat-section-label">/ 05 · Quality assurance</div>
+    <h2 class="cat-h2">100% inspection at every stage.</h2>
+    <p class="cat-body">
+      Statistical sampling is not sufficient for extrusion-critical supply. Every billet is individually
+      inspected, tested, and linked to its cast record before leaving the Banco facility.
+    </p>
+    <div class="cat-qc-grid">
+      {qc.map((item) => (
+        <div class="cat-qc-cell">
+          <div class="cat-qc-stat">{item.stat}</div>
+          <div class="cat-qc-label">{item.label}</div>
+          <div class="cat-qc-sub">{item.sub}</div>
+        </div>
+      ))}
+    </div>
+    <div class="cat-packing">
+      <div class="cat-col-label">Packing &amp; identification</div>
+      <p class="cat-body" style="margin:8px 0 12px">
+        Billets are despatched in plastic-strapped bundles on runners dimensioned for forklift handling.
+        Each billet carries the alloy designation and cast number in a durable marking that survives
+        transport and storage. Full traceability to furnace batch, scrap inputs, and chemical certificate
+        is available on request.
+      </p>
+      <div class="cat-chips">
+        {['Plastic-strapped bundles', 'Forklift-ready runners', 'Alloy + cast number marking', 'Full batch traceability', 'Export-standard packing'].map(c => (
+          <span class="cat-chip">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability -->
+  <section class="cat-section cat-page-break">
+    <div class="cat-section-label">/ 06 · Sustainability &amp; green aluminium</div>
+    <h2 class="cat-h2">0.480 kgCO₂e per kg, verified quarterly.</h2>
+    <p class="cat-body">
+      Banco's carbon footprint for aluminium extrusion billets is independently measured and verified
+      quarterly by MITCON Consultancy Services under ISO 14064-1:2018 protocols. The figure of
+      0.480 kgCO₂e per kilogram represents Banco's emission intensity at full production capacity;
+      it ranks among the lowest in the Indian aluminium extrusion sector.
+    </p>
+    <p class="cat-body">
+      Green billets (produced with up to 95% recycled scrap input) are available on request with full
+      traceability of scrap origin and recycled content fraction. CBAM documentation for EU imports is
+      provided as standard on all export orders.
+    </p>
+    <div class="cat-green-grid">
+      {[
+        { n: '0.480', u: 'kgCO₂e/kg',  l: 'Carbon footprint at full capacity · ISO 14064-1' },
+        { n: '≤ 5%',  u: '',            l: 'Verified primary aluminium in green billet grade' },
+        { n: '960',   u: 'kW',          l: 'Captive solar generation on site' },
+        { n: '100%',  u: '',            l: 'Natural gas in melting, no coal energy input' },
+      ].map(({ n, u, l }) => (
+        <div class="cat-green-cell">
+          <div class="cat-green-n">{n}{u && <span class="cat-green-u"> {u}</span>}</div>
+          <div class="cat-green-l">{l}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="cat-section">
+    <div class="cat-section-label">/ 07 · Certifications</div>
+    <div class="cat-cert-row">
+      {certs.map(c => <span class="cat-cert">{c}</span>)}
+    </div>
+  </section>
+
+  <!-- Contact strip -->
+  <div class="cat-contact">
+    <div>
+      <div class="cat-contact-label">Supply enquiries &amp; quotations</div>
+      <div class="cat-contact-detail">commercial@bancoaluminium.com · bancoaluminium.com/contact</div>
+    </div>
+    <div>
+      <div class="cat-contact-label">Technical &amp; CBAM documentation</div>
+      <div class="cat-contact-detail">technical@bancoaluminium.com</div>
+    </div>
+    <div>
+      <div class="cat-contact-label">Head office</div>
+      <div class="cat-contact-detail">Vadodara, Gujarat, India · Est. 1967</div>
+    </div>
+  </div>
+
+</CatalogLayout>
+
+<style>
+  /* Shared styles */
+  .cat-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); margin: 32px 0 0; }
+  .cat-stat { background: var(--color-stone-50); padding: 16px 20px; }
+  .cat-stat-n { font-family: var(--font-sans); font-size: 18px; font-weight: 700; letter-spacing: -0.03em; color: var(--color-navy); }
+  .cat-stat-l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 4px; }
+
+  .cat-section { padding: 32px 0 0; border-top: 1px solid var(--color-stone-200); margin-top: 32px; }
+  .cat-section-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-green); margin-bottom: 8px; }
+  .cat-h2 { font-family: var(--font-sans); font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); margin: 0 0 16px; line-height: 1.15; }
+  .cat-body { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); margin: 0 0 12px; max-width: 80ch; }
+  .cat-footnote { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-stone-400); line-height: 1.6; margin-top: 12px; }
+
+  .cat-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cat-chip { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); border: 1px solid var(--color-stone-200); padding: 3px 8px; background: white; }
+
+  /* Alloy table */
+  .cat-table-scroll { overflow-x: auto; }
+  .cat-table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 12px; margin-top: 16px; border: 1px solid var(--color-stone-200); }
+  .cat-table-alloy { white-space: nowrap; }
+  .cat-table thead tr { background: var(--color-navy); }
+  .cat-table th { padding: 9px 12px; text-align: left; font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .cat-table th:last-child { border-right: none; }
+  .cat-row-even { background: var(--color-stone-50); }
+  .cat-row-odd  { background: white; }
+  .cat-table td { padding: 9px 12px; border-right: 1px solid var(--color-stone-200); border-bottom: 1px solid var(--color-stone-200); vertical-align: top; }
+  .cat-table td:last-child { border-right: none; }
+  .cat-td-alloy { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--color-navy); white-space: nowrap; }
+  .cat-td-val   { font-family: var(--font-mono); font-size: 10px; color: var(--color-stone-700); }
+  .cat-td-note  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--color-stone-400); }
+  .cat-td-note-wide { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--color-stone-400); white-space: normal; min-width: 180px; }
+  .cat-td-key   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); white-space: nowrap; font-weight: 500; }
+  .cat-td-dia   { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); white-space: nowrap; }
+  .cat-td-green { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--color-green); }
+  .cat-td-tol   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--color-stone-700); }
+
+  /* Two-column dimensions */
+  .cat-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cat-col-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+
+  /* Production process */
+  .cat-process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); margin-top: 16px; }
+  .cat-process-cell { background: var(--color-stone-50); padding: 20px; display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--color-green); }
+  .cat-process-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .cat-process-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); }
+  .cat-process-body { font-family: var(--font-sans); font-size: 12px; line-height: 1.65; color: var(--color-stone-700); margin: 0; }
+
+  /* Quality assurance */
+  .cat-qc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); margin-top: 16px; }
+  .cat-qc-cell { background: var(--color-navy-soft); padding: 16px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .cat-qc-stat  { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-platinum); line-height: 1; }
+  .cat-qc-label { font-family: var(--font-sans); font-size: 12px; font-weight: 600; color: var(--color-platinum); }
+  .cat-qc-sub   { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-nickel); line-height: 1.5; text-transform: uppercase; }
+
+  /* Packing */
+  .cat-packing { margin-top: 16px; padding: 16px 20px; background: var(--color-stone-50); border: 1px solid var(--color-stone-200); }
+
+  /* Green aluminium */
+  .cat-green-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); margin-top: 20px; }
+  .cat-green-cell { background: var(--color-navy-soft); padding: 18px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .cat-green-n { font-family: var(--font-sans); font-size: 20px; font-weight: 700; color: var(--color-platinum); line-height: 1; }
+  .cat-green-u { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--color-green); font-weight: 400; }
+  .cat-green-l { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.5; }
+
+  /* Certifications */
+  .cat-cert-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .cat-cert { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); border: 1px solid var(--color-navy-line); padding: 5px 12px; background: var(--color-stone-50); }
+
+  /* Contact strip */
+  .cat-contact { margin-top: 32px; padding: 20px 24px; background: var(--color-navy); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .cat-contact-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+  .cat-contact-detail { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--color-silver); line-height: 1.5; }
+
+  .cat-page-break { page-break-before: always; }
+
+  @media print {
+    .cat-stats { grid-template-columns: repeat(4, 1fr); }
+    .cat-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-qc-grid { grid-template-columns: repeat(5, 1fr); }
+    .cat-green-grid { grid-template-columns: repeat(4, 1fr); }
+    .cat-two-col { grid-template-columns: 1fr 1fr; }
+    .cat-contact { grid-template-columns: repeat(3, 1fr); }
+    .cat-section { break-inside: avoid; }
+    .cat-table tr { break-inside: avoid; }
+  }
+  @media (max-width: 760px) {
+    .cat-stats { grid-template-columns: 1fr 1fr; }
+    .cat-process-grid { grid-template-columns: 1fr; }
+    .cat-qc-grid { grid-template-columns: 1fr 1fr; }
+    .cat-green-grid { grid-template-columns: 1fr 1fr; }
+    .cat-two-col { grid-template-columns: 1fr; }
+    .cat-contact { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 // ── Alloy compositions — source: Banco Billets 2026 Product Catalogue ─────────
 const alloys = [
@@ -97,20 +98,19 @@ const certs = [
 ---
 
 <Layout
-  title="Banco Aluminium: aluminium extrusion billets and cast products"
-  description="Foundry-grade aluminium extrusion billets. 55,000 MT annual capacity. 11 standard alloys plus custom compositions. 127–254 mm diameters. Cylinder-guided Hot-Top casting. 0.480 kgCO₂e/kg, ISO 14064-1 verified. CBAM-ready."
+  title="Aluminium extrusion billets & cast products: Banco Aluminium"
+  description="Foundry-grade aluminium extrusion billets: 55,000 MT capacity, 11 standard alloys plus custom compositions, 127–254 mm diameters. CBAM-ready supply."
   image="/assets/manufacturing/aluminumbillets.avif"
   transparentNav={true}
 >
 
   <!-- ── Hero — full-bleed photo ───────────────────────────────────────────── -->
   <section class="c-hero">
-    <img
+    <Pic
       src="/assets/manufacturing/aluminumbillets.avif"
       alt="Aluminium extrusion billets from the Banco Aluminium foundry"
       class="c-hero-img"
-      loading="eager"
-    />
+      loading="eager" sizes="100vw" />
     <div class="c-hero-overlay" aria-hidden="true"></div>
     <div class="c-hero-content">
       <h1 class="c-h1">
@@ -166,7 +166,7 @@ const certs = [
       <!-- Right: image composition — 1 large + 2 small -->
       <div class="c-overview-right">
         <div class="c-ov-main">
-          <img src="/assets/manufacturing/billet-1.webp" alt="Finished aluminium extrusion billets from Banco Aluminium, Vadodara" loading="eager" />
+          <Pic src="/assets/manufacturing/billet-1.webp" alt="Finished aluminium extrusion billets from Banco Aluminium, Vadodara" loading="eager" sizes="100vw" />
           <div class="c-ov-main-caption">
             <span>Finished extrusion billets</span>
             <span class="c-ov-cap-note">Alloy-marked · 5,800 mm · SCADA traced</span>
@@ -174,11 +174,11 @@ const certs = [
         </div>
         <div class="c-ov-pair">
           <div class="c-ov-sm">
-            <img src="/assets/manufacturing/casting-2.webp" alt="Hot-Top casting station at Banco Aluminium" loading="lazy" />
+            <Pic src="/assets/manufacturing/casting-2.webp" alt="Hot-Top casting station at Banco Aluminium" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
             <span class="c-ov-sm-lbl">Hot-Top casting</span>
           </div>
           <div class="c-ov-sm">
-            <img src="/assets/manufacturing/homo-1.webp" alt="Banco Aluminium homogenising furnace" loading="lazy" />
+            <Pic src="/assets/manufacturing/homo-1.webp" alt="Banco Aluminium homogenising furnace" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
             <span class="c-ov-sm-lbl">Homogenising</span>
           </div>
         </div>
@@ -296,7 +296,7 @@ const certs = [
         {process.map((step) => (
           <div class="c-process-cell">
             <div class="c-proc-img">
-              <img src={step.photo} alt={step.name} loading="lazy" />
+              <Pic src={step.photo} alt={step.name} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
             </div>
             <div class="c-process-num">{step.num}</div>
             <h3 class="c-process-name">{step.name}</h3>
@@ -330,7 +330,7 @@ const certs = [
       <div class="c-packing">
         <div class="c-packing-inner">
           <div class="c-packing-img">
-            <img src="/assets/manufacturing/Labeling.webp" alt="Banco billet alloy and cast number labelling" loading="lazy" />
+            <Pic src="/assets/manufacturing/Labeling.webp" alt="Banco billet alloy and cast number labelling" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
           <div>
             <div class="c-table-label">Packing &amp; identification</div>
@@ -422,7 +422,7 @@ const certs = [
     align-items: flex-end;
     overflow: hidden;
   }
-  .c-hero-img {
+  :global(.c-hero-img) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -430,6 +430,7 @@ const certs = [
     object-fit: cover;
     object-position: center;
     display: block;
+    z-index: 0;
   }
   .c-hero-overlay {
     position: absolute;
@@ -440,6 +441,8 @@ const certs = [
       rgba(8,27,48,0.45) 50%,
       rgba(8,27,48,0.78) 100%
     );
+    z-index: 0;
+    pointer-events: none;
   }
   .c-hero-content {
     position: relative;
@@ -539,7 +542,7 @@ const certs = [
     border: 1px solid var(--color-stone-200);
     position: relative;
   }
-  .c-ov-main img {
+  .c-ov-main :global(img) {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
@@ -547,7 +550,7 @@ const certs = [
     filter: brightness(0.92) saturate(0.85);
     transition: transform 0.55s ease, filter 0.4s ease;
   }
-  .c-ov-main:hover img { transform: scale(1.03); filter: brightness(1) saturate(1); }
+  .c-ov-main:hover :global(img) { transform: scale(1.03); filter: brightness(1) saturate(1); }
   .c-ov-main-caption {
     display: flex;
     justify-content: space-between;
@@ -565,7 +568,7 @@ const certs = [
     font-size: 9px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     font-weight: 400;
   }
 
@@ -580,7 +583,7 @@ const certs = [
     border: 1px solid var(--color-stone-200);
     position: relative;
   }
-  .c-ov-sm img {
+  .c-ov-sm :global(img) {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
@@ -588,14 +591,14 @@ const certs = [
     filter: brightness(0.88) saturate(0.8);
     transition: transform 0.45s, filter 0.3s;
   }
-  .c-ov-sm:hover img { transform: scale(1.05); filter: brightness(0.96) saturate(1); }
+  .c-ov-sm:hover :global(img) { transform: scale(1.05); filter: brightness(0.96) saturate(1); }
   .c-ov-sm-lbl {
     display: block;
     font-family: var(--font-mono);
     font-size: 9px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     background: var(--color-stone-50);
     padding: 5px 8px;
     border-top: 1px solid var(--color-stone-200);
@@ -608,7 +611,7 @@ const certs = [
     overflow: hidden;
     border-bottom: 2px solid var(--color-green);
   }
-  .c-proc-img img {
+  .c-proc-img :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -616,7 +619,7 @@ const certs = [
     filter: brightness(0.82);
     transition: transform 0.45s ease, filter 0.3s ease;
   }
-  .c-process-cell:hover .c-proc-img img {
+  .c-process-cell:hover .c-proc-img :global(img) {
     transform: scale(1.05);
     filter: brightness(1);
   }
@@ -633,7 +636,7 @@ const certs = [
     aspect-ratio: 1;
     overflow: hidden;
   }
-  .c-strip-photo img {
+  .c-strip-photo :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -641,7 +644,7 @@ const certs = [
     filter: brightness(0.88);
     transition: transform 0.4s ease, filter 0.3s ease;
   }
-  .c-strip-photo:hover img { transform: scale(1.08); filter: brightness(1); }
+  .c-strip-photo:hover :global(img) { transform: scale(1.08); filter: brightness(1); }
 
   /* ── Global page padding tighter ──────────────────────────────────────── */
   .section-pad {
@@ -709,7 +712,7 @@ const certs = [
   }
   .c-cell-note {
     padding: 11px 16px;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     font-size: 10px;
     letter-spacing: 0.08em;
     white-space: normal;
@@ -722,7 +725,7 @@ const certs = [
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.1em;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     line-height: 1.6;
   }
   .c-table-footnote-std {
@@ -922,7 +925,7 @@ const certs = [
     border: 1px solid var(--color-navy-line);
     flex-shrink: 0;
   }
-  .c-packing-img img {
+  .c-packing-img :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -996,7 +999,7 @@ const certs = [
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-stone-400);
+    color: var(--color-stone-700);
     white-space: nowrap;
   }
   .c-cert-chips {
@@ -1050,14 +1053,14 @@ const certs = [
     background: var(--color-stone-200);
     border: 1px solid var(--color-stone-200);
   }
-  .c-photo img {
+  .c-photo :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
   }
-  .c-photo:hover img { transform: scale(1.04); }
+  .c-photo:hover :global(img) { transform: scale(1.04); }
 
   /* ── Responsive ────────────────────────────────────────────────────────── */
   @media (max-width: 1024px) {

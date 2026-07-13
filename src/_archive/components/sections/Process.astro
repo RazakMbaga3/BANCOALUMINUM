@@ -1,0 +1,103 @@
+---
+const steps = [
+  {
+    index: '01',
+    name: 'Billet casting',
+    desc: '1 × 40 MT + 2 × 12 MT melting furnaces. Nitrogen degassing, hot-top casting, 3 cylinder-guided casters.',
+    image: '/assets/manufacturing/billet-1.webp',
+    imageAlt: 'Banco aluminium billet casting process',
+  },
+  {
+    index: '02',
+    name: 'Die design & tooling',
+    desc: '3D solid modelling, Q-Form flow simulation, 5-axis CNC, EDM/wire EDM. In-house trial and correction.',
+    image: '/assets/manufacturing/casting-1.webp',
+    imageAlt: 'Die casting and tooling at Banco',
+  },
+  {
+    index: '03',
+    name: 'Extrusion',
+    desc: 'Five direct presses from 1,100 MT to 3,300 MT. Profile weight 0.29 – 35 kg/m. 35,000 MT annual output.',
+    image: '/assets/manufacturing/melting-3.webp',
+    imageAlt: 'Melting furnace for extrusion process',
+  },
+  {
+    index: '04',
+    name: 'Heat treatment',
+    desc: 'Air, water and mist quenching at press. 4 aging furnaces, 1 solutionising furnace. Controlled batch properties.',
+    image: '/assets/manufacturing/homo-2.webp',
+    imageAlt: 'Heat treatment and homogenization process',
+  },
+  {
+    index: '05',
+    name: 'Machining & fabrication',
+    desc: '3-axis, 4-axis and 5-axis VMC. Cutting, drilling, punching, tapping, milling, deburring. Reduced secondary job-work.',
+    image: '/assets/manufacturing/casting-5.webp',
+    imageAlt: 'Machining and fabrication operations',
+  },
+  {
+    index: '06',
+    name: 'Cold drawing',
+    desc: 'Rods up to 36 mm · Tubes up to 52 mm · Hex bars up to 20 mm. Tighter tolerances, improved dimensional accuracy.',
+    image: '/assets/manufacturing/ingot-1.webp',
+    imageAlt: 'Cold drawing and precision fabrication',
+  },
+  {
+    index: '07',
+    name: 'Surface finishing',
+    desc: 'Powder coating, anodising, sand-blast, brushed, mill finish. Partner-enabled with full quality pass-through.',
+    image: '/assets/manufacturing/quality-1.webp',
+    imageAlt: 'Quality control and surface finishing',
+  },
+  {
+    index: '08',
+    name: 'Packing & dispatch',
+    desc: 'Inspection records, customer-specific packing, export documentation, MES traceability from billet to dispatch.',
+    image: '/assets/manufacturing/Labeling.webp',
+    imageAlt: 'Product labeling and packing for dispatch',
+  },
+];
+---
+
+<section class="section-dark section-pad" aria-label="Manufacturing process">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:24px">
+      <div>
+        <div class="eyebrow on-dark">Integrated manufacturing</div>
+        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+          Billet to finished profile.<br/>
+          <em class="accent">Eight steps.</em> One plant.
+        </h2>
+      </div>
+      <p class="t-body" style="color:var(--color-stone-400);max-width:44ch">
+        Stronger control over alloy quality, dimensional accuracy, mechanical properties,
+        processing timelines and final product consistency.
+      </p>
+    </div>
+
+    <div class="process-grid-enhanced" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:24px;margin-bottom:48px">
+      {steps.map((s) => (
+        <div class="process-cell-enhanced" style="border:1px solid var(--color-navy-line);background:var(--color-navy-soft);overflow:hidden;transition:all 0.3s ease">
+          <div style="position:relative;width:100%;padding-top:66.67%;overflow:hidden;background:var(--color-navy-line)">
+            <img 
+              src={s.image} 
+              alt={s.imageAlt}
+              style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover"
+              loading="lazy"
+            />
+            <div style="position:absolute;top:12px;left:12px;background:var(--color-green);color:var(--color-stone-50);padding:8px 12px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.1em;border-radius:0">{s.index}</div>
+          </div>
+          <div style="padding:20px">
+            <div class="cell-name" style="font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--color-stone-50);margin-bottom:12px;line-height:1.2">{s.name}</div>
+            <p class="cell-desc" style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);line-height:1.55">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div style="margin-top:48px;display:flex;gap:16px;flex-wrap:wrap">
+      <a href="/capabilities" class="btn btn-secondary-dark">All capabilities</a>
+      <a href="/contact#quote" class="btn btn-primary-dark">Request a quote</a>
+    </div>
+  </div>
+</section>

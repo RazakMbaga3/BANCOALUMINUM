@@ -2,22 +2,87 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { optSrcset } from '../lib/img';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   transparentNav?: boolean;
+  /** Absolute path of this page's LCP hero image — emitted as a high-priority preload */
+  heroImage?: string;
+  /** Only the homepage hero uses the background video */
+  preloadVideo?: boolean;
 }
 
 const {
   title = 'Banco Aluminium: Integrated Aluminium Extrusion Solutions',
-  description = 'Banco Aluminium Private Limited is an integrated aluminium extrusion company established in 1967, with 35,000 MT annual capacity, 5 presses, and a full value chain from billet to finished profile. ISO 9001 · IATF 16949 · CE certified. Exports to Europe, North America, Asia-Pacific & Middle East.',
+  description = 'Banco Aluminium is an integrated aluminium extrusion company established in 1967. Industrial profiles, architectural systems and billets. 35,000 MT capacity.',
   image = '/og-image.jpg',
   transparentNav = false,
+  heroImage,
+  preloadVideo = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoaluminium.com');
+const SITE = Astro.site ?? new URL('https://bancoaluminium.com');
+const canonicalURL = new URL(Astro.url.pathname, SITE);
+const ogImageURL = new URL(image, SITE);
+
+/* ── Structured data ─────────────────────────────────────────── */
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Banco Aluminium Private Limited',
+  url: SITE.href,
+  logo: new URL('/banco-logo-light-480.webp', SITE).href,
+  foundingDate: '1967',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vadodara',
+    addressRegion: 'Gujarat',
+    addressCountry: 'IN',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'info@bancoaluminium.com',
+    availableLanguage: ['en'],
+  },
+};
+
+/* BreadcrumbList — only over crumbs that resolve to real pages */
+const SECTION_INDEXES: Record<string, string> = {
+  industries: 'Industries',
+  about: 'About',
+};
+const NAME_OVERRIDES: Record<string, string> = {
+  'pumps-motors': 'Pumps & motors',
+  'architectural': 'Architectural systems',
+};
+const prettify = (slug: string) =>
+  NAME_OVERRIDES[slug] ?? slug.replace(/-/g, ' ').replace(/^./, (c) => c.toUpperCase());
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+let breadcrumbLd: object | null = null;
+if (segments.length >= 2) {
+  const crumbs: { name: string; url?: string }[] = [{ name: 'Home', url: SITE.href }];
+  if (SECTION_INDEXES[segments[0]]) {
+    crumbs.push({ name: SECTION_INDEXES[segments[0]], url: new URL(`/${segments[0]}/`, SITE).href });
+  } else if (segments[0] === 'products' && segments.length === 3) {
+    crumbs.push({ name: prettify(segments[1]), url: new URL(`/products/${segments[1]}/`, SITE).href });
+  }
+  crumbs.push({ name: prettify(segments[segments.length - 1]) });
+  breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      ...(c.url ? { item: c.url } : {}),
+    })),
+  };
+}
 ---
 
 <!DOCTYPE html>
@@ -30,25 +95,50 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
 
   <!-- OG -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Banco Aluminium" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
+  <meta property="og:image" content={ogImageURL} />
+  {image === '/og-image.jpg' && (
+    <>
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Banco Aluminium wordmark on a navy field" />
+    </>
+  )}
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
 
-  <!-- Fonts: preconnect first, then load -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+  {breadcrumbLd && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
+
+  <!-- Fonts: self-hosted latin-subset variable woff2, declared in global.css -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-var-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-var-latin.woff2" crossorigin />
 
   <!-- Favicon + sitemap -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#0E2A47" />
   <link rel="sitemap" href="/sitemap.xml" />
 
-  <!-- Preload hero video for faster LCP on homepage -->
-  <link rel="preload" as="video" href="/herovideo.mp4" type="video/mp4" fetchpriority="low" />
+  {preloadVideo && <link rel="preload" as="video" href="/herovideo-720.mp4" type="video/mp4" fetchpriority="low" />}
+  {heroImage && (
+    <link
+      rel="preload"
+      as="image"
+      href={heroImage}
+      imagesrcset={optSrcset(heroImage, 'avif')}
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  )}
 
   <title>{title}</title>
 </head>
@@ -61,6 +151,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://bancoalu
   <Footer />
 
 <script>
+  // Re-anchor the URL fragment after load — late-loading media above the
+  // target can shift it away from where the browser first scrolled to.
+  window.addEventListener('load', () => {
+    if (!location.hash) return;
+    const el = document.getElementById(location.hash.slice(1));
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight * 0.8) el.scrollIntoView();
+  });
+
   // Scroll-reveal via IntersectionObserver
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => {

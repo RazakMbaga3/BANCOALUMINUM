@@ -1,0 +1,57 @@
+---
+/**
+ * Responsive <picture> over the pre-generated AVIF/WebP variants
+ * (scripts/optimize-images.mjs). The original file stays as the <img> fallback.
+ * `picture { display: contents }` in global.css keeps layout identical to a bare <img>.
+ */
+import { optSrcset } from '../lib/img';
+
+interface Props {
+  src: string;
+  alt: string;
+  /** sizes attribute — default full-bleed */
+  sizes?: string;
+  /** cap the largest generated width offered (e.g. 768 for thumbnails) */
+  maxW?: number;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  style?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  src,
+  alt,
+  sizes = '100vw',
+  maxW = 1920,
+  loading = 'lazy',
+  fetchpriority,
+  decoding = 'async',
+  class: className,
+  style,
+  width,
+  height,
+} = Astro.props;
+
+const avifSet = optSrcset(src, 'avif', maxW);
+const webpSet = optSrcset(src, 'webp', maxW);
+---
+
+<picture>
+  {avifSet && <source type="image/avif" srcset={avifSet} sizes={sizes} />}
+  {webpSet && <source type="image/webp" srcset={webpSet} sizes={sizes} />}
+  <img
+    src={src}
+    alt={alt}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    class={className}
+    style={style}
+    width={width}
+    height={height}
+  />
+</picture>

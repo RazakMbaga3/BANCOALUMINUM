@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+import IndustryHero from '../../components/IndustryHero.astro';
 
 const profiles = [
   { name: 'Curtain wall mullion profiles', desc: 'Thermally broken and non-thermal curtain wall vertical and horizontal member extrusions, compatible with standard European DGU cassette widths and full-height glazing systems.' },
@@ -19,40 +21,28 @@ const alloys = [
 
 <Layout
   title="Building & construction: Banco Aluminium"
-  description="Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim, and partition extrusions in Class 20 anodised or QUALICOAT powder coated finishes."
+  description="Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim and partitions in Class 20 anodised or QUALICOAT coated finishes."
+  heroImage="/assets/industries/hero/building-hero.jpg"
 >
   <!-- Hero -->
-  <section style="background:var(--color-navy);padding-top:148px;padding-bottom:0">
-    <div class="container">
-      <div class="eyebrow on-dark">Industries / Building</div>
-      <h1 class="t-h1" style="color:var(--color-stone-50);margin-top:20px;max-width:20ch">
-        Building &amp; construction profiles.
-      </h1>
-      <p class="t-lead" style="color:var(--color-stone-400);margin-top:24px;max-width:58ch">
-        Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim, and partition extrusions in Class 20 anodised or QUALICOAT powder coated finishes.
-      </p>
-
-      <!-- Stats strip -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--color-navy-line);margin-top:56px;border-top:1px solid var(--color-navy-line)">
-        {[
-          ['QUALICOAT certified', 'Powder coating quality'],
-          ['Class 20 anodising', 'In-house oxide treatment'],
-          ['6063 · 6082 alloys', 'Architectural & structural'],
-          ['EN 14351-1', 'Window & door standard'],
-        ].map(([val, label]) => (
-          <div style="background:var(--color-navy-soft);padding:28px 24px">
-            <div style="font-family:var(--font-display);font-size:clamp(13px,1.7vw,20px);font-weight:700;color:var(--color-stone-50)">{val}</div>
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel);margin-top:6px">{label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <IndustryHero
+    image="/assets/industries/hero/building-hero.jpg"
+    eyebrow="Industries / Building"
+    stats={[
+    ['QUALICOAT certified', 'Powder coating quality'],
+    ['Class 20 anodising', 'In-house oxide treatment'],
+    ['6063 · 6082 alloys', 'Architectural & structural'],
+    ['EN 14351-1', 'Window & door standard'],
+    ]}
+  >
+    <Fragment slot="h1">Building &amp; construction profiles.</Fragment>
+    <Fragment slot="lead">Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim, and partition extrusions in Class 20 anodised or QUALICOAT powder coated finishes.</Fragment>
+  </IndustryHero>
 
   <!-- Section 01: Application overview -->
   <section class="section-light section-pad">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div class="ind-split">
         <div>
           <div class="eyebrow">01 · Application overview</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
@@ -82,14 +72,13 @@ const alloys = [
         </div>
 
         <div style="position:relative">
-          <img
+          <Pic
             src="/assets/industries/building.jpg"
             alt="Modern glass curtain wall building, showing an aluminium structural glazing system"
             loading="lazy"
-            style="width:100%;aspect-ratio:4/3;object-fit:cover"
-          />
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:var(--color-navy-deep)">
-            <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-nickel)">
+            class="ind-photo" sizes="(max-width: 1024px) 100vw, 60vw" />
+          <div class="ind-caption">
+            <span class="ind-caption-t">
               6063 homogenisation: consistent billet structure for smooth anodising quality
             </span>
           </div>
@@ -105,12 +94,12 @@ const alloys = [
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Six profile families for building and construction.
       </h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--color-stone-200);margin-top:40px">
+      <div class="ind-tiles mt-10">
         {profiles.map(p => (
-          <div style="background:var(--color-stone-50);padding:32px 28px">
-            <div style="width:2px;height:24px;background:var(--color-green);margin-bottom:16px"></div>
-            <h3 style="font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-navy);line-height:1.3">{p.name}</h3>
-            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:10px">{p.desc}</p>
+          <div class="ind-tile">
+            <div class="ind-tick"></div>
+            <h3 class="ind-tile-h">{p.name}</h3>
+            <p class="ind-tile-p">{p.desc}</p>
           </div>
         ))}
       </div>
@@ -124,12 +113,12 @@ const alloys = [
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Alloy selection for architectural applications.
       </h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px">
+      <div class="ind-cards cols-3 mt-10">
         {alloys.map(a => (
-          <div style="border:1px solid var(--color-stone-200);padding:32px 28px">
-            <div style="font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--color-navy)">{a.name}</div>
-            <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-green);margin-top:6px">{a.temper}</div>
-            <p style="font-size:14px;color:var(--color-stone-700);line-height:1.6;margin-top:16px">{a.why}</p>
+          <div class="ind-card">
+            <div class="ind-card-n">{a.name}</div>
+            <div class="ind-card-t">{a.temper}</div>
+            <p class="ind-card-p">{a.why}</p>
           </div>
         ))}
       </div>
@@ -139,7 +128,7 @@ const alloys = [
   <!-- Section 04: Quality -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div class="ind-split">
         <div>
           <div class="eyebrow">04 · Quality &amp; certifications</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
@@ -153,16 +142,16 @@ const alloys = [
             covers structural profile supply to the European market.
           </p>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="ind-certs">
           {[
             ['QUALICOAT', 'Powder coating certification'],
             ['Class 20 anodising', 'Oxide thickness 20 µm min'],
             ['CE marked', 'EN 15088 structural profiles'],
             ['IS 733 / IS 1285', 'Bureau of Indian Standards'],
           ].map(([cert, scope]) => (
-            <div style="border-left:2px solid var(--color-green);padding-left:16px">
-              <div style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--color-navy)">{cert}</div>
-              <div style="font-size:13px;color:var(--color-stone-700);margin-top:4px">{scope}</div>
+            <div class="ind-cert">
+              <div class="ind-cert-c">{cert}</div>
+              <div class="ind-cert-s">{scope}</div>
             </div>
           ))}
         </div>

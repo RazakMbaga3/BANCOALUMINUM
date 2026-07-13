@@ -1,0 +1,45 @@
+---
+/**
+ * Shared hero for the 12 /industries/* sector pages.
+ * Pure extraction of the previously duplicated `ind-hero` block —
+ * markup and classes are identical to the inline original.
+ */
+import { optSrcset } from '../lib/img';
+
+interface Props {
+  /** Absolute public path of the hero photograph (also passed to Layout's heroImage preload) */
+  image: string;
+  /** Breadcrumb-style eyebrow, e.g. "Industries / Railways" */
+  eyebrow: string;
+  /** Four [value, label] pairs for the stats strip */
+  stats: readonly (readonly [string, string])[];
+}
+const { image, eyebrow, stats } = Astro.props;
+---
+
+<section class="ind-hero">
+  <div class="ind-hero-bg" aria-hidden="true">
+    <picture>
+      <source type="image/avif" srcset={optSrcset(image, 'avif')} sizes="100vw" />
+      <source type="image/webp" srcset={optSrcset(image, 'webp')} sizes="100vw" />
+      <img src={image} alt="" loading="eager" fetchpriority="high" class="ind-hero-img" />
+    </picture>
+    <div class="ind-hero-scrim"></div>
+    <div class="ind-hero-grad"></div>
+  </div>
+  <div class="container ind-hero-body">
+    <div class="eyebrow on-dark">{eyebrow}</div>
+    <h1 class="t-h1 ind-hero-h1"><slot name="h1" /></h1>
+    <p class="t-lead ind-hero-lead"><slot name="lead" /></p>
+
+    <!-- Stats strip -->
+    <div class="ind-hero-stats">
+      {stats.map(([val, label]) => (
+        <div class="ind-stat">
+          <div class="ind-stat-v">{val}</div>
+          <div class="ind-stat-l">{label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

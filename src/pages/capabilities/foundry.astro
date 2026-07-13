@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const alloyFamilies = [
   {
@@ -44,15 +45,15 @@ const alloyData = [
 
 <Layout
   title="Alloys | Foundry & Alloy Development | Banco Aluminium"
-  description="In-house foundry producing 55,000 MT/year. Hard alloys, lead-free machining grades, and soft/medium alloys across 1xxx–7xxx series. Custom alloy development and special compositions available."
+  description="In-house foundry producing 55,000 MT per year: hard alloys, lead-free machining grades and soft alloys across 1xxx–7xxx series, plus custom compositions."
   transparentNav={true}
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
@@ -178,7 +179,7 @@ const alloyData = [
         ].map(([num, name, photo, desc]) => (
           <div class="fnd-proc-cell">
             <div class="fnd-proc-img">
-              <img src={photo} alt={name} loading="lazy" />
+              <Pic src={photo} alt={name} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
             </div>
             <div class="fnd-proc-num">{num}</div>
             <h3 class="fnd-proc-name">{name}</h3>
@@ -252,11 +253,11 @@ const alloyData = [
   .fnd-family-card { background: var(--color-stone-50); padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
   .fnd-fam-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .fnd-fam-title { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-navy); }
-  .fnd-fam-sub   { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); }
+  .fnd-fam-sub   { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
   .fnd-fam-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
   .fnd-fam-grades { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 12px; border-top: 1px solid var(--color-stone-200); }
   .fnd-grade { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-navy); background: white; border: 1px solid var(--color-stone-200); padding: 3px 8px; }
-  .fnd-fam-series { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-400); }
+  .fnd-fam-series { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
   .fnd-fam-apps { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
   .fnd-app { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 2px 7px; }
 

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 // ── Performance categories ────────────────────────────────────────────────────
 const performance = [
@@ -109,6 +110,19 @@ const partnerCols = [
   },
 ];
 
+// ── Structured data: the five architectural system families ──────────────────
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Banco Aluminium architectural systems',
+  itemListElement: systems.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.label,
+    url: `https://bancoaluminium.com${s.href}/`,
+  })),
+};
+
 // ── Gallery photos ────────────────────────────────────────────────────────────
 const galleryPhotos = [
   '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
@@ -122,11 +136,12 @@ const galleryPhotos = [
 ---
 
 <Layout
-  title="Banco Aluminium: architectural aluminium systems for windows, doors and façades"
-  description="Precision-engineered aluminium window, door, façade and architectural profile systems for residential, commercial and institutional projects. EN 14351-1 tested. In-house extrusion, Vadodara."
+  title="Architectural aluminium systems: Banco Aluminium"
+  description="Precision-engineered aluminium window, door, façade and profile systems for residential, commercial and institutional projects. EN 14351-1 tested."
   image="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
   transparentNav={true}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
 
   <!-- ══════════════════════════════════════════════════════════
        01 · HERO — FULL-BLEED SINGLE IMAGE
@@ -135,13 +150,12 @@ const galleryPhotos = [
 
     <!-- Background image with Ken Burns -->
     <div class="ah-bg" aria-hidden="true">
-      <img
+      <Pic
         src="/assets/images/architectureheropage/blog_thumb_1760685500.webp"
         alt=""
         class="ah-bg-img"
         loading="eager"
-        fetchpriority="high"
-      />
+        fetchpriority="high" sizes="100vw" />
     </div>
 
     <!-- Layered overlays: base scrim + directional gradient -->
@@ -189,7 +203,7 @@ const galleryPhotos = [
             '/assets/images/architectureheropage/Large-apartment-louvres.jpg',
           ].map((src, i) => (
             <div class="ah-thumb" style={`animation-delay:${i * 0.15}s`}>
-              <img src={src} alt="" loading="lazy" />
+              <Pic src={src} alt="" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
             </div>
           ))}
         </div>
@@ -236,7 +250,7 @@ const galleryPhotos = [
         {systems.map((sys) => (
           <a href={sys.href} class="arc-sys-card">
             <div class="arc-sys-card-bg" aria-hidden="true">
-              <img src={sys.img} alt="" loading="lazy" />
+              <Pic src={sys.img} alt="" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
             </div>
             <div class="arc-sys-card-scrim" aria-hidden="true"></div>
             <div class="arc-sys-card-body">
@@ -276,7 +290,7 @@ const galleryPhotos = [
         {environments.map((env) => (
           <div class="arc-env-item">
             <div class="arc-env-img">
-              <img src={env.img} alt={env.label} loading="lazy" />
+              <Pic src={env.img} alt={env.label} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
             </div>
             <span class="arc-env-label">{env.label}</span>
           </div>
@@ -316,11 +330,10 @@ const galleryPhotos = [
           </div>
         </div>
         <div class="arc-intro-visual" data-reveal="right">
-          <img
+          <Pic
             src="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
             alt="Banco Aluminium architectural profile cross-section"
-            loading="lazy"
-          />
+            loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
       </div>
     </div>
@@ -383,11 +396,10 @@ const galleryPhotos = [
           </div>
         </div>
         <div class="arc-contemp-visual" data-reveal="right">
-          <img
+          <Pic
             src="/assets/images/architectureheropage/Large-apartment-louvres.jpg"
             alt="Contemporary aluminium architectural building by Banco"
-            loading="lazy"
-          />
+            loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
       </div>
     </div>
@@ -399,7 +411,7 @@ const galleryPhotos = [
   <div class="a-gallery-bleed">
     {galleryPhotos.map((src, i) => (
       <div class="a-photo">
-        <img src={src} alt={`Banco architectural project ${i + 1}`} loading="lazy" />
+        <Pic src={src} alt={`Banco architectural project ${i + 1}`} loading="lazy" sizes="(max-width: 640px) 100vw, 33vw" maxW={1200} />
       </div>
     ))}
   </div>
@@ -451,7 +463,7 @@ const galleryPhotos = [
   ══════════════════════════════════════════════════════════════ -->
   <section class="a-split">
     <div class="a-split-visual">
-      <img src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco in-house aluminium extrusion in Vadodara" loading="lazy" />
+      <Pic src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco in-house aluminium extrusion in Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
     </div>
     <div class="a-split-body" style="background:var(--color-navy)">
       <div class="eyebrow on-dark">Manufacturing platform</div>

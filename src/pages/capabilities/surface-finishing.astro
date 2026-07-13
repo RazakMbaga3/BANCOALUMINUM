@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const finishes = [
   {
@@ -80,15 +81,15 @@ const advantages = [
 
 <Layout
   title="Surface finishing | Banco Aluminium"
-  description="Five surface finishes. QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish. Full RAL and NCS colour range. In-house from extrusion to finished profile."
+  description="Five surface finishes: QUALICOAT powder coating, Class 20 anodising, brushed, sand blast and mill finish across the full RAL and NCS colour range."
   transparentNav={true}
 >
 
   <!-- ── HERO — compact 68vh ───────────────────────────────── -->
   <section class="sf-hero">
     <div class="sf-hero-media" aria-hidden="true">
-      <video class="sf-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="sf-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="sf-hero-scrim"></div>
       <div class="sf-hero-grad"></div>
@@ -166,9 +167,9 @@ const advantages = [
           </p>
         </div>
         <div class="sf-tc-photo">
-          <img src="/assets/manufacturing/surface-finishing.webp"
+          <Pic src="/assets/manufacturing/surface-finishing.webp"
                alt="Anodised aluminium profiles at Banco surface finishing"
-               loading="lazy" />
+               loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
         <div class="sf-tc-table">
           {anodSpecs.map(([k, v]) => (
@@ -358,7 +359,7 @@ const advantages = [
   }
   .sf-sc-colour {
     font-family: var(--font-mono); font-size: 8.5px;
-    letter-spacing: 0.08em; color: var(--color-stone-400);
+    letter-spacing: 0.08em; color: var(--color-stone-700);
     text-align: right; line-height: 1.4; max-width: 14ch;
   }
   .sf-sc-name {
@@ -368,7 +369,7 @@ const advantages = [
   .sf-sc-spec {
     font-family: var(--font-mono); font-size: 9px;
     letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--color-stone-400); line-height: 1.5;
+    color: var(--color-stone-700); line-height: 1.5;
   }
   .sf-sc-desc {
     font-size: 12.5px; line-height: 1.62;

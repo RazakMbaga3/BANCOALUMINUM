@@ -1,15 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Pic from '../components/Pic.astro';
+
+const localBusinessLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Banco Aluminium Private Limited',
+  url: 'https://bancoaluminium.com/contact/',
+  image: 'https://bancoaluminium.com/og-image.jpg',
+  email: 'info@bancoaluminium.com',
+  foundingDate: '1967',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vadodara',
+    addressRegion: 'Gujarat',
+    addressCountry: 'IN',
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: 'info@bancoaluminium.com',
+      areaServed: ['IN', 'EU', 'US', 'AE'],
+      availableLanguage: ['en'],
+    },
+  ],
+};
 ---
 
 <Layout
   title="Request a Quote from Banco Aluminium"
-  description="Request a quote, download brochure, or schedule a plant visit. Banco Aluminium Pvt. Ltd., Vadodara, Gujarat, India. Exporting to Europe, North America, Asia-Pacific, Middle East."
+  description="Request a quote, send a drawing or schedule a plant visit. Banco Aluminium, Vadodara, India, exporting to Europe, North America, APAC and the Middle East."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessLd)} />
+
   <!-- Hero -->
   <section class="ct-hero">
     <div class="ct-hero-bg" aria-hidden="true">
-      <img src="/assets/manufacturing/industrialOEMS.webp" alt="" loading="eager" />
+      <Pic src="/assets/manufacturing/industrialOEMS.webp" alt="" loading="eager" sizes="100vw" />
     </div>
     <div class="ct-hero-overlay" aria-hidden="true"></div>
     <div class="container" style="position:relative;z-index:2">
@@ -54,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Forms + info -->
   <section class="section-light section-pad">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:80px;align-items:start">
+      <div class="ct-split">
 
         <!-- Quote form -->
         <div id="quote">
@@ -69,7 +97,6 @@ import Layout from '../layouts/Layout.astro';
             action="/contact/success"
             enctype="multipart/form-data"
             class="cform"
-            novalidate
           >
             <!-- Netlify / static host honeypot field -->
             <input type="hidden" name="form-name" value="quote-request" />
@@ -187,7 +214,7 @@ import Layout from '../layouts/Layout.astro';
               ['Response time', '≤ 1 business day'],
             ].map(([label, value]) => (
               <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:12px;padding:14px 16px;border-bottom:1px solid var(--color-stone-200);background:var(--color-stone-50)">
-                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-400)">{label}</div>
+                <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-stone-700)">{label}</div>
                 <div style="font-size:13px;color:var(--color-navy)">{value}</div>
               </div>
             ))}
@@ -307,14 +334,24 @@ import Layout from '../layouts/Layout.astro';
     border: 1px solid var(--color-navy-line);
   }
 
+  /* ── Form + info split ── */
+  .ct-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: start;
+  }
+
   /* ── Form padding override ── */
   .section-pad { padding: clamp(48px, 7vw, 80px) 0; }
 
+  @media (max-width: 1024px) {
+    .ct-split { grid-template-columns: 1fr; gap: 56px; }
+  }
   @media (max-width: 900px) {
     .ct-steps { grid-template-columns: 1fr; max-width: 420px; }
   }
   @media (max-width: 640px) {
     .ct-cert-inner { gap: 10px; }
-    .ct-cert:nth-child(n+5) { display: none; }
   }
 </style>

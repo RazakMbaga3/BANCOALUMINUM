@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const sections = [
   { id: '01', type: 'Equal angle',              desc: 'Equal legs, 20×20 to 100×100 mm. Structural and fabrication use.',    alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
@@ -61,16 +62,15 @@ const alloys = [
 
 <Layout
   title="Standard sections: Banco Aluminium"
-  description="Standard aluminium sections to IS 733 and IS 1285. Equal angles, channels, T-sections, flat bar, round bar, RHS, SHS, and round tube in 6063-T6, 6082-T6, and 6061-T6. Mill finish or anodised."
+  description="Standard aluminium sections to IS 733 and IS 1285: angles, channels, T-sections, flat bar, RHS, SHS and round tube in 6063, 6082 and 6061 tempers."
 >
 
   <section class="ss-hero">
-    <img
+    <Pic
       src="/assets/manufacturing/billet-1.webp"
       alt="Banco Aluminium finished extrusion billets and standard sections"
       class="ss-hero-img"
-      loading="eager"
-    />
+      loading="eager" sizes="100vw" />
     <div class="ss-hero-scrim" aria-hidden="true"></div>
     <div class="container">
       <div class="eyebrow on-dark">Products / Standard sections</div>
@@ -272,7 +272,7 @@ const alloys = [
     background: repeating-linear-gradient(90deg, transparent 0, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px);
     pointer-events: none;
   }
-  .ss-hero-img {
+  :global(.ss-hero-img) {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -302,7 +302,7 @@ const alloys = [
   .ss-sec-type { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); line-height: 1.2; }
   .ss-sec-desc { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-700); flex: 1; }
   .ss-sec-footer { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; border-top: 1px solid var(--color-stone-200); padding-top: 8px; }
-  .ss-sec-alloy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-stone-400); }
+  .ss-sec-alloy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-stone-700); }
   .ss-sec-std   { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); }
 
   .ss-alloy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
@@ -312,7 +312,7 @@ const alloys = [
   .ss-alloy-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .ss-prop { background: rgba(255,255,255,0.04); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
   .ss-prop-val   { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--color-platinum); }
-  .ss-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ss-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-silver); }
   .ss-alloy-uses { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-silver); }
   .ss-alloy-attrs { border-top: 1px solid var(--color-navy-line); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; }
   .ss-attr { display: flex; justify-content: space-between; gap: 8px; }

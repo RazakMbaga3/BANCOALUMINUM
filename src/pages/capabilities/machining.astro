@@ -20,8 +20,8 @@ const operations = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata">
-        <source src="/herovideo.mp4" type="video/mp4" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
       </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
@@ -219,7 +219,7 @@ const operations = [
   .fab-tol-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .fab-tol-table { border-top: 1px solid var(--color-stone-200); }
   .fab-trow { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .fab-tkey { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-400); flex-shrink: 0; }
+  .fab-tkey { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .fab-tval { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
 
   @media (max-width: 1024px) {

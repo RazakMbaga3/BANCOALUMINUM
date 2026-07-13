@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { optSrcset } from '../../lib/img';
 
 const departments = [
   { id: '01', name: 'Manufacturing',  icon: '⚙', desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
@@ -25,6 +26,7 @@ const whyPoints = [
   title="Careers at Banco Aluminium"
   description="Build your career at Banco Aluminium: 58 years of family-owned aluminium manufacturing heritage, with roles from foundry engineering to sales and logistics."
   transparentNav={true}
+  heroImage="/assets/images/people/worker1.png"
 >
 
   <!-- ══════════════════════════════════════════
@@ -32,9 +34,11 @@ const whyPoints = [
        ══════════════════════════════════════════ -->
   <section class="ca-hero">
     <div class="ca-hero-media" aria-hidden="true">
-      <video class="ca-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <picture>
+        <source type="image/avif" srcset={optSrcset('/assets/images/people/worker1.png', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/images/people/worker1.png', 'webp')} sizes="100vw" />
+        <img src="/assets/images/people/worker1.png" alt="" loading="eager" fetchpriority="high" class="ca-hero-vid" />
+      </picture>
       <div class="ca-hero-scrim"></div>
       <div class="ca-hero-grad"></div>
     </div>
@@ -304,7 +308,7 @@ const whyPoints = [
     min-height: 90vh; display: flex; align-items: center; overflow: hidden;
   }
   .ca-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .ca-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  .ca-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 20%; }
   .ca-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.60); }
   .ca-hero-grad {
     position: absolute; inset: 0;
@@ -448,7 +452,6 @@ const whyPoints = [
     .ca-cta-btns    { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .ca-hero-vid    { display: none; }
     .ca-hero-grad   { background: rgba(6,21,37,0.88); }
     .ca-scroll-cue  { display: none; }
     .ca-dept-grid   { grid-template-columns: 1fr 1fr; }
@@ -456,12 +459,6 @@ const whyPoints = [
     .ca-why-layout  { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ca-hero-vid { display: none; }
     .ca-scroll-line { animation: none; opacity: 0.5; }
   }
 </style>
-
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.ca-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>

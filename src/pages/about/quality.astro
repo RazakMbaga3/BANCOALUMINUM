@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { optSrcset } from '../../lib/img';
 
 const certs = [
   { code: 'ISO 9001:2015',    title: 'Quality Management System',        desc: 'End-to-end quality management from billet casting to finished profile. Stage-wise inspection, MES-ERP integration, SCADA traceability.' },
@@ -38,16 +39,19 @@ const pipeline = [
   title="Quality & certifications: Banco Aluminium"
   description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
   transparentNav={true}
+  heroImage="/assets/images/people/quality-check.png"
 >
 
   <!-- ══════════════════════════════════════════
-       HERO — video background
+       HERO — photo background
        ══════════════════════════════════════════ -->
   <section class="qp-hero">
     <div class="qp-hero-media" aria-hidden="true">
-      <video class="qp-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <picture>
+        <source type="image/avif" srcset={optSrcset('/assets/images/people/quality-check.png', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/images/people/quality-check.png', 'webp')} sizes="100vw" />
+        <img src="/assets/images/people/quality-check.png" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
+      </picture>
       <div class="qp-hero-scrim"></div>
       <div class="qp-hero-grad"></div>
     </div>
@@ -251,7 +255,7 @@ const pipeline = [
   .qp-hero-vid {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: center 40%;
+    object-fit: cover; object-position: 72% 30%;
   }
   .qp-hero-scrim {
     position: absolute; inset: 0;
@@ -491,7 +495,6 @@ const pipeline = [
     .qp-cta-btns   { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .qp-hero-vid   { display: none; }
     .qp-hero-grad  { background: rgba(6,21,37,0.88); }
     .qp-scroll-cue { display: none; }
     .qp-pipeline   { grid-template-columns: repeat(2, 1fr); }
@@ -501,12 +504,6 @@ const pipeline = [
     .qp-pipe-arrow { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .qp-hero-vid { display: none; }
     .qp-scroll-line { animation: none; opacity: 0.5; }
   }
 </style>
-
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.qp-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>

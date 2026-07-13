@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
+import { optSrcset } from '../../lib/img';
 
 const milestones = [
   { year: '1967', event: 'Founded in Vadodara, Gujarat by the Thakkar family' },
@@ -44,16 +45,19 @@ const testimonials = [
   title="About Banco Aluminium: established 1967"
   description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT capacity, 900+ customers worldwide."
   transparentNav={true}
+  heroImage="/assets/images/people/group-discussing.png"
 >
 
   <!-- ══════════════════════════════════════════════════════════
-       HERO — full-viewport video
+       HERO — full-viewport photo
        ══════════════════════════════════════════════════════════ -->
   <section class="ab-hero">
     <div class="ab-hero-media" aria-hidden="true">
-      <video class="ab-hero-video" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <picture>
+        <source type="image/avif" srcset={optSrcset('/assets/images/people/group-discussing.png', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/images/people/group-discussing.png', 'webp')} sizes="100vw" />
+        <img src="/assets/images/people/group-discussing.png" alt="" loading="eager" fetchpriority="high" class="ab-hero-video" />
+      </picture>
       <div class="ab-hero-scrim"></div>
       <div class="ab-hero-grad"></div>
     </div>
@@ -1099,7 +1103,6 @@ const testimonials = [
     .ab-why-grid      { grid-template-columns: 1fr 1fr; }
     .ab-story-photos  { grid-template-columns: 1fr; }
     .ab-hero-body     { padding-top: 110px; }
-    .ab-hero-video    { display: none; }
     .ab-hero-grad     { background: rgba(6,21,37,0.85); }
     .ab-vwin-vid      { display: none; }
     .ab-vwin-overlay  { background: var(--color-navy); }
@@ -1108,7 +1111,7 @@ const testimonials = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ab-hero-video, .ab-vwin-vid { display: none; }
+    .ab-vwin-vid { display: none; }
     .ab-scroll-line    { animation: none; opacity: 0.5; }
     .ab-logos-track    { animation: none; }
   }
@@ -1116,7 +1119,7 @@ const testimonials = [
 
 <script>
   /* Pause videos on hidden tab */
-  const vids = document.querySelectorAll<HTMLVideoElement>('.ab-hero-video, .ab-vwin-vid');
+  const vids = document.querySelectorAll<HTMLVideoElement>('.ab-vwin-vid');
   document.addEventListener('visibilitychange', () => {
     vids.forEach(v => document.hidden ? v.pause() : v.play().catch(() => {}));
   });

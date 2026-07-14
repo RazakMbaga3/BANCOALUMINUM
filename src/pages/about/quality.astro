@@ -39,7 +39,7 @@ const pipeline = [
   title="Quality & certifications: Banco Aluminium"
   description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
   transparentNav={true}
-  heroImage="/assets/images/people/quality-check.png"
+  heroImage="/assets/images/people/hero3.png"
 >
 
   <!-- ══════════════════════════════════════════
@@ -48,9 +48,9 @@ const pipeline = [
   <section class="qp-hero">
     <div class="qp-hero-media" aria-hidden="true">
       <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/images/people/quality-check.png', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/images/people/quality-check.png', 'webp')} sizes="100vw" />
-        <img src="/assets/images/people/quality-check.png" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
+        <source type="image/avif" srcset={optSrcset('/assets/images/people/hero3.png', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/images/people/hero3.png', 'webp')} sizes="100vw" />
+        <img src="/assets/images/people/hero3.png" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
       </picture>
       <div class="qp-hero-scrim"></div>
       <div class="qp-hero-grad"></div>
@@ -165,10 +165,19 @@ const pipeline = [
   <section class="section-dark section-pad">
     <div class="container">
       <div class="qp-tools-head" data-reveal="left">
-        <div class="eyebrow on-dark">Quality systems</div>
-        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
-          Measurement at<br/><em class="accent">every step.</em>
-        </h2>
+        <div class="qp-tools-head-text">
+          <div class="eyebrow on-dark">Quality systems</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            Measurement at<br/><em class="accent">every step.</em>
+          </h2>
+        </div>
+        <div class="qp-tools-head-img">
+          <picture>
+            <source type="image/avif" srcset={optSrcset('/assets/images/people/quality-check.png', 'avif')} sizes="(max-width: 900px) 100vw, 45vw" />
+            <source type="image/webp" srcset={optSrcset('/assets/images/people/quality-check.png', 'webp')} sizes="(max-width: 900px) 100vw, 45vw" />
+            <img src="/assets/images/people/quality-check.png" alt="Metallurgical technician verifying microstructure on an optical microscope in the X-ray fluorescence lab" loading="lazy" />
+          </picture>
+        </div>
       </div>
 
       <div class="qp-tools-grid" data-reveal="fade">
@@ -255,7 +264,7 @@ const pipeline = [
   .qp-hero-vid {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: 72% 30%;
+    object-fit: cover; object-position: 80% 28%;
   }
   .qp-hero-scrim {
     position: absolute; inset: 0;
@@ -386,7 +395,22 @@ const pipeline = [
   .qp-cert-desc { font-size: 13px; color: var(--color-stone-700); line-height: 1.65; }
 
   /* ── QC TOOLS ───────────────────────────────────────────────── */
-  .qp-tools-head { max-width: 540px; margin-bottom: 40px; }
+  .qp-tools-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px); align-items: center;
+    margin-bottom: 40px;
+  }
+  .qp-tools-head-text { max-width: 480px; }
+  .qp-tools-head-img {
+    aspect-ratio: 21/9; overflow: hidden;
+    border-top: 2px solid var(--color-green);
+  }
+  .qp-tools-head-img img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    object-position: 72% 38%;
+    filter: brightness(0.85); transition: filter 0.3s ease;
+  }
+  .qp-tools-head-img:hover img { filter: brightness(1); }
   .qp-tools-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 1px; background: var(--color-navy-line);
@@ -487,12 +511,13 @@ const pipeline = [
     .qp-tools-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .qp-pipe-head  { grid-template-columns: 1fr; }
-    .qp-certs-head { grid-template-columns: 1fr; }
-    .qp-cert-grid  { grid-template-columns: repeat(2, 1fr); }
-    .qp-cbam-inner { grid-template-columns: 1fr; }
-    .qp-cta-inner  { flex-direction: column; }
-    .qp-cta-btns   { flex-direction: row; flex-wrap: wrap; }
+    .qp-pipe-head   { grid-template-columns: 1fr; }
+    .qp-certs-head  { grid-template-columns: 1fr; }
+    .qp-cert-grid   { grid-template-columns: repeat(2, 1fr); }
+    .qp-tools-head  { grid-template-columns: 1fr; }
+    .qp-cbam-inner  { grid-template-columns: 1fr; }
+    .qp-cta-inner   { flex-direction: column; }
+    .qp-cta-btns    { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
     .qp-hero-grad  { background: rgba(6,21,37,0.88); }

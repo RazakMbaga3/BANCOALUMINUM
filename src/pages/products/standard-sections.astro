@@ -29,6 +29,8 @@ const sectionIcons: Record<string, string> = {
   '10': `<circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
 };
 
+const galleryImages = ['2a', '2b', '2c', '2d', '2e', '2f', '2g'];
+
 const alloys = [
   {
     grade: '6063-T6',
@@ -67,8 +69,8 @@ const alloys = [
 
   <section class="ss-hero">
     <Pic
-      src="/assets/manufacturing/billet-1.webp"
-      alt="Banco Aluminium finished extrusion billets and standard sections"
+      src="/assets/standard-sections/hero.jpg"
+      alt="Banco Aluminium standard aluminium section samples"
       class="ss-hero-img"
       loading="eager" sizes="100vw" />
     <div class="ss-hero-scrim" aria-hidden="true"></div>
@@ -93,6 +95,24 @@ const alloys = [
           <div class="ss-stat">
             <div class="ss-stat-n">{n}</div>
             <div class="ss-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery strip -->
+  <section class="section-alt ss-gallery-section" style="padding:40px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="ss-gallery-viewport">
+      <div class="ss-gallery-track">
+        {[...galleryImages, ...galleryImages].map((id, i) => (
+          <div class="ss-gallery-item" aria-hidden={i >= galleryImages.length ? 'true' : undefined}>
+            <Pic
+              src={`/assets/standard-sections/${id}.jpg`}
+              alt={i < galleryImages.length ? 'Banco Aluminium standard section extrusion sample' : ''}
+              class="ss-gallery-img"
+              sizes="240px"
+              loading="lazy" />
           </div>
         ))}
       </div>
@@ -304,6 +324,67 @@ const alloys = [
   .ss-sec-footer { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; border-top: 1px solid var(--color-stone-200); padding-top: 8px; }
   .ss-sec-alloy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-stone-700); }
   .ss-sec-std   { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); }
+
+  .ss-gallery-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+  }
+  .ss-gallery-track {
+    display: flex;
+    width: max-content;
+    padding: 4px 0 12px;
+    animation: ss-marquee 34s linear infinite;
+  }
+  .ss-gallery-section:hover .ss-gallery-track { animation-play-state: paused; }
+  .ss-gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 220px;
+    margin-right: 20px;
+    aspect-ratio: 290 / 244;
+    overflow: hidden;
+    background: var(--color-stone-100);
+    border: 1px solid var(--color-stone-200);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  }
+  .ss-gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    pointer-events: none;
+  }
+  .ss-gallery-item:hover {
+    border-color: var(--color-green);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.28);
+    transform: translateY(-3px);
+    z-index: 1;
+  }
+  :global(.ss-gallery-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.55) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  .ss-gallery-item:hover :global(.ss-gallery-img) {
+    transform: scale(1.08);
+    filter: grayscale(0) contrast(1.02);
+  }
+  @keyframes ss-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (min-width: 640px) {
+    .ss-gallery-item { width: 260px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ss-gallery-track { animation: none; }
+  }
 
   .ss-alloy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .ss-alloy-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 12px; }

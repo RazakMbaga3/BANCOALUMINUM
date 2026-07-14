@@ -30,6 +30,7 @@ const sources = [
   path.join(ROOT, 'banco-logo-dark.png'),
   path.join(ROOT, 'banco-mark.png'),
   path.join(ROOT, 'herovideo-poster.jpg'),
+  path.join(ROOT, 'architectural-hero-poster.jpg'),
 ].filter(p => /\.(jpe?g|png|webp|avif)$/i.test(p) && !/-\d+\.(avif|webp)$/i.test(p) && !/-\d+w?\.(jpe?g|png)$/i.test(p));
 
 let made = 0, skipped = 0;

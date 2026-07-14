@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Pic from '../../components/Pic.astro';
+import { optSrcset } from '../../lib/img';
 
 const dieTypes = [
   { type: 'Flat die', profiles: 'Solid profiles: angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
@@ -163,10 +163,18 @@ const processSteps = [
         </div>
         <div class="die-img-stack" data-reveal="right">
           <div class="die-img-main">
-            <Pic src="/assets/manufacturing/casting-5.webp" alt="Die machining process" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
+            <picture>
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-machining-main.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-machining-main.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/die-shop-machining-main.jpg" alt="5-axis CNC machining centre cutting a tooling component" loading="lazy" />
+            </picture>
           </div>
           <div class="die-img-sub">
-            <Pic src="/assets/manufacturing/casting-7.webp" alt="Extrusion tooling detail" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
+            <picture>
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-machining-detail.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-machining-detail.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/die-shop-machining-detail.jpg" alt="Close-up of a CNC spindle finish-machining an aluminium die component" loading="lazy" style="object-position: center 38%;" />
+            </picture>
           </div>
         </div>
       </div>

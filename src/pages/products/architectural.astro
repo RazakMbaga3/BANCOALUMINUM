@@ -34,13 +34,13 @@ const systems = [
     label: 'Window Systems',
     items: ['Sliding Window Systems', 'Casement Window Systems'],
     href: '/products/architectural/window-systems',
-    img: '/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg',
+    img: '/assets/architectural-systems/aluminium-casement-window.webp',
   },
   {
     label: 'Door Systems',
     items: ['Sliding Doors', 'Folding Doors', 'Partition Systems', 'Door Frames'],
     href: '/products/architectural/door-systems',
-    img: '/assets/images/architectureheropage/seamless-transition-with-aluminum-glass-doors.png',
+    img: '/assets/architectural-systems/aluminium-folding-doors-poolside.png',
   },
   {
     label: 'Façade Systems',
@@ -52,26 +52,26 @@ const systems = [
     label: 'Architectural Profiles',
     items: ['Standard Architectural Sections', 'Clean Room Sections', 'Aluminium Ladder Sections'],
     href: '/products/architectural/architectural-profiles',
-    img: '/assets/images/architectureheropage/Aluminum-Structure.jpg',
+    img: '/assets/architectural-systems/standard-architectural-sections-truss.webp',
   },
   {
     label: 'Accessories',
     items: ['Hardware Systems', 'Surface Finish Options'],
     href: '/products/architectural/accessories',
-    img: '/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg',
+    img: '/assets/architectural-systems/aluminium-hardware-handle.jpg',
   },
 ];
 
 // ── Environments ──────────────────────────────────────────────────────────────
 const environments = [
-  { label: 'Residential Buildings',   img: '/assets/architectural/89a06dd9b7f65108e3bc376404f17998.jpg' },
-  { label: 'Villas & Luxury Homes',   img: '/assets/architectural/9a30d7b0cacc131a0e0771ea36141d5b.jpg' },
-  { label: 'Commercial Developments', img: '/assets/architectural/41f468e4f12973012f865d065f5f3b44.jpg' },
-  { label: 'Office Environments',     img: '/assets/architectural/810f32deb5c2a2a7f3d0719cf87348fa.jpg' },
-  { label: 'Hospitality Projects',    img: '/assets/architectural/45f8373ce3619411f301b794325c9ca5.jpg' },
-  { label: 'Institutional Buildings', img: '/assets/architectural/95cdec405d6955cb06255832ff203365.jpg' },
-  { label: 'Urban Developments',      img: '/assets/architectural/9908256f57e8df7b37302e330865c1b4.jpg' },
-  { label: 'Mixed-Use Projects',      img: '/assets/architectural/f664f77f50d42d2087d86bdaced9f248.jpg' },
+  { label: 'Residential Buildings',   img: '/assets/architectural/applications/residential-buildings.jpg' },
+  { label: 'Villas & Luxury Homes',   img: '/assets/architectural/applications/villas-luxury-homes.jpeg' },
+  { label: 'Commercial Developments', img: '/assets/architectural/applications/commercial-developments.jpg' },
+  { label: 'Office Environments',     img: '/assets/architectural/applications/office-environments.jpg' },
+  { label: 'Hospitality Projects',    img: '/assets/architectural/applications/hospitality-projects.jpg' },
+  { label: 'Institutional Buildings', img: '/assets/architectural/applications/institutional-buildings.jpg' },
+  { label: 'Urban Developments',      img: '/assets/architectural/applications/urban-developments.jpg' },
+  { label: 'Mixed-Use Projects',      img: '/assets/architectural/applications/mixed-use-projects.jpg' },
 ];
 
 // ── Why Banco / Architects / Fabricators — condensed 3-col partner grid ───────
@@ -139,6 +139,7 @@ const galleryPhotos = [
   title="Architectural aluminium systems: Banco Aluminium"
   description="Precision-engineered aluminium window, door, façade and profile systems for residential, commercial and institutional projects. EN 14351-1 tested."
   image="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
+  heroImage="/architectural-hero-poster.jpg"
   transparentNav={true}
 >
   <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
@@ -148,14 +149,18 @@ const galleryPhotos = [
   ══════════════════════════════════════════════════════════════ -->
   <section class="ah-wrap" aria-label="Architectural systems hero">
 
-    <!-- Background image with Ken Burns -->
+    <!-- Background video -->
     <div class="ah-bg" aria-hidden="true">
-      <Pic
-        src="/assets/images/architectureheropage/blog_thumb_1760685500.webp"
-        alt=""
-        class="ah-bg-img"
-        loading="eager"
-        fetchpriority="high" sizes="100vw" />
+      <video
+        class="ah-bg-video"
+        src="/architectural-hero-video.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/architectural-hero-poster.jpg"
+      ></video>
     </div>
 
     <!-- Layered overlays: base scrim + directional gradient -->
@@ -397,7 +402,7 @@ const galleryPhotos = [
         </div>
         <div class="arc-contemp-visual" data-reveal="right">
           <Pic
-            src="/assets/images/architectureheropage/Large-apartment-louvres.jpg"
+            src="/assets/images/architectureheropage/contemporary-modern.jpg"
             alt="Contemporary aluminium architectural building by Banco"
             loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
@@ -615,23 +620,18 @@ const galleryPhotos = [
     flex-direction: column;
   }
 
-  /* Background image + Ken Burns zoom */
+  /* Background video */
   .ah-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
   }
-  .ah-bg-img {
+  .ah-bg-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center 30%;
     display: block;
-    animation: ah-kb 14s ease-out forwards;
-  }
-  @keyframes ah-kb {
-    from { transform: scale(1.0); }
-    to   { transform: scale(1.06); }
   }
 
   /* Overlay layers */
@@ -804,7 +804,7 @@ const galleryPhotos = [
     to { opacity: 0.70; transform: translateX(0); }
   }
   .ah-thumb:hover { opacity: 1 !important; }
-  .ah-thumb img {
+  .ah-thumb :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -812,7 +812,7 @@ const galleryPhotos = [
     filter: saturate(0.65);
     transition: filter 0.3s, transform 0.4s;
   }
-  .ah-thumb:hover img { filter: saturate(1); transform: scale(1.06); }
+  .ah-thumb:hover :global(img) { filter: saturate(1); transform: scale(1.06); }
 
   /* Stats ribbon — pinned to bottom of hero */
   .ah-stats-bar {
@@ -889,14 +889,14 @@ const galleryPhotos = [
     aspect-ratio: 4/3;
     border: 1px solid var(--color-stone-200);
   }
-  .arc-intro-visual img {
+  .arc-intro-visual :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.7s ease;
   }
-  .arc-intro-visual:hover img { transform: scale(1.04); }
+  .arc-intro-visual:hover :global(img) { transform: scale(1.04); }
 
   /* ══ SECTION HEADINGS ══════════════════════════════════════ */
   .arc-section-head {
@@ -927,7 +927,7 @@ const galleryPhotos = [
     text-decoration: none;
   }
   .arc-sys-card-bg { position: absolute; inset: 0; }
-  .arc-sys-card-bg img {
+  .arc-sys-card-bg :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -935,7 +935,7 @@ const galleryPhotos = [
     filter: brightness(0.62) saturate(0.85);
     transition: transform 0.55s ease, filter 0.4s ease;
   }
-  .arc-sys-card:hover .arc-sys-card-bg img {
+  .arc-sys-card:hover .arc-sys-card-bg :global(img) {
     transform: scale(1.06);
     filter: brightness(0.5) saturate(0.9);
   }
@@ -1025,7 +1025,7 @@ const galleryPhotos = [
     transition: border-color 0.22s;
   }
   .arc-env-item:hover .arc-env-img { border-color: var(--color-green); }
-  .arc-env-img img {
+  .arc-env-img :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1033,7 +1033,7 @@ const galleryPhotos = [
     filter: brightness(0.9) saturate(0.7);
     transition: transform 0.45s, filter 0.3s;
   }
-  .arc-env-item:hover .arc-env-img img {
+  .arc-env-item:hover .arc-env-img :global(img) {
     transform: scale(1.08);
     filter: brightness(1.0) saturate(0.9);
   }
@@ -1059,14 +1059,14 @@ const galleryPhotos = [
     aspect-ratio: 4/3;
     border: 1px solid var(--color-stone-200);
   }
-  .arc-contemp-visual img {
+  .arc-contemp-visual :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.7s;
   }
-  .arc-contemp-visual:hover img { transform: scale(1.04); }
+  .arc-contemp-visual:hover :global(img) { transform: scale(1.04); }
 
   /* ══ GALLERY BLEED ══════════════════════════════════════════ */
   .a-gallery-bleed {
@@ -1075,7 +1075,7 @@ const galleryPhotos = [
     gap: 2px;
   }
   .a-photo { aspect-ratio: 3/2; overflow: hidden; background: var(--color-stone-200); }
-  .a-photo img {
+  .a-photo :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1083,7 +1083,7 @@ const galleryPhotos = [
     filter: brightness(0.88) saturate(0.85);
     transition: transform 0.5s, filter 0.4s;
   }
-  .a-photo:hover img { transform: scale(1.06); filter: brightness(0.96) saturate(1.0); }
+  .a-photo:hover :global(img) { transform: scale(1.06); filter: brightness(0.96) saturate(1.0); }
 
   /* ══ SPLIT SECTIONS ════════════════════════════════════════ */
   .a-split {
@@ -1094,14 +1094,14 @@ const galleryPhotos = [
   .a-split-rev .a-split-visual { order: 2; }
   .a-split-rev .a-split-body   { order: 1; }
   .a-split-visual { overflow: hidden; }
-  .a-split-visual img {
+  .a-split-visual :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.7s;
   }
-  .a-split:hover .a-split-visual img { transform: scale(1.03); }
+  .a-split:hover .a-split-visual :global(img) { transform: scale(1.03); }
   .a-split-body {
     background: var(--color-stone-50);
     display: flex;
@@ -1224,7 +1224,7 @@ const galleryPhotos = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ah-bg-img, .ah-thumb, .arc-sys-card-bg img, .a-photo img { animation: none; transition: none; }
+    .ah-thumb, .arc-sys-card-bg :global(img), .a-photo :global(img) { animation: none; transition: none; }
     .ah-thumb { opacity: 0.6; transform: none; }
   }
 </style>

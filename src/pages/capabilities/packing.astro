@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const internalOptions = [
   { id: '01', name: 'Bare', desc: 'Profile-on-profile with no interleaving. Standard for structural sections, cut lengths for immediate machining, and profiles with anodised or powder coated surface where finish is not a priority.' },
@@ -27,9 +28,11 @@ const externalOptions = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <Pic
+        src="/assets/capabilities/packing-hero.png"
+        alt="Banco Aluminium export-ready packing: bundled and wrapped aluminium profiles"
+        class="cap-hero-img"
+        loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -230,9 +233,10 @@ const externalOptions = [
     .pk-options-grid { grid-template-columns: 1fr 1fr; }
     .pk-ext-grid     { grid-template-columns: 1fr 1fr; }
   }
-</style>
 
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>
+  :global(.cap-hero-img) {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 40%;
+  }
+</style>

@@ -11,6 +11,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+dev-out.log
+dev-err.log
+
+# local tooling artifacts (lighthouse audits, refactor-check scratch, media backups)
+.lighthouse/
+.refactor-check/
+.archive-media/
 
 
 # environment variables

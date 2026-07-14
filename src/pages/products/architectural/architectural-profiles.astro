@@ -3,9 +3,9 @@ import Layout from '../../../layouts/Layout.astro';
 import Pic from '../../../components/Pic.astro';
 
 const profileTypes = [
-  { name: 'Standard Architectural Sections', desc: 'Angles, channels, T-sections, flat and hollow bar to IS 733 / IS 1285, the same range detailed on our Standard Sections page, in architectural alloys and finishes.' },
-  { name: 'Clean Room Sections',             desc: 'Profiles for modular clean room wall and ceiling grid systems, finished for particulate control in pharmaceutical and electronics environments.' },
-  { name: 'Aluminium Ladder Sections',       desc: 'Structural rail and rung profiles for fixed access ladders, cable ladder systems, and industrial walkways.' },
+  { name: 'Standard Architectural Sections', desc: 'Angles, channels, T-sections, flat and hollow bar to IS 733 / IS 1285, the same range detailed on our Standard Sections page, in architectural alloys and finishes.', img: '/assets/architectural-systems/standard-architectural-sections-profile.jpeg' },
+  { name: 'Clean Room Sections',             desc: 'Profiles for modular clean room wall and ceiling grid systems, finished for particulate control in pharmaceutical and electronics environments.', img: '/assets/architectural-systems/aluminium-ladder-section-cluster.webp' },
+  { name: 'Aluminium Ladder Sections',       desc: 'Structural rail and rung profiles for fixed access ladders, cable ladder systems, and industrial walkways.', img: '/assets/architectural-systems/aluminium-ladder-sections.jpg' },
 ];
 ---
 
@@ -14,7 +14,7 @@ const profileTypes = [
   description="Standard architectural sections, clean room profiles and ladder sections, extruded to IS 733 and IS 1285 in 6063-T6, 6082-T6 and 6061-T6 alloys."
 >
   <section class="ap-hero">
-    <Pic src="/assets/images/architectureheropage/Aluminum-Structure.jpg" alt="Banco aluminium architectural profile sections" class="ap-hero-img" loading="eager" sizes="100vw" />
+    <Pic src="/assets/architectural-systems/standard-architectural-sections-truss.webp" alt="Banco aluminium architectural profile sections in a structural truss application" class="ap-hero-img" loading="eager" sizes="100vw" />
     <div class="ap-hero-scrim" aria-hidden="true"></div>
     <div class="container ap-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Architectural profiles</div>
@@ -30,6 +30,9 @@ const profileTypes = [
       <div class="ap-grid">
         {profileTypes.map((p) => (
           <div class="ap-card">
+            <div class="ap-card-bg" aria-hidden="true">
+              <Pic src={p.img} alt="" loading="lazy" sizes="(max-width: 900px) 100vw, 33vw" maxW={1200} />
+            </div>
             <h3 class="ap-card-title">{p.name}</h3>
             <p class="ap-card-desc">{p.desc}</p>
           </div>
@@ -52,7 +55,10 @@ const profileTypes = [
   .ap-lead { font-size: 15px; line-height: 1.65; color: var(--color-silver); margin-top: 20px; max-width: 58ch; }
 
   .ap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
-  .ap-card { background: #fff; padding: 26px 24px; border-top: 2px solid var(--color-green); }
+  .ap-card { background: #fff; padding: 26px 24px; border-top: 2px solid var(--color-green); overflow: hidden; }
+  .ap-card-bg { aspect-ratio: 4/3; margin: -26px -24px 20px; overflow: hidden; background: var(--color-stone-200); }
+  .ap-card-bg :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s ease; }
+  .ap-card:hover .ap-card-bg :global(img) { transform: scale(1.05); }
   .ap-card-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .ap-card-desc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
 

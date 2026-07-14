@@ -12,6 +12,8 @@ const profiles = [
   { name: 'Cable management channels', desc: 'Open-slot and closed cable ducting profiles for overhead and floor-level electrical distribution runs.' },
 ];
 
+const galleryImages = ['3a', '3b', '3c', '3d', '3e', '3f', '3g'];
+
 const alloys = [
   { name: '6101', temper: 'T6 / T61', why: 'High electrical conductivity (≥52.5% IACS) with sufficient mechanical strength: the primary alloy for busbar and T&D conductors to IEC 60889.' },
   { name: '6063', temper: 'T5 / T6', why: 'General-purpose architectural-grade alloy for housings, frames, and secondary structural components where conductivity is not the primary requirement.' },
@@ -38,6 +40,24 @@ const alloys = [
     <Fragment slot="h1">Electrical &amp; power transmission profiles.</Fragment>
     <Fragment slot="lead">Busbars, cable management, switchgear housings, transformer sections, and T&amp;D profiles in high-conductivity 6101 and 6063 alloys, manufactured to EN and IEC standards.</Fragment>
   </IndustryHero>
+
+  <!-- Gallery strip -->
+  <section class="section-alt elec-gallery-section" style="padding:40px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="elec-gallery-viewport">
+      <div class="elec-gallery-track">
+        {[...galleryImages, ...galleryImages].map((id, i) => (
+          <div class="elec-gallery-item" aria-hidden={i >= galleryImages.length ? 'true' : undefined}>
+            <Pic
+              src={`/assets/industries/electrical-gallery/${id}.jpg`}
+              alt={i < galleryImages.length ? 'Banco Aluminium electrical profile component' : ''}
+              class="elec-gallery-img"
+              sizes="240px"
+              loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Section 01: Application overview -->
   <section class="section-light section-pad">
@@ -174,3 +194,66 @@ const alloys = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .elec-gallery-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+  }
+  .elec-gallery-track {
+    display: flex;
+    width: max-content;
+    padding: 4px 0 12px;
+    animation: elec-marquee 34s linear infinite;
+  }
+  .elec-gallery-section:hover .elec-gallery-track { animation-play-state: paused; }
+  .elec-gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 220px;
+    margin-right: 20px;
+    aspect-ratio: 290 / 244;
+    overflow: hidden;
+    background: var(--color-stone-100);
+    border: 1px solid var(--color-stone-200);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  }
+  .elec-gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    pointer-events: none;
+  }
+  .elec-gallery-item:hover {
+    border-color: var(--color-green);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.28);
+    transform: translateY(-3px);
+    z-index: 1;
+  }
+  :global(.elec-gallery-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.55) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  .elec-gallery-item:hover :global(.elec-gallery-img) {
+    transform: scale(1.08);
+    filter: grayscale(0) contrast(1.02);
+  }
+  @keyframes elec-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (min-width: 640px) {
+    .elec-gallery-item { width: 260px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .elec-gallery-track { animation: none; }
+  }
+</style>

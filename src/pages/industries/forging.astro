@@ -12,6 +12,8 @@ const profiles = [
   { name: 'Rectangular machining stock', desc: 'Flat and rectangular bar extrusions for plate-type machined components; the near-net cross-section reduces saw cutting and facing stock removal versus slab-cut plate.' },
 ];
 
+const galleryImages = ['12a', '12b', '12c', '12d'];
+
 const alloys = [
   { name: '2011', temper: 'T3 / T8', why: 'The classic free-machining alloy: lead and bismuth additives produce small, brittle chips in CNC turning. High cutting speeds and excellent surface finish. For applications without RoHS constraints.' },
   { name: '2111 LF', temper: 'T4 / T8', why: 'Lead-free free-machining alloy using tin and bismuth, fully RoHS and ELV compliant. Machinability approaches 2011, with full compliance for EU, Japan, and US regulatory requirements.' },
@@ -41,6 +43,24 @@ const alloys = [
     <Fragment slot="h1">Forging &amp; precision machining stock.</Fragment>
     <Fragment slot="lead">Machinable extrusion sections and preforms in 6xxx and 2xxx alloys, supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations.</Fragment>
   </IndustryHero>
+
+  <!-- Gallery strip -->
+  <section class="section-alt forg-gallery-section" style="padding:40px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="forg-gallery-viewport">
+      <div class="forg-gallery-track">
+        {[...galleryImages, ...galleryImages].map((id, i) => (
+          <div class="forg-gallery-item" aria-hidden={i >= galleryImages.length ? 'true' : undefined}>
+            <Pic
+              src={`/assets/industries/forging-gallery/${id}.jpg`}
+              alt={i < galleryImages.length ? 'Banco Aluminium machining and forging component' : ''}
+              class="forg-gallery-img"
+              sizes="240px"
+              loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Section 01: Application overview -->
   <section class="section-light section-pad">
@@ -178,3 +198,66 @@ const alloys = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .forg-gallery-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+  }
+  .forg-gallery-track {
+    display: flex;
+    width: max-content;
+    padding: 4px 0 12px;
+    animation: forg-marquee 24s linear infinite;
+  }
+  .forg-gallery-section:hover .forg-gallery-track { animation-play-state: paused; }
+  .forg-gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 220px;
+    margin-right: 20px;
+    aspect-ratio: 290 / 244;
+    overflow: hidden;
+    background: var(--color-stone-100);
+    border: 1px solid var(--color-stone-200);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  }
+  .forg-gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    pointer-events: none;
+  }
+  .forg-gallery-item:hover {
+    border-color: var(--color-green);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.28);
+    transform: translateY(-3px);
+    z-index: 1;
+  }
+  :global(.forg-gallery-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.55) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  .forg-gallery-item:hover :global(.forg-gallery-img) {
+    transform: scale(1.08);
+    filter: grayscale(0) contrast(1.02);
+  }
+  @keyframes forg-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (min-width: 640px) {
+    .forg-gallery-item { width: 260px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .forg-gallery-track { animation: none; }
+  }
+</style>

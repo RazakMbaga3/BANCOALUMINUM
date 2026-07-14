@@ -27,7 +27,7 @@ const casement = [
   description="Eight sliding series from 18–75 mm and a 40 mm casement series. EN 12210 wind resistance, EN 12208 watertightness tested. Banco Architectural Systems."
 >
   <section class="ws-hero">
-    <Pic src="/assets/architectural/0fa274d34eaac9f8ed5881ccbca5660c.jpg" alt="Banco aluminium sliding window system" class="ws-hero-img" loading="eager" sizes="100vw" />
+    <Pic src="/assets/architectural-systems/aluminium-casement-window.webp" alt="Banco aluminium casement window opening onto a mountain view" class="ws-hero-img" loading="eager" sizes="100vw" />
     <div class="ws-hero-scrim" aria-hidden="true"></div>
     <div class="container ws-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Window systems</div>
@@ -56,22 +56,55 @@ const casement = [
     </div>
   </section>
 
+  <!-- ── Technical detail strip — sliding hardware + profile-joint precision ── -->
+  <section class="section-white section-pad">
+    <div class="container">
+      <div class="eyebrow">Precision detail</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">Built to close tolerances.</h2>
+      <div class="ws-detail-strip">
+        <div class="ws-detail-item">
+          <div class="ws-detail-visual">
+            <Pic src="/assets/architectural-systems/aluminium-sliding-window-track.webp" alt="Sliding window roller and track detail" loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" maxW={1200} />
+          </div>
+          <div class="ws-detail-caption">
+            <span class="ws-detail-num">/ 01</span>
+            <span class="ws-detail-label">Sliding track & roller hardware</span>
+          </div>
+        </div>
+        <div class="ws-detail-item ws-detail-item--diagram">
+          <div class="ws-detail-visual">
+            <Pic src="/assets/architectural-systems/profile-corner-joints-composite.jpg" alt="Aluminium window and door corner-joint profile sections" loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" maxW={1200} />
+          </div>
+          <div class="ws-detail-caption">
+            <span class="ws-detail-num">/ 02</span>
+            <span class="ws-detail-label">Corner-joint profile precision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-alt section-pad">
     <div class="container">
       <div class="eyebrow">Casement systems</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">40 mm. Inward or outward opening.</h2>
-      <div class="ws-clist">
-        {casement.map((s) => (
-          <div class="ws-ccard">
-            <span class="ws-num">{s.num}</span>
-            <h3 class="ws-cname">{s.name}</h3>
-            <p class="ws-cdesc">{s.desc}</p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
-              <span class="pill">{s.glazing}</span>
-              <span class="pill">{s.tier}</span>
+      <div class="ws-csplit">
+        <div class="ws-csplit-visual">
+          <Pic src="/assets/architectural-systems/windows-casement-open.jpg" alt="Banco 40mm casement window, open" loading="lazy" sizes="(max-width: 1024px) 100vw, 40vw" maxW={1200} />
+        </div>
+        <div class="ws-clist">
+          {casement.map((s) => (
+            <div class="ws-ccard">
+              <span class="ws-num">{s.num}</span>
+              <h3 class="ws-cname">{s.name}</h3>
+              <p class="ws-cdesc">{s.desc}</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">
+                <span class="pill">{s.glazing}</span>
+                <span class="pill">{s.tier}</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
         <a href="/contact#quote" class="btn btn-primary">Specify a system</a>
@@ -99,13 +132,36 @@ const casement = [
   .ws-pill { font-size: 9px !important; padding: 3px 8px !important; }
   .ws-tier { font-family: var(--font-mono); font-size: 10px; color: var(--color-stone-700); }
 
-  .ws-clist { display: flex; flex-direction: column; border: 1px solid var(--color-stone-200); }
-  .ws-ccard { background: #fff; padding: 26px 24px; max-width: 64ch; }
+  /* ── Technical detail strip ─────────────────────────────── */
+  .ws-detail-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ws-detail-item { display: flex; flex-direction: column; }
+  .ws-detail-visual { aspect-ratio: 16/10; overflow: hidden; background: var(--color-stone-100); }
+  .ws-detail-visual :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .ws-detail-item--diagram .ws-detail-visual { background: var(--color-stone-50); display: flex; align-items: center; justify-content: center; }
+  .ws-detail-item--diagram .ws-detail-visual :global(img) { width: auto; height: 78%; max-width: 88%; object-fit: contain; transition: none; }
+  .ws-detail-item:hover .ws-detail-visual :global(img) { transform: scale(1.05); }
+
+  .ws-detail-caption { position: relative; display: flex; align-items: center; gap: 14px; height: 64px; padding: 0 20px; background: var(--color-navy-deep); border-top: 1px solid var(--color-navy-line); }
+  .ws-detail-num { font-family: var(--font-mono); font-size: 11px; color: var(--color-green); flex-shrink: 0; }
+  .ws-detail-label { font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--color-platinum); line-height: 1.3; }
+  .ws-detail-caption::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--color-green); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .ws-detail-item:hover .ws-detail-caption::after { transform: scaleX(1); }
+
+  /* ── Casement split: visual + card ──────────────────────── */
+  .ws-csplit { display: grid; grid-template-columns: 40% 1fr; gap: 0; border: 1px solid var(--color-stone-200); }
+  .ws-csplit-visual { overflow: hidden; background: var(--color-stone-200); min-height: 320px; }
+  .ws-csplit-visual :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ws-clist { display: flex; flex-direction: column; background: #fff; border-left: 1px solid var(--color-stone-200); }
+  .ws-ccard { background: #fff; padding: 26px 24px; }
   .ws-cname { font-family: var(--font-sans); font-size: 19px; font-weight: 700; color: var(--color-navy); margin-top: 10px; }
   .ws-cdesc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 10px; }
 
   @media (max-width: 900px) {
     .ws-row { grid-template-columns: 36px 1fr 60px; }
     .ws-meta { display: none; }
+    .ws-detail-strip { grid-template-columns: 1fr; }
+    .ws-csplit { grid-template-columns: 1fr; }
+    .ws-csplit-visual { min-height: 240px; }
+    .ws-clist { border-left: none; border-top: 1px solid var(--color-stone-200); }
   }
 </style>

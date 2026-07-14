@@ -12,6 +12,8 @@ const profiles = [
   { name: 'Battery enclosure sections', desc: 'Tray side wall, bottom plate, and lid seal extrusions for high-voltage battery pack enclosures: airtight and water-tight cross-sections.' },
 ];
 
+const galleryImages = ['1', '2', '3', '4', '5'];
+
 const alloys = [
   { name: '6082', temper: 'T6', why: 'Premier structural automotive alloy with UTS 310 MPa and yield 260 MPa. Preferred for crash-critical body sections and roof rail applications.' },
   { name: '6061', temper: 'T6', why: 'Versatile engineering alloy for seat tracks, door components, and general automotive extrusions requiring good machinability alongside structural performance.' },
@@ -39,6 +41,24 @@ const alloys = [
     <Fragment slot="h1">Automotive &amp; commercial vehicle profiles.</Fragment>
     <Fragment slot="lead">Structural body sections, thermal management profiles, door sills, roof rails, and seat track extrusions, supplied under IATF 16949 certification to Tier 1 and Tier 2 automotive OEMs.</Fragment>
   </IndustryHero>
+
+  <!-- Gallery strip -->
+  <section class="section-alt auto-gallery-section" style="padding:40px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="auto-gallery-viewport">
+      <div class="auto-gallery-track">
+        {[...galleryImages, ...galleryImages].map((id, i) => (
+          <div class="auto-gallery-item" aria-hidden={i >= galleryImages.length ? 'true' : undefined}>
+            <Pic
+              src={`/assets/industries/automotive-gallery/${id}.jpg`}
+              alt={i < galleryImages.length ? 'Banco Aluminium automotive extrusion component' : ''}
+              class="auto-gallery-img"
+              sizes="220px"
+              loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Section 01: Application overview -->
   <section class="section-light section-pad">
@@ -174,3 +194,66 @@ const alloys = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .auto-gallery-viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
+  }
+  .auto-gallery-track {
+    display: flex;
+    width: max-content;
+    padding: 4px 0 12px;
+    animation: auto-marquee 30s linear infinite;
+  }
+  .auto-gallery-section:hover .auto-gallery-track { animation-play-state: paused; }
+  .auto-gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 170px;
+    margin-right: 20px;
+    aspect-ratio: 290 / 376;
+    overflow: hidden;
+    background: var(--color-stone-100);
+    border: 1px solid var(--color-stone-200);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  }
+  .auto-gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    pointer-events: none;
+  }
+  .auto-gallery-item:hover {
+    border-color: var(--color-green);
+    box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.28);
+    transform: translateY(-3px);
+    z-index: 1;
+  }
+  :global(.auto-gallery-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.55) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  .auto-gallery-item:hover :global(.auto-gallery-img) {
+    transform: scale(1.08);
+    filter: grayscale(0) contrast(1.02);
+  }
+  @keyframes auto-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (min-width: 640px) {
+    .auto-gallery-item { width: 200px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .auto-gallery-track { animation: none; }
+  }
+</style>

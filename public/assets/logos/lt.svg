@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
-  <!-- Circle badge -->
-  <circle cx="40" cy="40" r="38" fill="none" stroke="#1B3F8A" stroke-width="2.5"/>
-  <circle cx="40" cy="40" r="31" fill="#1B3F8A"/>
-  <!-- Stylised L+T in white (two vertical bars with shared cross top-right, base on left) -->
-  <rect x="24" y="24" width="7" height="32" fill="white"/>
-  <rect x="24" y="49" width="20" height="7" fill="white"/>
-  <rect x="41" y="24" width="7" height="32" fill="white"/>
-  <rect x="34" y="24" width="14" height="7" fill="white"/>
-  <!-- Wordmark -->
-  <text x="92" y="34" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#1B3F8A" letter-spacing="2.5">LARSEN &amp; TOUBRO</text>
-  <line x1="92" y1="40" x2="288" y2="40" stroke="#1B3F8A" stroke-width="1.2"/>
-  <text x="92" y="64" font-family="Arial Black,Arial,sans-serif" font-size="22" font-weight="900" fill="#1B3F8A" letter-spacing="-0.5">L&amp;T</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="50.25mm" height="50.25mm" viewBox="0 0 50.25 50.25"><path d="M25.141.15c13.74 0 25.009 11.217 25.009 24.974 0 13.791-11.27 25.026-25.009 25.026C11.367 50.15.15 38.915.15 25.124.15 11.367 11.367.15 25.141.15m-3.457 46.596 10.67-18.5h-7.213l3.58-6.209 16.932-.018-3.58 6.244-6.138-.018L25.14 47.028c12.028 0 21.887-9.859 21.887-21.905 0-11.992-9.859-21.834-21.887-21.834-.882 0-1.763.053-2.575.159l-10.758 18.59H25.14l-3.615 6.207H4.612l13.792-23.88C9.639 7.205 3.272 15.46 3.272 25.124c0 10.881 7.99 19.947 18.412 21.622" style="fill:#004f8a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.76366"/></svg>

@@ -45,13 +45,21 @@ const certs = [
   'BIS',
 ];
 
+/* h = display height in px — crest/emblem marks need more height than
+   wordmarks to read at the same visual weight */
 const clientLogos = [
-  { name: 'Reliance',           src: '/assets/logos/reliance.svg' },
-  { name: 'Larsen & Toubro',    src: '/assets/logos/lt.svg' },
-  { name: 'Siemens',            src: '/assets/logos/siemens.svg' },
-  { name: 'ABB',                src: '/assets/logos/abb.svg' },
-  { name: 'Schneider Electric', src: '/assets/logos/schneider.svg' },
-  { name: 'Alstom',             src: '/assets/logos/alstom.svg' },
+  { name: 'Reliance Industries',        src: '/assets/logos/reliance.svg',           h: 42 },
+  { name: 'Larsen & Toubro',            src: '/assets/logos/lt.svg',                 h: 42 },
+  { name: 'Siemens',                    src: '/assets/logos/siemens.svg',            h: 22 },
+  { name: 'ABB',                        src: '/assets/logos/abb.svg',                h: 26 },
+  { name: 'Schneider Electric',         src: '/assets/logos/schneider.svg',          h: 28 },
+  { name: 'Alstom',                     src: '/assets/logos/alstom.svg',             h: 22 },
+  { name: 'INOXCVA',                    src: '/assets/logos/inoxcva.png',            h: 28 },
+  { name: 'Cochin Shipyard Limited',    src: '/assets/logos/cochin-shipyard.png',    h: 42 },
+  { name: 'Hindustan Shipyard Limited', src: '/assets/logos/hindustan-shipyard.svg', h: 42 },
+  { name: 'Bharat Electronics',         src: '/assets/logos/bel.svg',                h: 28 },
+  { name: 'Festo',                      src: '/assets/logos/festo.svg',              h: 22 },
+  { name: 'Trützschler',                src: '/assets/logos/trutzschler.svg',        h: 24 },
 ];
 ---
 
@@ -158,7 +166,7 @@ const clientLogos = [
       <span class="ri-trusted-label">Trusted by</span>
       <div class="ri-trusted-logos">
         {clientLogos.map((c) => (
-          <img src={c.src} alt={c.name} class="ri-trusted-logo" loading="lazy" width="88" height="24" />
+          <img src={c.src} alt={c.name} class="ri-trusted-logo" loading="lazy" style={`--logo-h:${c.h}px`} />
         ))}
       </div>
     </div>
@@ -445,19 +453,23 @@ const clientLogos = [
   .ri-trusted-logos {
     display: flex;
     align-items: center;
-    gap: clamp(20px, 3vw, 36px);
+    justify-content: center;
+    gap: 12px clamp(14px, 1.5vw, 22px);
     flex-wrap: wrap;
   }
+  /* Dark-navy strip: originals in full colour are illegible here, so all
+     marks render as white silhouettes; hover lifts to full strength */
   .ri-trusted-logo {
-    height: 22px;
+    height: var(--logo-h, 26px);
     width: auto;
-    opacity: 0.85;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
     transition: opacity 0.2s ease;
   }
   .ri-trusted-logo:hover { opacity: 1; }
   @media (max-width: 640px) {
-    .ri-trusted-logos { gap: 18px; }
-    .ri-trusted-logo { height: 15px; }
+    .ri-trusted-logos { gap: 10px 18px; }
+    .ri-trusted-logo { height: calc(var(--logo-h, 26px) * 0.72); }
   }
 
   /* ── Hero statement — compact bottom strip ───────────────── */

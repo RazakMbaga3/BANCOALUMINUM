@@ -4,24 +4,28 @@ import Pic from '../../components/Pic.astro';
 
 // ── Alloy compositions — source: Banco Billets 2026 Product Catalogue ─────────
 const alloys = [
-  { alloy: '1070A', si: '≤ 0.10', mg: '≤ 0.03', fe: '≤ 0.25', mn: '≤ 0.03', cu: '≤ 0.03', al: '≥ 99.70', note: 'Pure aluminium' },
-  { alloy: '1100',  si: '≤ 0.95', mg: '≤ 0.05', fe: '≤ 0.30', mn: '≤ 0.05', cu: '0.05–0.10', al: '≥ 99.00', note: 'Si + Fe ≤ 0.95 combined' },
-  { alloy: '3003',  si: '≤ 0.10', mg: '≤ 0.05', fe: '≤ 0.25', mn: '1.05–1.15', cu: '0.05–0.09', al: 'Rem.', note: 'Heat exchanger · automotive' },
-  { alloy: '6060',  si: '≤ 0.10', mg: '0.48–0.54', fe: '0.10–0.25', mn: '≤ 0.07', cu: '≤ 0.07', al: 'Rem.', note: 'Architectural profiles' },
-  { alloy: '6063',  si: '≤ 0.10', mg: '0.48–0.55', fe: '≤ 0.30', mn: '≤ 0.10', cu: '≤ 0.10', al: 'Rem.', note: 'Windows · doors · general extrusion' },
-  { alloy: '6101',  si: '≤ 0.10', mg: '0.48–0.55', fe: '≤ 0.20', mn: '≤ 0.03', cu: '≤ 0.03', al: 'Rem.', note: 'Electrical conductor grade' },
-  { alloy: '6005',  si: '≤ 0.10', mg: '0.45–0.53', fe: '≤ 0.25', mn: '≤ 0.10', cu: '≤ 0.10', al: 'Rem.', note: 'Medium strength structural' },
-  { alloy: '6005A', si: '≤ 0.10', mg: '0.50–0.58', fe: '≤ 0.25', mn: '0.20–0.28', cu: '≤ 0.10', al: 'Rem.', note: 'Transport · structural (Mn+Cr 0.12–0.50)' },
-  { alloy: '6082',  si: '≤ 0.10', mg: '0.72–0.79', fe: '≤ 0.30', mn: '0.45–0.53', cu: '≤ 0.10', al: 'Rem.', note: 'High strength structural' },
-  { alloy: '6061',  si: '≤ 0.10', mg: '0.90–0.98', fe: '≤ 0.35', mn: '≤ 0.13', cu: '0.18–0.25', al: 'Rem.', note: 'Engineering · aerospace' },
-  { alloy: '6066',  si: '≤ 0.10', mg: '1.00–1.10', fe: '≤ 0.30', mn: '0.70–0.80', cu: '0.80–0.90', al: 'Rem.', note: 'High-strength forgings' },
+  { alloy: '1050A', si: '≤ 0.25',       mg: '≤ 0.05',    fe: '≤ 0.40',       mn: '≤ 0.05',    cu: '≤ 0.05',    zn: '≤ 0.07', cr: '–',         ti: '≤ 0.05', oe: '≤ 0.03', ot: '≤ 0.10', al: '≥ 99.50',  note: 'Conductivity & formability' },
+  { alloy: '1070A', si: '≤ 0.20',       mg: '≤ 0.03',    fe: '≤ 0.25',       mn: '≤ 0.03',    cu: '≤ 0.03',    zn: '≤ 0.07', cr: '–',         ti: '≤ 0.03', oe: '≤ 0.03', ot: '≤ 0.10', al: '≥ 99.70',  note: 'Higher electrical conductivity' },
+  { alloy: '1100',  si: 'Si+Fe ≤ 0.95', mg: '–',         fe: 'Si+Fe ≤ 0.95', mn: '≤ 0.05',    cu: '0.05–0.20', zn: '–',      cr: '–',         ti: '–',      oe: '≤ 0.05', ot: '≤ 0.15', al: '≥ 99.00',  note: 'Excellent corrosion resistance' },
+  { alloy: '2014',  si: '0.50–1.20',    mg: '0.20–0.80', fe: '≤ 0.70',       mn: '0.40–1.20', cu: '3.90–5.00', zn: '≤ 0.25', cr: '≤ 0.10',    ti: '≤ 0.15', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Very high strength' },
+  { alloy: '2017A', si: '0.20–0.80',    mg: '0.40–1.00', fe: '≤ 0.70',       mn: '0.40–1.00', cu: '3.50–4.50', zn: '≤ 0.25', cr: '≤ 0.10',    ti: '–',      oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Zr+Ti = 0.25 max · High strength & machinability' },
+  { alloy: '3003',  si: '≤ 0.60',       mg: '–',         fe: '≤ 0.70',       mn: '1.00–1.50', cu: '0.05–0.20', zn: '≤ 0.10', cr: '–',         ti: '–',      oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Good formability and corrosion resistance' },
+  { alloy: '6101',  si: '0.30–0.70',    mg: '0.35–0.80', fe: '≤ 0.50',       mn: '≤ 0.03',    cu: '≤ 0.10',    zn: '≤ 0.10', cr: '≤ 0.03',    ti: '–',      oe: '≤ 0.03', ot: '≤ 0.10', al: 'Remainder', note: 'Electrical conductor grade' },
+  { alloy: '6060',  si: '0.30–0.60',    mg: '0.35–0.60', fe: '0.10–0.30',    mn: '≤ 0.10',    cu: '≤ 0.10',    zn: '≤ 0.15', cr: '≤ 0.05',    ti: '≤ 0.10', oe: '≤ 0.05', ot: '≤ 0.10', al: 'Remainder', note: 'Architectural profiles' },
+  { alloy: '6063',  si: '0.20–0.60',    mg: '0.45–0.90', fe: '≤ 0.35',       mn: '≤ 0.10',    cu: '≤ 0.10',    zn: '≤ 0.10', cr: '≤ 0.10',    ti: '≤ 0.10', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Windows / doors / general extrusion' },
+  { alloy: '6005',  si: '0.60–0.90',    mg: '0.40–0.60', fe: '≤ 0.35',       mn: '≤ 0.10',    cu: '≤ 0.10',    zn: '≤ 0.10', cr: '≤ 0.10',    ti: '≤ 0.10', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Medium strength structural / solar frame applications' },
+  { alloy: '6005A', si: '0.50–0.90',    mg: '0.40–0.70', fe: '≤ 0.35',       mn: '≤ 0.50',    cu: '≤ 0.30',    zn: '≤ 0.20', cr: '≤ 0.30',    ti: '≤ 0.10', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Mn+Cr = 0.12–0.50 · Transport / structural' },
+  { alloy: '6082',  si: '0.70–1.30',    mg: '0.60–1.20', fe: '≤ 0.50',       mn: '0.40–1.00', cu: '≤ 0.10',    zn: '≤ 0.20', cr: '≤ 0.25',    ti: '≤ 0.10', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'High strength structural' },
+  { alloy: '6351',  si: '0.70–1.30',    mg: '0.40–0.80', fe: '≤ 0.50',       mn: '0.40–0.80', cu: '≤ 0.10',    zn: '≤ 0.20', cr: '–',         ti: '≤ 0.20', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'High strength for pressure applications' },
+  { alloy: '6061',  si: '0.40–0.80',    mg: '0.80–1.20', fe: '≤ 0.70',       mn: '≤ 0.15',    cu: '0.15–0.40', zn: '≤ 0.25', cr: '0.04–0.35', ti: '≤ 0.15', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'Engineering / aerospace' },
+  { alloy: '6066',  si: '0.90–1.80',    mg: '0.80–1.40', fe: '≤ 0.50',       mn: '0.60–1.10', cu: '0.70–1.20', zn: '≤ 0.25', cr: '≤ 0.40',    ti: '≤ 0.20', oe: '≤ 0.05', ot: '≤ 0.15', al: 'Remainder', note: 'High-strength forgings' },
 ];
 
 // ── Alloy specialities ──────────────────────────────────────────────────────
 const alloySpecialities = [
   'Hard and high-strength alloys for structural, transport, defence, aerospace and engineering applications',
   'Lead-free free-machining alloys, including 6026, for automotive, medical, food processing and precision-machined components',
-  'Electrical conductivity alloys, including 6101 and 6201, for busbars, conductor profiles and renewable energy applications',
+  'Electrical conductivity alloys for busbars and conductor profiles',
   'Custom alloys and special chemistries developed as per customer specification',
 ];
 
@@ -82,7 +86,7 @@ const qc = [
   { stat: '100 %', label: 'Visual inspection for external defects', sub: 'External surface; every billet, every cast' },
   { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects: inclusions, voids' },
   { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES, verified against order specification' },
-  { stat: 'SCADA', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
+  { stat: 'SCADA / ERP', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
   { stat: 'Cast №', label: 'Alloy marking', sub: 'Designation + cast number on every individual billet' },
 ];
 
@@ -94,12 +98,13 @@ const certs = [
   'CE (EN 15088:2005)',
   'IS 733 · IS 1285 · IS 5082',
   'ISO 14064-1',
+  'IQNET',
 ];
 ---
 
 <Layout
   title="Aluminium extrusion billets & cast products: Banco Aluminium"
-  description="Foundry-grade aluminium extrusion billets: 55,000 MT capacity, 11 standard alloys plus custom compositions, 127–254 mm diameters. CBAM-ready supply."
+  description="High Quality extrusion-grade aluminium billets: 55,000 MT capacity, standard alloys plus custom compositions, 127–254 mm diameters. CBAM-ready supply."
   image="/assets/manufacturing/aluminumbillets.avif"
   transparentNav={true}
 >
@@ -114,14 +119,14 @@ const certs = [
     <div class="c-hero-overlay" aria-hidden="true"></div>
     <div class="c-hero-content">
       <h1 class="c-h1">
-        Extrusion billets.<br>Cast to spec.
+        High Quality Extrusion Billets.<br>Wide range of Specification.
       </h1>
       <div class="c-stats">
         {[
           { n: '55,000', u: 'MT/yr',       l: 'Foundry capacity' },
           { n: '6',      u: 'Diameters',   l: '5" to 10"' },
-          { n: '12+',    u: 'Alloys',      l: 'Custom on request' },
-          { n: '0.480',  u: 'kgCO₂e/kg',  l: 'ISO 14064-1 verified' },
+          { n: 'All',    u: 'Alloys',      l: 'Custom on request' },
+          { n: '0.203',  u: 'kgCO₂e/kg',  l: 'ISO 14064-1 verified' },
         ].map(({ n, u, l }) => (
           <div class="c-stat">
             <div class="c-stat-num">{n} <span class="c-stat-unit">{u}</span></div>
@@ -143,20 +148,22 @@ const certs = [
       <!-- Left: rich content column -->
       <div class="c-overview-left">
         <div class="eyebrow">Foundry · Billet production</div>
-        <h2 class="t-h2 c-h2-navy" style="font-weight:800;margin-top:14px">
+        <h2 class="t-h2 c-h2-navy" style="font-weight:800;margin-top:16px">
           Consistent metallurgical<br/>quality, cast to cast.
         </h2>
         <p class="t-body c-body-text" style="margin-top:20px">
-          Banco's integrated foundry produces extrusion-grade aluminium billets using
-          cylinder-guided Hot-Top casting, delivering controlled microstructure,
-          measurable metal cleanliness and consistent extrudability, batch after batch.
+          Banco's integrated foundry produces High Quality extrusion-grade aluminium
+          billets using cylinder-guided Hot-Top casting, delivering controlled
+          microstructure, measurable metal cleanliness and consistent extrudability,
+          batch after batch.
         </p>
         <p class="t-body c-body-text" style="margin-top:12px">
           Every billet undergoes 100% ultrasonic testing, spectroscopic chemical
-          verification and full SCADA traceability from furnace charge through despatch.
+          verification and full SCADA / ERP traceability from furnace charge through
+          despatch.
         </p>
         <div class="c-chip-row" style="margin-top:24px">
-          {['Hot-Top casting', 'In-house alloy development', 'SCADA traceability', 'CBAM-ready', 'Export-certified'].map(c => (
+          {['Hot-Top casting', 'In-house alloy development', 'SCADA / ERP traceability', 'IQNET', 'CBAM-ready', 'Export-certified'].map(c => (
             <span class="pill">{c}</span>
           ))}
         </div>
@@ -192,7 +199,7 @@ const certs = [
     <div class="container">
       <div class="c-section-head">
         <h2 class="t-h2 c-h2-navy" style="font-weight:800">
-          11 standard alloys.<br>Custom compositions on request.
+          Standard alloys.<br>Custom compositions on request.
         </h2>
       </div>
 
@@ -202,13 +209,18 @@ const certs = [
           <thead>
             <tr>
               <th scope="col">Alloy</th>
-              <th scope="col">Si (wt%)</th>
-              <th scope="col">Mg (wt%)</th>
-              <th scope="col">Fe (wt%)</th>
-              <th scope="col">Mn (wt%)</th>
-              <th scope="col">Cu (wt%)</th>
+              <th scope="col">Si</th>
+              <th scope="col">Mg</th>
+              <th scope="col">Fe</th>
+              <th scope="col">Mn</th>
+              <th scope="col">Cu</th>
+              <th scope="col">Zn</th>
+              <th scope="col">Cr</th>
+              <th scope="col">Ti</th>
+              <th scope="col">Others each</th>
+              <th scope="col">Others total</th>
               <th scope="col">Al</th>
-              <th scope="col">Primary application</th>
+              <th scope="col">Remarks</th>
             </tr>
           </thead>
           <tbody>
@@ -220,6 +232,11 @@ const certs = [
                 <td class="c-cell-val">{a.fe}</td>
                 <td class="c-cell-val">{a.mn}</td>
                 <td class="c-cell-val">{a.cu}</td>
+                <td class="c-cell-val">{a.zn}</td>
+                <td class="c-cell-val">{a.cr}</td>
+                <td class="c-cell-val">{a.ti}</td>
+                <td class="c-cell-val">{a.oe}</td>
+                <td class="c-cell-val">{a.ot}</td>
                 <td class="c-cell-val">{a.al}</td>
                 <td class="c-cell-note">{a.note}</td>
               </tr>
@@ -228,8 +245,7 @@ const certs = [
         </table>
       </div>
       <p class="c-table-footnote">
-        <span class="c-table-footnote-std">Full chemical composition including Zn, Cr, Ti, and individual trace elements available in the product data sheet.</span>
-        <span class="c-table-footnote-callout"><strong>Additional alloys:</strong> 1050A, 2011, 2017A, 2014, 6262 and 6026 are available to customer specification. Please contact us for details.</span>
+        <span class="c-table-footnote-callout">1xxx, 2xxx, 3xxx, 6xxx, and 7xxx series, along with any special compositions, are all available to customer specifications.</span>
       </p>
 
       <div class="c-spec-list">
@@ -350,10 +366,10 @@ const certs = [
   <!-- ── 06 · Green aluminium ──────────────────────────────────────────────── -->
   <section class="section-deep section-pad">
     <div class="container">
-      <div class="c-two-col" style="align-items:start">
+      <div class="c-two-col">
         <div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:20px;font-weight:800">
-            0.480 kgCO₂e per kg.<br>Verified quarterly.
+          <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
+            0.203 kgCO₂e per kg.<br>Verified quarterly.
           </h2>
           <div class="c-chip-row" style="margin-top:28px">
             {['ISO 14064-1 verified', 'CBAM documentation', 'Up to 95% recycled input', '960 kW captive solar', 'Natural gas melting'].map(c => (
@@ -363,7 +379,7 @@ const certs = [
         </div>
         <div class="c-green-stats">
           {[
-            { n: '0.480', u: 'kgCO₂e / kg', l: 'Carbon footprint at full capacity · ISO 14064-1' },
+            { n: '0.203', u: 'kgCO₂e / kg', l: 'Carbon footprint at full capacity · ISO 14064-1' },
             { n: '≤ 5%',  u: '',             l: 'Verified primary aluminium in green billet grade' },
             { n: '960',   u: 'kW',           l: 'Captive solar generation on site' },
             { n: '100%',  u: '',             l: 'Natural gas in melting, with no coal energy input' },
@@ -661,7 +677,7 @@ const certs = [
   .c-section-head {
     margin-bottom: 32px;
   }
-  .c-h2-navy { color: var(--color-navy); margin-top: 12px; }
+  .c-h2-navy { color: var(--color-navy); }
   .c-body-text { color: var(--color-stone-700); }
   .c-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
@@ -944,7 +960,6 @@ const certs = [
     gap: 8px;
     align-items: flex-start;
     flex-shrink: 0;
-    padding-top: 28px;
   }
 
   /* ── Green aluminium ───────────────────────────────────────────────────── */
@@ -1073,7 +1088,7 @@ const certs = [
     .c-dim-grid       { grid-template-columns: 1fr; }
     .c-cta-grid       { grid-template-columns: 1fr; }
     .c-packing-inner  { grid-template-columns: 1fr; }
-    .c-packing-tags   { flex-direction: row; flex-wrap: wrap; padding-top: 0; }
+    .c-packing-tags   { flex-direction: row; flex-wrap: wrap; }
     .c-green-stats    { grid-template-columns: repeat(2, 1fr); }
   }
 

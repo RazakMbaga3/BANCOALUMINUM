@@ -5,7 +5,7 @@ import Pic from '../../../components/Pic.astro';
 const facadeTypes = [
   { name: 'Curtain Wall Systems', desc: 'Structural glazing and captured curtain wall systems for commercial and institutional elevations. Full-height glass spans with concealed or exposed cap options.', img: '/assets/architectural-systems/curtain-wall-system.jpg' },
   { name: 'Glazing Solutions',    desc: 'Single, double and structural glazing configurations engineered to Banco frame tolerances, coordinated with your glazier of choice.', img: '/assets/architectural-systems/aluminium-glazing-corner.jpeg' },
-  { name: 'Louvers',              desc: 'Fixed and adjustable louvre and shading systems for solar control, ventilation, and plant screening on commercial façades.' },
+  { name: 'Louvers',              desc: 'Fixed and adjustable louvre and shading systems for solar control, ventilation, and plant screening on commercial façades.', img: '/assets/architectural-systems/louvers.webp' },
 ];
 
 const performance = [
@@ -51,11 +51,6 @@ const performance = [
     </div>
   </section>
 
-  <!-- ── Glazing detail banner ───────────────────────────────── -->
-  <div class="fs-banner">
-    <Pic src="/assets/architectural-systems/facade-systems-banner.jpg" alt="Aluminium façade mullion and transom glazing detail" loading="lazy" sizes="100vw" maxW={1920} />
-  </div>
-
   <section class="section-dark section-pad">
     <div class="container">
       <div class="eyebrow on-dark">Standards & testing</div>
@@ -91,10 +86,6 @@ const performance = [
   .fs-card:hover .fs-card-bg :global(img) { transform: scale(1.05); }
   .fs-card-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .fs-card-desc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
-
-  .fs-banner { width: 100%; aspect-ratio: 21/6; overflow: hidden; background: var(--color-navy-deep); }
-  .fs-banner :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
-  @media (max-width: 900px) { .fs-banner { aspect-ratio: 16/9; } }
 
   .fs-perf-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .fs-perf-col { background: var(--color-navy-soft); padding: 20px 18px; }

@@ -87,7 +87,8 @@ const qc = [
   { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects: inclusions, voids' },
   { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES, verified against order specification' },
   { stat: 'SCADA / ERP', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
-  { stat: 'Cast №', label: 'Alloy marking', sub: 'Designation + cast number on every individual billet' },
+  { stat: 'Alloy marking', label: 'Unique Cast №', sub: 'Designation + cast number on every individual billet' },
+  { stat: 'Ceramic filtration', label: 'Inline grain refinement', sub: 'Fine, uniform, equiaxed crystal structure' },
 ];
 
 const certs = [
@@ -345,17 +346,14 @@ const certs = [
       <!-- Packing note -->
       <div class="c-packing">
         <div class="c-packing-inner">
-          <div class="c-packing-img">
-            <Pic src="/assets/manufacturing/Labeling.webp" alt="Banco billet alloy and cast number labelling" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-          </div>
           <div>
-            <div class="c-table-label">Packing &amp; identification</div>
+            <div class="c-table-label">Packing</div>
           </div>
           <div class="c-packing-tags">
-            <span class="pill on-dark">Plastic-strapped bundles</span>
+            <span class="pill on-dark">Metal / plastic-strapped bundles</span>
             <span class="pill on-dark">Forklift-ready runners</span>
             <span class="pill on-dark">Alloy + cast number marking</span>
-            <span class="pill on-dark">Full batch traceability</span>
+            <span class="pill on-dark">Mill test certificate</span>
             <span class="pill on-dark">Export-standard packing</span>
           </div>
         </div>
@@ -369,10 +367,10 @@ const certs = [
       <div class="c-two-col">
         <div>
           <h2 class="t-h2" style="color:var(--color-platinum);font-weight:800">
-            0.203 kgCO₂e per kg.<br>Verified quarterly.
+            0.203 kgCO₂e/kg.
           </h2>
           <div class="c-chip-row" style="margin-top:28px">
-            {['ISO 14064-1 verified', 'CBAM documentation', 'Up to 95% recycled input', '960 kW captive solar', 'Natural gas melting'].map(c => (
+            {['ISO 14064-1 verified', 'CBAM documentation', 'Up to 95% recycled input for green billets', '960 kW integrated captive solar', 'Natural gas melting'].map(c => (
               <span class="pill on-dark">{c}</span>
             ))}
           </div>
@@ -382,7 +380,7 @@ const certs = [
             { n: '0.203', u: 'kgCO₂e / kg', l: 'Carbon footprint at full capacity · ISO 14064-1' },
             { n: '≤ 5%',  u: '',             l: 'Verified primary aluminium in green billet grade' },
             { n: '960',   u: 'kW',           l: 'Captive solar generation on site' },
-            { n: '100%',  u: '',             l: 'Natural gas in melting, with no coal energy input' },
+            { n: '100%',  u: '',             l: 'Natural gas in melting' },
           ].map(({ n, u, l }) => (
             <div class="c-green-cell">
               <div class="c-green-num">
@@ -469,7 +467,7 @@ const certs = [
   .c-hero-content > .eyebrow { padding: 0 clamp(20px, 4vw, 60px); margin-bottom: 20px; }
   .c-h1 {
     font-family: var(--font-sans);
-    font-size: clamp(40px, 5.5vw, 72px);
+    font-size: clamp(40px, 5vw, 72px);
     font-weight: 800;
     letter-spacing: -0.04em;
     line-height: 0.95;
@@ -581,7 +579,7 @@ const certs = [
   }
   .c-ov-cap-note {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -611,7 +609,7 @@ const certs = [
   .c-ov-sm-lbl {
     display: block;
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -796,8 +794,9 @@ const certs = [
     margin-top: 48px;
   }
   .c-table-label {
+    /* Eyebrow-role label — .eyebrow scale */
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -883,7 +882,7 @@ const certs = [
   /* ── Quality assurance ─────────────────────────────────────────────────── */
   .c-qc-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
@@ -897,22 +896,24 @@ const certs = [
     gap: 8px;
   }
   .c-qc-stat {
+    /* Box title — t-h3 scale from the design system */
     font-family: var(--font-sans);
-    font-size: clamp(22px, 2.5vw, 32px);
+    font-size: clamp(22px, 2vw, 28px);
     font-weight: 700;
     letter-spacing: -0.03em;
     color: var(--color-platinum);
-    line-height: 1;
+    line-height: 1.1;
   }
   .c-qc-label {
+    /* Box subtitle — t-body scale */
     font-family: var(--font-sans);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--color-platinum);
   }
   .c-qc-sub {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.1em;
     color: var(--color-nickel);
     line-height: 1.5;
@@ -929,23 +930,10 @@ const certs = [
   }
   .c-packing-inner {
     display: grid;
-    grid-template-columns: 240px 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 28px;
     padding: 28px 28px;
     align-items: center;
-  }
-  .c-packing-img {
-    width: 240px;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    border: 1px solid var(--color-navy-line);
-    flex-shrink: 0;
-  }
-  .c-packing-img :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
   }
   .c-packing-text {
     font-family: var(--font-sans);
@@ -1050,7 +1038,7 @@ const certs = [
   /* ── Process photography ──────────────────────────────────────────────── */
   .c-photo-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-green);

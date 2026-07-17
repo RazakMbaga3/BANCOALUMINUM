@@ -160,14 +160,22 @@ const clientLogos = [
     </div>
   </section>
 
-  <!-- ── Trusted-by logo strip ─────────────────────────────── -->
+  <!-- ── Trusted-by logo strip — scroll-velocity marquee ────── -->
+  <!-- Track duplicated once for a seamless loop; duplicate set is
+       decorative (aria-hidden, empty alt) -->
   <div class="ri-trusted" role="region" aria-label="Trusted by">
     <div class="container ri-trusted-inner">
       <span class="ri-trusted-label">Trusted by</span>
-      <div class="ri-trusted-logos">
-        {clientLogos.map((c) => (
-          <img src={c.src} alt={c.name} class="ri-trusted-logo" loading="lazy" style={`--logo-h:${c.h}px`} />
-        ))}
+      <div class="ri-marquee" id="trusted-marquee">
+        <div class="ri-marquee-track">
+          {[0, 1].map((dup) => (
+            <div class="ri-marquee-set" aria-hidden={dup === 1 ? 'true' : undefined}>
+              {clientLogos.map((c) => (
+                <img src={c.src} alt={dup === 1 ? '' : c.name} class="ri-trusted-logo" loading="lazy" style={`--logo-h:${c.h}px`} />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
@@ -192,6 +200,47 @@ const clientLogos = [
   </footer>
 
 </LayoutRouter>
+
+<script>
+  // Trusted-by marquee: slow idle drift; scroll attempts add a velocity
+  // impulse (the page itself is fixed on desktop), easing back to idle.
+  const mq = document.getElementById('trusted-marquee');
+  const track = mq?.querySelector<HTMLElement>('.ri-marquee-track');
+  const set = mq?.querySelector<HTMLElement>('.ri-marquee-set');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (mq && track && set && !reduced.matches) {
+    const IDLE = 22;   // drift speed, px/s (leftwards)
+    const MAX = 700;   // impulse clamp, px/s
+    let x = 0;
+    let v = IDLE;
+    let paused = false;
+    let last = performance.now();
+
+    // Freeze the drift while the pointer is over the strip so logos stay readable
+    mq.addEventListener('pointerenter', () => { paused = true; });
+    mq.addEventListener('pointerleave', () => { paused = false; });
+
+    // Desktop only — below 900px the page genuinely scrolls
+    window.addEventListener('wheel', (e) => {
+      if (window.innerWidth < 900) return;
+      v = Math.max(-MAX, Math.min(MAX, v + e.deltaY * 1.4));
+    }, { passive: true });
+
+    const frame = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      v += ((paused ? 0 : IDLE) - v) * Math.min(1, dt * 3.2);
+      const w = set.offsetWidth;
+      if (w > 0) {
+        x = (((x + v * dt) % w) + w) % w;
+        track.style.transform = `translate3d(${-x}px,0,0)`;
+      }
+      requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+</script>
 
 <style>
   /* ── Fixed video + overlay ───────────────────────────────── */
@@ -233,6 +282,8 @@ const clientLogos = [
   }
 
   /* ── Individual panel ───────────────────────────────────── */
+  /* Equal widths at all times — hover animates only transform/opacity
+     (compositor-safe), never layout, so neighbours stay still */
   .rp {
     position: relative;
     flex: 1;
@@ -240,15 +291,13 @@ const clientLogos = [
     text-decoration: none;
     background: var(--color-navy-deep);
     border-right: 1px solid rgba(40, 69, 106, 0.55);
-    transition: flex 0.55s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     outline: none;
   }
   .rp:last-child { border-right: none; }
-  .rp:hover, .rp:focus-visible { flex: 3.5; }
   .rp:focus-visible { outline: 2px solid var(--color-green); outline-offset: -2px; }
 
-  /* Photo fills the panel — clean, no overlay on top */
+  /* Photo fills the panel — dimmed at rest, slow cinematic push-in on hover */
   .rp-bg {
     position: absolute;
     inset: 0;
@@ -259,16 +308,19 @@ const clientLogos = [
     height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0.88;
-    filter: brightness(0.80) saturate(0.80);
-    transition: transform 0.55s ease, opacity 0.45s ease, filter 0.45s ease;
-    transform: scale(1.04);
+    opacity: 0.85;
+    filter: brightness(0.78) saturate(0.78);
+    transition:
+      transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+      opacity 0.6s ease,
+      filter 0.6s ease;
+    transform: scale(1);
   }
   .rp:hover .rp-bg-img,
   .rp:focus-visible .rp-bg-img {
-    transform: scale(1.0);
-    opacity: 0.95;
-    filter: brightness(0.88) saturate(0.92);
+    transform: scale(1.06);
+    opacity: 1;
+    filter: brightness(0.92) saturate(0.95);
   }
 
   /* Segment index — subtle watermark top-left over photo */
@@ -281,6 +333,12 @@ const clientLogos = [
     font-size: 10px;
     letter-spacing: 0.20em;
     color: rgba(228, 229, 227, 0.72); /* 0.40 failed contrast over dark photos */
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.45s ease;
+  }
+  .rp:hover .rp-num,
+  .rp:focus-visible .rp-num {
+    transform: translateX(6px);
+    color: var(--color-platinum);
   }
 
   /* ── Info panel — solid frosted glass, no gradient confusion ── */
@@ -329,7 +387,7 @@ const clientLogos = [
     color: var(--color-platinum);
   }
 
-  /* Description — hidden at rest, slides up on hover */
+  /* Description — hidden at rest; second beat of the staggered reveal */
   .rp-desc {
     font-family: var(--font-sans);
     font-size: 12.5px;
@@ -340,15 +398,22 @@ const clientLogos = [
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.38s ease 0.05s, opacity 0.28s ease 0.12s, margin-top 0.28s ease;
+    transform: translateY(10px);
+    transition:
+      max-height 0.4s ease 0.06s,
+      opacity 0.32s ease 0.1s,
+      transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s,
+      margin-top 0.3s ease 0.06s;
   }
   .rp:hover .rp-desc,
   .rp:focus-visible .rp-desc {
     max-height: 150px;
     opacity: 1;
+    transform: translateY(0);
     margin-top: 9px;
   }
 
+  /* Enter row — subdued at rest; third beat of the stagger */
   .rp-enter {
     display: inline-flex;
     align-items: center;
@@ -359,11 +424,12 @@ const clientLogos = [
     letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--color-platinum);
-    transition: gap 0.25s ease;
+    opacity: 0.6;
+    transition: gap 0.25s ease 0.18s, opacity 0.3s ease 0.18s;
   }
-  .rp-enter svg { flex-shrink: 0; color: var(--color-green); transition: transform 0.25s ease; }
+  .rp-enter svg { flex-shrink: 0; color: var(--color-green); transition: transform 0.25s ease 0.18s; }
   .rp:hover .rp-enter,
-  .rp:focus-visible .rp-enter { gap: 12px; }
+  .rp:focus-visible .rp-enter { gap: 12px; opacity: 1; }
   .rp:hover .rp-enter svg,
   .rp:focus-visible .rp-enter svg { transform: translateX(3px); }
 
@@ -437,10 +503,8 @@ const clientLogos = [
   }
   .ri-trusted-inner {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 24px;
-    flex-wrap: wrap;
   }
   .ri-trusted-label {
     font-family: var(--font-mono);
@@ -450,12 +514,25 @@ const clientLogos = [
     color: var(--color-nickel);
     flex-shrink: 0;
   }
-  .ri-trusted-logos {
+  /* Marquee viewport — clips the loop, fades it out at the edges */
+  .ri-marquee {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+  }
+  .ri-marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+  .ri-marquee-set {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px clamp(14px, 1.5vw, 22px);
-    flex-wrap: wrap;
+    gap: clamp(24px, 2.5vw, 40px);
+    padding-right: clamp(24px, 2.5vw, 40px);
+    height: 46px; /* tallest mark 42px — fixed so the strip never jumps */
   }
   /* Dark-navy strip: originals in full colour are illegible here, so all
      marks render as white silhouettes; hover lifts to full strength */
@@ -468,8 +545,12 @@ const clientLogos = [
   }
   .ri-trusted-logo:hover { opacity: 1; }
   @media (max-width: 640px) {
-    .ri-trusted-logos { gap: 10px 18px; }
+    .ri-marquee-set { gap: 18px; padding-right: 18px; height: 34px; }
     .ri-trusted-logo { height: calc(var(--logo-h, 26px) * 0.72); }
+  }
+  /* Reduced motion: no drift — strip becomes a manually scrollable row */
+  @media (prefers-reduced-motion: reduce) {
+    .ri-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
   }
 
   /* ── Hero statement — compact bottom strip ───────────────── */
@@ -566,11 +647,10 @@ const clientLogos = [
       min-height: 280px;
       border-right: none;
       border-bottom: 1px solid rgba(40, 69, 106, 0.55);
-      transition: none;
     }
     .rp:last-child { border-bottom: none; }
-    .rp:hover, .rp:focus-visible { flex: none; }
-    .rp-desc  { max-height: 120px; opacity: 1; margin-top: 9px; }
+    .rp-desc  { max-height: 120px; opacity: 1; transform: none; margin-top: 9px; }
+    .rp-enter { opacity: 1; }
     .rp-name  { font-size: 22px; }
     .router-hero { padding: 20px 0; }
     .rc-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -585,14 +665,17 @@ const clientLogos = [
   }
 
   @media (hover: none) {
-    .rp-desc { opacity: 1; transform: none; }
-    .rp-line { transform: scaleX(1); }
+    .rp-desc { max-height: 150px; opacity: 1; transform: none; margin-top: 9px; }
+    .rp-enter { opacity: 1; }
+    .rp-content::after { transform: scaleX(1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rp, .rp-bg-img { transition: none; }
-    .rp-desc { transition: none; max-height: 120px; opacity: 1; margin-top: 9px; }
-    .rp-enter, .rp-enter svg { transition: none; }
+    .rp-bg-img, .rp-num { transition: none; transform: none; }
+    .rp:hover .rp-bg-img, .rp:focus-visible .rp-bg-img { transform: none; }
+    .rp:hover .rp-num, .rp:focus-visible .rp-num { transform: none; }
+    .rp-desc { transition: none; max-height: 150px; opacity: 1; transform: none; margin-top: 9px; }
+    .rp-enter, .rp-enter svg { transition: none; opacity: 1; }
     .rp-content::after { transition: none; transform: scaleX(1); }
   }
 </style>

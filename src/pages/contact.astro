@@ -100,6 +100,7 @@ const localBusinessLd = {
           >
             <!-- Netlify / static host honeypot field -->
             <input type="hidden" name="form-name" value="quote-request" />
+            <input type="hidden" name="enquiry_source" id="f-enquiry-source" value="" />
             <p style="display:none"><input name="bot-field" /></p>
 
             <div class="cform-row">
@@ -165,6 +166,20 @@ const localBusinessLd = {
               </svg>
             </button>
           </form>
+
+          <script>
+            // Tag enquiries with their originating page (?src=…) so the form
+            // backend can route them (architectural → dedicated sales inboxes).
+            const src = new URLSearchParams(window.location.search).get('src');
+            if (src) {
+              const tag = document.getElementById('f-enquiry-source') as HTMLInputElement | null;
+              if (tag) tag.value = src;
+              if (src === 'architectural') {
+                const product = document.getElementById('f-product') as HTMLSelectElement | null;
+                if (product && !product.value) product.value = 'architectural';
+              }
+            }
+          </script>
         </div>
 
         <!-- Contact info -->

@@ -56,7 +56,7 @@ const capabilities = [
   { num: '/ 01', name: 'Die design & development',      tag: 'Q-Form simulation · 5-axis CNC · trial extrusion' },
   { num: '/ 02', name: 'Extrusion',                     tag: '5 presses · 1100–3300T · 35,000 MT/yr' },
   { num: '/ 03', name: 'Heat treatment',                tag: 'T5, T6, T73 tempers · in-line & batch' },
-  { num: '/ 04', name: 'Fabrication & machining',       tag: 'Cut · drill · mill · bend · 10,000 parts/day' },
+  { num: '/ 04', name: 'Fabrication & machining',       tag: 'Cut · drill · mill · bend · 10,000+ parts/day' },
   { num: '/ 05', name: 'Cold drawing',                  tag: 'Rods · bars · tubes · tight OD tolerance' },
 ];
 
@@ -85,6 +85,46 @@ const packingExternal = [
   { name: 'Plastic wrap',   desc: 'Nylon, four sides and edges.' },
 ];
 
+// ── Full alloy specification table — source: client review doc (2.0), p.33 ────
+// lf: true → lead-free grade, rendered bold per brochure convention
+const alloyTable = [
+  {
+    series: '1xxx', cat: 'Soft',
+    alloys: [{ g: '1050A' }, { g: '1050Z' }, { g: '1060' }, { g: '1070A' }, { g: '1100' }, { g: '1200Z' }, { g: '1350' }, { g: '19501' }, { g: '19600' }],
+    remarks: 'Commercially pure aluminium',
+  },
+  {
+    series: '2xxx', cat: 'Hard',
+    alloys: [{ g: '2011' }, { g: '2012' }, { g: '2014' }, { g: '2014A' }, { g: '2014Z' }, { g: '2017A' }, { g: '2024' }, { g: '2024Z' }, { g: '2030' }],
+    remarks: 'High-strength aluminium-copper alloys',
+  },
+  {
+    series: '3xxx', cat: 'Medium Hard',
+    alloys: [{ g: '3003' }, { g: '3003Z' }, { g: '3103' }],
+    remarks: 'Good formability and corrosion resistance',
+  },
+  {
+    series: '5xxx', cat: 'Medium Hard',
+    alloys: [{ g: '5083' }, { g: '5083Z' }, { g: '53000' }, { g: '5454' }, { g: '5754' }],
+    remarks: 'Marine and welded structural alloys',
+  },
+  {
+    series: '6xxx', cat: 'Normal',
+    alloys: [{ g: '6060' }, { g: '6063' }, { g: '6063-AN', lf: true }, { g: '6063-GR' }, { g: '6063-HS', lf: true }, { g: '6063Z' }, { g: '6101' }, { g: '6101B' }, { g: '63401' }, { g: '6463' }, { g: 'E91E' }],
+    remarks: 'Bold alloys are lead-free grades. 6063-AN and 6063-HS are lead-free extrusion grades suitable for RoHS/ELV/REACH compliance.',
+  },
+  {
+    series: '6xxx', cat: 'Medium Hard',
+    alloys: [{ g: '6005' }, { g: '6005A' }, { g: '6005A-HS' }, { g: '6026', lf: true }, { g: '6042' }, { g: '6061' }, { g: '6066' }, { g: '6066Z' }, { g: '6082' }, { g: '6082-HS', lf: true }, { g: '6082Z' }, { g: '6201' }, { g: '6262' }, { g: '6351' }, { g: '65032' }],
+    remarks: 'Bold alloys are lead-free grades. 6026 is a lead-free free-machining alloy. 6082-HS is a lead-free extrusion grade suitable for RoHS/ELV/REACH compliance.',
+  },
+  {
+    series: '7xxx', cat: 'Hard',
+    alloys: [{ g: '7003' }, { g: '7005' }, { g: '7020' }, { g: '7022' }, { g: '7075' }],
+    remarks: 'Ultra-high-strength aluminium-zinc alloys',
+  },
+];
+
 const certs = [
   'ISO 9001:2015',
   'ISO 14001:2015',
@@ -98,7 +138,7 @@ const certs = [
 
 <Layout
   title="Industrial aluminium profiles for OEMs: Banco Aluminium"
-  description="Drawing-led aluminium profiles for OEM applications: hard alloys, lead-free machining grades, cold drawing and fabrication of 10,000 parts per day."
+  description="Drawing-led aluminium profiles for OEM applications: hard alloys, lead-free machining grades, cold drawing and fabrication of 10,000+ parts per day."
   image="/assets/manufacturing/industrialOEMS.webp"
   transparentNav={true}
 >
@@ -222,6 +262,43 @@ const certs = [
     </div>
   </section>
 
+  <!-- ── Full alloy specification table ─────────────────────────────────────── -->
+  <section class="section-white" style="padding: 72px 0">
+    <div class="container">
+      <h2 class="ih-section-h2 ih-h2-navy">Full alloy specification.</h2>
+      <div class="ih-table-wrap">
+        <table class="ih-table" aria-label="Alloy specification by series, strength category and remarks">
+          <thead>
+            <tr>
+              <th scope="col">Series</th>
+              <th scope="col">Alloys</th>
+              <th scope="col">Strength category</th>
+              <th scope="col">Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {alloyTable.map((row, i) => (
+              <tr class={i % 2 === 0 ? 'ih-row-even' : 'ih-row-odd'}>
+                <td class="ih-cell-series">{row.series}</td>
+                <td class="ih-cell-alloys">
+                  {row.alloys.map((a, j) => (
+                    <>{j > 0 && ', '}{a.lf ? <strong>{a.g}</strong> : a.g}</>
+                  ))}
+                </td>
+                <td class="ih-cell-cat">{row.cat}</td>
+                <td class="ih-cell-remarks">{row.remarks}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="ih-table-footnote">
+        <strong>Bold</strong> alloys are lead-free grades suitable for RoHS / ELV / REACH compliance.
+        Custom alloys and special chemistries developed as per customer specification.
+      </p>
+    </div>
+  </section>
+
   <!-- ── Capability chain — dark numbered grid ─────────────────────────────── -->
   <section class="section-dark" style="padding: 72px 0">
     <div class="container">
@@ -278,7 +355,7 @@ const certs = [
   <!-- ── Packing options ────────────────────────────────────────────────────── -->
   <section class="section-silver" style="padding: 72px 0">
     <div class="container">
-      <h2 class="ih-section-h2 ih-h2-navy">Customer-specified packing.</h2>
+      <h2 class="ih-section-h2 ih-h2-navy">Customer-specified packing.<br>Export-ready.</h2>
       <div class="ih-pack-grid">
         <div>
           <div class="ih-pack-label">Internal protection</div>
@@ -539,6 +616,56 @@ const certs = [
   .i-ind-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
   .i-ind-name { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-platinum); line-height: 1.25; }
   .i-ind-note { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
+
+  /* ── Full alloy specification table ──────────────────────────────────────── */
+  .ih-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-stone-200);
+  }
+  .ih-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+  .ih-table thead tr { background: var(--color-navy); }
+  .ih-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-nickel);
+    border-right: 1px solid var(--color-navy-line);
+    white-space: nowrap;
+  }
+  .ih-table th:last-child { border-right: none; }
+  .ih-row-even { background: var(--color-stone-50); }
+  .ih-row-odd  { background: white; }
+  .ih-table td {
+    padding: 12px 16px;
+    border-right: 1px solid var(--color-stone-200);
+    border-bottom: 1px solid var(--color-stone-200);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .ih-table td:last-child { border-right: none; }
+  .ih-cell-series  { font-weight: 500; font-size: 12px; color: var(--color-navy); white-space: nowrap; }
+  .ih-cell-alloys  { color: var(--color-stone-700); min-width: 260px; }
+  .ih-cell-alloys strong { color: var(--color-green); font-weight: 700; }
+  .ih-cell-cat     { color: var(--color-navy); white-space: nowrap; }
+  .ih-cell-remarks { color: var(--color-stone-700); font-size: 10px; letter-spacing: 0.08em; min-width: 220px; }
+  .ih-table-footnote {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-stone-700);
+    line-height: 1.6;
+  }
+  .ih-table-footnote strong { color: var(--color-green); }
 
   /* ── Capability grid ─────────────────────────────────────────────────────── */
   .ih-cap-grid {

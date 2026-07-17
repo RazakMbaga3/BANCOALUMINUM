@@ -64,19 +64,20 @@ const alloyData = [
     <div class="container cap-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Alloys & foundry</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
-        Hard alloys.<br>Lead-free grades.<br>Custom compositions.
+        Standard alloys.<br>Hard alloys.<br>Lead-free grades.<br>Custom compositions.
       </h1>
       <p class="cap-lead" data-reveal data-reveal-delay="3">
-        Banco's in-house foundry produces 55,000 MT of extrusion billets per year
-        across three distinct alloy families, giving downstream extrusion complete
-        control over alloy chemistry, temper, and metallurgical structure.
+        Banco's in-house foundry produces 55,000 MT of high-quality extrusion
+        billets per year across all categories with homogenisation, giving
+        downstream extrusion complete control over alloy chemistry, temper, and
+        metallurgical structure.
       </p>
       <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '55,000 MT', l: 'Annual foundry capacity' },
-          { n: '12+',       l: 'Standard alloy grades' },
           { n: '1xxx–7xxx', l: 'Alloy series range' },
-          { n: '100%',      l: 'Spectro-OES verified' },
+          { n: '100%',      l: 'Spectro verified' },
+          { n: '100%',      l: 'UT tested' },
         ].map(({ n, l }) => (
           <div class="cap-stat">
             <div class="cap-stat-n">{n}</div>
@@ -97,11 +98,11 @@ const alloyData = [
       <div class="eyebrow" data-reveal="fade">/ 01 · Alloy families</div>
       <div class="fnd-section-head" data-reveal="fade">
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-          Three families covering every<br>extrusion application.
+          Covering Every<br>Extrusion Application.
         </h2>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:52ch">
-          From soft architectural alloys to complex hard-alloy sections and RoHS-compliant
-          machining grades, Banco's in-house alloy capability removes third-party dependency
+          From soft alloys to complex hard alloys and RoHS-compliant machining
+          grades, Banco's in-house alloy capability removes third-party dependency
           for chemistry and billet quality.
         </p>
       </div>
@@ -160,7 +161,7 @@ const alloyData = [
       </div>
       <p class="fnd-footnote" data-reveal="fade">
         Full compositions including Mn, Zn, Cr, Ti available in alloy data sheets.
-        Additional grades (2011, 2017A, 2014, 5083, 6005A, 6101, 6361) produced on request.
+        Additional grades (2011, 2017A, 2014, 5083, 6005A, 6101) produced on request.
       </p>
     </div>
   </section>
@@ -170,14 +171,15 @@ const alloyData = [
     <div class="container">
       <div class="eyebrow" data-reveal="fade">/ 03 · Foundry process</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px" data-reveal>
-        Four controlled stages<br>from scrap to billet.
+        Five controlled stages<br>from scrap to billet.
       </h2>
       <div class="fnd-process-grid" data-reveal="fade">
         {[
-          ['/ 01', 'Metal filtration',   '/assets/manufacturing/melting-1.webp',  'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station, improving metal cleanliness and reducing inclusion count.'],
-          ['/ 02', 'Nitrogen degassing', '/assets/manufacturing/melting-3.webp',  'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
-          ['/ 03', 'Hot-Top casting',    '/assets/manufacturing/casting-1.webp',  'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
-          ['/ 04', 'Homogenising',       '/assets/manufacturing/homo-1.webp',     'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
+          ['/ 01', 'Melting',                '/assets/manufacturing/melting-1.webp',  'Charge materials are melted in gas-fired furnaces to a controlled tapping temperature, the starting point for consistent alloy chemistry batch after batch.'],
+          ['/ 02', 'Refining & degassing',   '/assets/manufacturing/melting-3.webp',  'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
+          ['/ 03', 'Ceramic foam filtration','/assets/manufacturing/melting-4.webp',  'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station, improving metal cleanliness and reducing inclusion count.'],
+          ['/ 04', 'Hot-Top casting',        '/assets/manufacturing/casting-1.webp',  'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
+          ['/ 05', 'Homogenising',           '/assets/manufacturing/homo-1.webp',     'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
         ].map(([num, name, photo, desc]) => (
           <div class="fnd-proc-cell">
             <div class="fnd-proc-img">
@@ -277,7 +279,7 @@ const alloyData = [
   .fnd-cell-note  { color: var(--color-nickel); white-space: normal; min-width: 180px; font-size: 10px; }
   .fnd-footnote   { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
-  .fnd-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .fnd-process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .fnd-proc-cell { background: var(--color-stone-50); display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
   .fnd-proc-img { aspect-ratio: 16/9; overflow: hidden; }
   .fnd-proc-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.4s ease, filter 0.3s ease; }

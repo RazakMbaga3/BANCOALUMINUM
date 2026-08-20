@@ -13,13 +13,6 @@ const departments = [
   { id: '08', name: 'Logistics',      icon: '▷', desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
 ];
 
-const whyPoints = [
-  { title: '58 years of heritage', desc: 'One of India\'s oldest aluminium extrusion manufacturers, established 1967 by the Thakkar family and still family-owned.' },
-  { title: 'Owner-managed',        desc: 'Decisions made on-site by people who understand manufacturing. Short chains. Clear accountability.' },
-  { title: 'Integrated platform',  desc: 'Foundry, die shop, extrusion, heat treatment, machining, and finishing, all in-house. Every discipline has real depth.' },
-  { title: 'Export markets',       desc: 'Europe, North America, Asia-Pacific, Middle East. International experience and market exposure from day one.' },
-  { title: 'Growth track',         desc: 'Capacity expansion and digitalisation underway. Roles being created, not simply replaced.' },
-];
 ---
 
 <Layout
@@ -51,98 +44,19 @@ const whyPoints = [
         Build your career<br/><em class="accent">in aluminium.</em>
       </h1>
       <p class="ca-hero-lede" data-reveal data-reveal-delay="3">
-        Banco Aluminium has been manufacturing since 1967. Family-owned,
-        fully integrated: from foundry to finished profile. We hire people
-        who want to build something: careers, capability, and a manufacturing
-        business that lasts.
+        We hire people who want to build something real: a career, a craft, and a
+        manufacturing business that lasts. If you want to work somewhere that actually
+        makes things, and see your work leave the plant, Banco is that place.
       </p>
 
-      <div class="ca-hero-stats" data-reveal data-reveal-delay="4">
-        {[
-          { val: '58 yrs',    label: 'Manufacturing since 1967' },
-          { val: '900+',      label: 'People on site' },
-          { val: '8',         label: 'Departments hiring' },
-          { val: 'Integrated',label: 'Full value chain' },
-        ].map(({ val, label }) => (
-          <div class="ca-stat">
-            <div class="ca-stat-n">{val}</div>
-            <div class="ca-stat-l">{label}</div>
-          </div>
-        ))}
-      </div>
-
-      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px" data-reveal data-reveal-delay="5">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px" data-reveal data-reveal-delay="4">
         <a href="#apply" class="btn btn-primary-dark">Apply now</a>
-        <a href="#departments" class="btn btn-secondary-dark">Browse departments</a>
+        <a href="/about/why-banco" class="btn btn-secondary-dark">Why Banco</a>
       </div>
     </div>
 
     <div class="ca-scroll-cue" aria-hidden="true">
       <span class="ca-scroll-line"></span>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       WHY BANCO — sticky + 5 points
-       ══════════════════════════════════════════ -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="ca-why-layout">
-        <div class="ca-why-sticky" data-reveal="left">
-          <div class="eyebrow">/ 01 · Why Banco</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Integrated.<br/>Growing.<br/><em class="accent">Genuinely</em><br/>manufacturing.
-          </h2>
-          <div class="ca-why-rule"></div>
-          <p style="color:var(--color-stone-700);font-size:15px;line-height:1.7">
-            Most aluminium companies are traders. Banco is a manufacturer,
-            with its own foundry, die shop, five extrusion presses, heat
-            treatment, surface finishing, and machining. If you join Banco,
-            you work in a place where things are actually made.
-          </p>
-        </div>
-
-        <div class="ca-why-points" data-reveal="right">
-          {whyPoints.map((p, i) => (
-            <div class="ca-why-row" style={`--delay:${i * 60}ms`}>
-              <div class="ca-why-n">{String(i + 1).padStart(2, '0')}</div>
-              <div class="ca-why-body">
-                <div class="ca-why-title">{p.title}</div>
-                <div class="ca-why-desc">{p.desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       DEPARTMENTS — 4×2 dark grid
-       ══════════════════════════════════════════ -->
-  <section class="section-dark section-pad" id="departments">
-    <div class="container">
-      <div class="ca-dept-head" data-reveal="left">
-        <div class="eyebrow on-dark">/ 02 · Departments we hire for</div>
-        <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px">
-          Eight departments.<br/><em class="accent">Every level.</em>
-        </h2>
-      </div>
-
-      <div class="ca-dept-grid" data-reveal="fade">
-        {departments.map((d, i) => (
-          <div class="ca-dept-card" style={`--delay:${i * 50}ms`}>
-            <div class="ca-dept-top">
-              <div class="ca-dept-id">{d.id}</div>
-            </div>
-            <h3 class="ca-dept-name">{d.name}</h3>
-            <div class="ca-dept-rule"></div>
-            <p class="ca-dept-desc">{d.desc}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -292,7 +206,7 @@ const whyPoints = [
           </a>
         </div>
         <div class="ca-cta-btns">
-          <a href="#apply" class="btn btn-primary-dark">Submit application</a>
+          <a href="/about/why-banco" class="btn btn-primary-dark">Why Banco</a>
           <a href="/about" class="btn btn-secondary-dark">About Banco</a>
         </div>
       </div>
@@ -333,47 +247,6 @@ const whyPoints = [
     51%  { transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
-
-  /* ── WHY BANCO ──────────────────────────────────────────────── */
-  .ca-why-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(48px,7vw,100px); align-items: start; }
-  .ca-why-sticky { position: sticky; top: 100px; }
-  .ca-why-rule { width: 40px; height: 1px; background: var(--color-stone-400); margin: 28px 0; }
-  .ca-why-points { display: flex; flex-direction: column; }
-  .ca-why-row {
-    display: grid; grid-template-columns: 48px 1fr;
-    gap: 20px; padding: 22px 0;
-    border-bottom: 1px solid var(--color-stone-200);
-    align-items: start;
-    transition-delay: var(--delay, 0ms);
-  }
-  .ca-why-row:first-child { border-top: 1px solid var(--color-stone-200); }
-  .ca-why-n { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); padding-top: 4px; }
-  .ca-why-title { font-size: 16px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 6px; }
-  .ca-why-desc  { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
-
-  /* ── DEPARTMENTS ────────────────────────────────────────────── */
-  .ca-dept-head { max-width: 500px; margin-bottom: 40px; }
-  .ca-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); }
-  .ca-dept-card {
-    background: var(--color-navy-soft); padding: 28px 20px;
-    display: flex; flex-direction: column;
-    position: relative; overflow: hidden;
-    transition: background 0.25s ease;
-    transition-delay: var(--delay, 0ms);
-  }
-  .ca-dept-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; background: var(--color-green);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.35s ease;
-  }
-  .ca-dept-card:hover { background: var(--color-navy); }
-  .ca-dept-card:hover::before { transform: scaleX(1); }
-  .ca-dept-top { margin-bottom: 12px; }
-  .ca-dept-id { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--color-green); }
-  .ca-dept-name { font-size: 18px; font-weight: 600; color: var(--color-platinum); letter-spacing: -0.01em; }
-  .ca-dept-rule { width: 24px; height: 1px; background: var(--color-navy-line); margin: 12px 0; }
-  .ca-dept-desc { font-size: 12.5px; line-height: 1.65; color: var(--color-stone-400); }
 
   /* ── FORM LAYOUT ────────────────────────────────────────────── */
   .ca-form-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(48px,7vw,96px); align-items: start; }
@@ -441,12 +314,7 @@ const whyPoints = [
   .ca-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
   /* ── RESPONSIVE ─────────────────────────────────────────────── */
-  @media (max-width: 1100px) {
-    .ca-dept-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 900px) {
-    .ca-why-layout  { grid-template-columns: 1fr; gap: 40px; }
-    .ca-why-sticky  { position: static; }
     .ca-form-layout { grid-template-columns: 1fr; }
     .ca-cta-row     { flex-direction: column; }
     .ca-cta-btns    { flex-direction: row; flex-wrap: wrap; }
@@ -454,9 +322,7 @@ const whyPoints = [
   @media (max-width: 640px) {
     .ca-hero-grad   { background: rgba(6,21,37,0.88); }
     .ca-scroll-cue  { display: none; }
-    .ca-dept-grid   { grid-template-columns: 1fr 1fr; }
     .ca-field-row   { grid-template-columns: 1fr; }
-    .ca-why-layout  { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .ca-scroll-line { animation: none; opacity: 0.5; }

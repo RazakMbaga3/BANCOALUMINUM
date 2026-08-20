@@ -33,17 +33,19 @@ const whyPoints = [
     </div>
 
     <div class="container wb-hero-body">
-      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
-        Why Banco
+      <div class="wb-hero-inner">
+        <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
+          Why Banco
+        </div>
+        <h1 class="t-h1 wb-hero-h1" data-reveal data-reveal-delay="2">
+          Integrated.<br/>Genuinely <em class="accent">manufacturing.</em>
+        </h1>
+        <p class="wb-hero-lede" data-reveal data-reveal-delay="3">
+          Most aluminium companies are traders. Banco is a manufacturer, with its own
+          foundry, die shop, five extrusion presses, heat treatment, surface finishing,
+          and machining, all under one roof in Vadodara.
+        </p>
       </div>
-      <h1 class="t-h1 wb-hero-h1" data-reveal data-reveal-delay="2">
-        Integrated.<br/>Genuinely <em class="accent">manufacturing.</em>
-      </h1>
-      <p class="wb-hero-lede" data-reveal data-reveal-delay="3">
-        Most aluminium companies are traders. Banco is a manufacturer, with its own
-        foundry, die shop, five extrusion presses, heat treatment, surface finishing,
-        and machining, all under one roof in Vadodara.
-      </p>
     </div>
 
     <div class="wb-scroll-cue" aria-hidden="true">
@@ -125,7 +127,8 @@ const whyPoints = [
       linear-gradient(110deg, rgba(6,21,37,0.76) 0%, rgba(6,21,37,0.22) 58%, rgba(6,21,37,0.05) 100%),
       linear-gradient(to bottom, transparent 55%, var(--color-navy-deep) 100%);
   }
-  .wb-hero-body { position: relative; z-index: 2; width: 100%; padding-top: 160px; padding-bottom: 100px; max-width: 680px; }
+  .wb-hero-body { position: relative; z-index: 2; width: 100%; padding-top: 160px; padding-bottom: 100px; }
+  .wb-hero-inner { max-width: 680px; }
   .wb-hero-h1 { color: var(--color-stone-50); margin-top: 20px; }
   .wb-hero-lede { color: var(--color-stone-400); font-size: clamp(15px,1.4vw,18px); line-height: 1.65; max-width: 54ch; margin-top: 24px; }
 

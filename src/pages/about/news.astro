@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Press, news & blogs: Banco Aluminium"
+  description="Press releases, company news, and articles from Banco Aluminium. Updates coming soon."
+>
+
+  <section class="nw-hero">
+    <div class="container">
+      <div class="eyebrow on-dark">About Banco / Press, news &amp; blogs</div>
+      <h1 class="nw-h1">Press, news<br/>&amp; blogs.</h1>
+      <p class="nw-lead">
+        Company announcements, press coverage, and articles from Banco Aluminium.
+        We're building this section out; check back soon, or follow the links below
+        in the meantime.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="nw-empty">
+        <div class="nw-empty-eyebrow">Coming soon</div>
+        <p class="nw-empty-p">
+          Nothing published here yet. In the meantime, read more about who we are
+          and how we work.
+        </p>
+        <div class="nw-empty-links">
+          <a href="/about" class="btn btn-primary">Company</a>
+          <a href="/about/why-banco" class="btn btn-secondary">Why Banco</a>
+          <a href="/about/quality" class="btn btn-secondary">Quality &amp; certifications</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .nw-hero {
+    background: var(--color-navy);
+    padding: 148px 0 72px;
+  }
+  .nw-h1 {
+    font-family: var(--font-sans);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    color: var(--color-platinum);
+    margin-top: 20px;
+  }
+  .nw-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.4vw, 17px);
+    line-height: 1.65;
+    color: var(--color-silver);
+    margin-top: 24px;
+    max-width: 56ch;
+  }
+  .nw-empty {
+    max-width: 640px;
+    padding: 56px 0;
+    border-top: 1px solid var(--color-stone-200);
+  }
+  .nw-empty-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    margin-bottom: 14px;
+  }
+  .nw-empty-p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-stone-700);
+    margin-bottom: 28px;
+  }
+  .nw-empty-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>

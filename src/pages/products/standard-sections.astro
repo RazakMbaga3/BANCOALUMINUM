@@ -2,31 +2,69 @@
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 
-const sections = [
-  { id: '01', type: 'Equal angle',              desc: 'Equal legs, 20×20 to 100×100 mm. Structural and fabrication use.',    alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
-  { id: '02', type: 'Unequal angle',             desc: 'Unequal legs for specific structural configurations.',                  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
-  { id: '03', type: 'Parallel flange channel',   desc: 'C-section channel, standard and heavy duty. Wide flange versions.',   alloy: '6082-T6',           std: 'IS 1285' },
-  { id: '04', type: 'T-section',                 desc: 'Equal and unequal T-sections. Track, extrusion guide, structural T.',  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
-  { id: '05', type: 'Flat bar',                  desc: '10–200 mm wide, 2–20 mm thick. Plate strip, fabrication flat.',        alloy: '6061-T6 · 6082-T6', std: 'IS 733'  },
-  { id: '06', type: 'Square bar',                desc: '10×10 to 80×80 mm. Structural and machining stock.',                   alloy: '6082-T6 · 6061-T6', std: 'IS 733'  },
-  { id: '07', type: 'Round bar',                 desc: '6–150 mm diameter. Extruded and cold drawn grades available.',         alloy: '6061-T6 · 6082-T6 · 2011', std: 'IS 733'  },
-  { id: '08', type: 'Rectangular hollow section',desc: 'RHS for structural frames, guard rails, and support structures.',      alloy: '6082-T6 · 6063-T6', std: 'IS 1285' },
-  { id: '09', type: 'Square hollow section',     desc: 'SHS in standard wall thickness. Equal sides for symmetric loading.',  alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
-  { id: '10', type: 'Round tube',                desc: '12–200 mm OD. Structural, mechanical, and architectural tube.',       alloy: '6063-T6 · 6082-T6', std: 'IS 1285' },
+const sectionGroups = [
+  {
+    title: 'Bars', std: 'IS 733',
+    items: [
+      { id: 'bar-round',  type: 'Round',      desc: '6–150 mm diameter. Extruded and cold drawn grades available.',                   alloy: '6061-T6 · 6082-T6 · 2011', icon: 'round' },
+      { id: 'bar-square', type: 'Square',     desc: '10×10 to 80×80 mm. Structural and machining stock.',                             alloy: '6082-T6 · 6061-T6',         icon: 'square' },
+      { id: 'bar-hex',    type: 'Hexagonal',  desc: '6–50 mm across flats. Fastener stock, machining blanks, and hex-drive components.', alloy: '6082-T6 · 6061-T6',        icon: 'hex' },
+      { id: 'bar-flat',   type: 'Flat',       desc: '10–200 mm wide, 2–20 mm thick. Plate strip, fabrication flat.',                    alloy: '6061-T6 · 6082-T6',         icon: 'flat' },
+    ],
+  },
+  {
+    title: 'Tubes', std: 'IS 1285',
+    items: [
+      { id: 'tube-round', type: 'Round',        desc: '12–200 mm OD. Structural, mechanical, and architectural tube.',      alloy: '6063-T6 · 6082-T6', icon: 'roundTube' },
+      { id: 'tube-square',type: 'Square',        desc: '10×10 to 100×100 mm. Structural and mechanical tube for frames and fabrication.', alloy: '6063-T6 · 6082-T6', icon: 'squareTube' },
+      { id: 'tube-rect',  type: 'Rectangular',   desc: 'RHS for structural frames, guard rails, and support structures.',     alloy: '6082-T6 · 6063-T6', icon: 'rectTube' },
+    ],
+  },
+  {
+    title: 'Angles', std: 'IS 1285',
+    items: [
+      { id: 'angle-equal',   type: 'Equal',   desc: 'Equal legs, 20×20 to 100×100 mm. Structural and fabrication use.', alloy: '6063-T6 · 6082-T6', icon: 'equalAngle' },
+      { id: 'angle-unequal', type: 'Unequal', desc: 'Unequal legs for specific structural configurations.',              alloy: '6063-T6 · 6082-T6', icon: 'unequalAngle' },
+    ],
+  },
+  {
+    title: 'Channels', std: 'IS 1285',
+    items: [
+      { id: 'channel-equal',   type: 'Equal',   desc: 'C-section channel, standard and heavy duty. Wide flange versions.',       alloy: '6082-T6',           icon: 'channel' },
+      { id: 'channel-unequal', type: 'Unequal', desc: 'Unequal flange channel for asymmetric structural and fabrication use.',    alloy: '6082-T6 · 6063-T6', icon: 'unequalChannel' },
+    ],
+  },
+  {
+    title: 'Tees', std: 'IS 1285',
+    items: [
+      { id: 'tee-regular', type: 'Regular', desc: 'Equal and unequal T-sections. Track, extrusion guide, structural T.',   alloy: '6063-T6 · 6082-T6', icon: 'tee' },
+      { id: 'tee-bulb',    type: 'Bulb',    desc: 'Tee with a rolled bulb edge for stiffened panel and marine deck use.',   alloy: '6082-T6',           icon: 'bulbTee' },
+    ],
+  },
+  {
+    title: 'Modular', std: 'IS 1285',
+    items: [
+      { id: 'modular', type: 'Modular profiles', desc: 'Slotted modular profiles for framing, workstations, and machine guarding: assembled without welding using standard fasteners and brackets.', alloy: '6063-T6 · 6082-T6', icon: 'modular' },
+    ],
+  },
 ];
 
 // Simplified cross-section silhouettes — schematic, not to scale
 const sectionIcons: Record<string, string> = {
-  '01': `<path d="M5 4 L5 32 L11 32 L11 10 L32 10 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
-  '02': `<path d="M5 4 L5 32 L9 32 L9 8 L32 8 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
-  '03': `<path d="M6 4 L30 4 L30 10 L12 10 L12 26 L30 26 L30 32 L6 32 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
-  '04': `<path d="M4 4 L32 4 L32 10 L21 10 L21 32 L15 32 L15 10 L4 10 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
-  '05': `<rect x="4" y="13" width="28" height="8" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
-  '06': `<rect x="8" y="8" width="20" height="20" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
-  '07': `<circle cx="18" cy="18" r="13" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
-  '08': `<rect x="4" y="8" width="28" height="20" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8" y="12" width="20" height="12" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
-  '09': `<rect x="6" y="6" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="11" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
-  '10': `<circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  equalAngle:    `<path d="M5 4 L5 32 L11 32 L11 10 L32 10 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  unequalAngle:  `<path d="M5 4 L5 32 L9 32 L9 8 L32 8 L32 4 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  channel:       `<path d="M6 4 L30 4 L30 10 L12 10 L12 26 L30 26 L30 32 L6 32 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  unequalChannel:`<path d="M6 4 L26 4 L26 10 L12 10 L12 26 L30 26 L30 32 L6 32 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  tee:           `<path d="M4 4 L32 4 L32 10 L21 10 L21 32 L15 32 L15 10 L4 10 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  bulbTee:       `<path d="M4 4 L32 4 L32 10 L21 10 L21 26 L15 26 L15 10 L4 10 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="18" cy="29" r="4.5" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.4"/>`,
+  flat:          `<rect x="4" y="13" width="28" height="8" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  square:        `<rect x="8" y="8" width="20" height="20" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  round:         `<circle cx="18" cy="18" r="13" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6"/>`,
+  hex:           `<path d="M12 5 L24 5 L31 18 L24 31 L12 31 L5 18 Z" fill="currentColor" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>`,
+  rectTube:      `<rect x="4" y="8" width="28" height="20" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8" y="12" width="20" height="12" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  squareTube:    `<rect x="6" y="6" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="11" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  roundTube:     `<circle cx="18" cy="18" r="14" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>`,
+  modular:       `<rect x="4" y="4" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 13 H32 M4 23 H32 M13 4 V32 M23 4 V32" stroke="currentColor" stroke-width="1" stroke-opacity="0.55"/>`,
 };
 
 const galleryImages = ['2a', '2b', '2c', '2d', '2e', '2f', '2g'];
@@ -80,10 +118,14 @@ const alloys = [
         Standard profiles.<br>Ready to specify.
       </h1>
       <p class="ss-lead">
-        Banco's standard section range covers ten profile types across structural and
-        architectural categories, to IS 733 and IS 1285 specifications. In-stock in
-        6063-T6, 6082-T6, and 6061-T6 in mill finish. Anodised and powder coated
-        versions available to order.
+        Our extensive range of standard aluminium sections is engineered to meet the diverse
+        needs of structural and architectural industries. Comprising versatile profile types
+        and manufactured to IS 733 and IS 1285 standards.
+      </p>
+      <p class="ss-lead" style="margin-top:16px">
+        Banco maintains ready stock in 6 series alloys with mill finish. Value-added surface
+        treatments, including anodizing and powder coating, are available upon request,
+        delivering enhanced durability and aesthetics.
       </p>
       <div class="ss-stats">
         {[
@@ -95,8 +137,10 @@ const alloys = [
           <div class="ss-stat">
             <div class="ss-stat-n">
               {ce && (
-                <svg class="ss-ce" viewBox="0 0 60 32" fill="none" aria-hidden="true">
-                  <path d="M23.5 5.4 A13 13 0 1 0 23.5 26.6 M51.5 5.4 A13 13 0 1 0 51.5 26.6 M44 16 H51.5" stroke="currentColor" stroke-width="5"/>
+                <svg class="ss-ce" viewBox="0 0 130 60" aria-hidden="true">
+                  <path fill="currentColor" fill-rule="nonzero" d="M50.06 48.07 L48.15 49.99 L46.06 51.70 L43.80 53.20 L41.41 54.47 L38.90 55.49 L36.30 56.25 L33.64 56.75 L30.94 56.98 L28.23 56.94 L25.54 56.63 L22.90 56.05 L20.32 55.21 L17.85 54.11 L15.49 52.77 L13.28 51.20 L11.24 49.42 L9.39 47.45 L7.75 45.29 L6.33 42.99 L5.15 40.55 L4.21 38.01 L3.54 35.38 L3.14 32.71 L3.00 30.00 L3.14 27.29 L3.54 24.62 L4.21 21.99 L5.15 19.45 L6.33 17.01 L7.75 14.71 L9.39 12.55 L11.24 10.58 L13.28 8.80 L15.49 7.23 L17.85 5.89 L20.32 4.79 L22.90 3.95 L25.54 3.37 L28.23 3.06 L30.94 3.02 L33.64 3.25 L36.30 3.75 L38.90 4.51 L41.41 5.53 L43.80 6.80 L46.06 8.30 L48.15 10.01 L50.06 11.93 L41.15 19.96 L40.09 18.90 L38.92 17.94 L37.67 17.11 L36.34 16.41 L34.95 15.84 L33.50 15.41 L32.02 15.14 L30.52 15.01 L29.02 15.03 L27.52 15.21 L26.05 15.53 L24.62 16.00 L23.25 16.61 L21.94 17.35 L20.71 18.22 L19.58 19.21 L18.55 20.31 L17.64 21.50 L16.85 22.79 L16.19 24.14 L15.67 25.55 L15.30 27.01 L15.08 28.50 L15.00 30.00 L15.08 31.50 L15.30 32.99 L15.67 34.45 L16.19 35.86 L16.85 37.21 L17.64 38.50 L18.55 39.69 L19.58 40.79 L20.71 41.78 L21.94 42.65 L23.25 43.39 L24.62 44.00 L26.05 44.47 L27.52 44.79 L29.02 44.97 L30.52 44.99 L32.02 44.86 L33.50 44.59 L34.95 44.16 L36.34 43.59 L37.67 42.89 L38.92 42.06 L40.09 41.10 L41.15 40.04 Z
+                    M114.06 48.07 L112.15 49.99 L110.06 51.70 L107.80 53.20 L105.41 54.47 L102.90 55.49 L100.30 56.25 L97.64 56.75 L94.94 56.98 L92.23 56.94 L89.54 56.63 L86.90 56.05 L84.32 55.21 L81.85 54.11 L79.49 52.77 L77.28 51.20 L75.24 49.42 L73.39 47.45 L71.75 45.29 L70.33 42.99 L69.15 40.55 L68.21 38.01 L67.54 35.38 L67.14 32.71 L67.00 30.00 L67.14 27.29 L67.54 24.62 L68.21 21.99 L69.15 19.45 L70.33 17.01 L71.75 14.71 L73.39 12.55 L75.24 10.58 L77.28 8.80 L79.49 7.23 L81.85 5.89 L84.32 4.79 L86.90 3.95 L89.54 3.37 L92.23 3.06 L94.94 3.02 L97.64 3.25 L100.30 3.75 L102.90 4.51 L105.41 5.53 L107.80 6.80 L110.06 8.30 L112.15 10.01 L114.06 11.93 L105.15 19.96 L104.09 18.90 L102.92 17.94 L101.67 17.11 L100.34 16.41 L98.95 15.84 L97.50 15.41 L96.02 15.14 L94.52 15.01 L93.02 15.03 L91.52 15.21 L90.05 15.53 L88.62 16.00 L87.25 16.61 L85.94 17.35 L84.71 18.22 L83.58 19.21 L82.55 20.31 L81.64 21.50 L80.85 22.79 L80.19 24.14 L79.67 25.55 L79.30 27.01 L79.08 28.50 L79.00 30.00 L79.08 31.50 L79.30 32.99 L79.67 34.45 L80.19 35.86 L80.85 37.21 L81.64 38.50 L82.55 39.69 L83.58 40.79 L84.71 41.78 L85.94 42.65 L87.25 43.39 L88.62 44.00 L90.05 44.47 L91.52 44.79 L93.02 44.97 L94.52 44.99 L96.02 44.86 L97.50 44.59 L98.95 44.16 L100.34 43.59 L101.67 42.89 L102.92 42.06 L104.09 41.10 L105.15 40.04 Z
+                    M88.00 23.50 H116.00 V36.50 H88.00 Z"/>
                 </svg>
               )}
               {n}
@@ -131,20 +175,31 @@ const alloys = [
     <div class="container">
       <div class="eyebrow">/ 01 · Section types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
-        Ten standard section<br>types in stock.
+        Standard section<br>types in stock.
       </h2>
-      <div class="ss-sections-grid">
-        {sections.map((s) => (
-          <div class="ss-section-card">
-            <div class="ss-sec-icon" aria-hidden="true">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" set:html={sectionIcons[s.id]} />
+      <div class="ss-groups">
+        {sectionGroups.map((group, gi) => (
+          <div class="ss-group">
+            <div class="ss-group-head">
+              <span class="ss-group-num">{String(gi + 1).padStart(2, '0')}</span>
+              <h3 class="ss-group-title">{group.title}</h3>
+              <span class="ss-group-std">{group.std}</span>
             </div>
-            <div class="ss-sec-id">{s.id}</div>
-            <h3 class="ss-sec-type">{s.type}</h3>
-            <p class="ss-sec-desc">{s.desc}</p>
-            <div class="ss-sec-footer">
-              <div class="ss-sec-alloy">{s.alloy}</div>
-              <div class="ss-sec-std">{s.std}</div>
+            <div class="ss-sections-grid">
+              {group.items.map((s) => (
+                <div class="ss-section-card">
+                  <div class="ss-sec-icon" aria-hidden="true">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" set:html={sectionIcons[s.icon]} />
+                  </div>
+                  <div class="ss-sec-id">{group.title} / {s.type}</div>
+                  <h3 class="ss-sec-type">{s.type}</h3>
+                  <p class="ss-sec-desc">{s.desc}</p>
+                  <div class="ss-sec-footer">
+                    <div class="ss-sec-alloy">{s.alloy}</div>
+                    <div class="ss-sec-std">{group.std}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}
@@ -320,10 +375,15 @@ const alloys = [
   .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 48px; }
   .ss-stat { background: var(--color-navy-deep); padding: 22px 24px; }
   .ss-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); display: flex; align-items: center; gap: 10px; }
-  .ss-ce { width: 34px; height: auto; flex-shrink: 0; }
+  .ss-ce { width: 38px; height: auto; flex-shrink: 0; }
   .ss-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
 
-  .ss-sections-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ss-groups { display: flex; flex-direction: column; gap: 36px; }
+  .ss-group-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .ss-group-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--color-green); }
+  .ss-group-title { font-family: var(--font-sans); font-size: 19px; font-weight: 700; color: var(--color-navy); letter-spacing: -0.01em; }
+  .ss-group-std { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); margin-left: auto; }
+  .ss-sections-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .ss-section-card  { background: var(--color-stone-50); padding: 22px 18px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 6px; }
   .ss-sec-icon { color: var(--color-navy); margin-bottom: 4px; }
   .ss-sec-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }

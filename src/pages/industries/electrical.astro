@@ -4,9 +4,9 @@ import Pic from '../../components/Pic.astro';
 import IndustryHero from '../../components/IndustryHero.astro';
 
 const profiles = [
-  { name: 'Busbar profiles', desc: 'Flat, hollow, and shaped busbars for LV/MV switchgear assemblies, supplied to tight dimensional tolerances in 6101 and 1100 alloys.' },
+  { name: 'Busbar profiles', desc: 'Flat, hollow, and shaped busbars for LV/MV/HV switchgear assemblies, supplied to tight dimensional tolerances in high-conductivity alloys.' },
   { name: 'Cable tray sections', desc: 'Perforated and solid-bottom cable tray extrusions for industrial cable management systems.' },
-  { name: 'Switchgear housing profiles', desc: 'Panel enclosure extrusions, door frame sections, and base channel profiles for switchgear cabinets.' },
+  { name: 'Switchgear housing profiles', desc: 'Tubular conductors, structural support frames, heat sinks, panel enclosure extrusions, door frame sections, and base channel profiles for switchgear cabinets.' },
   { name: 'Transformer spacer profiles', desc: 'Precision spacer and winding support sections for dry-type and oil-cooled transformer assemblies.' },
   { name: 'Control panel extrusions', desc: 'Mounting rail, DIN rail carrier, and panel frame sections for control and automation cabinet construction.' },
   { name: 'Cable management channels', desc: 'Open-slot and closed cable ducting profiles for overhead and floor-level electrical distribution runs.' },
@@ -16,14 +16,14 @@ const galleryImages = ['3a', '3b', '3c', '3d', '3e', '3f', '3g'];
 
 const alloys = [
   { name: '6101', temper: 'T6 / T61', why: 'High electrical conductivity (≥52.5% IACS) with sufficient mechanical strength: the primary alloy for busbar and T&D conductors to IEC 60889.' },
-  { name: '6063', temper: 'T5 / T6', why: 'General-purpose architectural-grade alloy for housings, frames, and secondary structural components where conductivity is not the primary requirement.' },
-  { name: '1100', temper: 'O / H14', why: 'Near-pure aluminium for applications demanding maximum conductivity. Used for transformer windings and specialist conductor profiles.' },
+  { name: '6063', temper: 'T5 / T6', why: 'For heat sinks, housings, and frames.' },
+  { name: '1xxx', temper: 'O / H14', why: 'Near-pure aluminium for applications demanding maximum conductivity. Used for transformer windings and specialist conductor profiles.' },
 ];
 ---
 
 <Layout
   title="Electrical & power transmission: Banco Aluminium"
-  description="Busbars, cable management, switchgear housings, transformer sections and T&D profiles in 6101 and 6063 alloys. CE certified, 35,000 MT annual capacity."
+  description="Busbars, cable management, switchgear housings, transformer sections and T&D profiles in high-conductivity alloys. CE certified, 35,000 MT annual capacity."
   heroImage="/assets/industries/hero/electrical-hero.jpg"
 >
   <!-- Hero -->
@@ -31,14 +31,14 @@ const alloys = [
     image="/assets/industries/hero/electrical-hero.jpg"
     eyebrow="Industries / Electrical"
     stats={[
-    ['6101 alloy', 'Electrical conductor grade'],
+    ['Electrical Conductivity Alloys', 'Electrical conductor grade'],
     ['CE certified', 'EN 15088 compliant'],
     ['ISO 9001:2015', 'Quality management'],
     ['35,000 MT', 'Annual capacity'],
     ]}
   >
     <Fragment slot="h1">Electrical &amp; power transmission profiles.</Fragment>
-    <Fragment slot="lead">Busbars, cable management, switchgear housings, transformer sections, and T&amp;D profiles in high-conductivity 6101 and 6063 alloys, manufactured to EN and IEC standards.</Fragment>
+    <Fragment slot="lead">Busbars, cable management, switchgear housings, transformer sections, and T&amp;D profiles in high-conductivity alloys, manufactured to EN and IEC standards.</Fragment>
   </IndustryHero>
 
   <!-- Gallery strip -->
@@ -70,19 +70,20 @@ const alloys = [
           </h2>
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Banco supplies a comprehensive range of extruded aluminium profiles to the electrical
-            and power transmission sector. Our 6101-T6 busbars are manufactured to IEC 60889 and
-            EN 12020 standards, with conductivity verified by in-house spectrometric analysis
+            and power transmission sector. Our busbars are manufactured to IEC 60889 and
+            EN 12020 standards, with conductivity verified by in-house laboratory analysis
             on every cast.
           </p>
           <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
-            Whether your application is low-voltage switchgear, medium-voltage T&amp;D, transformer
-            construction, or industrial cable management, our dedicated electrical profiles team
-            can assist with alloy selection, temper optimisation, and surface finish specification.
+            Whether your application is in high-voltage applications, low-voltage switchgear,
+            medium-voltage T&amp;D, transformer construction, or industrial cable management,
+            our dedicated electrical profiles team can assist with alloy selection, temper
+            optimisation, and surface finish specification.
           </p>
 
           <!-- Application chips -->
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
-            {['LV Switchgear', 'MV Switchgear', 'T&D infrastructure', 'Transformer construction', 'Industrial cable management', 'Control panel assembly', 'Substation equipment'].map(tag => (
+            {['LV Switchgear', 'MV Switchgear', 'HV Application', 'T&D infrastructure', 'Transformer construction', 'Industrial cable management', 'Control panel assembly', 'Substation equipment'].map(tag => (
               <span class="pill">{tag}</span>
             ))}
           </div>
@@ -109,7 +110,7 @@ const alloys = [
     <div class="container">
       <div class="eyebrow">02 · Profile types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six profile families for the electrical sector.
+        Sections in the Electrical Sector.
       </h2>
       <div class="ind-tiles mt-10">
         {profiles.map(p => (
@@ -154,7 +155,7 @@ const alloys = [
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Every batch of electrical-grade aluminium profiles leaves our facility with a full
             material test certificate covering chemical composition, mechanical properties, and
-            electrical conductivity where applicable. Our SCADA-monitored production system
+            electrical conductivity where applicable. Our MES / SCADA-monitored production system
             provides full traceability from billet cast to despatch.
           </p>
         </div>
@@ -164,6 +165,7 @@ const alloys = [
             ['ISO 9001:2015', 'Quality management system'],
             ['BIS IS 5082', 'Electrical conductor alloys'],
             ['IEC 60889', 'Hard-drawn aluminium wire'],
+            ['ERDA Certified', 'Electrical Research & Development Association'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>
@@ -182,14 +184,15 @@ const alloys = [
         <div>
           <div class="eyebrow on-dark">Get started</div>
           <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:12px">
-            Submit a <em class="accent">drawing.</em>
+            Submit a <em class="accent">Requirement.</em>
           </h2>
           <p style="color:var(--color-stone-400);margin-top:12px;font-size:16px;max-width:46ch">
-            Upload your DXF or PDF and our electrical profiles team will respond with alloy
-            recommendation, feasibility assessment, and indicative pricing.
+            Upload a CAD file, PDF, or any image, and our Electrical Profiles team will respond
+            with a quotation, including alloy recommendations, a feasibility assessment, and
+            indicative pricing.
           </p>
         </div>
-        <a href="/contact#quote" class="btn btn-primary-dark">Submit a drawing</a>
+        <a href="/contact#quote" class="btn btn-primary-dark">Submit a requirement</a>
       </div>
     </div>
   </section>

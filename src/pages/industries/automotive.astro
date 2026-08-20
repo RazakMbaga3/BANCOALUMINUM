@@ -4,21 +4,26 @@ import Pic from '../../components/Pic.astro';
 import IndustryHero from '../../components/IndustryHero.astro';
 
 const profiles = [
-  { name: 'Structural body sections', desc: 'Crash management, sill reinforcement, and B-pillar extrusions in 6082-T6, designed for controlled deformation and high specific strength.' },
-  { name: 'Roof rail profiles', desc: 'Integrated roof rail and load carrier extrusions in 6082 for passenger vehicles. Anodised or powder coated to OEM specification.' },
-  { name: 'Door sill extrusions', desc: 'Stepped and curved door sill profiles with integral screw ports, machined to assembly tolerances for direct fitment.' },
-  { name: 'Seat track profiles', desc: 'Precision seat slide rail extrusions in 6061-T6, with tight groove tolerances and consistent hardness for low-friction travel across the full rail length.' },
-  { name: 'Thermal management fins', desc: 'Battery cooler manifolds and power electronics heat sink extrusions for EV and HEV platforms in high-conductivity 6063.' },
-  { name: 'Battery enclosure sections', desc: 'Tray side wall, bottom plate, and lid seal extrusions for high-voltage battery pack enclosures: airtight and water-tight cross-sections.' },
+  { name: 'Structural components', desc: 'Bumper beams, crumple beams, frame crosses, pillar reinforcements, and crash box extrusions engineered for controlled deformation and high specific strength.' },
+  { name: 'Chassis', desc: 'ICMS, steering knuckles, steering links, and anti-vibration system profiles machined to assembly tolerances for direct fitment.' },
+  { name: 'Brake systems', desc: 'ABS system housings, brake drum and disc components, and brake line profiles to automotive dimensional and pressure specifications.' },
+  { name: 'Trucks & trailer', desc: 'Bumper beams, underrun protection, side bars, and trailer part extrusions for commercial vehicle and heavy trailer applications.' },
+  { name: 'Electronics', desc: 'Powertrain housings, fuse box enclosures, and wiper mechanism profiles for automotive electronic and control systems.' },
+  { name: 'Safety products', desc: 'Airbag housing components, safety belt hardware, and structural sections engineered for crash-relevant occupant protection.' },
+  { name: 'Seat systems', desc: 'Precision seat slide rail extrusions with tight groove tolerances, plus seat frame, head rest, and seat guide system components.' },
+  { name: 'Fuel systems', desc: 'Fuel distribution profiles, fuel line sections, and fuel cooler extrusions built to automotive fluid-handling tolerances.' },
+  { name: 'Heating, AC & cooling', desc: 'A/C line profiles, compressor housings, and heat exchanger extrusions for automotive climate and cooling systems.' },
+  { name: 'Multi-purpose parts', desc: 'Bolts & screws, clamps and fasteners, and tube sections supplied as general-purpose automotive hardware profiles.' },
+  { name: 'Accessories', desc: 'Bike carrier, bull bar, and luggage carrier extrusions finished to OEM specification for automotive accessory programmes.' },
 ];
 
-const galleryImages = ['1', '2', '3', '4', '5'];
+const galleryImages = ['1', '2', '3', '4', '5', '6', '7'];
 
 const alloys = [
   { name: '6082', temper: 'T6', why: 'Premier structural automotive alloy with UTS 310 MPa and yield 260 MPa. Preferred for crash-critical body sections and roof rail applications.' },
   { name: '6061', temper: 'T6', why: 'Versatile engineering alloy for seat tracks, door components, and general automotive extrusions requiring good machinability alongside structural performance.' },
-  { name: '5083', temper: 'H111', why: 'Marine and automotive structural grade with exceptional weldability and corrosion resistance. Used in commercial vehicle body structures.' },
-  { name: '2111 LF', temper: 'T4 / T8', why: 'Lead-free free-machining alloy for precision automotive components subject to RoHS and ELV Directive restrictions.' },
+  { name: '6063', temper: 'T5 / T6', why: 'General-purpose automotive extrusion grade with excellent surface finish. Used in trim, brackets, and commercial vehicle body structures.' },
+  { name: '6005A', temper: 'T5 / T6', why: 'Lead-free, medium-strength alloy for precision automotive components subject to RoHS and ELV Directive restrictions.' },
 ];
 ---
 
@@ -33,13 +38,13 @@ const alloys = [
     eyebrow="Industries / Automotive"
     stats={[
     ['IATF 16949:2016', 'Automotive quality system'],
-    ['Hard alloy specialist', '6082 · 6061 · 5083'],
+    ['Special alloys', 'Custom & Standard alloys'],
     ['Lead-free grades', 'RoHS & ELV compliant'],
     ['35,000 MT', 'Annual capacity'],
     ]}
   >
-    <Fragment slot="h1">Automotive &amp; commercial vehicle profiles.</Fragment>
-    <Fragment slot="lead">Structural body sections, thermal management profiles, door sills, roof rails, and seat track extrusions, supplied under IATF 16949 certification to Tier 1 and Tier 2 automotive OEMs.</Fragment>
+    <Fragment slot="h1">Automotive, commercial vehicle &amp; EV profiles.</Fragment>
+    <Fragment slot="lead">Structural body sections, battery cages, impact-resistant profiles, door sills, roof rails, and seat track extrusions—manufactured under IATF 16949 certification for Tier 1 and Tier 2 automotive OEMs.</Fragment>
   </IndustryHero>
 
   <!-- Gallery strip -->
@@ -76,10 +81,10 @@ const alloys = [
             OEMs and Tier 1 suppliers.
           </p>
           <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
-            Our hard alloy expertise (6082-T6 UTS reliably exceeding 310 MPa) makes us
-            a preferred source for crash-relevant structural sections where weight reduction and
-            load performance must be achieved simultaneously. PPAP documentation, first-article
-            inspection reports, and dimensional CMM data are standard on all automotive programmes.
+            Our specialized alloy expertise makes us a preferred source for crash-relevant
+            structural sections, where weight reduction and load performance must be
+            achieved simultaneously. PPAP documentation, First Article Inspection Reports
+            (FAIR), and dimensional data are verified for all automotive programmes.
           </p>
 
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
@@ -109,8 +114,8 @@ const alloys = [
   <section class="section-alt section-pad">
     <div class="container">
       <div class="eyebrow">02 · Profile types</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six profile families for the automotive sector.
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:32ch">
+        Segments in the Automotive Industry.
       </h2>
       <div class="ind-tiles mt-10">
         {profiles.map(p => (
@@ -154,9 +159,10 @@ const alloys = [
           </h2>
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Banco's automotive quality system covers supplier approval, incoming billet inspection,
-            in-process SCADA monitoring, outgoing dimensional inspection, and full PPAP capability.
-            We maintain IATF 16949:2016, ISO 9001:2015, and ISO 14001:2015 simultaneously,
-            giving OEM customers a single certified partner for structural and functional profiles.
+            in process MES (Manufacturing Execution System), SCADA monitoring, outgoing dimensional
+            inspection, and full PPAP capability. We maintain IATF 16949:2016, ISO 9001:2015, and
+            ISO 14001:2015 simultaneously, giving OEM customers a single certified partner for
+            structural and functional profiles.
           </p>
         </div>
         <div class="ind-certs">
@@ -164,7 +170,7 @@ const alloys = [
             ['IATF 16949:2016', 'Automotive quality management'],
             ['ISO 9001:2015', 'Quality management system'],
             ['ISO 14001:2015', 'Environmental management'],
-            ['PPAP Capable', 'Level 1–3 documentation'],
+            ['Customer Specific Capabilities', 'Level 1–3 documentation'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>

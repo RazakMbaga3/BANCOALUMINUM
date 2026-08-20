@@ -24,12 +24,21 @@ const process = [
 
 const reasons = [
   ['Complete solution provider',     'In-house product development, die design and manufacturing, end to end under one roof.'],
-  ['900+ customers served',          'Customised product development and experience of servicing 900+ clients across diverse industries.'],
+  ['1100+ customers served',          'Customised product development and experience of servicing 1100+ clients across diverse industries.'],
   ['High-strength alloy specialist', 'In-house foundry development and supply of special high-strength and lead-free machining alloys.'],
   ['Certified to global standards',  'ISO 14001:2015, ISO 9001:2015, IATF 16949 and CE certified: quality assured at every stage.'],
   ['Value-added processing',         'Machining & fabrication facilities for assemblies, customised products, and cold drawing.'],
   ['Quickest response time',         'Extremely responsive team with short lead times and direct customer communication at all levels.'],
   ['58 years of experience',         'Established 1967 in Vadodara, Gujarat. Family-owned. Exporting to Europe, North America, APAC, and the Middle East.'],
+];
+
+const coreValues = [
+  { title: 'Safety first', desc: 'Every shift starts with a safety briefing. No production target overrides a safe stop.' },
+  { title: 'Ownership', desc: 'Decisions made by people close to the work, with direct accountability for outcomes.' },
+  { title: 'Craftsmanship', desc: 'Pride in the profile that leaves the plant, whether it is one piece or one thousand.' },
+  { title: 'Team, not hierarchy', desc: 'Shop floor and management share the same canteen, the same safety rules, and the same goals.' },
+  { title: 'Continuous improvement', desc: 'Kaizen-driven process reviews across foundry, extrusion, and finishing, every quarter.' },
+  { title: 'Community', desc: 'Local hiring, apprenticeships, and long-term careers built in Vadodara.' },
 ];
 
 const testimonials = [
@@ -43,7 +52,7 @@ const testimonials = [
 
 <Layout
   title="About Banco Aluminium: established 1967"
-  description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT capacity, 900+ customers worldwide."
+  description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT capacity, 1100+ customers worldwide."
   transparentNav={true}
   heroImage="/assets/images/people/group-discussing.png"
 >
@@ -75,7 +84,7 @@ const testimonials = [
 
         <p class="ab-hero-lede" data-reveal data-reveal-delay="3">
           Integrated aluminium extrusion since 1967. Five presses. Full value chain.
-          Still family-owned. Serving 900+ customers across four export regions.
+          Still family-owned. Serving 1100+ customers across four export regions.
         </p>
 
         <!-- Stat row -->
@@ -83,7 +92,7 @@ const testimonials = [
           {[
             { n: 58,    s: '+',   sep: false, label: 'Years in extrusion' },
             { n: 35000, s: ' MT', sep: true,  label: 'Annual capacity' },
-            { n: 900,   s: '+',   sep: false, label: 'Customers worldwide' },
+            { n: 1100,  s: '+',   sep: false, label: 'Customers worldwide' },
             { n: 5,     s: '',    sep: false, label: 'Extrusion presses' },
           ].map(({ n, s, sep, label }) => (
             <div class="ab-stat">
@@ -109,23 +118,43 @@ const testimonials = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       VALUMINIUM — dark identity band
+       OUR CORE VALUES
        ══════════════════════════════════════════════════════════ -->
-  <section class="ab-ethos" data-reveal="fade">
-    <div class="container ab-ethos-inner">
-      <div class="ab-ethos-left">
-        <div class="eyebrow on-dark">Our ethos</div>
-        <div class="ab-ethos-word">Valuminium</div>
-        <div class="ab-ethos-rule"></div>
-      </div>
-      <blockquote class="ab-ethos-quote">
-        <p>
-          At Banco, we live by <strong>Valuminium</strong>: a commitment to delivering genuine
-          value through aluminium. It pushes each team member to think beyond the profile
-          and consider the downstream impact of every decision: on cost, on lead time,
-          on quality, and on the customer's end application.
+  <section class="ab-values section-dark" data-reveal="fade">
+    <div class="container">
+      <div class="ab-values-head">
+        <div>
+          <div class="eyebrow on-dark">Our core values</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            What holds the<br/><em class="accent">culture together.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
+          Behind the certifications and the capacity numbers, a workforce that has
+          stayed on the shop floor for decades. This is what we ask of each other.
         </p>
-      </blockquote>
+      </div>
+
+      <div class="ab-values-grid">
+        {coreValues.map((v, i) => (
+          <div class="ab-value-card" style={`--delay:${i * 45}ms`}>
+            <div class="ab-value-n">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="ab-value-h">{v.title}</h3>
+            <p class="ab-value-d">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="ab-values-photos">
+        <figure class="ab-values-fig">
+          <Pic src="/assets/manufacturing/quality-1.webp" alt="Banco Aluminium team member conducting quality inspection" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <figcaption>On the floor · Vadodara</figcaption>
+        </figure>
+        <figure class="ab-values-fig">
+          <Pic src="/assets/manufacturing/billet-1.webp" alt="Banco Aluminium press-ready billets" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <figcaption>Every shift, the same standard</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -203,7 +232,7 @@ const testimonials = [
       {[
         { n: 35000, s: ' MT', sep: true,  u: '',   label: 'Annual extrusion capacity' },
         { n: 55000, s: ' MT', sep: true,  u: '',   label: 'Annual foundry capacity' },
-        { n: 900,   s: '+',   sep: false, u: '',   label: 'Customers worldwide' },
+        { n: 1100,  s: '+',   sep: false, u: '',   label: 'Customers worldwide' },
         { n: 58,    s: '+',   sep: false, u: 'yrs',label: 'Years of extrusion heritage' },
       ].map(({ n, s, sep, u, label }) => (
         <div class="stat-strip-cell">
@@ -394,7 +423,7 @@ const testimonials = [
           </h2>
         </div>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
-          900+ customers across industrial, automotive, electrical, and architectural
+          1100+ customers across industrial, automotive, electrical, and architectural
           sectors in India and four export regions.
         </p>
       </div>
@@ -561,46 +590,93 @@ const testimonials = [
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
 
-  /* ── ETHOS ─────────────────────────────────────────────────── */
-  .ab-ethos {
-    background: var(--color-navy-deep);
+  /* ── CORE VALUES ───────────────────────────────────────────── */
+  .ab-values {
     border-top: 2px solid var(--color-green);
-    border-bottom: 1px solid var(--color-navy-line);
-    padding: 52px 0;
+    padding: 80px 0;
   }
-  .ab-ethos-inner {
+  .ab-values-head {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 64px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    margin-bottom: 48px;
   }
-  .ab-ethos-left .eyebrow { margin-bottom: 12px; }
-  .ab-ethos-word {
-    font-family: var(--font-sans);
-    font-size: clamp(28px, 3vw, 40px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--color-platinum);
-    line-height: 1;
+  .ab-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-navy-line);
   }
-  .ab-ethos-rule {
-    width: 36px;
+  .ab-value-card {
+    background: var(--color-navy-soft);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .ab-value-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
     height: 2px;
     background: var(--color-green);
-    margin-top: 16px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
   }
-  .ab-ethos-quote {
-    border: none;
+  .ab-value-card:hover { background: var(--color-navy); }
+  .ab-value-card:hover::before { transform: scaleX(1); }
+  .ab-value-n {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--color-green);
+    margin-bottom: 14px;
+  }
+  .ab-value-h {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-stone-50);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .ab-value-d {
+    font-size: 13px;
+    color: var(--color-stone-400);
+    line-height: 1.6;
+  }
+  .ab-values-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 40px;
+  }
+  .ab-values-fig {
+    overflow: hidden;
+    border: 1px solid var(--color-navy-line);
     margin: 0;
-    padding: 0;
   }
-  .ab-ethos-quote p {
-    font-size: clamp(16px, 1.5vw, 18px);
-    line-height: 1.75;
-    color: var(--color-silver);
-    max-width: 68ch;
+  .ab-values-fig :global(img) {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
   }
-  .ab-ethos-quote strong { color: var(--color-platinum); font-weight: 600; }
+  .ab-values-fig:hover :global(img) { transform: scale(1.05); }
+  .ab-values-fig figcaption {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone-400);
+    padding: 7px 10px;
+    border-top: 1px solid var(--color-navy-line);
+    background: var(--color-navy-soft);
+  }
 
   /* ── STORY ─────────────────────────────────────────────────── */
   .ab-story-grid {
@@ -1082,7 +1158,9 @@ const testimonials = [
     .ab-why-grid     { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .ab-ethos-inner   { grid-template-columns: 1fr; gap: 28px; }
+    .ab-values-head   { grid-template-columns: 1fr; }
+    .ab-values-grid   { grid-template-columns: 1fr 1fr; }
+    .ab-values-photos { grid-template-columns: 1fr; }
     .ab-story-grid    { grid-template-columns: 1fr; gap: 40px; }
     .ab-story-anchor  { position: static; }
     .ab-fac-head      { grid-template-columns: 1fr; }
@@ -1100,6 +1178,7 @@ const testimonials = [
     .ab-stat          { padding-right: 24px; margin-right: 24px; }
     .ab-process-grid  { grid-template-columns: repeat(2, 1fr); }
     .ab-testi-grid    { grid-template-columns: 1fr; }
+    .ab-values-grid   { grid-template-columns: 1fr; }
     .ab-why-grid      { grid-template-columns: 1fr 1fr; }
     .ab-story-photos  { grid-template-columns: 1fr; }
     .ab-hero-body     { padding-top: 110px; }

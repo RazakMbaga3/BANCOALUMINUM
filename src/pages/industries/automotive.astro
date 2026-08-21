@@ -4,17 +4,17 @@ import Pic from '../../components/Pic.astro';
 import IndustryHero from '../../components/IndustryHero.astro';
 
 const profiles = [
-  { name: 'Structural components', desc: 'Bumper beams, crumple beams, frame crosses, pillar reinforcements, and crash box extrusions engineered for controlled deformation and high specific strength.' },
-  { name: 'Chassis', desc: 'ICMS, steering knuckles, steering links, and anti-vibration system profiles machined to assembly tolerances for direct fitment.' },
-  { name: 'Brake systems', desc: 'ABS system housings, brake drum and disc components, and brake line profiles to automotive dimensional and pressure specifications.' },
-  { name: 'Trucks & trailer', desc: 'Bumper beams, underrun protection, side bars, and trailer part extrusions for commercial vehicle and heavy trailer applications.' },
-  { name: 'Electronics', desc: 'Powertrain housings, fuse box enclosures, and wiper mechanism profiles for automotive electronic and control systems.' },
-  { name: 'Safety products', desc: 'Airbag housing components, safety belt hardware, and structural sections engineered for crash-relevant occupant protection.' },
-  { name: 'Seat systems', desc: 'Precision seat slide rail extrusions with tight groove tolerances, plus seat frame, head rest, and seat guide system components.' },
-  { name: 'Fuel systems', desc: 'Fuel distribution profiles, fuel line sections, and fuel cooler extrusions built to automotive fluid-handling tolerances.' },
-  { name: 'Heating, AC & cooling', desc: 'A/C line profiles, compressor housings, and heat exchanger extrusions for automotive climate and cooling systems.' },
-  { name: 'Multi-purpose parts', desc: 'Bolts & screws, clamps and fasteners, and tube sections supplied as general-purpose automotive hardware profiles.' },
-  { name: 'Accessories', desc: 'Bike carrier, bull bar, and luggage carrier extrusions finished to OEM specification for automotive accessory programmes.' },
+  { name: 'Structural components', items: ['Bumper beams', 'Battery enclosures', 'Roof rails'] },
+  { name: 'Chassis', items: ['ICMS', 'Steering knuckles', 'Anti-vibration systems'] },
+  { name: 'Brake systems', items: ['ABS systems', 'Brake drum', 'Brake disc'] },
+  { name: 'Trucks & trailer', items: ['Bumper beams', 'Underrun protection', 'Trailer parts'] },
+  { name: 'Electronics', items: ['Powertrain housings', 'Fuse boxes', 'Wiper mechanisms'] },
+  { name: 'Safety products', items: ['Airbags', 'Safety belts'] },
+  { name: 'Seat systems', items: ['Seat frame', 'Head rest', 'Seat guide system'] },
+  { name: 'Fuel systems', items: ['Fuel distribution', 'Fuel lines', 'Fuel cooler'] },
+  { name: 'Heating, AC & cooling', items: ['A/C lines', 'Compressors', 'Heat exchanger'] },
+  { name: 'Multi-purpose parts', items: ['Bolts & screws', 'Clamps & fasteners', 'Tubes'] },
+  { name: 'Accessories', items: ['Bike carrier', 'Bull bar', 'Luggage carrier'] },
 ];
 
 const galleryImages = ['1', '2', '3', '4', '5', '6', '7'];
@@ -43,7 +43,7 @@ const alloys = [
     ['35,000 MT', 'Annual capacity'],
     ]}
   >
-    <Fragment slot="h1">Automotive, commercial vehicle &amp; EV profiles.</Fragment>
+    <Fragment slot="h1">Automotive, Commercial Vehicle &amp; EV Profiles.</Fragment>
     <Fragment slot="lead">Structural body sections, battery cages, impact-resistant profiles, door sills, roof rails, and seat track extrusions—manufactured under IATF 16949 certification for Tier 1 and Tier 2 automotive OEMs.</Fragment>
   </IndustryHero>
 
@@ -111,20 +111,29 @@ const alloys = [
   </section>
 
   <!-- Section 02: Profile types -->
-  <section class="section-alt section-pad">
+  <section class="section-alt section-pad" id="autoProfilesSection">
     <div class="container">
       <div class="eyebrow">02 · Profile types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:32ch">
         Segments in the Automotive Industry.
       </h2>
-      <div class="ind-tiles mt-10">
-        {profiles.map(p => (
-          <div class="ind-tile">
-            <div class="ind-tick"></div>
-            <h3 class="ind-tile-h">{p.name}</h3>
-            <p class="ind-tile-p">{p.desc}</p>
+    </div>
+
+    <div class="ind-hscroll-pin" id="autoProfilesPin">
+      <div class="ind-hscroll-sticky">
+        <div class="container">
+          <div class="ind-tiles ind-tiles-scroll" id="autoProfilesTrack">
+            {profiles.map((p, i) => (
+              <div class="ind-tile">
+                <div class="ind-tile-num">{String(i + 1).padStart(2, '0')}</div>
+                <h3 class="ind-tile-h">{p.name}</h3>
+                <ul class="ind-tile-list">
+                  {p.items.map(item => <li>{item}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>
@@ -136,7 +145,7 @@ const alloys = [
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
         Alloy selection for automotive applications.
       </h2>
-      <div class="ind-cards cols-4 mt-10">
+      <div class="ind-cards cols-4">
         {alloys.map(a => (
           <div class="ind-card">
             <div class="ind-card-n">{a.name}</div>
@@ -262,4 +271,119 @@ const alloys = [
   @media (prefers-reduced-motion: reduce) {
     .auto-gallery-track { animation: none; }
   }
+
+  /* Section 02 — cards reveal by translating as the page scrolls past a pinned strip.
+     Driven entirely by JS (fixed/absolute toggled on scroll) rather than native
+     position:sticky, because body has overflow-x:hidden sitewide, which makes body
+     a scroll container and silently breaks sticky descendants. */
+  /* global.css applies content-visibility:auto to main > section:nth-of-type(n+3)
+     for perf; that implies CSS containment, which turns this section into a
+     containing block for position:fixed descendants and breaks the pin below */
+  #autoProfilesSection {
+    content-visibility: visible;
+  }
+  .ind-hscroll-pin {
+    position: relative;
+  }
+  .ind-hscroll-sticky {
+    overflow: hidden;
+  }
+  .ind-hscroll-sticky.is-fixed {
+    position: fixed;
+    top: calc(var(--nav-height) + 24px);
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background: var(--color-stone-100);
+  }
+  .ind-hscroll-sticky.is-end {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .ind-tiles-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    /* fallback so the row is still reachable without JS: swipeable, no visible scrollbar */
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .ind-tiles-scroll::-webkit-scrollbar { display: none; }
+  .ind-tiles-scroll .ind-tile {
+    flex: 0 0 260px;
+  }
+  .js-hscroll .ind-tiles-scroll {
+    overflow: visible;
+    will-change: transform;
+  }
+  @media (max-width: 640px) {
+    .ind-tiles-scroll .ind-tile { flex: 0 0 220px; }
+  }
 </style>
+
+<script>
+  function initProfileHScroll() {
+    const pin = document.getElementById('autoProfilesPin');
+    const sticky = pin?.querySelector<HTMLElement>('.ind-hscroll-sticky');
+    const track = document.getElementById('autoProfilesTrack');
+    if (!pin || !sticky || !track) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 72;
+    const stickAt = navHeight + 24;
+
+    let distance = 0;
+    let stickyHeight = 0;
+
+    function measure() {
+      sticky!.classList.remove('is-fixed', 'is-end');
+      stickyHeight = sticky!.offsetHeight;
+      // track's own clientWidth (not its padded .container parent's) is what's
+      // actually visible through the overflow:hidden sticky wrapper
+      distance = Math.max(track!.scrollWidth - track!.clientWidth, 0);
+      pin!.style.height = distance > 0 ? `${stickyHeight + distance}px` : 'auto';
+      pin!.classList.toggle('js-hscroll', distance > 0);
+      onScroll();
+    }
+
+    function onScroll() {
+      if (distance <= 0) {
+        sticky!.classList.remove('is-fixed', 'is-end');
+        track!.style.transform = '';
+        return;
+      }
+      const rect = pin!.getBoundingClientRect();
+      if (rect.top > stickAt) {
+        sticky!.classList.remove('is-fixed', 'is-end');
+        track!.style.transform = '';
+      } else if (rect.top + pin!.offsetHeight - stickyHeight <= stickAt) {
+        sticky!.classList.remove('is-fixed');
+        sticky!.classList.add('is-end');
+        track!.style.transform = `translateX(-${distance.toFixed(1)}px)`;
+      } else {
+        sticky!.classList.add('is-fixed');
+        sticky!.classList.remove('is-end');
+        const progress = (stickAt - rect.top) / distance;
+        track!.style.transform = `translateX(-${(progress * distance).toFixed(1)}px)`;
+      }
+    }
+
+    measure();
+    // layout can still shift after first paint (web fonts swapping, lazy images
+    // above this section loading in) — re-measure once things settle so the
+    // pinned scroll distance matches the track's final width
+    window.addEventListener('load', measure, { passive: true });
+    document.fonts?.ready?.then(measure).catch(() => {});
+    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProfileHScroll);
+  } else {
+    initProfileHScroll();
+  }
+</script>

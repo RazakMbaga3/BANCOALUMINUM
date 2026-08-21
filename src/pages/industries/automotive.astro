@@ -112,17 +112,14 @@ const alloys = [
 
   <!-- Section 02: Profile types -->
   <section class="section-alt section-pad" id="autoProfilesSection">
-    <div class="container">
-      <div class="eyebrow">02 · Profile types</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:32ch">
-        Segments in the Automotive Industry.
-      </h2>
-    </div>
-
     <div class="ind-hscroll-pin" id="autoProfilesPin">
       <div class="ind-hscroll-sticky">
         <div class="container">
-          <div class="ind-tiles ind-tiles-scroll" id="autoProfilesTrack">
+          <div class="eyebrow">02 · Profile types</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:32ch">
+            Segments in the Automotive Industry.
+          </h2>
+          <div class="ind-tiles ind-tiles-scroll" id="autoProfilesTrack" style="margin-top:40px">
             {profiles.map((p, i) => (
               <div class="ind-tile">
                 <div class="ind-tile-num">{String(i + 1).padStart(2, '0')}</div>
@@ -285,12 +282,19 @@ const alloys = [
   .ind-hscroll-pin {
     position: relative;
   }
+  /* fills the viewport below the nav and centers heading+cards inside it —
+     kept the SAME height across all three JS states (see script below) so the
+     panel never leaves a dead gap under the cards while it's pinned */
   .ind-hscroll-sticky {
     overflow: hidden;
+    height: calc(100vh - var(--nav-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .ind-hscroll-sticky.is-fixed {
     position: fixed;
-    top: calc(var(--nav-height) + 24px);
+    top: var(--nav-height);
     left: 0;
     right: 0;
     z-index: 5;
@@ -333,7 +337,7 @@ const alloys = [
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 72;
-    const stickAt = navHeight + 24;
+    const stickAt = navHeight;
 
     let distance = 0;
     let stickyHeight = 0;

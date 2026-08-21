@@ -97,7 +97,7 @@ const alloys = [
         <div style="position:relative">
           <Pic
             src="/assets/industries/automotive.jpg"
-            alt="Automotive manufacturing plant: aluminium extrusions in vehicle production"
+            alt="CNC machining of a precision aluminium automotive structural rail"
             loading="lazy"
             class="ind-photo" sizes="(max-width: 1024px) 100vw, 60vw" />
           <div class="ind-caption">
@@ -111,12 +111,19 @@ const alloys = [
   </section>
 
   <!-- Section 02: Profile types -->
-  <section class="section-alt section-pad" id="autoProfilesSection">
+  <section class="section-alt" id="autoProfilesSection">
     <div class="ind-hscroll-pin" id="autoProfilesPin">
       <div class="ind-hscroll-sticky">
-        <div class="container">
-          <div class="eyebrow">02 · Profile types</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:32ch">
+        <div class="ind-hscroll-bg">
+          <Pic
+            src="/assets/industries/automotive-segments-bg.jpg"
+            alt=""
+            loading="lazy"
+            sizes="100vw" />
+        </div>
+        <div class="container" style="position:relative;z-index:1">
+          <div class="eyebrow" style="color:var(--color-stone-300)">02 · Profile types</div>
+          <h2 class="t-h2" style="color:#ffffff;margin-top:16px;max-width:32ch">
             Segments in the Automotive Industry.
           </h2>
           <div class="ind-tiles ind-tiles-scroll" id="autoProfilesTrack" style="margin-top:40px">
@@ -286,11 +293,28 @@ const alloys = [
      kept the SAME height across all three JS states (see script below) so the
      panel never leaves a dead gap under the cards while it's pinned */
   .ind-hscroll-sticky {
+    position: relative;
     overflow: hidden;
     height: calc(100vh - var(--nav-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .ind-hscroll-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .ind-hscroll-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(8, 27, 48, 0.55) 0%, rgba(8, 27, 48, 0.15) 45%, rgba(8, 27, 48, 0.35) 100%);
+  }
+  .ind-hscroll-bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .ind-hscroll-sticky.is-fixed {
     position: fixed;
@@ -298,7 +322,6 @@ const alloys = [
     left: 0;
     right: 0;
     z-index: 5;
-    background: var(--color-stone-100);
   }
   .ind-hscroll-sticky.is-end {
     position: absolute;
@@ -340,7 +363,11 @@ const alloys = [
     const stickAt = navHeight;
 
     let distance = 0;
+    let scrollDistance = 0;
     let stickyHeight = 0;
+    // tiles translate faster than the user scrolls, so paging through all of
+    // them costs less vertical scroll than the track's full overflow width
+    const SCROLL_SPEED = 1.6;
 
     function measure() {
       sticky!.classList.remove('is-fixed', 'is-end');
@@ -348,7 +375,8 @@ const alloys = [
       // track's own clientWidth (not its padded .container parent's) is what's
       // actually visible through the overflow:hidden sticky wrapper
       distance = Math.max(track!.scrollWidth - track!.clientWidth, 0);
-      pin!.style.height = distance > 0 ? `${stickyHeight + distance}px` : 'auto';
+      scrollDistance = distance / SCROLL_SPEED;
+      pin!.style.height = distance > 0 ? `${stickyHeight + scrollDistance}px` : 'auto';
       pin!.classList.toggle('js-hscroll', distance > 0);
       onScroll();
     }
@@ -370,7 +398,7 @@ const alloys = [
       } else {
         sticky!.classList.add('is-fixed');
         sticky!.classList.remove('is-end');
-        const progress = (stickAt - rect.top) / distance;
+        const progress = (stickAt - rect.top) / scrollDistance;
         track!.style.transform = `translateX(-${(progress * distance).toFixed(1)}px)`;
       }
     }

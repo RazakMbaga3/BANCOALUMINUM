@@ -19,6 +19,7 @@ const sectionGroups = [
       { id: 'tube-square',type: 'Square',        desc: '10×10 to 100×100 mm. Structural and mechanical tube for frames and fabrication.', alloy: '6063-T6 · 6082-T6', icon: 'squareTube' },
       { id: 'tube-rect',  type: 'Rectangular',   desc: 'RHS for structural frames, guard rails, and support structures.',     alloy: '6082-T6 · 6063-T6', icon: 'rectTube' },
     ],
+    fill: { src: '/assets/standard-sections/fill-tubes.png', alt: 'Cut length of Banco rectangular hollow section aluminium tube', span: 1 },
   },
   {
     title: 'Angles', std: 'IS 1285',
@@ -26,6 +27,7 @@ const sectionGroups = [
       { id: 'angle-equal',   type: 'Equal',   desc: 'Equal legs, 20×20 to 100×100 mm. Structural and fabrication use.', alloy: '6063-T6 · 6082-T6', icon: 'equalAngle' },
       { id: 'angle-unequal', type: 'Unequal', desc: 'Unequal legs for specific structural configurations.',              alloy: '6063-T6 · 6082-T6', icon: 'unequalAngle' },
     ],
+    fill: { src: '/assets/standard-sections/fill-angles.png', alt: 'Cut lengths of Banco equal and unequal leg aluminium angle', span: 2 },
   },
   {
     title: 'Channels', std: 'IS 1285',
@@ -33,6 +35,7 @@ const sectionGroups = [
       { id: 'channel-equal',   type: 'Equal',   desc: 'C-section channel, standard and heavy duty. Wide flange versions.',       alloy: '6082-T6',           icon: 'channel' },
       { id: 'channel-unequal', type: 'Unequal', desc: 'Unequal flange channel for asymmetric structural and fabrication use.',    alloy: '6082-T6 · 6063-T6', icon: 'unequalChannel' },
     ],
+    fill: { src: '/assets/standard-sections/fill-channels.png', alt: 'Cut lengths of Banco aluminium channel section', span: 2 },
   },
   {
     title: 'Tees', std: 'IS 1285',
@@ -40,12 +43,14 @@ const sectionGroups = [
       { id: 'tee-regular', type: 'Regular', desc: 'Equal and unequal T-sections. Track, extrusion guide, structural T.',   alloy: '6063-T6 · 6082-T6', icon: 'tee' },
       { id: 'tee-bulb',    type: 'Bulb',    desc: 'Tee with a rolled bulb edge for stiffened panel and marine deck use.',   alloy: '6082-T6',           icon: 'bulbTee' },
     ],
+    fill: { src: '/assets/standard-sections/fill-tees.png', alt: 'Cut lengths of Banco regular and bulb aluminium tee section', span: 2 },
   },
   {
     title: 'Modular', std: 'IS 1285',
     items: [
       { id: 'modular', type: 'Modular profiles', desc: 'Slotted modular profiles for framing, workstations, and machine guarding: assembled without welding using standard fasteners and brackets.', alloy: '6063-T6 · 6082-T6', icon: 'modular' },
     ],
+    fill: { src: '/assets/standard-sections/fill-modular.png', alt: 'Assembled corner of Banco slotted modular aluminium framing', span: 3 },
   },
 ];
 
@@ -137,13 +142,7 @@ const alloys = [
           <div class="ss-stat">
             <div class="ss-stat-n">
               {ce && (
-                <svg class="ss-ce" viewBox="0 0 130 60" aria-hidden="true">
-                  <path fill="currentColor" fill-rule="nonzero" d="M50.06 48.07 L48.15 49.99 L46.06 51.70 L43.80 53.20 L41.41 54.47 L38.90 55.49 L36.30 56.25 L33.64 56.75 L30.94 56.98 L28.23 56.94 L25.54 56.63 L22.90 56.05 L20.32 55.21 L17.85 54.11 L15.49 52.77 L13.28 51.20 L11.24 49.42 L9.39 47.45 L7.75 45.29 L6.33 42.99 L5.15 40.55 L4.21 38.01 L3.54 35.38 L3.14 32.71 L3.00 30.00 L3.14 27.29 L3.54 24.62 L4.21 21.99 L5.15 19.45 L6.33 17.01 L7.75 14.71 L9.39 12.55 L11.24 10.58 L13.28 8.80 L15.49 7.23 L17.85 5.89 L20.32 4.79 L22.90 3.95 L25.54 3.37 L28.23 3.06 L30.94 3.02 L33.64 3.25 L36.30 3.75 L38.90 4.51 L41.41 5.53 L43.80 6.80 L46.06 8.30 L48.15 10.01 L50.06 11.93 L41.15 19.96 L40.09 18.90 L38.92 17.94 L37.67 17.11 L36.34 16.41 L34.95 15.84 L33.50 15.41 L32.02 15.14 L30.52 15.01 L29.02 15.03 L27.52 15.21 L26.05 15.53 L24.62 16.00 L23.25 16.61 L21.94 17.35 L20.71 18.22 L19.58 19.21 L18.55 20.31 L17.64 21.50 L16.85 22.79 L16.19 24.14 L15.67 25.55 L15.30 27.01 L15.08 28.50 L15.00 30.00 L15.08 31.50 L15.30 32.99 L15.67 34.45 L16.19 35.86 L16.85 37.21 L17.64 38.50 L18.55 39.69 L19.58 40.79 L20.71 41.78 L21.94 42.65 L23.25 43.39 L24.62 44.00 L26.05 44.47 L27.52 44.79 L29.02 44.97 L30.52 44.99 L32.02 44.86 L33.50 44.59 L34.95 44.16 L36.34 43.59 L37.67 42.89 L38.92 42.06 L40.09 41.10 L41.15 40.04 Z
-                    M67.00 3.00 H79.00 V57.00 H67.00 Z
-                    M67.00 3.00 H116.00 V15.00 H67.00 Z
-                    M67.00 24.00 H104.00 V36.00 H67.00 Z
-                    M67.00 45.00 H116.00 V57.00 H67.00 Z"/>
-                </svg>
+                <img class="ss-ce" src="/assets/logos/ce-marking.png" alt="CE marking" width="130" height="60" />
               )}
               {n}
             </div>
@@ -202,6 +201,16 @@ const alloys = [
                   </div>
                 </div>
               ))}
+              {group.fill && (
+                <div class="ss-sec-fill" style={`grid-column:span ${group.fill.span}`}>
+                  <Pic
+                    src={group.fill.src}
+                    alt={group.fill.alt}
+                    class="ss-fill-img"
+                    sizes="290px"
+                    loading="lazy" />
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -395,6 +404,22 @@ const alloys = [
   .ss-sec-alloy { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-stone-700); }
   .ss-sec-std   { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); }
 
+  .ss-sec-fill { position: relative; overflow: hidden; background: var(--color-stone-100); border-top: 2px solid var(--color-green); }
+  :global(.ss-fill-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.5) contrast(1.02);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  }
+  .ss-sec-fill:hover :global(.ss-fill-img) {
+    transform: scale(1.05);
+    filter: grayscale(0) contrast(1.02);
+  }
+
   .ss-gallery-viewport {
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to right, transparent 0, black 64px, black calc(100% - 64px), transparent 100%);
@@ -484,6 +509,7 @@ const alloys = [
   @media (max-width: 1024px) {
     .ss-stats { grid-template-columns: repeat(2, 1fr); }
     .ss-sections-grid { grid-template-columns: repeat(3, 1fr); }
+    .ss-sec-fill { display: none; }
     .ss-alloy-grid { grid-template-columns: 1fr; }
     .ss-spec-grid { grid-template-columns: 1fr; }
     .ss-custom-grid { grid-template-columns: 1fr; }

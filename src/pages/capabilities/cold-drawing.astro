@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+import { optSrcset } from '../../lib/img';
 
 const toleranceComparison = [
   { param: 'OD tolerance (25 mm dia.)', extrusion: '±0.20 mm', cold: '±0.05 mm', note: '4× improvement' },
@@ -38,9 +40,11 @@ const products = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <Pic
+        src="/assets/capabilities/cold-drawing-hero.jpg"
+        alt="Banco Aluminium operators on the cold drawing and fabrication floor"
+        class="cap-hero-img"
+        loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -85,9 +89,7 @@ const products = [
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             What cold drawing<br>achieves.
           </h2>
-        </div>
-        <div data-reveal="right">
-          <p class="t-lead" style="color:var(--color-stone-700)">
+          <p class="t-lead" style="color:var(--color-stone-700);margin-top:20px">
             Extrusion produces profiles within standard tolerances defined in EN 755-9
             for extruded rod and bar, typically ±0.15 to ±0.25 mm on diameter depending
             on size. For many precision engineering and machining applications, this is
@@ -106,6 +108,22 @@ const products = [
             useful where a modest strength increase over T6 temper is required without further
             heat treatment.
           </p>
+        </div>
+        <div class="cd-img-stack" data-reveal="right">
+          <div class="cd-img-main">
+            <picture>
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/cold-drawing-floor-a.jpg" alt="Banco Aluminium operators setting up a precision cutting centre on the fabrication floor" loading="lazy" />
+            </picture>
+          </div>
+          <div class="cd-img-sub">
+            <picture>
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/cold-drawing-floor-b.jpg" alt="Banco Aluminium team reviewing finished extruded profiles for dimensional accuracy" loading="lazy" style="object-position: center 30%;" />
+            </picture>
+          </div>
         </div>
       </div>
     </div>
@@ -232,7 +250,13 @@ const products = [
 </Layout>
 
 <style>
-  .cd-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .cd-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  .cd-img-stack { display: flex; flex-direction: column; gap: 4px; }
+  .cd-img-main  { aspect-ratio: 4/3; overflow: hidden; }
+  .cd-img-main img, .cd-img-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .cd-img-main:hover img, .cd-img-sub:hover img { filter: brightness(1); }
+  .cd-img-sub   { aspect-ratio: 16/6; overflow: hidden; }
 
   .cd-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .cd-prod-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 14px; }
@@ -267,15 +291,17 @@ const products = [
 
   @media (max-width: 1024px) {
     .cd-overview-grid { grid-template-columns: 1fr; }
+    .cd-img-stack { order: -1; }
     .cd-products-grid { grid-template-columns: 1fr; }
     .cd-apps-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .cd-apps-grid { grid-template-columns: 1fr 1fr; }
   }
-</style>
 
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>
+  :global(.cap-hero-img) {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 38%;
+  }
+</style>

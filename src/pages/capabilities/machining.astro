@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const operations = [
   { op: 'Cutting', desc: 'To-length, mitre, and compound angle cutting. CNC saw centres with stop accuracy ±0.5 mm. Single and gang cutting for high-volume orders.' },
@@ -20,9 +21,11 @@ const operations = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <Pic
+        src="/assets/capabilities/machining-hero.jpg"
+        alt="Banco Aluminium operator at a CNC machining centre on the fabrication floor"
+        class="cap-hero-img"
+        loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -66,9 +69,7 @@ const operations = [
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Profile into<br>finished component.
           </h2>
-        </div>
-        <div data-reveal="right">
-          <p class="t-lead" style="color:var(--color-stone-700)">
+          <p class="t-lead" style="color:var(--color-stone-700);margin-top:20px">
             Fabrication and machining sits directly downstream of the extrusion presses.
             Profiles move from cut-to-length saw, to heat treatment, to the fabrication
             floor, with no external handling or sub-contractor involvement. This integration
@@ -81,6 +82,9 @@ const operations = [
             engineering and OEM customers requiring tight tolerances, multi-feature
             profiles, or sub-assembly into finished products.
           </p>
+        </div>
+        <div class="fab-overview-photo" data-reveal="right">
+          <Pic src="/assets/capabilities/machining-punching.jpg" alt="Banco Aluminium operator running a hydraulic punching press on the fabrication floor" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
       </div>
     </div>
@@ -202,7 +206,10 @@ const operations = [
 </Layout>
 
 <style>
-  .fab-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .fab-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .fab-overview-photo { aspect-ratio: 4/3; overflow: hidden; }
+  .fab-overview-photo :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .fab-overview-photo:hover :global(img) { filter: brightness(1); }
 
   .fab-ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .fab-op-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
@@ -224,6 +231,7 @@ const operations = [
 
   @media (max-width: 1024px) {
     .fab-overview-grid { grid-template-columns: 1fr; }
+    .fab-overview-photo { order: -1; }
     .fab-ops-grid { grid-template-columns: repeat(2, 1fr); }
     .fab-asm-grid { grid-template-columns: 1fr; }
     .fab-tol-grid { grid-template-columns: 1fr; }
@@ -231,9 +239,10 @@ const operations = [
   @media (max-width: 640px) {
     .fab-ops-grid { grid-template-columns: 1fr 1fr; }
   }
-</style>
 
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>
+  :global(.cap-hero-img) {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 38%;
+  }
+</style>

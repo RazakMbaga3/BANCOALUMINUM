@@ -929,11 +929,10 @@ const certs = [
     background: var(--color-navy);
   }
   .c-packing-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 28px;
-    padding: 28px 28px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px;
   }
   .c-packing-text {
     font-family: var(--font-sans);
@@ -944,10 +943,10 @@ const certs = [
   }
   .c-packing-tags {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 8px;
-    align-items: flex-start;
-    flex-shrink: 0;
+    align-items: center;
   }
 
   /* ── Green aluminium ───────────────────────────────────────────────────── */

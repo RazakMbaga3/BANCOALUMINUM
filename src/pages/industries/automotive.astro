@@ -122,8 +122,8 @@ const alloys = [
             sizes="100vw" />
         </div>
         <div class="container" style="position:relative;z-index:1">
-          <div class="eyebrow" style="color:var(--color-stone-300)">02 · Profile types</div>
-          <h2 class="t-h2" style="color:#ffffff;margin-top:16px;max-width:32ch">
+          <div class="eyebrow" style="color:var(--color-stone-300);text-shadow:0 1px 6px rgba(0,0,0,0.6)">02 · Profile types</div>
+          <h2 class="t-h2 auto-segments-h2" style="color:#ffffff;margin-top:16px;max-width:32ch">
             Segments in the Automotive Industry.
           </h2>
           <div class="ind-tiles ind-tiles-scroll" id="autoProfilesTrack" style="margin-top:40px">
@@ -309,7 +309,13 @@ const alloys = [
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(100deg, rgba(8, 27, 48, 0.55) 0%, rgba(8, 27, 48, 0.15) 45%, rgba(8, 27, 48, 0.35) 100%);
+    background: linear-gradient(100deg, rgba(8, 27, 48, 0.74) 0%, rgba(8, 27, 48, 0.52) 45%, rgba(8, 27, 48, 0.62) 100%);
+  }
+  /* Heading sits directly over the photo — a text-shadow keeps it readable
+     regardless of what's behind it at any scroll/viewport width, on top of
+     the darker scrim above. */
+  .auto-segments-h2 {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65), 0 1px 4px rgba(0, 0, 0, 0.5);
   }
   .ind-hscroll-bg :global(img) {
     width: 100%;

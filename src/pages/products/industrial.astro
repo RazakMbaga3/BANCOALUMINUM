@@ -54,7 +54,7 @@ const alloySpecialities = [
 
 const capabilities = [
   { num: '/ 01', name: 'Die design & development',      tag: 'Q-Form simulation · 5-axis CNC · trial extrusion' },
-  { num: '/ 02', name: 'Extrusion',                     tag: '5 presses · 1100–3300T · 35,000 MT/yr' },
+  { num: '/ 02', name: 'Extrusion',                     tag: '5 presses · 1,100–3,300 T · 35,000 MT/yr' },
   { num: '/ 03', name: 'Heat treatment',                tag: 'T5, T6, T73 tempers · in-line & batch' },
   { num: '/ 04', name: 'Fabrication & machining',       tag: 'Cut · drill · mill · bend · 10,000+ parts/day' },
   { num: '/ 05', name: 'Cold drawing',                  tag: 'Rods · bars · tubes · tight OD tolerance' },
@@ -164,7 +164,7 @@ const certs = [
       <div class="ih-stats">
         {[
           { n: '35,000', u: 'MT/yr', l: 'Extrusion capacity' },
-          { n: '5',      u: 'Presses', l: '1100–3300T' },
+          { n: '5',      u: 'Presses', l: '1,100–3,300 T' },
           { n: '10,000+', u: '/Day',  l: 'Parts fabricated' },
           { n: '13',     u: 'Sectors', l: 'Industries served' },
         ].map(({ n, u, l }) => (
@@ -210,7 +210,6 @@ const certs = [
           <span>CBAM-ready</span>
         </div>
       </div>
-      <a href="/contact#quote" class="btn btn-primary ih-split-cta">Start a new profile</a>
     </div>
   </section>
 
@@ -383,20 +382,18 @@ const certs = [
   </section>
 
   <!-- ── Footer band ────────────────────────────────────────────────────────── -->
+  <!-- Certs live in the site footer and on the Quality & certifications page only —
+       not repeated here. -->
   <section class="section-dark" style="padding:60px 0;border-top:2px solid var(--color-green)">
     <div class="container">
-      <div class="ih-footer-grid">
+      <div class="ih-footer-grid ih-footer-grid-solo">
         <div>
-          <div class="ih-cert-row">
-            <div class="ih-cert-label">Certified to:</div>
-            <div class="ih-cert-chips">
-              {certs.map(c => <span class="pill on-dark">{c}</span>)}
-            </div>
-          </div>
+          <div class="ih-cert-label">Drawing-led. OEM repeat supply.</div>
+          <h2 class="ih-section-h2" style="color:var(--color-platinum);margin:8px 0 0">Ready to start your profile?</h2>
         </div>
         <div class="ih-cta-col">
           <div class="ih-cta-btns">
-            <a href="/downloads" class="btn btn-secondary-dark">Download catalogue</a>
+            <a href="/contact#quote" class="btn btn-secondary-dark">Send Enquiry</a>
           </div>
         </div>
       </div>
@@ -750,6 +747,7 @@ const certs = [
 
   /* ── Footer band ─────────────────────────────────────────────────────────── */
   .ih-footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .ih-footer-grid-solo { align-items: center; justify-content: space-between; }
   .ih-cert-row { display: flex; flex-direction: column; gap: 12px; }
   .ih-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-400); }
   .ih-cert-chips { display: flex; flex-wrap: wrap; gap: 8px; }

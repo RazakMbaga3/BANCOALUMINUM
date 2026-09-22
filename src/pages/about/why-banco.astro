@@ -3,19 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 import { optSrcset } from '../../lib/img';
 
 const whyPoints = [
-  { title: '58 years of heritage', desc: 'One of India\'s oldest aluminium extrusion manufacturers, established 1967 by the Thakkar family and still family-owned.' },
-  { title: 'Owner-managed',        desc: 'Decisions made on-site by people who understand manufacturing. Short chains. Clear accountability.' },
-  { title: 'Integrated platform',  desc: 'Foundry, die shop, extrusion, heat treatment, machining, and finishing, all in-house. Every discipline has real depth.' },
-  { title: 'Export markets',       desc: 'Europe, North America, Asia-Pacific, Middle East. International experience and market exposure from day one.' },
-  { title: 'Growth track',         desc: 'Capacity expansion and digitalisation underway. Roles being created, not simply replaced.' },
+  { title: 'Owner-managed since 1967', desc: 'Third generation of the Thakkar family on-site. Decisions on price, tooling, and schedule are made by people who understand manufacturing, not a call centre.' },
+  { title: 'Nothing subcontracted',    desc: 'Foundry, die shop, extrusion, heat treatment, machining, cold drawing, and finishing all sit under one roof in Vadodara. One point of accountability, start to finish.' },
+  { title: 'Built for export',         desc: 'Documentation, CBAM carbon data, and packing built for international shipping from day one. Customers in Europe, North America, APAC, and the Middle East today.' },
+  { title: 'Capacity you can plan against', desc: '35,000 MT extrusion and 55,000 MT foundry capacity across five presses. Committed volume without waiting on a third-party supplier’s queue.' },
+  { title: 'Actively expanding',       desc: 'Capacity and digitalisation programmes underway now. A supplier relationship that grows with your volumes, not one you’ll have to outgrow.' },
 ];
 ---
 
 <Layout
   title="Why Banco: Banco Aluminium"
-  description="Why customers and employees choose Banco Aluminium: an integrated, owner-managed aluminium manufacturer with 58 years of heritage and a genuine manufacturing platform."
+  description="Why customers choose Banco Aluminium: an owner-managed, six-stage integrated aluminium manufacturer in Vadodara, not a trader. 58 years, five presses, one address."
   transparentNav={true}
-  heroImage="/assets/images/people/group-discussing.png"
+  heroImage="/assets/capabilities/cold-drawing-hero.jpg"
 >
 
   <!-- ══════════════════════════════════════════
@@ -24,9 +24,9 @@ const whyPoints = [
   <section class="wb-hero">
     <div class="wb-hero-media" aria-hidden="true">
       <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/images/people/group-discussing.png', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/images/people/group-discussing.png', 'webp')} sizes="100vw" />
-        <img src="/assets/images/people/group-discussing.png" alt="" loading="eager" fetchpriority="high" class="wb-hero-vid" />
+        <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-hero.jpg', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-hero.jpg', 'webp')} sizes="100vw" />
+        <img src="/assets/capabilities/cold-drawing-hero.jpg" alt="" loading="eager" fetchpriority="high" class="wb-hero-vid" />
       </picture>
       <div class="wb-hero-scrim"></div>
       <div class="wb-hero-grad"></div>
@@ -38,12 +38,13 @@ const whyPoints = [
           Why Banco
         </div>
         <h1 class="t-h1 wb-hero-h1" data-reveal data-reveal-delay="2">
-          Integrated.<br/>Genuinely <em class="accent">manufacturing.</em>
+          Most aluminium companies<br/>trade. <em class="accent">We manufacture.</em>
         </h1>
         <p class="wb-hero-lede" data-reveal data-reveal-delay="3">
-          Most aluminium companies are traders. Banco is a manufacturer, with its own
-          foundry, die shop, five extrusion presses, heat treatment, surface finishing,
-          and machining, all under one roof in Vadodara.
+          No trading desk between you and the metal. Banco owns the foundry, the die
+          shop, five extrusion presses, heat treatment, cold drawing, machining, and
+          finishing, all on one site in Vadodara. When something needs to change,
+          it changes here, not at a supplier three phone calls away.
         </p>
       </div>
     </div>
@@ -55,22 +56,21 @@ const whyPoints = [
 
 
   <!-- ══════════════════════════════════════════
-       WHY BANCO — sticky + 5 points
+       WHY CHOOSE BANCO — sticky + 5 points
        ══════════════════════════════════════════ -->
   <section class="section-light section-pad">
     <div class="container">
       <div class="wb-why-layout">
         <div class="wb-why-sticky" data-reveal="left">
-          <div class="eyebrow">/ 01 · The case for Banco</div>
+          <div class="eyebrow">/ 01 · Why choose Banco</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Integrated.<br/>Growing.<br/><em class="accent">Genuinely</em><br/>manufacturing.
+            Five reasons<br/>procurement teams<br/><em class="accent">stay with Banco.</em>
           </h2>
           <div class="wb-why-rule"></div>
           <p style="color:var(--color-stone-700);font-size:15px;line-height:1.7">
-            Most aluminium companies are traders. Banco is a manufacturer,
-            with its own foundry, die shop, five extrusion presses, heat
-            treatment, surface finishing, and machining. If you work with
-            Banco, you work with a place where things are actually made.
+            None of these are unique claims on their own. Taken together, on one
+            factory floor, under one management, they are the difference between
+            a supplier you manage and a partner who manages the problem for you.
           </p>
         </div>
 
@@ -91,13 +91,59 @@ const whyPoints = [
 
 
   <!-- ══════════════════════════════════════════
+       OUR SIX STAGES — integrated production
+       ══════════════════════════════════════════ -->
+  <section class="wb-process section-dark">
+    <div class="container">
+      <div class="wb-process-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">/ 02 · Our six stages</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            One factory.<br/><em class="accent">Six controlled stages.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
+          Every stage a customer would otherwise have to qualify across separate
+          vendors, owned and quality-controlled by Banco, in Vadodara.
+        </p>
+      </div>
+
+      <div class="wb-process-grid">
+        {[
+          { n: '01', title: 'Foundry',        sub: 'Billet casting',   desc: 'In-house melting and casting of standard and special alloys across the 1xxx–7xxx series.' },
+          { n: '02', title: 'Extrusion',       sub: '5 presses',        desc: '1,100–3,300 T press force. Direct and indirect extrusion of complex hollow and solid profiles.' },
+          { n: '03', title: 'Die Shop',        sub: 'In-house',         desc: 'Full die design, manufacture and correction, with no third-party dependency or lead-time risk.' },
+          { n: '04', title: 'Heat Treatment',  sub: 'Age & anneal',     desc: 'Controlled atmosphere ageing and annealing furnaces for consistent T5/T6 properties.' },
+          { n: '05', title: 'Machining',       sub: 'CNC + cold draw',  desc: 'Multi-axis CNC machining, cold drawing and fabrication for near-net-shape output.' },
+          { n: '06', title: 'Finishing',       sub: 'Surface & pack',   desc: 'Anodising, powder coating, chromating and precision packing for OEM and export shipments.' },
+        ].map((p, i) => (
+          <div class="wb-process-cell" data-reveal="fade" style={`--delay:${i * 55}ms`}>
+            <div class="wb-process-num">/ {p.n}</div>
+            <div class="wb-process-title">{p.title}</div>
+            <div class="wb-process-sub">{p.sub}</div>
+            <div class="wb-process-rule"></div>
+            <div class="wb-process-desc">{p.desc}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-top:40px;text-align:center" data-reveal="fade">
+        <a href="/capabilities/extrusion" class="btn btn-secondary-dark">
+          Explore all capabilities →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
        CTA CLOSE
        ══════════════════════════════════════════ -->
   <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
     <div class="container">
       <div class="wb-cta-row" data-reveal="fade">
         <div>
-          <div class="eyebrow on-dark">Learn more</div>
+          <div class="eyebrow on-dark">Ready to work with a manufacturer?</div>
           <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
             See the certifications.<br/>Meet the team.
           </h2>
@@ -116,15 +162,15 @@ const whyPoints = [
   /* ── HERO ───────────────────────────────────────────────────── */
   .wb-hero {
     position: relative; background: var(--color-navy-deep);
-    min-height: 72vh; display: flex; align-items: center; overflow: hidden;
+    min-height: 78vh; display: flex; align-items: center; overflow: hidden;
   }
   .wb-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .wb-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  .wb-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
   .wb-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.60); }
   .wb-hero-grad {
     position: absolute; inset: 0;
     background:
-      linear-gradient(110deg, rgba(6,21,37,0.76) 0%, rgba(6,21,37,0.22) 58%, rgba(6,21,37,0.05) 100%),
+      linear-gradient(110deg, rgba(6,21,37,0.80) 0%, rgba(6,21,37,0.28) 58%, rgba(6,21,37,0.08) 100%),
       linear-gradient(to bottom, transparent 55%, var(--color-navy-deep) 100%);
   }
   .wb-hero-body { position: relative; z-index: 2; width: 100%; padding-top: 160px; padding-bottom: 100px; }
@@ -141,7 +187,7 @@ const whyPoints = [
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
 
-  /* ── WHY BANCO ──────────────────────────────────────────────── */
+  /* ── WHY CHOOSE BANCO ──────────────────────────────────────────── */
   .wb-why-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(48px,7vw,100px); align-items: start; }
   .wb-why-sticky { position: sticky; top: 100px; }
   .wb-why-rule { width: 40px; height: 1px; background: var(--color-stone-400); margin: 28px 0; }
@@ -158,18 +204,48 @@ const whyPoints = [
   .wb-why-title { font-size: 16px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 6px; }
   .wb-why-desc  { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
 
+  /* ── OUR SIX STAGES ────────────────────────────────────────────── */
+  .wb-process { padding: 80px 0; }
+  .wb-process-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px); align-items: start; margin-bottom: 48px;
+  }
+  .wb-process-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--color-navy-line); }
+  .wb-process-cell {
+    background: var(--color-navy-soft); padding: 28px 20px;
+    display: flex; flex-direction: column; position: relative;
+    transition: background 0.25s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .wb-process-cell:hover { background: var(--color-navy); }
+  .wb-process-cell::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background: var(--color-green); transition: width 0.35s ease;
+  }
+  .wb-process-cell:hover::after { width: 100%; }
+  .wb-process-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-green); margin-bottom: 16px; }
+  .wb-process-title{ font-family: var(--font-sans); font-size: 18px; font-weight: 600; color: var(--color-stone-50); letter-spacing: -0.01em; line-height: 1.2; }
+  .wb-process-sub  { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 4px; margin-bottom: 16px; }
+  .wb-process-rule { width: 24px; height: 1px; background: var(--color-navy-line); margin-bottom: 16px; }
+  .wb-process-desc { font-size: 12.5px; line-height: 1.55; color: var(--color-stone-400); margin-top: auto; }
+
   /* ── CTA ────────────────────────────────────────────────────── */
   .wb-cta-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
   .wb-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
+  @media (max-width: 1100px) {
+    .wb-process-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 900px) {
-    .wb-why-layout { grid-template-columns: 1fr; gap: 40px; }
-    .wb-why-sticky { position: static; }
-    .wb-cta-row    { flex-direction: column; }
+    .wb-why-layout  { grid-template-columns: 1fr; gap: 40px; }
+    .wb-why-sticky  { position: static; }
+    .wb-process-head{ grid-template-columns: 1fr; }
+    .wb-cta-row     { flex-direction: column; }
   }
   @media (max-width: 640px) {
-    .wb-hero-grad  { background: rgba(6,21,37,0.88); }
-    .wb-scroll-cue { display: none; }
+    .wb-hero-grad    { background: rgba(6,21,37,0.88); }
+    .wb-scroll-cue   { display: none; }
+    .wb-process-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     .wb-scroll-line { animation: none; opacity: 0.5; }

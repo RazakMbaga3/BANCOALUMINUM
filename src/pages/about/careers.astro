@@ -1,29 +1,45 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 import { optSrcset } from '../../lib/img';
 
-const departments = [
-  { id: '01', name: 'Manufacturing',  icon: '⚙', desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
-  { id: '02', name: 'Engineering',    icon: '◈', desc: 'Mechanical and metallurgical engineers for process improvement, die design, capital projects, and equipment maintenance.' },
-  { id: '03', name: 'Quality',        icon: '◎', desc: 'Quality engineers, CMM operators, lab technicians, and QA managers. ISO 9001 and IATF 16949 environment.' },
-  { id: '04', name: 'Sales',          icon: '↗', desc: 'Technical sales executives and account managers for domestic and export markets. Customer-facing and CRM-driven.' },
-  { id: '05', name: 'Finance',        icon: '◻', desc: 'Commercial finance, cost accounting, management accounts, and export documentation for a large manufacturing business.' },
-  { id: '06', name: 'IT',             icon: '◈', desc: 'ERP implementation, manufacturing systems, network infrastructure, and digital transformation projects.' },
-  { id: '07', name: 'HR',             icon: '◯', desc: 'Talent acquisition, learning & development, compliance, and employee engagement for a workforce of 900+.' },
-  { id: '08', name: 'Logistics',      icon: '▷', desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
+const coreValues = [
+  { title: 'Safety first', desc: 'Every shift starts with a safety briefing. No production target overrides a safe stop.' },
+  { title: 'Ownership', desc: 'Decisions made by people close to the work, with direct accountability for outcomes.' },
+  { title: 'Craftsmanship', desc: 'Pride in the profile that leaves the plant, whether it is one piece or one thousand.' },
+  { title: 'Team, not hierarchy', desc: 'Shop floor and management share the same canteen, the same safety rules, and the same goals.' },
+  { title: 'Continuous improvement', desc: 'Kaizen-driven process reviews across foundry, extrusion, and finishing, every quarter.' },
+  { title: 'Community', desc: 'Local hiring, apprenticeships, and long-term careers built in Vadodara.' },
 ];
 
+const moreThanWork = [
+  { title: 'Health & safety', desc: 'Daily toolbox talks, PPE issued and tracked per role, and a shop floor where any operator can call a safe stop without asking permission first.' },
+  { title: 'Learning & apprenticeships', desc: 'Structured apprenticeship intake for diploma and ITI graduates, paired with senior operators on the press and machining floor.' },
+  { title: 'Community & local hiring', desc: 'The large majority of our workforce is hired locally in and around Vadodara. Long tenure is the norm, not the exception, across shifts.' },
+  { title: 'Shared ground', desc: 'One canteen for shop floor and management. Long-service recognition and shift-wise celebrations mark the calendar as much as production targets do.' },
+];
+
+const departments = [
+  { id: '01', name: 'Manufacturing',  desc: 'Press operators, foundry technicians, shift supervisors, and production planners across all five press lines and foundry operations.' },
+  { id: '02', name: 'Engineering',    desc: 'Mechanical and metallurgical engineers for process improvement, die design, capital projects, and equipment maintenance.' },
+  { id: '03', name: 'Quality',        desc: 'Quality engineers, CMM operators, lab technicians, and QA managers. ISO 9001 and IATF 16949 environment.' },
+  { id: '04', name: 'Sales',          desc: 'Technical sales executives and account managers for domestic and export markets. Customer-facing and CRM-driven.' },
+  { id: '05', name: 'Finance',        desc: 'Commercial finance, cost accounting, management accounts, and export documentation for a large manufacturing business.' },
+  { id: '06', name: 'IT',             desc: 'ERP implementation, manufacturing systems, network infrastructure, and digital transformation projects.' },
+  { id: '07', name: 'HR',             desc: 'Talent acquisition, learning & development, compliance, and employee engagement for a workforce of 900+.' },
+  { id: '08', name: 'Logistics',      desc: 'Warehouse, dispatch, freight forwarding coordination, and export packing for domestic and international shipments.' },
+];
 ---
 
 <Layout
   title="Careers at Banco Aluminium"
-  description="Build your career at Banco Aluminium: 58 years of family-owned aluminium manufacturing heritage, with roles from foundry engineering to sales and logistics."
+  description="Build your career at Banco Aluminium: 58 years of family-owned aluminium manufacturing heritage, real core values, and roles from foundry engineering to sales and logistics."
   transparentNav={true}
   heroImage="/assets/images/people/worker1.png"
 >
 
   <!-- ══════════════════════════════════════════
-       HERO
+       HERO — Build your career in aluminium
        ══════════════════════════════════════════ -->
   <section class="ca-hero">
     <div class="ca-hero-media" aria-hidden="true">
@@ -50,7 +66,7 @@ const departments = [
       </p>
 
       <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px" data-reveal data-reveal-delay="4">
-        <a href="#apply" class="btn btn-primary-dark">Apply now</a>
+        <a href="#find-your-place" class="btn btn-primary-dark">Find your place</a>
         <a href="/about/why-banco" class="btn btn-secondary-dark">Why Banco</a>
       </div>
     </div>
@@ -62,15 +78,140 @@ const departments = [
 
 
   <!-- ══════════════════════════════════════════
+       WHAT HOLDS OUR CULTURE TOGETHER
+       ══════════════════════════════════════════ -->
+  <section class="ca-culture section-dark" data-reveal="fade">
+    <div class="container">
+      <div class="ca-culture-head">
+        <div>
+          <div class="eyebrow on-dark">/ 01 · Culture</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            What holds the<br/><em class="accent">culture together.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:46ch;align-self:end">
+          58 years in, Banco is still run by people who have spent decades on this
+          same shop floor. That continuity, more than any policy document, is what
+          shapes how people here actually work together.
+        </p>
+      </div>
+
+      <div class="ca-culture-photos">
+        <figure class="ca-culture-fig">
+          <picture>
+            <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 50vw" />
+            <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 50vw" />
+            <img src="/assets/capabilities/cold-drawing-floor-a.jpg" alt="Banco Aluminium operators working together on the fabrication floor" loading="lazy" />
+          </picture>
+          <figcaption>Fabrication floor · Vadodara</figcaption>
+        </figure>
+        <figure class="ca-culture-fig">
+          <Pic src="/assets/manufacturing/quality-1.webp" alt="Banco Aluminium team member conducting a quality inspection" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <figcaption>Quality checks · Every shift, the same standard</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       OUR CORE VALUES
+       ══════════════════════════════════════════ -->
+  <section class="ca-values section-alt" data-reveal="fade">
+    <div class="container">
+      <div class="eyebrow">/ 02 · Our core values</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px">
+        Six things we<br/>ask of each other.
+      </h2>
+
+      <div class="ca-values-grid">
+        {coreValues.map((v, i) => (
+          <div class="ca-value-card" style={`--delay:${i * 45}ms`}>
+            <div class="ca-value-n">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="ca-value-h">{v.title}</h3>
+            <p class="ca-value-d">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       MORE THAN WORK
+       ══════════════════════════════════════════ -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="ca-mtw-grid">
+        <div data-reveal="left">
+          <div class="eyebrow">/ 03 · More than work</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Beyond the<br/>production target.
+          </h2>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
+            A manufacturing career at Banco is not only about output. It is safety
+            habits that hold under pressure, skills passed from one shift to the
+            next, and a workforce drawn mostly from Vadodara itself.
+          </p>
+          <figure class="ca-mtw-fig">
+            <picture>
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/cold-drawing-floor-b.jpg" alt="Banco Aluminium team reviewing finished extruded profiles together" loading="lazy" style="object-position: center 30%;" />
+            </picture>
+            <figcaption>On the floor, together · Vadodara</figcaption>
+          </figure>
+        </div>
+        <div class="ca-mtw-list" data-reveal="right">
+          {moreThanWork.map((m) => (
+            <div class="ca-mtw-row">
+              <div class="ca-mtw-title">{m.title}</div>
+              <div class="ca-mtw-desc">{m.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FIND YOUR PLACE AT BANCO + APPLICATION FORM
+       ══════════════════════════════════════════ -->
+  <section class="section-alt section-pad" id="find-your-place">
+    <div class="container">
+      <div class="eyebrow">/ 04 · Find your place</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:16px">
+        Eight departments.<br/>One factory.
+      </h2>
+      <p class="t-lead" style="color:var(--color-stone-700);max-width:60ch;margin-bottom:40px">
+        Manufacturing is the core of Banco, but it takes seven other departments to
+        run a 35,000 MT operation. Somewhere in this list is where you fit.
+      </p>
+
+      <div class="ca-dept-grid" data-reveal="fade">
+        {departments.map((d) => (
+          <div class="ca-dept-card">
+            <div class="ca-dept-id">{d.id}</div>
+            <h3 class="ca-dept-name">{d.name}</h3>
+            <p class="ca-dept-desc">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
        APPLICATION FORM
        ══════════════════════════════════════════ -->
-  <section class="section-alt section-pad" id="apply">
+  <section class="section-light section-pad" id="apply">
     <div class="container">
       <div class="ca-form-layout">
 
         <!-- Left: context -->
         <div class="ca-form-context" data-reveal="left">
-          <div class="eyebrow">/ 03 · Apply</div>
+          <div class="eyebrow">/ 05 · Apply</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Apply for a role<br/>at Banco.
           </h2>
@@ -219,7 +360,7 @@ const departments = [
   /* ── HERO ───────────────────────────────────────────────────── */
   .ca-hero {
     position: relative; background: var(--color-navy-deep);
-    min-height: 90vh; display: flex; align-items: center; overflow: hidden;
+    min-height: 88vh; display: flex; align-items: center; overflow: hidden;
   }
   .ca-hero-media { position: absolute; inset: 0; z-index: 0; }
   .ca-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 20%; }
@@ -233,11 +374,6 @@ const departments = [
   .ca-hero-body { position: relative; z-index: 2; width: 100%; padding-top: 160px; padding-bottom: 100px; }
   .ca-hero-h1 { color: var(--color-stone-50); margin-top: 20px; }
   .ca-hero-lede { color: var(--color-stone-400); font-size: clamp(15px,1.4vw,18px); line-height: 1.65; max-width: 54ch; margin-top: 24px; }
-  .ca-hero-stats { display: flex; gap: 0; flex-wrap: wrap; margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.10); }
-  .ca-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.10); }
-  .ca-stat:last-child { border-right: none; }
-  .ca-stat-n { font-family: var(--font-sans); font-size: clamp(20px,2.5vw,32px); font-weight: 400; letter-spacing: -0.02em; color: var(--color-stone-50); line-height: 1; }
-  .ca-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 7px; }
 
   .ca-scroll-cue { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); z-index: 3; }
   .ca-scroll-line { display: block; width: 1px; height: 52px; background: linear-gradient(to bottom, var(--color-green), transparent); animation: ca-drop 2s ease-in-out infinite; }
@@ -247,6 +383,62 @@ const departments = [
     51%  { transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
+
+  /* ── CULTURE ───────────────────────────────────────────────────── */
+  .ca-culture { border-top: 2px solid var(--color-green); padding: 80px 0; }
+  .ca-culture-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px); align-items: start; margin-bottom: 40px;
+  }
+  .ca-culture-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .ca-culture-fig { overflow: hidden; border: 1px solid var(--color-navy-line); margin: 0; }
+  .ca-culture-fig :global(img) {
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .ca-culture-fig:hover :global(img) { transform: scale(1.05); }
+  .ca-culture-fig figcaption {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-400); padding: 7px 10px;
+    border-top: 1px solid var(--color-navy-line); background: var(--color-navy-soft);
+  }
+
+  /* ── CORE VALUES ───────────────────────────────────────────────── */
+  .ca-values { padding: 80px 0; }
+  .ca-values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ca-value-card {
+    background: var(--color-stone-50); padding: 28px 24px;
+    position: relative; overflow: hidden; border-top: 2px solid transparent;
+    transition: background 0.25s ease, border-top-color 0.25s ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .ca-value-card:hover { background: white; border-top-color: var(--color-green); }
+  .ca-value-n  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 14px; }
+  .ca-value-h  { font-family: var(--font-sans); font-size: 17px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 8px; }
+  .ca-value-d  { font-size: 13px; color: var(--color-stone-700); line-height: 1.6; }
+
+  /* ── MORE THAN WORK ────────────────────────────────────────────── */
+  .ca-mtw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
+  .ca-mtw-fig { margin: 32px 0 0; overflow: hidden; border: 1px solid var(--color-stone-200); }
+  .ca-mtw-fig img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .ca-mtw-fig:hover img { transform: scale(1.05); }
+  .ca-mtw-fig figcaption {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-700); padding: 7px 10px;
+    border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
+  }
+  .ca-mtw-list { display: flex; flex-direction: column; border-top: 1px solid var(--color-stone-200); }
+  .ca-mtw-row  { padding: 22px 0; border-bottom: 1px solid var(--color-stone-200); }
+  .ca-mtw-title{ font-size: 16px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 6px; }
+  .ca-mtw-desc { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
+
+  /* ── FIND YOUR PLACE / DEPARTMENTS ────────────────────────────── */
+  .ca-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .ca-dept-card { background: white; padding: 24px 20px; border-top: 2px solid transparent; transition: border-top-color 0.2s ease; }
+  .ca-dept-card:hover { border-top-color: var(--color-green); }
+  .ca-dept-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); margin-bottom: 10px; }
+  .ca-dept-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
+  .ca-dept-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.6; color: var(--color-stone-700); }
 
   /* ── FORM LAYOUT ────────────────────────────────────────────── */
   .ca-form-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(48px,7vw,96px); align-items: start; }
@@ -314,15 +506,24 @@ const departments = [
   .ca-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
   /* ── RESPONSIVE ─────────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .ca-dept-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 900px) {
-    .ca-form-layout { grid-template-columns: 1fr; }
-    .ca-cta-row     { flex-direction: column; }
-    .ca-cta-btns    { flex-direction: row; flex-wrap: wrap; }
+    .ca-culture-head { grid-template-columns: 1fr; }
+    .ca-values-grid  { grid-template-columns: 1fr 1fr; }
+    .ca-mtw-grid     { grid-template-columns: 1fr; gap: 40px; }
+    .ca-form-layout  { grid-template-columns: 1fr; }
+    .ca-cta-row      { flex-direction: column; }
+    .ca-cta-btns     { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .ca-hero-grad   { background: rgba(6,21,37,0.88); }
-    .ca-scroll-cue  { display: none; }
-    .ca-field-row   { grid-template-columns: 1fr; }
+    .ca-hero-grad     { background: rgba(6,21,37,0.88); }
+    .ca-scroll-cue    { display: none; }
+    .ca-culture-photos{ grid-template-columns: 1fr; }
+    .ca-values-grid   { grid-template-columns: 1fr; }
+    .ca-dept-grid     { grid-template-columns: 1fr 1fr; }
+    .ca-field-row     { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .ca-scroll-line { animation: none; opacity: 0.5; }

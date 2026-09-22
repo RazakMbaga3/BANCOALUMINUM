@@ -13,40 +13,21 @@ const milestones = [
   { year: '2020s', event: 'CBAM-ready; 960 kW solar commissioned; 35,000 MT milestone' },
 ];
 
-const process = [
-  { n: '01', title: 'Foundry',       sub: 'Billet casting', desc: 'In-house melting and casting of standard and special alloys in the 6xxx, 2xxx and 7xxx series.' },
-  { n: '02', title: 'Extrusion',     sub: '5 presses',      desc: '1,100–3,300 T press force. Direct and indirect extrusion of complex hollow and solid profiles.' },
-  { n: '03', title: 'Die Shop',      sub: 'In-house',       desc: 'Full die design, manufacture and correction capability, with no third-party dependency.' },
-  { n: '04', title: 'Heat Treatment',sub: 'Age & anneal',   desc: 'Controlled atmosphere ageing and annealing furnaces ensuring consistent T5/T6 properties.' },
-  { n: '05', title: 'Machining',     sub: 'CNC + cold draw', desc: 'Multi-axis CNC machining, cold drawing and fabrication for near-net-shape output.' },
-  { n: '06', title: 'Finishing',     sub: 'Surface & pack',  desc: 'Anodising, powder coating, chromating and precision packing for OEM and export shipments.' },
-];
-
-const reasons = [
-  ['Complete solution provider',     'In-house product development, die design and manufacturing, end to end under one roof.'],
-  ['1100+ customers served',          'Customised product development and experience of servicing 1100+ clients across diverse industries.'],
-  ['High-strength alloy specialist', 'In-house foundry development and supply of special high-strength and lead-free machining alloys.'],
-  ['Certified to global standards',  'ISO 14001:2015, ISO 9001:2015, IATF 16949 and CE certified: quality assured at every stage.'],
-  ['Value-added processing',         'Machining & fabrication facilities for assemblies, customised products, and cold drawing.'],
-  ['Quickest response time',         'Extremely responsive team with short lead times and direct customer communication at all levels.'],
-  ['58 years of experience',         'Established 1967 in Vadodara, Gujarat. Family-owned. Exporting to Europe, North America, APAC, and the Middle East.'],
-];
-
-const coreValues = [
-  { title: 'Safety first', desc: 'Every shift starts with a safety briefing. No production target overrides a safe stop.' },
-  { title: 'Ownership', desc: 'Decisions made by people close to the work, with direct accountability for outcomes.' },
-  { title: 'Craftsmanship', desc: 'Pride in the profile that leaves the plant, whether it is one piece or one thousand.' },
-  { title: 'Team, not hierarchy', desc: 'Shop floor and management share the same canteen, the same safety rules, and the same goals.' },
-  { title: 'Continuous improvement', desc: 'Kaizen-driven process reviews across foundry, extrusion, and finishing, every quarter.' },
-  { title: 'Community', desc: 'Local hiring, apprenticeships, and long-term careers built in Vadodara.' },
-];
-
 const testimonials = [
   { client: 'Aavid Metalalloys',  location: 'India',       quote: 'Reliable supply partner with consistent quality across hard alloy specifications.' },
   { client: 'Schneider Electric', location: 'Bangalore',   quote: 'Dependable extrusion partner for our busbar and T&D profile requirements.' },
   { client: 'Truetzschler',       location: 'India',       quote: 'Long-standing relationship built on technical competence and delivery reliability.' },
   { client: 'IMS Netherlands',    location: 'Netherlands', quote: 'Banco\'s lead-free machining alloys meet our RoHS requirements with consistent dimensional quality.' },
   { client: 'INOX India',         location: 'India',       quote: 'Strong quality systems and traceability, key for our engineering applications.' },
+];
+
+const applications = [
+  { name: 'Automotive',  href: '/industries/automotive',  img: '/assets/industries/hero/automotive-hero.jpg',       hook: 'Structural body sections, door sills, and seat-track extrusions to IATF 16949.' },
+  { name: 'Railways',    href: '/industries/railways',    img: '/assets/industries/hero/railways-hero.jpg',         hook: 'IRS Works Approval holder. Structural and interior profiles for rolling stock.' },
+  { name: 'Aerospace',   href: '/industries/aerospace',   img: '/assets/industries/hero/aerospace-hero.jpg',        hook: 'High-performance 2xxx / 7xxx sections with full chemical traceability.' },
+  { name: 'Electrical',  href: '/industries/electrical',  img: '/assets/industries/hero/electrical-hero.jpg',       hook: 'Busbars, switchgear housings, and T&D profiles in high-conductivity alloys.' },
+  { name: 'Building',    href: '/industries/building',    img: '/assets/industries/hero/building-hero.jpg',         hook: 'Curtain wall mullions and structural glazing sections, Class 20 anodised.' },
+  { name: 'Solar',       href: '/industries/solar',       img: '/assets/industries/hero/solar-hero.jpg',            hook: 'Module frames and racking systems, anodised for 25-year outdoor durability.' },
 ];
 ---
 
@@ -78,8 +59,7 @@ const testimonials = [
         </div>
 
         <h1 class="t-h1 ab-hero-h1" data-reveal data-reveal-delay="2">
-          Engineering <em class="accent">aluminium</em><br/>
-          with precision,<br/>at scale.
+          Family-run<br/>aluminium,<br/><em class="accent">since 1967.</em>
         </h1>
 
         <p class="ab-hero-lede" data-reveal data-reveal-delay="3">
@@ -106,7 +86,7 @@ const testimonials = [
 
         <div class="ab-hero-ctas" data-reveal data-reveal-delay="5">
           <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
-          <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
+          <a href="/about/why-banco" class="btn btn-secondary-dark">Why Banco</a>
         </div>
       </div>
     </div>
@@ -118,56 +98,14 @@ const testimonials = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       OUR CORE VALUES
-       ══════════════════════════════════════════════════════════ -->
-  <section class="ab-values section-dark" data-reveal="fade">
-    <div class="container">
-      <div class="ab-values-head">
-        <div>
-          <div class="eyebrow on-dark">Our core values</div>
-          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
-            What holds the<br/><em class="accent">culture together.</em>
-          </h2>
-        </div>
-        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
-          Behind the certifications and the capacity numbers, a workforce that has
-          stayed on the shop floor for decades. This is what we ask of each other.
-        </p>
-      </div>
-
-      <div class="ab-values-grid">
-        {coreValues.map((v, i) => (
-          <div class="ab-value-card" style={`--delay:${i * 45}ms`}>
-            <div class="ab-value-n">{String(i + 1).padStart(2, '0')}</div>
-            <h3 class="ab-value-h">{v.title}</h3>
-            <p class="ab-value-d">{v.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="ab-values-photos">
-        <figure class="ab-values-fig">
-          <Pic src="/assets/manufacturing/quality-1.webp" alt="Banco Aluminium team member conducting quality inspection" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
-          <figcaption>On the floor · Vadodara</figcaption>
-        </figure>
-        <figure class="ab-values-fig">
-          <Pic src="/assets/manufacturing/billet-1.webp" alt="Banco Aluminium press-ready billets" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
-          <figcaption>Every shift, the same standard</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       STORY — sticky headline + editorial copy + photos
+       OUR STORY — sticky headline + editorial copy + photos
        ══════════════════════════════════════════════════════════ -->
   <section class="section-light section-pad">
     <div class="container">
       <div class="ab-story-grid">
 
         <div class="ab-story-anchor" data-reveal="left">
-          <div class="eyebrow">Our story</div>
+          <div class="eyebrow">/ 01 · Our story</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:20px">
             Integrated.<br/>
             <em class="accent">Independent.</em><br/>
@@ -225,143 +163,12 @@ const testimonials = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       STATS STRIP — 4-cell on white
+       HERITAGE — timeline vertical
        ══════════════════════════════════════════════════════════ -->
-  <section class="section-white" style="padding:0">
-    <div class="stat-strip ab-stats-strip" data-reveal="fade">
-      {[
-        { n: 35000, s: ' MT', sep: true,  u: '',   label: 'Annual extrusion capacity' },
-        { n: 55000, s: ' MT', sep: true,  u: '',   label: 'Annual foundry capacity' },
-        { n: 1100,  s: '+',   sep: false, u: '',   label: 'Customers worldwide' },
-        { n: 58,    s: '+',   sep: false, u: 'yrs',label: 'Years of extrusion heritage' },
-      ].map(({ n, s, sep, u, label }) => (
-        <div class="stat-strip-cell">
-          <div style="display:flex;align-items:baseline;gap:4px">
-            <span class="ssn" data-countup={n} data-suffix={s} data-separator={sep ? ',' : ''}>
-              {sep ? n.toLocaleString() : n}{s}
-            </span>
-            {u && <span class="ssu">{u}</span>}
-          </div>
-          <div class="ssl">{label}</div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       PROCESS CHAIN — 6-step integrated production
-       ══════════════════════════════════════════════════════════ -->
-  <section class="ab-process section-dark">
-    <div class="container">
-      <div class="ab-process-head" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">/ Integrated manufacturing</div>
-          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
-            Six stages.<br/><em class="accent">One address.</em>
-          </h2>
-        </div>
-        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
-          Every stage of aluminium production under one roof in Vadodara.
-          Owned, operated and quality-controlled by Banco.
-        </p>
-      </div>
-
-      <div class="ab-process-grid">
-        {process.map((p, i) => (
-          <div class="ab-process-cell" data-reveal="fade" style={`--delay:${i * 55}ms`}>
-            <div class="ab-process-num">{p.n}</div>
-            <div class="ab-process-title">{p.title}</div>
-            <div class="ab-process-sub">{p.sub}</div>
-            <div class="ab-process-rule"></div>
-            <div class="ab-process-desc">{p.desc}</div>
-          </div>
-        ))}
-      </div>
-
-      <div style="margin-top:40px;text-align:center" data-reveal="fade">
-        <a href="/capabilities/extrusion" class="btn btn-secondary-dark">
-          Explore all capabilities →
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       VIDEO WINDOW — cinematic mid-page
-       ══════════════════════════════════════════════════════════ -->
-  <section class="ab-vwin">
-    <video class="ab-vwin-vid" autoplay muted loop playsinline preload="none" poster="/herovideo-poster.jpg">
-      <source src="/herovideo-720.mp4" type="video/mp4" />
-    </video>
-    <div class="ab-vwin-overlay"></div>
-    <div class="container ab-vwin-body">
-      <div class="ab-vwin-content" data-reveal="left">
-        <div class="eyebrow on-dark">Live operations</div>
-        <h2 class="t-h2 ab-vwin-h2">
-          From liquid metal<br/>to finished profile.
-        </h2>
-        <p class="ab-vwin-p">
-          Foundry. Extrusion. Die shop. Heat treatment.
-          Machining. Surface finishing. All in Vadodara.
-        </p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px">
-          <a href="/capabilities/foundry" class="btn btn-primary-dark">Foundry & casting</a>
-          <a href="/capabilities/extrusion" class="btn btn-secondary-dark">Extrusion</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       FACILITY — editorial photo grid
-       ══════════════════════════════════════════════════════════ -->
-  <section class="section-alt" style="padding:72px 0 80px">
-    <div class="container">
-      <div class="ab-fac-head" data-reveal="fade">
-        <div>
-          <div class="eyebrow">/ Vadodara, Gujarat · Est. 1967</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            The integrated<br/>manufacturing facility.
-          </h2>
-        </div>
-        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
-          35,000 MT annual extrusion capacity across five presses.
-          55,000 MT in-house foundry. All under one roof.
-        </p>
-      </div>
-
-      <!-- Editorial mosaic: 1 large + 4 supporting -->
-      <div class="ab-fac-mosaic" data-reveal="fade">
-        <div class="ab-fac-main">
-          <Pic src="/assets/manufacturing/casting-1.webp" alt="Hot-Top billet casting at Banco foundry, Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-          <div class="ab-fac-caption">Hot-Top casting · Banco foundry · Vadodara</div>
-        </div>
-        {[
-          ['/assets/manufacturing/melting-4.webp',  'Metal tapping during melting furnace operations'],
-          ['/assets/manufacturing/casting-5.webp',  'Casting pit, a controlled cooling zone'],
-          ['/assets/manufacturing/billet-1.webp',   'Press-ready finished extrusion billets'],
-          ['/assets/manufacturing/quality-1.webp',  'Spectromax OES for 100% chemical analysis'],
-        ].map(([src, alt]) => (
-          <div class="ab-fac-thumb">
-            <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 640px) 100vw, 25vw" maxW={768} />
-            <div class="ab-fac-caption">{alt}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       TIMELINE — heritage vertical
-       ══════════════════════════════════════════════════════════ -->
-  <section class="section-alt section-pad" style="border-top:1px solid var(--color-stone-200)">
+  <section class="ab-timeline-section section-alt section-pad" style="border-top:2px solid var(--color-green)">
     <div class="container ab-timeline-wrap">
       <div class="ab-timeline-head" data-reveal="left">
-        <div class="eyebrow">Heritage</div>
+        <div class="eyebrow">/ 02 · Heritage</div>
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
           58 years of<br/><em class="accent">aluminium</em> experience.
         </h2>
@@ -382,13 +189,26 @@ const testimonials = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       CLIENT LOGOS — animated marquee
+       TRUSTED BY INDUSTRY LEADERS — logos + testimonials
        ══════════════════════════════════════════════════════════ -->
-  <section class="ab-logos-section" data-reveal="fade">
-    <div class="ab-logos-label">
-      <span class="eyebrow">Trusted by industry leaders</span>
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="ab-testi-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">/ 03 · Trusted by industry leaders</div>
+          <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px">
+            1,100+ customers.<br/><em class="accent">Four export regions.</em>
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-400);max-width:44ch;align-self:end">
+          Across industrial, automotive, electrical, and architectural sectors,
+          in India and export markets spanning Europe, North America, APAC,
+          and the Middle East.
+        </p>
+      </div>
     </div>
-    <div class="ab-logos-track-wrap" aria-label="Notable clients">
+
+    <div class="ab-logos-track-wrap" aria-label="Notable clients" style="margin:44px 0">
       <div class="ab-logos-track">
         {/* Duplicated for seamless loop */}
         {[...Array(2)].map(() =>
@@ -407,27 +227,8 @@ const testimonials = [
         )}
       </div>
     </div>
-  </section>
 
-
-  <!-- ══════════════════════════════════════════════════════════
-       TESTIMONIALS — client voices
-       ══════════════════════════════════════════════════════════ -->
-  <section class="section-light" style="padding:80px 0">
     <div class="container">
-      <div class="ab-testi-head" data-reveal="fade">
-        <div>
-          <div class="eyebrow">Client portfolio</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Better relationships.<br/>Better solutions.
-          </h2>
-        </div>
-        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
-          1100+ customers across industrial, automotive, electrical, and architectural
-          sectors in India and four export regions.
-        </p>
-      </div>
-
       <div class="ab-testi-grid" data-reveal="fade">
         {testimonials.map((t, i) => (
           <div class="ab-testi-card" style={`--delay:${i * 60}ms`}>
@@ -445,31 +246,58 @@ const testimonials = [
 
 
   <!-- ══════════════════════════════════════════════════════════
-       WHY BANCO — 7 reasons, alternating hover
+       SELECTED APPLICATIONS
        ══════════════════════════════════════════════════════════ -->
-  <section class="section-dark section-pad">
+  <section class="section-light section-pad">
     <div class="container">
-      <div data-reveal="left">
-        <div class="eyebrow on-dark">Why customers choose Banco</div>
-        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:16px;margin-bottom:56px">
-          Seven reasons.<br/><em class="accent">One partner.</em>
-        </h2>
+      <div class="ab-apps-head" data-reveal="fade">
+        <div>
+          <div class="eyebrow">/ 04 · Selected applications</div>
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            One factory.<br/>Six different industries.
+          </h2>
+        </div>
+        <p class="t-lead" style="color:var(--color-stone-700);max-width:44ch;align-self:end">
+          The same integrated process, qualified to very different standards
+          depending on where the profile ends up.
+        </p>
       </div>
 
-      <div class="ab-why-grid" data-reveal="fade">
-        {reasons.map(([heading, desc], i) => (
-          <div class="ab-why-card">
-            <div class="ab-why-n">{String(i + 1).padStart(2, '0')}</div>
-            <h3 class="ab-why-h">{heading}</h3>
-            <p class="ab-why-d">{desc}</p>
-          </div>
+      <div class="ab-apps-grid" data-reveal="fade">
+        {applications.map((a) => (
+          <a href={a.href} class="ab-apps-card">
+            <div class="ab-apps-img">
+              <Pic src={a.img} alt={a.name} loading="lazy" sizes="(max-width: 900px) 100vw, 33vw" maxW={900} />
+            </div>
+            <div class="ab-apps-body">
+              <h3 class="ab-apps-name">{a.name}</h3>
+              <p class="ab-apps-hook">{a.hook}</p>
+              <span class="ab-apps-link">Explore →</span>
+            </div>
+          </a>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div class="ab-why-ctas" data-reveal="fade">
-        <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
-        <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
-        <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
+
+  <!-- ══════════════════════════════════════════════════════════
+       CTA CLOSE
+       ══════════════════════════════════════════════════════════ -->
+  <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
+    <div class="container">
+      <div class="ab-cta-row" data-reveal="fade">
+        <div>
+          <div class="eyebrow on-dark">Get in touch</div>
+          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
+            See the certifications.<br/>Meet the team.
+          </h2>
+        </div>
+        <div class="ab-cta-btns">
+          <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
+          <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
+          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
+        </div>
       </div>
     </div>
   </section>
@@ -590,94 +418,6 @@ const testimonials = [
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
   }
 
-  /* ── CORE VALUES ───────────────────────────────────────────── */
-  .ab-values {
-    border-top: 2px solid var(--color-green);
-    padding: 80px 0;
-  }
-  .ab-values-head {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-    margin-bottom: 48px;
-  }
-  .ab-values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--color-navy-line);
-  }
-  .ab-value-card {
-    background: var(--color-navy-soft);
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.25s ease;
-    transition-delay: var(--delay, 0ms);
-  }
-  .ab-value-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--color-green);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
-  }
-  .ab-value-card:hover { background: var(--color-navy); }
-  .ab-value-card:hover::before { transform: scaleX(1); }
-  .ab-value-n {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--color-green);
-    margin-bottom: 14px;
-  }
-  .ab-value-h {
-    font-family: var(--font-sans);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--color-stone-50);
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  .ab-value-d {
-    font-size: 13px;
-    color: var(--color-stone-400);
-    line-height: 1.6;
-  }
-  .ab-values-photos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    margin-top: 40px;
-  }
-  .ab-values-fig {
-    overflow: hidden;
-    border: 1px solid var(--color-navy-line);
-    margin: 0;
-  }
-  .ab-values-fig :global(img) {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .ab-values-fig:hover :global(img) { transform: scale(1.05); }
-  .ab-values-fig figcaption {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-stone-400);
-    padding: 7px 10px;
-    border-top: 1px solid var(--color-navy-line);
-    background: var(--color-navy-soft);
-  }
-
   /* ── STORY ─────────────────────────────────────────────────── */
   .ab-story-grid {
     display: grid;
@@ -749,190 +489,6 @@ const testimonials = [
     background: var(--color-stone-50);
   }
 
-  /* ── STATS STRIP ───────────────────────────────────────────── */
-  .ab-stats-strip {
-    border: none;
-    background: var(--color-stone-200);
-  }
-  .ab-stats-strip .stat-strip-cell {
-    background: #fff;
-    padding: 36px 32px;
-  }
-  .ab-stats-strip .ssn {
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 300;
-    color: var(--color-navy);
-    letter-spacing: -0.03em;
-  }
-
-  /* ── PROCESS CHAIN ─────────────────────────────────────────── */
-  .ab-process { padding: 80px 0; }
-  .ab-process-head {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-    margin-bottom: 48px;
-  }
-  .ab-process-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1px;
-    background: var(--color-navy-line);
-  }
-  .ab-process-cell {
-    background: var(--color-navy-soft);
-    padding: 28px 20px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: background 0.25s ease;
-    animation-delay: var(--delay, 0ms);
-    transition-delay: var(--delay, 0ms);
-  }
-  .ab-process-cell:hover { background: var(--color-navy); }
-  .ab-process-cell::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-green);
-    transition: width 0.35s ease;
-  }
-  .ab-process-cell:hover::after { width: 100%; }
-  .ab-process-num {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-green);
-    margin-bottom: 16px;
-  }
-  .ab-process-title {
-    font-family: var(--font-sans);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-stone-50);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-  .ab-process-sub {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-stone-400);
-    margin-top: 4px;
-    margin-bottom: 16px;
-  }
-  .ab-process-rule {
-    width: 24px;
-    height: 1px;
-    background: var(--color-navy-line);
-    margin-bottom: 16px;
-  }
-  .ab-process-desc {
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: var(--color-stone-400);
-    margin-top: auto;
-  }
-
-  /* ── VIDEO WINDOW ──────────────────────────────────────────── */
-  .ab-vwin {
-    position: relative;
-    height: clamp(440px, 62vh, 700px);
-    overflow: hidden;
-  }
-  .ab-vwin-vid {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-  }
-  .ab-vwin-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(115deg, rgba(6,21,37,0.88) 0%, rgba(6,21,37,0.50) 50%, rgba(6,21,37,0.10) 100%),
-      linear-gradient(to bottom, transparent 50%, rgba(6,21,37,0.60) 100%);
-  }
-  .ab-vwin-body {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .ab-vwin-content { max-width: 560px; }
-  .ab-vwin-h2 {
-    color: var(--color-stone-50);
-    margin-top: 16px;
-  }
-  .ab-vwin-p {
-    color: var(--color-stone-400);
-    font-size: 16px;
-    line-height: 1.65;
-    max-width: 44ch;
-    margin-top: 18px;
-  }
-
-  /* ── FACILITY MOSAIC ───────────────────────────────────────── */
-  .ab-fac-head {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 80px);
-    align-items: start;
-    margin-bottom: 28px;
-  }
-  .ab-fac-mosaic {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 3px;
-  }
-  .ab-fac-main {
-    grid-row: 1 / 3;
-    overflow: hidden;
-    border: 1px solid var(--color-stone-200);
-    position: relative;
-  }
-  .ab-fac-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    min-height: 340px;
-    transition: transform 0.6s ease;
-  }
-  .ab-fac-main:hover img { transform: scale(1.03); }
-  .ab-fac-thumb {
-    overflow: hidden;
-    border: 1px solid var(--color-stone-200);
-  }
-  .ab-fac-thumb img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .ab-fac-thumb:hover img { transform: scale(1.05); }
-  .ab-fac-caption {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-stone-700);
-    padding: 7px 10px;
-    border-top: 1px solid var(--color-stone-200);
-    background: var(--color-stone-50);
-  }
-
   /* ── TIMELINE ──────────────────────────────────────────────── */
   .ab-timeline-wrap {
     display: grid;
@@ -995,17 +551,6 @@ const testimonials = [
   }
 
   /* ── LOGO MARQUEE ──────────────────────────────────────────── */
-  .ab-logos-section {
-    background: var(--color-stone-50);
-    border-top: 1px solid var(--color-stone-200);
-    border-bottom: 1px solid var(--color-stone-200);
-    padding: 40px 0;
-    overflow: hidden;
-  }
-  .ab-logos-label {
-    text-align: center;
-    margin-bottom: 28px;
-  }
   .ab-logos-track-wrap {
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -1026,12 +571,12 @@ const testimonials = [
     align-items: center;
     justify-content: center;
     padding: 12px 56px;
-    filter: grayscale(100%);
-    opacity: 0.45;
+    filter: grayscale(100%) brightness(2);
+    opacity: 0.55;
     transition: filter 0.25s ease, opacity 0.25s ease;
     flex-shrink: 0;
   }
-  .ab-logo-item:hover { filter: grayscale(0%); opacity: 1; }
+  .ab-logo-item:hover { filter: grayscale(0%) brightness(1); opacity: 1; }
 
   /* ── TESTIMONIALS ──────────────────────────────────────────── */
   .ab-testi-head {
@@ -1039,17 +584,17 @@ const testimonials = [
     grid-template-columns: 1fr 1fr;
     gap: clamp(32px, 5vw, 80px);
     align-items: start;
-    margin-bottom: 48px;
+    margin-bottom: 8px;
   }
   .ab-testi-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--color-stone-200);
-    border: 1px solid var(--color-stone-200);
+    background: var(--color-navy-line);
+    border: 1px solid var(--color-navy-line);
   }
   .ab-testi-card {
-    background: var(--color-stone-50);
+    background: var(--color-navy-soft);
     padding: 32px 28px 28px;
     display: flex;
     flex-direction: column;
@@ -1059,7 +604,7 @@ const testimonials = [
   }
   .ab-testi-card:hover {
     border-top-color: var(--color-green);
-    background: white;
+    background: var(--color-navy);
   }
   .ab-testi-open-quote {
     font-family: Georgia, serif;
@@ -1072,19 +617,19 @@ const testimonials = [
   .ab-testi-quote {
     font-size: 14.5px;
     line-height: 1.72;
-    color: var(--color-stone-700);
+    color: var(--color-silver);
     flex: 1;
     font-style: italic;
     margin-bottom: 24px;
   }
   .ab-testi-foot {
     padding-top: 18px;
-    border-top: 1px solid var(--color-stone-200);
+    border-top: 1px solid var(--color-navy-line);
   }
   .ab-testi-client {
     font-size: 13px;
     font-weight: 700;
-    color: var(--color-navy);
+    color: var(--color-stone-50);
     letter-spacing: -0.01em;
   }
   .ab-testi-loc {
@@ -1092,117 +637,79 @@ const testimonials = [
     font-size: 9.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-stone-700);
+    color: var(--color-stone-400);
     margin-top: 3px;
   }
 
-  /* ── WHY BANCO ─────────────────────────────────────────────── */
-  .ab-why-grid {
+  /* ── SELECTED APPLICATIONS ─────────────────────────────────── */
+  .ab-apps-head {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    margin-bottom: 32px;
+  }
+  .ab-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--color-navy-line);
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
   }
-  .ab-why-card {
-    background: var(--color-navy-soft);
-    padding: 32px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.25s ease;
+  .ab-apps-card {
+    display: block;
+    background: var(--color-stone-50);
+    text-decoration: none;
+    color: inherit;
   }
-  .ab-why-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--color-green);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s ease;
+  .ab-apps-img { aspect-ratio: 4/3; overflow: hidden; }
+  .ab-apps-img :global(img) {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: brightness(0.92); transition: transform 0.5s ease, filter 0.3s ease;
   }
-  .ab-why-card:hover { background: var(--color-navy); }
-  .ab-why-card:hover::before { transform: scaleX(1); }
-  .ab-why-n {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--color-green);
-    margin-bottom: 16px;
-  }
-  .ab-why-h {
-    font-family: var(--font-sans);
-    font-size: clamp(15px, 1.3vw, 18px);
-    font-weight: 600;
-    color: var(--color-stone-50);
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin-bottom: 10px;
-  }
-  .ab-why-d {
-    font-size: 13px;
-    color: var(--color-stone-400);
-    line-height: 1.6;
-  }
-  .ab-why-ctas {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 48px;
-  }
+  .ab-apps-card:hover .ab-apps-img :global(img) { transform: scale(1.06); filter: brightness(1); }
+  .ab-apps-body { padding: 22px 22px 26px; border-top: 2px solid var(--color-green); }
+  .ab-apps-name { font-family: var(--font-sans); font-size: 17px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
+  .ab-apps-hook { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.6; color: var(--color-stone-700); margin-bottom: 14px; }
+  .ab-apps-link { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); }
+
+  /* ── CTA ────────────────────────────────────────────────────── */
+  .ab-cta-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
+  .ab-cta-btns { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
   /* ── RESPONSIVE ────────────────────────────────────────────── */
   @media (max-width: 1100px) {
-    .ab-process-grid { grid-template-columns: repeat(3, 1fr); }
-    .ab-why-grid     { grid-template-columns: repeat(2, 1fr); }
+    .ab-apps-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .ab-values-head   { grid-template-columns: 1fr; }
-    .ab-values-grid   { grid-template-columns: 1fr 1fr; }
-    .ab-values-photos { grid-template-columns: 1fr; }
     .ab-story-grid    { grid-template-columns: 1fr; gap: 40px; }
     .ab-story-anchor  { position: static; }
-    .ab-fac-head      { grid-template-columns: 1fr; }
-    .ab-fac-mosaic    { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .ab-fac-main      { grid-row: auto; }
-    .ab-fac-main img  { min-height: auto; }
     .ab-testi-head    { grid-template-columns: 1fr; }
     .ab-testi-grid    { grid-template-columns: repeat(2, 1fr); }
     .ab-timeline-wrap { grid-template-columns: 1fr; }
     .ab-timeline-head { position: static; }
-    .ab-process-head  { grid-template-columns: 1fr; }
+    .ab-apps-head     { grid-template-columns: 1fr; }
+    .ab-cta-row       { flex-direction: column; }
   }
   @media (max-width: 640px) {
     .ab-hero-stats    { gap: 0; }
     .ab-stat          { padding-right: 24px; margin-right: 24px; }
-    .ab-process-grid  { grid-template-columns: repeat(2, 1fr); }
     .ab-testi-grid    { grid-template-columns: 1fr; }
-    .ab-values-grid   { grid-template-columns: 1fr; }
-    .ab-why-grid      { grid-template-columns: 1fr 1fr; }
     .ab-story-photos  { grid-template-columns: 1fr; }
+    .ab-apps-grid     { grid-template-columns: 1fr; }
     .ab-hero-body     { padding-top: 110px; }
     .ab-hero-grad     { background: rgba(6,21,37,0.85); }
-    .ab-vwin-vid      { display: none; }
-    .ab-vwin-overlay  { background: var(--color-navy); }
     .ab-scroll-cue    { display: none; }
     .ab-timeline-wrap { display: block; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ab-vwin-vid { display: none; }
     .ab-scroll-line    { animation: none; opacity: 0.5; }
     .ab-logos-track    { animation: none; }
   }
 </style>
 
 <script>
-  /* Pause videos on hidden tab */
-  const vids = document.querySelectorAll<HTMLVideoElement>('.ab-vwin-vid');
-  document.addEventListener('visibilitychange', () => {
-    vids.forEach(v => document.hidden ? v.pause() : v.play().catch(() => {}));
-  });
-
   /* Count-up animation (fires on first intersect) */
   function easeOut(t: number) { return 1 - (1 - t) ** 3; }
 

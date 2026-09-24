@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 import { optSrcset } from '../../lib/img';
 
 const dieTypes = [
@@ -28,9 +29,11 @@ const processSteps = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <Pic
+        src="/assets/capabilities/die-shop-hero.jpg"
+        alt="Banco Aluminium die-shop technician checking extrusion dies in the die store"
+        class="cap-hero-img"
+        loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -86,6 +89,21 @@ const processSteps = [
             <h3 class="die-proc-name">{name}</h3>
             <p class="die-proc-desc">{desc}</p>
           </div>
+        ))}
+      </div>
+      <div class="die-photo-strip" data-reveal="fade">
+        {[
+          ['/assets/capabilities/die-shop-cad.jpg',    'Die design & flow simulation'],
+          ['/assets/capabilities/die-shop-polish.jpg', 'Bearing correction & polishing'],
+        ].map(([src, cap]) => (
+          <figure class="die-photo">
+            <picture>
+              <source type="image/avif" srcset={optSrcset(src, 'avif')} sizes="(max-width: 768px) 100vw, 50vw" />
+              <source type="image/webp" srcset={optSrcset(src, 'webp')} sizes="(max-width: 768px) 100vw, 50vw" />
+              <img src={src} alt={cap} loading="lazy" />
+            </picture>
+            <figcaption>{cap}</figcaption>
+          </figure>
         ))}
       </div>
     </div>
@@ -164,16 +182,16 @@ const processSteps = [
         <div class="die-img-stack" data-reveal="right">
           <div class="die-img-main">
             <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-machining-main.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-machining-main.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/die-shop-machining-main.jpg" alt="5-axis CNC machining centre cutting a tooling component" loading="lazy" />
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-cnc.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-cnc.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/die-shop-cnc.jpg" alt="Banco die-shop machinist at a CNC machining centre" loading="lazy" />
             </picture>
           </div>
           <div class="die-img-sub">
             <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-machining-detail.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-machining-detail.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/die-shop-machining-detail.jpg" alt="Close-up of a CNC spindle finish-machining an aluminium die component" loading="lazy" style="object-position: center 38%;" />
+              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-die-closeup.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-die-closeup.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
+              <img src="/assets/capabilities/die-shop-die-closeup.jpg" alt="Finished hollow extrusion die showing the port and bearing geometry" loading="lazy" style="object-position: center 50%;" />
             </picture>
           </div>
         </div>
@@ -298,9 +316,22 @@ const processSteps = [
   @media (max-width: 640px) {
     .die-process-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  :global(.cap-hero-img) {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 45%;
+  }
+
+  .die-photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; }
+  .die-photo { margin: 0; aspect-ratio: 16 / 9; overflow: hidden; position: relative; border: 1px solid var(--color-stone-200); }
+  .die-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .die-photo figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 7px 10px;
+    background: var(--color-stone-50); border-top: 1px solid var(--color-stone-200);
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-700);
+  }
+  @media (max-width: 768px) { .die-photo-strip { grid-template-columns: 1fr; } }
 </style>
 
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>

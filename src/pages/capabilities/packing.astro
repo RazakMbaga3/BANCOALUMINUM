@@ -29,8 +29,8 @@ const externalOptions = [
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
       <Pic
-        src="/assets/capabilities/packing-hero.png"
-        alt="Banco Aluminium export-ready packing: bundled and wrapped aluminium profiles"
+        src="/assets/capabilities/packing-hero-banco.jpg"
+        alt="Banco-branded, wrapped and strapped aluminium profile bundles on export racking"
         class="cap-hero-img"
         loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
@@ -111,6 +111,33 @@ const externalOptions = [
         All wooden packing components are manufactured from ISPM 15 heat-treated timber and bear the HT mark for unrestricted import into regulated markets.
         Pallet dimensions match 20-foot and 40-foot container floor dimensions for optimum container utilisation.
       </p>
+    </div>
+  </section>
+
+  <!-- Packing in practice — client-labelled photos from the despatch floor -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow" data-reveal="fade">Packing in practice</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;margin-bottom:40px" data-reveal>
+        From the despatch floor.
+      </h2>
+      <div class="pk-gallery" data-reveal="fade">
+        {[
+          ['/assets/capabilities/packing-hdpe-shrink.jpg',       'HDPE & shrink wrap'],
+          ['/assets/capabilities/packing-interleave-pallet.jpg', 'Individual plastic interleave on wooden pallet'],
+          ['/assets/capabilities/packing-wooden-box.jpg',        'Plastic interleave + corrugated sheet in wooden box'],
+          ['/assets/capabilities/packing-shrink-pallet.jpg',     'Shrink wrap with supporting wooden pallet'],
+          ['/assets/capabilities/packing-shrink.jpg',            'Shrink-wrapped bundles'],
+          ['/assets/capabilities/packing-wooden-pallet.jpg',     'Wooden pallet packing'],
+        ].map(([src, cap]) => (
+          <figure class="pk-gal-fig">
+            <div class="pk-gal-img">
+              <Pic src={src} alt={cap} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" maxW={768} />
+            </div>
+            <figcaption>{cap}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -239,4 +266,17 @@ const externalOptions = [
     width: 100%; height: 100%;
     object-fit: cover; object-position: center 40%;
   }
+
+  .pk-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .pk-gal-fig { margin: 0; background: var(--color-stone-50); }
+  .pk-gal-img { aspect-ratio: 3 / 2; overflow: hidden; }
+  .pk-gal-img :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .pk-gal-fig:hover .pk-gal-img :global(img) { transform: scale(1.04); }
+  .pk-gal-fig figcaption {
+    padding: 12px 14px; border-top: 2px solid var(--color-green);
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-navy); line-height: 1.5;
+  }
+  @media (max-width: 1024px) { .pk-gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .pk-gallery { grid-template-columns: 1fr; } }
 </style>

@@ -53,8 +53,8 @@ const alloyData = [
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
       <Pic
-        src="/assets/capabilities/foundry-hero.png"
-        alt="Banco Aluminium alloy billets in the foundry"
+        src="/assets/capabilities/foundry-billets.jpg"
+        alt="Freshly cast extrusion billets on the casting table in the Banco Aluminium foundry"
         class="cap-hero-img"
         loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
@@ -176,10 +176,10 @@ const alloyData = [
       <div class="fnd-process-grid" data-reveal="fade">
         {[
           ['/ 01', 'Melting',                '/assets/manufacturing/melting-1.webp',  'Charge materials are melted in gas-fired furnaces to a controlled tapping temperature, the starting point for consistent alloy chemistry batch after batch.'],
-          ['/ 02', 'Refining & degassing',   '/assets/manufacturing/melting-3.webp',  'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
-          ['/ 03', 'Ceramic foam filtration','/assets/manufacturing/melting-4.webp',  'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station, improving metal cleanliness and reducing inclusion count.'],
-          ['/ 04', 'Hot-Top casting',        '/assets/manufacturing/casting-1.webp',  'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
-          ['/ 05', 'Homogenising',           '/assets/manufacturing/homo-1.webp',     'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
+          ['/ 02', 'Refining & degassing',   '/assets/capabilities/foundry-refining-degassing.jpg', 'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
+          ['/ 03', 'Ceramic foam filtration','/assets/capabilities/foundry-ceramic-foam.jpg', 'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station, improving metal cleanliness and reducing inclusion count.'],
+          ['/ 04', 'Hot-Top casting',        '/assets/capabilities/foundry-casting.jpg', 'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
+          ['/ 05', 'Homogenising',           '/assets/capabilities/foundry-homogenising.jpg', 'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
         ].map(([num, name, photo, desc]) => (
           <div class="fnd-proc-cell">
             <div class="fnd-proc-img">
@@ -210,7 +210,6 @@ const alloyData = [
           </p>
           <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
             <a href="/contact#technical" class="btn btn-primary">Discuss your alloy requirement</a>
-            <a href="/downloads" class="btn btn-secondary">Download alloy data sheet</a>
           </div>
         </div>
         <div class="fnd-custom-list" data-reveal="right">

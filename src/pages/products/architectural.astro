@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
+import { DOCS } from '../../lib/documents';
 
 // ── Performance categories ────────────────────────────────────────────────────
 const performance = [
@@ -264,7 +265,7 @@ const galleryPhotos = [
 
       <div style="display:flex;justify-content:center;margin-top:36px" data-reveal="fade">
         <a
-          href="https://drive.google.com/file/d/1A4FOXbKyWjuNz5gYgjERimv2CZaZTf6/view?usp=sharing"
+          href={DOCS.architecturalCatalogue.view}
           class="btn btn-primary"
           target="_blank"
           rel="noopener"

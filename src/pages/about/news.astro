@@ -1,10 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+import { DOCS } from '../../lib/documents';
+
+const mag = DOCS.industrialReview;
+
+// Section headings from the feature itself, in running order
+const inside = [
+  'From extrusion to engineering: moving up the value chain',
+  'Where metallurgy meets microns',
+  'Complex profiles are a die-design problem first',
+  'Extrude, draw, machine: one dimensional chain',
+  'Automotive & EV: lightweighting with repeatability',
+  'Rail, electrical & renewable energy: performance over length',
+  'Lower-carbon aluminium manufacturing',
+];
 ---
 
 <Layout
   title="Press, news & blogs: Banco Aluminium"
-  description="Press releases, company news, and articles from Banco Aluminium. Updates coming soon."
+  description="Press coverage and company news from Banco Aluminium, including the Banco cover story in The Industrial Review, August 2026."
+  image={mag.cover}
 >
 
   <section class="nw-hero">
@@ -12,26 +28,67 @@ import Layout from '../../layouts/Layout.astro';
       <div class="eyebrow on-dark">About Banco / Press, news &amp; blogs</div>
       <h1 class="nw-h1">Press, news<br/>&amp; blogs.</h1>
       <p class="nw-lead">
-        Company announcements, press coverage, and articles from Banco Aluminium.
-        We're building this section out; check back soon, or follow the links below
-        in the meantime.
+        Company announcements, press coverage and articles from Banco Aluminium.
       </p>
     </div>
   </section>
 
+  <!-- ── Featured: The Industrial Review cover story ─────────────────── -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="nw-empty">
-        <div class="nw-empty-eyebrow">Coming soon</div>
-        <p class="nw-empty-p">
-          Nothing published here yet. In the meantime, read more about who we are
-          and how we work.
-        </p>
-        <div class="nw-empty-links">
-          <a href="/about" class="btn btn-primary">Company</a>
-          <a href="/about/why-banco" class="btn btn-secondary">Why Banco</a>
-          <a href="/about/quality" class="btn btn-secondary">Quality &amp; certifications</a>
+      <div class="eyebrow">In the press · August 2026</div>
+
+      <article class="nw-feature">
+        <a href={mag.view} target="_blank" rel="noopener" class="nw-cover" aria-label="Read The Industrial Review feature">
+          <Pic src={mag.cover} alt="The Industrial Review, August 2026 issue, with Banco Aluminium on the cover" loading="eager" sizes="(max-width: 900px) 80vw, 34vw" maxW={1200} />
+        </a>
+
+        <div class="nw-feature-body">
+          <div class="nw-source">The Industrial Review · India 2026 Edition · Issue 09</div>
+          <h2 class="nw-feature-h">
+            From extrusion to engineering: how Banco Aluminium is moving up the value chain.
+          </h2>
+          <p class="nw-feature-p">
+            Banco is the cover story of The Industrial Review's August 2026 issue,
+            recognised for <strong>Excellence in Aluminium Extrusion &amp; Engineered
+            Aluminium Solutions, India 2026</strong>. The feature traces nearly six
+            decades from conventional extruder to integrated aluminium engineering
+            company: billet casting and alloy control, in-house die design, five
+            extrusion presses, cold drawing, precision machining and finishing, and
+            the new press line planned for 2027, which takes extrusion capacity to about 43,500 tonnes a year.
+          </p>
+          <p class="nw-feature-p">
+            It features Banco's leadership: Anil Kumar (CTO), Vijay Shethiya (CFO),
+            SK Singh (Head of Foundry Operations) and Kapil Aggarwal (CMO).
+          </p>
+
+          <div class="nw-inside-label">Inside the feature</div>
+          <ul class="nw-inside">
+            {inside.map((h) => <li>{h}</li>)}
+          </ul>
+
+          <div class="nw-actions">
+            <a href={mag.view} target="_blank" rel="noopener" class="btn btn-primary">Read the feature</a>
+            <a href={mag.download} rel="noopener" class="btn btn-secondary">Download PDF</a>
+          </div>
+          <div class="nw-meta">{mag.meta}</div>
         </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Spread preview ──────────────────────────────────────────────── -->
+  <section class="section-alt" style="padding:48px 0;border-top:1px solid var(--color-stone-200)">
+    <div class="container nw-more">
+      <a href={mag.view} target="_blank" rel="noopener" class="nw-spread" aria-label="Open the Banco Aluminium feature spread">
+        <Pic src="/assets/downloads/industrial-review-spread.jpg" alt="Opening page of the Banco Aluminium feature with the leadership team" loading="lazy" sizes="(max-width: 900px) 60vw, 22vw" maxW={768} />
+      </a>
+      <div>
+        <div class="nw-inside-label">More to come</div>
+        <p class="nw-more-p">
+          Company announcements, trade-show news and technical articles will be
+          published here as they're released.
+        </p>
       </div>
     </div>
   </section>
@@ -60,28 +117,126 @@ import Layout from '../../layouts/Layout.astro';
     margin-top: 24px;
     max-width: 56ch;
   }
-  .nw-empty {
-    max-width: 640px;
-    padding: 56px 0;
+
+  /* ── Featured article ───────────────────────────────────────────── */
+  .nw-feature {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.8fr) 1.4fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    margin-top: 28px;
+    padding-top: 32px;
     border-top: 1px solid var(--color-stone-200);
   }
-  .nw-empty-eyebrow {
+  .nw-cover {
+    display: block;
+    border: 1px solid var(--color-stone-200);
+    background: #fff;
+    overflow: hidden;
+    aspect-ratio: 1276 / 1790;
+  }
+  .nw-cover :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .nw-cover:hover :global(img) { transform: scale(1.02); }
+  .nw-source {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-green);
+  }
+  .nw-feature-h {
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--color-navy);
+    margin-top: 14px;
+  }
+  .nw-feature-p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone-700);
+    margin-top: 18px;
+    max-width: 62ch;
+  }
+  .nw-feature-p strong { color: var(--color-navy); font-weight: 600; }
+  .nw-inside-label {
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-green);
-    margin-bottom: 14px;
-  }
-  .nw-empty-p {
-    font-size: 16px;
-    line-height: 1.7;
     color: var(--color-stone-700);
-    margin-bottom: 28px;
+    margin-top: 28px;
   }
-  .nw-empty-links {
+  .nw-inside {
+    list-style: none;
+    margin-top: 10px;
+    border-top: 1px solid var(--color-stone-200);
+  }
+  .nw-inside li {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-navy);
+    padding: 9px 0 9px 16px;
+    border-bottom: 1px solid var(--color-stone-200);
+    position: relative;
+  }
+  .nw-inside li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 17px;
+    width: 6px;
+    height: 1px;
+    background: var(--color-green);
+  }
+  .nw-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    margin-top: 28px;
+  }
+  .nw-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-stone-700);
+    margin-top: 12px;
+  }
+
+  /* ── More to come ───────────────────────────────────────────────── */
+  .nw-more {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .nw-spread {
+    display: block;
+    border: 1px solid var(--color-stone-200);
+    overflow: hidden;
+    aspect-ratio: 1276 / 1790;
+  }
+  .nw-spread :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .nw-more-p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-stone-700);
+    margin-top: 10px;
+    max-width: 52ch;
+  }
+
+  @media (max-width: 900px) {
+    .nw-feature { grid-template-columns: 1fr; }
+    .nw-cover { max-width: 320px; }
+    .nw-more { grid-template-columns: 120px 1fr; gap: 20px; }
   }
 </style>

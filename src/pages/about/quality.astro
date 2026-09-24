@@ -39,7 +39,7 @@ const pipeline = [
   title="Quality & certifications: Banco Aluminium"
   description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
   transparentNav={true}
-  heroImage="/assets/images/people/hero3.png"
+  heroImage="/assets/quality/quality-hero-lab.jpg"
 >
 
   <!-- ══════════════════════════════════════════
@@ -48,9 +48,9 @@ const pipeline = [
   <section class="qp-hero">
     <div class="qp-hero-media" aria-hidden="true">
       <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/images/people/hero3.png', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/images/people/hero3.png', 'webp')} sizes="100vw" />
-        <img src="/assets/images/people/hero3.png" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
+        <source type="image/avif" srcset={optSrcset('/assets/quality/quality-hero-lab.jpg', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/quality/quality-hero-lab.jpg', 'webp')} sizes="100vw" />
+        <img src="/assets/quality/quality-hero-lab.jpg" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
       </picture>
       <div class="qp-hero-scrim"></div>
       <div class="qp-hero-grad"></div>
@@ -173,11 +173,30 @@ const pipeline = [
         </div>
         <div class="qp-tools-head-img">
           <picture>
-            <source type="image/avif" srcset={optSrcset('/assets/images/people/quality-check.png', 'avif')} sizes="(max-width: 900px) 100vw, 45vw" />
-            <source type="image/webp" srcset={optSrcset('/assets/images/people/quality-check.png', 'webp')} sizes="(max-width: 900px) 100vw, 45vw" />
-            <img src="/assets/images/people/quality-check.png" alt="Metallurgical technician verifying microstructure on an optical microscope in the X-ray fluorescence lab" loading="lazy" />
+            <source type="image/avif" srcset={optSrcset('/assets/quality/lab-microscope.jpg', 'avif')} sizes="(max-width: 900px) 100vw, 45vw" />
+            <source type="image/webp" srcset={optSrcset('/assets/quality/lab-microscope.jpg', 'webp')} sizes="(max-width: 900px) 100vw, 45vw" />
+            <img src="/assets/quality/lab-microscope.jpg" alt="Metallurgical technician examining microstructure on an optical microscope in the Banco laboratory" loading="lazy" />
           </picture>
         </div>
+      </div>
+
+      <div class="qp-lab-strip" data-reveal="fade">
+        {[
+          ['/assets/quality/lab-ascona.jpg',       'ASCONA optical measurement', '50% 30%'],
+          ['/assets/quality/lab-spectro.jpg',      'Spectro-OES chemical analysis', '50% 40%'],
+          ['/assets/quality/lab-utm.jpg',          'Universal tensile testing machine', '50% 35%'],
+          ['/assets/quality/lab-hardness.jpg',     'Hardness testing', '50% 45%'],
+          ['/assets/quality/lab-conductivity.jpg', 'Conductivity meter', '50% 40%'],
+        ].map(([src, cap, pos]) => (
+          <figure class="qp-lab-fig">
+            <picture>
+              <source type="image/avif" srcset={optSrcset(src, 'avif', 768)} sizes="(max-width: 900px) 50vw, 20vw" />
+              <source type="image/webp" srcset={optSrcset(src, 'webp', 768)} sizes="(max-width: 900px) 50vw, 20vw" />
+              <img src={src} alt={cap} loading="lazy" style={`object-position:${pos}`} />
+            </picture>
+            <figcaption>{cap}</figcaption>
+          </figure>
+        ))}
       </div>
 
       <div class="qp-tools-grid" data-reveal="fade">
@@ -264,7 +283,7 @@ const pipeline = [
   .qp-hero-vid {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover; object-position: 80% 28%;
+    object-fit: cover; object-position: 60% 40%;
   }
   .qp-hero-scrim {
     position: absolute; inset: 0;
@@ -407,10 +426,26 @@ const pipeline = [
   }
   .qp-tools-head-img img {
     width: 100%; height: 100%; object-fit: cover; display: block;
-    object-position: 72% 38%;
+    object-position: 50% 40%;
     filter: brightness(0.85); transition: filter 0.3s ease;
   }
   .qp-tools-head-img:hover img { filter: brightness(1); }
+  .qp-lab-strip {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 1px; background: var(--color-navy-line);
+    border: 1px solid var(--color-navy-line);
+    margin-bottom: 1px;
+  }
+  .qp-lab-fig { margin: 0; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--color-navy-soft); }
+  .qp-lab-fig img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease, transform 0.5s ease; }
+  .qp-lab-fig:hover img { filter: brightness(1); transform: scale(1.04); }
+  .qp-lab-fig figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px;
+    background: linear-gradient(transparent, rgba(8,27,48,0.9));
+    font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-platinum); line-height: 1.4;
+  }
+  @media (max-width: 900px) { .qp-lab-strip { grid-template-columns: repeat(2, 1fr); } .qp-lab-fig:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; } }
   .qp-tools-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 1px; background: var(--color-navy-line);

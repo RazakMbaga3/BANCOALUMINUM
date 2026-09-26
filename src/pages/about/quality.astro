@@ -245,27 +245,6 @@ const pipeline = [
   <!-- ══════════════════════════════════════════
        CTA CLOSE
        ══════════════════════════════════════════ -->
-  <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div class="qp-cta-inner" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Request documentation</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
-            Certificates available<br/>on request before order.
-          </h2>
-          <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;margin-top:14px;max-width:52ch">
-            Copies of all current certifications are available to customers and prospective buyers.
-            EN 10204 Type 3.1 material certificates issued with every shipment.
-          </p>
-        </div>
-        <div class="qp-cta-btns">
-          <a href="/contact#quality" class="btn btn-primary-dark">Request certificates</a>
-          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach & export</a>
-          <a href="/about" class="btn btn-secondary-dark">About Banco</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
@@ -301,7 +280,7 @@ const pipeline = [
     padding-top: 160px;
     padding-bottom: 100px;
   }
-  .qp-hero-h1 { color: var(--color-stone-50); margin-top: 20px; max-width: 20ch; }
+  .qp-hero-h1 { color: var(--color-stone-50); margin-top: 20px; }
   .qp-hero-lede {
     color: var(--color-stone-400);
     font-size: clamp(15px, 1.4vw, 18px);
@@ -488,7 +467,7 @@ const pipeline = [
   }
   .qp-cbam-inner {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: clamp(40px,6vw,100px); align-items: center;
+    gap: clamp(40px,6vw,100px); align-items: start;
   }
   .qp-cbam-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -502,7 +481,7 @@ const pipeline = [
     line-height: 1.65; max-width: 52ch; margin-top: 20px;
   }
   .qp-cbam-num {
-    display: flex; align-items: baseline; gap: 10px;
+    display: flex; align-items: flex-end; gap: 10px;
     margin-top: 28px; padding-top: 24px;
     border-top: 1px solid var(--color-navy-line);
   }

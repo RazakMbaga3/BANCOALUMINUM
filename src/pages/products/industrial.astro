@@ -125,15 +125,6 @@ const alloyTable = [
   },
 ];
 
-const certs = [
-  'ISO 9001:2015',
-  'ISO 14001:2015',
-  'ISO 45001:2018',
-  'IATF 16949:2016',
-  'CE (EN 15088)',
-  'IR Class Work Approved',
-  'IS 733 · IS 5082',
-];
 ---
 
 <Layout
@@ -155,12 +146,6 @@ const certs = [
       <h1 class="ih-h1">
         Drawing-led profiles.<br>OEM repeat supply.
       </h1>
-      <div class="ih-hero-certs">
-        <span class="ih-hero-certs-label">Certified to</span>
-        <div class="ih-hero-certs-chips">
-          {certs.map(c => <span class="pill on-dark ih-hero-pill">{c}</span>)}
-        </div>
-      </div>
       <div class="ih-stats">
         {[
           { n: '35,000', u: 'MT/yr', l: 'Extrusion capacity' },
@@ -384,21 +369,6 @@ const certs = [
   <!-- ── Footer band ────────────────────────────────────────────────────────── -->
   <!-- Certs live in the site footer and on the Quality & certifications page only —
        not repeated here. -->
-  <section class="section-dark" style="padding:60px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div class="ih-footer-grid ih-footer-grid-solo">
-        <div>
-          <div class="ih-cert-label">Drawing-led. OEM repeat supply.</div>
-          <h2 class="ih-section-h2" style="color:var(--color-platinum);margin:8px 0 0">Ready to start your profile?</h2>
-        </div>
-        <div class="ih-cta-col">
-          <div class="ih-cta-btns">
-            <a href="/contact#quote" class="btn btn-secondary-dark">Send Enquiry</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
@@ -446,31 +416,6 @@ const certs = [
     color: var(--color-platinum);
     padding: 0 clamp(24px, 5vw, 80px);
     margin-bottom: 48px;
-  }
-  .ih-hero-certs {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 clamp(24px, 5vw, 80px);
-    margin-bottom: 28px;
-  }
-  .ih-hero-certs-label {
-    font-family: var(--font-mono);
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-green);
-  }
-  .ih-hero-certs-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .ih-hero-pill {
-    font-size: 9px;
-    padding: 5px 9px;
-    background: rgba(8,27,48,0.55);
-    backdrop-filter: blur(4px);
   }
   .ih-stats {
     display: grid;
@@ -680,7 +625,7 @@ const certs = [
   /* ── Capability grid ─────────────────────────────────────────────────────── */
   .ih-cap-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1px;
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
@@ -764,6 +709,7 @@ const certs = [
     .i-industry-grid   { grid-template-columns: repeat(3, 1fr); }
     .i-industry-cell:last-child { grid-column: span 3; }
     .ih-cap-grid       { grid-template-columns: repeat(2, 1fr); }
+    .ih-cap-cell:last-child { grid-column: span 2; }
     .ih-pack-grid      { grid-template-columns: 1fr; }
     .ih-footer-grid    { grid-template-columns: 1fr; }
     .ih-fac-strip      { grid-template-columns: repeat(2, 1fr); }

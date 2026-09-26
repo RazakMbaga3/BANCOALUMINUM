@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Pic from '../../components/Pic.astro';
 
 const tempers = [
   {
@@ -46,13 +45,14 @@ const tempers = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
+  <!-- Photo pulled per client request 2026-09-26 ("remove all the images,
+       will share with you the images later on") — back on the shared stock
+       video used by capability pages awaiting a client photo, until then. -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <Pic
-        src="/assets/capabilities/heat-treatment-hero.jpg"
-        alt="Ageing oven at Banco Aluminium with a load of extruded profiles"
-        class="cap-hero-img"
-        loading="eager" sizes="100vw" />
+      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
+        <source src="/herovideo-720.mp4" type="video/mp4" />
+      </video>
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -120,19 +120,6 @@ const tempers = [
       </div>
     </div>
   </section>
-
-  <!-- Oven floor photo band -->
-  <div class="ht-band">
-    {[
-      ['/assets/capabilities/heat-treatment-oven.jpg', 'Extruded profiles staged for artificial ageing'],
-      ['/assets/capabilities/heat-treatment-load.jpg', 'Ageing charge entering the oven'],
-    ].map(([src, cap]) => (
-      <figure class="ht-band-fig">
-        <Pic src={src} alt={cap} loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" maxW={1200} />
-        <figcaption>{cap}</figcaption>
-      </figure>
-    ))}
-  </div>
 
   <!-- Temper table -->
   <section class="section-dark section-pad">
@@ -227,16 +214,8 @@ const tempers = [
   <section class="section-light section-pad">
     <div class="container">
       <div class="eyebrow" data-reveal="fade">/ 04 · Quality & certification</div>
-      <div class="ht-qual-grid">
-        <div class="ht-qual-photos" data-reveal="left">
-          <div class="ht-qual-photo-main">
-            <Pic src="/assets/quality/lab-utm.jpg" alt="Universal testing machine for tensile and yield-strength testing in the Banco laboratory" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" style="object-position: center 35%;" />
-          </div>
-          <div class="ht-qual-photo-sub">
-            <Pic src="/assets/quality/lab-hardness.jpg" alt="Hardness testing of a heat-treated sample" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-          </div>
-        </div>
-        <div data-reveal="right">
+      <div class="ht-qual-grid ht-qual-grid--no-photo">
+        <div data-reveal="fade">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Every lot tested.<br>Certificate with every shipment.
           </h2>
@@ -260,24 +239,6 @@ const tempers = [
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Heat treatment enquiries</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
-            Specify your temper.<br>We'll certify every lot.
-          </h2>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
-          <a href="/about/quality" class="btn btn-secondary-dark">Quality & testing</a>
         </div>
       </div>
     </div>
@@ -311,11 +272,7 @@ const tempers = [
   .ht-stage-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
 
   .ht-qual-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .ht-qual-photos { display: flex; flex-direction: column; gap: 4px; }
-  .ht-qual-photo-main { aspect-ratio: 4/3; overflow: hidden; }
-  .ht-qual-photo-sub  { aspect-ratio: 16/6; overflow: hidden; }
-  .ht-qual-photo-main img, .ht-qual-photo-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .ht-qual-photo-main:hover img, .ht-qual-photo-sub:hover img { filter: brightness(1); }
+  .ht-qual-grid--no-photo { grid-template-columns: 1fr; max-width: 68ch; }
   .ht-cert-list { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
   .ht-cert-row  { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
   .ht-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
@@ -326,24 +283,12 @@ const tempers = [
     .ht-temper-grid { grid-template-columns: 1fr; }
     .ht-proc-grid { grid-template-columns: 1fr; }
     .ht-qual-grid { grid-template-columns: 1fr; }
+    .ht-qual-grid--no-photo { max-width: none; }
   }
-
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 50%;
-  }
-
-  .ht-band { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--color-navy-deep); }
-  .ht-band-fig { position: relative; margin: 0; aspect-ratio: 16 / 9; overflow: hidden; }
-  .ht-band-fig :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ht-band-fig figcaption {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    padding: 28px 20px 14px;
-    background: linear-gradient(transparent, rgba(8,27,48,0.85));
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-platinum);
-  }
-  @media (max-width: 768px) { .ht-band { grid-template-columns: 1fr; } }
 </style>
+
+<script>
+  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
+  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
+</script>
 

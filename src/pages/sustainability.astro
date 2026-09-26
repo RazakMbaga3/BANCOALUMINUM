@@ -38,7 +38,6 @@ const pillars = [
 ];
 
 const cbamData = [
-  ['Certified footprint',  '0.203 kg CO₂e / kg aluminium'],
   ['Methodology',          'EN 15804 / GHG Protocol'],
   ['Scope',                'Cradle to gate: foundry through finishing'],
   ['Recycled content',     'Up to 50% declared per lot'],
@@ -366,25 +365,6 @@ const certs = [
   <!-- ══════════════════════════════════════════
        CTA CLOSE
        ══════════════════════════════════════════ -->
-  <section class="section-dark" style="padding:80px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div class="su-cta-inner" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Sustainability documentation</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
-            Carbon data. Cert copies.<br/><em class="accent">Available before every order.</em>
-          </h2>
-          <p style="color:var(--color-stone-400);font-size:15px;line-height:1.65;margin-top:16px;max-width:52ch">
-            CBAM carbon data, ISO certificates, and green billet declarations are
-            issued with shipment documentation or on request for pre-order qualification.
-          </p>
-        </div>
-        <div class="su-cta-btns">
-          <a href="/contact#quote"   class="btn btn-primary-dark">Send Enquiry</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
@@ -428,7 +408,7 @@ const certs = [
     margin-top: 52px; padding-top: 36px;
     border-top: 1px solid rgba(255,255,255,0.10);
   }
-  .su-metric-main { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .su-metric-main { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
   .su-metric-val {
     font-family: var(--font-sans);
     font-size: clamp(52px, 7vw, 96px);
@@ -616,7 +596,7 @@ const certs = [
   }
   .su-cbam-p strong { color: var(--color-platinum); font-weight: 500; }
   .su-cbam-big {
-    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;
     margin-top: 36px; padding-top: 28px;
     border-top: 1px solid var(--color-navy-line);
   }

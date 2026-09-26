@@ -200,28 +200,6 @@ const externalOptions = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Packing & shipping</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
-            Specify your packing<br>requirement with your enquiry.
-          </h2>
-          <p style="font-family:var(--font-sans);font-size:14px;color:var(--color-stone-400);margin-top:12px;max-width:52ch">
-            Packing options and export documentation requirements should be confirmed at
-            the time of order placement. We will prepare a complete export package.
-          </p>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
-          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
@@ -250,15 +228,21 @@ const externalOptions = [
   @media (max-width: 1280px) {
     .pk-options-grid { grid-template-columns: repeat(3, 1fr); }
     .pk-ext-grid     { grid-template-columns: repeat(3, 1fr); }
+    .pk-options-grid > :last-child,
+    .pk-ext-grid > :last-child { grid-column: span 3; }
   }
   @media (max-width: 1024px) {
     .pk-options-grid { grid-template-columns: repeat(2, 1fr); }
     .pk-ext-grid     { grid-template-columns: repeat(2, 1fr); }
+    .pk-options-grid > :last-child,
+    .pk-ext-grid > :last-child { grid-column: span 2; }
     .pk-doc-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .pk-options-grid { grid-template-columns: 1fr 1fr; }
     .pk-ext-grid     { grid-template-columns: 1fr 1fr; }
+    .pk-options-grid > :last-child,
+    .pk-ext-grid > :last-child { grid-column: span 2; }
   }
 
   :global(.cap-hero-img) {

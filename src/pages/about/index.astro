@@ -63,8 +63,9 @@ const applications = [
         </h1>
 
         <p class="ab-hero-lede" data-reveal data-reveal-delay="3">
-          Integrated aluminium extrusion since 1967. Five presses. Full value chain.
-          Still family-owned. Serving 1100+ customers across four export regions.
+          From billet to finished profile, every stage happens under one roof in
+          Vadodara: melting, extrusion, heat treatment, machining and finishing,
+          run by the same family that started it.
         </p>
 
         <!-- Stat row -->
@@ -284,23 +285,6 @@ const applications = [
   <!-- ══════════════════════════════════════════════════════════
        CTA CLOSE
        ══════════════════════════════════════════════════════════ -->
-  <section class="section-dark" style="padding:72px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div class="ab-cta-row" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Get in touch</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:14px">
-            See the certifications.<br/>Meet the team.
-          </h2>
-        </div>
-        <div class="ab-cta-btns">
-          <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
-          <a href="/about/quality" class="btn btn-secondary-dark">Quality & certifications</a>
-          <a href="/about/global-reach" class="btn btn-secondary-dark">Global reach</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
@@ -571,12 +555,16 @@ const applications = [
     align-items: center;
     justify-content: center;
     padding: 12px 56px;
-    filter: grayscale(100%) brightness(2);
-    opacity: 0.55;
-    transition: filter 0.25s ease, opacity 0.25s ease;
     flex-shrink: 0;
   }
-  .ab-logo-item:hover { filter: grayscale(0%) brightness(1); opacity: 1; }
+  .ab-logo-item img {
+    /* White silhouette on dark, matching the homepage trusted-by strip —
+       grayscale+brightness alone washed pale logos out to invisible. */
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+  .ab-logo-item:hover img { opacity: 1; }
 
   /* ── TESTIMONIALS ──────────────────────────────────────────── */
   .ab-testi-head {
@@ -593,6 +581,7 @@ const applications = [
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
   }
+  .ab-testi-grid > :last-child { grid-column: span 2; }
   .ab-testi-card {
     background: var(--color-navy-soft);
     padding: 32px 28px 28px;
@@ -686,6 +675,7 @@ const applications = [
     .ab-story-anchor  { position: static; }
     .ab-testi-head    { grid-template-columns: 1fr; }
     .ab-testi-grid    { grid-template-columns: repeat(2, 1fr); }
+    .ab-testi-grid > :last-child { grid-column: span 2; }
     .ab-timeline-wrap { grid-template-columns: 1fr; }
     .ab-timeline-head { position: static; }
     .ab-apps-head     { grid-template-columns: 1fr; }

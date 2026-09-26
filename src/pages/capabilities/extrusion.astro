@@ -214,24 +214,6 @@ const processStages = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-dark" style="padding:64px 0;border-top:2px solid var(--color-green)">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px" data-reveal="fade">
-        <div>
-          <div class="eyebrow on-dark">Extrusion enquiries</div>
-          <h2 class="t-h2" style="color:var(--color-platinum);margin-top:12px">
-            Submit a drawing.<br>We'll confirm press, alloy and lead time.
-          </h2>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <a href="/contact#drawing" class="btn btn-primary-dark">Submit a drawing</a>
-          <a href="/capabilities/die-shop" class="btn btn-secondary-dark">Die shop</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
@@ -273,15 +255,20 @@ const processStages = [
   @media (max-width: 1280px) {
     .ext-press-grid { grid-template-columns: repeat(3, 1fr); }
     .ext-proc-grid  { grid-template-columns: repeat(3, 1fr); }
+    .ext-press-grid > :last-child,
+    .ext-proc-grid > :last-child { grid-column: span 3; }
   }
   @media (max-width: 1024px) {
     .ext-overview-grid { grid-template-columns: 1fr; }
     .ext-press-grid { grid-template-columns: repeat(2, 1fr); }
     .ext-proc-grid  { grid-template-columns: repeat(2, 1fr); }
+    .ext-press-grid > :last-child,
+    .ext-proc-grid > :last-child { grid-column: span 2; }
     .ext-range-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .ext-press-grid { grid-template-columns: 1fr 1fr; }
+    .ext-press-grid > :last-child { grid-column: span 2; }
   }
 
   :global(.cap-hero-img) {

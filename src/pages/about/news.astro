@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
+import { optSrcset } from '../../lib/img';
 import { DOCS } from '../../lib/documents';
 
 const mag = DOCS.industrialReview;
@@ -21,10 +22,20 @@ const inside = [
   title="Press, news & blogs: Banco Aluminium"
   description="Press coverage and company news from Banco Aluminium, including the Banco cover story in The Industrial Review, August 2026."
   image={mag.cover}
+  heroImage="/assets/capabilities/foundry-melting.jpg"
 >
 
   <section class="nw-hero">
-    <div class="container">
+    <div class="nw-hero-media" aria-hidden="true">
+      <picture>
+        <source type="image/avif" srcset={optSrcset('/assets/capabilities/foundry-melting.jpg', 'avif')} sizes="100vw" />
+        <source type="image/webp" srcset={optSrcset('/assets/capabilities/foundry-melting.jpg', 'webp')} sizes="100vw" />
+        <img src="/assets/capabilities/foundry-melting.jpg" alt="" loading="eager" fetchpriority="high" class="nw-hero-img" />
+      </picture>
+      <div class="nw-hero-scrim"></div>
+      <div class="nw-hero-grad"></div>
+    </div>
+    <div class="container nw-hero-body">
       <div class="eyebrow on-dark">About Banco / Press, news &amp; blogs</div>
       <h1 class="nw-h1">Press, news<br/>&amp; blogs.</h1>
       <p class="nw-lead">
@@ -97,9 +108,23 @@ const inside = [
 
 <style>
   .nw-hero {
-    background: var(--color-navy);
+    position: relative;
+    background: var(--color-navy-deep);
     padding: 148px 0 72px;
+    overflow: hidden;
   }
+  .nw-hero-media { position: absolute; inset: 0; z-index: 0; }
+  .nw-hero-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 55%;
+  }
+  .nw-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.62); }
+  .nw-hero-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(6,21,37,0.75) 0%, rgba(6,21,37,0.25) 60%, rgba(6,21,37,0.05) 100%);
+  }
+  .nw-hero-body { position: relative; z-index: 1; }
   .nw-h1 {
     font-family: var(--font-sans);
     font-size: clamp(36px, 5vw, 60px);

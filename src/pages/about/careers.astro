@@ -98,14 +98,11 @@ const departments = [
 
       <div class="ca-culture-photos">
         {[
-          ['/assets/careers/careers-team-outdoor.jpg',  'Banco Aluminium team together after a team-building day',            'Team-building day · Everyone together',  true,  '50% 40%'],
-          ['/assets/careers/careers-team-workshop.jpg', 'Banco Aluminium colleagues working through a team exercise',         'Team exercise · Working it out together', false, '50% 50%'],
-          ['/assets/careers/careers-team-session.jpg',  'Banco Aluminium team gathered around tables during a session',      'Company session · Every function in the room', false, '50% 50%'],
-          ['/assets/careers/careers-team-tables-a.jpg', 'Banco Aluminium colleagues discussing a group activity at a table', 'Group activity · Ideas across teams', false, '50% 50%'],
-          ['/assets/careers/careers-team-hall.jpg',     'Banco Aluminium team listening during a team-building session',     'Team-building session · Learning together', false, '50% 50%'],
-        ].map(([src, alt, cap, wide, pos]) => (
-          <figure class={`ca-culture-fig${wide ? ' ca-culture-fig--wide' : ''}`}>
-            <Pic src={src} alt={alt} loading="lazy" sizes={wide ? '(max-width: 640px) 100vw, 66vw' : '(max-width: 640px) 100vw, 33vw'} maxW={1200} style={`object-position:${pos}`} />
+          ['/assets/careers/careers-team-outdoor.jpg',  'Banco Aluminium team together after a team-building day',    'Team-building day · Everyone together',   '50% 40%'],
+          ['/assets/careers/careers-team-workshop.jpg', 'Banco Aluminium colleagues working through a team exercise', 'Team exercise · Working it out together', '50% 50%'],
+        ].map(([src, alt, cap, pos]) => (
+          <figure class="ca-culture-fig">
+            <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} style={`object-position:${pos}`} />
             <figcaption>{cap}</figcaption>
           </figure>
         ))}
@@ -390,14 +387,12 @@ const departments = [
     display: grid; grid-template-columns: 1fr 1fr;
     gap: clamp(32px, 5vw, 80px); align-items: start; margin-bottom: 40px;
   }
-  .ca-culture-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .ca-culture-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
   .ca-culture-fig { overflow: hidden; border: 1px solid var(--color-navy-line); margin: 0; display: flex; flex-direction: column; }
-  .ca-culture-fig--wide { grid-column: span 2; }
   .ca-culture-fig :global(img) {
-    width: 100%; flex: 1; min-height: 0; aspect-ratio: 4/3; object-fit: cover; display: block;
+    width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
     transition: transform 0.5s ease;
   }
-  .ca-culture-fig--wide :global(img) { aspect-ratio: auto; }
   .ca-culture-fig:hover :global(img) { transform: scale(1.05); }
   .ca-culture-fig figcaption {
     font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -513,9 +508,6 @@ const departments = [
   }
   @media (max-width: 900px) {
     .ca-culture-head { grid-template-columns: 1fr; }
-    .ca-culture-photos { grid-template-columns: 1fr 1fr; }
-    .ca-culture-fig--wide { grid-column: 1 / -1; }
-    .ca-culture-fig--wide :global(img) { aspect-ratio: 16/9; }
     .ca-values-grid  { grid-template-columns: 1fr 1fr; }
     .ca-mtw-grid     { grid-template-columns: 1fr; gap: 40px; }
     .ca-form-layout  { grid-template-columns: 1fr; }

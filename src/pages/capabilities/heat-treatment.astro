@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+import { optSrcset } from '../../lib/img';
 
 const tempers = [
   {
@@ -45,14 +47,15 @@ const tempers = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <!-- Photo pulled per client request 2026-09-26 ("remove all the images,
-       will share with you the images later on") — back on the shared stock
-       video used by capability pages awaiting a client photo, until then. -->
+  <!-- Client supplied real ageing-furnace photos 2026-09-28, replacing the
+       shared stock video placeholder used since the 2026-09-26 photo pull. -->
   <section class="cap-hero">
     <div class="cap-hero-media" aria-hidden="true">
-      <video class="cap-hero-vid" autoplay muted loop playsinline preload="metadata" poster="/herovideo-poster.jpg">
-        <source src="/herovideo-720.mp4" type="video/mp4" />
-      </video>
+      <Pic
+        src="/assets/capabilities/heat-treatment-hero.jpg"
+        alt="Banco Aluminium ageing furnace with loaded charge racks of extruded profiles"
+        class="cap-hero-img"
+        loading="eager" sizes="100vw" />
       <div class="cap-hero-scrim"></div>
       <div class="cap-hero-grad"></div>
     </div>
@@ -97,9 +100,7 @@ const tempers = [
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Why heat treatment<br>matters for aluminium.
           </h2>
-        </div>
-        <div data-reveal="right">
-          <p class="t-lead" style="color:var(--color-stone-700)">
+          <p class="t-lead" style="color:var(--color-stone-700);margin-top:20px">
             Aluminium alloys in the 6xxx and 7xxx series are heat-treatable: their mechanical
             properties are determined not just by alloy composition but by the thermal history
             applied after extrusion. Heat treatment exploits precipitation hardening: fine intermetallic
@@ -116,6 +117,10 @@ const tempers = [
             Banco's in-house heat treatment capability means temper is verified and certified
             against each production lot, rather than assumed from nominal alloy chemistry.
           </p>
+        </div>
+        <div class="ht-overview-photo" data-reveal="right">
+          <Pic src="/assets/capabilities/heat-treatment-furnace-bay.jpg" alt="Banco Aluminium ageing furnace bay with charge racks on rail-mounted trolleys" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
+          <div class="ht-overview-caption">Ageing furnace bay · Vadodara</div>
         </div>
       </div>
     </div>
@@ -188,6 +193,10 @@ const tempers = [
             at multiple points across the charge. Furnace calibration records are available
             for customer audit.
           </p>
+          <figure class="ht-proc-fig">
+            <Pic src="/assets/capabilities/heat-treatment-charge-rack.jpg" alt="Loaded charge rack of extruded aluminium tubes and profiles ready for the ageing furnace" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" />
+            <figcaption>Charge rack, loaded and ready · Ageing furnace</figcaption>
+          </figure>
         </div>
         <div class="ht-stages" data-reveal="right">
           {[
@@ -247,7 +256,15 @@ const tempers = [
 </Layout>
 
 <style>
-  .ht-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .ht-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .ht-overview-photo { overflow: hidden; border: 1px solid var(--color-stone-200); }
+  .ht-overview-photo :global(img) { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .ht-overview-photo:hover :global(img) { transform: scale(1.05); }
+  .ht-overview-caption {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-700); padding: 7px 10px;
+    border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
+  }
 
   .ht-temper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .ht-temper-card { background: var(--color-navy-soft); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; border-top: 2px solid var(--color-green); }
@@ -265,6 +282,14 @@ const tempers = [
   .ht-footnote { margin-top: 16px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
   .ht-proc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  .ht-proc-fig { margin: 28px 0 0; overflow: hidden; border: 1px solid var(--color-stone-200); }
+  .ht-proc-fig img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .ht-proc-fig:hover img { transform: scale(1.05); }
+  .ht-proc-fig figcaption {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-stone-700); padding: 7px 10px;
+    border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
+  }
   .ht-stages { display: flex; flex-direction: column; gap: 0; }
   .ht-stage-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
   .ht-stage-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
@@ -285,10 +310,11 @@ const tempers = [
     .ht-qual-grid { grid-template-columns: 1fr; }
     .ht-qual-grid--no-photo { max-width: none; }
   }
-</style>
 
-<script>
-  const v = document.querySelector<HTMLVideoElement>('.cap-hero-vid');
-  if (v) document.addEventListener('visibilitychange', () => document.hidden ? v.pause() : v.play().catch(() => {}));
-</script>
+  :global(.cap-hero-img) {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 42%;
+  }
+</style>
 

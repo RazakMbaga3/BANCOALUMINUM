@@ -490,11 +490,11 @@ const certs = [
   }
   .su-pillar-card:hover { border-top-color: var(--color-green); background: white; }
   .su-pillar-photo { position: relative; overflow: hidden; }
-  .su-pillar-photo img {
+  .su-pillar-photo :global(img) {
     width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
     transition: transform 0.55s ease;
   }
-  .su-pillar-card:hover .su-pillar-photo img { transform: scale(1.04); }
+  .su-pillar-card:hover .su-pillar-photo :global(img) { transform: scale(1.04); }
   .su-pillar-idx {
     position: absolute; top: 16px; left: 16px;
     font-family: var(--font-mono); font-size: 10px;
@@ -538,11 +538,11 @@ const certs = [
     margin: 72px 0;
   }
   .su-feature-photo { overflow: hidden; }
-  .su-feature-photo img {
+  .su-feature-photo :global(img) {
     width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
     transition: transform 0.55s ease;
   }
-  .su-feature-photo:hover img { transform: scale(1.03); }
+  .su-feature-photo:hover :global(img) { transform: scale(1.03); }
   .su-feature-p {
     color: var(--color-stone-700); font-size: 15px;
     line-height: 1.72; max-width: 52ch; margin-top: 20px;
@@ -631,11 +631,11 @@ const certs = [
     gap: 3px;
   }
   .su-strip-photo { overflow: hidden; position: relative; }
-  .su-strip-photo img {
+  .su-strip-photo :global(img) {
     width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
     transition: transform 0.5s ease;
   }
-  .su-strip-photo:hover img { transform: scale(1.05); }
+  .su-strip-photo:hover :global(img) { transform: scale(1.05); }
   .su-strip-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
     background: linear-gradient(to top, rgba(6,21,37,0.85), transparent);

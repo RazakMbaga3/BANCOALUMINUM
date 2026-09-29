@@ -275,6 +275,18 @@ const certs = [
             treatment, machining and surface finishing. It is calculated to EN 15804 methodology
             and ISO 14064-1 verified by an accredited third-party auditor.
           </p>
+        </div>
+
+        <!-- Right: data table + carbon number -->
+        <div class="su-cbam-right">
+          <div class="su-cbam-table">
+            {cbamData.map(([label, value], i) => (
+              <div class="su-cbam-row" style={`--delay:${i * 50}ms`}>
+                <div class="su-cbam-key">{label}</div>
+                <div class="su-cbam-val">{value}</div>
+              </div>
+            ))}
+          </div>
 
           <!-- Big carbon number -->
           <div class="su-cbam-big">
@@ -284,16 +296,6 @@ const certs = [
               <div class="su-cbam-big-cert">ISO 14064-1 · Third-party verified</div>
             </div>
           </div>
-        </div>
-
-        <!-- Right: data table -->
-        <div class="su-cbam-table">
-          {cbamData.map(([label, value], i) => (
-            <div class="su-cbam-row" style={`--delay:${i * 50}ms`}>
-              <div class="su-cbam-key">{label}</div>
-              <div class="su-cbam-val">{value}</div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
@@ -581,10 +583,10 @@ const certs = [
     line-height: 1.7; margin-bottom: 16px;
   }
   .su-cbam-p strong { color: var(--color-platinum); font-weight: 500; }
+  .su-cbam-right { display: flex; flex-direction: column; gap: 24px; }
   .su-cbam-big {
     display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;
-    margin-top: 36px; padding-top: 28px;
-    border-top: 1px solid var(--color-navy-line);
+    padding: 20px 20px 0;
   }
   .su-cbam-big-n {
     font-family: var(--font-sans);

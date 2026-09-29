@@ -290,9 +290,16 @@ main > div:nth-of-type(n+3):not(.container) {
   letter-spacing: 0.05em;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.1s ease-out;
   white-space: nowrap;
   text-decoration: none;
+}
+/* Instant press feedback — fires on pointer-down via :active, not on release */
+.btn:active {
+  transform: scale(0.97);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn:active { transform: none; }
 }
 /* Primary on light background */
 .btn-primary {
@@ -716,6 +723,7 @@ main > div:nth-of-type(n+3):not(.container) {
   position: absolute;
   top: 100%;
   left: 0;
+  transform-origin: top left;
   background: var(--color-navy);
   border: 1px solid var(--color-navy-line);
   border-top: 2px solid var(--color-green);
@@ -723,15 +731,18 @@ main > div:nth-of-type(n+3):not(.container) {
   padding: 8px 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  transform: translateY(-4px) scale(0.98);
+  transition: opacity 0.16s cubic-bezier(0.16, 1, 0.3, 1), transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.16s;
   z-index: 200;
 }
 .nav-links > li:hover .nav-dropdown,
 .nav-links > li:focus-within .nav-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-dropdown { transition: opacity 0.16s ease, visibility 0.16s; transform: none !important; }
 }
 .nav-dropdown a {
   display: block;
@@ -759,18 +770,32 @@ main > div:nth-of-type(n+3):not(.container) {
   flex-shrink: 0;
 }
 
-/* Mobile menu (offcanvas) — hidden until .is-open */
+/* Mobile menu (offcanvas) — enters from the right (where the hamburger
+   trigger sits), exits back the same way. Always in the DOM/flex so the
+   transform+opacity transition can actually play instead of a hard
+   display:none/flex cut. */
 .mobile-menu {
   position: fixed;
   inset: 0;
   background: var(--color-navy);
   z-index: 200;
-  display: none;
+  display: flex;
   flex-direction: column;
   overflow-y: auto;
   padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
 }
-.mobile-menu.is-open { display: flex; }
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { transition: opacity 0.2s ease, visibility 0.2s; transform: none !important; }
+}
 .mobile-menu-head {
   display: flex;
   justify-content: space-between;
@@ -836,7 +861,17 @@ main > div:nth-of-type(n+3):not(.container) {
   width: 22px;
   height: 1.5px;
   background: var(--color-stone-50);
-  transition: transform 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Morph to an X when the mobile menu is open — driven by the aria-expanded
+   state the nav script already sets, no extra class needed */
+.nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the X morph as an instant state change — no smooth tween, but still
+     a clear open/closed icon rather than a half-broken static hamburger */
+  .nav-hamburger span { transition: opacity 0.15s ease; }
 }
 
 /* ============================================================

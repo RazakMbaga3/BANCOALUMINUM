@@ -93,7 +93,7 @@ import Layout from '../layouts/Layout.astro';
   }
   .prv-toc-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -151,7 +151,7 @@ import Layout from '../layouts/Layout.astro';
   .prv-address a { color: var(--color-green); text-decoration: none; }
 
   @media (max-width: 768px) {
-    .prv-grid { grid-template-columns: 1fr; }
+    .prv-grid { grid-template-columns: minmax(0, 1fr); }
     .prv-toc { position: static; display: none; }
   }
 </style>

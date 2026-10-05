@@ -8,13 +8,13 @@ const nav = [
   {
     label: 'Solutions',
     children: [
-      { label: 'Home',                          href: '/',                           group: 'Products' },
+      { label: 'Home',                          href: '/',                           group: '' },
       { label: 'Standard sections',            href: '/products/standard-sections', group: 'Products' },
       { label: 'Automotive & commercial',      href: '/industries/automotive',      group: 'Industries' },
       { label: 'Electrical power & T&D',       href: '/industries/electrical',      group: 'Industries' },
       { label: 'Heat sinks & exchangers',      href: '/industries/heat-management', group: 'Industries' },
       { label: 'Hydraulics & pneumatics',      href: '/industries/hydraulics',      group: 'Industries' },
-      { label: 'Machining & forging',          href: '/industries/forging',         group: 'Industries' },
+      { label: 'Machining & value addition',   href: '/industries/forging',         group: 'Industries' },
       { label: 'Building & construction',      href: '/industries/building',        group: 'Industries' },
     ],
   },
@@ -40,7 +40,7 @@ const nav = [
       { label: 'Quality & certifications',  href: '/about/quality',      group: '' },
       { label: 'Global reach',              href: '/about/global-reach', group: '' },
       { label: 'Careers',                   href: '/about/careers',      group: '' },
-      { label: 'Press, news & blogs',       href: '/about/news',         group: '' },
+      { label: 'News & Insights',       href: '/about/news',         group: '' },
     ],
   },
 ];
@@ -127,21 +127,30 @@ const nav = [
   </div>
   <nav class="mobile-menu-nav" aria-label="Mobile navigation">
     {nav.map((item) => (
-      <div class="mobile-menu-group">
-        {item.children ? (
-          <>
-            <div class="mobile-menu-label">{item.label}</div>
+      item.children ? (
+        <details class="mobile-menu-group">
+          <summary class="mobile-menu-label">
+            {item.label}
+            <svg width="12" height="8" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <div class="mobile-menu-children">
             {item.children.map((child) => (
               <a href={child.href} class="mobile-menu-child">{child.label}</a>
             ))}
-          </>
-        ) : (
+          </div>
+        </details>
+      ) : (
+        <div class="mobile-menu-group">
           <a href={item.href} class="mobile-menu-link">{item.label}</a>
-        )}
-      </div>
+        </div>
+      )
     ))}
   </nav>
-  <a href="/contact#quote" class="btn btn-primary-dark mobile-menu-cta">Send Enquiry</a>
+  <div class="mobile-menu-foot">
+    <a href="/contact#quote" class="btn btn-primary-dark mobile-menu-cta">Send Enquiry</a>
+  </div>
 </div>
 
 <script>
@@ -165,6 +174,23 @@ const nav = [
     (toggle as HTMLElement | null)?.focus();
   }
 
+  // Expand the accordion group that contains the current page
+  const here = window.location.pathname;
+  const groups = menu?.querySelectorAll<HTMLDetailsElement>('details.mobile-menu-group') ?? [];
+  groups.forEach((d) => {
+    d.querySelectorAll('a').forEach((a) => {
+      const href = a.getAttribute('href') ?? '';
+      if (href !== '/' ? here.startsWith(href) : here === '/') {
+        d.open = true;
+        a.setAttribute('aria-current', 'page');
+      }
+    });
+  });
+  // One group open at a time keeps the sheet short enough to reach with a thumb
+  groups.forEach((d) => d.addEventListener('toggle', () => {
+    if (d.open) groups.forEach((o) => { if (o !== d) o.open = false; });
+  }));
+
   toggle?.addEventListener('click', openMenu);
   close?.addEventListener('click', closeMenu);
   menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
@@ -173,7 +199,8 @@ const nav = [
   menu?.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closeMenu(); return; }
     if (e.key !== 'Tab') return;
-    const focusables = menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+    const focusables = [...menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), summary')]
+      .filter((el) => el.offsetParent !== null);
     if (!focusables.length) return;
     const first = focusables[0];
     const last = focusables[focusables.length - 1];

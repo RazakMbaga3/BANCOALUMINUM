@@ -86,8 +86,8 @@ const qc = [
   { stat: '100 %', label: 'Visual inspection for external defects', sub: 'External surface; every billet, every cast' },
   { stat: '100 %', label: 'Ultrasonic testing', sub: 'Internal defects: inclusions, voids' },
   { stat: '100 %', label: 'Chemical analysis', sub: 'Spectromax OES, verified against order specification' },
-  { stat: 'SCADA / ERP', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
-  { stat: 'Alloy marking', label: 'Unique Cast №', sub: 'Designation + cast number on every individual billet' },
+  { stat: 'SCADA/ERP', label: 'Online traceability', sub: 'Furnace conditions to despatch, batch-linked' },
+  { stat: 'Alloy marking', label: 'Unique Cast No.', sub: 'Designation + cast number on every individual billet' },
   { stat: 'Ceramic filtration', label: 'Inline grain refinement', sub: 'Fine, uniform, equiaxed crystal structure' },
 ];
 
@@ -135,9 +135,6 @@ const certs = [
           </div>
         ))}
       </div>
-      <div class="c-hero-actions">
-        <a href="/contact#technical" class="btn btn-primary-dark">Technical enquiry</a>
-      </div>
     </div>
   </section>
 
@@ -160,11 +157,11 @@ const certs = [
         </p>
         <p class="t-body c-body-text" style="margin-top:12px">
           Every billet undergoes 100% ultrasonic testing, spectroscopic chemical
-          verification and full SCADA / ERP traceability from furnace charge through
+          verification and full SCADA/ERP traceability from furnace charge through
           despatch.
         </p>
         <div class="c-chip-row" style="margin-top:24px">
-          {['Hot-Top casting', 'In-house alloy development', 'SCADA / ERP traceability', 'IQNET', 'CBAM-ready', 'Export-certified'].map(c => (
+          {['Hot-Top casting', 'In-house alloy development', 'SCADA/ERP traceability', 'IQNET', 'CBAM-ready', 'Export-certified'].map(c => (
             <span class="pill">{c}</span>
           ))}
         </div>
@@ -177,7 +174,7 @@ const certs = [
           <Pic src="/assets/manufacturing/foundry-billets-stacked.jpg" alt="Stacked finished aluminium extrusion billets from Banco Aluminium, Vadodara" loading="eager" sizes="100vw" />
           <div class="c-ov-main-caption">
             <span>Finished extrusion billets</span>
-            <span class="c-ov-cap-note">Alloy-marked · 5,800 mm · SCADA traced</span>
+            <span class="c-ov-cap-note">Alloy-marked · 5,800 mm · SCADA/ERP traced</span>
           </div>
         </div>
         <div class="c-ov-pair">
@@ -560,7 +557,7 @@ const certs = [
   }
   .c-ov-cap-note {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -590,7 +587,7 @@ const certs = [
   .c-ov-sm-lbl {
     display: block;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -680,7 +677,7 @@ const certs = [
     padding: 12px 16px;
     text-align: left;
     font-weight: 500;
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -708,7 +705,7 @@ const certs = [
   .c-cell-note {
     padding: 11px 16px;
     color: var(--color-stone-700);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.08em;
     white-space: normal;
     border-bottom: 1px solid var(--color-stone-200);
@@ -718,7 +715,7 @@ const certs = [
   .c-table-footnote {
     margin-top: 16px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     color: var(--color-stone-700);
     line-height: 1.6;
@@ -803,7 +800,7 @@ const certs = [
   }
   .c-dim-inch {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     color: var(--color-green);
   }
@@ -815,7 +812,7 @@ const certs = [
   }
   .c-dim-note {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     color: var(--color-nickel);
     text-transform: uppercase;
@@ -963,7 +960,7 @@ const certs = [
   }
   .c-green-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -979,7 +976,7 @@ const certs = [
   }
   .c-cert-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -1048,14 +1045,14 @@ const certs = [
   /* ── Responsive ────────────────────────────────────────────────────────── */
   @media (max-width: 1024px) {
     .c-stats          { grid-template-columns: repeat(2, 1fr); }
-    .c-two-col        { grid-template-columns: 1fr; }
-    .c-overview-grid  { grid-template-columns: 1fr; }
+    .c-two-col        { grid-template-columns: minmax(0, 1fr); }
+    .c-overview-grid  { grid-template-columns: minmax(0, 1fr); }
     .c-vp-section     { min-height: auto; padding: clamp(40px, 6vh, 64px) 0; }
     .c-process-grid   { grid-template-columns: repeat(2, 1fr); }
     .c-qc-grid        { grid-template-columns: repeat(3, 1fr); }
-    .c-dim-grid       { grid-template-columns: 1fr; }
-    .c-cta-grid       { grid-template-columns: 1fr; }
-    .c-packing-inner  { grid-template-columns: 1fr; }
+    .c-dim-grid       { grid-template-columns: minmax(0, 1fr); }
+    .c-cta-grid       { grid-template-columns: minmax(0, 1fr); }
+    .c-packing-inner  { grid-template-columns: minmax(0, 1fr); }
     .c-packing-tags   { flex-direction: row; flex-wrap: wrap; }
     .c-green-stats    { grid-template-columns: repeat(2, 1fr); }
   }
@@ -1067,7 +1064,7 @@ const certs = [
   @media (max-width: 640px) {
     .c-h1           { font-size: clamp(36px, 10vw, 52px); }
     .c-stats        { grid-template-columns: 1fr 1fr; }
-    .c-process-grid { grid-template-columns: 1fr; }
+    .c-process-grid { grid-template-columns: minmax(0, 1fr); }
     .c-qc-grid      { grid-template-columns: 1fr 1fr; }
     .c-dim-row      { grid-template-columns: auto 1fr; }
     .c-dim-note     { display: none; }

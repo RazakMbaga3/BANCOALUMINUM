@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
-import { optSrcset } from '../../lib/img';
 
 const milestones = [
   { year: '1967', event: 'Founded in Vadodara, Gujarat by the Thakkar family' },
@@ -41,18 +40,14 @@ const applications = [
   <!-- ══════════════════════════════════════════════════════════
        HERO — full-viewport photo
        ══════════════════════════════════════════════════════════ -->
-  <section class="ab-hero">
-    <div class="ab-hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/plant/plant-aerial.jpg', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/plant/plant-aerial.jpg', 'webp')} sizes="100vw" />
-        <img src="/assets/plant/plant-aerial.jpg" alt="" loading="eager" fetchpriority="high" class="ab-hero-video" />
-      </picture>
-      <div class="ab-hero-scrim"></div>
-      <div class="ab-hero-grad"></div>
+  <section class="ab-hero photo-hero">
+    <div class="ab-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src="/assets/plant/plant-aerial.jpg" alt="" loading="eager" fetchpriority="high" class="ab-hero-video" sizes="100vw" focusMobile="40% 45%" />
+      <div class="ab-hero-scrim photo-hero-scrim"></div>
+      <div class="ab-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container ab-hero-body">
+    <div class="container ab-hero-body photo-hero-body">
       <div class="ab-hero-inner">
         <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
           About Banco · Est. 1967
@@ -69,14 +64,14 @@ const applications = [
         </p>
 
         <!-- Stat row -->
-        <div class="ab-hero-stats" data-reveal data-reveal-delay="4">
+        <div class="ab-hero-stats stat-row" data-reveal data-reveal-delay="4">
           {[
             { n: 58,    s: '+',   sep: false, label: 'Years in extrusion' },
             { n: 35000, s: ' MT', sep: true,  label: 'Annual capacity' },
             { n: 1100,  s: '+',   sep: false, label: 'Customers worldwide' },
             { n: 5,     s: '',    sep: false, label: 'Extrusion presses' },
           ].map(({ n, s, sep, label }) => (
-            <div class="ab-stat">
+            <div class="ab-stat stat-row-item">
               <div class="ab-stat-n" data-countup={n} data-suffix={s} data-separator={sep ? ',' : ''}>
                 {sep ? n.toLocaleString() : n}{s}
               </div>
@@ -86,7 +81,6 @@ const applications = [
         </div>
 
         <div class="ab-hero-ctas" data-reveal data-reveal-delay="5">
-          <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
           <a href="/about/why-banco" class="btn btn-secondary-dark">Why Banco</a>
         </div>
       </div>
@@ -144,18 +138,6 @@ const applications = [
             foundry, Banco operates at a scale that supports both high-volume OEM supply
             and specialised low-volume development programmes.
           </p>
-
-          <!-- 2-up editorial photos -->
-          <div class="ab-story-photos">
-            <figure class="ab-story-fig">
-              <Pic src="/assets/manufacturing/melting-2.webp" alt="Liquid aluminium at Banco foundry, Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-              <figcaption>Melting · Foundry floor · Vadodara</figcaption>
-            </figure>
-            <figure class="ab-story-fig">
-              <Pic src="/assets/manufacturing/homo-2.webp" alt="Controlled-atmosphere homogenising furnace" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-              <figcaption>Homogenising · Controlled atmosphere furnace</figcaption>
-            </figure>
-          </div>
         </div>
 
       </div>
@@ -304,7 +286,7 @@ const applications = [
     inset: 0;
     z-index: 0;
   }
-  .ab-hero-video {
+  :global(.ab-hero-video) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -367,7 +349,7 @@ const applications = [
   }
   .ab-stat-l {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--color-stone-400);
@@ -423,7 +405,7 @@ const applications = [
     display: flex;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -442,35 +424,6 @@ const applications = [
     line-height: 1.7;
     color: var(--color-stone-700);
     margin-bottom: 18px;
-  }
-  .ab-story-photos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    margin-top: 40px;
-  }
-  .ab-story-fig {
-    overflow: hidden;
-    border: 1px solid var(--color-stone-200);
-    margin: 0;
-  }
-  .ab-story-fig img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-  }
-  .ab-story-fig:hover img { transform: scale(1.05); }
-  .ab-story-fig figcaption {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-stone-700);
-    padding: 7px 10px;
-    border-top: 1px solid var(--color-stone-200);
-    background: var(--color-stone-50);
   }
 
   /* ── TIMELINE ──────────────────────────────────────────────── */
@@ -581,7 +534,12 @@ const applications = [
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
   }
-  .ab-testi-grid > :last-child { grid-column: span 2; }
+  /* 5 cards in a 3-column grid leave an empty cell, so the last one spans it.
+     At double width its short quote drifted to the left edge and read as
+     mis-set next to the single-width cards; centre the content instead. */
+  .ab-testi-grid > :last-child { grid-column: span 2; align-items: center; text-align: center; }
+  .ab-testi-grid > :last-child .ab-testi-quote { max-width: 46ch; }
+  .ab-testi-grid > :last-child .ab-testi-foot  { width: 100%; max-width: 46ch; }
   .ab-testi-card {
     background: var(--color-navy-soft);
     padding: 32px 28px 28px;
@@ -623,7 +581,7 @@ const applications = [
   }
   .ab-testi-loc {
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-stone-400);
@@ -660,7 +618,7 @@ const applications = [
   .ab-apps-body { padding: 22px 22px 26px; border-top: 2px solid var(--color-green); }
   .ab-apps-name { font-family: var(--font-sans); font-size: 17px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
   .ab-apps-hook { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.6; color: var(--color-stone-700); margin-bottom: 14px; }
-  .ab-apps-link { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); }
+  .ab-apps-link { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); }
 
   /* ── CTA ────────────────────────────────────────────────────── */
   .ab-cta-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
@@ -671,24 +629,21 @@ const applications = [
     .ab-apps-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .ab-story-grid    { grid-template-columns: 1fr; gap: 40px; }
+    .ab-story-grid    { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     .ab-story-anchor  { position: static; }
-    .ab-testi-head    { grid-template-columns: 1fr; }
+    .ab-testi-head    { grid-template-columns: minmax(0, 1fr); }
     .ab-testi-grid    { grid-template-columns: repeat(2, 1fr); }
     .ab-testi-grid > :last-child { grid-column: span 2; }
-    .ab-timeline-wrap { grid-template-columns: 1fr; }
+    .ab-timeline-wrap { grid-template-columns: minmax(0, 1fr); }
     .ab-timeline-head { position: static; }
-    .ab-apps-head     { grid-template-columns: 1fr; }
+    .ab-apps-head     { grid-template-columns: minmax(0, 1fr); }
     .ab-cta-row       { flex-direction: column; }
   }
   @media (max-width: 640px) {
     .ab-hero-stats    { gap: 0; }
     .ab-stat          { padding-right: 24px; margin-right: 24px; }
-    .ab-testi-grid    { grid-template-columns: 1fr; }
-    .ab-story-photos  { grid-template-columns: 1fr; }
-    .ab-apps-grid     { grid-template-columns: 1fr; }
-    .ab-hero-body     { padding-top: 110px; }
-    .ab-hero-grad     { background: rgba(6,21,37,0.85); }
+    .ab-testi-grid    { grid-template-columns: minmax(0, 1fr); }
+    .ab-apps-grid     { grid-template-columns: minmax(0, 1fr); }
     .ab-scroll-cue    { display: none; }
     .ab-timeline-wrap { display: block; }
   }

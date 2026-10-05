@@ -10,14 +10,15 @@ const profiles = [
   { name: 'Pump housing extrusions', desc: 'Flanged and unflanged pump body extrusions with close concentricity between bore and outer diameter for gear pump and vane pump applications.' },
   { name: 'Cylinder rod profiles', desc: 'Cold-drawn solid round bar in 6082-T6 for hydraulic and pneumatic cylinder rod applications; hardness and surface finish stay consistent across the full bar length.' },
   { name: 'Porting manifold sections', desc: 'Multi-port distribution manifold extrusions for hydraulic circuit construction, supplied as extruded stock for customer drilling and porting.' },
+  { name: 'High pressure booster pump', desc: 'High-pressure booster pumps require high-quality extrusions with excellent seam welding to ensure reliable performance. We manufacture these extrusion profiles with the required strength, dimensional accuracy, and robust weld joints to meet demanding applications.' },
 ];
 
 const galleryImages = ['6a', '6b', '6c', '6d', '6e', '6f', '6g', '6h'];
 
 const alloys = [
-  { name: '6082', temper: 'T6', why: 'Primary hydraulic alloy: UTS 310 MPa, excellent pressure fatigue resistance, and consistent hardness for reliable thread and seal engagement in cylinder and manifold applications.' },
-  { name: '6061', temper: 'T6', why: 'Versatile engineering alloy for pneumatic actuator bodies and valve housings, with good machinability and corrosion resistance for fluid power components.' },
-  { name: 'Cold drawn', temper: '6082-T6', why: 'Post-extrusion cold drawing improves dimensional accuracy, surface finish, and hardness uniformity across the cross-section, essential for cylinder rod and bore applications.' },
+  { name: '6063', temper: '', why: 'This alloy offers excellent extrudability, smooth surface finish, corrosion resistance, seam weldability, and adequate strength for high-pressure applications in pneumatic devices.' },
+  { name: '6061, 6082', temper: '', why: 'These alloys deliver superior strength, durability, corrosion resistance, and structural integrity, making them suitable for demanding high-pressure applications on hydraulic devices.' },
+  { name: 'Cold drawn products', temper: '', why: 'Cold-drawn aluminium provides higher strength, tighter tolerances, improved surface finish, straightness and dimensional stability. It is ideal for high-pressure components requiring reliable sealing and consistent wall thickness.' },
 ];
 ---
 
@@ -29,12 +30,13 @@ const alloys = [
   <!-- Hero -->
   <IndustryHero
     image="/assets/industries/hero/hydraulics-hero.jpg"
+    focus="38% 55%"
+    focusMobile="34% 55%"
     eyebrow="Industries / Hydraulics"
     stats={[
-    ['Cold drawing available', 'Post-extrusion sizing'],
-    ['6082 · 6061 alloys', 'High strength grades'],
-    ['Tight OD tolerance', 'EN 755-9 Class A'],
-    ['10,000 parts/day', 'Production capacity'],
+    ['Cold drawing available', 'Precision profile sizes'],
+    ['Multiple alloys', 'Low to high strength profiles'],
+    ['Tight OD tolerance', 'EN 12020-2 / EN 754-2'],
     ]}
   >
     <Fragment slot="h1">Hydraulics &amp; pneumatics profiles.</Fragment>
@@ -72,18 +74,18 @@ const alloys = [
             Hydraulic and pneumatic applications impose strict requirements on dimensional
             accuracy, surface finish, and mechanical consistency that go well beyond standard
             extrusion tolerances. Banco's fluid power profile range is manufactured with
-            these demands at the centre of process design, starting with 6082 billet cast
-            in-house to controlled composition for predictable strength and fatigue performance.
+            these demands at the centre of process design, starting with using multiple alloys
+            made in our in-house casting facility with controlled composition for predictable
+            strength and fatigue performance.
           </p>
           <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
-            Our cold drawing facility post-processes extruded tube and rod profiles to achieve
-            bore and OD tolerances tighter than H8/h8, with Ra surface finish values suitable
-            for direct seal engagement without additional honing. Concentricity between bore
-            and OD is controlled and verified dimensionally on every production batch.
+            Our cold drawing facility converts extruded tubes and rod profiles to achieve bore
+            and OD tolerances tighter than H8. Concentricity between bore and OD is controlled
+            and verified dimensionally on every production batch.
           </p>
 
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
-            {['Hydraulic cylinders', 'Pneumatic actuators', 'Valve manifolds', 'Gear pumps', 'Vane pumps', 'Fluid power distribution', 'Industrial press systems'].map(tag => (
+            {['Hydraulic cylinders', 'Pneumatic actuators', 'Valve manifolds', 'Gear pumps', 'Vane pumps', 'Fluid power distribution', 'Industrial press systems', 'Pressure booster'].map(tag => (
               <span class="pill">{tag}</span>
             ))}
           </div>
@@ -91,13 +93,13 @@ const alloys = [
 
         <div style="position:relative">
           <Pic
-            src="/assets/industries/hydraulics.jpg"
-            alt="Industrial hydraulic pipes and metal fittings: precision aluminium components"
+            src="/assets/capabilities/cold-drawing-floor-a.jpg"
+            alt="Banco operator running an aluminium profile through the cold drawing bench"
             loading="lazy"
             class="ind-photo" sizes="(max-width: 1024px) 100vw, 60vw" />
           <div class="ind-caption">
             <span class="ind-caption-t">
-              In-house foundry, casting 6082 billet to controlled chemistry for hydraulic applications
+              Cold drawing bench: sizing extruded tube and rod to bore and OD tolerances tighter than H8
             </span>
           </div>
         </div>
@@ -110,11 +112,11 @@ const alloys = [
     <div class="container">
       <div class="eyebrow">02 · Profile types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six profile families for hydraulics and pneumatics.
+        Hydraulics and pneumatics profiles.
       </h2>
       <div class="ind-tiles">
-        {profiles.map(p => (
-          <div class="ind-tile">
+        {profiles.map((p, i) => (
+          <div class:list={['ind-tile', i === profiles.length - 1 && 'ind-tile--wide']}>
             <div class="ind-tick"></div>
             <h3 class="ind-tile-h">{p.name}</h3>
             <p class="ind-tile-p">{p.desc}</p>
@@ -135,7 +137,7 @@ const alloys = [
         {alloys.map(a => (
           <div class="ind-card">
             <div class="ind-card-n">{a.name}</div>
-            <div class="ind-card-t">{a.temper}</div>
+            {a.temper && <div class="ind-card-t">{a.temper}</div>}
             <p class="ind-card-p">{a.why}</p>
           </div>
         ))}
@@ -165,7 +167,7 @@ const alloys = [
             ['ISO 9001:2015', 'Quality management system'],
             ['CE marked', 'EN 15088 structural profiles'],
             ['EN 755-9', 'Dimensional tolerance class A'],
-            ['Dimensional traceability', 'Full inspection reports'],
+            ['Dimensional traceability', 'Full inspection reports & test certifications'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>

@@ -1,19 +1,19 @@
 ---
+import Pic from '../../components/Pic.astro';
 import Layout from '../../layouts/Layout.astro';
-import { optSrcset } from '../../lib/img';
 
 const whyPoints = [
-  { title: 'Owner-managed since 1967', desc: 'Third generation of the Thakkar family on-site. Decisions on price, tooling, and schedule are made by people who understand manufacturing, not a call centre.' },
-  { title: 'Nothing subcontracted',    desc: 'Foundry, die shop, extrusion, heat treatment, machining, cold drawing, and finishing all sit under one roof in Vadodara. One point of accountability, start to finish.' },
-  { title: 'Built for export',         desc: 'Documentation, CBAM carbon data, and packing built for international shipping from day one. Customers in Europe, North America, APAC, and the Middle East today.' },
-  { title: 'Capacity you can plan against', desc: '35,000 MT extrusion and 55,000 MT foundry capacity across five presses. Committed volume without waiting on a third-party supplier’s queue.' },
-  { title: 'Actively expanding',       desc: 'Capacity and digitalisation programmes underway now. A supplier relationship that grows with your volumes, not one you’ll have to outgrow.' },
+  { title: 'Engineering Around the Requirement', desc: 'We start with the customer requirement and work towards the right alloy, profile and manufacturing route.' },
+  { title: 'Metallurgy & Profile Development',   desc: 'Our foundry and in-house die capabilities support specialised alloys and the development of complex profile geometries.' },
+  { title: 'Beyond Extrusion',                   desc: 'Cold drawing, CNC machining and fabrication extend the process beyond the extruded profile, helping deliver finished components.' },
+  { title: 'One Connected Manufacturing Partner', desc: 'Connected capabilities from alloy and profile development through extrusion and downstream processing help keep the complete manufacturing route aligned.' },
+  { title: 'Built for Repeat Production',        desc: 'Process control, quality systems and traceability support consistent production from development through repeat supply.' },
 ];
 ---
 
 <Layout
   title="Why Banco: Banco Aluminium"
-  description="Why customers choose Banco Aluminium: an owner-managed, six-stage integrated aluminium manufacturer in Vadodara, not a trader. 58 years, five presses, one address."
+  description="More than an extrusion supplier: Banco connects metallurgy, extrusion and value-added processing around your requirement, from profile development to finished components."
   transparentNav={true}
   heroImage="/assets/capabilities/cold-drawing-hero.jpg"
 >
@@ -21,30 +21,24 @@ const whyPoints = [
   <!-- ══════════════════════════════════════════
        HERO — photo background
        ══════════════════════════════════════════ -->
-  <section class="wb-hero">
-    <div class="wb-hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-hero.jpg', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-hero.jpg', 'webp')} sizes="100vw" />
-        <img src="/assets/capabilities/cold-drawing-hero.jpg" alt="" loading="eager" fetchpriority="high" class="wb-hero-vid" />
-      </picture>
-      <div class="wb-hero-scrim"></div>
-      <div class="wb-hero-grad"></div>
+  <section class="wb-hero photo-hero">
+    <div class="wb-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src="/assets/capabilities/cold-drawing-hero.jpg" alt="" loading="eager" fetchpriority="high" class="wb-hero-vid" sizes="100vw" focusMobile="44% 6%" />
+      <div class="wb-hero-scrim photo-hero-scrim"></div>
+      <div class="wb-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container wb-hero-body">
+    <div class="container wb-hero-body photo-hero-body">
       <div class="wb-hero-inner">
         <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
           Why Banco
         </div>
         <h1 class="t-h1 wb-hero-h1" data-reveal data-reveal-delay="2">
-          Most aluminium companies<br/>trade. <em class="accent">We manufacture.</em>
+          More than an<br/><em class="accent">extrusion supplier.</em>
         </h1>
         <p class="wb-hero-lede" data-reveal data-reveal-delay="3">
-          No trading desk between you and the metal. Banco owns the foundry, the die
-          shop, five extrusion presses, heat treatment, cold drawing, machining, and
-          finishing, all on one site in Vadodara. When something needs to change,
-          it changes here, not at a supplier three phone calls away.
+          We connect metallurgy, extrusion and value-added processing around your
+          requirement, from profile development to finished components.
         </p>
       </div>
     </div>
@@ -64,13 +58,12 @@ const whyPoints = [
         <div class="wb-why-sticky" data-reveal="left">
           <div class="eyebrow">/ 01 · Why choose Banco</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Five reasons<br/>procurement teams<br/><em class="accent">stay with Banco.</em>
+            Why choose<br/><em class="accent">Banco.</em>
           </h2>
           <div class="wb-why-rule"></div>
           <p style="color:var(--color-stone-700);font-size:15px;line-height:1.7">
-            None of these are unique claims on their own. Taken together, on one
-            factory floor, under one management, they are the difference between
-            a supplier you manage and a partner who manages the problem for you.
+            We connect metallurgy, extrusion and value-added processing around your
+            requirement, from profile development through to finished components.
           </p>
         </div>
 
@@ -137,19 +130,84 @@ const whyPoints = [
 
 
   <!-- ══════════════════════════════════════════
-       CTA CLOSE
+       THE BANCO DIFFERENCE
        ══════════════════════════════════════════ -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow" data-reveal="fade">/ 03 · The Banco difference</div>
+      <div class="wb-diff" data-reveal="fade">
+        <h2 class="t-h2 wb-diff-h2">
+          From profile to<br/><em class="accent">finished component.</em>
+        </h2>
+        <p class="wb-diff-p">
+          The value is not only in extrusion. It is in how metallurgy, profile
+          development, manufacturing and downstream processing work together to
+          deliver the required component.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CTA CLOSE — per client, Why Banco keeps a
+       closing CTA (the doc's own closing block).
+       ══════════════════════════════════════════ -->
+  <section class="cta-strip section-pad" aria-label="Get in touch">
+    <div class="container" style="position:relative;z-index:1">
+      <div class="cta-strip-inner">
+        <div data-reveal="fade">
+          <h2 class="t-h2" style="margin-top:0">
+            Have a profile or component<br/><em class="accent">to develop?</em>
+          </h2>
+          <p class="t-lead" style="color:var(--color-stone-400);margin-top:20px;max-width:48ch">
+            Share your drawing or requirement with our team.
+          </p>
+          <div class="cta-actions">
+            <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concentric circle decoration -->
+    <div class="cta-decoration" aria-hidden="true">
+      <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
+        <circle cx="300" cy="300" r="280" stroke="white" stroke-width="1"/>
+        <circle cx="300" cy="300" r="240" stroke="white" stroke-width="1"/>
+        <circle cx="300" cy="300" r="200" stroke="white" stroke-width="1"/>
+        <circle cx="300" cy="300" r="160" stroke="white" stroke-width="1"/>
+        <circle cx="300" cy="300" r="120" stroke="white" stroke-width="1"/>
+        <circle cx="300" cy="300" r="80" stroke="white" stroke-width="1"/>
+      </svg>
+    </div>
+  </section>
 
 </Layout>
 
 <style>
+  /* ── THE BANCO DIFFERENCE ───────────────────────────────────── */
+  /* Heading left, body right: a single narrow column here left a large void
+     on the right, the same imbalance the client flagged on heat treatment. */
+  .wb-diff {
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 16px;
+  }
+  .wb-diff-h2 { color: var(--color-navy); }
+  .wb-diff-p {
+    color: var(--color-stone-700); font-size: clamp(15px, 1.4vw, 18px);
+    line-height: 1.7; align-self: center;
+  }
+  @media (max-width: 900px) {
+    .wb-diff { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  }
+
   /* ── HERO ───────────────────────────────────────────────────── */
   .wb-hero {
     position: relative; background: var(--color-navy-deep);
     min-height: 78vh; display: flex; align-items: center; overflow: hidden;
   }
   .wb-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .wb-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
+  :global(.wb-hero-vid) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
   .wb-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.60); }
   .wb-hero-grad {
     position: absolute; inset: 0;
@@ -184,7 +242,7 @@ const whyPoints = [
     transition-delay: var(--delay, 0ms);
   }
   .wb-why-row:first-child { border-top: 1px solid var(--color-stone-200); }
-  .wb-why-n { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); padding-top: 4px; }
+  .wb-why-n { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); padding-top: 4px; }
   .wb-why-title { font-size: 16px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 6px; }
   .wb-why-desc  { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
 
@@ -207,9 +265,9 @@ const whyPoints = [
     background: var(--color-green); transition: width 0.35s ease;
   }
   .wb-process-cell:hover::after { width: 100%; }
-  .wb-process-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-green); margin-bottom: 16px; }
+  .wb-process-num  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-green); margin-bottom: 16px; }
   .wb-process-title{ font-family: var(--font-sans); font-size: 18px; font-weight: 600; color: var(--color-stone-50); letter-spacing: -0.01em; line-height: 1.2; }
-  .wb-process-sub  { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 4px; margin-bottom: 16px; }
+  .wb-process-sub  { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 4px; margin-bottom: 16px; }
   .wb-process-rule { width: 24px; height: 1px; background: var(--color-navy-line); margin-bottom: 16px; }
   .wb-process-desc { font-size: 12.5px; line-height: 1.55; color: var(--color-stone-400); margin-top: auto; }
 
@@ -221,13 +279,12 @@ const whyPoints = [
     .wb-process-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 900px) {
-    .wb-why-layout  { grid-template-columns: 1fr; gap: 40px; }
+    .wb-why-layout  { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     .wb-why-sticky  { position: static; }
-    .wb-process-head{ grid-template-columns: 1fr; }
+    .wb-process-head{ grid-template-columns: minmax(0, 1fr); }
     .wb-cta-row     { flex-direction: column; }
   }
   @media (max-width: 640px) {
-    .wb-hero-grad    { background: rgba(6,21,37,0.88); }
     .wb-scroll-cue   { display: none; }
     .wb-process-grid { grid-template-columns: repeat(2, 1fr); }
   }

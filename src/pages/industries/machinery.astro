@@ -27,12 +27,12 @@ const alloys = [
   <!-- Hero -->
   <IndustryHero
     image="/assets/industries/hero/machinery-hero.jpg"
+    focusMobile="64% 50%"
     eyebrow="Industries / Machinery"
     stats={[
     ['T-slot compatible', '20 · 30 · 40 · 45 · 80 series'],
     ['6063 · 6082', 'Primary alloys'],
     ['0.29–35 kg/m', 'Weight range'],
-    ['35,000 MT', 'Annual capacity'],
     ]}
   >
     <Fragment slot="h1">Machinery &amp; automation profiles.</Fragment>
@@ -135,7 +135,7 @@ const alloys = [
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Every profile is measured against drawing at our in-house metrology lab before
             release. We can provide EN 755-9 dimensional compliance certificates, material
-            test certificates, and hardness reports on request. SCADA-monitored extrusion
+            test certificates, and hardness reports on request. SCADA/ERP-monitored extrusion
             parameters ensure process consistency across production runs.
           </p>
         </div>
@@ -144,7 +144,7 @@ const alloys = [
             ['ISO 9001:2015', 'Quality management system'],
             ['CE marked', 'EN 15088 structural'],
             ['EN 755-9', 'Dimensional tolerance class'],
-            ['SCADA traceability', 'Full production logging'],
+            ['SCADA/ERP traceability', 'Full production logging'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>

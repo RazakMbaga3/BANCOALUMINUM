@@ -11,7 +11,7 @@ const segments = [
     chips: ['Electrical & T&D', 'Automotive', 'Heat sinks', 'Aerospace', 'Hydraulics'],
     href: '/products/industrial',
     img: '/assets/manufacturing/industrialOEMS.webp',
-    imgPos: 'center center',
+    focus: '50% 50%', focusMobile: '46% 55%',
   },
   {
     num: '/ 02',
@@ -21,7 +21,7 @@ const segments = [
     chips: ['Casement windows', 'Sliding doors', 'Partitions', 'Curtain wall', 'Façades'],
     href: '/products/architectural',
     img: '/assets/images/architectureheropage/aluminium-sliding-doors-modern-home.jpg',
-    imgPos: 'center center',
+    focus: '50% 50%', focusMobile: '66% 50%',
   },
   {
     num: '/ 03',
@@ -31,7 +31,7 @@ const segments = [
     chips: ['Ø 127–254 mm', '1xxx–7xxx alloys', 'Lead-free', 'Green billet', 'CBAM'],
     href: '/products/cast-products',
     img: '/assets/manufacturing/aluminumbillets.avif',
-    imgPos: 'center center',
+    focus: '50% 50%', focusMobile: '50% 62%',
   },
 ] as const;
 
@@ -89,7 +89,7 @@ const clientLogos = [
 
   <!-- ── Three segment panels — primary navigation ────────── -->
   <nav class="router-panels" aria-label="Product segments">
-    {segments.map((seg) => (
+    {segments.map((seg, i) => (
       <a
         href={seg.href}
         class="rp"
@@ -102,11 +102,12 @@ const clientLogos = [
             src={seg.img}
             class="rp-bg-img"
             alt=""
-            loading="eager"
-            fetchpriority="high"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            fetchpriority={i === 0 ? 'high' : 'auto'}
             sizes="(max-width: 900px) 100vw, 40vw"
             maxW={768}
-            style={`object-position: ${seg.imgPos};`}
+            focus={seg.focus}
+            focusMobile={seg.focusMobile}
           />
         </div>
 
@@ -330,7 +331,7 @@ const clientLogos = [
     left: 20px;
     z-index: 2;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.20em;
     color: rgba(228, 229, 227, 0.72); /* 0.40 failed contrast over dark photos */
     transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.45s ease;
@@ -370,7 +371,7 @@ const clientLogos = [
   .rp-tag {
     display: block;
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -420,7 +421,7 @@ const clientLogos = [
     gap: 7px;
     margin-top: 12px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--color-platinum);
@@ -470,7 +471,7 @@ const clientLogos = [
   }
   .ri-stat-unit {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -478,7 +479,7 @@ const clientLogos = [
   }
   .ri-stat-label {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -508,7 +509,7 @@ const clientLogos = [
   }
   .ri-trusted-label {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -608,7 +609,7 @@ const clientLogos = [
     align-items: center;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -626,7 +627,7 @@ const clientLogos = [
     align-items: center;
     gap: 10px;
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-stone-400);
@@ -642,26 +643,44 @@ const clientLogos = [
       height: auto;
       min-height: auto;
     }
+    /* Each panel stacks photo → copy. The photo keeps its own band (subject
+       framed via the focal point) instead of hiding behind the info glass. */
     .rp {
       flex: none;
-      min-height: 280px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       border-right: none;
       border-bottom: 1px solid rgba(40, 69, 106, 0.55);
+    }
+    .rp-bg {
+      position: relative;
+      inset: auto;
+      flex: none;
+      height: clamp(180px, 52vw, 300px);
+    }
+    .rp-content {
+      position: relative;
+      background: var(--color-navy-deep);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
     .rp:last-child { border-bottom: none; }
     .rp-desc  { max-height: 120px; opacity: 1; transform: none; margin-top: 9px; }
     .rp-enter { opacity: 1; }
     .rp-name  { font-size: 22px; }
+    .rp-desc  { font-size: 14px; max-height: none; }
+    .rp-tag   { font-size: max(10px, var(--fs-min, 0px)); }
     .router-hero { padding: 20px 0; }
     .rc-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
     .rc-certs { gap: 10px; }
   }
 
   @media (max-width: 480px) {
-    .rp { min-height: 280px; }
-    .rp-content { padding: 0 18px 20px; }
+    .rp-content { padding: 16px 18px 22px; }
     .rp-num { top: 18px; left: 18px; }
     .rc-certs { gap: 8px 12px; }
+    .rc-location { flex-wrap: wrap; white-space: normal; gap: 4px 10px; }
   }
 
   @media (hover: none) {

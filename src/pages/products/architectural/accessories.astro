@@ -4,7 +4,7 @@ import Pic from '../../../components/Pic.astro';
 
 const accessoryTypes = [
   { name: 'Hardware Systems',       desc: 'Handles, hinges, rollers, locks and multi-point locking systems matched to Banco window and door series, sourced and stocked for consistent supply.', img: '/assets/architectural-systems/hardware-accessories-flatlay.webp' },
-  { name: 'Surface Finish Options', desc: 'Powder coating, anodising, brushed, sand-blast and mill finish: five in-house surface treatments applied to any system in the range.', img: '/assets/architectural-systems/extruded-profile-finishes.jpg' },
+  { name: 'Surface Finish Options', desc: 'Powder coating, anodising, brushed, sandblasted and mill finish: five in-house surface treatments applied to any system in the range.', img: '/assets/architectural-systems/extruded-profile-finishes.jpg' },
 ];
 ---
 
@@ -39,7 +39,6 @@ const accessoryTypes = [
       </div>
       <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
         <a href="/products/architectural#surface-finishing" class="btn btn-primary">View surface finishes</a>
-        <a href="/contact?src=architectural#quote" class="btn btn-secondary">Request hardware spec</a>
       </div>
     </div>
   </section>
@@ -61,5 +60,5 @@ const accessoryTypes = [
   .ac-card-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .ac-card-desc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
 
-  @media (max-width: 640px) { .ac-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .ac-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>

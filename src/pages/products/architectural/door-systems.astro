@@ -1,21 +1,20 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Pic from '../../../components/Pic.astro';
+import SeriesGrid from '../../../components/SeriesGrid.astro';
+import { byCategory, ALL_SERIES } from '../../../lib/series';
+
+// Series, copy and catalogue imagery: Sept 2026 Profile Catalogue (src/lib/series.ts).
+const doorSeries = byCategory('door-systems');
+const scene = (slug: string) => ALL_SERIES.find((x) => x.slug === slug)!.scene.src;
 
 const doorTypes = [
   { name: 'Sliding Doors',    desc: 'Two, three and four-panel sliding configurations. Suited to large residential and commercial openings requiring smooth, low-effort operation.', img: '/assets/architectural-systems/sliding-doors-lobby.jpg' },
-  { name: 'Folding Doors',    desc: 'Multi-leaf bi-fold configurations stacking to one or both sides. Maximises clear opening width for indoor–outdoor living and hospitality frontages.', img: '/assets/architectural-systems/folding-door-studio.png' },
+  { name: 'Folding Doors',    desc: 'Multi-leaf bi-fold configurations stacking to one or both sides. Maximises clear opening width for indoor–outdoor living and hospitality frontages.', img: scene('50mm-sliding-folding') },
   { name: 'Partition Systems',desc: 'Fixed and operable internal aluminium partitions for offices and institutional interiors, with matching glazing and finish options.', img: '/assets/architectural-systems/aluminium-partition-system.jpg' },
-  { name: 'Door Frames',      desc: 'Hinged single and double-leaf entrance door frames, sized to match façade and window sightlines for a consistent building elevation.', img: '/assets/architectural-systems/door-frame-casement-e3.jpg' },
+  { name: 'Door Frames',      desc: 'Hinged single and double-leaf entrance door frames, sized to match façade and window sightlines for a consistent building elevation.', img: scene('door-profiles') },
 ];
 
-const fiftySeries = {
-  name: '50 mm Casement Series',
-  width: '50 mm',
-  glazing: 'Single or double glaze',
-  tier: 'Residential and commercial: windows, entrance doors, bi-fold systems',
-  desc: 'Versatile 50 mm frame system spanning casement windows, hinged entrance doors, and sliding-folding bi-fold configurations. Suited to larger openings, commercial entrances, and multi-leaf folding door applications.',
-};
 ---
 
 <Layout
@@ -23,7 +22,7 @@ const fiftySeries = {
   description="Sliding, folding, partition and entrance door systems in aluminium, including 50 mm multi-leaf frame series for residential and commercial openings."
 >
   <section class="ds-hero">
-    <Pic src="/assets/architectural-systems/aluminium-folding-doors-poolside.png" alt="Banco aluminium folding doors opening onto a poolside terrace" class="ds-hero-img" loading="eager" sizes="100vw" />
+    <Pic src={scene('50mm-sliding-folding')} alt="" class="ds-hero-img" focus="50% 50%" loading="eager" sizes="100vw" />
     <div class="ds-hero-scrim" aria-hidden="true"></div>
     <div class="container ds-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Door systems</div>
@@ -53,19 +52,11 @@ const fiftySeries = {
     </div>
   </section>
 
-  <section class="ds-split">
-    <div class="ds-split-visual">
-      <Pic src="/assets/architectural/1c425a807b29256caece389fa7ed010f.jpg" alt="Banco 50 mm casement and bi-fold door series" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-    </div>
-    <div class="ds-split-body">
-      <div class="eyebrow">50 mm series</div>
-      <h2 class="ds-split-h2">{fiftySeries.name}</h2>
-      <p style="font-size:14px;line-height:1.65;color:var(--color-stone-700);margin-top:16px">{fiftySeries.desc}</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px">
-        <span class="pill">{fiftySeries.glazing}</span>
-        <span class="pill">{fiftySeries.tier}</span>
-      </div>
-      <a href="/contact?src=architectural#quote" class="btn btn-primary" style="margin-top:28px;align-self:flex-start">Specify a system</a>
+  <section class="section-alt section-pad ds-series">
+    <div class="container">
+      <div class="eyebrow">Door series</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">50 mm casement, sliding &amp; folding,<br>and door profiles.</h2>
+      <SeriesGrid series={doorSeries} />
     </div>
   </section>
 </Layout>
@@ -89,16 +80,10 @@ const fiftySeries = {
   .ds-card-title { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-platinum); }
   .ds-card-desc { font-size: 12px; line-height: 1.55; color: var(--color-silver); margin-top: 4px; }
 
-  .ds-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 60vh; }
-  .ds-split-visual { overflow: hidden; background: var(--color-stone-200); }
-  .ds-split-visual :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ds-split-body { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px); background: var(--color-stone-100); }
-  .ds-split-h2 { font-family: var(--font-sans); font-size: clamp(24px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--color-navy); margin-top: 12px; }
+  .ds-series { padding: clamp(48px, 6vw, 88px) 0; }
 
   @media (max-width: 900px) {
     .ds-grid { grid-template-columns: 1fr 1fr; }
-    .ds-split { grid-template-columns: 1fr; min-height: auto; }
-    .ds-split-visual { min-height: 300px; }
   }
-  @media (max-width: 540px) { .ds-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .ds-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>

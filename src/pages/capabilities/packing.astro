@@ -26,18 +26,19 @@ const externalOptions = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
         src="/assets/capabilities/packing-hero-banco.jpg"
         alt="Banco-branded, wrapped and strapped aluminium profile bundles on export racking"
         class="cap-hero-img"
+        focus="50% 40%" focusMobile="46% 50%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Packing</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Customer-specified<br>packing.<br>Export-ready.
@@ -203,9 +204,14 @@ const externalOptions = [
 </Layout>
 
 <style>
+  /* Three stacked lines at the shared 0.95 leading read as one solid block and
+     crowd the lede beneath. A touch more leading and a wider gap to the lede. */
+  .cap-h1 { line-height: 1.04; }
+  .cap-lead { margin-top: 32px; }
+
   .pk-options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .pk-option-card { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
-  .pk-option-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .pk-option-id   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .pk-option-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .pk-option-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); }
   .pk-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; padding: 16px 20px; border: 1px solid var(--color-stone-200); background: var(--color-stone-100); }
@@ -214,15 +220,15 @@ const externalOptions = [
 
   .pk-ext-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .pk-ext-card { background: var(--color-navy-soft); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
-  .pk-ext-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .pk-ext-id   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .pk-ext-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-platinum); }
   .pk-ext-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-silver); }
-  .pk-ext-note { margin-top: 20px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
+  .pk-ext-note { margin-top: 20px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
 
   .pk-doc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .pk-docs-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
   .pk-doc-row  { padding: 14px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .pk-doc-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+  .pk-doc-name { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
   .pk-doc-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
 
   @media (max-width: 1280px) {
@@ -236,7 +242,7 @@ const externalOptions = [
     .pk-ext-grid     { grid-template-columns: repeat(2, 1fr); }
     .pk-options-grid > :last-child,
     .pk-ext-grid > :last-child { grid-column: span 2; }
-    .pk-doc-grid { grid-template-columns: 1fr; }
+    .pk-doc-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .pk-options-grid { grid-template-columns: 1fr 1fr; }
@@ -245,11 +251,6 @@ const externalOptions = [
     .pk-ext-grid > :last-child { grid-column: span 2; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 40%;
-  }
 
   .pk-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .pk-gal-fig { margin: 0; background: var(--color-stone-50); }
@@ -258,9 +259,9 @@ const externalOptions = [
   .pk-gal-fig:hover .pk-gal-img :global(img) { transform: scale(1.04); }
   .pk-gal-fig figcaption {
     padding: 12px 14px; border-top: 2px solid var(--color-green);
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-navy); line-height: 1.5;
   }
   @media (max-width: 1024px) { .pk-gallery { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px)  { .pk-gallery { grid-template-columns: 1fr; } }
+  @media (max-width: 640px)  { .pk-gallery { grid-template-columns: minmax(0, 1fr); } }
 </style>

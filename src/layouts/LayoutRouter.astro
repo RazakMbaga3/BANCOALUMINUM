@@ -146,6 +146,7 @@ const orgLd = {
     justify-content: space-between;
     height: 60px;
   }
+  .rh-logo { display: flex; align-items: center; min-height: 48px; }
   .rh-logo img {
     display: block;
     height: 30px;
@@ -156,13 +157,14 @@ const orgLd = {
     align-items: center;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-platinum);
     text-decoration: none;
     border: 1px solid rgba(40, 69, 106, 0.55);
     padding: 7px 14px;
+    min-height: 44px;
     transition: border-color 0.2s, color 0.2s;
   }
   .rh-cta svg { color: var(--color-green); flex-shrink: 0; }
@@ -192,6 +194,6 @@ const orgLd = {
   /* Keep logo + quote CTA on one 60px line at the narrowest widths */
   @media (max-width: 380px) {
     .rh-logo img { height: 24px; }
-    .rh-cta { font-size: 9px; padding: 6px 10px; letter-spacing: 0.12em; gap: 6px; }
+    .rh-cta { font-size: max(9px, var(--fs-min, 0px)); padding: 6px 10px; letter-spacing: 0.12em; gap: 6px; }
   }
 </style>

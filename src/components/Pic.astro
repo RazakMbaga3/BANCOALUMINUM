@@ -3,6 +3,16 @@
  * Responsive <picture> over the pre-generated AVIF/WebP variants
  * (scripts/optimize-images.mjs). The original file stays as the <img> fallback.
  * `picture { display: contents }` in global.css keeps layout identical to a bare <img>.
+ *
+ * Subject-aware framing: `focus` / `focusMobile` set the crop's focal point
+ * (see "IMAGE FRAMING" in global.css) instead of a hard-coded centre crop.
+ *   focus        — "x% y%" or keywords ("left 30%", "top"). Default 50% 50%.
+ *   focusMobile  — optional different focal point at ≤768px (portrait-ish boxes
+ *                  reveal a different slice of the photo than desktop does).
+ *   ratio / ratioMobile — optional aspect-ratio ("4 / 3") applied to the <img> itself;
+ *                  use when the image, not its wrapper, owns the box.
+ *   fit          — 'cover' (default when a focus is set) or 'contain' for product cut-outs
+ *                  that must never be cropped.
  */
 import { optSrcset } from '../lib/img';
 
@@ -20,6 +30,11 @@ interface Props {
   style?: string;
   width?: number;
   height?: number;
+  focus?: string;
+  focusMobile?: string;
+  ratio?: string;
+  ratioMobile?: string;
+  fit?: 'cover' | 'contain';
 }
 
 const {
@@ -34,7 +49,23 @@ const {
   style,
   width,
   height,
+  focus,
+  focusMobile,
+  ratio,
+  ratioMobile,
+  fit,
 } = Astro.props;
+
+// Framing travels as custom properties; global.css turns them into
+// object-position / aspect-ratio with a mobile override and safe fallbacks.
+const framing = [
+  focus && `--fp:${focus}`,
+  focusMobile && `--fp-m:${focusMobile}`,
+  ratio && `--ar:${ratio}`,
+  ratioMobile && `--ar-m:${ratioMobile}`,
+  fit && `--fit:${fit}`,
+].filter(Boolean).join(';');
+const mergedStyle = [framing, style].filter(Boolean).join(';') || undefined;
 
 const avifSet = optSrcset(src, 'avif', maxW);
 const webpSet = optSrcset(src, 'webp', maxW);
@@ -50,7 +81,12 @@ const webpSet = optSrcset(src, 'webp', maxW);
     fetchpriority={fetchpriority}
     decoding={decoding}
     class={className}
-    style={style}
+    style={mergedStyle}
+    data-fp={focus ? '' : undefined}
+    data-fpm={focusMobile ? '' : undefined}
+    data-ar={ratio ? '' : undefined}
+    data-arm={ratioMobile ? '' : undefined}
+    data-fit={fit ? '' : undefined}
     width={width}
     height={height}
   />

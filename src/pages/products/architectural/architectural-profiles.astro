@@ -40,7 +40,6 @@ const profileTypes = [
       </div>
       <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
         <a href="/products/standard-sections" class="btn btn-primary">View standard sections</a>
-        <a href="/contact#drawing" class="btn btn-secondary">Submit a custom drawing</a>
       </div>
     </div>
   </section>
@@ -62,5 +61,5 @@ const profileTypes = [
   .ap-card-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .ap-card-desc { font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
 
-  @media (max-width: 900px) { .ap-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .ap-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>

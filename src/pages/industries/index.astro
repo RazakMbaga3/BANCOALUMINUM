@@ -13,7 +13,7 @@ const industries = [
   { index: '09', name: 'Architecture & construction', href: '/products/architectural', desc: 'Window systems, door profiles, slim partitions, curtain wall and façade profiles.' },
   { index: '10', name: 'Material handling & structural', href: '/industries/material-handling', desc: 'Rails, ladders, scaffolding components, conveyor frames, structural supports.' },
   { index: '11', name: 'Pumps, motors & general engineering', href: '/industries/pumps-motors', desc: 'Motor frame sections, pump housings, general engineering profiles in 6xxx alloys.' },
-  { index: '12', name: 'Forging & precision machining', href: '/industries/forging', desc: 'Machinable sections and preforms in 6xxx and 2xxx alloys for downstream machining.' },
+  { index: '12', name: 'Machining & value addition', href: '/industries/forging', desc: 'Complete secondary processing: VMC machining, punching, cutting, drilling, CNC turning and bending.' },
 ];
 ---
 
@@ -42,7 +42,7 @@ const industries = [
       <div class="ind-mosaic">
         {industries.map((ind) => (
           <a href={ind.href} class="ind-mosaic-cell">
-            <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green)">{ind.index}</div>
+            <div style="font-family:var(--font-mono);font-size: max(10px, var(--fs-min, 0px));letter-spacing:0.18em;text-transform:uppercase;color:var(--color-green)">{ind.index}</div>
             <h2 style="font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--color-navy);line-height:1.2">{ind.name}</h2>
             <p style="font-size:14px;color:var(--color-stone-700);line-height:1.55">{ind.desc}</p>
             <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--color-navy);margin-top:auto;padding-top:16px;border-top:1px solid var(--color-stone-200)">
@@ -69,7 +69,6 @@ const industries = [
             We work across many more applications. Send us your drawing or specification.
           </p>
         </div>
-        <a href="/contact#quote" class="btn btn-primary-dark">Send Enquiry</a>
       </div>
     </div>
   </section>

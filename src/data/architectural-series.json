@@ -1,0 +1,2805 @@
+{
+  "source": {
+    "title": "Architectural Series Product Catalogue",
+    "pages": 42,
+    "version": "September 2026",
+    "driveId": "1A4FOXbKyWjuNz5gYg-jERimv2CZaZTf6"
+  },
+  "intro": "Banco Aluminium specialises in crafting high-performance aluminium systems tailored for modern architecture. We offer precision-engineered solutions for windows, doors, and partition systems, all designed to fulfil the requirements of contemporary construction projects. Our fully integrated production process allows us to oversee every phase, from raw materials to the completed profile. This level of control enables us to deliver systems that are not only precision-designed and durable but also aesthetically refined, making them perfect for residential homes, commercial buildings, and high-rise developments.",
+  "features": [
+    {
+      "title": "Air permeability",
+      "desc": "Superior sealing to minimize air leakage, dust, and drafts."
+    },
+    {
+      "title": "Water tightness",
+      "desc": "Advanced drainage and sealing systems for reliable monsoon protection."
+    },
+    {
+      "title": "Structural integrity",
+      "desc": "Robust construction designed for high impact and structural stability."
+    },
+    {
+      "title": "Wind load",
+      "desc": "Engineered to withstand high wind pressures with excellent structural performance."
+    },
+    {
+      "title": "Sound insulation",
+      "desc": "Optimized sealing and glazing systems for enhanced noise reduction and comfort."
+    },
+    {
+      "title": "Thermal performance",
+      "desc": "Designed to minimize heat transfer and enhance year-round indoor comfort."
+    }
+  ],
+  "shared": {
+    "livingSpaces": {
+      "src": "/assets/architectural/series/_shared/living-spaces.jpg",
+      "w": 2522,
+      "h": 1372
+    },
+    "technicalFeatures": {
+      "src": "/assets/architectural/series/_shared/technical-features.jpg",
+      "w": 1576,
+      "h": 998
+    }
+  },
+  "series": [
+    {
+      "slug": "18mm-sliding",
+      "name": "18 mm Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "18 mm",
+      "description": "An affordable and elite series, specially designed for low-rise buildings while offering a refined look and reliable performance.",
+      "copyFixes": [],
+      "cataloguePages": [
+        2,
+        3
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/18mm-sliding/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/18mm-sliding/render-1.png",
+          "w": 709,
+          "h": 830
+        }
+      ],
+      "profiles": [
+        {
+          "art": "SPS 2047401",
+          "kgm": 0.481,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-2047401.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.731
+        },
+        {
+          "art": "SPS 2047402",
+          "kgm": 0.526,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-2047402.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.828
+        },
+        {
+          "art": "ART 2029633",
+          "kgm": 0.438,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/art-2029633.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.848
+        },
+        {
+          "art": "SPS 1047399",
+          "kgm": 0.915,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-1047399.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.632
+        },
+        {
+          "art": "SPS 1047400",
+          "kgm": 1.055,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-1047400.svg",
+          "kind": "svg",
+          "w": 181.2,
+          "h": 97.1,
+          "match": 0.717
+        },
+        {
+          "art": "SPS 2047340",
+          "kgm": 0.523,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-2047340.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 99.1,
+          "match": 0.742
+        },
+        {
+          "art": "ART 2029595",
+          "kgm": 0.427,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/art-2029595.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.727
+        },
+        {
+          "art": "ART 2029596",
+          "kgm": 0.421,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/art-2029596.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.762
+        },
+        {
+          "art": "SPS 1047321",
+          "kgm": 0.425,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-1047321.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.78
+        },
+        {
+          "art": "ART 1029594",
+          "kgm": 0.502,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/art-1029594.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.641
+        },
+        {
+          "art": "SPS 1029906",
+          "kgm": 0.539,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-1029906.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.678
+        },
+        {
+          "art": "SPS 1029907",
+          "kgm": 0.447,
+          "src": "/assets/architectural/series/18mm-sliding/profiles/sps-1029907.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.664
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Handle",
+              "section": "SPS 2047201",
+              "kgm": 0.481,
+              "weight": 0.577,
+              "count": 2,
+              "net": 1.154
+            },
+            {
+              "name": "Interlock",
+              "section": "SPS 2047202",
+              "kgm": 0.526,
+              "weight": 0.631,
+              "count": 2,
+              "net": 1.262
+            },
+            {
+              "name": "Top/Bottom",
+              "section": "ART 2029633",
+              "kgm": 0.438,
+              "weight": 0.526,
+              "count": 2,
+              "net": 1.052
+            },
+            {
+              "name": "2 Track TOP",
+              "section": "SPS 2047202",
+              "kgm": 0.915,
+              "weight": 1.098,
+              "count": 3,
+              "net": 3.294
+            },
+            {
+              "name": "2 Track Bottom",
+              "section": "SPS 2047400",
+              "kgm": 1.055,
+              "weight": 1.266,
+              "count": 1,
+              "net": 1.266
+            }
+          ],
+          "total": 8.028,
+          "issues": [
+            "Handle: section SPS 2047201 does not appear on any drawing in the catalogue (the 0.481 kg/m drawing in this series is SPS 2047401)",
+            "Interlock: section SPS 2047202 does not appear on any drawing in the catalogue (the 0.526 kg/m drawing in this series is SPS 2047402)",
+            "2 Track TOP: section SPS 2047202 does not appear on any drawing in the catalogue (the 0.915 kg/m drawing in this series is SPS 1047399)",
+            "2 Track Bottom: section SPS 2047400 does not appear on any drawing in the catalogue (the 1.055 kg/m drawing in this series is SPS 1047400)"
+          ],
+          "hold": true
+        }
+      ]
+    },
+    {
+      "slug": "25mm-sliding",
+      "name": "25 mm Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "25 mm",
+      "description": "A high-end and slimline aluminium sliding series, compatible with single or double glazing and perfectly suited for bungalows and low-rise buildings.",
+      "copyFixes": [],
+      "cataloguePages": [
+        4,
+        5
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/25mm-sliding/scene.jpg",
+        "w": 1634,
+        "h": 962
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/25mm-sliding/render-1.png",
+          "w": 806,
+          "h": 1376
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029651",
+          "kgm": 0.83,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-1029651.svg",
+          "kind": "svg",
+          "w": 268.0,
+          "h": 147.4,
+          "match": 0.655
+        },
+        {
+          "art": "ART 1029652",
+          "kgm": 0.396,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-1029652.svg",
+          "kind": "svg",
+          "w": 261.9,
+          "h": 147.4,
+          "match": 0.624
+        },
+        {
+          "art": "ART 1029653",
+          "kgm": 0.174,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-1029653.svg",
+          "kind": "svg",
+          "w": 268.0,
+          "h": 147.4,
+          "match": 0.573
+        },
+        {
+          "art": "ART 1029654",
+          "kgm": 0.873,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-1029654.svg",
+          "kind": "svg",
+          "w": 259.8,
+          "h": 148.2,
+          "match": 0.593
+        },
+        {
+          "art": "ART 2029655",
+          "kgm": 1.492,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-2029655.svg",
+          "kind": "svg",
+          "w": 267.0,
+          "h": 143.8,
+          "match": 0.725
+        },
+        {
+          "art": "HAD 1034209",
+          "kgm": 0.117,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/had-1034209.svg",
+          "kind": "svg",
+          "w": 261.7,
+          "h": 144.8,
+          "match": 0.556
+        },
+        {
+          "art": "ART 1029799",
+          "kgm": 0.492,
+          "src": "/assets/architectural/series/25mm-sliding/profiles/art-1029799.svg",
+          "kind": "svg",
+          "w": 266.5,
+          "h": 146.7,
+          "match": 0.679
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 2029651",
+              "kgm": 0.83,
+              "weight": 0.996,
+              "count": 6,
+              "net": 5.976
+            },
+            {
+              "name": "Interlock Clip",
+              "section": "ART 1029652",
+              "kgm": 0.396,
+              "weight": 0.475,
+              "count": 2,
+              "net": 0.95
+            },
+            {
+              "name": "2 Track",
+              "section": "ART 2029633",
+              "kgm": 0.873,
+              "weight": 1.048,
+              "count": 4,
+              "net": 4.192
+            },
+            {
+              "name": "Cap",
+              "section": "ART 2029653",
+              "kgm": 0.714,
+              "weight": 0.857,
+              "count": 2,
+              "net": 1.714
+            }
+          ],
+          "total": 12.832,
+          "issues": [
+            "Shutter: section ART 2029651 does not appear on any drawing in the catalogue (the 0.830 kg/m drawing in this series is ART 1029651)",
+            "2 Track: ART 2029633 (drawn in another series) is 0.438 kg/m, table says 0.873",
+            "Cap: section ART 2029653 does not appear on any drawing in the catalogue"
+          ],
+          "hold": true
+        }
+      ]
+    },
+    {
+      "slug": "26mm-premium-economic",
+      "name": "26 mm Premium Economic Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "26 mm",
+      "description": "An economically designed premium series, ideal for modern residences and bungalows while offering a refined look and reliable performance.",
+      "copyFixes": [],
+      "cataloguePages": [
+        6,
+        7
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/26mm-premium-economic/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/26mm-premium-economic/render-1.png",
+          "w": 547,
+          "h": 875
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029843",
+          "kgm": 0.765,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029843.svg",
+          "kind": "svg",
+          "w": 265.4,
+          "h": 146.0,
+          "match": 0.631
+        },
+        {
+          "art": "ART 1029652",
+          "kgm": 0.396,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029652.svg",
+          "kind": "svg",
+          "w": 259.4,
+          "h": 146.0,
+          "match": 0.522
+        },
+        {
+          "art": "ART 1029844",
+          "kgm": 0.45,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029844.svg",
+          "kind": "svg",
+          "w": 265.4,
+          "h": 146.0,
+          "match": 0.729
+        },
+        {
+          "art": "ART 1029845",
+          "kgm": 0.36,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029845.svg",
+          "kind": "svg",
+          "w": 259.4,
+          "h": 146.6,
+          "match": 0.476
+        },
+        {
+          "art": "ART 1029846",
+          "kgm": 0.849,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029846.svg",
+          "kind": "svg",
+          "w": 265.9,
+          "h": 143.2,
+          "match": 0.646
+        },
+        {
+          "art": "ART 1029847",
+          "kgm": 0.613,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029847.svg",
+          "kind": "svg",
+          "w": 259.3,
+          "h": 144.5,
+          "match": 0.596
+        },
+        {
+          "art": "ART 1029683",
+          "kgm": 0.166,
+          "src": "/assets/architectural/series/26mm-premium-economic/profiles/art-1029683.svg",
+          "kind": "svg",
+          "w": 265.5,
+          "h": 146.1,
+          "match": 0.564
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029843",
+              "kgm": 0.765,
+              "weight": 0.918,
+              "count": 6,
+              "net": 5.508
+            },
+            {
+              "name": "Interlock Clip",
+              "section": "ART 1029844",
+              "kgm": 0.45,
+              "weight": 0.54,
+              "count": 2,
+              "net": 1.08
+            },
+            {
+              "name": "2 Track",
+              "section": "ART 1029846",
+              "kgm": 0.849,
+              "weight": 1.019,
+              "count": 4,
+              "net": 4.076
+            },
+            {
+              "name": "U Type Track Rail",
+              "section": "ART 1029683",
+              "kgm": 0.166,
+              "weight": 0.199,
+              "count": 2,
+              "net": 0.398
+            }
+          ],
+          "total": 11.062,
+          "issues": [],
+          "hold": false
+        }
+      ]
+    },
+    {
+      "slug": "27mm-euro",
+      "name": "27 mm Euro Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "27 mm",
+      "description": "A high-quality aluminium sliding series, ideal for modern residential and commercial buildings, offering structural strength and sound insulation.",
+      "copyFixes": [],
+      "cataloguePages": [
+        8,
+        9
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/27mm-euro/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/27mm-euro/render-1.png",
+          "w": 455,
+          "h": 740
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 2029624",
+          "kgm": 0.838,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-2029624.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.66
+        },
+        {
+          "art": "ART 1029625",
+          "kgm": 0.293,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029625.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.613
+        },
+        {
+          "art": "ART 1029626",
+          "kgm": 0.907,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029626.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.677
+        },
+        {
+          "art": "ART 2029627",
+          "kgm": 1.403,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-2029627.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.739
+        },
+        {
+          "art": "ART 2029641",
+          "kgm": 1.906,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-2029641.svg",
+          "kind": "svg",
+          "w": 181.1,
+          "h": 96.7,
+          "match": 0.822
+        },
+        {
+          "art": "ART 1029642",
+          "kgm": 1.37,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029642.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.757
+        },
+        {
+          "art": "RTU 1020397",
+          "kgm": 0.195,
+          "src": "/assets/architectural/series/27mm-euro/profiles/rtu-1020397.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.638
+        },
+        {
+          "art": "RET 1027054",
+          "kgm": 0.433,
+          "src": "/assets/architectural/series/27mm-euro/profiles/ret-1027054.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.662
+        },
+        {
+          "art": "ART 1029746",
+          "kgm": 0.677,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029746.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.1,
+          "match": 0.644
+        },
+        {
+          "art": "ART 1029747",
+          "kgm": 0.725,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029747.svg",
+          "kind": "svg",
+          "w": 185.0,
+          "h": 102.7,
+          "match": 0.778
+        },
+        {
+          "art": "ART 1029748",
+          "kgm": 1.133,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029748.svg",
+          "kind": "svg",
+          "w": 180.8,
+          "h": 102.7,
+          "match": 0.795
+        },
+        {
+          "art": "ART 1029908",
+          "kgm": 0.339,
+          "src": "/assets/architectural/series/27mm-euro/profiles/art-1029908.svg",
+          "kind": "svg",
+          "w": 185.0,
+          "h": 103.0,
+          "match": 0.672
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION - 27 MM EURO SERIES",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 2029624",
+              "kgm": 0.838,
+              "weight": 1.006,
+              "count": 6,
+              "net": 6.036
+            },
+            {
+              "name": "Interlock Clip",
+              "section": "ART 1029625",
+              "kgm": 0.293,
+              "weight": 0.352,
+              "count": 2,
+              "net": 0.704
+            },
+            {
+              "name": "2 TRACK",
+              "section": "ART 1029626",
+              "kgm": 0.907,
+              "weight": 1.088,
+              "count": 4,
+              "net": 4.352
+            }
+          ],
+          "total": 11.092,
+          "issues": [],
+          "hold": false
+        },
+        {
+          "title": "SPECIFICATION - 27 MM EURO SERIES - GRILL",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 2029624",
+              "kgm": 0.838,
+              "weight": 1.006,
+              "count": 6,
+              "net": 6.036
+            },
+            {
+              "name": "Interlock Clip",
+              "section": "ART 1029625",
+              "kgm": 0.293,
+              "weight": 0.352,
+              "count": 2,
+              "net": 0.704
+            },
+            {
+              "name": "Grill Track",
+              "section": "ART 1029642",
+              "kgm": 1.37,
+              "weight": 1.644,
+              "count": 4,
+              "net": 6.576
+            },
+            {
+              "name": "Ret Pipe",
+              "section": "RET 1027054",
+              "kgm": 0.433,
+              "weight": 0.52,
+              "count": 1,
+              "net": 0.52
+            },
+            {
+              "name": "Round Pipe",
+              "section": "RTU 1020397",
+              "kgm": 0.195,
+              "weight": 0.234,
+              "count": 10,
+              "net": 2.34
+            }
+          ],
+          "total": 16.176,
+          "issues": [],
+          "hold": false
+        }
+      ]
+    },
+    {
+      "slug": "27mm-slim",
+      "name": "27 mm Slim Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "27 mm",
+      "description": "A high-performance, slim, and aesthetic series, best suited for residential bungalows and premium low-rise buildings.",
+      "copyFixes": [],
+      "cataloguePages": [
+        10,
+        11
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/27mm-slim/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/27mm-slim/render-1.png",
+          "w": 612,
+          "h": 767
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029835",
+          "kgm": 0.741,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029835.svg",
+          "kind": "svg",
+          "w": 185.7,
+          "h": 101.7,
+          "match": 0.859
+        },
+        {
+          "art": "ART 1029836",
+          "kgm": 0.768,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029836.svg",
+          "kind": "svg",
+          "w": 181.5,
+          "h": 101.7,
+          "match": 0.799
+        },
+        {
+          "art": "ART 1029837",
+          "kgm": 0.561,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029837.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.8
+        },
+        {
+          "art": "ART 1029838",
+          "kgm": 1.372,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029838.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 102.5,
+          "match": 0.788
+        },
+        {
+          "art": "ART 1029839",
+          "kgm": 1.176,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029839.svg",
+          "kind": "svg",
+          "w": 182.2,
+          "h": 100.4,
+          "match": 0.611
+        },
+        {
+          "art": "ART 2029915",
+          "kgm": 1.811,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-2029915.svg",
+          "kind": "svg",
+          "w": 184.3,
+          "h": 101.3,
+          "match": 0.747
+        },
+        {
+          "art": "ART 1029859",
+          "kgm": 0.559,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029859.svg",
+          "kind": "svg",
+          "w": 185.6,
+          "h": 101.7,
+          "match": 0.673
+        },
+        {
+          "art": "ART 1029860",
+          "kgm": 1.054,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029860.svg",
+          "kind": "svg",
+          "w": 181.4,
+          "h": 101.7,
+          "match": 0.634
+        },
+        {
+          "art": "ART 1029840",
+          "kgm": 0.104,
+          "src": "/assets/architectural/series/27mm-slim/profiles/art-1029840.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.558
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029835",
+              "kgm": 0.741,
+              "weight": 0.889,
+              "count": 6,
+              "net": 5.334
+            },
+            {
+              "name": "SGU Interlock",
+              "section": "ART 1029837",
+              "kgm": 0.561,
+              "weight": 0.673,
+              "count": 1,
+              "net": 0.673
+            },
+            {
+              "name": "Reinforcement",
+              "section": "ART 1029838",
+              "kgm": 1.372,
+              "weight": 1.646,
+              "count": 1,
+              "net": 1.646
+            },
+            {
+              "name": "2 Track",
+              "section": "ART 1029839",
+              "kgm": 1.176,
+              "weight": 1.411,
+              "count": 4,
+              "net": 5.644
+            },
+            {
+              "name": "U Type Track Rail",
+              "section": "ART 1029840",
+              "kgm": 0.104,
+              "weight": 0.125,
+              "count": 2,
+              "net": 0.25
+            }
+          ],
+          "total": 13.547,
+          "issues": [],
+          "hold": false
+        }
+      ]
+    },
+    {
+      "slug": "29mm-sliding",
+      "name": "29 mm Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "29 mm",
+      "description": "A high-performance aluminium sliding system for modern residential and commercial spaces, offering durable, weather-resistant solutions.",
+      "copyFixes": [],
+      "cataloguePages": [
+        12,
+        13
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/29mm-sliding/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/29mm-sliding/render-1.png",
+          "w": 488,
+          "h": 613
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029634",
+          "kgm": 0.974,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029634.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.816
+        },
+        {
+          "art": "ART 2029635",
+          "kgm": 0.851,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029635.svg",
+          "kind": "svg",
+          "w": 152.5,
+          "h": 85.3,
+          "match": 0.751
+        },
+        {
+          "art": "ART 1029650",
+          "kgm": 0.339,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029650.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.833
+        },
+        {
+          "art": "ART 1029649",
+          "kgm": 0.978,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029649.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.828
+        },
+        {
+          "art": "ART 1029662",
+          "kgm": 0.629,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029662.svg",
+          "kind": "svg",
+          "w": 152.5,
+          "h": 85.3,
+          "match": 0.87
+        },
+        {
+          "art": "HAD 1034209",
+          "kgm": 0.117,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/had-1034209.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.794
+        },
+        {
+          "art": "ART 1029864",
+          "kgm": 0.826,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029864.svg",
+          "kind": "svg",
+          "w": 163.0,
+          "h": 85.3,
+          "match": 0.867
+        },
+        {
+          "art": "ART 2029640",
+          "kgm": 1.65,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029640.svg",
+          "kind": "svg",
+          "w": 156.2,
+          "h": 81.6,
+          "match": 0.846
+        },
+        {
+          "art": "ART 1029638",
+          "kgm": 1.097,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029638.svg",
+          "kind": "svg",
+          "w": 152.8,
+          "h": 81.6,
+          "match": 0.876
+        },
+        {
+          "art": "ART 2029639",
+          "kgm": 1.697,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029639.svg",
+          "kind": "svg",
+          "w": 156.2,
+          "h": 81.6,
+          "match": 0.855
+        },
+        {
+          "art": "ART 1029841",
+          "kgm": 1.47,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029841.svg",
+          "kind": "svg",
+          "w": 156.2,
+          "h": 81.6,
+          "match": 0.83
+        },
+        {
+          "art": "ART 1029812",
+          "kgm": 1.192,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029812.svg",
+          "kind": "svg",
+          "w": 152.8,
+          "h": 81.6,
+          "match": 0.817
+        },
+        {
+          "art": "ART 2029813",
+          "kgm": 1.772,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029813.svg",
+          "kind": "svg",
+          "w": 156.2,
+          "h": 81.6,
+          "match": 0.884
+        },
+        {
+          "art": "ART 2029916",
+          "kgm": 1.407,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029916.svg",
+          "kind": "svg",
+          "w": 162.9,
+          "h": 81.7,
+          "match": 0.895
+        },
+        {
+          "art": "ART 1029637",
+          "kgm": 0.175,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029637.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.892
+        },
+        {
+          "art": "ART 1029661",
+          "kgm": 0.366,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029661.svg",
+          "kind": "svg",
+          "w": 152.6,
+          "h": 85.3,
+          "match": 0.674
+        },
+        {
+          "art": "ART 1029648",
+          "kgm": 0.542,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029648.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.806
+        },
+        {
+          "art": "ART 1029842",
+          "kgm": 0.427,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029842.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.862
+        },
+        {
+          "art": "ART 1029840",
+          "kgm": 0.104,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029840.svg",
+          "kind": "svg",
+          "w": 152.6,
+          "h": 85.3,
+          "match": 0.807
+        },
+        {
+          "art": "ART 1029683",
+          "kgm": 0.166,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029683.svg",
+          "kind": "svg",
+          "w": 156.1,
+          "h": 85.3,
+          "match": 0.891
+        },
+        {
+          "art": "ART 2029917",
+          "kgm": 1.974,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029917.svg",
+          "kind": "svg",
+          "w": 162.4,
+          "h": 84.9,
+          "match": 0.928
+        },
+        {
+          "art": "RTU 1020397",
+          "kgm": 0.195,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/rtu-1020397.svg",
+          "kind": "svg",
+          "w": 155.9,
+          "h": 85.4,
+          "match": 0.783
+        },
+        {
+          "art": "ART 1029423",
+          "kgm": 0.309,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029423.svg",
+          "kind": "svg",
+          "w": 152.7,
+          "h": 85.4,
+          "match": 0.879
+        },
+        {
+          "art": "ART 1029798",
+          "kgm": 0.108,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029798.svg",
+          "kind": "svg",
+          "w": 156.3,
+          "h": 85.4,
+          "match": 0.966
+        },
+        {
+          "art": "ART 1029918",
+          "kgm": 0.915,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-1029918.svg",
+          "kind": "svg",
+          "w": 155.5,
+          "h": 84.9,
+          "match": 0.733
+        },
+        {
+          "art": "ART 2029919",
+          "kgm": 1.223,
+          "src": "/assets/architectural/series/29mm-sliding/profiles/art-2029919.svg",
+          "kind": "svg",
+          "w": 152.0,
+          "h": 84.9,
+          "match": 0.773
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION - 29 MM EURO SERIES",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029634",
+              "kgm": 0.974,
+              "weight": 1.169,
+              "count": 6,
+              "net": 7.014
+            },
+            {
+              "name": "Interlock Clip",
+              "section": "ART 1029650",
+              "kgm": 0.339,
+              "weight": 0.407,
+              "count": 2,
+              "net": 0.814
+            },
+            {
+              "name": "2 TRACK",
+              "section": "ART 1029638",
+              "kgm": 1.097,
+              "weight": 1.316,
+              "count": 4,
+              "net": 5.264
+            },
+            {
+              "name": "Cap",
+              "section": "ART 1029637",
+              "kgm": 0.175,
+              "weight": 0.21,
+              "count": 2,
+              "net": 0.42
+            }
+          ],
+          "total": 13.512,
+          "issues": [],
+          "hold": false
+        },
+        {
+          "title": "SPECIFICATION - 29 MM EURO SERIES SLIM",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029634",
+              "kgm": 0.974,
+              "weight": 1.169,
+              "count": 4,
+              "net": 4.676
+            },
+            {
+              "name": "Slim Interlock",
+              "section": "ART 1029648",
+              "kgm": 0.542,
+              "weight": 0.65,
+              "count": 1,
+              "net": 0.65
+            },
+            {
+              "name": "2 TRACK",
+              "section": "ART 1029638",
+              "kgm": 1.097,
+              "weight": 1.316,
+              "count": 4,
+              "net": 5.264
+            },
+            {
+              "name": "ReinForce Interlock",
+              "section": "ART 1029649",
+              "kgm": 0.978,
+              "weight": 1.174,
+              "count": 1,
+              "net": 1.174
+            },
+            {
+              "name": "Cap",
+              "section": "ART 1029637",
+              "kgm": 0.175,
+              "weight": 0.21,
+              "count": 2,
+              "net": 0.42
+            }
+          ],
+          "total": 12.184,
+          "issues": [],
+          "hold": false
+        }
+      ]
+    },
+    {
+      "slug": "31mm-gulf",
+      "name": "31 mm Gulf Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "31 mm",
+      "description": "A modern, high-performance aluminium window system for residential and commercial projects, offering sleek aesthetics and lasting durability.",
+      "copyFixes": [],
+      "cataloguePages": [
+        14,
+        15
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/31mm-gulf/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/31mm-gulf/render-1.png",
+          "w": 633,
+          "h": 825
+        },
+        {
+          "src": "/assets/architectural/series/31mm-gulf/render-2.png",
+          "w": 1446,
+          "h": 282
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029783",
+          "kgm": 0.878,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029783.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.733
+        },
+        {
+          "art": "ART 1029784",
+          "kgm": 0.91,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029784.svg",
+          "kind": "svg",
+          "w": 173.5,
+          "h": 97.2,
+          "match": 0.765
+        },
+        {
+          "art": "ART 1029785",
+          "kgm": 0.63,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029785.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.794
+        },
+        {
+          "art": "ART 1029786",
+          "kgm": 1.035,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029786.svg",
+          "kind": "svg",
+          "w": 177.7,
+          "h": 93.1,
+          "match": 0.772
+        },
+        {
+          "art": "ART 1029787",
+          "kgm": 0.857,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029787.svg",
+          "kind": "svg",
+          "w": 173.8,
+          "h": 93.1,
+          "match": 0.678
+        },
+        {
+          "art": "ART 1029788",
+          "kgm": 0.868,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029788.svg",
+          "kind": "svg",
+          "w": 177.7,
+          "h": 93.1,
+          "match": 0.682
+        },
+        {
+          "art": "ART 1029789",
+          "kgm": 0.556,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029789.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.728
+        },
+        {
+          "art": "ART 1029790",
+          "kgm": 0.967,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029790.svg",
+          "kind": "svg",
+          "w": 173.6,
+          "h": 97.2,
+          "match": 0.722
+        },
+        {
+          "art": "ART 2029791",
+          "kgm": 1.569,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-2029791.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.763
+        },
+        {
+          "art": "ART 2029792",
+          "kgm": 2.245,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-2029792.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.778
+        },
+        {
+          "art": "ART 1029793",
+          "kgm": 0.902,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029793.svg",
+          "kind": "svg",
+          "w": 173.5,
+          "h": 97.2,
+          "match": 0.599
+        },
+        {
+          "art": "ART 2029794",
+          "kgm": 1.426,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-2029794.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.652
+        },
+        {
+          "art": "ART 2029795",
+          "kgm": 1.288,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-2029795.svg",
+          "kind": "svg",
+          "w": 177.7,
+          "h": 93.1,
+          "match": 0.694
+        },
+        {
+          "art": "ART 1029796",
+          "kgm": 0.195,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029796.svg",
+          "kind": "svg",
+          "w": 173.8,
+          "h": 93.1,
+          "match": 0.466
+        },
+        {
+          "art": "ART 1029797",
+          "kgm": 0.4,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029797.svg",
+          "kind": "svg",
+          "w": 177.7,
+          "h": 93.1,
+          "match": 0.55
+        },
+        {
+          "art": "ART 1029798",
+          "kgm": 0.108,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029798.svg",
+          "kind": "svg",
+          "w": 177.6,
+          "h": 97.2,
+          "match": 0.753
+        },
+        {
+          "art": "ART 1029683",
+          "kgm": 0.166,
+          "src": "/assets/architectural/series/31mm-gulf/profiles/art-1029683.svg",
+          "kind": "svg",
+          "w": 173.6,
+          "h": 97.2,
+          "match": 0.657
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "35mm-gulf",
+      "name": "35 mm Gulf Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "35 mm",
+      "description": "A heavy-duty, sleek aluminium sliding system for residential and commercial spaces, offering strength and durability.",
+      "copyFixes": [],
+      "cataloguePages": [
+        16,
+        17
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/35mm-gulf/scene.jpg",
+        "w": 1448,
+        "h": 1086
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/35mm-gulf/render-1.png",
+          "w": 1160,
+          "h": 657
+        },
+        {
+          "src": "/assets/architectural/series/35mm-gulf/render-2.png",
+          "w": 1439,
+          "h": 359
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029677",
+          "kgm": 0.97,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029677.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.831
+        },
+        {
+          "art": "ART 2029675",
+          "kgm": 0.683,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-2029675.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.69
+        },
+        {
+          "art": "ART 1029676",
+          "kgm": 0.644,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029676.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.852
+        },
+        {
+          "art": "ART 1029678",
+          "kgm": 1.247,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029678.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.859
+        },
+        {
+          "art": "ART 1029680",
+          "kgm": 1.039,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029680.svg",
+          "kind": "svg",
+          "w": 181.2,
+          "h": 97.1,
+          "match": 0.687
+        },
+        {
+          "art": "ART 1029679",
+          "kgm": 1.201,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029679.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.845
+        },
+        {
+          "art": "ART 2029681",
+          "kgm": 1.779,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-2029681.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.774
+        },
+        {
+          "art": "ART 1029682",
+          "kgm": 0.234,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029682.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.653
+        },
+        {
+          "art": "ART 1029683",
+          "kgm": 0.166,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029683.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 101.4,
+          "match": 0.793
+        },
+        {
+          "art": "ART 2029711",
+          "kgm": 0.776,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-2029711.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.681
+        },
+        {
+          "art": "ART 1029798",
+          "kgm": 0.108,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029798.svg",
+          "kind": "svg",
+          "w": 180.9,
+          "h": 101.4,
+          "match": 0.541
+        },
+        {
+          "art": "ART 1029796",
+          "kgm": 0.195,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029796.svg",
+          "kind": "svg",
+          "w": 185.1,
+          "h": 101.4,
+          "match": 0.651
+        },
+        {
+          "art": "ART 1029712",
+          "kgm": 1.522,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-1029712.svg",
+          "kind": "svg",
+          "w": 185.2,
+          "h": 97.1,
+          "match": 0.804
+        },
+        {
+          "art": "ART 3029713",
+          "kgm": 2.492,
+          "src": "/assets/architectural/series/35mm-gulf/profiles/art-3029713.svg",
+          "kind": "svg",
+          "w": 181.2,
+          "h": 97.1,
+          "match": 0.764
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029677",
+              "kgm": 0.97,
+              "weight": 1.164,
+              "count": 4,
+              "net": 4.656
+            },
+            {
+              "name": "Slim Interlock",
+              "section": "ART 1029676",
+              "kgm": 0.644,
+              "weight": 0.773,
+              "count": 1,
+              "net": 0.773
+            },
+            {
+              "name": "2 TRACK",
+              "section": "ART 1029712",
+              "kgm": 1.552,
+              "weight": 1.862,
+              "count": 2,
+              "net": 3.724
+            },
+            {
+              "name": "ReinForce Interlock",
+              "section": "ART 1029678",
+              "kgm": 1.247,
+              "weight": 1.496,
+              "count": 1,
+              "net": 1.496
+            },
+            {
+              "name": "Cap",
+              "section": "ART 1029683",
+              "kgm": 0.166,
+              "weight": 0.199,
+              "count": 2,
+              "net": 0.398
+            },
+            {
+              "name": "Glass Reduce",
+              "section": "ART 1029682",
+              "kgm": 0.234,
+              "weight": 0.281,
+              "count": 2,
+              "net": 0.562
+            },
+            {
+              "name": "Side Track Gulf",
+              "section": "ART 1029679",
+              "kgm": 1.201,
+              "weight": 1.441,
+              "count": 2,
+              "net": 2.882
+            }
+          ],
+          "total": 14.491,
+          "issues": [
+            "2 TRACK: ART 1029712 is 1.522 kg/m on its drawing but 1.552 kg/m in the table"
+          ],
+          "hold": true
+        }
+      ]
+    },
+    {
+      "slug": "35x75mm-euro",
+      "name": "35 × 75 mm Euro Series",
+      "family": "Sliding windows",
+      "category": "window-systems",
+      "group": "sliding",
+      "width": "35 × 75 mm",
+      "description": "A premium, heavy-duty aluminium sliding system for high-end residential and commercial projects, offering strength and refined aesthetics.",
+      "copyFixes": [],
+      "cataloguePages": [
+        18,
+        19
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/35x75mm-euro/scene.jpg",
+        "w": 1402,
+        "h": 1122
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/35x75mm-euro/render-1.png",
+          "w": 633,
+          "h": 896
+        },
+        {
+          "src": "/assets/architectural/series/35x75mm-euro/render-2.png",
+          "w": 798,
+          "h": 149
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029804",
+          "kgm": 1.202,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029804.svg",
+          "kind": "svg",
+          "w": 184.6,
+          "h": 101.1,
+          "match": 0.755
+        },
+        {
+          "art": "ART 1029805",
+          "kgm": 1.155,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029805.svg",
+          "kind": "svg",
+          "w": 180.4,
+          "h": 101.1,
+          "match": 0.759
+        },
+        {
+          "art": "ART 1029806",
+          "kgm": 1.179,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029806.svg",
+          "kind": "svg",
+          "w": 184.6,
+          "h": 101.1,
+          "match": 0.6
+        },
+        {
+          "art": "ART 1029807",
+          "kgm": 1.134,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029807.svg",
+          "kind": "svg",
+          "w": 184.7,
+          "h": 96.8,
+          "match": 0.686
+        },
+        {
+          "art": "ART 1029808",
+          "kgm": 0.694,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029808.svg",
+          "kind": "svg",
+          "w": 180.7,
+          "h": 96.8,
+          "match": 0.768
+        },
+        {
+          "art": "ART 1029809",
+          "kgm": 0.65,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029809.svg",
+          "kind": "svg",
+          "w": 184.7,
+          "h": 96.8,
+          "match": 0.699
+        },
+        {
+          "art": "ART 1029810",
+          "kgm": 1.368,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029810.svg",
+          "kind": "svg",
+          "w": 184.7,
+          "h": 101.1,
+          "match": 0.765
+        },
+        {
+          "art": "ART 2029811",
+          "kgm": 2.073,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-2029811.svg",
+          "kind": "svg",
+          "w": 180.5,
+          "h": 101.1,
+          "match": 0.794
+        },
+        {
+          "art": "ART 1029683",
+          "kgm": 0.166,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029683.svg",
+          "kind": "svg",
+          "w": 184.7,
+          "h": 101.1,
+          "match": 0.716
+        },
+        {
+          "art": "ART 1029798",
+          "kgm": 0.108,
+          "src": "/assets/architectural/series/35x75mm-euro/profiles/art-1029798.png",
+          "kind": "png",
+          "w": 174.7,
+          "h": 95.9,
+          "match": 0.0
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Shutter",
+              "section": "ART 1029804",
+              "kgm": 1.202,
+              "weight": 1.442,
+              "count": 6,
+              "net": 8.652
+            },
+            {
+              "name": "Slim interlock",
+              "section": "ART 1029808",
+              "kgm": 0.694,
+              "weight": 0.833,
+              "count": 1,
+              "net": 0.833
+            },
+            {
+              "name": "Reinforcement",
+              "section": "ART 1029806",
+              "kgm": 1.179,
+              "weight": 1.415,
+              "count": 1,
+              "net": 1.415
+            },
+            {
+              "name": "2 TRACK",
+              "section": "ART 1029810",
+              "kgm": 1.368,
+              "weight": 1.642,
+              "count": 4,
+              "net": 6.568
+            },
+            {
+              "name": "U Type Track Rail",
+              "section": "ART 1029683",
+              "kgm": 0.166,
+              "weight": 0.199,
+              "count": 2,
+              "net": 0.398
+            }
+          ],
+          "total": 17.866,
+          "issues": [],
+          "hold": false
+        }
+      ]
+    },
+    {
+      "slug": "40mm-casement",
+      "name": "40 mm Casement Series",
+      "family": "Casement windows",
+      "category": "window-systems",
+      "group": "casement",
+      "width": "40 mm",
+      "description": "A slim, durable aluminium casement system offering high weather resistance and modern aesthetics.",
+      "copyFixes": [],
+      "cataloguePages": [
+        20,
+        21
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/40mm-casement/scene.jpg",
+        "w": 1402,
+        "h": 1122
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/40mm-casement/render-1.png",
+          "w": 277,
+          "h": 554
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 2029628",
+          "kgm": 0.723,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-2029628.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 97.0,
+          "match": 0.781
+        },
+        {
+          "art": "ART 1029629",
+          "kgm": 0.613,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029629.svg",
+          "kind": "svg",
+          "w": 173.3,
+          "h": 97.0,
+          "match": 0.779
+        },
+        {
+          "art": "ART 1029632",
+          "kgm": 0.789,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029632.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 100.6,
+          "match": 0.608
+        },
+        {
+          "art": "ART 1029630",
+          "kgm": 0.223,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029630.svg",
+          "kind": "svg",
+          "w": 177.4,
+          "h": 92.9,
+          "match": 0.627
+        },
+        {
+          "art": "ART 1029631",
+          "kgm": 0.223,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029631.svg",
+          "kind": "svg",
+          "w": 173.5,
+          "h": 92.9,
+          "match": 0.554
+        },
+        {
+          "art": "ART 2029643",
+          "kgm": 1.41,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-2029643.svg",
+          "kind": "svg",
+          "w": 177.4,
+          "h": 92.9,
+          "match": 0.692
+        },
+        {
+          "art": "ART 1029644",
+          "kgm": 1.203,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029644.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 97.1,
+          "match": 0.72
+        },
+        {
+          "art": "ART 1029645",
+          "kgm": 0.957,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029645.svg",
+          "kind": "svg",
+          "w": 173.3,
+          "h": 97.1,
+          "match": 0.766
+        },
+        {
+          "art": "ART 2029646",
+          "kgm": 1.57,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-2029646.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 101.3,
+          "match": 0.679
+        },
+        {
+          "art": "ART 1029647",
+          "kgm": 1.446,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029647.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 102.6,
+          "match": 0.764
+        },
+        {
+          "art": "ART 2029909",
+          "kgm": 0.603,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-2029909.svg",
+          "kind": "svg",
+          "w": 173.3,
+          "h": 97.0,
+          "match": 0.741
+        },
+        {
+          "art": "ART 1029910",
+          "kgm": 0.73,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029910.svg",
+          "kind": "svg",
+          "w": 177.3,
+          "h": 97.0,
+          "match": 0.788
+        },
+        {
+          "art": "ART 2029911",
+          "kgm": 0.536,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-2029911.svg",
+          "kind": "svg",
+          "w": 177.4,
+          "h": 92.9,
+          "match": 0.681
+        },
+        {
+          "art": "ART 1029912",
+          "kgm": 0.729,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029912.svg",
+          "kind": "svg",
+          "w": 173.5,
+          "h": 92.9,
+          "match": 0.754
+        },
+        {
+          "art": "ART 1029913",
+          "kgm": 0.651,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029913.svg",
+          "kind": "svg",
+          "w": 177.4,
+          "h": 92.9,
+          "match": 0.673
+        },
+        {
+          "art": "ART 1029914",
+          "kgm": 0.242,
+          "src": "/assets/architectural/series/40mm-casement/profiles/art-1029914.svg",
+          "kind": "svg",
+          "w": 177.8,
+          "h": 97.3,
+          "match": 0.592
+        }
+      ],
+      "boms": [
+        {
+          "title": "SPECIFICATION - CASEMENT WINDOW 40 MM GRILL SERIES",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "2 IN 1 Frame",
+              "section": "ART 2029644",
+              "kgm": 1.203,
+              "weight": 1.444,
+              "count": 4,
+              "net": 5.776
+            },
+            {
+              "name": "Mullion",
+              "section": "ART 1029647",
+              "kgm": 1.446,
+              "weight": 1.735,
+              "count": 1,
+              "net": 1.735
+            },
+            {
+              "name": "Shutter",
+              "section": "ART 1029645",
+              "kgm": 0.957,
+              "weight": 1.148,
+              "count": 4,
+              "net": 4.592
+            },
+            {
+              "name": "Round Pipe",
+              "section": "RTU 1020397",
+              "kgm": 0.195,
+              "weight": 0.234,
+              "count": 12,
+              "net": 2.808
+            }
+          ],
+          "total": 14.911,
+          "issues": [
+            "2 IN 1 Frame: section ART 2029644 does not appear on any drawing in the catalogue (the 1.203 kg/m drawing in this series is ART 1029644)"
+          ],
+          "hold": true
+        },
+        {
+          "title": "SPECIFICATION - CASEMENT WINDOW 40 MM SERIES",
+          "windowSize": "1.2 m × 1.2 m",
+          "rows": [
+            {
+              "name": "Frame",
+              "section": "ART 2029629",
+              "kgm": 0.613,
+              "weight": 0.736,
+              "count": 4,
+              "net": 2.944
+            },
+            {
+              "name": "Mullion",
+              "section": "ART 1029632",
+              "kgm": 0.789,
+              "weight": 0.947,
+              "count": 1,
+              "net": 0.947
+            },
+            {
+              "name": "Shutter",
+              "section": "ART 1029645",
+              "kgm": 0.957,
+              "weight": 1.148,
+              "count": 4,
+              "net": 4.592
+            }
+          ],
+          "total": 8.483,
+          "issues": [
+            "Frame: section ART 2029629 does not appear on any drawing in the catalogue (the 0.613 kg/m drawing in this series is ART 1029629)"
+          ],
+          "hold": true
+        }
+      ]
+    },
+    {
+      "slug": "45mm-casement",
+      "name": "45 mm Casement Series",
+      "family": "Casement windows",
+      "category": "window-systems",
+      "group": "casement",
+      "width": "45 mm",
+      "description": "A durable aluminium casement system for premium residential and commercial buildings, offering modern aesthetics.",
+      "copyFixes": [],
+      "cataloguePages": [
+        22,
+        23
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/45mm-casement/scene.jpg",
+        "w": 1536,
+        "h": 1024
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/45mm-casement/render-1.png",
+          "w": 391,
+          "h": 1600
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029832",
+          "kgm": 1.298,
+          "src": "/assets/architectural/series/45mm-casement/profiles/art-1029832.svg",
+          "kind": "svg",
+          "w": 281.3,
+          "h": 154.8,
+          "match": 0.579
+        },
+        {
+          "art": "ART 1029833",
+          "kgm": 1.147,
+          "src": "/assets/architectural/series/45mm-casement/profiles/art-1029833.svg",
+          "kind": "svg",
+          "w": 274.9,
+          "h": 154.8,
+          "match": 0.692
+        },
+        {
+          "art": "ART 2029834",
+          "kgm": 1.604,
+          "src": "/assets/architectural/series/45mm-casement/profiles/art-2029834.svg",
+          "kind": "svg",
+          "w": 281.3,
+          "h": 154.8,
+          "match": 0.678
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "50mm-casement",
+      "name": "50 mm Casement Series",
+      "family": "Casement windows",
+      "category": "window-systems",
+      "group": "casement",
+      "width": "50 mm",
+      "description": "A premium aluminium casement system offering enhanced structural strength and weather resistance for modern buildings.",
+      "copyFixes": [
+        "\"sliding system\" → \"casement system\" (catalogue p.24)"
+      ],
+      "cataloguePages": [
+        24,
+        25
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/50mm-casement/scene.jpg",
+        "w": 1522,
+        "h": 1033
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/50mm-casement/render-1.png",
+          "w": 607,
+          "h": 966
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029656",
+          "kgm": 1.03,
+          "src": "/assets/architectural/series/50mm-casement/profiles/art-1029656.svg",
+          "kind": "svg",
+          "w": 281.0,
+          "h": 154.7,
+          "match": 0.689
+        },
+        {
+          "art": "ART 1029657",
+          "kgm": 0.821,
+          "src": "/assets/architectural/series/50mm-casement/profiles/art-1029657.svg",
+          "kind": "svg",
+          "w": 274.6,
+          "h": 154.7,
+          "match": 0.71
+        },
+        {
+          "art": "ART 1029658",
+          "kgm": 0.273,
+          "src": "/assets/architectural/series/50mm-casement/profiles/art-1029658.svg",
+          "kind": "svg",
+          "w": 281.2,
+          "h": 148.1,
+          "match": 0.547
+        },
+        {
+          "art": "ART 2029660",
+          "kgm": 0.319,
+          "src": "/assets/architectural/series/50mm-casement/profiles/art-2029660.svg",
+          "kind": "svg",
+          "w": 275.0,
+          "h": 148.1,
+          "match": 0.65
+        },
+        {
+          "art": "ART 1029659",
+          "kgm": 1.161,
+          "src": "/assets/architectural/series/50mm-casement/profiles/art-1029659.svg",
+          "kind": "svg",
+          "w": 280.3,
+          "h": 154.3,
+          "match": 0.736
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "50mm-casement-door",
+      "name": "50 mm Casement Door Series",
+      "family": "Casement doors",
+      "category": "door-systems",
+      "group": "doors",
+      "width": "50 mm",
+      "description": "A premium aluminium casement door system offering structural strength, durability, and weather resistance for modern buildings.",
+      "copyFixes": [],
+      "cataloguePages": [
+        26,
+        27
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/50mm-casement-door/scene.jpg",
+        "w": 1536,
+        "h": 1024
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/50mm-casement-door/render-1.png",
+          "w": 812,
+          "h": 1600
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 2029750",
+          "kgm": 1.445,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-2029750.svg",
+          "kind": "svg",
+          "w": 268.3,
+          "h": 149.5,
+          "match": 0.575
+        },
+        {
+          "art": "ART 2029752",
+          "kgm": 1.43,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-2029752.svg",
+          "kind": "svg",
+          "w": 262.2,
+          "h": 147.6,
+          "match": 0.541
+        },
+        {
+          "art": "ART 1029751",
+          "kgm": 0.228,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-1029751.svg",
+          "kind": "svg",
+          "w": 268.5,
+          "h": 141.4,
+          "match": 0.511
+        },
+        {
+          "art": "ART 1029753",
+          "kgm": 0.283,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-1029753.svg",
+          "kind": "svg",
+          "w": 262.6,
+          "h": 141.4,
+          "match": 0.538
+        },
+        {
+          "art": "ART 1029754",
+          "kgm": 1.086,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-1029754.svg",
+          "kind": "svg",
+          "w": 267.6,
+          "h": 148.3,
+          "match": 0.608
+        },
+        {
+          "art": "ART 1029749",
+          "kgm": 0.52,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-1029749.svg",
+          "kind": "svg",
+          "w": 260.9,
+          "h": 147.8,
+          "match": 0.565
+        },
+        {
+          "art": "ART 1029755",
+          "kgm": 0.701,
+          "src": "/assets/architectural/series/50mm-casement-door/profiles/art-1029755.svg",
+          "kind": "svg",
+          "w": 267.7,
+          "h": 147.3,
+          "match": 0.678
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "50mm-sliding-folding",
+      "name": "50 mm Sliding & Folding Series",
+      "family": "Casement doors",
+      "category": "door-systems",
+      "group": "doors",
+      "width": "50 mm",
+      "description": "A premium sliding and folding door system designed for large openings, balconies, and office partitions.",
+      "copyFixes": [],
+      "cataloguePages": [
+        28,
+        29
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/50mm-sliding-folding/scene.jpg",
+        "w": 1672,
+        "h": 941
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/50mm-sliding-folding/render-1.png",
+          "w": 623,
+          "h": 1014
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 2029800",
+          "kgm": 1.027,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-2029800.svg",
+          "kind": "svg",
+          "w": 267.4,
+          "h": 147.1,
+          "match": 0.574
+        },
+        {
+          "art": "ART 1029801",
+          "kgm": 0.865,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-1029801.svg",
+          "kind": "svg",
+          "w": 261.3,
+          "h": 147.1,
+          "match": 0.669
+        },
+        {
+          "art": "ART 2029802",
+          "kgm": 2.824,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-2029802.svg",
+          "kind": "svg",
+          "w": 266.8,
+          "h": 148.3,
+          "match": 0.786
+        },
+        {
+          "art": "ART 2029803",
+          "kgm": 1.159,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-2029803.svg",
+          "kind": "svg",
+          "w": 260.6,
+          "h": 149.2,
+          "match": 0.65
+        },
+        {
+          "art": "ART 1029751",
+          "kgm": 0.228,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-1029751.svg",
+          "kind": "svg",
+          "w": 267.0,
+          "h": 141.6,
+          "match": 0.559
+        },
+        {
+          "art": "ART 2029660",
+          "kgm": 0.319,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-2029660.svg",
+          "kind": "svg",
+          "w": 260.4,
+          "h": 141.6,
+          "match": 0.602
+        },
+        {
+          "art": "ART 1029658",
+          "kgm": 0.273,
+          "src": "/assets/architectural/series/50mm-sliding-folding/profiles/art-1029658.svg",
+          "kind": "svg",
+          "w": 269.6,
+          "h": 140.1,
+          "match": 0.543
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "door-profiles",
+      "name": "Door Profiles",
+      "family": "Doors",
+      "category": "door-systems",
+      "group": "doors",
+      "width": null,
+      "description": "Strong, lightweight, and low-maintenance aluminium doors designed for modern residential and commercial buildings.",
+      "copyFixes": [],
+      "cataloguePages": [
+        34,
+        35
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/door-profiles/scene.jpg",
+        "w": 1536,
+        "h": 1024
+      },
+      "renders": [],
+      "profiles": [
+        {
+          "art": "ART 1029729",
+          "kgm": 0.95,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029729.svg",
+          "kind": "svg",
+          "w": 270.1,
+          "h": 148.6,
+          "match": 0.577
+        },
+        {
+          "art": "ART 1029730",
+          "kgm": 1.191,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029730.svg",
+          "kind": "svg",
+          "w": 263.9,
+          "h": 153.1,
+          "match": 0.556
+        },
+        {
+          "art": "ART 1029731",
+          "kgm": 0.932,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029731.svg",
+          "kind": "svg",
+          "w": 270.1,
+          "h": 148.6,
+          "match": 0.601
+        },
+        {
+          "art": "ART 1029737",
+          "kgm": 0.682,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029737.svg",
+          "kind": "svg",
+          "w": 268.8,
+          "h": 147.9,
+          "match": 0.771
+        },
+        {
+          "art": "ART 1029756",
+          "kgm": 0.735,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029756.svg",
+          "kind": "svg",
+          "w": 270.3,
+          "h": 142.3,
+          "match": 0.676
+        },
+        {
+          "art": "ART 1029734",
+          "kgm": 0.853,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029734.svg",
+          "kind": "svg",
+          "w": 264.3,
+          "h": 142.3,
+          "match": 0.687
+        },
+        {
+          "art": "ART 1029736",
+          "kgm": 1.122,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029736.svg",
+          "kind": "svg",
+          "w": 270.3,
+          "h": 142.3,
+          "match": 0.7
+        },
+        {
+          "art": "ART 1029738",
+          "kgm": 0.9,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029738.svg",
+          "kind": "svg",
+          "w": 268.9,
+          "h": 143.0,
+          "match": 0.541
+        },
+        {
+          "art": "ART 1029735",
+          "kgm": 0.779,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029735.svg",
+          "kind": "svg",
+          "w": 270.2,
+          "h": 148.7,
+          "match": 0.644
+        },
+        {
+          "art": "ART 1029732",
+          "kgm": 1.125,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029732.svg",
+          "kind": "svg",
+          "w": 264.0,
+          "h": 148.7,
+          "match": 0.71
+        },
+        {
+          "art": "ART 2029733",
+          "kgm": 1.366,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-2029733.svg",
+          "kind": "svg",
+          "w": 270.2,
+          "h": 148.7,
+          "match": 0.757
+        },
+        {
+          "art": "ART 1029739",
+          "kgm": 0.681,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029739.svg",
+          "kind": "svg",
+          "w": 268.7,
+          "h": 146.1,
+          "match": 0.656
+        },
+        {
+          "art": "ART 1029740",
+          "kgm": 0.902,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029740.svg",
+          "kind": "svg",
+          "w": 270.2,
+          "h": 142.3,
+          "match": 0.662
+        },
+        {
+          "art": "ART 1029741",
+          "kgm": 0.096,
+          "src": "/assets/architectural/series/door-profiles/profiles/art-1029741.svg",
+          "kind": "svg",
+          "w": 264.2,
+          "h": 142.3,
+          "match": 0.443
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "38mm-slim-curtain-wall",
+      "name": "38 mm Slim Curtain Wall",
+      "family": "Curtain wall",
+      "category": "facade-systems",
+      "group": "facade",
+      "width": "38 mm",
+      "description": "A lightweight, slim curtain wall system designed for modern architecture, offering enhanced durability and a refined appearance.",
+      "copyFixes": [],
+      "cataloguePages": [
+        30,
+        31
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/38mm-slim-curtain-wall/scene.jpg",
+        "w": 1536,
+        "h": 1024
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/render-1.png",
+          "w": 645,
+          "h": 931
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029848",
+          "kgm": 1.111,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-1029848.svg",
+          "kind": "svg",
+          "w": 281.0,
+          "h": 154.7,
+          "match": 0.705
+        },
+        {
+          "art": "ART 2029849",
+          "kgm": 1.7,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-2029849.svg",
+          "kind": "svg",
+          "w": 274.6,
+          "h": 154.7,
+          "match": 0.718
+        },
+        {
+          "art": "ART 1029850",
+          "kgm": 0.302,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-1029850.svg",
+          "kind": "svg",
+          "w": 280.3,
+          "h": 154.3,
+          "match": 0.529
+        },
+        {
+          "art": "ART 1029851",
+          "kgm": 0.375,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-1029851.svg",
+          "kind": "svg",
+          "w": 274.7,
+          "h": 155.0,
+          "match": 0.548
+        },
+        {
+          "art": "ART 1029852",
+          "kgm": 0.832,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-1029852.svg",
+          "kind": "svg",
+          "w": 279.8,
+          "h": 148.2,
+          "match": 0.794
+        },
+        {
+          "art": "ART 1029853",
+          "kgm": 0.279,
+          "src": "/assets/architectural/series/38mm-slim-curtain-wall/profiles/art-1029853.svg",
+          "kind": "svg",
+          "w": 274.4,
+          "h": 148.2,
+          "match": 0.771
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "45mm-curtain-wall",
+      "name": "45 mm Curtain Wall",
+      "family": "Curtain wall",
+      "category": "facade-systems",
+      "group": "facade",
+      "width": "45 mm",
+      "description": "A sleek curtain wall system suited for modern residential and commercial buildings, offering durability and refined aesthetics.",
+      "copyFixes": [],
+      "cataloguePages": [
+        32,
+        33
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/45mm-curtain-wall/scene.jpg",
+        "w": 1536,
+        "h": 1024
+      },
+      "renders": [
+        {
+          "src": "/assets/architectural/series/45mm-curtain-wall/render-1.png",
+          "w": 680,
+          "h": 731
+        }
+      ],
+      "profiles": [
+        {
+          "art": "ART 1029686",
+          "kgm": 1.039,
+          "src": "/assets/architectural/series/45mm-curtain-wall/profiles/art-1029686.svg",
+          "kind": "svg",
+          "w": 280.8,
+          "h": 161.9,
+          "match": 0.61
+        },
+        {
+          "art": "ART 2029685",
+          "kgm": 0.383,
+          "src": "/assets/architectural/series/45mm-curtain-wall/profiles/art-2029685.svg",
+          "kind": "svg",
+          "w": 274.4,
+          "h": 154.6,
+          "match": 0.676
+        },
+        {
+          "art": "ART 1029684",
+          "kgm": 0.255,
+          "src": "/assets/architectural/series/45mm-curtain-wall/profiles/art-1029684.svg",
+          "kind": "svg",
+          "w": 280.1,
+          "h": 154.2,
+          "match": 0.547
+        }
+      ],
+      "boms": []
+    },
+    {
+      "slug": "louvers",
+      "name": "Louvers",
+      "family": "Louvers",
+      "category": "facade-systems",
+      "group": "facade",
+      "width": null,
+      "description": "Lightweight aluminium louvers designed for effective ventilation, sun shading, and enhanced building aesthetics.",
+      "copyFixes": [],
+      "cataloguePages": [
+        36,
+        37
+      ],
+      "scene": {
+        "src": "/assets/architectural/series/louvers/scene.jpg",
+        "w": 1619,
+        "h": 971
+      },
+      "renders": [],
+      "profiles": [
+        {
+          "art": "ART 1008074",
+          "kgm": 1.044,
+          "src": "/assets/architectural/series/louvers/profiles/art-1008074.svg",
+          "kind": "svg",
+          "w": 262.1,
+          "h": 148.5,
+          "match": 0.566
+        },
+        {
+          "art": "ART 2029159",
+          "kgm": 1.763,
+          "src": "/assets/architectural/series/louvers/profiles/art-2029159.png",
+          "kind": "png",
+          "w": 252.1,
+          "h": 143.6,
+          "match": 0.116
+        },
+        {
+          "art": "ART 3029146",
+          "kgm": 2.176,
+          "src": "/assets/architectural/series/louvers/profiles/art-3029146.svg",
+          "kind": "svg",
+          "w": 262.1,
+          "h": 148.7,
+          "match": 0.637
+        },
+        {
+          "art": "ART 2007823",
+          "kgm": 0.921,
+          "src": "/assets/architectural/series/louvers/profiles/art-2007823.svg",
+          "kind": "svg",
+          "w": 267.4,
+          "h": 148.6,
+          "match": 0.697
+        },
+        {
+          "art": "ART 1029096",
+          "kgm": 0.738,
+          "src": "/assets/architectural/series/louvers/profiles/art-1029096.svg",
+          "kind": "svg",
+          "w": 261.9,
+          "h": 147.2,
+          "match": 0.575
+        },
+        {
+          "art": "ART 2008013",
+          "kgm": 0.697,
+          "src": "/assets/architectural/series/louvers/profiles/art-2008013.svg",
+          "kind": "svg",
+          "w": 262.0,
+          "h": 147.3,
+          "match": 0.68
+        },
+        {
+          "art": "ART 1029033",
+          "kgm": 0.378,
+          "src": "/assets/architectural/series/louvers/profiles/art-1029033.svg",
+          "kind": "svg",
+          "w": 262.0,
+          "h": 147.2,
+          "match": 0.475
+        },
+        {
+          "art": "ART 1029147",
+          "kgm": 0.745,
+          "src": "/assets/architectural/series/louvers/profiles/art-1029147.svg",
+          "kind": "svg",
+          "w": 267.3,
+          "h": 147.9,
+          "match": 0.485
+        },
+        {
+          "art": "ART 1007825",
+          "kgm": 0.262,
+          "src": "/assets/architectural/series/louvers/profiles/art-1007825.svg",
+          "kind": "svg",
+          "w": 262.2,
+          "h": 145.9,
+          "match": 0.637
+        },
+        {
+          "art": "ART 2007709",
+          "kgm": 0.85,
+          "src": "/assets/architectural/series/louvers/profiles/art-2007709.svg",
+          "kind": "svg",
+          "w": 264.2,
+          "h": 146.2,
+          "match": 0.658
+        }
+      ],
+      "boms": []
+    }
+  ]
+}

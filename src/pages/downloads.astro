@@ -188,7 +188,7 @@ const onRequest = [
   .dl-cover:hover :global(img) { transform: scale(1.03); }
   .dl-card-meta {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -200,7 +200,7 @@ const onRequest = [
   }
   .dl-card-ref {
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -252,7 +252,7 @@ const onRequest = [
   }
   .dl-how-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -287,7 +287,7 @@ const onRequest = [
   }
   .dl-how-note {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.08em;
     color: var(--color-stone-700);
     margin-top: 4px;
@@ -310,11 +310,11 @@ const onRequest = [
 
   /* ── Responsive ────────────────────────────────────────────────────── */
   @media (max-width: 1024px) {
-    .dl-grid { grid-template-columns: 1fr; }
-    .dl-cta  { grid-template-columns: 1fr; }
+    .dl-grid { grid-template-columns: minmax(0, 1fr); }
+    .dl-cta  { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
-    .dl-how { grid-template-columns: 1fr; }
+    .dl-how { grid-template-columns: minmax(0, 1fr); }
     .dl-how-steps { flex-direction: column; }
   }
 </style>

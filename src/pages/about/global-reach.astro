@@ -104,14 +104,14 @@ const keyCerts = [
         ))}
       </div>
 
-      <div class="gr-hero-stats" data-reveal data-reveal-delay="5">
+      <div class="gr-hero-stats stat-row" data-reveal data-reveal-delay="5">
         {[
           { val: '4',     label: 'Export regions' },
           { val: '1100+',  label: 'Customers worldwide' },
           { val: 'Jan 26',label: 'CBAM-ready' },
           { val: 'CE + IATF', label: 'Certified for export' },
         ].map(({ val, label }) => (
-          <div class="gr-stat">
+          <div class="gr-stat stat-row-item">
             <div class="gr-stat-n">{val}</div>
             <div class="gr-stat-l">{label}</div>
           </div>
@@ -300,18 +300,18 @@ const keyCerts = [
     display: flex; align-items: center; gap: 8px;
     border: 1px solid rgba(255,255,255,0.15);
     padding: 8px 16px;
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--color-stone-400);
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   .gr-region-pill:hover { border-color: var(--color-green); color: var(--color-stone-50); }
-  .gr-region-flag { font-size: 9px; color: var(--color-green); font-weight: 700; }
+  .gr-region-flag { font-size: max(9px, var(--fs-min, 0px)); color: var(--color-green); font-weight: 700; }
   .gr-hero-stats { display: flex; gap: 0; flex-wrap: wrap; margin-top: 40px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.10); }
   .gr-stat { padding-right: 40px; margin-right: 40px; border-right: 1px solid rgba(255,255,255,0.10); }
   .gr-stat:last-child { border-right: none; }
   .gr-stat-n { font-family: var(--font-sans); font-size: clamp(20px,2.5vw,32px); font-weight: 400; letter-spacing: -0.02em; color: var(--color-stone-50); line-height: 1; }
-  .gr-stat-l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 7px; }
+  .gr-stat-l { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-stone-400); margin-top: 7px; }
 
   .gr-scroll-cue { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); z-index: 3; }
   .gr-scroll-line { display: block; width: 1px; height: 52px; background: linear-gradient(to bottom, var(--color-green), transparent); animation: gr-drop 2s ease-in-out infinite; }
@@ -336,21 +336,21 @@ const keyCerts = [
   }
   .gr-region-card:hover { border-top-color: var(--color-green); background: white; }
   .gr-rc-top { display: flex; justify-content: space-between; align-items: center; }
-  .gr-rc-id { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; color: var(--color-green); }
-  .gr-rc-flag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; font-weight: 700; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 3px 8px; }
+  .gr-rc-id { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.18em; color: var(--color-green); }
+  .gr-rc-flag { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.14em; font-weight: 700; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 3px 8px; }
   .gr-rc-name { font-size: clamp(20px,2vw,26px); font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); line-height: 1; }
-  .gr-rc-markets { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
+  .gr-rc-markets { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
   .gr-rc-desc { font-size: 13.5px; line-height: 1.65; color: var(--color-stone-700); }
   .gr-rc-meta { border-top: 1px solid var(--color-stone-200); padding-top: 14px; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
   .gr-meta-row { display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: baseline; }
-  .gr-meta-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
+  .gr-meta-key { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
   .gr-meta-val { font-size: 13px; color: var(--color-stone-700); }
 
   /* ── DOCS TABLE ─────────────────────────────────────────────── */
   .gr-doc-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
   .gr-doc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
   .gr-doc-table thead tr { background: var(--color-navy-soft); }
-  .gr-doc-table th { padding: 12px 20px; text-align: left; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); white-space: nowrap; }
+  .gr-doc-table th { padding: 12px 20px; text-align: left; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); white-space: nowrap; }
   .gr-doc-table th:last-child { border-right: none; }
   .gr-row-even { background: rgba(255,255,255,0.04); }
   .gr-row-odd  { background: rgba(255,255,255,0.02); }
@@ -359,7 +359,7 @@ const keyCerts = [
   .gr-cell-doc  { font-weight: 500; color: var(--color-platinum); min-width: 200px; }
   .gr-cell-req  { font-family: var(--font-mono); font-size: 11px; color: var(--color-silver); min-width: 180px; }
   .gr-cell-note { color: var(--color-stone-400); font-size: 12px; min-width: 220px; }
-  .gr-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
+  .gr-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.7; }
 
   /* ── CERTS ──────────────────────────────────────────────────── */
   .gr-cert-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: start; }
@@ -373,7 +373,7 @@ const keyCerts = [
   }
   .gr-cert-card:hover { background: white; }
   .gr-cert-code { font-size: clamp(18px,2vw,24px); font-weight: 800; letter-spacing: -0.02em; color: var(--color-navy); line-height: 1; }
-  .gr-cert-std  { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); margin-top: 4px; }
+  .gr-cert-std  { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); margin-top: 4px; }
   .gr-cert-rule { width: 24px; height: 1px; background: var(--color-stone-200); margin: 12px 0; }
   .gr-cert-scope { font-size: 12.5px; line-height: 1.55; color: var(--color-stone-700); }
 
@@ -382,14 +382,14 @@ const keyCerts = [
   .gr-cbam-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,100px); align-items: center; }
   .gr-cbam-badge {
     display: inline-flex; align-items: center;
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.16em; text-transform: uppercase;
     color: var(--color-green); border: 1px solid var(--color-green); padding: 6px 14px;
   }
   .gr-cbam-tags { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); }
   .gr-cbam-tag {
     background: var(--color-navy-soft); padding: 18px 16px;
-    font-family: var(--font-mono); font-size: 10.5px;
+    font-family: var(--font-mono); font-size: max(10.5px, var(--fs-min, 0px));
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-400); line-height: 1.5;
     transition: background 0.2s ease, color 0.2s ease;
@@ -402,8 +402,8 @@ const keyCerts = [
 
   /* ── RESPONSIVE ─────────────────────────────────────────────── */
   @media (max-width: 900px) {
-    .gr-cert-layout  { grid-template-columns: 1fr; }
-    .gr-cbam-inner   { grid-template-columns: 1fr; }
+    .gr-cert-layout  { grid-template-columns: minmax(0, 1fr); }
+    .gr-cbam-inner   { grid-template-columns: minmax(0, 1fr); }
     .gr-cta-row      { flex-direction: column; }
     .gr-cta-btns     { flex-direction: row; flex-wrap: wrap; }
   }
@@ -411,9 +411,9 @@ const keyCerts = [
     .gr-hero-vid     { display: none; }
     .gr-hero-grad    { background: rgba(6,21,37,0.88); }
     .gr-scroll-cue   { display: none; }
-    .gr-regions-grid { grid-template-columns: 1fr; }
-    .gr-certs-cards  { grid-template-columns: 1fr; }
-    .gr-cbam-tags    { grid-template-columns: 1fr; }
+    .gr-regions-grid { grid-template-columns: minmax(0, 1fr); }
+    .gr-certs-cards  { grid-template-columns: minmax(0, 1fr); }
+    .gr-cbam-tags    { grid-template-columns: minmax(0, 1fr); }
     .gr-meta-row     { grid-template-columns: 80px 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {

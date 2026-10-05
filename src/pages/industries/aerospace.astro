@@ -28,11 +28,12 @@ const alloys = [
   <!-- Hero -->
   <IndustryHero
     image="/assets/industries/hero/aerospace-hero.jpg"
+    focusMobile="34% 45%"
     eyebrow="Industries / Aerospace"
     stats={[
     ['2xxx · 7xxx alloys', 'High-performance grades'],
     ['Full traceability', 'Heat number to despatch'],
-    ['SCADA-monitored', 'Every press cycle logged'],
+    ['SCADA/ERP-monitored', 'Every press cycle logged'],
     ['Chemical cert', 'Every cast verified'],
     ]}
   >
@@ -52,7 +53,7 @@ const alloys = [
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Aerospace and defence applications demand a level of material certainty that goes
             beyond standard industrial extrusion. Banco's in-house foundry produces 2xxx and
-            7xxx billets with spectrometric analysis on every cast, and our SCADA-monitored
+            7xxx billets with spectrometric analysis on every cast, and our SCADA/ERP-monitored
             extrusion presses record time, temperature, and pressure data for the full length
             of every profile; that data is archived and retrievable for the product lifetime.
           </p>
@@ -135,7 +136,7 @@ const alloys = [
           </h2>
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Banco's aerospace quality documentation package includes material test certificates
-            per EN 10204 3.1, full SCADA extrusion logs, chemical composition from in-house
+            per EN 10204 3.1, full SCADA/ERP extrusion logs, chemical composition from in-house
             spectrometry cross-checked against cast analysis, mechanical test results from
             tensile coupons cut from production profiles, and dimensional inspection reports.
             Third-party verification can be arranged on request.
@@ -146,7 +147,7 @@ const alloys = [
             ['ISO 9001:2015', 'Quality management system'],
             ['IATF 16949:2016', 'Automotive/defence quality'],
             ['EN 10204 3.1', 'Material test certificates'],
-            ['SCADA traceability', 'Full production data archive'],
+            ['SCADA/ERP traceability', 'Full production data archive'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>

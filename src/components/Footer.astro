@@ -23,7 +23,7 @@ const company = [
   { label: 'Global reach',           href: '/about/global-reach' },
   { label: 'Sustainability',         href: '/sustainability' },
   { label: 'Careers',               href: '/about/careers' },
-  { label: 'Press, news & blogs',   href: '/about/news' },
+  { label: 'News & Insights',   href: '/about/news' },
   { label: 'Downloads',             href: '/downloads' },
 ];
 const contact = [
@@ -44,8 +44,8 @@ const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 
           <img
             src="/banco-logo-light-480.webp"
             alt="Banco Aluminium"
-            width="160"
-            height="36"
+            width="140"
+            height="32"
             loading="lazy"
           />
         </a>
@@ -53,54 +53,69 @@ const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 
           Integrated aluminium extrusion solutions since 1967. From billet to finished
           profile, all under one roof in Vadodara, Gujarat, India.
         </p>
-        <div class="footer-certs">
-          {certs.map((c) => (
-            <span class="pill on-dark">{c}</span>
-          ))}
-        </div>
+        <ul class="footer-certs" aria-label="Certifications">
+          {certs.map((c) => <li>{c}</li>)}
+        </ul>
       </div>
 
       <!-- Products -->
-      <div class="footer-col">
-        <h2>Products</h2>
+      <details class="footer-col" open>
+        <summary><h2>Products</h2></summary>
         <ul>
           {products.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
-      </div>
+      </details>
 
       <!-- Capabilities -->
-      <div class="footer-col">
-        <h2>Capabilities</h2>
-        <ul>
+      <details class="footer-col footer-col-wide" open>
+        <summary><h2>Capabilities</h2></summary>
+        <ul class="footer-col-split">
           {capabilities.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
-      </div>
+      </details>
 
       <!-- Company -->
-      <div class="footer-col">
-        <h2>Company</h2>
-        <ul>
+      <details class="footer-col footer-col-wide" open>
+        <summary><h2>Company</h2></summary>
+        <ul class="footer-col-split">
           {company.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
-      </div>
+      </details>
 
       <!-- Contact -->
-      <div class="footer-col">
-        <h2>Contact</h2>
+      <details class="footer-col" open>
+        <summary><h2>Contact</h2></summary>
         <ul>
           {contact.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
-        <div style="margin-top:24px;font-size:13px;color:var(--color-stone-400);line-height:1.7">
-          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-stone-400);margin-bottom:8px">Registered office</div>
-          Vadodara, Gujarat, India
-        </div>
+      </details>
+    </div>
+
+    <!-- Contact strip: horizontal, so it doesn't stretch the grid row -->
+    <div class="footer-info">
+      <div class="footer-info-item">
+        <span class="footer-contact-label">Registered office</span>
+        <address class="footer-address">
+          Banco Aluminium Private Limited, Padra Road, Near Railway Station,
+          Bil, Vadodara, Gujarat 391410, India
+        </address>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-contact-label">Sales enquiry</span>
+        <a class="footer-contact-link" href="mailto:sales@bancoaluminium.com">sales@bancoaluminium.com</a>
+        <a class="footer-contact-link" href="tel:+912652477200">+91 265 2477200</a>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-contact-label">Suppliers enquiry</span>
+        <a class="footer-contact-link" href="mailto:purchase@bancoaluminium.com">purchase@bancoaluminium.com</a>
+        <a class="footer-contact-link" href="tel:+912652477452">+91 265 2477452</a>
       </div>
     </div>
 
     <!-- Bottom strip -->
     <div class="footer-bottom">
       <span>© {new Date().getFullYear()} Banco Aluminium Private Limited. All rights reserved.</span>
-      <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div class="footer-bottom-links">
         <a href="/privacy">Privacy policy</a>
         <a href="/sitemap">Sitemap</a>
         <a href="/contact">Contact us</a>
@@ -108,3 +123,15 @@ const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  // Columns ship `open` so desktop and no-JS keep the full sitemap. Below 640px
+  // they collapse to accordions, which is what keeps the mobile footer short.
+  (() => {
+    const mq = window.matchMedia('(max-width: 640px)');
+    const cols = document.querySelectorAll('.site-footer .footer-col');
+    const sync = () => cols.forEach((c) => { c.open = !mq.matches; });
+    sync();
+    mq.addEventListener('change', sync);
+  })();
+</script>

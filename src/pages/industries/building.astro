@@ -10,6 +10,8 @@ const profiles = [
   { name: 'Roofing trim extrusions', desc: 'Ridge cap, eave closure, barge board, and verge trim extrusions for standing seam and profiled sheet roof systems, QUALICOAT powder coated to RAL specification.' },
   { name: 'Partition frame sections', desc: 'Demountable partition wall frame, track, and jamb extrusions for office fit-out and cleanroom construction, with slim sightlines and integral cable management provisions.' },
   { name: 'Louvre blade profiles', desc: 'Fixed and adjustable louvre blade extrusions for ventilated façade panels, mechanical plant screens, and architectural sun shading systems.' },
+  { name: 'Shutter profiles', desc: 'Roller shutter slat, guide rail, and bottom bar extrusions for commercial shopfronts, industrial doorways, and security closures, supplied ready for powder coating or anodising.' },
+  { name: 'Track profiles', desc: 'Top-hung and floor-mounted track extrusions for sliding doors, partitions, and shutter systems, held to tight dimensional tolerance for smooth, consistent carriage travel.' },
 ];
 
 const galleryImages = ['8b', '8c', '8d', '8e', '8f'];
@@ -23,22 +25,22 @@ const alloys = [
 
 <Layout
   title="Building & construction: Banco Aluminium"
-  description="Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim and partitions in Class 20 anodised or QUALICOAT coated finishes."
+  description="Curtain wall mullions, structural glazing, cladding profiles, roofing trims and partition extrusions with QUALANOD-certified anodising and QUALICOAT-certified powder coating."
   heroImage="/assets/industries/hero/building-hero.jpg"
 >
   <!-- Hero -->
   <IndustryHero
     image="/assets/industries/hero/building-hero.jpg"
+    focusMobile="58% 45%"
     eyebrow="Industries / Building"
     stats={[
     ['QUALICOAT certified', 'Powder coating quality'],
     ['Class 20 anodising', 'In-house oxide treatment'],
-    ['6063 · 6082 alloys', 'Architectural & structural'],
-    ['EN 14351-1', 'Window & door standard'],
+    ['Multiple alloys', 'Architectural & structural'],
     ]}
   >
     <Fragment slot="h1">Building &amp; construction profiles.</Fragment>
-    <Fragment slot="lead">Curtain wall mullions, structural glazing sections, cladding profiles, roofing trim, and partition extrusions in Class 20 anodised or QUALICOAT powder coated finishes.</Fragment>
+    <Fragment slot="lead">Curtain wall mullions, structural glazing sections, cladding profiles, roofing trims, and partition extrusions, available with QUALANOD-certified anodising in AA10, AA15, AA20 and AA25 thickness classes, and QUALICOAT-certified powder coating in Classes 1, 1.5, 2 and 3.</Fragment>
   </IndustryHero>
 
   <!-- Gallery strip -->
@@ -76,16 +78,8 @@ const alloys = [
             applications where anodising and powder coating quality determine the long-term
             appearance of the finished building.
           </p>
-          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
-            In-house QUALICOAT certified powder coating and Class 20 anodising provide a
-            complete supply-chain solution for architects and façade contractors who need
-            consistent colour, texture, and surface quality across large project volumes,
-            without the risk of batch-to-batch variation from multiple surface treatment
-            subcontractors.
-          </p>
-
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
-            {['Curtain wall systems', 'Structural glazing', 'Rainscreen cladding', 'Louvre systems', 'Sun shading', 'Office partitions', 'Cleanroom construction'].map(tag => (
+            {['Curtain wall systems', 'Structural glazing', 'Rainscreen cladding', 'Louvre systems', 'Sun shading', 'Office partitions', 'Cleanroom construction', 'Shutter profiles', 'Track profiles'].map(tag => (
               <span class="pill">{tag}</span>
             ))}
           </div>
@@ -112,11 +106,11 @@ const alloys = [
     <div class="container">
       <div class="eyebrow">02 · Profile types</div>
       <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six profile families for building and construction.
+        Profile families for building and construction.
       </h2>
       <div class="ind-tiles">
-        {profiles.map(p => (
-          <div class="ind-tile">
+        {profiles.map((p, i) => (
+          <div class:list={['ind-tile', i === profiles.length - 1 && 'ind-tile--wide']}>
             <div class="ind-tick"></div>
             <h3 class="ind-tile-h">{p.name}</h3>
             <p class="ind-tile-p">{p.desc}</p>

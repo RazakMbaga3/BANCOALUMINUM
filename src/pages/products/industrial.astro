@@ -66,7 +66,7 @@ const workflow = [
   { num: '03', step: 'Die manufacture & trial',         note: '5-axis CNC · trial run · dimensional report' },
   { num: '04', step: 'Sample approval',                 note: 'Dimensional cert · mechanical properties' },
   { num: '05', step: 'Value-added processing',          note: 'Heat treatment · fabrication · finishing' },
-  { num: '06', step: 'Repeat supply',                   note: 'SCADA traceability · export documentation' },
+  { num: '06', step: 'Repeat supply',                   note: 'SCADA/ERP traceability · export documentation' },
 ];
 
 const packingInternal = [
@@ -172,7 +172,7 @@ const alloyTable = [
         loading="eager" sizes="100vw" />
     </div>
     <div class="ih-split-body">
-      <h2 class="ih-split-h2">From Excellence<br>to repeat supply.</h2>
+      <h2 class="ih-split-h2">Every process<br>under one roof.</h2>
       <div class="ih-cap-list">
         <div class="ih-cap-item">
           <span class="ih-cap-dot"></span>
@@ -309,8 +309,8 @@ const alloyTable = [
     {[
       ['/assets/manufacturing/industrial-casting-pit.png',            'Casting pit: cylinder-guided Hot-Top casting'],
       ['/assets/manufacturing/industrial-spectromax-oes.png',         'Spectromax OES for 100% chemical verification'],
+      ['/assets/capabilities/homogenising-furnace.jpg',                    'Homogenising furnace: conditioned billets drawn from the charge'],
       ['/assets/manufacturing/industrial-billets-yard.png',           'Finished extrusion billets, despatch-ready'],
-      ['/assets/manufacturing/industrial-homogenisation-furnace.png', 'Homogenisation furnace, conditioning billets'],
     ].map(([src, alt]) => (
       <div class="ih-fac-tile">
         <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 640px) 50vw, 25vw" maxW={768} />
@@ -449,7 +449,7 @@ const alloyTable = [
   }
   .ih-stat-l {
     font-family: var(--font-mono);
-    font-size: 9.5px;
+    font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -528,11 +528,11 @@ const alloyTable = [
     flex-direction: column;
     gap: 4px;
   }
-  .ih-alloy-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .ih-alloy-num { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .ih-alloy-title { font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-navy); white-space: nowrap; }
-  .ih-alloy-sub { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); }
+  .ih-alloy-sub { font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); }
   .ih-alloy-grades { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 6px; border-top: 1px solid var(--color-stone-200); margin-top: 2px; }
-  .ih-grade { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 2px 6px; }
+  .ih-grade { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-navy); background: var(--color-stone-50); border: 1px solid var(--color-stone-200); padding: 2px 6px; }
   .ih-grade-lf { font-weight: 700; color: var(--color-green); border-color: var(--color-green); }
 
   /* Compact speciality notes below alloy cards */
@@ -568,7 +568,7 @@ const alloyTable = [
   }
   .i-industry-cell:hover { background: var(--color-navy-soft); }
   .i-industry-cell:last-child { grid-column: span 4; }
-  .i-ind-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .i-ind-num { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .i-ind-name { font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-platinum); line-height: 1.25; }
   .i-ind-note { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.4; margin-top: auto; }
 
@@ -589,7 +589,7 @@ const alloyTable = [
     padding: 12px 16px;
     text-align: left;
     font-weight: 500;
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-nickel);
@@ -611,11 +611,11 @@ const alloyTable = [
   .ih-cell-alloys  { color: var(--color-stone-700); min-width: 260px; }
   .ih-cell-alloys strong { color: var(--color-green); font-weight: 700; }
   .ih-cell-cat     { color: var(--color-navy); white-space: nowrap; }
-  .ih-cell-remarks { color: var(--color-stone-700); font-size: 10px; letter-spacing: 0.08em; min-width: 220px; }
+  .ih-cell-remarks { color: var(--color-stone-700); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.08em; min-width: 220px; }
   .ih-table-footnote {
     margin-top: 14px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em;
     color: var(--color-stone-700);
     line-height: 1.6;
@@ -640,9 +640,9 @@ const alloyTable = [
     transition: background 0.2s ease, border-top-color 0.2s ease;
   }
   .ih-cap-cell:hover { background: var(--color-navy-soft); border-top-color: var(--color-green); }
-  .ih-cap-n { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .ih-cap-n { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .ih-cap-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-platinum); line-height: 1.2; }
-  .ih-cap-tag { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.5; margin-top: auto; }
+  .ih-cap-tag { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); line-height: 1.5; margin-top: auto; }
 
   /* ── Facility strip ──────────────────────────────────────────────────────── */
   .ih-fac-strip {
@@ -657,7 +657,7 @@ const alloyTable = [
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 20px 12px 10px;
     background: linear-gradient(transparent, rgba(8,27,48,0.82));
-    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--color-nickel); line-height: 1.4;
     opacity: 0; transition: opacity 0.3s ease;
   }
@@ -679,22 +679,22 @@ const alloyTable = [
   .ih-wf-row:hover { background: white; }
   .ih-wf-num { font-family: var(--font-mono); font-size: 17px; font-weight: 500; color: var(--color-green); }
   .ih-wf-step { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
-  .ih-wf-note { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
+  .ih-wf-note { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
 
   /* ── Packing ─────────────────────────────────────────────────────────────── */
   .ih-pack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 60px); margin-top: 40px; }
-  .ih-pack-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-green); margin-bottom: 10px; }
+  .ih-pack-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-green); margin-bottom: 10px; }
   .ih-pack-table { border: 1px solid var(--color-stone-200); }
   .ih-pack-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 12px 16px; align-items: start; background: var(--color-stone-50); }
   .ih-pack-border { border-bottom: 1px solid var(--color-stone-200); }
-  .ih-pack-name { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); padding-top: 2px; }
+  .ih-pack-name { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-navy); padding-top: 2px; }
   .ih-pack-desc { font-family: var(--font-sans); font-size: 12.5px; color: var(--color-stone-700); line-height: 1.55; }
 
   /* ── Footer band ─────────────────────────────────────────────────────────── */
   .ih-footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
   .ih-footer-grid-solo { align-items: center; justify-content: space-between; }
   .ih-cert-row { display: flex; flex-direction: column; gap: 12px; }
-  .ih-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-400); }
+  .ih-cert-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-400); }
   .ih-cert-chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .ih-cta-col { display: flex; flex-direction: column; gap: 20px; }
   .ih-cta-btns { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
@@ -702,7 +702,7 @@ const alloyTable = [
   /* ── Responsive ──────────────────────────────────────────────────────────── */
   @media (max-width: 1024px) {
     .ih-stats          { grid-template-columns: repeat(2, 1fr); }
-    .ih-split          { grid-template-columns: 1fr; min-height: auto; }
+    .ih-split          { grid-template-columns: minmax(0, 1fr); min-height: auto; }
     .ih-split-rev .ih-split-visual { order: unset; }
     .ih-split-rev .ih-split-body   { order: unset; }
     .ih-split-visual   { min-height: 40vh; }
@@ -710,8 +710,8 @@ const alloyTable = [
     .i-industry-cell:last-child { grid-column: span 3; }
     .ih-cap-grid       { grid-template-columns: repeat(2, 1fr); }
     .ih-cap-cell:last-child { grid-column: span 2; }
-    .ih-pack-grid      { grid-template-columns: 1fr; }
-    .ih-footer-grid    { grid-template-columns: 1fr; }
+    .ih-pack-grid      { grid-template-columns: minmax(0, 1fr); }
+    .ih-footer-grid    { grid-template-columns: minmax(0, 1fr); }
     .ih-fac-strip      { grid-template-columns: repeat(2, 1fr); }
     .ih-wf-row         { grid-template-columns: 48px 1fr; }
     .ih-wf-note        { grid-column: 2; }
@@ -720,10 +720,10 @@ const alloyTable = [
     .ih-stats          { grid-template-columns: 1fr 1fr; }
     .i-industry-grid   { grid-template-columns: repeat(2, 1fr); }
     .i-industry-cell:last-child { grid-column: span 2; }
-    .ih-cap-grid       { grid-template-columns: 1fr; }
-    .ih-pack-row       { grid-template-columns: 1fr; gap: 4px; }
+    .ih-cap-grid       { grid-template-columns: minmax(0, 1fr); }
+    .ih-pack-row       { grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .ih-fac-strip      { grid-template-columns: 1fr 1fr; }
-    .ih-alloy-cards    { grid-template-columns: 1fr; }
-    .ih-alloy-notes    { grid-template-columns: 1fr; }
+    .ih-alloy-cards    { grid-template-columns: minmax(0, 1fr); }
+    .ih-alloy-notes    { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

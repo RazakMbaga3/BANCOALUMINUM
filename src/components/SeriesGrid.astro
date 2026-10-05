@@ -1,0 +1,123 @@
+---
+/**
+ * Linked series cards for the architectural category pages (window / door / façade).
+ * Each card shows the catalogue's cut-away render (scene photo when the catalogue has
+ * no render), series name, width and profile count, and links to the series page.
+ * The last card stretches over leftover cells so the grid never ends on an empty box.
+ */
+import Pic from './Pic.astro';
+import { type Series, seriesHref, cardImage, fillSpans } from '../lib/series';
+
+interface Props {
+  series: Series[];
+  /** numbering offset, so a second grid on the same page continues "/ 10, / 11 …" */
+  start?: number;
+}
+const { series, start = 1 } = Astro.props;
+const spans = fillSpans(series.length, [3, 2]);
+---
+
+<div class="sg-grid">
+  {series.map((s, i) => {
+    const img = cardImage(s);
+    return (
+      <a href={seriesHref(s)} class="sg-card" style={i === series.length - 1 ? spans : undefined}>
+        <div class:list={['sg-visual', !img && 'sg-visual--scene']}>
+          {img
+            ? <Pic src={img.src} alt="" fit="contain" loading="lazy" sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw" maxW={768} />
+            : <Pic src={s.scene.src} alt="" loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" maxW={768} />}
+        </div>
+        <div class="sg-body">
+          <span class="sg-num">/ {String(start + i).padStart(2, '0')}</span>
+          <h3 class="sg-name">{s.name}</h3>
+          <p class="sg-desc">{s.description}</p>
+          <div class="sg-meta">
+            {s.width && <span>{s.width}</span>}
+            <span>{s.profiles.length} profiles</span>
+          </div>
+          <span class="sg-cta">
+            View series
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .sg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-stone-200);
+    border: 1px solid var(--color-stone-200);
+  }
+  .sg-grid > :last-child { grid-column: span var(--span-3, 1); }
+
+  .sg-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    text-decoration: none;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .sg-card:hover { border-top-color: var(--color-green); }
+
+  .sg-visual {
+    height: clamp(200px, 18vw, 260px);
+    background: var(--color-stone-50);
+    border-bottom: 1px solid var(--color-stone-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+  .sg-visual :global(img) {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .sg-card:hover .sg-visual :global(img) { transform: scale(1.04); }
+  .sg-visual--scene { padding: 0; }
+  .sg-visual--scene :global(img) { width: 100%; height: 100%; object-fit: cover; }
+
+  .sg-body { display: flex; flex-direction: column; gap: 8px; padding: 22px 22px 24px; flex: 1; }
+  .sg-num { font-family: var(--font-mono); font-size: 11px; color: var(--color-green); }
+  .sg-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--color-navy); line-height: 1.25; }
+  .sg-desc {
+    font-size: 13px; line-height: 1.55; color: var(--color-stone-700);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .sg-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+  .sg-meta span {
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700);
+  }
+  .sg-cta {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 6px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-green);
+    transition: gap 0.2s ease;
+  }
+  .sg-card:hover .sg-cta { gap: 10px; }
+
+  @media (max-width: 1024px) {
+    .sg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sg-grid > :last-child { grid-column: span var(--span-2, 1); }
+  }
+  @media (max-width: 640px) {
+    .sg-grid { grid-template-columns: minmax(0, 1fr); }
+    .sg-grid > :last-child { grid-column: auto; }
+    .sg-visual { height: clamp(220px, 62vw, 300px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sg-visual :global(img) { transition: none; }
+  }
+</style>

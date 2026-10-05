@@ -26,18 +26,19 @@ const processStages = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
         src="/assets/capabilities/extrusion-hero.jpg"
         alt="Freshly extruded aluminium profiles on the run-out table at Banco Aluminium"
         class="cap-hero-img"
+        focus="50% 55%" focusMobile="62% 55%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Extrusion</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Five presses.<br>35,000 MT capacity.
@@ -222,28 +223,28 @@ const processStages = [
   .ext-press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .ext-press-card { background: var(--color-navy-soft); padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--color-green); }
   .ext-press-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
-  .ext-press-id { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; color: var(--color-green); }
+  .ext-press-id { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.2em; color: var(--color-green); }
   .ext-press-circle-wrap { display: flex; align-items: center; justify-content: flex-end; }
   .ext-press-circle { border: 1px solid var(--color-navy-line); border-radius: 50%; background: rgba(255,255,255,0.04); flex-shrink: 0; }
-  .ext-press-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); }
+  .ext-press-name { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); }
   .ext-press-cap  { font-family: var(--font-sans); font-size: clamp(20px, 2vw, 26px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); }
   .ext-press-meta { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-navy-line); padding-top: 10px; margin-top: 4px; }
   .ext-press-row  { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .ext-press-key  { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
-  .ext-press-val  { font-family: var(--font-mono); font-size: 9px; color: var(--color-silver); }
+  .ext-press-key  { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-nickel); }
+  .ext-press-val  { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); color: var(--color-silver); }
   .ext-press-profiles { font-family: var(--font-sans); font-size: 11.5px; line-height: 1.55; color: var(--color-stone-400); margin-top: 4px; }
 
   .ext-proc-head  { margin-bottom: 40px; }
   .ext-proc-grid  { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .ext-proc-cell  { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
-  .ext-proc-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .ext-proc-num   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .ext-proc-name  { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); }
   .ext-proc-desc  { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); }
 
   .ext-range-grid    { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .ext-range-table   { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
   .ext-rrow  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .ext-rkey  { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
+  .ext-rkey  { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .ext-rval  { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
   .ext-range-photos { display: flex; flex-direction: column; gap: 4px; }
   .ext-photo-top, .ext-photo-bot { overflow: hidden; }
@@ -259,23 +260,18 @@ const processStages = [
     .ext-proc-grid > :last-child { grid-column: span 3; }
   }
   @media (max-width: 1024px) {
-    .ext-overview-grid { grid-template-columns: 1fr; }
+    .ext-overview-grid { grid-template-columns: minmax(0, 1fr); }
     .ext-press-grid { grid-template-columns: repeat(2, 1fr); }
     .ext-proc-grid  { grid-template-columns: repeat(2, 1fr); }
     .ext-press-grid > :last-child,
     .ext-proc-grid > :last-child { grid-column: span 2; }
-    .ext-range-grid { grid-template-columns: 1fr; }
+    .ext-range-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .ext-press-grid { grid-template-columns: 1fr 1fr; }
     .ext-press-grid > :last-child { grid-column: span 2; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 55%;
-  }
 
   .ext-band { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--color-navy-deep); }
   .ext-band-fig { position: relative; margin: 0; aspect-ratio: 16 / 9; overflow: hidden; }
@@ -284,9 +280,9 @@ const processStages = [
     position: absolute; left: 0; right: 0; bottom: 0;
     padding: 28px 20px 14px;
     background: linear-gradient(transparent, rgba(8,27,48,0.85));
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--color-platinum);
   }
-  @media (max-width: 768px) { .ext-band { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .ext-band { grid-template-columns: minmax(0, 1fr); } }
 </style>
 

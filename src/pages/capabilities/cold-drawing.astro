@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
-import { optSrcset } from '../../lib/img';
 
 const toleranceComparison = [
   { param: 'OD tolerance (25 mm dia.)', extrusion: '±0.20 mm', cold: '±0.05 mm', note: '4× improvement' },
@@ -38,18 +37,19 @@ const products = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
         src="/assets/capabilities/cold-drawing-hero.jpg"
         alt="Banco Aluminium operators on the cold drawing and fabrication floor"
         class="cap-hero-img"
+        focus="50% 38%" focusMobile="44% 40%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Cold drawing</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Beyond extrusion<br>tolerances.
@@ -111,18 +111,10 @@ const products = [
         </div>
         <div class="cd-img-stack" data-reveal="right">
           <div class="cd-img-main">
-            <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-a.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/cold-drawing-floor-a.jpg" alt="Banco Aluminium operators setting up a precision cutting centre on the fabrication floor" loading="lazy" />
-            </picture>
+            <Pic src="/assets/capabilities/cold-drawing-floor-a.jpg" alt="Banco Aluminium operators setting up a precision cutting centre on the fabrication floor" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" />
           </div>
           <div class="cd-img-sub">
-            <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/cold-drawing-floor-b.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/cold-drawing-floor-b.jpg" alt="Banco Aluminium team reviewing finished extruded profiles for dimensional accuracy" loading="lazy" style="object-position: center 30%;" />
-            </picture>
+            <Pic src="/assets/capabilities/cold-drawing-floor-b.jpg" alt="Banco Aluminium team reviewing finished extruded profiles for dimensional accuracy" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" focus="center 30%" />
           </div>
         </div>
       </div>
@@ -232,24 +224,24 @@ const products = [
 
   .cd-img-stack { display: flex; flex-direction: column; gap: 4px; }
   .cd-img-main  { aspect-ratio: 4/3; overflow: hidden; }
-  .cd-img-main img, .cd-img-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .cd-img-main:hover img, .cd-img-sub:hover img { filter: brightness(1); }
+  .cd-img-main :global(img), .cd-img-sub :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .cd-img-main:hover :global(img), .cd-img-sub:hover :global(img) { filter: brightness(1); }
   .cd-img-sub   { aspect-ratio: 16/6; overflow: hidden; }
 
   .cd-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .cd-prod-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 14px; }
   .cd-prod-cat { font-family: var(--font-sans); font-size: 22px; font-weight: 700; color: var(--color-platinum); }
   .cd-prod-shapes { display: flex; flex-wrap: wrap; gap: 5px; }
-  .cd-shape-tag { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-silver); border: 1px solid var(--color-navy-line); padding: 3px 8px; }
+  .cd-shape-tag { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-silver); border: 1px solid var(--color-navy-line); padding: 3px 8px; }
   .cd-prod-specs { border-top: 1px solid var(--color-navy-line); padding-top: 12px; display: flex; flex-direction: column; gap: 0; }
   .cd-spec-row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .cd-spec-key { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); flex-shrink: 0; }
+  .cd-spec-key { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); flex-shrink: 0; }
   .cd-spec-val { font-family: var(--font-sans); font-size: 12px; color: var(--color-silver); text-align: right; }
 
   .cd-table-wrap { overflow-x: auto; border: 1px solid var(--color-stone-200); }
   .cd-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; white-space: nowrap; }
   .cd-table thead tr { background: var(--color-stone-100); }
-  .cd-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-700); border-right: 1px solid var(--color-stone-200); }
+  .cd-table th { padding: 10px 16px; text-align: left; font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-stone-700); border-right: 1px solid var(--color-stone-200); }
   .cd-table th:last-child { border-right: none; }
   .cd-row-even { background: var(--color-stone-50); }
   .cd-row-odd  { background: white; }
@@ -259,27 +251,22 @@ const products = [
   .cd-cell-ext  { color: var(--color-stone-700); }
   .cd-cell-cd   { color: var(--color-green); font-weight: 500; }
   .cd-cell-note { color: var(--color-stone-700); font-family: var(--font-sans); font-size: 12px; white-space: normal; min-width: 120px; }
-  .cd-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-stone-700); line-height: 1.6; }
+  .cd-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-stone-700); line-height: 1.6; }
 
   .cd-apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); margin-top: 32px; }
   .cd-app-card  { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
-  .cd-app-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .cd-app-num   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .cd-app-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .cd-app-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
 
   @media (max-width: 1024px) {
-    .cd-overview-grid { grid-template-columns: 1fr; }
+    .cd-overview-grid { grid-template-columns: minmax(0, 1fr); }
     .cd-img-stack { order: -1; }
-    .cd-products-grid { grid-template-columns: 1fr; }
+    .cd-products-grid { grid-template-columns: minmax(0, 1fr); }
     .cd-apps-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .cd-apps-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 38%;
-  }
 </style>

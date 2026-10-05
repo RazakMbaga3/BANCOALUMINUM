@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
-import { optSrcset } from '../../lib/img';
 
 const coreValues = [
   { title: 'Safety first', desc: 'Every shift starts with a safety briefing. No production target overrides a safe stop.' },
@@ -42,18 +41,14 @@ const departments = [
   <!-- ══════════════════════════════════════════
        HERO — Build your career in aluminium
        ══════════════════════════════════════════ -->
-  <section class="ca-hero">
-    <div class="ca-hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/careers/careers-team-hero.jpg', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/careers/careers-team-hero.jpg', 'webp')} sizes="100vw" />
-        <img src="/assets/careers/careers-team-hero.jpg" alt="" loading="eager" fetchpriority="high" class="ca-hero-vid" />
-      </picture>
-      <div class="ca-hero-scrim"></div>
-      <div class="ca-hero-grad"></div>
+  <section class="ca-hero photo-hero">
+    <div class="ca-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src="/assets/careers/careers-team-hero.jpg" alt="" loading="eager" fetchpriority="high" class="ca-hero-vid" sizes="100vw" focusMobile="50% 70%" />
+      <div class="ca-hero-scrim photo-hero-scrim"></div>
+      <div class="ca-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container ca-hero-body">
+    <div class="container ca-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
         Careers
       </div>
@@ -103,7 +98,7 @@ const departments = [
           ['/assets/careers/careers-team-workshop.jpg', 'Banco Aluminium colleagues working through a team exercise', 'Team exercise · Working it out together', '50% 50%'],
         ].map(([src, alt, cap, pos]) => (
           <figure class="ca-culture-fig">
-            <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} style={`object-position:${pos}`} />
+            <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} focus={pos} ratioMobile="3 / 2" />
             <figcaption>{cap}</figcaption>
           </figure>
         ))}
@@ -153,18 +148,10 @@ const departments = [
           </p>
           <div class="ca-mtw-figs">
             <figure class="ca-mtw-fig">
-              <picture>
-                <source type="image/avif" srcset={optSrcset('/assets/careers/careers-team-present.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 22vw" />
-                <source type="image/webp" srcset={optSrcset('/assets/careers/careers-team-present.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 22vw" />
-                <img src="/assets/careers/careers-team-present.jpg" alt="Banco Aluminium colleagues presenting together at a team event" loading="lazy" style="object-position: center 40%;" />
-              </picture>
+              <Pic src="/assets/careers/careers-team-present.jpg" alt="Banco Aluminium colleagues presenting together at a team event" loading="lazy" sizes="(max-width: 1024px) 100vw, 22vw" focus="center 40%" />
             </figure>
             <figure class="ca-mtw-fig">
-              <picture>
-                <source type="image/avif" srcset={optSrcset('/assets/careers/careers-team-table.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 22vw" />
-                <source type="image/webp" srcset={optSrcset('/assets/careers/careers-team-table.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 22vw" />
-                <img src="/assets/careers/careers-team-table.jpg" alt="Banco Aluminium colleagues at an outbound team-building training session" loading="lazy" />
-              </picture>
+              <Pic src="/assets/careers/careers-team-table.jpg" alt="Banco Aluminium colleagues at an outbound team-building training session" loading="lazy" sizes="(max-width: 1024px) 100vw, 22vw" />
             </figure>
           </div>
         </div>
@@ -347,7 +334,7 @@ const departments = [
     min-height: 88vh; display: flex; align-items: center; overflow: hidden;
   }
   .ca-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .ca-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+  :global(.ca-hero-vid) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
   .ca-hero-scrim { position: absolute; inset: 0; background: rgba(6,21,37,0.60); }
   .ca-hero-grad {
     position: absolute; inset: 0;
@@ -382,7 +369,7 @@ const departments = [
   }
   .ca-culture-fig:hover :global(img) { transform: scale(1.05); }
   .ca-culture-fig figcaption {
-    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-400); padding: 7px 10px;
     border-top: 1px solid var(--color-navy-line); background: var(--color-navy-soft);
   }
@@ -397,7 +384,7 @@ const departments = [
     transition-delay: var(--delay, 0ms);
   }
   .ca-value-card:hover { background: white; border-top-color: var(--color-green); }
-  .ca-value-n  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 14px; }
+  .ca-value-n  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 14px; }
   .ca-value-h  { font-family: var(--font-sans); font-size: 17px; font-weight: 600; color: var(--color-navy); letter-spacing: -0.01em; margin-bottom: 8px; }
   .ca-value-d  { font-size: 13px; color: var(--color-stone-700); line-height: 1.6; }
 
@@ -405,10 +392,10 @@ const departments = [
   .ca-mtw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
   .ca-mtw-figs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
   .ca-mtw-fig { margin: 0; overflow: hidden; border: 1px solid var(--color-stone-200); }
-  .ca-mtw-fig img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
-  .ca-mtw-fig:hover img { transform: scale(1.05); }
+  .ca-mtw-fig :global(img) { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .ca-mtw-fig:hover :global(img) { transform: scale(1.05); }
   .ca-mtw-fig figcaption {
-    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); padding: 7px 10px;
     border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
   }
@@ -421,7 +408,7 @@ const departments = [
   .ca-dept-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .ca-dept-card { background: white; padding: 24px 20px; border-top: 2px solid transparent; transition: border-top-color 0.2s ease; }
   .ca-dept-card:hover { border-top-color: var(--color-green); }
-  .ca-dept-id   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); margin-bottom: 10px; }
+  .ca-dept-id   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); margin-bottom: 10px; }
   .ca-dept-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
   .ca-dept-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.6; color: var(--color-stone-700); }
 
@@ -432,14 +419,14 @@ const departments = [
   .ca-note-dot { width: 5px; height: 5px; background: var(--color-green); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
   .ca-note span { font-size: 13.5px; line-height: 1.55; color: var(--color-stone-700); }
   .ca-contact-block { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--color-stone-200); }
-  .ca-contact-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-700); margin-bottom: 6px; }
+  .ca-contact-label { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-700); margin-bottom: 6px; }
   .ca-contact-email { font-size: 15px; color: var(--color-navy); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
   .ca-contact-email:hover { color: var(--color-green); }
 
   /* ── FORM ───────────────────────────────────────────────────── */
   .ca-form { display: flex; flex-direction: column; gap: 16px; }
   .ca-form-section-label {
-    font-family: var(--font-mono); font-size: 9.5px;
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--color-stone-700);
     padding-bottom: 10px;
@@ -448,7 +435,7 @@ const departments = [
   }
   .ca-field { display: flex; flex-direction: column; gap: 6px; }
   .ca-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .ca-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
+  .ca-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
   .ca-req { color: var(--color-green); }
   .ca-input, .ca-textarea {
     font-family: var(--font-sans); font-size: 14px;
@@ -483,7 +470,7 @@ const departments = [
     background: var(--color-navy); color: white;
     border: none; padding: 6px 14px; cursor: pointer; margin-right: 12px;
   }
-  .ca-file-hint { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-stone-700); margin-top: 4px; }
+  .ca-file-hint { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.1em; color: var(--color-stone-700); margin-top: 4px; }
   .ca-submit { margin-top: 8px; align-self: flex-start; }
 
   /* ── CTA ────────────────────────────────────────────────────── */
@@ -495,20 +482,19 @@ const departments = [
     .ca-dept-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .ca-culture-head { grid-template-columns: 1fr; }
+    .ca-culture-head { grid-template-columns: minmax(0, 1fr); }
     .ca-values-grid  { grid-template-columns: 1fr 1fr; }
-    .ca-mtw-grid     { grid-template-columns: 1fr; gap: 40px; }
-    .ca-form-layout  { grid-template-columns: 1fr; }
+    .ca-mtw-grid     { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+    .ca-form-layout  { grid-template-columns: minmax(0, 1fr); }
     .ca-cta-row      { flex-direction: column; }
     .ca-cta-btns     { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .ca-hero-grad     { background: rgba(6,21,37,0.88); }
     .ca-scroll-cue    { display: none; }
-    .ca-culture-photos{ grid-template-columns: 1fr; }
-    .ca-values-grid   { grid-template-columns: 1fr; }
+    .ca-culture-photos{ grid-template-columns: minmax(0, 1fr); }
+    .ca-values-grid   { grid-template-columns: minmax(0, 1fr); }
     .ca-dept-grid     { grid-template-columns: 1fr 1fr; }
-    .ca-field-row     { grid-template-columns: 1fr; }
+    .ca-field-row     { grid-template-columns: minmax(0, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     .ca-scroll-line { animation: none; opacity: 0.5; }

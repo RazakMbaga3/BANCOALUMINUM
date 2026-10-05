@@ -50,18 +50,19 @@ const alloyData = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
-        src="/assets/capabilities/foundry-billets.jpg"
+        src="/assets/capabilities/foundry-homogenising.jpg"
         alt="Freshly cast extrusion billets on the casting table in the Banco Aluminium foundry"
         class="cap-hero-img"
+        focus="50% 40%" focusMobile="50% 58%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Alloys & foundry</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Standard alloys.<br>Hard alloys.<br>Lead-free grades.<br>Custom compositions.
@@ -179,7 +180,7 @@ const alloyData = [
           ['/ 02', 'Refining & degassing',   '/assets/capabilities/foundry-refining-degassing.jpg', 'Nitrogen purging removes dissolved hydrogen from the melt, preventing porosity and surface blistering that compromise extrudability in downstream presses.'],
           ['/ 03', 'Ceramic foam filtration','/assets/capabilities/foundry-ceramic-foam.jpg', 'Ceramic foam filtration removes non-metallic inclusions from the liquid metal before the casting station, improving metal cleanliness and reducing inclusion count.'],
           ['/ 04', 'Hot-Top casting',        '/assets/capabilities/foundry-casting.jpg', 'Cylinder-guided Hot-Top casting controls casting speed and cooling rate with precision, delivering consistent surface finish, skin thickness, and metallurgical structure.'],
-          ['/ 05', 'Homogenising',           '/assets/capabilities/foundry-homogenising.jpg', 'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
+          ['/ 05', 'Homogenising',           '/assets/capabilities/homogenising-furnace.jpg', 'Controlled-atmosphere batch furnaces dissolve soluble phases and homogenise microstructure. Force-cooling to specified exit temperature governs extrudability and surface quality.'],
         ].map(([num, name, photo, desc]) => (
           <div class="fnd-proc-cell">
             <div class="fnd-proc-img">
@@ -208,9 +209,6 @@ const alloyData = [
             customer specification, with specific Mg/Si ratios for anodising quality,
             lead-free conversions, and enhanced-machinability formulations.
           </p>
-          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-            <a href="/contact#technical" class="btn btn-primary">Discuss your alloy requirement</a>
-          </div>
         </div>
         <div class="fnd-custom-list" data-reveal="right">
           {[
@@ -236,20 +234,20 @@ const alloyData = [
 
   .fnd-family-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .fnd-family-card { background: var(--color-stone-50); padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
-  .fnd-fam-num   { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .fnd-fam-num   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .fnd-fam-title { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-navy); }
-  .fnd-fam-sub   { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
+  .fnd-fam-sub   { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); }
   .fnd-fam-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
   .fnd-fam-grades { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 12px; border-top: 1px solid var(--color-stone-200); }
-  .fnd-grade { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-navy); background: white; border: 1px solid var(--color-stone-200); padding: 3px 8px; }
-  .fnd-fam-series { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
+  .fnd-grade { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-navy); background: white; border: 1px solid var(--color-stone-200); padding: 3px 8px; }
+  .fnd-fam-series { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); }
   .fnd-fam-apps { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
-  .fnd-app { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 2px 7px; }
+  .fnd-app { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-stone-700); border: 1px solid var(--color-stone-200); padding: 2px 7px; }
 
   .fnd-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
   .fnd-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; white-space: nowrap; }
   .fnd-table thead tr { background: var(--color-navy-soft); }
-  .fnd-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .fnd-table th { padding: 10px 16px; text-align: left; font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
   .fnd-table th:last-child { border-right: none; }
   .fnd-row-even { background: rgba(255,255,255,0.04); }
   .fnd-row-odd  { background: rgba(255,255,255,0.02); }
@@ -257,37 +255,32 @@ const alloyData = [
   .fnd-table td:last-child { border-right: none; }
   .fnd-cell-alloy { font-weight: 500; font-size: 12px; color: var(--color-platinum); }
   .fnd-cell-val   { color: var(--color-silver); }
-  .fnd-cell-note  { color: var(--color-nickel); white-space: normal; min-width: 180px; font-size: 10px; }
-  .fnd-footnote   { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+  .fnd-cell-note  { color: var(--color-nickel); white-space: normal; min-width: 180px; font-size: max(10px, var(--fs-min, 0px)); }
+  .fnd-footnote   { margin-top: 14px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
   .fnd-process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .fnd-proc-cell { background: var(--color-stone-50); display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--color-green); }
   .fnd-proc-img { aspect-ratio: 16/9; overflow: hidden; }
   .fnd-proc-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.4s ease, filter 0.3s ease; }
   .fnd-proc-cell:hover .fnd-proc-img img { transform: scale(1.05); filter: brightness(1); }
-  .fnd-proc-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); padding: 0 20px; }
+  .fnd-proc-num  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); padding: 0 20px; }
   .fnd-proc-name { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--color-navy); padding: 0 20px; }
   .fnd-proc-desc { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: var(--color-stone-700); padding: 0 20px 24px; }
 
   .fnd-custom-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 100px); align-items: start; }
   .fnd-custom-list { display: flex; flex-direction: column; gap: 0; }
   .fnd-custom-row { padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .fnd-custom-cap  { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
+  .fnd-custom-cap  { font-family: var(--font-mono); font-size: max(10.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
   .fnd-custom-desc { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); line-height: 1.55; }
 
   @media (max-width: 1024px) {
-    .fnd-section-head { grid-template-columns: 1fr; }
-    .fnd-family-grid { grid-template-columns: 1fr; }
+    .fnd-section-head { grid-template-columns: minmax(0, 1fr); }
+    .fnd-family-grid { grid-template-columns: minmax(0, 1fr); }
     .fnd-process-grid { grid-template-columns: repeat(2, 1fr); }
-    .fnd-custom-grid { grid-template-columns: 1fr; }
+    .fnd-custom-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .fnd-process-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 40%;
-  }
 </style>

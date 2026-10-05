@@ -1,0 +1,384 @@
+---
+/**
+ * One page per architectural series, generated from the Sept 2026 Profile Catalogue
+ * (src/data/architectural-series.json ← scripts/extract-catalogue.py).
+ * Sections: hero (catalogue scene) · cut-away render + technical features ·
+ * profile range (section drawings) · bill of materials · series navigation.
+ * No enquiry CTA (header-only rule); the catalogue download link is allowed.
+ */
+import Layout from '../../../../layouts/Layout.astro';
+import Pic from '../../../../components/Pic.astro';
+import { DOCS } from '../../../../lib/documents';
+import {
+  ALL_SERIES, catalogue, CATEGORY_LABEL, type Series,
+  seriesHref, prevNext, orderedBoms, bomLabel, profileName, kg, fillSpans, showsFeatures, kgmRange,
+} from '../../../../lib/series';
+
+export function getStaticPaths() {
+  return ALL_SERIES.map((s) => ({ params: { category: s.category, slug: s.slug }, props: { s } }));
+}
+
+const { s } = Astro.props as { s: Series };
+const { prev, next } = prevNext(s);
+const categoryHref = `/products/architectural/${s.category}`;
+const boms = orderedBoms(s);
+const published = boms.filter((b) => !b.hold);
+const [render, ...moreRenders] = s.renders;
+const [scenePage, detailPage] = s.cataloguePages;
+
+// Always four figures (the stat strip is a 4/2-column grid, so never three).
+const range = kgmRange(s);
+const stats = [
+  s.width ? { n: s.width, l: 'Profile series' } : { n: s.family, l: CATEGORY_LABEL[s.category] },
+  { n: String(s.profiles.length), l: 'Profiles in the range' },
+  published[0]?.total
+    ? { n: `${published[0].total.toFixed(2)} kg`, l: `Aluminium · ${published[0].windowSize ?? '1.2 m × 1.2 m'} window` }
+    : { n: range ?? '—', l: 'Profile weights, kg/m' },
+  { n: `pp. ${scenePage}–${detailPage}`, l: 'Product catalogue' },
+];
+
+// Section 01 pairs a visual with the catalogue's technical features. The visual is the
+// cut-away render; ranges the catalogue shows without one (door profiles) use the scene.
+const features = showsFeatures(s);
+const visual = render ?? null;
+const sceneVisual = !render && features;
+let n = 0;
+const num = () => `/ ${String(++n).padStart(2, '0')}`;
+const numSystem = features ? num() : null;
+const numRange = num();
+const numBom = boms.length ? num() : null;
+
+const title = `${s.name}${s.width ? ` ${s.family.toLowerCase()}` : ''}: Banco Aluminium`;
+const metaDescription = `${s.description} ${s.profiles.length} extruded profiles with section drawings and weights per metre.`;
+const tileSpans = fillSpans(s.profiles.length, [4, 3, 2]);
+
+const productLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: `Banco ${s.name}`,
+  description: s.description,
+  category: `Architectural aluminium systems > ${CATEGORY_LABEL[s.category]} > ${s.family}`,
+  image: [new URL(s.scene.src, 'https://bancoaluminium.com').href, ...(render ? [new URL(render.src, 'https://bancoaluminium.com').href] : [])],
+  brand: { '@type': 'Brand', name: 'Banco Aluminium' },
+  manufacturer: { '@type': 'Organization', name: 'Banco Aluminium Private Limited' },
+};
+---
+
+<Layout title={title} description={metaDescription} image={s.scene.src} heroImage={s.scene.src} transparentNav={true}>
+  <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
+
+  <!-- ── HERO: catalogue scene ─────────────────────────────── -->
+  <section class="cap-hero photo-hero sr-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src={s.scene.src} alt="" class="cap-hero-img" focus="50% 55%" focusMobile="50% 60%" loading="eager" fetchpriority="high" sizes="100vw" />
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
+    </div>
+    <div class="container cap-hero-body photo-hero-body">
+      <nav class="eyebrow on-dark sr-crumbs" aria-label="Breadcrumb" data-reveal="fade" data-reveal-delay="1">
+        <a href="/products/architectural">Architectural systems</a>
+        <span aria-hidden="true">/</span>
+        <a href={categoryHref}>{CATEGORY_LABEL[s.category]}</a>
+        <span aria-hidden="true">/</span>
+        <span>{s.family}</span>
+      </nav>
+      <h1 class="cap-h1" data-reveal data-reveal-delay="2">{s.name}</h1>
+      <p class="cap-lead" data-reveal data-reveal-delay="3">{s.description}</p>
+      <div class="cap-stats" data-reveal data-reveal-delay="4">
+        {stats.map(({ n, l }) => (
+          <div class="cap-stat">
+            <div class="cap-stat-n">{n}</div>
+            <div class="cap-stat-l">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEM: cut-away render (or scene) + technical features ── -->
+  {features && (
+    <section class="section-white section-pad sr-pad">
+      <div class="container">
+        <div class="sr-system">
+          <div class="sr-renders" data-reveal="left">
+            {visual ? (
+              <>
+                <figure class="sr-render">
+                  <Pic src={visual.src} alt={`${s.name}: cut-away of the aluminium profile assembly with glazing`} fit="contain" loading="lazy" sizes="(max-width: 900px) 90vw, 45vw" maxW={1200} />
+                </figure>
+                {moreRenders.map((r) => (
+                  <figure class="sr-render sr-render--sub">
+                    <Pic src={r.src} alt={`${s.name}: horizontal section through the frame and sashes`} fit="contain" loading="lazy" sizes="(max-width: 900px) 90vw, 45vw" maxW={1200} />
+                  </figure>
+                ))}
+              </>
+            ) : sceneVisual && (
+              <figure class="sr-render sr-render--scene">
+                <Pic src={s.scene.src} alt={`${s.name} in an entrance elevation, from the Banco product catalogue`} loading="lazy" sizes="(max-width: 900px) 100vw, 45vw" maxW={1200} />
+              </figure>
+            )}
+          </div>
+          <div class="sr-features" data-reveal="right">
+            <div class="eyebrow">{numSystem} · System</div>
+            <h2 class="sr-h2">Technical features.</h2>
+            <ul class="sr-feat-list">
+              {catalogue.features.map((f) => (
+                <li>
+                  <span class="sr-feat-t">{f.title}</span>
+                  <span class="sr-feat-d">{f.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── PROFILE RANGE: section drawings ───────────────────── -->
+  <section class="section-light section-pad sr-pad">
+    <div class="container">
+      <div class="sr-head" data-reveal="fade">
+        <div class="eyebrow">{numRange} · Profile range</div>
+        <h2 class="sr-h2">{s.profiles.length} extruded profiles.</h2>
+        <p class="sr-sub">Section drawings from the Banco product catalogue. Dimensions in mm; weights in kg per metre.</p>
+      </div>
+      <div class="sr-tiles">
+        {s.profiles.map((p, i) => (
+          <figure class="sr-tile" style={i === s.profiles.length - 1 ? tileSpans : undefined}>
+            <figcaption class="sr-tile-head">
+              <span class="sr-tile-art">{p.art}</span>
+              {p.kgm != null && <span class="sr-tile-kg">{p.kgm.toFixed(3)} kg/m</span>}
+            </figcaption>
+            <div class="sr-tile-draw">
+              <img src={p.src} alt={`Section drawing of profile ${p.art}${p.kgm != null ? `, ${p.kgm.toFixed(3)} kg/m` : ''}`}
+                   width={Math.round(p.w * 2)} height={Math.round(p.h * 2)} loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 · BILL OF MATERIALS ────────────────────────────── -->
+  {boms.length > 0 && (
+    <section class="section-white section-pad sr-pad">
+      <div class="container">
+        <div class="sr-head" data-reveal="fade">
+          <div class="eyebrow">{numBom} · Bill of materials</div>
+          <h2 class="sr-h2">Aluminium for a {boms[0].windowSize ?? '1.2 m × 1.2 m'} window.</h2>
+          <p class="sr-sub">Profiles, quantities and weights for one reference window, as specified in the catalogue.</p>
+        </div>
+        <div class="sr-boms">
+          {boms.map((b) => b.hold ? (
+            <div class="sr-bom sr-bom--held">
+              <div class="sr-bom-label">{bomLabel(b)}</div>
+              <p>This table is being re-checked against the profile drawings. Refer to page {detailPage} of the product catalogue in the meantime.</p>
+            </div>
+          ) : (
+            <div class="sr-bom">
+              <div class="sr-bom-label">{bomLabel(b)}</div>
+              <div class="sr-table-wrap" tabindex="0" role="region" aria-label={`${s.name} bill of materials, ${bomLabel(b).toLowerCase()}`}>
+                <table class="sr-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Profile</th>
+                      <th scope="col">Section no.</th>
+                      <th scope="col" class="num">kg/m</th>
+                      <th scope="col" class="num">Weight (kg)</th>
+                      <th scope="col" class="num">Qty</th>
+                      <th scope="col" class="num">Net weight (kg)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {b.rows.map((r) => (
+                      <tr>
+                        <th scope="row">{profileName(r.name)}</th>
+                        <td class="mono">{r.section}</td>
+                        <td class="num">{kg(r.kgm)}</td>
+                        <td class="num">{kg(r.weight)}</td>
+                        <td class="num">{r.count ?? '—'}</td>
+                        <td class="num">{kg(r.net)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="row" colspan="5">Total</th>
+                      <td class="num">{kg(b.total)}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── SERIES NAVIGATION ─────────────────────────────────── -->
+  <section class="section-dark sr-nav-sec">
+    <div class="container">
+      <div class="sr-nav">
+        {prev ? (
+          <a href={seriesHref(prev)} class="sr-nav-link">
+            <span class="sr-nav-dir">← Previous</span>
+            <span class="sr-nav-name">{prev.name}</span>
+          </a>
+        ) : <span class="sr-nav-link sr-nav-link--empty" aria-hidden="true"></span>}
+        <a href={categoryHref} class="sr-nav-link sr-nav-link--mid">
+          <span class="sr-nav-dir">All</span>
+          <span class="sr-nav-name">{CATEGORY_LABEL[s.category]}</span>
+        </a>
+        {next ? (
+          <a href={seriesHref(next)} class="sr-nav-link sr-nav-link--next">
+            <span class="sr-nav-dir">Next →</span>
+            <span class="sr-nav-name">{next.name}</span>
+          </a>
+        ) : <span class="sr-nav-link sr-nav-link--empty" aria-hidden="true"></span>}
+      </div>
+      <div class="sr-cat">
+        <div>
+          <div class="sr-cat-t">{DOCS.architecturalCatalogue.title}</div>
+          <div class="sr-cat-m">{DOCS.architecturalCatalogue.meta} · {s.name} on pp. {scenePage}–{detailPage}</div>
+        </div>
+        <a href={DOCS.architecturalCatalogue.view} class="btn btn-secondary-dark" target="_blank" rel="noopener">View catalogue (PDF)</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sr-pad { padding: clamp(48px, 6vw, 88px) 0; }
+  /* catalogue scenes are bright interiors: a lighter scrim than the capability heroes,
+     the left-weighted gradient still carries the headline */
+  @media (min-width: 769px) { /* phones keep the shared photo-band gradient */
+    .sr-hero :global(.cap-hero-scrim) { background: rgba(6, 21, 37, 0.5); }
+  }
+
+  .sr-crumbs { flex-wrap: wrap; row-gap: 6px; }
+  .sr-crumbs a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .sr-crumbs a:hover { color: var(--color-platinum); }
+  .sr-crumbs span[aria-hidden] { color: var(--color-navy-line); }
+
+  .sr-h2 {
+    font-family: var(--font-sans);
+    font-size: clamp(24px, 2.6vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    color: var(--color-navy);
+    margin-top: 14px;
+  }
+  .sr-head { max-width: 720px; margin-bottom: clamp(28px, 3.5vw, 44px); }
+  .sr-sub { font-size: 14px; line-height: 1.6; color: var(--color-stone-700); margin-top: 12px; }
+
+  /* ── 01 system ── */
+  .sr-system { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .sr-render.sr-render--scene { padding: 0; }
+  .sr-render.sr-render--scene :global(img) { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
+  .sr-renders { display: flex; flex-direction: column; gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .sr-render { margin: 0; background: var(--color-stone-50); display: flex; align-items: center; justify-content: center; padding: clamp(20px, 3vw, 40px); height: clamp(300px, 34vw, 480px); }
+  .sr-render--sub { height: auto; max-height: 220px; padding: 20px clamp(20px, 3vw, 40px); }
+  .sr-render :global(img) { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+  .sr-render--sub :global(img) { max-height: 180px; }
+
+  .sr-feat-list { list-style: none; margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  .sr-feat-list li {
+    display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 16px;
+    padding: 14px 0; border-bottom: 1px solid var(--color-stone-200);
+  }
+  .sr-feat-t {
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-navy);
+    padding-top: 2px; position: relative; padding-left: 14px;
+  }
+  .sr-feat-t::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 1px; background: var(--color-green); }
+  .sr-feat-d { font-size: 13.5px; line-height: 1.55; color: var(--color-stone-700); }
+
+  /* ── 02 profile range ── */
+  .sr-tiles {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200);
+  }
+  .sr-tiles > :last-child { grid-column: span var(--span-4, 1); }
+  .sr-tile { margin: 0; background: #fff; display: flex; flex-direction: column; }
+  .sr-tile-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    padding: 12px 14px; border-bottom: 1px solid var(--color-stone-100);
+  }
+  .sr-tile-art { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-navy); }
+  .sr-tile-kg { font-family: var(--font-mono); font-size: 11px; color: var(--color-stone-700); white-space: nowrap; }
+  .sr-tile-draw { flex: 1; display: flex; align-items: center; justify-content: center; padding: 14px 16px 18px; min-height: 170px; }
+  .sr-tile-draw img { display: block; width: 100%; max-width: 300px; height: auto; max-height: 190px; object-fit: contain; }
+
+  /* ── 03 bill of materials ── */
+  .sr-boms { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 32px; }
+  .sr-bom-label {
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-700);
+    margin-bottom: 10px;
+  }
+  .sr-bom--held { border: 1px solid var(--color-stone-200); background: var(--color-stone-50); padding: 22px 24px; align-self: start; }
+  .sr-bom--held p { font-size: 13.5px; line-height: 1.6; color: var(--color-stone-700); }
+  .sr-table-wrap { overflow-x: auto; border: 1px solid var(--color-stone-200); }
+  .sr-table-wrap:focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; }
+  .sr-table { width: 100%; border-collapse: collapse; min-width: 520px; font-size: 13px; }
+  .sr-table th, .sr-table td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--color-stone-200); }
+  .sr-table thead th {
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-platinum);
+    background: var(--color-navy); border-bottom: none; white-space: nowrap;
+  }
+  .sr-table tbody th { font-weight: 600; color: var(--color-navy); }
+  .sr-table td { color: var(--color-anthracite); }
+  .sr-table .mono, .sr-table .num { font-family: var(--font-mono); font-size: 12px; }
+  .sr-table .num { text-align: right; }
+  .sr-table tbody tr:nth-child(even) { background: var(--color-stone-50); }
+  .sr-table tfoot th, .sr-table tfoot td { border-bottom: none; border-top: 2px solid var(--color-green); font-weight: 700; color: var(--color-navy); }
+  .sr-table tfoot th { text-align: right; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* ── series navigation ── */
+  .sr-nav-sec { padding: clamp(36px, 4vw, 56px) 0; }
+  .sr-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .sr-nav-link { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; background: var(--color-navy); text-decoration: none; transition: background 0.2s; min-height: 84px; }
+  a.sr-nav-link:hover { background: var(--color-navy-soft); }
+  .sr-nav-link--mid { align-items: center; text-align: center; }
+  .sr-nav-link--next { align-items: flex-end; text-align: right; }
+  .sr-nav-dir { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-green); }
+  .sr-nav-name { font-size: 15px; font-weight: 600; color: var(--color-platinum); }
+  .sr-cat { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 28px; }
+  .sr-cat-t { font-size: 15px; font-weight: 600; color: var(--color-platinum); }
+  .sr-cat-m { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
+
+  @media (max-width: 1100px) {
+    .sr-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .sr-tiles > :last-child { grid-column: span var(--span-3, 1); }
+  }
+  @media (max-width: 900px) {
+    .sr-system { grid-template-columns: minmax(0, 1fr); }
+    .sr-render { height: clamp(260px, 70vw, 420px); }
+    .sr-feat-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  }
+  @media (max-width: 768px) {
+    .sr-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sr-tiles > :last-child { grid-column: span var(--span-2, 1); }
+    .sr-tile-draw { min-height: 130px; padding: 10px; }
+    .sr-tile-head { flex-direction: column; gap: 2px; padding: 10px 12px; }
+    .sr-nav { grid-template-columns: minmax(0, 1fr); }
+    .sr-nav-link--empty { display: none; }
+    .sr-nav-link--mid, .sr-nav-link--next { align-items: flex-start; text-align: left; }
+    .sr-nav-link { min-height: 0; }
+    /* breadcrumb links get a full-size tap target on touch screens */
+    .sr-crumbs { row-gap: 0; }
+    .sr-crumbs a { display: inline-flex; align-items: center; min-height: 40px; }
+  }
+  /* one drawing per row on phones so dimension figures stay legible */
+  @media (max-width: 560px) {
+    .sr-tiles { grid-template-columns: minmax(0, 1fr); }
+    .sr-tiles > :last-child { grid-column: auto; }
+    .sr-tile-head { flex-direction: row; }
+    .sr-tile-draw { min-height: 0; padding: 16px 18px 20px; }
+  }
+</style>

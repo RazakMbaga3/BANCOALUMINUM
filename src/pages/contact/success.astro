@@ -87,7 +87,7 @@ import Layout from '../../layouts/Layout.astro';
   .cs-step:last-child { border-bottom: none; }
   .cs-step-n {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     color: var(--color-green);
     padding-top: 2px;

@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
-import { optSrcset } from '../../lib/img';
 import { DOCS } from '../../lib/documents';
 
 const mag = DOCS.industrialReview;
@@ -19,25 +18,21 @@ const inside = [
 ---
 
 <Layout
-  title="Press, news & blogs: Banco Aluminium"
+  title="News & Insights: Banco Aluminium"
   description="Press coverage and company news from Banco Aluminium, including the Banco cover story in The Industrial Review, August 2026."
   image={mag.cover}
   heroImage="/assets/capabilities/foundry-melting.jpg"
 >
 
-  <section class="nw-hero">
-    <div class="nw-hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/capabilities/foundry-melting.jpg', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/capabilities/foundry-melting.jpg', 'webp')} sizes="100vw" />
-        <img src="/assets/capabilities/foundry-melting.jpg" alt="" loading="eager" fetchpriority="high" class="nw-hero-img" />
-      </picture>
-      <div class="nw-hero-scrim"></div>
-      <div class="nw-hero-grad"></div>
+  <section class="nw-hero photo-hero">
+    <div class="nw-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src="/assets/capabilities/foundry-melting.jpg" alt="" loading="eager" fetchpriority="high" class="nw-hero-img" sizes="100vw" focusMobile="36% 55%" />
+      <div class="nw-hero-scrim photo-hero-scrim"></div>
+      <div class="nw-hero-grad photo-hero-grad"></div>
     </div>
-    <div class="container nw-hero-body">
-      <div class="eyebrow on-dark">About Banco / Press, news &amp; blogs</div>
-      <h1 class="nw-h1">Press, news<br/>&amp; blogs.</h1>
+    <div class="container nw-hero-body photo-hero-body">
+      <div class="eyebrow on-dark">About Banco / News &amp; Insights</div>
+      <h1 class="nw-h1">News<br/>&amp; Insights.</h1>
       <p class="nw-lead">
         Company announcements, press coverage and articles from Banco Aluminium.
       </p>
@@ -114,7 +109,7 @@ const inside = [
     overflow: hidden;
   }
   .nw-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .nw-hero-img {
+  :global(.nw-hero-img) {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover; object-position: center 55%;
@@ -170,7 +165,7 @@ const inside = [
   .nw-cover:hover :global(img) { transform: scale(1.02); }
   .nw-source {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -194,7 +189,7 @@ const inside = [
   .nw-feature-p strong { color: var(--color-navy); font-weight: 600; }
   .nw-inside-label {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -230,7 +225,7 @@ const inside = [
   }
   .nw-meta {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -260,7 +255,7 @@ const inside = [
   }
 
   @media (max-width: 900px) {
-    .nw-feature { grid-template-columns: 1fr; }
+    .nw-feature { grid-template-columns: minmax(0, 1fr); }
     .nw-cover { max-width: 320px; }
     .nw-more { grid-template-columns: 120px 1fr; gap: 20px; }
   }

@@ -49,18 +49,19 @@ const tempers = [
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <!-- Client supplied real ageing-furnace photos 2026-09-28, replacing the
        shared stock video placeholder used since the 2026-09-26 photo pull. -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
         src="/assets/capabilities/heat-treatment-hero.jpg"
         alt="Banco Aluminium ageing furnace with loaded charge racks of extruded profiles"
         class="cap-hero-img"
+        focus="50% 42%" focusMobile="44% 55%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Heat treatment</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Controlled ageing.<br>Certified tempers.
@@ -223,7 +224,7 @@ const tempers = [
   <section class="section-light section-pad">
     <div class="container">
       <div class="eyebrow" data-reveal="fade">/ 04 · Quality & certification</div>
-      <div class="ht-qual-grid ht-qual-grid--no-photo">
+      <div class="ht-qual-grid">
         <div data-reveal="fade">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Every lot tested.<br>Certificate with every shipment.
@@ -234,7 +235,9 @@ const tempers = [
             ageing charge. Tensile strength, yield strength (Rp0.2), and elongation
             are measured and recorded. Brinell hardness is measured as a process check.
           </p>
-          <div class="ht-cert-list">
+        </div>
+        <div data-reveal="fade">
+          <div class="ht-cert-list ht-cert-list--col">
             {[
               ['Material test certificate', 'Chemical composition + mechanical properties per EN 10204 Type 3.1'],
               ['Furnace load record',       'Time-temperature profile for each ageing charge, traceable to lot number'],
@@ -261,7 +264,7 @@ const tempers = [
   .ht-overview-photo :global(img) { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
   .ht-overview-photo:hover :global(img) { transform: scale(1.05); }
   .ht-overview-caption {
-    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); padding: 7px 10px;
     border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
   }
@@ -271,50 +274,47 @@ const tempers = [
   .ht-temper-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .ht-temper-code { font-family: var(--font-sans); font-size: 36px; font-weight: 800; letter-spacing: -0.04em; color: var(--color-platinum); line-height: 1; }
   .ht-temper-alloys { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; }
-  .ht-alloy-tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; color: var(--color-green); border: 1px solid var(--color-green); padding: 2px 6px; }
-  .ht-temper-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); }
+  .ht-alloy-tag { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.1em; color: var(--color-green); border: 1px solid var(--color-green); padding: 2px 6px; }
+  .ht-temper-name { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-nickel); }
   .ht-temper-process { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-silver); }
   .ht-props { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); margin-top: 4px; }
   .ht-prop { background: rgba(255,255,255,0.04); padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; }
   .ht-prop-val { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--color-platinum); }
-  .ht-prop-label { font-family: var(--font-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-silver); }
+  .ht-prop-label { font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-silver); }
   .ht-temper-notes { font-family: var(--font-sans); font-size: 12px; line-height: 1.55; color: var(--color-stone-400); border-top: 1px solid var(--color-navy-line); padding-top: 12px; }
-  .ht-footnote { margin-top: 16px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+  .ht-footnote { margin-top: 16px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
   .ht-proc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .ht-proc-fig { margin: 28px 0 0; overflow: hidden; border: 1px solid var(--color-stone-200); }
   .ht-proc-fig img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.5s ease; }
   .ht-proc-fig:hover img { transform: scale(1.05); }
   .ht-proc-fig figcaption {
-    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); padding: 7px 10px;
     border-top: 1px solid var(--color-stone-200); background: var(--color-stone-50);
   }
   .ht-stages { display: flex; flex-direction: column; gap: 0; }
   .ht-stage-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
-  .ht-stage-num { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
+  .ht-stage-num { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
   .ht-stage-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
   .ht-stage-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
 
-  .ht-qual-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .ht-qual-grid--no-photo { grid-template-columns: 1fr; max-width: 68ch; }
+  .ht-qual-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .ht-cert-list { margin-top: 28px; border-top: 1px solid var(--color-stone-200); }
+  /* In the two-column layout the list is its own column, so it needs no
+     leading gap under a heading that is not above it. */
+  .ht-cert-list--col { margin-top: 16px; }
   .ht-cert-row  { padding: 12px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .ht-cert-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
+  .ht-cert-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 3px; }
   .ht-cert-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
 
   @media (max-width: 1024px) {
-    .ht-overview-grid { grid-template-columns: 1fr; }
-    .ht-temper-grid { grid-template-columns: 1fr; }
-    .ht-proc-grid { grid-template-columns: 1fr; }
-    .ht-qual-grid { grid-template-columns: 1fr; }
-    .ht-qual-grid--no-photo { max-width: none; }
+    .ht-overview-grid { grid-template-columns: minmax(0, 1fr); }
+    .ht-temper-grid { grid-template-columns: minmax(0, 1fr); }
+    .ht-proc-grid { grid-template-columns: minmax(0, 1fr); }
+    .ht-qual-grid { grid-template-columns: minmax(0, 1fr); }
+    .ht-cert-list--col { margin-top: 28px; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 42%;
-  }
 </style>
 

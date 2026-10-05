@@ -35,12 +35,13 @@ const alloys = [
   <!-- Hero -->
   <IndustryHero
     image="/assets/industries/hero/automotive-hero.jpg"
+    focus="32% 50%"
+    focusMobile="8% 55%"
     eyebrow="Industries / Automotive"
     stats={[
     ['IATF 16949:2016', 'Automotive quality system'],
     ['Special alloys', 'Custom & Standard alloys'],
     ['Lead-free grades', 'RoHS & ELV compliant'],
-    ['35,000 MT', 'Annual capacity'],
     ]}
   >
     <Fragment slot="h1">Automotive, Commercial Vehicle &amp; EV Profiles.</Fragment>
@@ -172,7 +173,7 @@ const alloys = [
           </h2>
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Banco's automotive quality system covers supplier approval, incoming billet inspection,
-            in process MES (Manufacturing Execution System), SCADA monitoring, outgoing dimensional
+            in process MES (Manufacturing Execution System), SCADA/ERP monitoring, outgoing dimensional
             inspection, and full PPAP capability. We maintain IATF 16949:2016, ISO 9001:2015, and
             ISO 14001:2015 simultaneously, giving OEM customers a single certified partner for
             structural and functional profiles.
@@ -201,7 +202,6 @@ const alloys = [
   /* Quality & certifications split: the 2x2 cert grid is much shorter than the
      paragraph beside it, so top-alignment (the shared .ind-split default) left
      it looking stranded near the top of the row — center it instead. */
-  .ind-certs { align-self: center; }
 
   .auto-gallery-viewport {
     overflow: hidden;

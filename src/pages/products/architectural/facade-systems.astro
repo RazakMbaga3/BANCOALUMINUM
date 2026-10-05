@@ -1,11 +1,17 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Pic from '../../../components/Pic.astro';
+import SeriesGrid from '../../../components/SeriesGrid.astro';
+import { byCategory, ALL_SERIES } from '../../../lib/series';
+
+// Series, copy and catalogue imagery: Sept 2026 Profile Catalogue (src/lib/series.ts).
+const facadeSeries = byCategory('facade-systems');
+const scene = (slug: string) => ALL_SERIES.find((x) => x.slug === slug)!.scene.src;
 
 const facadeTypes = [
-  { name: 'Curtain Wall Systems', desc: 'Structural glazing and captured curtain wall systems for commercial and institutional elevations. Full-height glass spans with concealed or exposed cap options.', img: '/assets/architectural-systems/curtain-wall-system.jpg' },
+  { name: 'Curtain Wall Systems', desc: 'Structural glazing and captured curtain wall systems for commercial and institutional elevations. Full-height glass spans with concealed or exposed cap options.', img: scene('38mm-slim-curtain-wall') },
   { name: 'Glazing Solutions',    desc: 'Single, double and structural glazing configurations engineered to Banco frame tolerances, coordinated with your glazier of choice.', img: '/assets/architectural-systems/aluminium-glazing-corner.jpeg' },
-  { name: 'Louvers',              desc: 'Fixed and adjustable louvre and shading systems for solar control, ventilation, and plant screening on commercial façades.', img: '/assets/architectural-systems/louvers.webp' },
+  { name: 'Louvers',              desc: 'Fixed and adjustable louvre and shading systems for solar control, ventilation, and plant screening on commercial façades.', img: scene('louvers') },
 ];
 
 const performance = [
@@ -22,7 +28,7 @@ const performance = [
   description="Structural glazing, curtain wall and louvre systems for commercial and institutional elevations. Tested to EN 14351-1. Banco Architectural Systems."
 >
   <section class="fs-hero">
-    <Pic src="/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg" alt="Banco aluminium curtain wall façade" class="fs-hero-img" loading="eager" sizes="100vw" />
+    <Pic src={scene('45mm-curtain-wall')} alt="" class="fs-hero-img" focus="50% 45%" loading="eager" sizes="100vw" />
     <div class="fs-hero-scrim" aria-hidden="true"></div>
     <div class="container fs-hero-body">
       <div class="eyebrow on-dark">Architectural systems / Façade systems</div>
@@ -48,6 +54,10 @@ const performance = [
           </div>
         ))}
       </div>
+
+      <div class="eyebrow" style="margin-top:56px">Curtain wall & louver series</div>
+      <h2 class="t-h2" style="color:var(--color-navy);margin-top:12px;margin-bottom:32px">Curtain wall 38 – 45 mm, and louvers.</h2>
+      <SeriesGrid series={facadeSeries} />
     </div>
   </section>
 
@@ -62,9 +72,6 @@ const performance = [
             <div class="fs-perf-std">{p.std}</div>
           </div>
         ))}
-      </div>
-      <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
-        <a href="/contact?src=architectural#quote" class="btn btn-primary-dark">Request Data Sheets</a>
       </div>
     </div>
   </section>
@@ -89,10 +96,11 @@ const performance = [
   .fs-perf-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .fs-perf-col { background: var(--color-navy-soft); padding: 20px 18px; }
   .fs-perf-cat { font-family: var(--font-sans); font-size: 12.5px; font-weight: 600; color: var(--color-platinum); }
-  .fs-perf-std { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--color-green); margin-top: 6px; }
+  .fs-perf-std { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-green); margin-top: 6px; }
 
   @media (max-width: 900px) {
-    .fs-grid { grid-template-columns: 1fr; }
+    .fs-grid { grid-template-columns: minmax(0, 1fr); }
     .fs-perf-grid { grid-template-columns: repeat(2, 1fr); }
+    .fs-perf-col:last-child:nth-child(odd) { grid-column: span 2; }
   }
 </style>

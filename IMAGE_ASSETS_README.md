@@ -168,6 +168,32 @@ npm run preview
 
 ---
 
+## Subject-aware framing (Sept 30, 2026)
+
+Photos are never blanket centre-cropped. Every image that gets cropped carries a **focal point**.
+
+```astro
+<Pic src="/assets/…jpg" alt="…"
+     focus="50% 40%"          <!-- desktop focal point (x% y%) -->
+     focusMobile="66% 50%"    <!-- optional, ≤768px: portrait-ish boxes show a different slice -->
+     ratioMobile="3 / 2"      <!-- optional aspect-ratio override, e.g. group photos that must not lose people -->
+     fit="contain" />         <!-- optional: product cut-outs that must never be cropped -->
+```
+
+- `focus` / `focusMobile` → `--fp` / `--fp-m` custom properties → `object-position` (see **IMAGE FRAMING** in `src/styles/global.css`). An image that sets only one keeps its existing framing at the other size.
+- Raw `<img>` (rare) can opt in with `data-fp style="--fp:30% 45%"` (`data-fpm` / `--fp-m` for mobile).
+- `IndustryHero` takes the same `focus` / `focusMobile` props.
+- Pick a focal point by looking at the photo: put the machine / face / building at the coordinate, not the middle of the frame. Panoramic photos (automotive, forging, hydraulics heroes) are where this matters most.
+
+### Photo heroes on phones
+Full-bleed photo heroes share `.photo-hero` (`-media`, `-scrim`, `-grad`, `-body`). Above 768px each page keeps its own look. At ≤768px the photo becomes its own band (height `--hero-band`, override per hero) with the copy on solid navy below, so the subject is always visible. New photo heroes: add those classes and pass a `focusMobile`.
+
+### Checking it
+`node scripts/responsive-audit.mjs [baseUrl] [widths]` — overflow, tap targets, tiny text at every breakpoint.
+`node scripts/a11y-structure-audit.mjs` — alt text, headings, unnamed controls, 404ing assets.
+
+---
+
 **Last Updated:** May 26, 2026  
 **Total Images:** 45  
 **Status:** Production Ready ✅

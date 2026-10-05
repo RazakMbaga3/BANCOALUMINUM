@@ -1,9 +1,9 @@
 ---
+import Pic from '../../components/Pic.astro';
 import Layout from '../../layouts/Layout.astro';
-import { optSrcset } from '../../lib/img';
 
 const certs = [
-  { code: 'ISO 9001:2015',    title: 'Quality Management System',        desc: 'End-to-end quality management from billet casting to finished profile. Stage-wise inspection, MES-ERP integration, SCADA traceability.' },
+  { code: 'ISO 9001:2015',    title: 'Quality Management System',        desc: 'End-to-end quality management from billet casting to finished profile. Stage-wise inspection, MES-ERP integration, SCADA/ERP traceability.' },
   { code: 'ISO 14001:2015',   title: 'Environmental Management System',  desc: 'Systematic management of environmental impact. CBAM-certified carbon footprint of 0.203 kg CO₂e / kg aluminium.' },
   { code: 'ISO 45001:2018',   title: 'Occupational Health & Safety',     desc: 'Certified occupational health and safety management across all manufacturing operations.' },
   { code: 'IATF 16949:2016',  title: 'Automotive Quality Systems',       desc: 'Automotive-grade quality system. Supports supply to Tier 1 and Tier 2 automotive OEMs globally.' },
@@ -17,7 +17,7 @@ const certs = [
 const qcTools = [
   { name: 'ASCONA Optical Measurement', desc: 'Automated optical measurement system for dimensional inspection of complex profiles. Full contour capture against nominal die geometry.' },
   { name: 'Spectro-OES Analysis',       desc: 'Optical emission spectrometry for chemical composition verification of every melt. 100% chemical analysis ensures no shipment leaves without a certificate.' },
-  { name: 'SCADA Online Monitoring',    desc: 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number gives full lot traceability.' },
+  { name: 'SCADA/ERP Online Monitoring',    desc: 'Real-time process monitoring from foundry through extrusion. Billet marking by alloy and cast number gives full lot traceability.' },
   { name: 'CMM Inspection',             desc: 'Coordinate measuring machine for die verification and first-article sample approval before production release.' },
   { name: 'MES-ERP Integration',        desc: 'Manufacturing execution system integrated with ERP for full order traceability. Dispatch linked to production lot and quality records.' },
   { name: 'Ultrasonic Testing',         desc: 'Billet and profile ultrasonic inspection for internal defects. Mandatory for aerospace, marine, and critical structural applications.' },
@@ -27,7 +27,7 @@ const qcTools = [
 
 const pipeline = [
   { step: '01', label: 'Incoming billet',      detail: 'Composition cert + visual inspection' },
-  { step: '02', label: 'Extrusion',            detail: 'SCADA process parameters logged live' },
+  { step: '02', label: 'Extrusion',            detail: 'SCADA/ERP process parameters logged live' },
   { step: '03', label: 'Heat treatment',       detail: 'Time-temperature recorded per lot' },
   { step: '04', label: 'Dimensional check',    detail: 'ASCONA optical, covering 100% of key profiles' },
   { step: '05', label: 'Mechanical testing',   detail: 'Tensile, hardness, elongation' },
@@ -37,7 +37,7 @@ const pipeline = [
 
 <Layout
   title="Quality & certifications: Banco Aluminium"
-  description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
+  description="ISO 9001, ISO 14001, ISO 45001, IATF 16949, CE, IRS, BIS. SCADA/ERP traceability, Spectro-OES, ASCONA optical measurement, CMM. EN 10204 Type 3.1 on every shipment."
   transparentNav={true}
   heroImage="/assets/quality/quality-hero-lab.jpg"
 >
@@ -45,18 +45,14 @@ const pipeline = [
   <!-- ══════════════════════════════════════════
        HERO — photo background
        ══════════════════════════════════════════ -->
-  <section class="qp-hero">
-    <div class="qp-hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset={optSrcset('/assets/quality/quality-hero-lab.jpg', 'avif')} sizes="100vw" />
-        <source type="image/webp" srcset={optSrcset('/assets/quality/quality-hero-lab.jpg', 'webp')} sizes="100vw" />
-        <img src="/assets/quality/quality-hero-lab.jpg" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" />
-      </picture>
-      <div class="qp-hero-scrim"></div>
-      <div class="qp-hero-grad"></div>
+  <section class="qp-hero photo-hero">
+    <div class="qp-hero-media photo-hero-media" aria-hidden="true">
+      <Pic src="/assets/quality/quality-hero-lab.jpg" alt="" loading="eager" fetchpriority="high" class="qp-hero-vid" sizes="100vw" focusMobile="68% 42%" />
+      <div class="qp-hero-scrim photo-hero-scrim"></div>
+      <div class="qp-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container qp-hero-body">
+    <div class="container qp-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">
         Quality & certifications
       </div>
@@ -64,20 +60,20 @@ const pipeline = [
         Certified quality.<br/><em class="accent">Traceable</em> output.
       </h1>
       <p class="qp-hero-lede" data-reveal data-reveal-delay="3">
-        Nine certifications. SCADA traceability from billet to dispatch.
+        Nine certifications. SCADA/ERP traceability from billet to dispatch.
         EN 10204 Type 3.1 material certificates on every shipment.
         Controlled process. Consistent performance.
       </p>
 
       <!-- Stats -->
-      <div class="qp-hero-stats" data-reveal data-reveal-delay="4">
+      <div class="qp-hero-stats stat-row" data-reveal data-reveal-delay="4">
         {[
           { val: '9',      label: 'Active certifications' },
           { val: '100%',   label: 'Chemical analysis per melt' },
           { val: 'Type 3.1', label: 'EN 10204 material certs' },
-          { val: 'SCADA',  label: 'Live process traceability' },
+          { val: 'SCADA/ERP',  label: 'Live process traceability' },
         ].map(({ val, label }) => (
-          <div class="qp-stat">
+          <div class="qp-stat stat-row-item">
             <div class="qp-stat-n">{val}</div>
             <div class="qp-stat-l">{label}</div>
           </div>
@@ -182,11 +178,7 @@ const pipeline = [
           ['/assets/quality/lab-conductivity.jpg', 'Conductivity meter', '50% 40%'],
         ].map(([src, cap, pos]) => (
           <figure class="qp-lab-fig">
-            <picture>
-              <source type="image/avif" srcset={optSrcset(src, 'avif', 768)} sizes="(max-width: 900px) 50vw, 20vw" />
-              <source type="image/webp" srcset={optSrcset(src, 'webp', 768)} sizes="(max-width: 900px) 50vw, 20vw" />
-              <img src={src} alt={cap} loading="lazy" style={`object-position:${pos}`} />
-            </picture>
+            <Pic src={src} alt={cap} loading="lazy" sizes="(max-width: 900px) 50vw, 20vw" maxW={768} focus={pos} />
             <figcaption>{cap}</figcaption>
           </figure>
         ))}
@@ -200,38 +192,6 @@ const pipeline = [
             <div class="qp-tool-rule"></div>
             <p class="qp-tool-desc">{t.desc}</p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       CBAM CALLOUT — dark accent band
-       ══════════════════════════════════════════ -->
-  <section class="qp-cbam" data-reveal="fade">
-    <div class="container qp-cbam-inner">
-      <div class="qp-cbam-left">
-        <div class="qp-cbam-badge">CBAM-ready</div>
-        <h2 class="t-h2" style="color:var(--color-stone-50);margin-top:20px">
-          Carbon data for<br/><em class="accent">every EU shipment.</em>
-        </h2>
-        <p class="qp-cbam-sub">
-          Mandatory from January 2026. Banco issues tCO₂e/t per production lot,
-          calculated under ISO 14064-1, attached to every material certificate for
-          EU-bound shipments.
-        </p>
-        <div class="qp-cbam-num">
-          <div class="qp-cbam-num-main">
-            <span class="qp-cbam-val">0.203</span>
-            <span class="qp-cbam-unit">kg CO₂e<br/>per kg Al</span>
-          </div>
-          <div class="qp-cbam-num-label">CBAM-certified carbon footprint · ISO 14064-1 verified</div>
-        </div>
-      </div>
-      <div class="qp-cbam-tags">
-        {['ISO 14064-1 verified', 'Scope 1: direct emissions', 'Scope 2: indirect (electricity)', 'Per-lot production reporting', 'CBAM declaration document', 'Available from Jan 2026'].map(tag => (
-          <div class="qp-cbam-tag">{tag}</div>
         ))}
       </div>
     </div>
@@ -255,7 +215,7 @@ const pipeline = [
     overflow: hidden;
   }
   .qp-hero-media { position: absolute; inset: 0; z-index: 0; }
-  .qp-hero-vid {
+  :global(.qp-hero-vid) {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover; object-position: 60% 40%;
@@ -296,7 +256,7 @@ const pipeline = [
     color: var(--color-stone-50); line-height: 1;
   }
   .qp-stat-l {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--color-stone-400); margin-top: 7px;
   }
@@ -331,7 +291,7 @@ const pipeline = [
   }
   .qp-pipe-cell:hover { background: var(--color-navy); }
   .qp-pipe-step {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 12px;
   }
   .qp-pipe-label {
@@ -400,12 +360,12 @@ const pipeline = [
     margin-bottom: 1px;
   }
   .qp-lab-fig { margin: 0; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--color-navy-soft); }
-  .qp-lab-fig img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease, transform 0.5s ease; }
-  .qp-lab-fig:hover img { filter: brightness(1); transform: scale(1.04); }
+  .qp-lab-fig :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease, transform 0.5s ease; }
+  .qp-lab-fig:hover :global(img) { filter: brightness(1); transform: scale(1.04); }
   .qp-lab-fig figcaption {
     position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px;
     background: linear-gradient(transparent, rgba(8,27,48,0.9));
-    font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-platinum); line-height: 1.4;
   }
   @media (max-width: 900px) { .qp-lab-strip { grid-template-columns: repeat(2, 1fr); } .qp-lab-fig:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; } }
@@ -428,7 +388,7 @@ const pipeline = [
   .qp-tool-card:hover { background: var(--color-navy); }
   .qp-tool-card:hover::after { width: 100%; }
   .qp-tool-n {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.2em; color: var(--color-green); margin-bottom: 14px;
   }
   .qp-tool-name {
@@ -443,60 +403,6 @@ const pipeline = [
   .qp-tool-desc { font-size: 12.5px; color: var(--color-stone-400); line-height: 1.6; }
 
   /* ── CBAM BAND ──────────────────────────────────────────────── */
-  .qp-cbam {
-    background: var(--color-navy);
-    border-top: 1px solid var(--color-navy-line);
-    border-bottom: 1px solid var(--color-navy-line);
-    padding: 64px 0;
-  }
-  .qp-cbam-inner {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: clamp(40px,6vw,100px); align-items: start;
-  }
-  .qp-cbam-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-mono); font-size: 11px;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--color-green); border: 1px solid var(--color-green);
-    padding: 6px 14px;
-  }
-  .qp-cbam-sub {
-    color: var(--color-stone-400); font-size: 15px;
-    line-height: 1.65; max-width: 52ch; margin-top: 20px;
-  }
-  .qp-cbam-num {
-    display: flex; flex-direction: column; gap: 10px;
-    margin-top: 28px; padding-top: 24px;
-    border-top: 1px solid var(--color-navy-line);
-  }
-  .qp-cbam-num-main { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
-  .qp-cbam-val {
-    font-family: var(--font-sans); font-size: clamp(40px,4.5vw,64px);
-    font-weight: 300; letter-spacing: -0.03em; color: var(--color-stone-50); line-height: 1;
-  }
-  .qp-cbam-unit {
-    font-family: var(--font-sans); font-size: clamp(15px, 1.6vw, 19px);
-    font-weight: 300; color: var(--color-green); line-height: 1.2;
-  }
-  .qp-cbam-num-label {
-    font-family: var(--font-mono); font-size: 10px;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--color-stone-400);
-  }
-  .qp-cbam-tags {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1px; background: var(--color-navy-line);
-    align-self: start;
-  }
-  .qp-cbam-tag {
-    background: var(--color-navy-soft);
-    padding: 18px 16px;
-    font-family: var(--font-mono); font-size: 10.5px;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--color-stone-400); line-height: 1.5;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .qp-cbam-tag:hover { background: var(--color-navy); color: var(--color-stone-50); }
 
   /* ── CTA ────────────────────────────────────────────────────── */
   .qp-cta-inner {
@@ -514,20 +420,17 @@ const pipeline = [
     .qp-tools-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .qp-pipe-head   { grid-template-columns: 1fr; }
-    .qp-certs-head  { grid-template-columns: 1fr; }
+    .qp-pipe-head   { grid-template-columns: minmax(0, 1fr); }
+    .qp-certs-head  { grid-template-columns: minmax(0, 1fr); }
     .qp-cert-grid   { grid-template-columns: repeat(2, 1fr); }
-    .qp-cbam-inner  { grid-template-columns: 1fr; }
     .qp-cta-inner   { flex-direction: column; }
     .qp-cta-btns    { flex-direction: row; flex-wrap: wrap; }
   }
   @media (max-width: 640px) {
-    .qp-hero-grad  { background: rgba(6,21,37,0.88); }
     .qp-scroll-cue { display: none; }
     .qp-pipeline   { grid-template-columns: repeat(2, 1fr); }
-    .qp-cert-grid  { grid-template-columns: 1fr; }
+    .qp-cert-grid  { grid-template-columns: minmax(0, 1fr); }
     .qp-tools-grid { grid-template-columns: 1fr 1fr; }
-    .qp-cbam-tags  { grid-template-columns: 1fr; }
     .qp-pipe-arrow { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {

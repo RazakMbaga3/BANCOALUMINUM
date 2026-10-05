@@ -23,9 +23,9 @@ const pillars = [
     index: '03',
     name: 'Waste reduction',
     img: '/assets/plant/plant-scada-monitoring.jpg',
-    imgAlt: 'Operator monitoring a SCADA process control terminal on the Banco production floor',
-    desc: 'SCADA-based process monitoring, stage-wise quality control, and MES-ERP integration minimise scrap generation at every step, from billet casting through to finished profile.',
-    stats: [['8 gates', 'Stage-wise quality holds'], ['SCADA', 'Live process monitoring']],
+    imgAlt: 'Operator monitoring a SCADA/ERP process control terminal on the Banco production floor',
+    desc: 'SCADA/ERP-based process monitoring, stage-wise quality control, and MES-ERP integration minimise scrap generation at every step, from billet casting through to finished profile.',
+    stats: [['8 gates', 'Stage-wise quality holds'], ['SCADA/ERP', 'Live process monitoring']],
   },
   {
     index: '04',
@@ -189,28 +189,6 @@ const certs = [
   <section class="section-alt" style="padding:80px 0">
     <div class="container">
 
-      <!-- Solar -->
-      <div class="su-feature-split" data-reveal="fade">
-        <div class="su-feature-photo">
-          <Pic src="/assets/plant/plant-solar-aerial.jpg" alt="Aerial view of the rooftop solar array across the Banco Aluminium plant in Vadodara" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-        </div>
-        <div class="su-feature-copy" data-reveal="right">
-          <div class="eyebrow">Clean energy</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            960 kW of<br/><em class="accent">captive solar.</em>
-          </h2>
-          <p class="su-feature-p">
-            Banco operates 960 kW of captive rooftop solar generation at its Vadodara facility.
-            This reduces grid electricity draw and cuts Scope 2 emissions directly. Combined with
-            100% natural gas melting furnaces (replacing heavier fuel oil), the energy mix
-            is continuously being optimised to lower the carbon intensity of every kilogram
-            we produce.
-          </p>
-        </div>
-      </div>
-
-      <div class="su-split-divider"></div>
-
       <!-- Recycling -->
       <div class="su-feature-split su-feature-split--rev" data-reveal="fade">
         <div class="su-feature-photo">
@@ -287,36 +265,9 @@ const certs = [
               </div>
             ))}
           </div>
-
-          <!-- Big carbon number -->
-          <div class="su-cbam-big">
-            <span class="su-cbam-big-n">0.203</span>
-            <div class="su-cbam-big-meta">
-              <div class="su-cbam-big-unit">kg CO₂e / kg Al</div>
-              <div class="su-cbam-big-cert">ISO 14064-1 · Third-party verified</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════
-       PROCESS PHOTO STRIP
-       ══════════════════════════════════════════ -->
-  <section class="su-photo-strip" data-reveal="fade">
-    {[
-      ['/assets/manufacturing/melting-1.webp', 'Natural gas-fired melting furnace'],
-      ['/assets/manufacturing/scrap-1.webp',   'Recycled scrap input at Banco foundry'],
-      ['/assets/manufacturing/billet-2.webp',  'Homogenised billets, ready for extrusion'],
-      ['/assets/manufacturing/homo-3.webp',    'Controlled atmosphere homogenising'],
-    ].map(([src, alt]) => (
-      <div class="su-strip-photo">
-        <Pic src={src} alt={alt} loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" maxW={1200} />
-        <div class="su-strip-caption">{alt}</div>
-      </div>
-    ))}
   </section>
 
 
@@ -410,7 +361,7 @@ const certs = [
     line-height: 1.2;
   }
   .su-metric-label {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--color-stone-400);
   }
@@ -430,7 +381,7 @@ const certs = [
     color: var(--color-stone-50); line-height: 1;
   }
   .su-stat-l {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--color-stone-400); margin-top: 7px;
   }
@@ -499,7 +450,7 @@ const certs = [
   .su-pillar-card:hover .su-pillar-photo :global(img) { transform: scale(1.04); }
   .su-pillar-idx {
     position: absolute; top: 16px; left: 16px;
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--color-stone-50); background: var(--color-navy-deep);
     border-left: 2px solid var(--color-green);
@@ -523,7 +474,7 @@ const certs = [
     font-weight: 400; letter-spacing: -0.02em; color: var(--color-navy);
   }
   .su-pillar-stat-l {
-    font-family: var(--font-mono); font-size: 9.5px;
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); margin-top: 4px;
   }
@@ -562,7 +513,7 @@ const certs = [
     color: var(--color-navy); line-height: 1;
   }
   .su-fs-l {
-    font-family: var(--font-mono); font-size: 9.5px;
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.13em; text-transform: uppercase;
     color: var(--color-stone-700); margin-top: 5px;
   }
@@ -584,25 +535,6 @@ const certs = [
   }
   .su-cbam-p strong { color: var(--color-platinum); font-weight: 500; }
   .su-cbam-right { display: flex; flex-direction: column; gap: 24px; }
-  .su-cbam-big {
-    display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap;
-    padding: 20px 20px 0;
-  }
-  .su-cbam-big-n {
-    font-family: var(--font-sans);
-    font-size: clamp(40px,5vw,72px);
-    font-weight: 300; letter-spacing: -0.04em;
-    color: var(--color-stone-50); line-height: 1;
-  }
-  .su-cbam-big-unit {
-    font-family: var(--font-sans); font-size: 18px;
-    font-weight: 400; color: var(--color-green); line-height: 1.3;
-  }
-  .su-cbam-big-cert {
-    font-family: var(--font-mono); font-size: 9.5px;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-stone-400); margin-top: 4px;
-  }
   /* Data table */
   .su-cbam-table {
     border: 1px solid var(--color-navy-line);
@@ -618,7 +550,7 @@ const certs = [
   .su-cbam-row:last-child { border-bottom: none; }
   .su-cbam-row:hover { background: var(--color-navy-soft); }
   .su-cbam-key {
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-400); align-self: center;
   }
@@ -628,26 +560,6 @@ const certs = [
   }
 
   /* ── PHOTO STRIP ─────────────────────────────────────────── */
-  .su-photo-strip {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-  }
-  .su-strip-photo { overflow: hidden; position: relative; }
-  .su-strip-photo :global(img) {
-    width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
-    transition: transform 0.5s ease;
-  }
-  .su-strip-photo:hover :global(img) { transform: scale(1.05); }
-  .su-strip-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to top, rgba(6,21,37,0.85), transparent);
-    padding: 20px 12px 10px;
-    font-family: var(--font-mono); font-size: 9px;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    opacity: 0; transition: opacity 0.3s ease;
-  }
-  .su-strip-photo:hover .su-strip-caption { opacity: 1; }
 
   /* ── CERTS GRID ──────────────────────────────────────────── */
   .su-cert-head { max-width: 560px; margin-bottom: 40px; }
@@ -674,13 +586,13 @@ const certs = [
     color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.2;
   }
   .su-cert-label {
-    font-family: var(--font-mono); font-size: 9.5px;
+    font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); margin-top: 6px;
   }
   .su-cert-note {
     margin-top: 24px;
-    font-family: var(--font-mono); font-size: 10px;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.1em; color: var(--color-stone-700);
     line-height: 1.65; max-width: 72ch;
   }
@@ -695,15 +607,14 @@ const certs = [
   /* ── RESPONSIVE ──────────────────────────────────────────── */
   @media (max-width: 1100px) {
     .su-cert-grid { grid-template-columns: repeat(2, 1fr); }
-    .su-photo-strip { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    .su-ethos-inner    { grid-template-columns: 1fr; gap: 28px; }
-    .su-pillars-head   { grid-template-columns: 1fr; }
-    .su-feature-split  { grid-template-columns: 1fr; }
+    .su-ethos-inner    { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .su-pillars-head   { grid-template-columns: minmax(0, 1fr); }
+    .su-feature-split  { grid-template-columns: minmax(0, 1fr); }
     .su-feature-split--rev .su-feature-photo { order: 0; }
     .su-feature-split--rev .su-feature-copy  { order: 0; }
-    .su-cbam-layout    { grid-template-columns: 1fr; }
+    .su-cbam-layout    { grid-template-columns: minmax(0, 1fr); }
     .su-cta-inner      { flex-direction: column; }
     .su-cta-btns       { flex-direction: row; flex-wrap: wrap; }
   }
@@ -711,9 +622,8 @@ const certs = [
     .su-hero-vid       { display: none; }
     .su-hero-grad      { background: rgba(6,21,37,0.88); }
     .su-scroll-cue     { display: none; }
-    .su-pillar-grid    { grid-template-columns: 1fr; }
+    .su-pillar-grid    { grid-template-columns: minmax(0, 1fr); }
     .su-cert-grid      { grid-template-columns: 1fr 1fr; }
-    .su-photo-strip    { grid-template-columns: 1fr 1fr; }
     .su-hero-stats     { gap: 0; }
     .su-stat           { padding-right: 20px; margin-right: 20px; }
   }

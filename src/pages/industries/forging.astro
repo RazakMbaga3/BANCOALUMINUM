@@ -3,45 +3,30 @@ import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 import IndustryHero from '../../components/IndustryHero.astro';
 
-const profiles = [
-  { name: 'CNC machining blanks', desc: 'Near-net-shape extruded blanks in 2011, 2111 LF, and 6082 for CNC turned and milled components, with consistent grain flow from extrusion that reduces machining-induced distortion.' },
-  { name: 'Forging preform sections', desc: 'Extruded preform profiles in 2014 and 6082 for closed-die forging operations. The pre-shaped cross-section minimises flash waste and reduces die wear versus solid bar blanking.' },
-  { name: 'Turned part stock', desc: 'Round bar extrusions in free-machining 2011, 2111 LF, and 6026 for automatic screw machine and CNC turning centres, holding consistent diameter and straightness over full bar length.' },
-  { name: 'Hexagonal bar profiles', desc: 'Hex bar extrusions in 6082, 2011, and 2017A for hex and Allen key fastener production, socket head blanks, and torque-application components.' },
-  { name: 'Round bar sections', desc: 'Solid round bar in 6082-T6, 2017A-T4, and 2014-T6 for structural fasteners, pin stocks, and precision-machined components (diameter range 10–200 mm).' },
-  { name: 'Rectangular machining stock', desc: 'Flat and rectangular bar extrusions for plate-type machined components; the near-net cross-section reduces saw cutting and facing stock removal versus slab-cut plate.' },
-];
-
 const galleryImages = ['12a', '12b', '12c', '12d'];
 
-const alloys = [
-  { name: '2011', temper: 'T3 / T8', why: 'The classic free-machining alloy: lead and bismuth additives produce small, brittle chips in CNC turning. High cutting speeds and excellent surface finish. For applications without RoHS constraints.' },
-  { name: '2111 LF', temper: 'T4 / T8', why: 'Lead-free free-machining alloy using tin and bismuth, fully RoHS and ELV compliant. Machinability approaches 2011, with full compliance for EU, Japan, and US regulatory requirements.' },
-  { name: '2017A', temper: 'T4', why: 'Aircraft-grade structural alloy with good machinability, preferred for aerospace fastener stock, precision structural blanks, and high-strength engineering components.' },
-  { name: '6082', temper: 'T6', why: 'High-strength structural alloy for forging preforms and machined structural components, with reliable strength after artificial ageing, good weldability, and good anodising quality.' },
-  { name: '6261', temper: 'T6', why: 'Special corrosion-resistant machining alloy for applications where 2xxx alloy corrosion performance is inadequate. Excellent machining behaviour, with improved marine service resistance.' },
-  { name: '6026 LF', temper: 'T9', why: 'Lead-free free-machining 6xxx alloy that pairs good strength with excellent CNC machinability. Preferred for high-volume turning of pump, motor, and connector components.' },
-];
 ---
 
 <Layout
-  title="Forging & precision machining: Banco Aluminium"
-  description="Machinable extrusion sections and preforms in 6xxx and 2xxx alloys, supplied to close chemistry control for predictable machining and chip breaking."
-  heroImage="/assets/industries/hero/forging-hero.jpg"
+  title="Machining & value addition: Banco Aluminium"
+  description="Complete secondary processing of aluminium profiles: 4-axis VMC machining, punching, precision cutting, drilling, CNC turning, slotting and bending."
+  heroImage="/assets/capabilities/machining-hero.jpg"
 >
   <!-- Hero -->
   <IndustryHero
-    image="/assets/industries/hero/forging-hero.jpg"
-    eyebrow="Industries / Forging"
+    image="/assets/capabilities/machining-hero.jpg"
+    focus="60% 50%"
+    focusMobile="62% 50%"
+    eyebrow="Industries / Machining & value addition"
     stats={[
-    ['Lead-free RoHS grades', '2111 LF · 6026 LF'],
-    ['2xxx · 6xxx alloys', 'Free-machining & structural'],
-    ['Chemical cert', 'Every cast verified'],
-    ['SCADA traced', 'Full production archive'],
+    ['Multiple alloys', 'Free machining'],
+    ['Chemical certifications', 'Every cast verified'],
+    ['SCADA/ERP', 'Full production archive'],
+    ['Lead-free RoHS grades', '6026 LF'],
     ]}
   >
-    <Fragment slot="h1">Forging &amp; precision machining stock.</Fragment>
-    <Fragment slot="lead">Machinable extrusion sections and preforms in 6xxx and 2xxx alloys, supplied to close chemistry control for predictable machining behaviour and consistent chip breaking in automated CNC operations.</Fragment>
+    <Fragment slot="h1">Machining &amp; value addition.</Fragment>
+    <Fragment slot="lead">Our Machining &amp; Value Addition facility offers complete secondary processing of aluminium profiles, including 4-axis VMC machining, punching, precision cutting, drilling, CNC turning, slotting, bending and other customized operations, delivering ready-to-assemble components with consistent quality and dimensional accuracy.</Fragment>
   </IndustryHero>
 
   <!-- Gallery strip -->
@@ -62,99 +47,14 @@ const alloys = [
     </div>
   </section>
 
-  <!-- Section 01: Application overview -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="ind-split">
-        <div>
-          <div class="eyebrow">01 · Application overview</div>
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Alloy chemistry that <em class="accent">machines predictably.</em>
-          </h2>
-          <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
-            For automated CNC machining operations, alloy consistency is as critical as
-            dimensional accuracy. Small variations in silicon, copper, or free-machining
-            additive content between batches can result in chip-breaking failure, tool
-            wear acceleration, and surface finish variation: unacceptable in high-volume
-            production of precision components.
-          </p>
-          <p class="t-body" style="margin-top:16px;color:var(--color-stone-700)">
-            Banco's in-house foundry allows chemistry to be tightly controlled at the
-            melt stage, with spectrometric analysis on every cast before billet is
-            extruded. Our 2111 LF lead-free alloy is developed and cast in-house
-            (we are the source, not a reseller), providing direct control over the
-            additive balance that determines chip-breaking behaviour in your CNC machines.
-          </p>
-
-          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
-            {['CNC turning', 'CNC milling', 'Screw machine', 'Forging', 'Cold heading', 'Precision machining', 'Fastener manufacture'].map(tag => (
-              <span class="pill">{tag}</span>
-            ))}
-          </div>
-        </div>
-
-        <div style="position:relative">
-          <Pic
-            src="/assets/industries/forging.jpg"
-            alt="Metal parts and engineering blueprints, showing precision machined aluminium components"
-            loading="lazy"
-            class="ind-photo" sizes="(max-width: 1024px) 100vw, 60vw" />
-          <div class="ind-caption">
-            <span class="ind-caption-t">
-              In-house melt shop: spectrometric analysis on every cast for chemistry traceability
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 02: Profile types -->
-  <section class="section-alt section-pad">
-    <div class="container">
-      <div class="eyebrow">02 · Profile types</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six stock forms for forging and machining.
-      </h2>
-      <div class="ind-tiles">
-        {profiles.map(p => (
-          <div class="ind-tile">
-            <div class="ind-tick"></div>
-            <h3 class="ind-tile-h">{p.name}</h3>
-            <p class="ind-tile-p">{p.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 03: Alloys -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="eyebrow">03 · Alloys</div>
-      <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px;max-width:28ch">
-        Six alloys for forging and precision machining.
-      </h2>
-      <div class="ind-cards cols-3">
-        {alloys.map(a => (
-          <div class="ind-card">
-            <div class="ind-card-n">{a.name}</div>
-            <div class="ind-card-t">{a.temper}</div>
-            <p class="ind-card-p">{a.why}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 04: Quality -->
+  <!-- Section 01: Quality & certifications -->
   <section class="section-alt section-pad">
     <div class="container">
       <div class="ind-split">
         <div>
-          <div class="eyebrow">04 · Quality &amp; certifications</div>
+          <div class="eyebrow">01 · Quality &amp; certifications</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Chemistry cert on <em class="accent">every cast.</em>
+            Chemistry certification for <em class="accent">every cast.</em>
           </h2>
           <p class="t-body" style="margin-top:20px;color:var(--color-stone-700)">
             Banco issues a chemical composition certificate for every foundry cast, confirmed
@@ -168,7 +68,7 @@ const alloys = [
             ['ISO 9001:2015', 'Quality management system'],
             ['IATF 16949:2016', 'Automotive quality system'],
             ['OES spectrometry', 'Every cast analysed in-house'],
-            ['SCADA traceability', 'Full production data archive'],
+            ['SCADA / MES', 'Full production data archive'],
           ].map(([cert, scope]) => (
             <div class="ind-cert">
               <div class="ind-cert-c">{cert}</div>

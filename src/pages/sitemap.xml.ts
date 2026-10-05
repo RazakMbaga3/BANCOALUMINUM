@@ -1,6 +1,8 @@
 // Dynamic XML sitemap — served at /sitemap.xml
 // Astro picks this up via file-based routing; the .xml.ts extension signals a text/xml response.
 
+import { ALL_SERIES, seriesHref } from '../lib/series';
+
 const BASE = 'https://bancoaluminium.com';
 
 const staticPages = [
@@ -12,6 +14,8 @@ const staticPages = [
   { url: '/products/architectural/facade-systems',        changefreq: 'monthly', priority: '0.7' },
   { url: '/products/architectural/architectural-profiles',changefreq: 'monthly', priority: '0.7' },
   { url: '/products/architectural/accessories',           changefreq: 'monthly', priority: '0.6' },
+  // one page per catalogue series (src/lib/series.ts)
+  ...ALL_SERIES.map((x) => ({ url: seriesHref(x), changefreq: 'monthly', priority: '0.6' })),
   { url: '/products/cast-products',        changefreq: 'monthly', priority: '0.9' },
   { url: '/products/standard-sections',    changefreq: 'monthly', priority: '0.8' },
   { url: '/capabilities/extrusion',        changefreq: 'monthly', priority: '0.8' },

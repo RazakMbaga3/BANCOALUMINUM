@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
-import { optSrcset } from '../../lib/img';
 
 const dieTypes = [
   { type: 'Flat die', profiles: 'Solid profiles: angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
@@ -27,18 +26,19 @@ const processSteps = [
 >
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="cap-hero">
-    <div class="cap-hero-media" aria-hidden="true">
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
       <Pic
         src="/assets/capabilities/die-shop-hero.jpg"
         alt="Banco Aluminium die-shop technician checking extrusion dies in the die store"
         class="cap-hero-img"
+        focus="50% 45%" focusMobile="56% 48%"
         loading="eager" sizes="100vw" />
-      <div class="cap-hero-scrim"></div>
-      <div class="cap-hero-grad"></div>
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
     </div>
 
-    <div class="container cap-hero-body">
+    <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Die shop</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
         Customer drawings<br>into production<br>tooling.
@@ -97,11 +97,7 @@ const processSteps = [
           ['/assets/capabilities/die-shop-polish.jpg', 'Bearing correction & polishing'],
         ].map(([src, cap]) => (
           <figure class="die-photo">
-            <picture>
-              <source type="image/avif" srcset={optSrcset(src, 'avif')} sizes="(max-width: 768px) 100vw, 50vw" />
-              <source type="image/webp" srcset={optSrcset(src, 'webp')} sizes="(max-width: 768px) 100vw, 50vw" />
-              <img src={src} alt={cap} loading="lazy" />
-            </picture>
+            <Pic src={src} alt={cap} loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" />
             <figcaption>{cap}</figcaption>
           </figure>
         ))}
@@ -181,18 +177,10 @@ const processSteps = [
         </div>
         <div class="die-img-stack" data-reveal="right">
           <div class="die-img-main">
-            <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-cnc.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-cnc.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/die-shop-cnc.jpg" alt="Banco die-shop machinist at a CNC machining centre" loading="lazy" />
-            </picture>
+            <Pic src="/assets/capabilities/die-shop-machining-detail.jpg" alt="Cutter machining a die pocket on the 5-axis CNC machining centre" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" />
           </div>
           <div class="die-img-sub">
-            <picture>
-              <source type="image/avif" srcset={optSrcset('/assets/capabilities/die-shop-die-closeup.jpg', 'avif')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <source type="image/webp" srcset={optSrcset('/assets/capabilities/die-shop-die-closeup.jpg', 'webp')} sizes="(max-width: 1024px) 100vw, 45vw" />
-              <img src="/assets/capabilities/die-shop-die-closeup.jpg" alt="Finished hollow extrusion die showing the port and bearing geometry" loading="lazy" style="object-position: center 50%;" />
-            </picture>
+            <Pic src="/assets/capabilities/die-shop-die-closeup.jpg" alt="Finished hollow extrusion die showing the port and bearing geometry" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" focus="center 50%" />
           </div>
         </div>
       </div>
@@ -249,14 +237,14 @@ const processSteps = [
 
   .die-process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .die-proc-cell { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
-  .die-proc-num  { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); }
+  .die-proc-num  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .die-proc-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .die-proc-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
 
   .die-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
   .die-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; }
   .die-table thead tr { background: var(--color-navy-soft); }
-  .die-table th { padding: 10px 16px; text-align: left; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
+  .die-table th { padding: 10px 16px; text-align: left; font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
   .die-table th:last-child { border-right: none; }
   .die-row-even { background: rgba(255,255,255,0.04); }
   .die-row-odd  { background: rgba(255,255,255,0.02); }
@@ -265,51 +253,46 @@ const processSteps = [
   .die-cell-type { font-weight: 600; font-size: 12px; color: var(--color-platinum); white-space: nowrap; }
   .die-cell-text { color: var(--color-silver); font-family: var(--font-sans); font-size: 12px; line-height: 1.55; }
   .die-cell-mono { color: var(--color-nickel); }
-  .die-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
+  .die-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
   .die-mach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .die-spec-list { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
   .die-spec-row  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .die-spec-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
+  .die-spec-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .die-spec-val   { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
   .die-img-stack  { display: flex; flex-direction: column; gap: 4px; }
   .die-img-main   { aspect-ratio: 4/3; overflow: hidden; }
-  .die-img-main img, .die-img-sub img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .die-img-main:hover img, .die-img-sub:hover img { filter: brightness(1); }
+  .die-img-main :global(img), .die-img-sub :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .die-img-main:hover :global(img), .die-img-sub:hover :global(img) { filter: brightness(1); }
   .die-img-sub    { aspect-ratio: 16/6; overflow: hidden; }
 
   .die-trial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .die-approval-steps { display: flex; flex-direction: column; gap: 0; }
   .die-approval-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
-  .die-approval-step { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
+  .die-approval-step { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
   .die-approval-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
   .die-approval-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
 
   @media (max-width: 1024px) {
-    .die-section-head { grid-template-columns: 1fr; }
+    .die-section-head { grid-template-columns: minmax(0, 1fr); }
     .die-process-grid { grid-template-columns: repeat(2, 1fr); }
-    .die-mach-grid { grid-template-columns: 1fr; }
-    .die-trial-grid { grid-template-columns: 1fr; }
+    .die-mach-grid { grid-template-columns: minmax(0, 1fr); }
+    .die-trial-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .die-process-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  :global(.cap-hero-img) {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 45%;
-  }
 
   .die-photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; }
   .die-photo { margin: 0; aspect-ratio: 16 / 9; overflow: hidden; position: relative; border: 1px solid var(--color-stone-200); }
-  .die-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .die-photo :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
   .die-photo figcaption {
     position: absolute; left: 0; right: 0; bottom: 0; padding: 7px 10px;
     background: var(--color-stone-50); border-top: 1px solid var(--color-stone-200);
-    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700);
   }
-  @media (max-width: 768px) { .die-photo-strip { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .die-photo-strip { grid-template-columns: minmax(0, 1fr); } }
 </style>
 

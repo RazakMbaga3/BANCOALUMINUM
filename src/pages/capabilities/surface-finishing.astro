@@ -32,7 +32,7 @@ const finishes = [
   },
   {
     id: '04',
-    name: 'Sand blast',
+    name: 'Sandblasted finish',
     spec: 'Glass bead or corundum · matte texture',
     desc: 'Uniform diffuse surface, eliminates glare. Applied before anodising for deep matte effect. Profile cleaned and degreased first.',
     apps: ['Architectural', 'Display', 'Matte anodised'],
@@ -81,7 +81,7 @@ const advantages = [
 
 <Layout
   title="Surface finishing | Banco Aluminium"
-  description="Five surface finishes: QUALICOAT powder coating, Class 20 anodising, brushed, sand blast and mill finish across the full RAL and NCS colour range."
+  description="Five surface finishes: QUALICOAT powder coating, Class 20 anodising, brushed, sandblasted and mill finish across the full RAL and NCS colour range."
   transparentNav={true}
 >
 
@@ -103,7 +103,7 @@ const advantages = [
         Five finishes.<br>One facility.<br><em class="accent">Zero compromise.</em>
       </h1>
       <p class="sf-lede" data-reveal data-reveal-delay="3">
-        QUALICOAT powder coating, Class 20 anodising, brushed, sand blast, and mill finish.
+        QUALICOAT powder coating, Class 20 anodising, brushed, sandblasted, and mill finish.
         All in-house, billet to finished profile. No external handling,
         no traceability gaps, no colour drift between batches.
       </p>
@@ -137,7 +137,7 @@ const advantages = [
             <div class="sf-sc-id">{f.id}</div>
             <div class="sf-sc-colour">{f.colour}</div>
           </div>
-          <h3 class="sf-sc-name">{f.name}</h3>
+          <h2 class="sf-sc-name">{f.name}</h2>
           <div class="sf-sc-spec">{f.spec}</div>
           <p class="sf-sc-desc">{f.desc}</p>
           <div class="sf-sc-apps">
@@ -258,7 +258,6 @@ const advantages = [
           Colour matching, batch consistency, and QUALICOAT certification included.
         </p>
         <div class="sf-cta-btns">
-          <a href="/contact#technical" class="btn btn-primary-dark">Specify a system</a>
           <a href="/products/architectural" class="btn btn-secondary-dark">Architectural profiles</a>
         </div>
       </div>
@@ -353,12 +352,12 @@ const advantages = [
     margin-bottom: 4px;
   }
   .sf-sc-id {
-    font-family: var(--font-mono); font-size: 9px;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--color-green);
   }
   .sf-sc-colour {
-    font-family: var(--font-mono); font-size: 8.5px;
+    font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px));
     letter-spacing: 0.08em; color: var(--color-stone-700);
     text-align: right; line-height: 1.4; max-width: 14ch;
   }
@@ -367,7 +366,7 @@ const advantages = [
     color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.15;
   }
   .sf-sc-spec {
-    font-family: var(--font-mono); font-size: 9px;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--color-stone-700); line-height: 1.5;
   }
@@ -379,7 +378,7 @@ const advantages = [
     display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
   }
   .sf-app-tag {
-    font-family: var(--font-mono); font-size: 8.5px;
+    font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px));
     letter-spacing: 0.08em; text-transform: uppercase;
     color: var(--color-stone-700);
     border: 1px solid var(--color-stone-200);
@@ -439,7 +438,7 @@ const advantages = [
   }
   .sf-tc-row:hover { background: rgba(255,255,255,0.03); }
   .sf-tc-key {
-    font-family: var(--font-mono); font-size: 9px;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.13em; text-transform: uppercase;
     color: var(--color-nickel); flex-shrink: 0;
   }
@@ -466,7 +465,7 @@ const advantages = [
   }
   .sf-pp-cell:hover { background: rgba(28,58,92,0.9); }
   .sf-pp-title {
-    font-family: var(--font-mono); font-size: 9px;
+    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--color-green); margin-bottom: 3px;
   }
@@ -535,17 +534,17 @@ const advantages = [
     .sf-strip-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 960px) {
-    .sf-tech-pair { grid-template-columns: 1fr; gap: 40px; }
+    .sf-tech-pair { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     .sf-tech-divider { display: none; }
-    .sf-close-grid { grid-template-columns: 1fr; }
-    .sf-adv-list { grid-template-columns: 1fr; }
+    .sf-close-grid { grid-template-columns: minmax(0, 1fr); }
+    .sf-adv-list { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .sf-hero-vid    { display: none; }
     .sf-hero-grad   { background: rgba(6,21,37,0.90); }
     .sf-scroll-cue  { display: none; }
     .sf-strip-grid  { grid-template-columns: 1fr 1fr; }
-    .sf-pc-process-grid { grid-template-columns: 1fr; }
+    .sf-pc-process-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     .sf-hero-vid { display: none; }

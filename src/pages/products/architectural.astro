@@ -2,6 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 import { DOCS } from '../../lib/documents';
+import { ALL_SERIES, catalogue, countSeries } from '../../lib/series';
+
+const scene = (slug: string) => ALL_SERIES.find((x) => x.slug === slug)!.scene.src;
+const { livingSpaces, technicalFeatures } = catalogue.shared;
 
 // ── Performance categories ────────────────────────────────────────────────────
 const performance = [
@@ -17,13 +21,13 @@ const finishes = [
   { name: 'Powder coating', desc: 'QUALICOAT-class durable coatings in any RAL or NCS colour. 60–80 μm film thickness. Interior and exterior grades.' },
   { name: 'Anodising',      desc: 'Class 20 anodising to EN 12373. Natural, champagne, bronze, and black. Controlled bath for colour consistency.' },
   { name: 'Brushed finish', desc: 'Directional mechanical brushed surface for contemporary aesthetic. Available for interior and exterior applications.' },
-  { name: 'Sand-blast',     desc: 'Uniform matte texture for architectural applications requiring diffused reflection and industrial appearance.' },
+  { name: 'Sandblasted finish',     desc: 'Uniform matte texture for architectural applications requiring diffused reflection and industrial appearance.' },
   { name: 'Mill finish',    desc: 'As-extruded aluminium surface for downstream fabricators and specialist coating applicators.' },
 ];
 
 // ── Hero stats ribbon ─────────────────────────────────────────────────────────
 const heroStats = [
-  { value: '10', unit: '', label: 'Fenestration series' },
+  { value: String(countSeries()), unit: '', label: 'System series' },
   { value: '5',  unit: '', label: 'Surface finishes' },
   { value: '35K', unit: 'MT', label: 'Annual extrusion capacity' },
   { value: 'EN 14351-1', unit: '', label: 'Tested & certified' },
@@ -35,19 +39,19 @@ const systems = [
     label: 'Window Systems',
     items: ['Sliding Window Systems', 'Casement Window Systems'],
     href: '/products/architectural/window-systems',
-    img: '/assets/architectural-systems/aluminium-casement-window.webp',
+    img: livingSpaces.src,
   },
   {
     label: 'Door Systems',
     items: ['Sliding Doors', 'Folding Doors', 'Partition Systems', 'Door Frames'],
     href: '/products/architectural/door-systems',
-    img: '/assets/architectural-systems/aluminium-folding-doors-poolside.png',
+    img: scene('50mm-sliding-folding'),
   },
   {
     label: 'Façade Systems',
     items: ['Curtain Wall Systems', 'Glazing Solutions', 'Louvers'],
     href: '/products/architectural/facade-systems',
-    img: '/assets/architectural/6de0a5d9e19749b6f1e136347b188ed6.jpg',
+    img: scene('38mm-slim-curtain-wall'),
   },
 ];
 
@@ -125,7 +129,7 @@ const galleryPhotos = [
 <Layout
   title="Architectural aluminium systems: Banco Aluminium"
   description="Precision-engineered aluminium window, door, façade and profile systems for residential, commercial and institutional projects. EN 14351-1 tested."
-  image="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
+  image={livingSpaces.src}
   heroImage="/architectural-hero-poster.jpg"
   transparentNav={true}
 >
@@ -328,8 +332,9 @@ const galleryPhotos = [
         </div>
         <div class="arc-intro-visual" data-reveal="right">
           <Pic
-            src="/assets/images/architectureheropage/aluminum-architectural-systems-solutions-that-combine-aesthetics-and-functionality.webp"
-            alt="Banco Aluminium architectural profile cross-section"
+            src={technicalFeatures.src}
+            alt="Cut-away of a Banco sliding window frame showing the multi-chamber aluminium profile"
+            focus="85% 70%"
             loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
       </div>
@@ -549,7 +554,7 @@ const galleryPhotos = [
   .arc-waf-cta { margin-top: 22px; }
 
   @media (max-width: 900px) {
-    .arc-waf-grid { grid-template-columns: 1fr; gap: 32px; }
+    .arc-waf-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .arc-waf-divider { display: none; }
   }
 
@@ -811,7 +816,7 @@ const galleryPhotos = [
   }
   .ah-stat-lbl {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-stone-400);
@@ -822,7 +827,7 @@ const galleryPhotos = [
     align-items: center;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -948,7 +953,7 @@ const galleryPhotos = [
     align-items: center;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: max(10px, var(--fs-min, 0px));
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-green);
@@ -993,7 +998,7 @@ const galleryPhotos = [
   }
   .arc-env-label {
     font-family: var(--font-mono);
-    font-size: 9px;
+    font-size: max(9px, var(--fs-min, 0px));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-stone-700);
@@ -1085,7 +1090,7 @@ const galleryPhotos = [
   }
   .a-perf-col { background: var(--color-navy-soft); padding: 20px 18px; display: flex; flex-direction: column; gap: 6px; }
   .a-perf-cat { font-size: 14px; font-weight: 600; color: var(--color-platinum); line-height: 1.2; }
-  .a-perf-std { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--color-silver); text-transform: uppercase; }
+  .a-perf-std { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.1em; color: var(--color-silver); text-transform: uppercase; }
 
   /* ══ FINISHES STRIPS ═══════════════════════════════════════ */
   .a-finishes { padding: clamp(32px, 4vh, 52px) 0 0; border-bottom: 1px solid var(--color-stone-200); }
@@ -1115,7 +1120,7 @@ const galleryPhotos = [
   /* ══ MANUFACTURING CAP LIST ════════════════════════════════ */
   .a-cap-list { display: flex; flex-direction: column; }
   .a-cap-row { padding: 13px 0; border-bottom: 1px solid var(--color-navy-line); display: flex; flex-direction: column; gap: 3px; }
-  .a-cap-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-green); }
+  .a-cap-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-green); }
   .a-cap-desc { font-size: 12px; color: var(--color-silver); line-height: 1.5; }
 
   /* ══ CTA STRIP ══════════════════════════════════════════════ */
@@ -1129,7 +1134,7 @@ const galleryPhotos = [
   .arc-cta-btns { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
 
   /* ══ PILL VARIANT ══════════════════════════════════════════ */
-  .pill-xs { font-size: 9px !important; padding: 2px 7px !important; }
+  .pill-xs { font-size: max(9px, var(--fs-min, 0px)) !important; padding: 2px 7px !important; }
 
   /* ══ RESPONSIVE ════════════════════════════════════════════ */
   @media (max-width: 1200px) {
@@ -1140,12 +1145,12 @@ const galleryPhotos = [
   }
   @media (max-width: 1024px) {
     .ah-thumbs           { display: none; }
-    .ah-inner            { grid-template-columns: 1fr; }
-    .arc-intro-grid, .arc-contemp-grid { grid-template-columns: 1fr; }
+    .ah-inner            { grid-template-columns: minmax(0, 1fr); }
+    .arc-intro-grid, .arc-contemp-grid { grid-template-columns: minmax(0, 1fr); }
     .arc-intro-visual, .arc-contemp-visual { aspect-ratio: 16/7; }
-    .arc-waf-grid { grid-template-columns: 1fr; gap: 32px; }
+    .arc-waf-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .arc-waf-divider { display: none; }
-    .a-split             { grid-template-columns: 1fr; min-height: auto; }
+    .a-split             { grid-template-columns: minmax(0, 1fr); min-height: auto; }
     .a-split-rev .a-split-visual { order: 0; }
     .a-split-rev .a-split-body   { order: 0; }
     .a-split-visual      { height: 50vh; min-height: 280px; }
@@ -1161,7 +1166,7 @@ const galleryPhotos = [
     .ah-stat:nth-child(n+4) { display: none; }
     .arc-sys-grid        { grid-template-columns: repeat(2, 1fr); }
     .arc-env-grid        { grid-template-columns: repeat(4, 1fr); }
-    .arc-why-chips       { grid-template-columns: 1fr; }
+    .arc-why-chips       { grid-template-columns: minmax(0, 1fr); }
     .a-perf-cols         { grid-template-columns: repeat(2, 1fr); }
     .a-finish-strips     { grid-template-columns: repeat(2, 1fr); }
     .a-gallery-bleed     { grid-template-columns: repeat(3, 1fr); }
@@ -1169,9 +1174,9 @@ const galleryPhotos = [
   }
   @media (max-width: 480px) {
     .arc-env-grid    { grid-template-columns: repeat(2, 1fr); }
-    .arc-sys-grid    { grid-template-columns: 1fr; }
-    .a-perf-cols     { grid-template-columns: 1fr; }
-    .a-finish-strips { grid-template-columns: 1fr; }
+    .arc-sys-grid    { grid-template-columns: minmax(0, 1fr); }
+    .a-perf-cols     { grid-template-columns: minmax(0, 1fr); }
+    .a-finish-strips { grid-template-columns: minmax(0, 1fr); }
     .a-gallery-bleed { grid-template-columns: repeat(2, 1fr); }
     .arc-cta-btns    { flex-direction: column; }
     .ah-stat-cta     { display: none; }

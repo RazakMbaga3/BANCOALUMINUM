@@ -175,13 +175,8 @@ const processSteps = [
             ))}
           </div>
         </div>
-        <div class="die-img-stack" data-reveal="right">
-          <div class="die-img-main">
-            <Pic src="/assets/capabilities/die-shop-machining-detail.jpg" alt="Cutter machining a die pocket on the 5-axis CNC machining centre" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" />
-          </div>
-          <div class="die-img-sub">
-            <Pic src="/assets/capabilities/die-shop-die-closeup.jpg" alt="Finished hollow extrusion die showing the port and bearing geometry" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" focus="center 50%" />
-          </div>
+        <div class="die-img-main" data-reveal="right">
+          <Pic src="/assets/capabilities/die-shop-finishing.jpg" alt="Banco technician hand-finishing a die at the bench, showing the port and bearing geometry" loading="lazy" sizes="(max-width: 1024px) 100vw, 45vw" focus="center 45%" />
         </div>
       </div>
     </div>
@@ -260,11 +255,9 @@ const processSteps = [
   .die-spec-row  { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--color-stone-200); }
   .die-spec-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .die-spec-val   { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
-  .die-img-stack  { display: flex; flex-direction: column; gap: 4px; }
   .die-img-main   { aspect-ratio: 4/3; overflow: hidden; }
-  .die-img-main :global(img), .die-img-sub :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .die-img-main:hover :global(img), .die-img-sub:hover :global(img) { filter: brightness(1); }
-  .die-img-sub    { aspect-ratio: 16/6; overflow: hidden; }
+  .die-img-main :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .die-img-main:hover :global(img) { filter: brightness(1); }
 
   .die-trial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .die-approval-steps { display: flex; flex-direction: column; gap: 0; }

@@ -5,7 +5,7 @@ import { DOCS } from '../../lib/documents';
 import { ALL_SERIES, catalogue, countSeries } from '../../lib/series';
 
 const scene = (slug: string) => ALL_SERIES.find((x) => x.slug === slug)!.scene.src;
-const { livingSpaces, technicalFeatures } = catalogue.shared;
+const { livingSpaces } = catalogue.shared;
 
 // ── Performance categories ────────────────────────────────────────────────────
 const performance = [
@@ -332,9 +332,9 @@ const galleryPhotos = [
         </div>
         <div class="arc-intro-visual" data-reveal="right">
           <Pic
-            src={technicalFeatures.src}
-            alt="Cut-away of a Banco sliding window frame showing the multi-chamber aluminium profile"
-            focus="85% 70%"
+            src="/assets/capabilities/extrusion-runout.jpg"
+            alt="Banco technician checking a freshly extruded aluminium profile on the run-out table"
+            focus="50% 55%"
             loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
         </div>
       </div>

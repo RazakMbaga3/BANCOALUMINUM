@@ -80,9 +80,6 @@ const applications = [
           ))}
         </div>
 
-        <div class="ab-hero-ctas" data-reveal data-reveal-delay="5">
-          <a href="/about/why-banco" class="btn btn-secondary-dark">Why Banco</a>
-        </div>
       </div>
     </div>
 
@@ -355,12 +352,6 @@ const applications = [
     color: var(--color-stone-400);
     margin-top: 8px;
   }
-  .ab-hero-ctas {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-  }
 
   /* Scroll cue */
   .ab-scroll-cue {
@@ -537,8 +528,8 @@ const applications = [
   /* 5 cards in a 3-column grid leave an empty cell, so the last one spans it.
      At double width its short quote drifted to the left edge and read as
      mis-set next to the single-width cards; centre the content instead. */
-  .ab-testi-grid > :last-child { grid-column: span 2; align-items: center; text-align: center; }
-  .ab-testi-grid > :last-child .ab-testi-quote { max-width: 46ch; }
+  .ab-testi-grid > :last-child { grid-column: span 2; align-items: center; justify-content: center; text-align: center; }
+  .ab-testi-grid > :last-child .ab-testi-quote { max-width: 46ch; flex: none; }
   .ab-testi-grid > :last-child .ab-testi-foot  { width: 100%; max-width: 46ch; }
   .ab-testi-card {
     background: var(--color-navy-soft);

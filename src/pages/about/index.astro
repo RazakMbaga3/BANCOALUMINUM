@@ -518,21 +518,21 @@ const applications = [
     align-items: start;
     margin-bottom: 8px;
   }
+  /* Flex, not grid: with 5 cards an even-column grid always leaves a
+     trailing cell the width of a full column, which reads as a "blank box"
+     the same size as the real cards. Flex-wrap lets the last row hold just
+     the cards it has, each sized the same as every other card. */
   .ab-testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 1px;
     background: var(--color-navy-line);
     border: 1px solid var(--color-navy-line);
   }
-  /* 5 cards in a 3-column grid leave an empty cell, so the last one spans it.
-     At double width its short quote drifted to the left edge and read as
-     mis-set next to the single-width cards; centre the content instead. */
-  .ab-testi-grid > :last-child { grid-column: span 2; align-items: center; justify-content: center; text-align: center; }
-  .ab-testi-grid > :last-child .ab-testi-quote { max-width: 46ch; flex: none; }
-  .ab-testi-grid > :last-child .ab-testi-foot  { width: 100%; max-width: 46ch; }
   .ab-testi-card {
     background: var(--color-navy-soft);
+    flex: 1 1 calc(50% - 1px);
+    min-width: 280px;
     padding: 32px 28px 28px;
     display: flex;
     flex-direction: column;
@@ -623,8 +623,6 @@ const applications = [
     .ab-story-grid    { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     .ab-story-anchor  { position: static; }
     .ab-testi-head    { grid-template-columns: minmax(0, 1fr); }
-    .ab-testi-grid    { grid-template-columns: repeat(2, 1fr); }
-    .ab-testi-grid > :last-child { grid-column: span 2; }
     .ab-timeline-wrap { grid-template-columns: minmax(0, 1fr); }
     .ab-timeline-head { position: static; }
     .ab-apps-head     { grid-template-columns: minmax(0, 1fr); }
@@ -633,7 +631,7 @@ const applications = [
   @media (max-width: 640px) {
     .ab-hero-stats    { gap: 0; }
     .ab-stat          { padding-right: 24px; margin-right: 24px; }
-    .ab-testi-grid    { grid-template-columns: minmax(0, 1fr); }
+    .ab-testi-card    { flex-basis: 100%; }
     .ab-apps-grid     { grid-template-columns: minmax(0, 1fr); }
     .ab-scroll-cue    { display: none; }
     .ab-timeline-wrap { display: block; }

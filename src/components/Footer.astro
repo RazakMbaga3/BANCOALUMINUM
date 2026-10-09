@@ -33,6 +33,11 @@ const contact = [
   { label: 'Find us on map', href: '/contact#map' },
 ];
 const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 'BIS'];
+
+const capabilitiesCol1 = capabilities.slice(0, Math.ceil(capabilities.length / 2));
+const capabilitiesCol2 = capabilities.slice(Math.ceil(capabilities.length / 2));
+const companyCol1 = company.slice(0, Math.ceil(company.length / 2));
+const companyCol2 = company.slice(Math.ceil(company.length / 2));
 ---
 
 <footer class="site-footer" role="contentinfo">
@@ -69,17 +74,27 @@ const certs = ['ISO 9001', 'ISO 14001', 'ISO 45001', 'IATF 16949', 'CE', 'IRS', 
       <!-- Capabilities -->
       <details class="footer-col footer-col-wide" open>
         <summary><h2>Capabilities</h2></summary>
-        <ul class="footer-col-split">
-          {capabilities.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
+        <div class="footer-col-split">
+          <ul>
+            {capabilitiesCol1.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+          <ul>
+            {capabilitiesCol2.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
       </details>
 
       <!-- Company -->
       <details class="footer-col footer-col-wide" open>
         <summary><h2>Company</h2></summary>
-        <ul class="footer-col-split">
-          {company.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        </ul>
+        <div class="footer-col-split">
+          <ul>
+            {companyCol1.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+          <ul>
+            {companyCol2.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
       </details>
 
       <!-- Contact -->

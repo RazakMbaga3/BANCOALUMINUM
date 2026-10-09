@@ -1253,12 +1253,16 @@ main > div:nth-of-type(n+3):not(.container) {
 .footer-col ul a:hover {
   color: var(--color-stone-50);
 }
-/* The 8-item lists run two-up so every column ends near the same baseline,
-   rather than one tall column leaving dead space beside the short ones. */
-.footer-col ul.footer-col-split {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* The 8-item lists run two-up as independent flex columns (not a shared grid
+   row), so a wrapped label in one sub-column never leaves a dead gap in the
+   other. */
+.footer-col-split {
+  display: flex;
   gap: 6px 16px;
+}
+.footer-col-split ul {
+  flex: 1 1 0;
+  min-width: 0;
 }
 /* Contact details run horizontally so they no longer stretch the grid row */
 .footer-info {
@@ -1338,7 +1342,7 @@ main > div:nth-of-type(n+3):not(.container) {
   .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-bottom: 20px; }
   .footer-brand { grid-column: 1 / -1; }
   .footer-brand p { max-width: 60ch; }
-  .footer-col ul.footer-col-split { grid-template-columns: minmax(0, 1fr); }
+  .footer-col-split { flex-direction: column; }
   .footer-info { grid-template-columns: 1fr 1fr; }
   .footer-info-item:first-child { grid-column: 1 / -1; }
   .cta-strip-inner { grid-template-columns: minmax(0, 1fr); }
@@ -1376,7 +1380,7 @@ main > div:nth-of-type(n+3):not(.container) {
   .footer-col ul { padding-bottom: 8px; }
   .footer-col ul { gap: 0; }
   .footer-col ul a { display: flex; align-items: center; min-height: 44px; }
-  .footer-col ul.footer-col-split { grid-template-columns: minmax(0, 1fr); }
+  .footer-col-split { flex-direction: column; }
   .footer-info { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .footer-contact-link { display: flex; align-items: center; min-height: 44px; }
   .footer-bottom { font-size: 11px; }

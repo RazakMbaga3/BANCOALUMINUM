@@ -18,6 +18,7 @@ dev-err.log
 .lighthouse/
 .refactor-check/
 .archive-media/
+.image-backups/
 
 
 # environment variables

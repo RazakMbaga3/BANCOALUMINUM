@@ -207,9 +207,6 @@ const processStages = [
           <div class="ext-photo-top">
             <Pic src="/assets/products/profiles-range-a.jpg" alt="Range of Banco Aluminium extruded profiles, from solid sections to multi-hollow and heat-sink profiles" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
           </div>
-          <div class="ext-photo-bot">
-            <Pic src="/assets/capabilities/extrusion-runout.jpg" alt="Operator checking an extruded profile on the run-out table" loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-          </div>
         </div>
       </div>
     </div>
@@ -247,11 +244,9 @@ const processStages = [
   .ext-rkey  { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
   .ext-rval  { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
   .ext-range-photos { display: flex; flex-direction: column; gap: 4px; }
-  .ext-photo-top, .ext-photo-bot { overflow: hidden; }
-  .ext-photo-top { aspect-ratio: 4/3; }
-  .ext-photo-bot  { aspect-ratio: 16/6; }
-  .ext-photo-top img, .ext-photo-bot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .ext-photo-top:hover img, .ext-photo-bot:hover img { filter: brightness(1); }
+  .ext-photo-top { overflow: hidden; aspect-ratio: 4/5; }
+  .ext-photo-top img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
+  .ext-photo-top:hover img { filter: brightness(1); }
 
   @media (max-width: 1280px) {
     .ext-press-grid { grid-template-columns: repeat(3, 1fr); }

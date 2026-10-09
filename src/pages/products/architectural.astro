@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 import { DOCS } from '../../lib/documents';
-import { ALL_SERIES, catalogue, countSeries } from '../../lib/series';
+import { ALL_SERIES, catalogue } from '../../lib/series';
 
 const scene = (slug: string) => ALL_SERIES.find((x) => x.slug === slug)!.scene.src;
 const { livingSpaces } = catalogue.shared;
@@ -23,14 +23,6 @@ const finishes = [
   { name: 'Brushed finish', desc: 'Directional mechanical brushed surface for contemporary aesthetic. Available for interior and exterior applications.' },
   { name: 'Sandblasted finish',     desc: 'Uniform matte texture for architectural applications requiring diffused reflection and industrial appearance.' },
   { name: 'Mill finish',    desc: 'As-extruded aluminium surface for downstream fabricators and specialist coating applicators.' },
-];
-
-// ── Hero stats ribbon ─────────────────────────────────────────────────────────
-const heroStats = [
-  { value: String(countSeries()), unit: '', label: 'System series' },
-  { value: '5',  unit: '', label: 'Surface finishes' },
-  { value: '35K', unit: 'MT', label: 'Annual extrusion capacity' },
-  { value: 'EN 14351-1', unit: '', label: 'Tested & certified' },
 ];
 
 // ── Comprehensive systems — clickable cards linking to detail subpages ────────
@@ -204,24 +196,6 @@ const galleryPhotos = [
           ))}
         </div>
 
-      </div>
-    </div>
-
-    <!-- Bottom stats ribbon -->
-    <div class="ah-stats-bar">
-      <div class="container ah-stats-inner">
-        {heroStats.map((s) => (
-          <div class="ah-stat">
-            <span class="ah-stat-val">{s.value}<em>{s.unit}</em></span>
-            <span class="ah-stat-lbl">{s.label}</span>
-          </div>
-        ))}
-        <a href="/contact?src=architectural#quote" class="ah-stat-cta">
-          Get a quote
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </a>
       </div>
     </div>
 
@@ -773,69 +747,6 @@ const galleryPhotos = [
   }
   .ah-thumb:hover :global(img) { filter: saturate(1); transform: scale(1.06); }
 
-  /* Stats ribbon — pinned to bottom of hero */
-  .ah-stats-bar {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    z-index: 5;
-    background: rgba(6, 18, 34, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(40,69,106,0.55);
-  }
-  .ah-stats-inner {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    height: 68px;
-  }
-  .ah-stat {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    padding: 0 32px 0 0;
-    margin-right: 32px;
-    border-right: 1px solid rgba(40,69,106,0.55);
-    white-space: nowrap;
-  }
-  .ah-stat-val {
-    font-family: var(--font-sans);
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--color-platinum);
-    line-height: 1;
-  }
-  .ah-stat-val em {
-    font-style: normal;
-    font-size: clamp(14px, 1.5vw, 18px);
-    color: var(--color-green);
-    font-weight: 700;
-    margin-left: 2px;
-  }
-  .ah-stat-lbl {
-    font-family: var(--font-mono);
-    font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-stone-400);
-  }
-  .ah-stat-cta {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: max(10px, var(--fs-min, 0px));
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-green);
-    white-space: nowrap;
-    transition: gap 0.2s;
-  }
-  .ah-stat-cta:hover { gap: 12px; }
-
   /* ══ INTRO SPLIT ═══════════════════════════════════════════ */
   .arc-intro-grid {
     display: grid;
@@ -1161,9 +1072,6 @@ const galleryPhotos = [
   @media (max-width: 768px) {
     .ah-wrap             { min-height: 520px; }
     .ah-actions          { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .ah-stats-inner      { gap: 0; overflow-x: auto; }
-    .ah-stat             { padding: 0 20px 0 0; margin-right: 20px; }
-    .ah-stat:nth-child(n+4) { display: none; }
     .arc-sys-grid        { grid-template-columns: repeat(2, 1fr); }
     .arc-env-grid        { grid-template-columns: repeat(4, 1fr); }
     .arc-why-chips       { grid-template-columns: minmax(0, 1fr); }
@@ -1179,7 +1087,6 @@ const galleryPhotos = [
     .a-finish-strips { grid-template-columns: minmax(0, 1fr); }
     .a-gallery-bleed { grid-template-columns: repeat(2, 1fr); }
     .arc-cta-btns    { flex-direction: column; }
-    .ah-stat-cta     { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {

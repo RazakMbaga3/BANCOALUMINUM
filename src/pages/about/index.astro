@@ -32,7 +32,7 @@ const applications = [
 
 <Layout
   title="About Banco Aluminium: established 1967"
-  description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT capacity, 1100+ customers worldwide."
+  description="Banco Aluminium Private Limited: integrated aluminium extrusion company established 1967 in Vadodara, Gujarat. 35,000 MT annual capacity, 5 extrusion presses."
   transparentNav={true}
   heroImage="/assets/plant/plant-aerial.jpg"
 >
@@ -68,7 +68,6 @@ const applications = [
           {[
             { n: 58,    s: '+',   sep: false, label: 'Years in extrusion' },
             { n: 35000, s: ' MT', sep: true,  label: 'Annual capacity' },
-            { n: 1100,  s: '+',   sep: false, label: 'Customers worldwide' },
             { n: 5,     s: '',    sep: false, label: 'Extrusion presses' },
           ].map(({ n, s, sep, label }) => (
             <div class="ab-stat stat-row-item">
@@ -343,6 +342,7 @@ const applications = [
     letter-spacing: -0.02em;
     color: var(--color-stone-50);
     line-height: 1;
+    white-space: nowrap;
   }
   .ab-stat-l {
     font-family: var(--font-mono);

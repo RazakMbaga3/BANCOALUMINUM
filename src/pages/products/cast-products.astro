@@ -91,16 +91,6 @@ const qc = [
   { stat: 'Ceramic filtration', label: 'Inline grain refinement', sub: 'Fine, uniform, equiaxed crystal structure' },
 ];
 
-const certs = [
-  'ISO 9001:2015',
-  'ISO 14001:2015',
-  'ISO 45001:2018',
-  'IATF 16949:2016',
-  'CE (EN 15088:2005)',
-  'IS 733 · IS 1285 · IS 5082',
-  'ISO 14064-1',
-  'IQNET',
-];
 ---
 
 <Layout
@@ -391,17 +381,6 @@ const certs = [
     </div>
   </section>
 
-  <!-- ── 07 · Certifications ───────────────────────────────────────────────── -->
-  <section class="section-light" style="padding:40px 0;border-bottom:1px solid var(--color-stone-200)">
-    <div class="container">
-      <div class="c-cert-row">
-        <div class="c-cert-label">Certified to:</div>
-        <div class="c-cert-chips">
-          {certs.map(c => <span class="pill">{c}</span>)}
-        </div>
-      </div>
-    </div>
-  </section>
 
 </Layout>
 
@@ -965,27 +944,6 @@ const certs = [
     text-transform: uppercase;
     color: var(--color-nickel);
     line-height: 1.5;
-  }
-
-  /* ── Certifications ────────────────────────────────────────────────────── */
-  .c-cert-row {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .c-cert-label {
-    font-family: var(--font-mono);
-    font-size: max(10px, var(--fs-min, 0px));
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-stone-700);
-    white-space: nowrap;
-  }
-  .c-cert-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
   }
 
   /* ── CTA ───────────────────────────────────────────────────────────────── */

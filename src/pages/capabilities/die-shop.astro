@@ -10,12 +10,10 @@ const dieTypes = [
 ];
 
 const processSteps = [
-  { num: '/ 01', name: 'Drawing review', desc: 'Customer CAD files reviewed for extrudability: wall thickness, tongue ratio, circumscribed circle diameter. Modifications suggested where needed to improve die life and surface finish.' },
-  { num: '/ 02', name: 'Q-Form simulation', desc: 'Q-Form 3D flow simulation models metal behaviour through die bearing. Predicts flow balance, temperature distribution, and weld seam locations before any steel is cut.' },
-  { num: '/ 03', name: '3D assembly model', desc: 'Full 3D CAD model of die assembly: die, backer, bolster. Checks bearing relief, pocket geometry, and dimensional clearances across the complete tooling stack.' },
-  { num: '/ 04', name: 'CNC machining', desc: '5-axis CNC machining of H13 tool steel. Profiles machined to ±0.01 mm tolerance. Critical bearing surfaces finish-ground. Nitride hardening applied to increase surface hardness to 1000+ HV.' },
-  { num: '/ 05', name: 'Dimensional inspection', desc: 'CMM inspection of finished die. Bearing dimensions, pocket depth, and relief angles verified against design model. Inspection report issued before die is released to production.' },
-  { num: '/ 06', name: 'Trial extrusion', desc: 'Trial run on press. First-off profile measured against customer drawing. Dimensional report issued. Customer sample approval gate before die enters production rotation.' },
+  { num: '/ 01', name: 'Drawing review', desc: 'Customer drawings are reviewed for extrudability and potential complexities, including wall thickness, tongue ratio, and circumscribed circle diameter. Modifications are suggested where required to improve reliability, die life, and surface finish.' },
+  { num: '/ 02', name: 'Q-Form simulation', desc: 'Designs are converted into 3D models and simulated using QForm – UK software to predict metal flow, temperature distribution, weld seams, and deflections.' },
+  { num: '/ 03', name: 'Die manufacturing', desc: 'Manufacturing starts immediately using ready-stock raw materials, followed by CNC machining, heat treatment, and inspection.' },
+  { num: '/ 04', name: 'Trial', desc: 'Ready dies are issued for trials, and samples are validated and submitted for customer approval.' },
 ];
 ---
 
@@ -76,7 +74,7 @@ const processSteps = [
       <div class="eyebrow" data-reveal="fade">/ 01 · Die design process</div>
       <div class="die-section-head" data-reveal="fade">
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-          Six stages from<br>drawing to trial.
+          Four stages from<br>drawing to trial.
         </h2>
         <p class="t-lead" style="color:var(--color-stone-700);max-width:52ch">
           Every die goes through a structured design and validation process before
@@ -232,7 +230,7 @@ const processSteps = [
 <style>
   .die-section-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 4vw, 80px); align-items: start; margin-bottom: 48px; }
 
-  .die-process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  .die-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .die-proc-cell { background: var(--color-stone-50); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
   .die-proc-num  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .die-proc-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }

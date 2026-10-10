@@ -69,16 +69,6 @@ const localBusinessLd = {
     </div>
   </section>
 
-  <!-- Trust strip: certifications -->
-  <div class="ct-cert-strip">
-    <div class="container ct-cert-inner">
-      <span class="ct-cert-label">Certified to:</span>
-      {(['ISO 9001:2015', 'ISO 14001:2015', 'ISO 45001:2018', 'IATF 16949:2016', 'CE (EN 15088)', 'IRS Works Approval'] as const).map((c) => (
-        <span class="ct-cert">{c}</span>
-      ))}
-    </div>
-  </div>
-
   <!-- Forms + info -->
   <section class="section-light section-pad">
     <div class="container">
@@ -331,37 +321,6 @@ const localBusinessLd = {
     color: var(--color-stone-400);
   }
 
-  /* ── Cert strip ── */
-  .ct-cert-strip {
-    background: var(--color-navy-deep);
-    border-bottom: 1px solid var(--color-navy-line);
-    padding: 12px 0;
-  }
-  .ct-cert-inner {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .ct-cert-label {
-    font-family: var(--font-mono);
-    font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-nickel);
-    white-space: nowrap;
-  }
-  .ct-cert {
-    font-family: var(--font-mono);
-    font-size: max(9.5px, var(--fs-min, 0px));
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-stone-400);
-    white-space: nowrap;
-    padding: 3px 10px;
-    border: 1px solid var(--color-navy-line);
-  }
-
   /* ── Form + info split ── */
   .ct-split {
     display: grid;
@@ -378,8 +337,5 @@ const localBusinessLd = {
   }
   @media (max-width: 900px) {
     .ct-steps { grid-template-columns: minmax(0, 1fr); max-width: 420px; }
-  }
-  @media (max-width: 640px) {
-    .ct-cert-inner { gap: 10px; }
   }
 </style>

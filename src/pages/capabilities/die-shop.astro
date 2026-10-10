@@ -49,12 +49,13 @@ const processSteps = [
         Standard profiles have a typical 2–3 week die lead time, while critical
         or complex profiles are scheduled based on die and tooling complexity.
       </p>
-      <div class="cap-stats" data-reveal data-reveal-delay="4">
+      <div class="cap-stats cap-stats--five" data-reveal data-reveal-delay="4">
         {[
-          { n: '5-axis', l: 'CNC machining centre' },
-          { n: 'Q-Form', l: 'Flow simulation' },
-          { n: '4 types', l: 'Flat · semi-hollow · hollow · porthole' },
-          { n: '2–3 wk', l: 'Standard tooling lead time' },
+          { n: 'AutoCAD • Solid Edge • QExDD • Siemens NX', l: 'Design & feasibility' },
+          { n: 'QForm – UK', l: 'Extrusion simulation' },
+          { n: 'CNC Lathe • 5-Axis VMC • 3-Axis VMC • EDM • WEDM', l: 'CNC machining' },
+          { n: 'Vacuum heat treatment', l: 'Heat treatment' },
+          { n: 'Validated before trial', l: 'Inspection' },
         ].map(({ n, l }) => (
           <div class="cap-stat">
             <div class="cap-stat-n">{n}</div>

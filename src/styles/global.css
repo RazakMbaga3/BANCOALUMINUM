@@ -1598,6 +1598,13 @@ main > div:nth-of-type(n+3):not(.container) {
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--color-nickel); margin-top: 6px;
 }
+/* Five text-led points (die shop): 3 + 2 rows, no empty cell */
+.cap-stats--five { grid-template-columns: repeat(6, 1fr); }
+.cap-stats--five .cap-stat { grid-column: span 2; }
+.cap-stats--five .cap-stat:nth-child(n+4) { grid-column: span 3; }
+.cap-stats--five .cap-stat-n {
+  font-size: clamp(15px, 1.5vw, 20px); line-height: 1.3; letter-spacing: -0.02em;
+}
 .cap-scroll-cue {
   position: absolute; bottom: 40px; left: 50%;
   transform: translateX(-50%); z-index: 3;
@@ -1615,6 +1622,9 @@ main > div:nth-of-type(n+3):not(.container) {
 }
 @media (max-width: 1024px) {
   .cap-stats { grid-template-columns: repeat(2, 1fr); }
+  .cap-stats--five .cap-stat,
+  .cap-stats--five .cap-stat:nth-child(n+4) { grid-column: auto; }
+  .cap-stats--five .cap-stat:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
   .cap-scroll-cue { display: none; }

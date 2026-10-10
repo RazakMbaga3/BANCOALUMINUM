@@ -2,13 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 
-const dieTypes = [
-  { type: 'Flat die', profiles: 'Solid profiles: angles, bars, channels, T-sections', alloys: '1xxx, 6xxx, 2xxx', complexity: 'Low–Medium' },
-  { type: 'Semi-hollow', profiles: 'Profiles with bridges, legs, partial enclosures', alloys: '6xxx, 2xxx', complexity: 'Medium' },
-  { type: 'Hollow (porthole)', profiles: 'Closed hollow sections: tubes, rectangular hollows', alloys: '6060, 6063, 6082', complexity: 'High' },
-  { type: 'Bridge die', profiles: 'Complex multi-void sections, multi-hollow profiles', alloys: '6060, 6063', complexity: 'High' },
-];
-
 const processSteps = [
   { num: '/ 01', name: 'Drawing review', desc: 'Customer drawings are reviewed for extrudability and potential complexities, including wall thickness, tongue ratio, and circumscribed circle diameter. Modifications are suggested where required to improve reliability, die life, and surface finish.' },
   { num: '/ 02', name: 'Q-Form simulation', desc: 'Designs are converted into 3D models and simulated using QForm – UK software to predict metal flow, temperature distribution, weld seams, and deflections.' },
@@ -105,45 +98,10 @@ const processSteps = [
     </div>
   </section>
 
-  <!-- Die types -->
-  <section class="section-dark section-pad">
-    <div class="container">
-      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Die types</div>
-      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
-        Four die types.<br>Solid to multi-hollow.
-      </h2>
-      <div class="die-table-wrap" data-reveal="fade">
-        <table class="die-table">
-          <thead>
-            <tr>
-              <th>Die type</th>
-              <th>Profile capability</th>
-              <th>Typical alloys</th>
-              <th>Complexity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dieTypes.map((d, i) => (
-              <tr class={i % 2 === 0 ? 'die-row-even' : 'die-row-odd'}>
-                <td class="die-cell-type">{d.type}</td>
-                <td class="die-cell-text">{d.profiles}</td>
-                <td class="die-cell-mono">{d.alloys}</td>
-                <td class="die-cell-mono">{d.complexity}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="die-footnote" data-reveal="fade">
-        All die types manufactured in H13 hot-work tool steel. Salt-bath or gas nitride hardening to 1000–1100 HV case hardness.
-      </p>
-    </div>
-  </section>
-
   <!-- Die machining -->
   <section class="section-alt section-pad">
     <div class="container">
-      <div class="eyebrow" data-reveal="fade">/ 03 · Die machining</div>
+      <div class="eyebrow" data-reveal="fade">/ 02 · Die machining</div>
       <div class="die-mach-grid">
         <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
@@ -182,49 +140,6 @@ const processSteps = [
     </div>
   </section>
 
-  <!-- Trial & approval -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="eyebrow" data-reveal="fade">/ 04 · Trial extrusion & approval</div>
-      <div class="die-trial-grid">
-        <div data-reveal="left">
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            No production without<br>sample approval.
-          </h2>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
-            Every new die undergoes a controlled trial extrusion before entering production
-            rotation. Trial billets are extruded at nominal parameters. First-off profiles
-            are cut and dimensionally inspected against the approved customer drawing using
-            CMM and optical measurement.
-          </p>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
-            A formal dimensional report is issued to the customer. Production begins only
-            after written sample approval is received. Die corrections (bearing adjustments,
-            flow balance modifications) are made in-house if required, with repeat trial
-            at no additional charge for drawing-compliant specifications.
-          </p>
-        </div>
-        <div class="die-approval-steps" data-reveal="right">
-          {[
-            { step: '01', title: 'Trial billet loaded', desc: 'Dedicated trial billet run at nominal extrusion parameters on the appropriate press.' },
-            { step: '02', title: 'First-off cut', desc: '500 mm section cut from steady-state run. Extrudate marked and traced to die number.' },
-            { step: '03', title: 'Dimensional report', desc: 'CMM and optical measurement against customer drawing. Report issued within 48 hours.' },
-            { step: '04', title: 'Customer approval', desc: 'Customer reviews report and physical sample. Written approval received before production.' },
-            { step: '05', title: 'Production released', desc: 'Die enters active rotation. Production planning proceeds against approved order quantity.' },
-          ].map(({ step, title, desc }) => (
-            <div class="die-approval-row">
-              <div class="die-approval-step">{step}</div>
-              <div>
-                <div class="die-approval-title">{title}</div>
-                <div class="die-approval-desc">{desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
@@ -236,19 +151,6 @@ const processSteps = [
   .die-proc-name { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .die-proc-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
 
-  .die-table-wrap { overflow-x: auto; border: 1px solid var(--color-navy-line); }
-  .die-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 11px; }
-  .die-table thead tr { background: var(--color-navy-soft); }
-  .die-table th { padding: 10px 16px; text-align: left; font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); border-right: 1px solid var(--color-navy-line); }
-  .die-table th:last-child { border-right: none; }
-  .die-row-even { background: rgba(255,255,255,0.04); }
-  .die-row-odd  { background: rgba(255,255,255,0.02); }
-  .die-table td { padding: 12px 16px; border-right: 1px solid var(--color-navy-line); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
-  .die-table td:last-child { border-right: none; }
-  .die-cell-type { font-weight: 600; font-size: 12px; color: var(--color-platinum); white-space: nowrap; }
-  .die-cell-text { color: var(--color-silver); font-family: var(--font-sans); font-size: 12px; line-height: 1.55; }
-  .die-cell-mono { color: var(--color-nickel); }
-  .die-footnote  { margin-top: 14px; font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.08em; color: var(--color-nickel); line-height: 1.6; }
 
   .die-mach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
   .die-spec-list { margin-top: 28px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
@@ -259,18 +161,11 @@ const processSteps = [
   .die-img-main :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
   .die-img-main:hover :global(img) { filter: brightness(1); }
 
-  .die-trial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .die-approval-steps { display: flex; flex-direction: column; gap: 0; }
-  .die-approval-row { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-stone-200); align-items: flex-start; }
-  .die-approval-step { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); flex-shrink: 0; padding-top: 2px; min-width: 24px; }
-  .die-approval-title { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: var(--color-navy); }
-  .die-approval-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: var(--color-stone-700); margin-top: 4px; }
 
   @media (max-width: 1024px) {
     .die-section-head { grid-template-columns: minmax(0, 1fr); }
     .die-process-grid { grid-template-columns: repeat(2, 1fr); }
     .die-mach-grid { grid-template-columns: minmax(0, 1fr); }
-    .die-trial-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .die-process-grid { grid-template-columns: 1fr 1fr; }

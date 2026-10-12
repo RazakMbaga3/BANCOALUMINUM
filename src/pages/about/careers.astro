@@ -218,7 +218,7 @@ const departments = [
             {[
               'Applications reviewed within 10 working days.',
               'We do not use recruitment agents; apply directly only.',
-              'CV should be PDF format. Maximum 5 MB.',
+              'CV should be PDF format. Maximum 4 MB.',
               'We hire at all levels: fresher, experienced, and senior management.',
             ].map(note => (
               <div class="ca-note">
@@ -237,8 +237,17 @@ const departments = [
         </div>
 
         <!-- Right: form -->
-        <form class="ca-form" data-reveal="right" action="/contact/success" method="post" enctype="multipart/form-data">
+        {/* Posts to /api/careers (api/careers.js), which emails the application
+            and CV to HR. The script below submits it in place; without
+            JavaScript it is a normal form post that redirects to a thank-you page. */}
+        <form class="ca-form" id="careers-form" data-reveal="right" action="/api/careers" method="post" enctype="multipart/form-data">
           <div class="ca-form-section-label">Personal details</div>
+
+          {/* Honeypot: hidden from people, filled in by bots */}
+          <div class="ca-hp" aria-hidden="true">
+            <label for="company_website">Company website</label>
+            <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" />
+          </div>
 
           <div class="ca-field">
             <label class="ca-label" for="full-name">Full name <span class="ca-req">*</span></label>
@@ -296,7 +305,7 @@ const departments = [
             </div>
             <div class="ca-field">
               <label class="ca-label" for="education">Education <span class="ca-req">*</span></label>
-              <input class="ca-input" type="text" id="education" name="education" placeholder="e.g. B.Tech Metallurgy, Diploma" />
+              <input class="ca-input" type="text" id="education" name="education" required placeholder="e.g. B.Tech Metallurgy, Diploma" />
             </div>
           </div>
 
@@ -309,12 +318,20 @@ const departments = [
 
           <div class="ca-field">
             <label class="ca-label" for="cv">Upload CV (PDF) <span class="ca-req">*</span></label>
-            <input class="ca-file" type="file" id="cv" name="cv" accept=".pdf" required />
-            <div class="ca-file-hint">PDF only · Maximum 5 MB</div>
+            <input class="ca-file" type="file" id="cv" name="cv" accept=".pdf,application/pdf" required aria-describedby="cv-hint" />
+            <div class="ca-file-hint" id="cv-hint">PDF only · Maximum 4 MB</div>
           </div>
+
+          <div class="ca-status" id="careers-status" role="status" aria-live="polite" hidden></div>
 
           <button type="submit" class="btn btn-primary ca-submit">Submit application →</button>
         </form>
+
+        <div class="ca-done" id="careers-done" tabindex="-1" hidden>
+          <div class="ca-done-label">Application received</div>
+          <p class="ca-done-h">Thank you. Your application is with our HR team.</p>
+          <p class="ca-done-p">We review every application and respond within 10 working days. If you are shortlisted for a manufacturing or technical role, we will invite you to our facility in Vadodara for a plant visit and technical interview.</p>
+        </div>
 
       </div>
     </div>
@@ -425,6 +442,8 @@ const departments = [
 
   /* ── FORM ───────────────────────────────────────────────────── */
   .ca-form { display: flex; flex-direction: column; gap: 16px; }
+  /* .ca-form sets display, which would override the hidden attribute */
+  .ca-form[hidden], .ca-done[hidden], .ca-status[hidden] { display: none; }
   .ca-form-section-label {
     font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px));
     letter-spacing: 0.18em; text-transform: uppercase;
@@ -472,6 +491,16 @@ const departments = [
   }
   .ca-file-hint { font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.1em; color: var(--color-stone-700); margin-top: 4px; }
   .ca-submit { margin-top: 8px; align-self: flex-start; }
+  .ca-submit[disabled] { opacity: 0.6; cursor: progress; }
+  .ca-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .ca-status { font-family: var(--font-sans); font-size: 13.5px; line-height: 1.55; color: var(--color-navy); padding: 12px 14px; border: 1px solid var(--color-stone-200); border-left: 2px solid var(--color-green); background: var(--color-stone-50); }
+  .ca-status[data-tone="error"] { border-left-color: #B42318; }
+  .ca-status :global(a) { color: inherit; text-decoration: underline; }
+  .ca-done { border: 1px solid var(--color-stone-200); border-top: 2px solid var(--color-green); background: var(--color-stone-50); padding: clamp(24px, 3vw, 36px); align-self: start; }
+  .ca-done:focus { outline: none; }
+  .ca-done-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-green); }
+  .ca-done-h { font-family: var(--font-sans); font-size: clamp(20px, 2vw, 26px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; color: var(--color-navy); margin-top: 12px; }
+  .ca-done-p { font-family: var(--font-sans); font-size: 14px; line-height: 1.65; color: var(--color-stone-700); margin-top: 12px; }
 
   /* ── CTA ────────────────────────────────────────────────────── */
   .ca-cta-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
@@ -500,3 +529,71 @@ const departments = [
     .ca-scroll-line { animation: none; opacity: 0.5; }
   }
 </style>
+
+<script>
+  const MAX_CV = 4 * 1024 * 1024;
+  const FALLBACK = 'career@bancoaluminium.com';
+  const form = document.getElementById('careers-form') as HTMLFormElement | null;
+  const status = document.getElementById('careers-status');
+  const done = document.getElementById('careers-done');
+
+  function show(msg: string, tone: 'info' | 'error', html = false) {
+    if (!status) return;
+    status.dataset.tone = tone;
+    if (html) status.innerHTML = msg; else status.textContent = msg;
+    status.hidden = false;
+  }
+  const sendDirect = `Please email your CV and details to <a href="mailto:${FALLBACK}">${FALLBACK}</a> instead.`;
+  const MESSAGES: Record<string, string> = {
+    invalid_email: 'Please check your email address.',
+    missing_cv: 'Please attach your CV as a PDF.',
+    cv_not_pdf: 'Your CV must be a PDF file.',
+    cv_too_large: 'Your CV is larger than 4 MB. Please upload a smaller PDF.',
+    field_too_long: 'One of your answers is too long. Please shorten it and try again.',
+    missing_field: 'Please complete all required fields.',
+  };
+
+  if (form && status && done) {
+    if (new URLSearchParams(location.search).get('application') === 'error') {
+      show(`Your application could not be sent. ${sendDirect}`, 'error', true);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const cv = (form.elements.namedItem('cv') as HTMLInputElement).files?.[0];
+      if (cv && !/\.pdf$/i.test(cv.name) && cv.type !== 'application/pdf') { show(MESSAGES.cv_not_pdf, 'error'); return; }
+      if (cv && cv.size > MAX_CV) { show(MESSAGES.cv_too_large, 'error'); return; }
+
+      const button = form.querySelector<HTMLButtonElement>('.ca-submit')!;
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.hidden = true;
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { accept: 'application/json' } });
+        const body = await res.json().catch(() => ({ ok: false, error: 'send_failed' }));
+        if (res.ok && body.ok) {
+          form.hidden = true;
+          done.hidden = false;
+          done.focus();
+          return;
+        }
+        if (MESSAGES[body.error]) {
+          show(MESSAGES[body.error], 'error');
+          const field = body.field && form.elements.namedItem(body.field);
+          if (field instanceof HTMLElement) field.focus();
+        } else {
+          show(`We could not send your application just now. ${sendDirect}`, 'error', true);
+        }
+      } catch {
+        show(`We could not send your application just now. ${sendDirect}`, 'error', true);
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  }
+</script>

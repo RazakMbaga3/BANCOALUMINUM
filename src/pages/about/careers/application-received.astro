@@ -1,0 +1,46 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+// Landing page for a careers application posted without JavaScript
+// (api/careers.js redirects here). With JavaScript the form confirms in place.
+---
+<Layout
+  title="Application received: Banco Aluminium"
+  description="Thank you for applying to Banco Aluminium. Our HR team reviews every application and responds within 10 working days."
+>
+  <section class="cs-hero">
+    <div class="container cs-inner">
+      <div class="cs-icon" aria-hidden="true">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="27" stroke="var(--color-green)" stroke-width="1.5"/>
+          <path d="M16 28l8 8 16-16" stroke="var(--color-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="eyebrow on-dark" style="margin-top:28px">Application received</div>
+      <h1 class="t-h1" style="color:var(--color-platinum);margin-top:16px;max-width:18ch">
+        Thank you. <em class="accent">Your application is with our HR team.</em>
+      </h1>
+      <p class="t-lead" style="color:var(--color-stone-400);margin-top:20px;max-width:52ch">
+        We review every application and respond within 10 working days. If you are
+        shortlisted for a manufacturing or technical role, we will invite you to our
+        facility in Vadodara for a plant visit and technical interview.
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
+        <a href="/about/careers" class="btn btn-primary-dark">Back to careers</a>
+        <a href="/" class="btn btn-secondary-dark">Return home</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cs-hero {
+    background: var(--color-navy-deep);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  .cs-inner { max-width: 780px; }
+  .cs-icon { display: flex; }
+</style>

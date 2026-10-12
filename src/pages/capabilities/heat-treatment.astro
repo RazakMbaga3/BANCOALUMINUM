@@ -166,9 +166,9 @@ const results = [
   <!-- Quality & certification (kept from the previous page) -->
   <section class="section-light section-pad">
     <div class="container">
-      <div class="eyebrow" data-reveal="fade">/ 03 · Quality & certification</div>
       <div class="ht-qual-grid">
         <div data-reveal="fade">
+          <div class="eyebrow">/ 03 · Quality & certification</div>
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Every lot tested.<br>Certificate with every shipment.
           </h2>
@@ -180,7 +180,7 @@ const results = [
           </p>
         </div>
         <figure class="ht-qual-photo" data-reveal="fade">
-          <Pic src="/assets/capabilities/heat-treatment-tensile-testing.jpg" alt="Universal testing machine used for tensile testing of aluminium specimens" loading="lazy" sizes="(max-width: 1024px) 100vw, 40vw" focus="50% 45%" />
+          <Pic src="/assets/capabilities/heat-treatment-tensile-testing.jpg" alt="Universal testing machine used for tensile testing of aluminium specimens" loading="lazy" sizes="(max-width: 768px) 420px, 380px" focus="50% 52%" />
           <figcaption>Tensile testing · Universal testing machine</figcaption>
         </figure>
       </div>
@@ -229,9 +229,12 @@ const results = [
   .ht-strap-sep { color: var(--color-green); margin: 0 14px; }
 
   /* Quality & certification */
-  .ht-qual-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
+  /* Short copy beside a portrait photo left a tall empty column. The photo is
+     now a capped square and the copy centres on it, so the two read as one block. */
+  .ht-qual-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, clamp(260px, 30vw, 380px)); gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .ht-qual-grid .t-h2 { text-wrap: balance; }
   .ht-qual-photo { margin: 0; overflow: hidden; border: 1px solid var(--color-stone-200); }
-  .ht-qual-photo :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+  .ht-qual-photo :global(img) { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
   .ht-qual-photo figcaption {
     font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--color-stone-700); padding: 7px 10px;
@@ -242,10 +245,10 @@ const results = [
     .ht-result-grid { grid-template-columns: minmax(0, 1fr); }
     .ht-result { flex-direction: row; align-items: baseline; gap: 18px; padding: 16px 20px; border-top: none; }
     .ht-result:first-child { border-top: 2px solid var(--color-green); }
-    .ht-qual-grid { grid-template-columns: minmax(0, 1fr); }
-    .ht-qual-photo { max-width: 560px; }
   }
   @media (max-width: 768px) {
+    .ht-qual-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .ht-qual-photo { max-width: 420px; }
     .ht-proc-grid { grid-template-columns: minmax(0, 1fr); }
     .ht-band { grid-template-columns: minmax(0, 1fr); }
     .ht-strap-sep { display: block; height: 0; overflow: hidden; margin: 0; }

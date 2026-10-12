@@ -1,74 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Pic from '../../components/Pic.astro';
-
-const finishes = [
-  {
-    id: '01',
-    name: 'Powder coating',
-    spec: 'QUALICOAT · 60–80 μm · RAL / NCS',
-    desc: 'Electrostatic polyester powder, oven-cured 180–200°C. QUALICOAT Class 1 & 2 for interior and exterior architectural applications.',
-    apps: ['Window systems', 'Cladding', 'Solar racking', 'Commercial fitout'],
-    colour: 'Full RAL / NCS range',
-    accent: true,
-  },
-  {
-    id: '02',
-    name: 'Anodising',
-    spec: 'Class 20 · EN 12373 · 20 μm min.',
-    desc: 'Sulphuric acid anodising, 20 μm minimum film. Colour is worked into the oxide layer, not applied on top. Superior fade and abrasion resistance.',
-    apps: ['Facades', 'Curtain wall', 'Marine', 'Premium hardware'],
-    colour: 'EV0–EV6: natural · champagne · bronze · black',
-    accent: false,
-  },
-  {
-    id: '03',
-    name: 'Brushed',
-    spec: '120–180 grit · longitudinal grain',
-    desc: 'Abrasive belt brushing produces a consistent grain parallel to the extrusion axis. Eliminates die lines. Combinable with anodising.',
-    apps: ['Interior design', 'Shop fit-out', 'Appliance trim'],
-    colour: 'Natural / combined with anodising',
-    accent: false,
-  },
-  {
-    id: '04',
-    name: 'Sandblasted finish',
-    spec: 'Glass bead or corundum · matte texture',
-    desc: 'Uniform diffuse surface, eliminates glare. Applied before anodising for deep matte effect. Profile cleaned and degreased first.',
-    apps: ['Architectural', 'Display', 'Matte anodised'],
-    colour: 'Natural / combined with anodising',
-    accent: false,
-  },
-  {
-    id: '05',
-    name: 'Mill finish',
-    spec: 'As-extruded · Ra 1.5–3.0 μm',
-    desc: 'Delivered as-extruded. Die lines visible. For structural, hidden, or customer-treated profiles. No additional process.',
-    apps: ['Structural', 'Hidden components', 'Machined parts'],
-    colour: 'Aluminium natural only',
-    accent: false,
-  },
-];
-
-const anodSpecs = [
-  ['Standard',       'EN 12373 Class 20, 20 μm min.'],
-  ['Natural',        'EV0 (as anodised)'],
-  ['Champagne',      'EV1: light bronze'],
-  ['Bronze',         'EV2 / EV3'],
-  ['Black',          'EV6, deep anodised black'],
-  ['Sealing',        'Hot DI water per EN 12373-5'],
-  ['Colour check',   'Reference panels each run'],
-];
-
-const pcSpecs = [
-  ['Certification',   'QUALICOAT Class 1 & Class 2'],
-  ['Film thickness',  '60–80 μm standard; 80–100 μm Class 2'],
-  ['Powder type',     'Polyester & polyurethane'],
-  ['Colour range',    'Full RAL Classic, RAL Design, NCS'],
-  ['Surface texture', 'Gloss · semi-matt · matt · structured'],
-  ['Pre-treatment',   'Chrome-VI free conversion coating'],
-  ['Salt spray',      '1,000 h per EN ISO 9227 (Class 2)'],
-];
 
 const advantages = [
   'Single point of responsibility for extrusion, treatment, and packing under one roof',
@@ -81,7 +12,7 @@ const advantages = [
 
 <Layout
   title="Surface finishing | Banco Aluminium"
-  description="Five surface finishes: QUALICOAT powder coating, Class 20 anodising, brushed, sandblasted and mill finish across the full RAL and NCS colour range."
+  description="Powder coating, anodising and wood finishing in-house: QUALICOAT-approved powder coating at 60–80 μm, anodising from 5 to 25 μm and sublimation wood-effect finishes."
   transparentNav={true}
 >
 
@@ -100,19 +31,21 @@ const advantages = [
         Capabilities / Surface finishing
       </div>
       <h1 class="sf-h1" data-reveal data-reveal-delay="2">
-        Five finishes.<br>One facility.<br><em class="accent">Zero compromise.</em>
+        <span class="sf-item">Powder coating<span class="sf-sep" aria-hidden="true">•</span></span>
+        <span class="sf-item">Anodising<span class="sf-sep" aria-hidden="true">•</span></span>
+        <span class="sf-item">Wood finishing</span>
       </h1>
       <p class="sf-lede" data-reveal data-reveal-delay="3">
-        QUALICOAT powder coating, Class 20 anodising, brushed, sandblasted, and mill finish.
-        All in-house, billet to finished profile. No external handling,
+        QUALICOAT powder coating, anodising, wood-effect finishing, brushed, sandblasted,
+        and mill finish. All in-house, billet to finished profile. No external handling,
         no traceability gaps, no colour drift between batches.
       </p>
       <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
-          { n: 'QUALICOAT',  l: 'Powder coating cert.' },
-          { n: 'Class 20',   l: 'Anodising to EN 12373' },
-          { n: '60–80 μm',   l: 'Standard PC film' },
-          { n: '5',          l: 'Finishes in-house' },
+          { n: 'QUALICOAT',   l: 'Approved powder coating' },
+          { n: '5–25 μm',     l: 'Anodising' },
+          { n: 'Sublimation', l: 'Wood-effect finishing' },
+          { n: '60–80 μm',    l: 'Powder coating thickness' },
         ].map(({ n, l }) => (
           <div class="cap-stat">
             <div class="cap-stat-n">{n}</div>
@@ -128,105 +61,6 @@ const advantages = [
   </section>
 
 
-  <!-- ── FINISHES STRIP — horizontal 5-col ─────────────────── -->
-  <section class="sf-strip" data-reveal="fade">
-    <div class="sf-strip-grid">
-      {finishes.map((f) => (
-        <div class={`sf-strip-cell${f.accent ? ' sf-strip-cell--accent' : ''}`}>
-          <div class="sf-sc-top">
-            <div class="sf-sc-id">{f.id}</div>
-            <div class="sf-sc-colour">{f.colour}</div>
-          </div>
-          <h2 class="sf-sc-name">{f.name}</h2>
-          <div class="sf-sc-spec">{f.spec}</div>
-          <p class="sf-sc-desc">{f.desc}</p>
-          <div class="sf-sc-apps">
-            {f.apps.map(a => <span class="sf-app-tag">{a}</span>)}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-
-  <!-- ── TECHNICAL PAIR — anodising + powder coat ─────────── -->
-  <section class="sf-tech-section">
-    <div class="container sf-tech-pair">
-
-      <!-- ANODISING -->
-      <div class="sf-tech-col sf-tech-col--left" data-reveal="left">
-        <div class="sf-tc-head">
-          <div class="eyebrow on-dark" style="margin-bottom:10px">Anodising</div>
-          <h2 class="sf-tc-h2">
-            Class 20.<br>Colour in the oxide.
-          </h2>
-          <p class="sf-tc-copy">
-            Integral colour anodising deposits metal salts within the oxide pores before sealing,
-            so colour lives inside the layer rather than on top. Superior UV and abrasion resistance.
-            Controlled bath chemistry ensures shade consistency across multi-batch orders.
-          </p>
-        </div>
-        <div class="sf-tc-photo">
-          <Pic src="/assets/manufacturing/surface-finishing.webp"
-               alt="Anodised aluminium profiles at Banco surface finishing"
-               loading="lazy" sizes="(max-width: 1024px) 100vw, 60vw" />
-        </div>
-        <div class="sf-tc-table">
-          {anodSpecs.map(([k, v]) => (
-            <div class="sf-tc-row">
-              <span class="sf-tc-key">{k}</span>
-              <span class="sf-tc-val">{v}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- DIVIDER -->
-      <div class="sf-tech-divider" aria-hidden="true"></div>
-
-      <!-- POWDER COAT -->
-      <div class="sf-tech-col sf-tech-col--right" data-reveal="right">
-        <div class="sf-tc-head">
-          <div class="eyebrow on-dark" style="margin-bottom:10px">Powder coating</div>
-          <h2 class="sf-tc-h2">
-            QUALICOAT certified.<br>Interior + exterior.
-          </h2>
-          <p class="sf-tc-copy">
-            Chromate-free pre-treatment, electrostatic application, and 180–200°C oven cure.
-            Film thickness measured on every batch; minimum 60 μm guaranteed.
-            QUALICOAT Class 2 available for harsh coastal and industrial environments.
-          </p>
-        </div>
-        <div class="sf-tc-table sf-tc-table--light">
-          {pcSpecs.map(([k, v]) => (
-            <div class="sf-tc-row sf-tc-row--light">
-              <span class="sf-tc-key sf-tc-key--light">{k}</span>
-              <span class="sf-tc-val sf-tc-val--light">{v}</span>
-            </div>
-          ))}
-        </div>
-        <!-- process tags -->
-        <div class="sf-pc-process-grid">
-          {[
-            ['Pre-treat',    'Cr-VI free conversion coat'],
-            ['Application',  'Electrostatic, full wrap coverage'],
-            ['Cure',         '180–200°C batch or conveyor'],
-            ['Film check',   '100% measurement per batch'],
-            ['Adhesion',     'EN ISO 2409 per colour / batch'],
-            ['Salt spray',   '1,000 h Class 2'],
-          ].map(([t, d]) => (
-            <div class="sf-pp-cell">
-              <div class="sf-pp-title">{t}</div>
-              <div class="sf-pp-desc">{d}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
   <!-- ── CLOSING BAND — advantages + CTA ───────────────────── -->
   <section class="sf-close">
     <div class="container sf-close-grid">
@@ -234,9 +68,9 @@ const advantages = [
       <!-- advantages -->
       <div class="sf-adv" data-reveal="fade">
         <div class="eyebrow" style="margin-bottom:16px">In-house advantage</div>
-        <h3 class="sf-adv-h3">
+        <h2 class="sf-adv-h3">
           Quality continuity.<br>Billet to finished profile.
-        </h3>
+        </h2>
         <div class="sf-adv-list">
           {advantages.map(pt => (
             <div class="sf-adv-item">
@@ -302,6 +136,10 @@ const advantages = [
     line-height: 0.95; color: var(--color-platinum);
     margin-top: 18px;
   }
+  /* Three-item title: items stay whole, separators ride the line end */
+  .sf-h1 { line-height: 1.02; text-wrap: balance; }
+  .sf-item { white-space: nowrap; }
+  .sf-sep { color: var(--color-green); font-weight: 400; margin: 0 0.28em 0 0.32em; }
   .sf-lede {
     color: var(--color-stone-400);
     font-size: clamp(14px, 1.3vw, 16px);
@@ -323,155 +161,6 @@ const advantages = [
     50%  { transform: scaleY(1); transform-origin: top; }
     51%  { transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-  }
-
-
-  /* ── FINISHES STRIP ────────────────────────────────────── */
-  .sf-strip {
-    background: var(--color-stone-50);
-    border-bottom: 1px solid var(--color-stone-200);
-  }
-  .sf-strip-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1px;
-    background: var(--color-stone-200);
-  }
-  .sf-strip-cell {
-    background: var(--color-stone-50);
-    padding: 28px 24px 24px;
-    display: flex; flex-direction: column; gap: 8px;
-    border-top: 2px solid transparent;
-    transition: border-top-color 0.22s ease, background 0.22s ease;
-    cursor: default;
-  }
-  .sf-strip-cell--accent { border-top-color: var(--color-green); }
-  .sf-strip-cell:hover   { border-top-color: var(--color-green); background: white; }
-  .sf-sc-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 4px;
-  }
-  .sf-sc-id {
-    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--color-green);
-  }
-  .sf-sc-colour {
-    font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px));
-    letter-spacing: 0.08em; color: var(--color-stone-700);
-    text-align: right; line-height: 1.4; max-width: 14ch;
-  }
-  .sf-sc-name {
-    font-size: clamp(15px, 1.4vw, 18px); font-weight: 700;
-    color: var(--color-navy); letter-spacing: -0.01em; line-height: 1.15;
-  }
-  .sf-sc-spec {
-    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--color-stone-700); line-height: 1.5;
-  }
-  .sf-sc-desc {
-    font-size: 12.5px; line-height: 1.62;
-    color: var(--color-stone-700); flex: 1;
-  }
-  .sf-sc-apps {
-    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
-  }
-  .sf-app-tag {
-    font-family: var(--font-mono); font-size: max(8.5px, var(--fs-min, 0px));
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--color-stone-700);
-    border: 1px solid var(--color-stone-200);
-    padding: 2px 7px;
-  }
-
-
-  /* ── TECHNICAL PAIR ────────────────────────────────────── */
-  .sf-tech-section {
-    background: var(--color-navy-deep);
-    border-top: 1px solid var(--color-navy-line);
-    border-bottom: 1px solid var(--color-navy-line);
-    padding: 52px 0;
-  }
-  .sf-tech-pair {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 52px;
-    align-items: start;
-  }
-  .sf-tech-divider {
-    background: var(--color-navy-line);
-    align-self: stretch;
-  }
-  .sf-tc-head { margin-bottom: 24px; }
-  .sf-tc-h2 {
-    font-family: var(--font-sans);
-    font-size: clamp(22px, 2.4vw, 32px);
-    font-weight: 700; letter-spacing: -0.03em;
-    color: var(--color-platinum); line-height: 1.1;
-    margin-bottom: 12px;
-  }
-  .sf-tc-copy {
-    font-size: 13px; line-height: 1.68;
-    color: var(--color-stone-400); max-width: 52ch;
-  }
-
-  /* anodising photo */
-  .sf-tc-photo {
-    overflow: hidden; margin-bottom: 20px;
-  }
-  .sf-tc-photo img {
-    width: 100%; aspect-ratio: 16/7;
-    object-fit: cover; display: block;
-    filter: brightness(0.88);
-    transition: filter 0.35s ease;
-  }
-  .sf-tc-photo:hover img { filter: brightness(1); }
-
-  /* specs tables */
-  .sf-tc-table { border-top: 1px solid var(--color-navy-line); }
-  .sf-tc-row {
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 16px; padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    transition: background 0.15s ease;
-  }
-  .sf-tc-row:hover { background: rgba(255,255,255,0.03); }
-  .sf-tc-key {
-    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.13em; text-transform: uppercase;
-    color: var(--color-nickel); flex-shrink: 0;
-  }
-  .sf-tc-val {
-    font-family: var(--font-sans); font-size: 12.5px;
-    color: var(--color-silver); text-align: right; line-height: 1.35;
-  }
-  /* powder coat table variant (light text on dark, same dark bg) */
-  .sf-tc-table--light { margin-bottom: 20px; }
-  .sf-tc-row--light { border-bottom-color: rgba(255,255,255,0.05); }
-  .sf-tc-key--light { color: var(--color-nickel); }
-  .sf-tc-val--light { color: var(--color-silver); }
-
-  /* powder coat process mini-grid */
-  .sf-pc-process-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: var(--color-navy-line);
-    border: 1px solid var(--color-navy-line);
-  }
-  .sf-pp-cell {
-    background: var(--color-navy-soft);
-    padding: 12px 14px;
-    transition: background 0.18s ease;
-  }
-  .sf-pp-cell:hover { background: rgba(28,58,92,0.9); }
-  .sf-pp-title {
-    font-family: var(--font-mono); font-size: max(9px, var(--fs-min, 0px));
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-green); margin-bottom: 3px;
-  }
-  .sf-pp-desc {
-    font-size: 11.5px; line-height: 1.5;
-    color: var(--color-stone-400);
   }
 
 
@@ -530,12 +219,7 @@ const advantages = [
 
 
   /* ── RESPONSIVE ────────────────────────────────────────── */
-  @media (max-width: 1200px) {
-    .sf-strip-grid { grid-template-columns: repeat(3, 1fr); }
-  }
   @media (max-width: 960px) {
-    .sf-tech-pair { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .sf-tech-divider { display: none; }
     .sf-close-grid { grid-template-columns: minmax(0, 1fr); }
     .sf-adv-list { grid-template-columns: minmax(0, 1fr); }
   }
@@ -543,8 +227,6 @@ const advantages = [
     .sf-hero-vid    { display: none; }
     .sf-hero-grad   { background: rgba(6,21,37,0.90); }
     .sf-scroll-cue  { display: none; }
-    .sf-strip-grid  { grid-template-columns: 1fr 1fr; }
-    .sf-pc-process-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     .sf-hero-vid { display: none; }

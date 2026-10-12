@@ -3,9 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 
 const operations = [
-  { op: 'Cutting', desc: 'To-length, mitre, and compound angle cutting. CNC saw centres with stop accuracy ±0.5 mm. Single and gang cutting for high-volume orders.' },
+  { op: 'Cutting', desc: 'To-length, mitre, and compound angle cutting. CNC saw centres with stop accuracy ±0.3 mm. Single and gang cutting for high-volume orders.' },
   { op: 'Drilling', desc: 'Multi-spindle drilling heads for hole patterns in a single pass. CNC drilling centres for complex hole patterns, counterbores, and countersinks.' },
-  { op: 'Milling', desc: 'Slots, pockets, end profiles, and complex 2D features. CNC machining centres on aluminium profiles up to 6.5 m in length.' },
+  { op: 'CNC machining', desc: 'Slots, pockets, end profiles, and complex 2D features. CNC machining centres on aluminium profiles.' },
   { op: 'Punching', desc: 'Holes, notches, slots, and knockouts. Hydraulic punching for high-volume production. Tooling held in-house for repeat orders.' },
   { op: 'Bending', desc: 'Press brake bending for profile flanges, brackets, and sheet components. Tooling matched to profile cross-section to eliminate deformation.' },
   { op: 'Tapping', desc: 'CNC tapping for threaded inserts and machine screw threads. M3 to M24 range. Thread gauged 100% for critical fastener applications.' },
@@ -14,7 +14,7 @@ const operations = [
 
 <Layout
   title="Fabrication & machining: Banco Aluminium"
-  description="10,000+ parts per day. CNC cutting, drilling, milling, punching, bending, and tapping. Custom assembly and export packing. Downstream from the extrusion press."
+  description="CNC machining, drilling, punching and precision cutting: Banco's fabrication facility turns extruded profiles into finished components and sub-assemblies, with a capacity of 400 MT per month."
   transparentNav={true}
 >
 
@@ -33,26 +33,17 @@ const operations = [
 
     <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Fabrication & machining</div>
-      <h1 class="cap-h1" data-reveal data-reveal-delay="2">
-        10,000+ parts<br>per day.
+      <h1 class="cap-h1 fab-h1" data-reveal data-reveal-delay="2">
+        <span class="fab-item">CNC machining<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Drilling<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Punching<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Precision cutting</span>
       </h1>
       <p class="cap-lead" data-reveal data-reveal-delay="3">
-        Banco's fabrication and machining facility converts extruded profiles into finished
-        components and sub-assemblies, with six CNC machining operations direct from the
-        press floor.
+        Banco's fabrication and machining facility transforms extruded profiles into
+        finished components and sub-assemblies, supported by multiple machining and
+        fabrication operations with a capacity of 400 MT per month.
       </p>
-      <div class="cap-stats" data-reveal data-reveal-delay="4">
-        {[
-          { n: '6',       l: 'CNC machining operations' },
-          { n: 'OEM',     l: 'Sub-assembly capability' },
-          { n: '±0.1 mm', l: 'Dimensional tolerance' },
-        ].map(({ n, l }) => (
-          <div class="cap-stat">
-            <div class="cap-stat-n">{n}</div>
-            <div class="cap-stat-l">{l}</div>
-          </div>
-        ))}
-      </div>
     </div>
 
     <div class="cap-scroll-cue" aria-hidden="true">
@@ -69,7 +60,11 @@ const operations = [
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
             Profile into<br>finished component.
           </h2>
-          <p class="t-lead" style="color:var(--color-stone-700);margin-top:20px">
+        </div>
+        {/* Photo removed at the client's request (round 6); copy moves into the
+            right-hand column, as on the extrusion overview. */}
+        <div data-reveal="right">
+          <p class="t-lead" style="color:var(--color-stone-700)">
             Fabrication and machining sits directly downstream of the extrusion presses.
             Profiles move from cut-to-length saw, to heat treatment, to the fabrication
             floor, with no external handling or sub-contractor involvement. This integration
@@ -82,9 +77,6 @@ const operations = [
             engineering and OEM customers requiring tight tolerances, multi-feature
             profiles, or sub-assembly into finished products.
           </p>
-        </div>
-        <div class="fab-overview-photo" data-reveal="right">
-          <Pic src="/assets/capabilities/machining-punching.jpg" alt="Banco Aluminium operator running a hydraulic punching press on the fabrication floor" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
         </div>
       </div>
     </div>
@@ -109,89 +101,19 @@ const operations = [
     </div>
   </section>
 
-  <!-- Assembly -->
-  <section class="section-alt section-pad">
-    <div class="container">
-      <div class="eyebrow" data-reveal="fade">/ 03 · Assembly & sub-assembly</div>
-      <div class="fab-asm-grid">
-        <div data-reveal="left">
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Profiles combined<br>into finished products.
-          </h2>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
-            For OEM customers requiring finished sub-assemblies, Banco's assembly team
-            combines extruded profiles with plastic accessories, steel hardware, gaskets,
-            and fasteners. Window and door sub-assemblies, racking connectors, and
-            structural brackets are built and packed to the customer's shipping specification.
-          </p>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
-            Assembly operations follow customer-approved work instructions. First-off
-            inspection and in-process dimensional checks ensure each assembly meets the
-            drawing before packing. Traceability from profile lot number through to
-            finished assembly carton is maintained throughout.
-          </p>
-        </div>
-        <div class="fab-asm-list" data-reveal="right">
-          {[
-            ['Plastic accessories',    'Corner keys, weather strips, gaskets, end caps, assembled to profile.'],
-            ['Steel hardware',         'Brackets, hinges, anchors, and fasteners fitted to profile and torqued to specification.'],
-            ['Sub-frame assembly',     'Multi-profile window and door sub-frames assembled and packed flat.'],
-            ['Custom cartons',         'Customer-specified packing: individual cartons, multi-unit trays, export pallets.'],
-            ['Work instruction compliance', 'All assembly operations follow customer-approved WIs with first-off sign-off.'],
-          ].map(([title, desc]) => (
-            <div class="fab-asm-row">
-              <div class="fab-asm-title">{title}</div>
-              <div class="fab-asm-desc">{desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Throughput & tolerances -->
-  <section class="section-light section-pad">
-    <div class="container">
-      <div class="eyebrow" data-reveal="fade">/ 04 · Throughput & tolerances</div>
-      <div class="fab-tol-grid">
-        <div data-reveal="left">
-          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Volume and precision<br>on the same floor.
-          </h2>
-          <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
-            The fabrication floor runs two shifts. High-volume cutting and drilling operations
-            run on dedicated CNC lines with automated part transfer. Complex machining and
-            assembly operations are handled in a separate precision cell with CMM in-process
-            verification.
-          </p>
-        </div>
-        <div class="fab-tol-table" data-reveal="right">
-          {[
-            ['Daily throughput',     '10,000+ parts / day (standard operations)'],
-            ['Cut-to-length accuracy','±0.5 mm standard; ±0.2 mm precision'],
-            ['Hole position',        '±0.1 mm CNC, ±0.3 mm jig drilling'],
-            ['Milling tolerance',    '±0.05 mm on feature dimensions'],
-            ['Profile length range', '50 mm – 6,500 mm'],
-            ['Max. section weight',  '35 kg/m (Press 5 maximum)'],
-            ['Min. wall (drill)',    '1.0 mm wall for standard drilling'],
-          ].map(([k, v]) => (
-            <div class="fab-trow">
-              <span class="fab-tkey">{k}</span>
-              <span class="fab-tval">{v}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
-  .fab-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
-  .fab-overview-photo { aspect-ratio: 4/3; overflow: hidden; }
-  .fab-overview-photo :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s ease; }
-  .fab-overview-photo:hover :global(img) { filter: brightness(1); }
+  .fab-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  /* Four-item title: each item stays whole, separators ride the line end,
+     balance keeps the two lines even. A touch smaller than the shared cap-h1
+     because it is a list, not a slogan. */
+  .fab-h1 { font-size: clamp(36px, 4.8vw, 64px); line-height: 1.02; text-wrap: balance; }
+  .fab-item { white-space: nowrap; }
+  .fab-sep { color: var(--color-green); font-weight: 400; margin: 0 0.28em 0 0.32em; }
+  /* No stat row under this hero, so the lead needs its own foot room */
+  .cap-hero-body { padding-bottom: clamp(48px, 8vh, 96px); }
 
   .fab-ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .fab-op-card { background: var(--color-navy-soft); padding: 28px 24px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; }
@@ -199,24 +121,9 @@ const operations = [
   .fab-op-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-platinum); }
   .fab-op-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-silver); }
 
-  .fab-asm-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .fab-asm-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--color-stone-200); }
-  .fab-asm-row  { padding: 14px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .fab-asm-title { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-green); margin-bottom: 4px; }
-  .fab-asm-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--color-stone-700); }
-
-  .fab-tol-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 6vw, 80px); align-items: start; margin-top: 32px; }
-  .fab-tol-table { border-top: 1px solid var(--color-stone-200); }
-  .fab-trow { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--color-stone-200); }
-  .fab-tkey { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-stone-700); flex-shrink: 0; }
-  .fab-tval { font-family: var(--font-sans); font-size: 13px; color: var(--color-stone-700); text-align: right; }
-
   @media (max-width: 1024px) {
-    .fab-overview-grid { grid-template-columns: minmax(0, 1fr); }
-    .fab-overview-photo { order: -1; }
+    .fab-overview-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
     .fab-ops-grid { grid-template-columns: repeat(2, 1fr); }
-    .fab-asm-grid { grid-template-columns: minmax(0, 1fr); }
-    .fab-tol-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .fab-ops-grid { grid-template-columns: 1fr 1fr; }

@@ -2,26 +2,31 @@
 import Layout from '../../layouts/Layout.astro';
 import Pic from '../../components/Pic.astro';
 
+// Container bore and weight range per press: client round 6 (2026-10-12).
+// `size` only scales the decorative ring, roughly in proportion to the container.
 const presses = [
-  { id: '01', name: 'Press 1', capacity: '1,100 T', circle: '138 mm', weight: '0.29–2.5 kg/m', profiles: 'Light architectural, slender sections, fine-wall profiles', size: 48 },
-  { id: '02', name: 'Press 2', capacity: '1,460 T', circle: '152 mm', weight: '0.5–5 kg/m',   profiles: 'Window & door systems, standard architectural', size: 60 },
-  { id: '03', name: 'Press 3', capacity: '1,800 T', circle: '178 mm', weight: '1.0–12 kg/m',  profiles: 'Industrial structural, general engineering', size: 72 },
-  { id: '04', name: 'Press 4', capacity: '2,500 T', circle: '203 mm', weight: '2.5–22 kg/m',  profiles: 'Heavy structural, racking, solar, transport', size: 84 },
-  { id: '05', name: 'Press 5', capacity: '3,300 T', circle: '254 mm', weight: '5.0–35 kg/m',  profiles: 'Large structural sections, heat sinks, complex hollows', size: 96 },
+  { id: '01', name: 'Press 1', capacity: '1,100 T', container: '158 mm', weight: '0.05–2 kg/m', profiles: 'Light architectural, slender sections, fine-wall profiles', size: 57 },
+  { id: '02', name: 'Press 2', capacity: '1,460 T', container: '158 mm', weight: '0.05–2 kg/m', profiles: 'Window & door systems, standard architectural', size: 57 },
+  { id: '03', name: 'Press 3', capacity: '1,800 T', container: '185 mm', weight: '1–3 kg/m',    profiles: 'Industrial structural, general engineering', size: 67 },
+  { id: '04', name: 'Press 4', capacity: '2,500 T', container: '237 mm', weight: '2–7 kg/m',    profiles: 'Heavy structural, racking, solar, transport', size: 85 },
+  { id: '05', name: 'Press 5', capacity: '3,300 T', container: '263 mm', weight: '6–50 kg/m',   profiles: 'Large structural sections, heat sinks, complex hollows', size: 95 },
 ];
 
 const processStages = [
-  { num: '01', name: 'Billet preheating', desc: 'Billets preheated in gas-fired log furnace to 460–520°C depending on alloy and profile geometry. Temperature profile logged continuously for process traceability.' },
-  { num: '02', name: 'Container loading', desc: 'Heated billet loaded into press container. Container held at 420–450°C to minimise thermal gradient at billet interface. Shear confirms billet-to-container seal before pressing.' },
-  { num: '03', name: 'Extrusion stroke', desc: 'Ram advances at a controlled speed of 2–18 mm/s, depending on alloy, die complexity, and target surface finish. Speed PID-controlled throughout the stroke for consistent exit temperature.' },
-  { num: '04', name: 'Run-out table & stretching', desc: 'Profile exits die at 480–540°C. Run-out table with driven rollers and quench system receives the extrudate. Profiles are stretcher-straightened after cooling to eliminate bow and twist.' },
-  { num: '05', name: 'Saw cutting', desc: 'Cut-to-length saw sections profiles to customer specified lengths ±1 mm. Butt end discarded. Cut lengths staged in racks for heat treatment, machining, or direct packing.' },
+  { num: '01', name: 'Log heating',      desc: 'Aluminium logs are heated to the required extrusion temperature to ensure uniform material flow, improved extrudability, and consistent product quality.' },
+  { num: '02', name: 'Billet shearing',  desc: 'The heated log is cut into billets of the required length to meet extrusion requirements and minimise material wastage.' },
+  { num: '03', name: 'Extrusion',        desc: 'The heated billet is forced through a precision-designed die under high pressure to produce aluminium profiles of the required shape and dimensions.' },
+  { num: '04', name: 'Inspection',       desc: 'Extruded profiles are checked for dimensional accuracy, surface defects, straightness, and compliance with specified quality requirements.' },
+  { num: '05', name: 'Ageing',           desc: 'Profiles undergo controlled artificial ageing heat treatment to achieve the required mechanical properties, hardness, and temper condition.' },
+  { num: '06', name: 'Final inspection', desc: 'Finished profiles are verified for dimensions, surface quality, mechanical properties, and customer specifications before approval for packing.' },
+  { num: '07', name: 'Packing',          desc: 'Approved profiles are carefully packed using suitable protective materials to prevent scratches, deformation, and damage during handling and transportation.' },
+  { num: '08', name: 'Despatch',         desc: 'Packed profiles are verified against dispatch documents, securely loaded, and shipped to customers as per delivery schedules and requirements.' },
 ];
 ---
 
 <Layout
   title="Extrusion | Banco Aluminium"
-  description="Five direct-drive extrusion presses from 1,100 T to 3,300 T. 35,000 MT annual capacity. Profile weight range 0.29–35 kg/m across 1xxx–7xxx alloys."
+  description="35,000 MT per annum extrusion capacity on five direct-drive presses from 1,100 T to 3,300 T. Profile weights from 0.05 to 50 kg/m across the 1xxx to 7xxx alloy series."
   transparentNav={true}
 >
 
@@ -41,18 +46,18 @@ const processStages = [
     <div class="container cap-hero-body photo-hero-body">
       <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Extrusion</div>
       <h1 class="cap-h1" data-reveal data-reveal-delay="2">
-        Five presses.<br>35,000 MT capacity.
+        35,000 MT<br>per annum capacity.
       </h1>
       <p class="cap-lead" data-reveal data-reveal-delay="3">
         Five direct-drive extrusion presses spanning 1,100 T to 3,300 T. Profile weights
-        from 0.29 to 35 kg/m. Custom and standard sections across 1xxx to 7xxx alloy series.
-        Fully in-house: billet, die, press, finishing, packing.
+        range from 0.05 to 50 kg/m. Custom and standard sections across the 1xxx to 7xxx
+        alloy series. Fully in-house: billet, die, extrusion, value addition, and packing.
       </p>
       <div class="cap-stats" data-reveal data-reveal-delay="4">
         {[
           { n: '5',           l: 'Extrusion presses' },
           { n: '35,000 MT',   l: 'Annual capacity' },
-          { n: '0.29–35',     l: 'Profile weight kg/m' },
+          { n: '0.05–50',     l: 'Profile weight kg/m' },
           { n: '1,100–3,300 T', l: 'Press capacity' },
         ].map(({ n, l }) => (
           <div class="cap-stat">
@@ -75,29 +80,29 @@ const processStages = [
       <div class="ext-overview-grid">
         <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            Direct-drive presses.<br>Full billet-to-profile<br>control.
+            Advanced aluminium extrusion, powered by intelligent automation.
           </h2>
         </div>
         <div data-reveal="right">
           <p class="t-lead" style="color:var(--color-stone-700)">
-            All five presses are direct-drive hydraulic extrusion presses operating in the
-            conventional direct extrusion mode. Billets produced in Banco's own foundry
-            are preheated in dedicated log furnaces, then loaded directly into the press
-            container for single-stroke extrusion.
+            Our five advanced aluminium extrusion presses are fully automated and integrated
+            with MES for precise process control and consistent quality. The system
+            continuously monitors critical parameters, automatically highlights deviations,
+            and adjusts selected parameters to maintain process stability.
           </p>
           <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
-            Die temperature is controlled via induction die heater prior to mounting on
-            the press. Exit temperature is monitored by pyrometer and feedback-controlled
-            through ram speed adjustment. This direct-drive architecture, rather than
-            accumulator-driven, provides superior speed control for surface-critical and
-            hard-alloy profiles.
+            Production data is captured automatically and integrated with ERP, eliminating
+            manual entry while providing real-time visibility of production, yield, and
+            operational performance.
           </p>
-          <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:8px">
-            {['Direct hydraulic drive', 'Induction die heating', 'Exit temp. monitoring', 'PID speed control', 'In-line quench', 'Stretcher straightening'].map(tag => (
-              <span class="pill">{tag}</span>
-            ))}
-          </div>
         </div>
+      </div>
+      <div class="ext-commit" data-reveal="fade">
+        <div class="ext-commit-label">Our commitment</div>
+        <p class="ext-commit-text">
+          Precision in every process, consistency in every profile, and complete visibility
+          from production to performance.
+        </p>
       </div>
     </div>
   </section>
@@ -120,7 +125,7 @@ const processStages = [
     <div class="container">
       <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Press range</div>
       <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:48px" data-reveal>
-        Five presses.<br>138 mm to 254 mm circle.
+        Five presses.<br>158 mm to 263 mm container.
       </h2>
       <div class="ext-press-grid" data-reveal="fade">
         {presses.map((p) => (
@@ -135,8 +140,8 @@ const processStages = [
             <div class="ext-press-cap">{p.capacity}</div>
             <div class="ext-press-meta">
               <div class="ext-press-row">
-                <span class="ext-press-key">Circle</span>
-                <span class="ext-press-val">{p.circle}</span>
+                <span class="ext-press-key">Container</span>
+                <span class="ext-press-val">{p.container}</span>
               </div>
               <div class="ext-press-row">
                 <span class="ext-press-key">Weight range</span>
@@ -156,7 +161,7 @@ const processStages = [
       <div class="eyebrow" data-reveal="fade">/ 03 · Process sequence</div>
       <div class="ext-proc-head">
         <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px" data-reveal>
-          Five controlled stages<br>billet to cut length.
+          Eight controlled stages,<br>log to despatch.
         </h2>
       </div>
       <div class="ext-proc-grid" data-reveal="fade">
@@ -178,23 +183,25 @@ const processStages = [
       <div class="ext-range-grid">
         <div data-reveal="left">
           <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
-            0.29 to 35 kg/m.<br>Solid to complex hollow.
+            0.05 to 50 kg/m.<br>Simple solid to complex<br>and critical profiles.
           </h2>
           <p class="t-body" style="color:var(--color-stone-700);margin-top:20px;line-height:1.7">
-            Profile complexity ranges from simple solid bars and angles through multi-hollow
-            structural sections. Standard and custom cross-sections are manufactured, spanning
-            architectural window profiles to heat sink extrusions, racking beams, and
-            automotive structural components.
+            Profile complexity ranges from simple solid bars and angles to multi-hollow
+            structural sections. Standard and custom cross-sections are manufactured for
+            diverse applications, including industrial profiles, heat sinks, electrical
+            systems, architectural systems, automotive components, racking beams, and
+            structural sections.
           </p>
+          {/* Max. circle is the profile's circumscribing circle (CCD), not the press
+              container: 380 mm exceeds the largest container (263 mm, Press 5). */}
           <div class="ext-range-table">
             {[
-              ['Weight range',   '0.29–35 kg/m'],
-              ['Alloy range',    '1xxx · 3xxx · 5xxx · 6xxx · 7xxx'],
-              ['Standard alloys','6060 · 6063 · 6082 · 6061 · 1050 · 3003'],
-              ['Min. wall',      '0.8 mm (architectural); 1.2 mm (structural)'],
-              ['Max. circle',    '254 mm (Press 5)'],
-              ['Tempers',        'T4 · T5 · T6 · T73'],
-              ['Finishes',       'Mill · anodised · powder coated · brushed'],
+              ['Weight range',   '0.05–50 kg/m'],
+              ['Alloy range',    '1xxx · 2xxx · 3xxx · 5xxx · 6xxx · 7xxx'],
+              ['Standard alloys','6060 · 6063 · 6082 · 6061 · 1050 · 3003, and custom compositions as per requirements'],
+              ['Min. wall',      '0.8 mm'],
+              ['Max. circle (CCD)', '380 mm'],
+              ['Finishes',       'Mill · anodised · powder coated · brushed · custom finishes'],
             ].map(([k, v]) => (
               <div class="ext-rrow">
                 <span class="ext-rkey">{k}</span>
@@ -216,6 +223,9 @@ const processStages = [
 
 <style>
   .ext-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+  .ext-commit { margin-top: clamp(36px, 5vw, 56px); padding-top: 20px; border-top: 2px solid var(--color-green); display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(16px, 6vw, 100px); align-items: baseline; }
+  .ext-commit-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-stone-700); }
+  .ext-commit-text { font-family: var(--font-sans); font-size: clamp(17px, 1.6vw, 21px); font-weight: 500; line-height: 1.45; letter-spacing: -0.01em; color: var(--color-navy); }
 
   .ext-press-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
   .ext-press-card { background: var(--color-navy-soft); padding: 24px 20px; display: flex; flex-direction: column; gap: 8px; border-top: 2px solid var(--color-green); }
@@ -232,7 +242,8 @@ const processStages = [
   .ext-press-profiles { font-family: var(--font-sans); font-size: 11.5px; line-height: 1.55; color: var(--color-stone-400); margin-top: 4px; }
 
   .ext-proc-head  { margin-bottom: 40px; }
-  .ext-proc-grid  { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
+  /* Eight stages: 4 → 2 → 1 columns, so no breakpoint leaves an empty cell. */
+  .ext-proc-grid  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-stone-200); border: 1px solid var(--color-stone-200); }
   .ext-proc-cell  { background: var(--color-stone-50); padding: 24px 20px; border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 8px; }
   .ext-proc-num   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .ext-proc-name  { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-navy); }
@@ -250,21 +261,22 @@ const processStages = [
 
   @media (max-width: 1280px) {
     .ext-press-grid { grid-template-columns: repeat(3, 1fr); }
-    .ext-proc-grid  { grid-template-columns: repeat(3, 1fr); }
-    .ext-press-grid > :last-child,
-    .ext-proc-grid > :last-child { grid-column: span 3; }
+    /* 5 cards over 3 columns = 3 + 2: the 5th spans the two cells left in row 2
+       (span 3 pushed it to a row of its own and left two empty boxes) */
+    .ext-press-grid > :last-child { grid-column: span 2; }
   }
   @media (max-width: 1024px) {
     .ext-overview-grid { grid-template-columns: minmax(0, 1fr); }
+    .ext-commit { grid-template-columns: minmax(0, 1fr); }
     .ext-press-grid { grid-template-columns: repeat(2, 1fr); }
     .ext-proc-grid  { grid-template-columns: repeat(2, 1fr); }
-    .ext-press-grid > :last-child,
-    .ext-proc-grid > :last-child { grid-column: span 2; }
+    .ext-press-grid > :last-child { grid-column: span 2; }
     .ext-range-grid { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .ext-press-grid { grid-template-columns: 1fr 1fr; }
     .ext-press-grid > :last-child { grid-column: span 2; }
+    .ext-proc-grid  { grid-template-columns: minmax(0, 1fr); }
   }
 
 

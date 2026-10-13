@@ -24,4 +24,9 @@ export const DOCS = {
     cover: '/assets/downloads/industrial-review-cover.jpg',
     ...drive('1XovSbX1ltE7SBqa7oza2un9MFQBYN9jt'),
   },
+  standardSectionsCatalogue: {
+    title: 'Standard Sections Catalogue',
+    meta: 'PDF · 42 pages · 21 MB',
+    ...drive('18b3RXDIIuBH8oFItFYt2uFXYagKNs8g0'),
+  },
 } as const;

@@ -31,7 +31,7 @@ const staticPages = [
   { url: '/industries/electrical',         changefreq: 'monthly', priority: '0.7' },
   { url: '/industries/heat-management',    changefreq: 'monthly', priority: '0.7' },
   { url: '/industries/hydraulics',         changefreq: 'monthly', priority: '0.7' },
-  { url: '/industries/forging',            changefreq: 'monthly', priority: '0.7' },
+  { url: '/industries/machining-value-addition', changefreq: 'monthly', priority: '0.7' },
   { url: '/industries/building',           changefreq: 'monthly', priority: '0.7' },
   { url: '/industries/aerospace',          changefreq: 'monthly', priority: '0.7' },
   { url: '/industries/machinery',          changefreq: 'monthly', priority: '0.6' },

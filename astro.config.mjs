@@ -4,6 +4,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://bancoaluminium.com',
+  redirects: {
+    '/industries/forging': '/industries/machining-value-addition',
+  },
   // No client-side framework — the site ships zero framework JS
   integrations: [],
   image: {

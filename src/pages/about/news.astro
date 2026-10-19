@@ -90,11 +90,43 @@ const inside = [
         <Pic src="/assets/downloads/industrial-review-spread.jpg" alt="Opening page of the Banco Aluminium feature with the leadership team" loading="lazy" sizes="(max-width: 900px) 60vw, 22vw" maxW={768} />
       </a>
       <div>
-        <div class="nw-inside-label">More to come</div>
+        <div class="nw-inside-label">Also in the press</div>
         <p class="nw-more-p">
           Company announcements, trade-show news and technical articles will be
           published here as they're released.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Secondary articles grid ─────────────────────────────────────── -->
+  <section class="section-light section-pad" style="border-top:1px solid var(--color-stone-200)">
+    <div class="container">
+      <div class="eyebrow">In the press · More coverage</div>
+      <div class="nw-articles-grid">
+
+        <article class="nw-article-card">
+          <div class="nw-article-source">Industry Outlook · December 2021</div>
+          <h3 class="nw-article-h">Banco Aluminium: The Aluminium Extrusion &amp; Alloying Specialist</h3>
+          <p class="nw-article-p">
+            A company profile by Director Kush Patel, published in Industry Outlook's special Vadodara
+            manufacturers issue. The article covers Banco's 54 years of extrusion expertise, in-house
+            foundry capabilities for complex and lead-free alloys, SCADA-monitored process control,
+            fabrication services, and expansion plans including a Rs. 110 crore investment in foundry
+            and extrusion capacity. Markets covered span electrical T&amp;D, automotive, solar, aerospace,
+            rail, and general engineering.
+          </p>
+          <a
+            href="https://www.theindustryoutlook.com/states-and-cities/vendor/banco-aluminium-the-aluminium-extrusion-alloying-specialist-cid-2729.html"
+            class="nw-article-link"
+            target="_blank"
+            rel="noopener"
+          >
+            Read the profile
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
       </div>
     </div>
   </section>
@@ -254,9 +286,64 @@ const inside = [
     max-width: 52ch;
   }
 
+  /* ── Secondary articles grid ────────────────────────────────────── */
+  .nw-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 28px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-stone-200);
+  }
+  .nw-article-card {
+    border: 1px solid var(--color-stone-200);
+    border-top: 2px solid var(--color-green);
+    background: #fff;
+    padding: 24px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nw-article-source {
+    font-family: var(--font-mono);
+    font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-green);
+  }
+  .nw-article-h {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--color-navy);
+  }
+  .nw-article-p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--color-stone-700);
+    flex: 1;
+  }
+  .nw-article-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: max(10px, var(--fs-min, 0px));
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    text-decoration: none;
+    margin-top: 6px;
+    transition: color 0.2s ease;
+  }
+  .nw-article-link:hover { color: var(--color-green); }
+
   @media (max-width: 900px) {
     .nw-feature { grid-template-columns: minmax(0, 1fr); }
     .nw-cover { max-width: 320px; }
     .nw-more { grid-template-columns: 120px 1fr; gap: 20px; }
+    .nw-articles-grid { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

@@ -28,14 +28,14 @@ const alloyFamilies = [
   {
     title: 'Normal alloys',
     sub: 'General extrusion · electrical conductor',
-    grades: [{ g: '6060' }, { g: '6063' }, { g: '6063-AN', lf: true }, { g: '6063-HS', lf: true }, { g: '6101' }, { g: '6101B' }, { g: '6463' }],
-    note: 'Series 6xxx · bold = lead-free (RoHS/ELV/REACH)',
+    grades: [{ g: '6060' }, { g: '6063' }, { g: '6101' }, { g: '6101B' }, { g: '6463' }],
+    note: 'Series 6xxx',
   },
   {
     title: 'Medium hard alloys',
     sub: 'Structural · transport · marine · engineering',
-    grades: [{ g: '3003' }, { g: '5083' }, { g: '5754' }, { g: '6005A' }, { g: '6026', lf: true }, { g: '6061' }, { g: '6082' }, { g: '6082-HS', lf: true }],
-    note: 'Series 3xxx · 5xxx · 6xxx · bold = lead-free',
+    grades: [{ g: '3003' }, { g: '5083' }, { g: '5754' }, { g: '6005A' }, { g: '6026' }, { g: '6061' }, { g: '6082' }],
+    note: 'Series 3xxx · 5xxx · 6xxx',
   },
   {
     title: 'Hard alloys',
@@ -110,13 +110,13 @@ const alloyTable = [
   },
   {
     series: '6xxx', cat: 'Normal',
-    alloys: [{ g: '6060' }, { g: '6063' }, { g: '6063-AN', lf: true }, { g: '6063-GR' }, { g: '6063-HS', lf: true }, { g: '6063Z' }, { g: '6101' }, { g: '6101B' }, { g: '63401' }, { g: '6463' }, { g: 'E91E' }],
-    remarks: 'Bold alloys are lead-free grades. 6063-AN and 6063-HS are lead-free extrusion grades suitable for RoHS/ELV/REACH compliance.',
+    alloys: [{ g: '6060' }, { g: '6063' }, { g: '6063-GR' }, { g: '6063Z' }, { g: '6101' }, { g: '6101B' }, { g: '63401' }, { g: '6463' }, { g: 'E91E' }],
+    remarks: 'General extrusion and electrical conductor grades.',
   },
   {
     series: '6xxx', cat: 'Medium Hard',
-    alloys: [{ g: '6005' }, { g: '6005A' }, { g: '6005A-HS' }, { g: '6026', lf: true }, { g: '6042' }, { g: '6061' }, { g: '6066' }, { g: '6066Z' }, { g: '6082' }, { g: '6082-HS', lf: true }, { g: '6082Z' }, { g: '6201' }, { g: '6262' }, { g: '6351' }, { g: '65032' }],
-    remarks: 'Bold alloys are lead-free grades. 6026 is a lead-free free-machining alloy. 6082-HS is a lead-free extrusion grade suitable for RoHS/ELV/REACH compliance.',
+    alloys: [{ g: '6005' }, { g: '6005A' }, { g: '6026' }, { g: '6042' }, { g: '6061' }, { g: '6066' }, { g: '6066Z' }, { g: '6082' }, { g: '6082Z' }, { g: '6201' }, { g: '6262' }, { g: '6351' }, { g: '65032' }],
+    remarks: 'Structural and medium-hard alloys for transport, marine, and engineering applications.',
   },
   {
     series: '7xxx', cat: 'Hard',
@@ -233,7 +233,7 @@ const alloyTable = [
             <div class="ih-alloy-title">{fam.title}</div>
             <div class="ih-alloy-sub">{fam.sub}</div>
             <div class="ih-alloy-grades">
-              {fam.grades.map(({ g, lf }) => <span class={`ih-grade${lf ? ' ih-grade-lf' : ''}`}>{g}</span>)}
+              {fam.grades.map(({ g }) => <span class="ih-grade">{g}</span>)}
             </div>
           </div>
         ))}
@@ -269,7 +269,7 @@ const alloyTable = [
                 <td class="ih-cell-series">{row.series}</td>
                 <td class="ih-cell-alloys">
                   {row.alloys.map((a, j) => (
-                    <>{j > 0 && ', '}{a.lf ? <strong>{a.g}</strong> : a.g}</>
+                    <>{j > 0 && ', '}{a.g}</>
                   ))}
                 </td>
                 <td class="ih-cell-cat">{row.cat}</td>
@@ -280,8 +280,8 @@ const alloyTable = [
         </table>
       </div>
       <p class="ih-table-footnote">
-        <strong>Bold</strong> alloys are lead-free grades suitable for RoHS / ELV / REACH compliance.
         Custom alloys and special chemistries developed as per customer specification.
+        Lead-free machining alloys available — enquire for details.
       </p>
     </div>
   </section>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
 
 const advantages = [
   'Single point of responsibility for extrusion, treatment, and packing under one roof',
@@ -60,6 +61,31 @@ const advantages = [
     </div>
   </section>
 
+
+  <!-- ── Finish samples strip ──────────────────────────────── -->
+  <div class="sf-photo-strip">
+    <div class="sf-photo-tile">
+      <Pic
+        src="/assets/capabilities/surface-finishing/wood-effect-finish.jpg"
+        alt="Wood-effect sublimation finish on aluminium profiles — four wood grain colours"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="sf-photo-label">Wood-effect finish</div>
+    </div>
+    <div class="sf-photo-tile">
+      <Pic
+        src="/assets/capabilities/surface-finishing/anodised-finish.jpg"
+        alt="Anodised aluminium profiles — black, gold, bronze and silver anodising"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="sf-photo-label">Anodising</div>
+    </div>
+    <div class="sf-photo-tile">
+      <Pic
+        src="/assets/capabilities/surface-finishing/powder-coated-finish.jpg"
+        alt="Powder-coated aluminium profiles — black, grey, champagne and white"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="sf-photo-label">Powder coating</div>
+    </div>
+  </div>
 
   <!-- ── CLOSING BAND — advantages + CTA ───────────────────── -->
   <section class="sf-close">
@@ -164,6 +190,19 @@ const advantages = [
   }
 
 
+  /* ── Finish samples strip ──────────────────────────────── */
+  .sf-photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .sf-photo-tile { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .sf-photo-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.5s ease, filter 0.3s ease; }
+  .sf-photo-tile:hover :global(img) { transform: scale(1.04); filter: brightness(1); }
+  .sf-photo-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 40px 20px 14px;
+    background: linear-gradient(transparent, rgba(8,27,48,0.80));
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min,0px)); letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-nickel);
+  }
+
   /* ── CLOSING BAND ──────────────────────────────────────── */
   .sf-close {
     background: var(--color-stone-100);
@@ -227,6 +266,8 @@ const advantages = [
     .sf-hero-vid    { display: none; }
     .sf-hero-grad   { background: rgba(6,21,37,0.90); }
     .sf-scroll-cue  { display: none; }
+    .sf-photo-strip { grid-template-columns: 1fr; }
+    .sf-photo-tile  { aspect-ratio: 16/9; }
   }
   @media (prefers-reduced-motion: reduce) {
     .sf-hero-vid { display: none; }

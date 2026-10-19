@@ -100,6 +100,24 @@ const sizeRange = [
     </div>
   </section>
 
+  <!-- Product photo strip -->
+  <div class="cd-photo-strip">
+    <div class="cd-photo-tile">
+      <Pic
+        src="/assets/capabilities/cold-drawing/drawn-hollow-profiles.jpg"
+        alt="Cold drawn hollow aluminium profiles — round, oval and rectangular tubes"
+        loading="lazy" sizes="(max-width:768px) 100vw, 50vw" />
+      <div class="cd-photo-label">Hollow profiles</div>
+    </div>
+    <div class="cd-photo-tile">
+      <Pic
+        src="/assets/capabilities/cold-drawing/drawn-solid-bars.jpg"
+        alt="Cold drawn solid aluminium bars — round, hexagonal and square sections"
+        loading="lazy" sizes="(max-width:768px) 100vw, 50vw" />
+      <div class="cd-photo-label">Solid bars</div>
+    </div>
+  </div>
+
   <!-- Tolerance comparison -->
   <section class="section-alt section-pad">
     <div class="container">
@@ -189,6 +207,19 @@ const sizeRange = [
   .cd-app-num   { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); }
   .cd-app-title { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--color-navy); }
   .cd-app-desc  { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-stone-700); }
+
+  /* Photo strip */
+  .cd-photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .cd-photo-tile { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+  .cd-photo-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.82); transition: transform 0.5s ease, filter 0.3s ease; }
+  .cd-photo-tile:hover :global(img) { transform: scale(1.04); filter: brightness(1); }
+  .cd-photo-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 32px 24px 16px;
+    background: linear-gradient(transparent, rgba(8,27,48,0.78));
+    font-family: var(--font-mono); font-size: max(10px, var(--fs-min,0px)); letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-nickel);
+  }
 
   @media (max-width: 1024px) {
     .cd-range { grid-template-columns: repeat(2, 1fr); }

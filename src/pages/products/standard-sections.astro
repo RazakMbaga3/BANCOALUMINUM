@@ -156,8 +156,49 @@ const alloys = [
           <div class="ss-stat">
             <div class="ss-stat-n">
               {ce && (
-                <svg class="ss-ce-svg" viewBox="0 0 64 40" fill="none" aria-label="CE marking" role="img" xmlns="http://www.w3.org/2000/svg">
-                  <text x="0" y="34" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="currentColor" letter-spacing="-4">CE</text>
+                <svg class="ss-ce-svg" viewBox="0 0 100 68" aria-label="CE marking" role="img" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <!--
+                      CE mark drawn as stroked arcs — no fill color dependency.
+                      C: full arc ~300° open on right (gap ~60°, i.e. ±30° from 0°).
+                      E: same arc with 3 horizontal stroke segments extending right.
+                      stroke-width chosen so visually matches reference images.
+                      cx1=17 cy=34 r=28. cx2=70 cy=34 r=28. stroke-width=11.
+                      Arc open angle: 40° either side of 0° (3 o'clock).
+                      sin40°=0.643, cos40°=0.766.
+                      Arc start/end points for C (cx=17):
+                        top:    17 + 28*cos40° = 17+21.4=38.4,  34 - 28*sin40° = 34-18=16
+                        bottom: 38.4,                             34 + 18 = 52
+                    -->
+                    <mask id="ce-e-mask">
+                      <rect width="100" height="68" fill="white"/>
+                      <!-- Three notch gaps cut from the right side of the E arc -->
+                      <rect x="68" y="0"  width="32" height="14" fill="black"/>
+                      <rect x="68" y="27" width="32" height="14" fill="black"/>
+                      <rect x="68" y="54" width="32" height="14" fill="black"/>
+                    </mask>
+                  </defs>
+                  <!--
+                    r=28, circumference=175.9
+                    300° arc = 175.9*(300/360) = 146.6 ≈ 147
+                    gap = 175.9 - 147 = 28.9 ≈ 29
+                    dashoffset: rotate so gap faces right (3 o'clock = 0°).
+                    SVG arc starts at 3 o'clock; we want gap centered there,
+                    so offset by -(gap/2) = -14.5 so gap straddles the right.
+                  -->
+                  <!-- C: arc ~300°, open on right -->
+                  <circle cx="17" cy="34" r="28" fill="none" stroke="currentColor" stroke-width="11"
+                    stroke-dasharray="147 29"
+                    stroke-dashoffset="14.5"
+                    stroke-linecap="butt"
+                  />
+                  <!-- E: same arc with notch mask applied -->
+                  <circle cx="70" cy="34" r="28" fill="none" stroke="currentColor" stroke-width="11"
+                    stroke-dasharray="147 29"
+                    stroke-dashoffset="14.5"
+                    stroke-linecap="butt"
+                    mask="url(#ce-e-mask)"
+                  />
                 </svg>
               )}
               {n}
@@ -381,7 +422,7 @@ const alloys = [
   .ss-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-navy-line); border-top: 1px solid var(--color-navy-line); margin-top: 32px; }
   .ss-stat { background: var(--color-navy-deep); padding: 22px 24px; }
   .ss-stat-n { font-family: var(--font-sans); font-size: clamp(16px, 2vw, 24px); font-weight: 700; letter-spacing: -0.03em; color: var(--color-platinum); display: flex; align-items: center; gap: 10px; }
-  .ss-ce-svg { width: 36px; height: 22px; flex-shrink: 0; color: var(--color-platinum); }
+  .ss-ce-svg { width: 44px; height: 30px; flex-shrink: 0; color: var(--color-platinum); }
   .ss-stat-l { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-nickel); margin-top: 6px; }
 
   .ss-groups { display: flex; flex-direction: column; gap: 36px; }

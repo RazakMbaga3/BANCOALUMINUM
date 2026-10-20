@@ -73,17 +73,17 @@ const advantages = [
     </div>
     <div class="sf-photo-tile">
       <Pic
-        src="/assets/capabilities/surface-finishing/anodised-finish.jpg"
-        alt="Anodised aluminium profiles — black, gold, bronze and silver anodising"
-        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
-      <div class="sf-photo-label">Anodising</div>
-    </div>
-    <div class="sf-photo-tile">
-      <Pic
         src="/assets/capabilities/surface-finishing/powder-coated-finish.jpg"
         alt="Powder-coated aluminium profiles — black, grey, champagne and white"
         loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
       <div class="sf-photo-label">Powder coating</div>
+    </div>
+    <div class="sf-photo-tile">
+      <Pic
+        src="/assets/capabilities/surface-finishing/anodised-finish.jpg"
+        alt="Anodised aluminium profiles — black, gold, bronze and silver anodising"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="sf-photo-label">Anodising</div>
     </div>
   </div>
 
@@ -192,7 +192,7 @@ const advantages = [
 
   /* ── Finish samples strip ──────────────────────────────── */
   .sf-photo-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-  .sf-photo-tile { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .sf-photo-tile { position: relative; aspect-ratio: 16/9; overflow: hidden; }
   .sf-photo-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.85); transition: transform 0.5s ease, filter 0.3s ease; }
   .sf-photo-tile:hover :global(img) { transform: scale(1.04); filter: brightness(1); }
   .sf-photo-label {

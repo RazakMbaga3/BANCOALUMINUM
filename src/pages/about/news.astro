@@ -83,46 +83,32 @@ const inside = [
     </div>
   </section>
 
-  <!-- ── Spread preview ──────────────────────────────────────────────── -->
-  <section class="section-alt" style="padding:48px 0;border-top:1px solid var(--color-stone-200)">
-    <div class="container nw-more">
-      <a href={mag.view} target="_blank" rel="noopener" class="nw-spread" aria-label="Open the Banco Aluminium feature spread">
-        <Pic src="/assets/downloads/industrial-review-spread.jpg" alt="Opening page of the Banco Aluminium feature with the leadership team" loading="lazy" sizes="(max-width: 900px) 60vw, 22vw" maxW={768} />
-      </a>
-      <div>
-        <div class="nw-inside-label">Also in the press</div>
-        <p class="nw-more-p">
-          Company announcements, trade-show news and technical articles will be
-          published here as they're released.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Secondary articles grid ─────────────────────────────────────── -->
-  <section class="section-light section-pad" style="border-top:1px solid var(--color-stone-200)">
+  <section class="section-alt section-pad" style="border-top:1px solid var(--color-stone-200)">
     <div class="container">
       <div class="eyebrow">In the press · More coverage</div>
       <div class="nw-articles-grid">
 
-        <article class="nw-article-card">
-          <div class="nw-article-source">Industry Outlook · December 2021</div>
-          <h3 class="nw-article-h">Banco Aluminium: The Aluminium Extrusion &amp; Alloying Specialist</h3>
+        <article class="nw-article-card nw-article-card--photo">
+          <a href="https://www.instagram.com/p/DNSQdp7J-rA/" target="_blank" rel="noopener" class="nw-article-photo" aria-label="View the Green Model School Initiative post on Instagram">
+            <Pic src="/assets/about/csr-green-school-initiative.jpg" alt="Banco Aluminium and United Way Baroda team at the Green Model School Initiative inauguration, Laxmipura Primary School, Padra" loading="lazy" sizes="(max-width: 900px) 100vw, 33vw" />
+          </a>
+          <div class="nw-article-source">United Way Baroda · Instagram · 12 August 2025</div>
+          <h3 class="nw-article-h">Green Model School Initiative, Laxmipura Primary School</h3>
           <p class="nw-article-p">
-            A company profile by Director Kush Patel, published in Industry Outlook's special Vadodara
-            manufacturers issue. The article covers Banco's 54 years of extrusion expertise, in-house
-            foundry capabilities for complex and lead-free alloys, SCADA-monitored process control,
-            fabrication services, and expansion plans including a Rs. 110 crore investment in foundry
-            and extrusion capacity. Markets covered span electrical T&amp;D, automotive, solar, aerospace,
-            rail, and general engineering.
+            In collaboration with CSR partner Banco Aluminium Pvt. Ltd., United Way Baroda
+            inaugurated the Green Model School Initiative at Laxmipura Primary School, Padra,
+            transforming the campus with solar power, renovated classrooms with murals, clean
+            drinking water facilities, a kitchen garden, paver-block pathways, and new classroom
+            benches.
           </p>
           <a
-            href="https://www.theindustryoutlook.com/states-and-cities/vendor/banco-aluminium-the-aluminium-extrusion-alloying-specialist-cid-2729.html"
+            href="https://www.instagram.com/p/DNSQdp7J-rA/"
             class="nw-article-link"
             target="_blank"
             rel="noopener"
           >
-            Read the profile
+            View on Instagram
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </article>
@@ -304,6 +290,21 @@ const inside = [
     flex-direction: column;
     gap: 10px;
   }
+  .nw-article-card--photo { padding-top: 0; overflow: hidden; }
+  .nw-article-photo {
+    display: block;
+    margin: 0 -24px 4px;
+    aspect-ratio: 775 / 655;
+    overflow: hidden;
+  }
+  .nw-article-photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .nw-article-photo:hover :global(img) { transform: scale(1.03); }
   .nw-article-source {
     font-family: var(--font-mono);
     font-size: max(10px, var(--fs-min, 0px));

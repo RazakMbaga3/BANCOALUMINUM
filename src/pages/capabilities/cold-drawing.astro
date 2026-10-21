@@ -236,8 +236,9 @@ const sizeRange = [
   /* Photo strip */
   .cd-photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
   .cd-photo-strip--3 { grid-template-columns: repeat(3, 1fr); }
-  .cd-photo-tile { position: relative; aspect-ratio: 16/9; overflow: hidden; }
-  .cd-photo-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.82); transition: transform 0.5s ease, filter 0.3s ease; }
+  .cd-photo-tile { position: relative; aspect-ratio: 2.41/1; overflow: hidden; background: var(--color-navy-deep); }
+  .cd-photo-strip--3 .cd-photo-tile { aspect-ratio: 4/3; }
+  .cd-photo-tile :global(img) { width: 100%; height: 100%; object-fit: contain; display: block; filter: brightness(0.82); transition: transform 0.5s ease, filter 0.3s ease; }
   .cd-photo-tile:hover :global(img) { transform: scale(1.04); filter: brightness(1); }
   .cd-photo-label {
     position: absolute; bottom: 0; left: 0; right: 0;

@@ -14,7 +14,7 @@ const profiles = [
   { name: 'Track profiles', desc: 'Top-hung and floor-mounted track extrusions for sliding doors, partitions, and shutter systems, held to tight dimensional tolerance for smooth, consistent carriage travel.' },
 ];
 
-const galleryImages = ['8b', '8c', '8d', '8e', '8f'];
+const galleryImages = ['b1', 'b2', 'b3', 'b4', 'b5', 'b6'];
 
 const alloys = [
   { name: '6063', temper: 'T6', why: 'The architectural standard: smooth mill finish, excellent anodising response, and consistent extrudability for complex multi-chamber curtain wall and window profiles.' },
@@ -195,7 +195,7 @@ const alloys = [
     margin-right: 20px;
     aspect-ratio: 290 / 244;
     overflow: hidden;
-    background: var(--color-stone-100);
+    background: #fff;
     border: 1px solid var(--color-stone-200);
     border-radius: 3px;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
@@ -217,13 +217,14 @@ const alloys = [
   :global(.bld-gallery-img) {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    padding: 8px;
     filter: grayscale(0.55) contrast(1.02);
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
   }
   .bld-gallery-item:hover :global(.bld-gallery-img) {
-    transform: scale(1.08);
+    transform: scale(1.04);
     filter: grayscale(0) contrast(1.02);
   }
   @keyframes bld-marquee {

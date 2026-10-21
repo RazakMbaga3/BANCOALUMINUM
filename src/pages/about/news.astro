@@ -89,7 +89,10 @@ const inside = [
       <div class="eyebrow">In the press · More coverage</div>
       <div class="nw-articles-grid">
 
-        <article class="nw-article-card">
+        <article class="nw-article-card nw-article-card--photo">
+          <div class="nw-article-photo nw-article-photo--portrait">
+            <Pic src="/assets/about/kush-patel.jpg" alt="Kush Patel, Director, Banco Aluminium" loading="lazy" sizes="(max-width: 900px) 100vw, 33vw" />
+          </div>
           <div class="nw-article-source">Industry Outlook · December 2021</div>
           <h3 class="nw-article-h">Banco Aluminium: The Aluminium Extrusion &amp; Alloying Specialist</h3>
           <p class="nw-article-p">
@@ -133,6 +136,20 @@ const inside = [
             View on Instagram
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+        </article>
+
+        <article class="nw-article-card">
+          <div class="nw-article-source">PowerLine · Volume 31, No. 1 · September 2026</div>
+          <h3 class="nw-article-h">Extrusions Designed for Modern Power Infrastructure</h3>
+          <p class="nw-article-p">
+            Banco Aluminium features in the September 2026 issue of PowerLine — India's first
+            power magazine — with a full-page advertisement reaching OEMs and specifiers across
+            India's electrical T&amp;D, renewable energy and switchgear sectors. The placement
+            highlights Banco's 58+ years of experience, 35,000 MT/year extrusion capacity, and
+            product range spanning busbars &amp; conductive profiles, heat management, substation
+            equipment and custom extrusions — supplied to ABB, Schneider Electric, Siemens and
+            CG, with global reach across Europe, North America, Asia-Pacific and the Middle East.
+          </p>
         </article>
 
       </div>
@@ -318,6 +335,9 @@ const inside = [
     margin: 0 -24px 4px;
     aspect-ratio: 775 / 655;
     overflow: hidden;
+  }
+  .nw-article-photo--portrait {
+    aspect-ratio: 1 / 1;
   }
   .nw-article-photo :global(img) {
     width: 100%;

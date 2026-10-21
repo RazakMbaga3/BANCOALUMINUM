@@ -150,6 +150,31 @@ const sizeRange = [
     </div>
   </section>
 
+  <!-- Process photo strip -->
+  <div class="cd-photo-strip cd-photo-strip--3">
+    <div class="cd-photo-tile">
+      <Pic
+        src="/assets/capabilities/cold-drawing/drawing-pointing.jpg"
+        alt="Operator pointing drawn aluminium rod ready for the draw bench"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="cd-photo-label">Pointing</div>
+    </div>
+    <div class="cd-photo-tile">
+      <Pic
+        src="/assets/capabilities/cold-drawing/drawing-chamfering.jpg"
+        alt="Operator chamfering a cold drawn aluminium profile"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="cd-photo-label">Chamfering</div>
+    </div>
+    <div class="cd-photo-tile">
+      <Pic
+        src="/assets/capabilities/cold-drawing/drawing-straightening.jpg"
+        alt="Operators feeding rod through a multi-roll straightening machine"
+        loading="lazy" sizes="(max-width:768px) 100vw, 33vw" />
+      <div class="cd-photo-label">Straightening</div>
+    </div>
+  </div>
+
   <!-- Applications -->
   <section class="section-light section-pad">
     <div class="container">
@@ -210,6 +235,7 @@ const sizeRange = [
 
   /* Photo strip */
   .cd-photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .cd-photo-strip--3 { grid-template-columns: repeat(3, 1fr); }
   .cd-photo-tile { position: relative; aspect-ratio: 16/9; overflow: hidden; }
   .cd-photo-tile :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.82); transition: transform 0.5s ease, filter 0.3s ease; }
   .cd-photo-tile:hover :global(img) { transform: scale(1.04); filter: brightness(1); }
@@ -228,6 +254,7 @@ const sizeRange = [
   }
   @media (max-width: 640px) {
     .cd-apps-grid { grid-template-columns: 1fr 1fr; }
+    .cd-photo-strip--3 { grid-template-columns: 1fr; }
   }
   @media (max-width: 480px) {
     .cd-spec-row { flex-direction: column; gap: 4px; }

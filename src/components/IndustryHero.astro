@@ -11,8 +11,8 @@ interface Props {
   image: string;
   /** Breadcrumb-style eyebrow, e.g. "Industries / Railways" */
   eyebrow: string;
-  /** Four [value, label] pairs for the stats strip */
-  stats: readonly (readonly [string, string])[];
+  /** [value, label] pairs for the stats strip; optional third element `true` renders the CE SVG mark before the value */
+  stats: readonly (readonly [string, string] | readonly [string, string, true])[];
   /** Focal point of the photo on desktop (x% y%). Default: centre. */
   focus?: string;
   /** Focal point on phones, where the photo becomes a shorter, squarer band. */
@@ -39,9 +39,12 @@ const framing = [focus && `--fp:${focus}`, focusMobile && `--fp-m:${focusMobile}
 
     <!-- Stats strip -->
     <div class="ind-hero-stats" style={`--stat-count:${stats.length}`}>
-      {stats.map(([val, label]) => (
+      {stats.map(([val, label, ce]) => (
         <div class="ind-stat">
-          <div class="ind-stat-v">{val}</div>
+          <div class="ind-stat-v">
+            {ce && <img class="ind-stat-ce" src="/assets/logos/ce-mark.svg" alt="CE (Conformité Européenne) mark" width="44" height="30" loading="lazy" />}
+            {val}
+          </div>
           <div class="ind-stat-l">{label}</div>
         </div>
       ))}

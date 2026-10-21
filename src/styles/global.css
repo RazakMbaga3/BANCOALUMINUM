@@ -1666,7 +1666,11 @@ main > div:nth-of-type(n+3):not(.container) {
   font-size: clamp(15px, 1.7vw, 21px);
   font-weight: 700;
   color: var(--color-stone-50);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.ind-stat-ce { width: 44px; height: 30px; flex-shrink: 0; object-fit: contain; }
 .ind-stat-l {
   font-family: var(--font-mono);
   font-size: max(10px, var(--fs-min, 0px));

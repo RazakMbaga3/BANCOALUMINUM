@@ -232,7 +232,10 @@ const keyCerts = [
         <div class="gr-certs-cards">
           {keyCerts.map((c, i) => (
             <div class="gr-cert-card" style={`--delay:${i * 60}ms`}>
-              <div class="gr-cert-code">{c.code}</div>
+              {c.code === 'CE'
+                ? <img src="/assets/logos/ce-mark.svg" alt="CE mark" class="gr-cert-ce-svg" width="44" height="30" loading="lazy" />
+                : <div class="gr-cert-code">{c.code}</div>
+              }
               <div class="gr-cert-std">{c.std}</div>
               <div class="gr-cert-rule"></div>
               <div class="gr-cert-scope">{c.scope}</div>
@@ -372,6 +375,7 @@ const keyCerts = [
     transition-delay: var(--delay,0ms);
   }
   .gr-cert-card:hover { background: white; }
+  .gr-cert-ce-svg { display: block; width: 44px; height: auto; margin-bottom: 2px; }
   .gr-cert-code { font-size: clamp(18px,2vw,24px); font-weight: 800; letter-spacing: -0.02em; color: var(--color-navy); line-height: 1; }
   .gr-cert-std  { font-family: var(--font-mono); font-size: max(9.5px, var(--fs-min, 0px)); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-stone-700); margin-top: 4px; }
   .gr-cert-rule { width: 24px; height: 1px; background: var(--color-stone-200); margin: 12px 0; }

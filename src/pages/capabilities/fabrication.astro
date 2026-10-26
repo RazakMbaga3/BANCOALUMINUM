@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Pic from '../../components/Pic.astro';
+
+const operations = [
+  { op: 'Cutting',       img: '/assets/capabilities/machining-cutting.jpg',      desc: 'To-length, mitre, and compound angle cutting. CNC saw centres with stop accuracy ±0.3 mm. Single and gang cutting for high-volume orders.' },
+  { op: 'Drilling',      img: '/assets/capabilities/fabrication-ops/drilling.jpg',     desc: 'Multi-spindle drilling heads for hole patterns in a single pass. CNC drilling centres for complex hole patterns, counterbores, and countersinks.' },
+  { op: 'CNC machining', img: '/assets/capabilities/fabrication-ops/cnc-machining.jpg',desc: 'Slots, pockets, end profiles, and complex 2D features. CNC machining centres on aluminium profiles.' },
+  { op: 'Punching',      img: '/assets/capabilities/machining-punching.jpg',     desc: 'Holes, notches, slots, and knockouts. Hydraulic punching for high-volume production. Tooling held in-house for repeat orders.' },
+  { op: 'Bending',       img: '/assets/capabilities/fabrication-ops/bending.jpg',      desc: 'Press brake bending for profile flanges, brackets, and sheet components. Tooling matched to profile cross-section to eliminate deformation.' },
+  { op: 'Tapping',       img: '/assets/capabilities/fabrication-ops/tapping.jpg',      desc: 'CNC tapping for threaded inserts and machine screw threads. M3 to M24 range. Thread gauged 100% for critical fastener applications.' },
+];
+---
+
+<Layout
+  title="Fabrication & machining: Banco Aluminium"
+  description="CNC machining, drilling, punching and precision cutting: Banco's fabrication facility turns extruded profiles into finished components and sub-assemblies, with a capacity of 400 MT per month."
+  transparentNav={true}
+>
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="cap-hero photo-hero">
+    <div class="cap-hero-media photo-hero-media" aria-hidden="true">
+      <Pic
+        src="/assets/capabilities/machining-hero.jpg"
+        alt="Banco Aluminium operator at a CNC machining centre on the fabrication floor"
+        class="cap-hero-img"
+        focus="50% 38%" focusMobile="72% 45%"
+        loading="eager" sizes="100vw" />
+      <div class="cap-hero-scrim photo-hero-scrim"></div>
+      <div class="cap-hero-grad photo-hero-grad"></div>
+    </div>
+
+    <div class="container cap-hero-body photo-hero-body">
+      <div class="eyebrow on-dark" data-reveal="fade" data-reveal-delay="1">Capabilities / Fabrication & machining</div>
+      <h1 class="cap-h1 fab-h1" data-reveal data-reveal-delay="2">
+        <span class="fab-item">CNC machining<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Drilling<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Punching<span class="fab-sep" aria-hidden="true">•</span></span>
+        <span class="fab-item">Precision cutting</span>
+      </h1>
+      <p class="cap-lead" data-reveal data-reveal-delay="3">
+        Banco's fabrication and machining facility transforms extruded profiles into
+        finished components and sub-assemblies, supported by multiple machining and
+        fabrication operations with a capacity of 400 MT per month.
+      </p>
+    </div>
+
+    <div class="cap-scroll-cue" aria-hidden="true">
+      <span class="cap-scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section-light section-pad">
+    <div class="container">
+      <div class="eyebrow" data-reveal="fade">/ 01 · Overview</div>
+      <div class="fab-overview-grid">
+        <div data-reveal="left">
+          <h2 class="t-h2" style="color:var(--color-navy);margin-top:16px">
+            Profile into<br>finished component.
+          </h2>
+        </div>
+        {/* Photo removed at the client's request (round 6); copy moves into the
+            right-hand column, as on the extrusion overview. */}
+        <div data-reveal="right">
+          <p class="t-lead" style="color:var(--color-stone-700)">
+            Fabrication and machining sits directly downstream of the extrusion presses.
+            Profiles move from cut-to-length saw, to heat treatment, to the fabrication
+            floor, with no external handling or sub-contractor involvement. This integration
+            eliminates dimensional variation introduced by multiple handling stages and
+            ensures a continuous quality chain from billet to finished part.
+          </p>
+          <p class="t-body" style="color:var(--color-stone-700);margin-top:16px;line-height:1.7">
+            The facility handles both high-volume repeat machining operations (drilling
+            and cutting to standard patterns) and lower-volume complex machining for
+            engineering and OEM customers requiring tight tolerances, multi-feature
+            profiles, or sub-assembly into finished products.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Operations -->
+  <section class="section-dark section-pad">
+    <div class="container">
+      <div class="eyebrow on-dark" data-reveal="fade">/ 02 · Machining operations</div>
+      <h2 class="t-h2" style="color:var(--color-platinum);margin-top:16px;margin-bottom:40px" data-reveal>
+        Six operations.<br>One facility.
+      </h2>
+      <div class="fab-ops-grid" data-reveal="fade">
+        {operations.map((o, i) => (
+          <div class="fab-op-card">
+            <div class="fab-op-img">
+              <Pic src={o.img} alt={`Banco Aluminium ${o.op.toLowerCase()} operation`} loading="lazy" sizes="(max-width:640px) 100vw, 33vw" />
+            </div>
+            <div class="fab-op-num">/ {String(i+1).padStart(2,'0')}</div>
+            <h3 class="fab-op-name">{o.op}</h3>
+            <p class="fab-op-desc">{o.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .fab-overview-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(40px, 6vw, 100px); align-items: start; margin-top: 32px; }
+
+  /* Four-item title: each item stays whole, separators ride the line end,
+     balance keeps the two lines even. A touch smaller than the shared cap-h1
+     because it is a list, not a slogan. */
+  .fab-h1 { font-size: clamp(36px, 4.8vw, 64px); line-height: 1.02; text-wrap: balance; }
+  .fab-item { white-space: nowrap; }
+  .fab-sep { color: var(--color-green); font-weight: 400; margin: 0 0.28em 0 0.32em; }
+  /* No stat row under this hero, so the lead needs its own foot room */
+  .cap-hero-body { padding-bottom: clamp(48px, 8vh, 96px); }
+
+  .fab-ops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-navy-line); border: 1px solid var(--color-navy-line); }
+  .fab-op-card { background: var(--color-navy-soft); border-top: 2px solid var(--color-green); display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .fab-op-img { aspect-ratio: 4/3; overflow: hidden; }
+  .fab-op-img :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.88); transition: transform 0.5s ease, filter 0.3s ease; }
+  .fab-op-card:hover .fab-op-img :global(img) { transform: scale(1.04); filter: brightness(1); }
+  .fab-op-num  { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; color: var(--color-green); padding: 20px 24px 0; }
+  .fab-op-name { font-family: var(--font-sans); font-size: 18px; font-weight: 700; color: var(--color-platinum); padding: 0 24px; }
+  .fab-op-desc { font-family: var(--font-sans); font-size: 13px; line-height: 1.65; color: var(--color-silver); padding: 0 24px 24px; }
+
+  @media (max-width: 1024px) {
+    .fab-overview-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .fab-ops-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .fab-ops-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+</style>

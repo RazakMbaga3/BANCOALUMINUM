@@ -81,17 +81,24 @@ const localBusinessLd = {
             Tell us about your<br/><em class="accent">requirement.</em>
           </h2>
 
+          {/* Posts to /api/contact (api/contact.js), which emails the enquiry
+              and drawing to sales. The script below submits it in place;
+              without JavaScript it is a normal form post that redirects to
+              a thank-you page. */}
           <form
             name="quote-request"
+            id="quote-form"
             method="POST"
-            action="/contact/success"
+            action="/api/contact"
             enctype="multipart/form-data"
             class="cform"
           >
-            <!-- Netlify / static host honeypot field -->
-            <input type="hidden" name="form-name" value="quote-request" />
             <input type="hidden" name="enquiry_source" id="f-enquiry-source" value="" />
-            <p style="display:none"><input name="bot-field" /></p>
+            <!-- Honeypot: hidden from people, filled in by bots -->
+            <p style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+              <label for="bot-field">Company website</label>
+              <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
+            </p>
 
             <div class="cform-row">
               <div class="cform-field">
@@ -149,6 +156,8 @@ const localBusinessLd = {
               <input id="f-drawing" type="file" name="drawing" accept=".pdf,.dxf,.dwg,.step,.stp,.png,.jpg" class="cform-file" />
             </div>
 
+            <div class="cform-status" id="quote-status" role="status" aria-live="polite" hidden></div>
+
             <button type="submit" class="btn btn-primary cform-submit">
               Send enquiry
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -156,6 +165,12 @@ const localBusinessLd = {
               </svg>
             </button>
           </form>
+
+          <div class="cform-done" id="quote-done" tabindex="-1" hidden>
+            <div class="cform-done-label">Enquiry received</div>
+            <p class="cform-done-h">Thank you. Your enquiry is with our sales team.</p>
+            <p class="cform-done-p">We will review your requirement and respond within one business day with material options, tooling feasibility, and a lead-time indication.</p>
+          </div>
 
           <script>
             // Tag enquiries with their originating page (?src=…) so the form
@@ -169,6 +184,70 @@ const localBusinessLd = {
                 if (product && !product.value) product.value = 'architectural';
               }
             }
+
+            const MAX_DRAWING = 4 * 1024 * 1024;
+            const FALLBACK = 'sales@bancoaluminium.com';
+            const form = document.getElementById('quote-form') as HTMLFormElement | null;
+            const status = document.getElementById('quote-status');
+            const done = document.getElementById('quote-done');
+
+            function show(msg: string, tone: 'info' | 'error', html = false) {
+              if (!status) return;
+              status.setAttribute('data-tone', tone);
+              if (html) status.innerHTML = msg; else status.textContent = msg;
+              status.hidden = false;
+            }
+            const sendDirect = `Please email your enquiry to <a href="mailto:${FALLBACK}">${FALLBACK}</a> instead.`;
+            const MESSAGES: Record<string, string> = {
+              invalid_email: 'Please check your email address.',
+              drawing_bad_type: 'Please attach a PDF, DXF, DWG, STEP, or image file.',
+              drawing_too_large: 'Your attachment is larger than 4 MB. Please upload a smaller file.',
+              field_too_long: 'One of your answers is too long. Please shorten it and try again.',
+              missing_field: 'Please complete all required fields.',
+            };
+
+            if (form && status && done) {
+              if (new URLSearchParams(location.search).get('enquiry') === 'error') {
+                show(`Your enquiry could not be sent. ${sendDirect}`, 'error', true);
+              }
+
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!form.reportValidity()) return;
+
+                const drawing = (form.elements.namedItem('drawing') as HTMLInputElement).files?.[0];
+                if (drawing && drawing.size > MAX_DRAWING) { show(MESSAGES.drawing_too_large, 'error'); return; }
+
+                const button = form.querySelector<HTMLButtonElement>('.cform-submit')!;
+                const label = button.innerHTML;
+                button.disabled = true;
+                button.textContent = 'Sending…';
+                status.hidden = true;
+
+                try {
+                  const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { accept: 'application/json' } });
+                  const body = await res.json().catch(() => ({ ok: false, error: 'send_failed' }));
+                  if (res.ok && body.ok) {
+                    form.hidden = true;
+                    done.hidden = false;
+                    done.focus();
+                    return;
+                  }
+                  if (MESSAGES[body.error]) {
+                    show(MESSAGES[body.error], 'error');
+                    const field = body.field && form.elements.namedItem(body.field);
+                    if (field instanceof HTMLElement) field.focus();
+                  } else {
+                    show(`We could not send your enquiry just now. ${sendDirect}`, 'error', true);
+                  }
+                } catch {
+                  show(`We could not send your enquiry just now. ${sendDirect}`, 'error', true);
+                } finally {
+                  button.disabled = false;
+                  button.innerHTML = label;
+                }
+              });
+            }
           </script>
         </div>
 
@@ -180,7 +259,7 @@ const localBusinessLd = {
               Banco Aluminium Private Limited
             </div>
             <address style="font-style:normal;margin-top:10px;font-size:14px;line-height:1.7;color:var(--color-stone-700)">
-              Padra Road, Near Railway Station,<br/>
+              Padra Road, Near Bhaili Railway Station,<br/>
               Bil, Vadodara, Gujarat 391410, India
             </address>
 
@@ -331,6 +410,25 @@ const localBusinessLd = {
 
   /* ── Form padding override ── */
   .section-pad { padding: clamp(48px, 7vw, 80px) 0; }
+
+  /* ── Quote form status / done states ── */
+  .cform[hidden], .cform-done[hidden], .cform-status[hidden] { display: none; }
+  .cform-submit[disabled] { opacity: 0.6; cursor: progress; }
+  .cform-status {
+    font-family: var(--font-sans); font-size: 13.5px; line-height: 1.55; color: var(--color-navy);
+    padding: 12px 14px; border: 1px solid var(--color-stone-200); border-left: 2px solid var(--color-green);
+    background: var(--color-stone-50);
+  }
+  .cform-status[data-tone="error"] { border-left-color: #B42318; }
+  .cform-status :global(a) { color: inherit; text-decoration: underline; }
+  .cform-done {
+    border: 1px solid var(--color-stone-200); border-top: 2px solid var(--color-green);
+    background: var(--color-stone-50); padding: clamp(24px, 3vw, 36px);
+  }
+  .cform-done:focus { outline: none; }
+  .cform-done-label { font-family: var(--font-mono); font-size: max(10px, var(--fs-min, 0px)); letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-green); }
+  .cform-done-h { font-family: var(--font-sans); font-size: clamp(20px, 2vw, 26px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; color: var(--color-navy); margin-top: 12px; }
+  .cform-done-p { font-family: var(--font-sans); font-size: 14px; line-height: 1.65; color: var(--color-stone-700); margin-top: 12px; }
 
   @media (max-width: 1024px) {
     .ct-split { grid-template-columns: minmax(0, 1fr); gap: 56px; }

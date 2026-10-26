@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#0E2A47"/>
-  <polygon points="16,4 28,22 16,28 4,22" fill="#009746"/>
-  <polygon points="16,10 24,22 16,24 8,22" fill="#0E2A47"/>
+  <rect width="32" height="32" rx="3" fill="#0E2A47"/>
+  <!-- Light face: top-left spine → tip → bottom of notch -->
+  <polygon points="7,5 27,16 14,21" fill="#18a455"/>
+  <!-- Dark face: top of notch → tip → bottom-left spine -->
+  <polygon points="14,21 27,16 7,27" fill="#007a38"/>
+  <!-- Notch cutout: recesses the left edge into a V -->
+  <polygon points="7,5 14,16 7,27" fill="#0E2A47"/>
 </svg>

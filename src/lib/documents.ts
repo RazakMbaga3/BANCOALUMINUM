@@ -20,9 +20,10 @@ export const DOCS = {
   },
   industrialReview: {
     title: 'The Industrial Review: Banco Aluminium cover story',
-    meta: 'PDF · 6 pages · 27 MB',
+    meta: 'PDF · 6 pages · 9.7 MB',
     cover: '/assets/downloads/industrial-review-cover.jpg',
-    ...drive('1XovSbX1ltE7SBqa7oza2un9MFQBYN9jt'),
+    view: '/assets/downloads/industrial-review.pdf',
+    download: '/assets/downloads/industrial-review.pdf',
   },
   standardSectionsCatalogue: {
     title: 'Standard Sections Catalogue',

@@ -11,13 +11,14 @@
 //   CONTACT_TO_EMAIL    optional — recipient(s), comma-separated. Overrides
 //                       the default routing below entirely (including the
 //                       architectural split) when set.
-//                       (default sales@bancoaluminium.com, or for
+//                       (default digital.marketing@bancoaluminium.com, or for
 //                       ?src=architectural: ajit@ + nilesh.gohil@)
 //
 // Responds with JSON when the request asks for it (the page's fetch submit),
 // otherwise redirects (plain HTML form post, no JavaScript).
 
-const TO_DEFAULT = 'sales@bancoaluminium.com';
+// Client-confirmed (Aamir, WhatsApp, 2026-10-27): Send Enquiry → digital.marketing@.
+const TO_DEFAULT = 'digital.marketing@bancoaluminium.com';
 // Architectural-sourced enquiries (?src=architectural, set via the hidden
 // enquiry_source field) route to the architectural team directly (client
 // correction F4), not the general sales inbox.

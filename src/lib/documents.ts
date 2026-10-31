@@ -14,9 +14,10 @@ const drive = (id: string) => ({
 export const DOCS = {
   architecturalCatalogue: {
     title: 'Architectural Series Product Catalogue',
-    meta: 'PDF · 42 pages · 81 MB',
+    meta: 'PDF · 42 pages · 37 MB',
     cover: '/assets/downloads/architectural-catalogue-cover.jpg',
-    ...drive('1A4FOXbKyWjuNz5gYg-jERimv2CZaZTf6'),
+    view: '/assets/downloads/architectural-catalogue.pdf',
+    download: '/assets/downloads/architectural-catalogue.pdf',
   },
   industrialReview: {
     title: 'The Industrial Review: Banco Aluminium cover story',
